@@ -30,3 +30,8 @@ externalPort = 80
 [[ports]]
 localPort = 25971
 externalPort = 3000
+
+[userenv]
+
+[userenv.shared]
+VITE_API_URL = "https://app.qlim8.com"

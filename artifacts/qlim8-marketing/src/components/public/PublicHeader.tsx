@@ -104,7 +104,7 @@ export function PublicHeader({
               </DropdownMenu>
             )}
             <a
-              href="/auth"
+              href="https://app.qlim8.com/auth"
               className="text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-100 text-gray-900 hover:bg-gray-200 transition-all"
               data-testid="button-signin"
             >

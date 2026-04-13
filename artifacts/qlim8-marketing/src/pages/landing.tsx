@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronDown, ChevronUp, Globe } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import AuthPage from "./auth.tsx";
 import { PublicFooter } from "@/components/public/PublicFooter";
 import { CTASection } from "@/components/public/CTASection";
 import { SeoHead } from "@/components/SeoHead";
@@ -59,7 +58,6 @@ export default function Landing() {
   const [headerFilled, setHeaderFilled] = useState(false);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [showPriceModal, setShowPriceModal] = useState(false);
-  const [showAuthModal, setShowAuthModal] = useState(false);
   const [showHeaderTagline, setShowHeaderTagline] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
@@ -156,8 +154,8 @@ export default function Landing() {
               >
                 {language === "da" ? "Produkter" : "Products"}
               </a>
-              <button
-                onClick={() => setShowAuthModal(true)}
+              <a
+                href="https://app.qlim8.com/auth"
                 className={`text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all ${
                   headerFilled
                     ? "bg-gray-100 text-gray-900 hover:bg-gray-200"
@@ -166,7 +164,7 @@ export default function Landing() {
                 data-testid="button-login"
               >
                 Login
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -225,12 +223,8 @@ export default function Landing() {
               : "My collaboration and integration partners will be displayed here - want to join?"
             }
           </h2>
-          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16">
-            <img 
-              src="/partners/dinero.png" 
-              alt="Dinero" 
-              className="h-10 sm:h-14 w-auto object-contain"
-            />
+          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16 text-gray-400 text-sm italic">
+            {language === "da" ? "Partnere annonceres løbende" : "Partners announced continuously"}
           </div>
         </div>
       </div>
@@ -310,12 +304,6 @@ export default function Landing() {
         </DialogContent>
       </Dialog>
 
-      {/* Auth Modal */}
-      <Dialog open={showAuthModal} onOpenChange={setShowAuthModal}>
-        <DialogContent className="sm:max-w-md p-0 overflow-hidden border-0 shadow-2xl">
-          <AuthPage isModal={true} />
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

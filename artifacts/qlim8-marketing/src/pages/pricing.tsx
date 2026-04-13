@@ -113,7 +113,7 @@ export default function Pricing() {
     if (checkoutStatus === "success") {
       setShowSuccess(true);
       window.history.replaceState({}, "", "/pricing");
-      setTimeout(() => { window.location.href = "/auth"; }, 2500);
+      setTimeout(() => { window.location.href = "https://app.qlim8.com/auth"; }, 2500);
     } else if (checkoutStatus === "cancelled") {
       window.history.replaceState({}, "", "/pricing");
       toast({ title: "Betaling annulleret", description: "Du kan altid prøve igen når du er klar." });
@@ -123,9 +123,11 @@ export default function Pricing() {
   const handleCheckout = async (tier: "starter" | "premium") => {
     setLoadingTier(tier);
     try {
-      const res = await fetch("/api/stripe/checkout-public", {
+      const API_BASE = import.meta.env.VITE_API_URL ?? "https://app.qlim8.com";
+      const res = await fetch(`${API_BASE}/api/stripe/checkout-public`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ billingCycle, tier, currency }),
       });
       const data = await res.json();
@@ -168,7 +170,7 @@ export default function Pricing() {
               </a>
             </div>
             <a
-              href="/auth"
+              href="https://app.qlim8.com/auth"
               className="text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-100 text-gray-900 hover:bg-gray-200 transition-all"
               data-testid="button-login"
             >

@@ -1,0 +1,83 @@
+Du er ved at sætte et nyt Replit-projekt op for qlim8.com — en ren, 
+statisk React/Vite marketing-site uden backend. Projektet er en 
+udspaltning fra app.qlim8.com, og der er importeret en masse filer 
+derfra. Hjælp mig med at rydde op og sætte det korrekt op.
+
+## Hvad dette projekt ER
+
+Et statisk marketing-site (kun frontend). Ingen Express-server, ingen 
+database, ingen sessions. Kun Vite + React + Tailwind.
+
+## Korrekte ruter i App.tsx
+
+Disse sider hører hjemme her — og kun disse:
+
+  /              → landing.tsx
+  /about         → about.tsx
+  /produkt       → produkt.tsx
+  /viden         → viden.tsx
+  /karriere      → karriere.tsx
+  /kontakt       → kontakt.tsx
+  /cookies       → cookies.tsx
+  /pricing       → pricing.tsx
+
+Ingen fallback-redirect, ingen /auth rute, ingen /dashboard eller 
+andre gated sider.
+
+## Hvad der IKKE hører hjemme i dette projekt
+
+Slet eller ignorer disse filer — de hører til app.qlim8.com:
+
+- auth.tsx (login/register-formularen med useAuth, useMutation osv.)
+- alle sider under dashboard/, ledger/, settings/, admin/, onboarding/
+- hooks/useAuth.ts — der er ingen backend her
+- hooks/useTenant.ts, useSubscription.ts — ingen backend
+- server/ mappen — skal slet ikke eksistere her
+- shared/schema.ts — ingen database
+
+## Hvordan auth fungerer fra dette projekt
+
+Der er INGEN login-logik i dette projekt. Login-knapper er simple HTML-links:
+
+  <a href="https://app.qlim8.com/auth">Log ind</a>
+  <a href="https://app.qlim8.com/auth?tab=register">Prøv gratis</a>
+
+Opdater PublicHeader.tsx og landing.tsx så alle CTA-knapper og 
+login-links er plain <a href="..."> der peger på app.qlim8.com.
+
+## pricing.tsx — API-kald til Stripe checkout
+
+pricing.tsx har ét fetch-kald der skal opdateres. Find linjen der 
+kalder /api/stripe/checkout-public og skift den til:
+
+  const API_BASE = "https://app.qlim8.com";
+  const res = await fetch(`${API_BASE}/api/stripe/checkout-public`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ priceId, currency }),
+  });
+
+Sæt også miljøvariablen VITE_API_URL=https://app.qlim8.com i 
+projektets Secrets, og brug import.meta.env.VITE_API_URL som base.
+
+## Design-system
+
+- Farver: emerald/teal palette, ingen gradienter
+- Skrifttype: Inter / system-font
+- Ikoner: lucide-react
+- Baggrunde: primært #F5F5F0 (off-white), hvid
+- Komponenter: shadcn/ui (Button, Card, etc.)
+
+## Hvad du skal gøre nu
+
+1. Ryd App.tsx op — kun de 8 ruter listet ovenfor
+2. Slet/fjern alle imports der ikke bruges (useAuth, backend-hooks osv.)
+3. Opdater PublicHeader.tsx: login-knapper = simple <a>-links til 
+   app.qlim8.com/auth
+4. Opdater pricing.tsx: fetch → https://app.qlim8.com/api/stripe/checkout-public
+5. Sørg for at vite.config.ts har disse aliases:
+     "@"       → client/src
+     "@assets" → attached_assets
+6. Kør projektet og bekræft at forsiden, /pricing og /about loader 
+   uden fejl
