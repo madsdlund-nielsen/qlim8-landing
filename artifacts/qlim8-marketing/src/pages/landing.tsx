@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ChevronDown, ChevronUp, Globe } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { PublicFooter } from "@/components/public/PublicFooter";
@@ -202,6 +202,28 @@ export default function Landing() {
               : "ESG is easy and affordable, let me show you how"
             }
           </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex gap-4 mt-10 flex-wrap justify-center"
+          >
+            <a
+              href="https://app.qlim8.com/auth?tab=register"
+              className="px-8 py-3 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-full transition-colors text-base sm:text-lg"
+              data-testid="button-try-free"
+            >
+              {language === "da" ? "Prøv gratis" : "Try for free"}
+            </a>
+            <a
+              href="/pricing"
+              className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full transition-colors text-base sm:text-lg backdrop-blur-sm"
+              data-testid="button-see-pricing"
+            >
+              {language === "da" ? "Se priser" : "See pricing"}
+            </a>
+          </motion.div>
           
           <motion.div
             initial={{ opacity: 0 }}
