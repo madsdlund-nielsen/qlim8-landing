@@ -62,7 +62,7 @@ export function PublicFooter({ variant = "full", language }: PublicFooterProps) 
           <div>
             <h4 className="font-semibold text-white mb-4 text-sm sm:text-base">{t('footer.company')}</h4>
             <ul className="space-y-2 sm:space-y-3 text-sm">
-              <li><a href="/about" className="hover:text-white transition-colors py-1 block">{t('footer.company.about')}</a></li>
+              <li><a href="/om" className="hover:text-white transition-colors py-1 block">{t('footer.company.about')}</a></li>
               <li><a href="/viden" className="hover:text-white transition-colors py-1 block">{t('footer.company.customers')}</a></li>
               <li><a href="/karriere" className="hover:text-white transition-colors py-1 block">{t('footer.company.careers')}</a></li>
               <li><a href="/kontakt" className="hover:text-white transition-colors py-1 block">{t('footer.company.contact')}</a></li>
