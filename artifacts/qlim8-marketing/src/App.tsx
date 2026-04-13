@@ -41,7 +41,7 @@ function Router() {
       <Route path="/kontakt" component={Kontakt} />
       <Route path="/karriere" component={Karriere} />
       <Route path="/cookies" component={Cookies} />
-      <Route path="/auth" component={Auth} />
+      <Route path="/auth">{() => <Auth />}</Route>
       <Route path="/collectors" component={CollectorsPublic} />
       <Route path="/reduction" component={ReductionPublic} />
       <Route path="/public/:slug" component={PublicProfile} />

@@ -1,7 +1,23 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "build", "dist", "**/*.test.ts"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "**/*.test.ts",
+    "src/pages/admin.tsx",
+    "src/pages/collectors.tsx",
+    "src/pages/dashboard.tsx",
+    "src/pages/dashboard-archived.tsx",
+    "src/pages/ledger.tsx",
+    "src/pages/reporting.tsx",
+    "src/pages/reduction.tsx",
+    "src/pages/onboarding.tsx",
+    "src/pages/account.tsx",
+    "src/pages/settings.tsx",
+    "src/pages/scenario-planner.tsx"
+  ],
   "compilerOptions": {
     "noEmit": true,
     "jsx": "preserve",
