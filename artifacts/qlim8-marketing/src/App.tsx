@@ -13,6 +13,7 @@ import Kontakt from "@/pages/kontakt";
 import Karriere from "@/pages/karriere";
 import Cookies from "@/pages/cookies";
 import PublicProfile from "@/pages/public-profile";
+import Auth from "@/pages/auth";
 import CollectorsPublic from "@/pages/collectors-public";
 import ReductionPublic from "@/pages/reduction-public";
 import NotFound from "@/pages/not-found";
@@ -40,9 +41,11 @@ function Router() {
       <Route path="/kontakt" component={Kontakt} />
       <Route path="/karriere" component={Karriere} />
       <Route path="/cookies" component={Cookies} />
+      <Route path="/auth" component={Auth} />
       <Route path="/collectors" component={CollectorsPublic} />
       <Route path="/reduction" component={ReductionPublic} />
       <Route path="/public/:slug" component={PublicProfile} />
+      <Route path="/public-profile" component={PublicProfile} />
       <Route component={NotFound} />
     </Switch>
   );

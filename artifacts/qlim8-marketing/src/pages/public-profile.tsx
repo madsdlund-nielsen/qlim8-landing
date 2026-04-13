@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Leaf, Building2, Target, TrendingDown, Globe, Award, Loader2 } from "lucide-react";
-import { useEffect } from "react";
 
 interface PublicProfileData {
   tenant: {
@@ -50,12 +49,6 @@ export default function PublicProfile() {
     enabled: !!slug,
   });
 
-  useEffect(() => {
-    if (error || (!isLoading && !data)) {
-      window.location.href = "https://qlim8.com";
-    }
-  }, [error, isLoading, data]);
-
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white flex items-center justify-center">
@@ -67,7 +60,16 @@ export default function PublicProfile() {
   if (error || !data) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white flex items-center justify-center px-4">
-        <Loader2 className="h-8 w-8 animate-spin text-emerald-600" />
+        <div className="text-center max-w-md">
+          <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Building2 className="h-8 w-8 text-emerald-600" />
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-3">Virksomhedsprofil ikke fundet</h1>
+          <p className="text-gray-600 mb-6">Denne klimaprofil findes ikke eller er ikke offentlig tilgængelig endnu.</p>
+          <a href="/" className="inline-flex items-center justify-center px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors">
+            Tilbage til forsiden
+          </a>
+        </div>
       </div>
     );
   }
