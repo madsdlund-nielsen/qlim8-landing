@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "qlim8 Marketing Website"
+version = "1.0.0"
+id = "artifacts/qlim8-marketing"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25971
+
+[services.development]
+run = "pnpm --filter @workspace/qlim8-marketing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/qlim8-marketing", "run", "build" ]
+publicDir = "artifacts/qlim8-marketing/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25971"
+BASE_PATH = "/"
