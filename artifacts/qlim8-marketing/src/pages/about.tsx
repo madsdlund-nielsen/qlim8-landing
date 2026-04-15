@@ -25,12 +25,6 @@ export default function About() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-24 pb-24 sm:pb-16 lg:pb-24">
         <div className="text-center mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full mb-4 sm:mb-6">
-            <Leaf className="h-3.5 w-3.5 text-emerald-600" />
-            <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wide">
-              Om os
-            </span>
-          </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6" data-testid="text-about-title">
             Vi demokratiserer klimaregnskab
           </h1>
