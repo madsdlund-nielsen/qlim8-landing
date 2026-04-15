@@ -1,4 +1,4 @@
-import { Leaf, Briefcase, MapPin, Clock } from "lucide-react";
+import { Briefcase, MapPin, Clock } from "lucide-react";
 import { useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
 import { SiteHeader } from "@/components/public/SiteHeader";
@@ -22,12 +22,6 @@ export default function Karriere() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-24">
         <div className="text-center mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full mb-4 sm:mb-6">
-            <Leaf className="h-3.5 w-3.5 text-emerald-600" />
-            <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wide">
-              Karriere
-            </span>
-          </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6" data-testid="text-karriere-title">
             Bliv en del af klimarevolutionen
           </h1>
