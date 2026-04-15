@@ -10,10 +10,11 @@ export function SiteFooter() {
           </div>
 
           <nav className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-            <a href="/karriere" className="hover:text-white transition-colors">Karriere</a>
-            <a href="/kontakt" className="hover:text-white transition-colors">Kontakt</a>
-            <a href="/about" className="hover:text-white transition-colors">About</a>
             <a href="/pricing" className="hover:text-white transition-colors">Priser</a>
+            <a href="/kontakt" className="hover:text-white transition-colors">Kontakt</a>
+            <a href="/karriere" className="hover:text-white transition-colors">Karriere</a>
+            <a href="/about" className="hover:text-white transition-colors">Om os</a>
+            <a href="/cookies" className="hover:text-white transition-colors">Cookie politik</a>
           </nav>
 
           <a
