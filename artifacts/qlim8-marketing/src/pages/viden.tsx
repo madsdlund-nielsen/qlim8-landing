@@ -75,7 +75,7 @@ function NewsletterForm() {
     <div className="mt-16 bg-emerald-50 rounded-2xl p-8 lg:p-12 text-center">
       <h2 className="text-2xl font-bold text-gray-900 mb-4">Vil du have de seneste opdateringer?</h2>
       <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-        Tilmeld dig vores nyhedsbrev og få de seneste artikler om klimaregnskab, compliance og bæredygtighedsstrategier direkte i din indbakke.
+        Tilmeld dig vores nyhedsbrev og få de seneste artikler om qlim8, klimaregnskab, compliance og bæredygtighedsstrategier direkte i din indbakke.
       </p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 justify-center max-w-md mx-auto">
         <input 

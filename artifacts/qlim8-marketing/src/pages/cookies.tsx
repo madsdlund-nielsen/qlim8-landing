@@ -129,8 +129,8 @@ export default function CookiePolicy() {
             <CardContent>
               <p className="text-muted-foreground">
                 Har du spørgsmål til vores brug af cookies? Kontakt os på{" "}
-                <a href="mailto:support@viridis-ramosa.com" className="text-emerald-600 hover:underline">
-                  support@viridis-ramosa.com
+                <a href="mailto:kontakt@qlim8.com" className="text-emerald-600 hover:underline">
+                  kontakt@qlim8.com
                 </a>
               </p>
             </CardContent>
