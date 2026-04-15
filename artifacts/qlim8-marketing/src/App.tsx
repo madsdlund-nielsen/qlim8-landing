@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { I18nProvider } from "@/lib/i18n";
+import { useFavicon } from "@/hooks/useFavicon";
 import Landing from "@/pages/landing";
 import Pricing from "@/pages/pricing";
 import About from "@/pages/about";
@@ -39,6 +40,7 @@ function Router() {
 }
 
 function App() {
+  useFavicon();
   return (
     <I18nProvider>
       <QueryClientProvider client={queryClient}>
