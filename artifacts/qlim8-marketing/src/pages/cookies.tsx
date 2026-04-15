@@ -5,6 +5,7 @@ import { Cookie, Shield, BarChart3, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
 import { SeoHead } from "@/components/SeoHead";
 import { SiteHeader } from "@/components/public/SiteHeader";
+import { SiteFooter } from "@/components/public/SiteFooter";
 
 export default function CookiePolicy() {
   const handleResetConsent = () => {
@@ -139,10 +140,8 @@ export default function CookiePolicy() {
           </Card>
         </div>
 
-        <div className="mt-12 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} qlim8 · <a href="https://viridis-ramosa.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Design af viridis ramosa</a></p>
-        </div>
       </div>
+      <SiteFooter />
     </div>
   );
 }
