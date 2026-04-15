@@ -3,7 +3,7 @@ import { Leaf } from "lucide-react";
 import { useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
 import { SiteHeader } from "@/components/public/SiteHeader";
-import { PublicFooter } from "@/components/public/PublicFooter";
+import { SiteFooter } from "@/components/public/SiteFooter";
 import { SeoHead } from "@/components/SeoHead";
 
 import bankImg1 from "@assets/stock_images/modern_bank_building_d414f203.jpg";
@@ -504,7 +504,7 @@ export default function Viden() {
         <NewsletterForm />
       </div>
 
-      <PublicFooter variant="full" />
+      <SiteFooter />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SiteHeader } from "@/components/public/SiteHeader";
-import { PublicFooter } from "@/components/public/PublicFooter";
+import { SiteFooter } from "@/components/public/SiteFooter";
 import { FeatureCheckList } from "@/components/public/FeatureCheckList";
 import { CTASection } from "@/components/public/CTASection";
 import { SeoHead } from "@/components/SeoHead";
@@ -399,7 +399,7 @@ export default function Produkt() {
         variant="dark"
       />
 
-      <PublicFooter variant="full" />
+      <SiteFooter />
     </div>
   );
 }

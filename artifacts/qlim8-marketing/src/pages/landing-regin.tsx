@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { MobileScreenshotCarousel } from "@/components/ui/mobile-screenshot-carousel";
 import { MobileStickyCTA } from "@/components/ui/mobile-sticky-cta";
 import { PublicHeader } from "@/components/public/PublicHeader";
-import { PublicFooter } from "@/components/public/PublicFooter";
+import { SiteFooter } from "@/components/public/SiteFooter";
 
 import commandCenterImg from "@assets/Command_center_screenshot_1765487990875.png";
 import carbonLedgerImg from "@assets/carbon_ledger_screenshot_1765487990874.png";
@@ -543,7 +543,7 @@ export default function Landing() {
         </div>
       </section>
       {/* Footer - Mobile Optimized */}
-      <PublicFooter variant="full" />
+      <SiteFooter />
       {/* Mobile Sticky CTA */}
       <MobileStickyCTA 
         text={t('hero.cta.access')} 

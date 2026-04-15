@@ -2,7 +2,7 @@ import { Leaf, Briefcase, MapPin, Clock } from "lucide-react";
 import { useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
 import { SiteHeader } from "@/components/public/SiteHeader";
-import { PublicFooter } from "@/components/public/PublicFooter";
+import { SiteFooter } from "@/components/public/SiteFooter";
 import { SeoHead } from "@/components/SeoHead";
 
 export default function Karriere() {
@@ -88,7 +88,7 @@ export default function Karriere() {
         </div>
       </div>
 
-      <PublicFooter variant="full" />
+      <SiteFooter />
     </div>
   );
 }

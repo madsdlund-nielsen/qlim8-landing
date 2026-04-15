@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Check, Minus, Loader2, CheckCircle, Mail, ChevronDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
-import { PublicFooter } from "@/components/public/PublicFooter";
+import { SiteFooter } from "@/components/public/SiteFooter";
 import { SeoHead } from "@/components/SeoHead";
 import { SiteHeader } from "@/components/public/SiteHeader";
 
@@ -457,7 +457,7 @@ export default function Pricing() {
         )}
       </AnimatePresence>
 
-      <PublicFooter variant="full" />
+      <SiteFooter />
     </div>
   );
 }

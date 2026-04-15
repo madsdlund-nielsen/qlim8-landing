@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { PublicFooter } from "@/components/public/PublicFooter";
+import { SiteFooter } from "@/components/public/SiteFooter";
 import { CTASection } from "@/components/public/CTASection";
 import { SeoHead } from "@/components/SeoHead";
 import { PromoVideoPlayer } from "@/components/public/PromoVideoPlayer";
@@ -188,7 +188,7 @@ export default function Landing() {
       />
 
       {/* Footer */}
-      <PublicFooter variant="minimal" language={language} />
+      <SiteFooter />
 
       {/* Price Definition Modal */}
       <Dialog open={showPriceModal} onOpenChange={setShowPriceModal}>
