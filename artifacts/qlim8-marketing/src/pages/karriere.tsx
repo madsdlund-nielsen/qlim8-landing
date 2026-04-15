@@ -73,7 +73,7 @@ export default function Karriere() {
             Vi er altid interesserede i at høre fra dygtige mennesker. Send en uopfordret ansøgning til os.
           </p>
           <a 
-            href="mailto:karriere@viridis-ramosa.com"
+            href="mailto:job@qlim8.com"
             className="inline-flex items-center gap-2 px-6 py-4 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors text-sm sm:text-base min-h-[48px]"
             data-testid="button-apply"
           >
