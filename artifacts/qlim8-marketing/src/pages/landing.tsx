@@ -9,10 +9,97 @@ import { PromoVideoPlayer } from "@/components/public/PromoVideoPlayer";
 import { SiteHeader } from "@/components/public/SiteHeader";
 
 import feature1Img from "@assets/Dashboard_1776248536007.png";
-import feature2Img from "@assets/Datakilder_1776248536008.png";
+import feature2Img from "@assets/Tour1_1776248713681.png";
 import feature3Img from "@assets/Udledninger_1776248536011.png";
-import feature4Img from "@assets/Rapportering_1776248536009.png";
+import feature4Img from "@assets/Bragboard_1776248536006.png";
 import feature5Img from "@assets/Bragboard_1776248536006.png";
+
+import carouselTour from "@assets/Tour1_1776248713681.png";
+import carouselDashboard from "@assets/Dashboard_1776248536007.png";
+import carouselDatakilder from "@assets/Datakilder_1776248536008.png";
+import carouselUdledninger from "@assets/Udledninger_1776248536011.png";
+import carouselTiltag from "@assets/Tiltag_1776248536010.png";
+import carouselScenarier from "@assets/Scenarier_1776248536009.png";
+import carouselRapportering from "@assets/Rapportering_1776248536009.png";
+import carouselBragboard from "@assets/Bragboard_1776248536006.png";
+
+const CAROUSEL_SCREENSHOTS = [
+  { src: carouselTour, label: "Onboarding" },
+  { src: carouselDashboard, label: "Dashboard" },
+  { src: carouselDatakilder, label: "Datakilder" },
+  { src: carouselUdledninger, label: "Udledninger" },
+  { src: carouselTiltag, label: "Tiltag" },
+  { src: carouselScenarier, label: "Scenarier" },
+  { src: carouselRapportering, label: "Rapportering" },
+  { src: carouselBragboard, label: "Offentlig profil" },
+];
+
+function ScreenshotCarousel() {
+  const [current, setCurrent] = useState(0);
+  const total = CAROUSEL_SCREENSHOTS.length;
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrent(c => (c + 1) % total), 4000);
+    return () => clearInterval(timer);
+  }, [total]);
+
+  const prev = () => setCurrent(c => (c - 1 + total) % total);
+  const next = () => setCurrent(c => (c + 1) % total);
+
+  return (
+    <div className="relative z-20 bg-white py-16 sm:py-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-10">
+          Se platformen i aktion
+        </h2>
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-100 aspect-[16/9]">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={current}
+              src={CAROUSEL_SCREENSHOTS[current].src}
+              alt={CAROUSEL_SCREENSHOTS[current].label}
+              className="w-full h-full object-cover"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            />
+          </AnimatePresence>
+
+          <button
+            onClick={prev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow transition-colors"
+            aria-label="Forrige"
+          >
+            <ChevronDown className="h-5 w-5 text-gray-700 -rotate-90" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow transition-colors"
+            aria-label="Næste"
+          >
+            <ChevronDown className="h-5 w-5 text-gray-700 rotate-90" />
+          </button>
+
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+            {CAROUSEL_SCREENSHOTS.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`rounded-full transition-all ${i === current ? "w-5 h-2 bg-white" : "w-2 h-2 bg-white/50 hover:bg-white/75"}`}
+                aria-label={s.label}
+              />
+            ))}
+          </div>
+        </div>
+
+        <p className="text-center text-sm text-gray-500 mt-4">
+          {CAROUSEL_SCREENSHOTS[current].label}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 const FEATURES = [
   {
@@ -175,6 +262,9 @@ export default function Landing() {
           </div>
         </div>
       </div>
+
+      {/* Screenshot Carousel */}
+      <ScreenshotCarousel />
 
       {/* FAQ Section */}
       <FAQSection language={language} />
