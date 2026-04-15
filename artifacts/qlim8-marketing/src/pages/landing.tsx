@@ -78,7 +78,7 @@ export default function Landing() {
       <div ref={heroRef} className="relative min-h-screen">
         <motion.div 
           className="fixed inset-0 z-0"
-          style={{ opacity: heroOpacity }}
+          style={{ opacity: heroOpacity, pointerEvents: "none" }}
         >
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0a2218 0%, #0f3d28 30%, #1a5c3a 60%, #14532d 80%, #0a2218 100%)" }} />
           <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(ellipse at 30% 50%, #22c55e 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, #16a34a 0%, transparent 50%)" }} />
