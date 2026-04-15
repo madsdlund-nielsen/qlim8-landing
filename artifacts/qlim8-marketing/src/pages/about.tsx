@@ -87,9 +87,9 @@ export default function About() {
 
         <div className="mt-8 sm:mt-12 text-center">
           <p className="text-xs sm:text-sm text-gray-500">
-            Spørgsmål? Kontakt os på{" "}
-            <a href="mailto:kontakt@qlim8.com" className="text-emerald-600 hover:text-emerald-700 font-medium">
-              kontakt@qlim8.com
+            Spørgsmål? Kontakt os{" "}
+            <a href="/kontakt" className="text-emerald-600 hover:text-emerald-700 font-medium">
+              her.
             </a>
           </p>
         </div>
