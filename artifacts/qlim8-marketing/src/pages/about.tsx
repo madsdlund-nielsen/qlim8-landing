@@ -35,7 +35,7 @@ export default function About() {
             Vi demokratiserer klimaregnskab
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Hos qlim8 tror vi på, at alle virksomheder—uanset størrelse—fortjener adgang til professionelle klimaværktøjer. Vi tilbyder løsninger, der er både enkel og overkommelig.
+            Hos qlim8 tror vi på, at alle virksomheder — uanset størrelse — fortjener adgang til professionelle klimaværktøjer. Vi tilbyder løsninger, der er både enkle og overkommelig.
           </p>
         </div>
 
