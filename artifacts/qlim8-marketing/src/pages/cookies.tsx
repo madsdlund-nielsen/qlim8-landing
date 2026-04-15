@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Cookie, Shield, BarChart3, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
 import { SeoHead } from "@/components/SeoHead";
+import { SiteHeader } from "@/components/public/SiteHeader";
 
 export default function CookiePolicy() {
   const handleResetConsent = () => {
@@ -18,6 +19,7 @@ export default function CookiePolicy() {
         description="Læs om hvilke cookies qlim8 bruger og hvorfor. Vi bruger kun nødvendige cookies og analytiske cookies til at forbedre din oplevelse."
         canonical="https://qlim8.com/cookies"
       />
+      <SiteHeader />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <Link href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-emerald-600 mb-8">
           <ArrowLeft className="h-4 w-4" />

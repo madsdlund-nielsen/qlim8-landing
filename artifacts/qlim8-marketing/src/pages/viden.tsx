@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Leaf } from "lucide-react";
 import { useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
-import { PublicHeader } from "@/components/public/PublicHeader";
+import { SiteHeader } from "@/components/public/SiteHeader";
 import { PublicFooter } from "@/components/public/PublicFooter";
 import { SeoHead } from "@/components/SeoHead";
 
@@ -370,7 +370,7 @@ export default function Viden() {
         canonical="https://qlim8.com/viden"
       />
       <style>{bobAnimation}</style>
-      <PublicHeader navLinks={[{ label: t('nav.product'), href: "/#features" }, { label: "Viden", href: "/viden", active: true }]} />
+      <SiteHeader />
 
       <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
         <div className="text-center mb-16">

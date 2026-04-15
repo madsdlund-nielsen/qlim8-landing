@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { PublicHeader } from "@/components/public/PublicHeader";
+import { SiteHeader } from "@/components/public/SiteHeader";
 import { PublicFooter } from "@/components/public/PublicFooter";
 import { FeatureCheckList } from "@/components/public/FeatureCheckList";
 import { CTASection } from "@/components/public/CTASection";
@@ -17,7 +17,7 @@ export default function Produkt() {
         description="Udforsk qlim8's funktioner: Command Center, Carbon Ledger, AI-kategorisering og VSME-rapportering. Alt hvad din virksomhed behøver til et revisionsklart klimaregnskab."
         canonical="https://qlim8.com/produkt"
       />
-      <PublicHeader />
+      <SiteHeader />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#F5F5F0]">

@@ -2,7 +2,7 @@ import { Leaf, Linkedin, Twitter, Users, Target, Heart, User } from "lucide-reac
 import { useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
 import { MobileStickyCTA } from "@/components/ui/mobile-sticky-cta";
-import { PublicHeader } from "@/components/public/PublicHeader";
+import { SiteHeader } from "@/components/public/SiteHeader";
 import { SeoHead } from "@/components/SeoHead";
 
 export default function About() {
@@ -20,7 +20,7 @@ export default function About() {
         description="qlim8 er grundlagt af en civilingeniør med speciale i energisystemer. Vi gør professionelt klimaregnskab og ESG tilgængeligt for alle danske SMV'er til en overkommelig pris."
         canonical="https://qlim8.com/about"
       />
-      <PublicHeader />
+      <SiteHeader />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-24 pb-24 sm:pb-16 lg:pb-24">
         <div className="text-center mb-10 sm:mb-16">

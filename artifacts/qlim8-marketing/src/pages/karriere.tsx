@@ -1,7 +1,7 @@
 import { Leaf, Briefcase, MapPin, Clock } from "lucide-react";
 import { useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
-import { PublicHeader } from "@/components/public/PublicHeader";
+import { SiteHeader } from "@/components/public/SiteHeader";
 import { PublicFooter } from "@/components/public/PublicFooter";
 import { SeoHead } from "@/components/SeoHead";
 
@@ -18,7 +18,7 @@ export default function Karriere() {
         description="Vi søger passionerede mennesker der vil hjælpe danske virksomheder med at blive mere bæredygtige. Se ledige stillinger eller send en uopfordret ansøgning til qlim8."
         canonical="https://qlim8.com/karriere"
       />
-      <PublicHeader />
+      <SiteHeader />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-24">
         <div className="text-center mb-10 sm:mb-16">

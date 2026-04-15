@@ -2,7 +2,7 @@ import { Leaf, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import { useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { PublicHeader } from "@/components/public/PublicHeader";
+import { SiteHeader } from "@/components/public/SiteHeader";
 import { SeoHead } from "@/components/SeoHead";
 
 export default function Kontakt() {
@@ -16,7 +16,7 @@ export default function Kontakt() {
         description="Har du spørgsmål om klimaregnskab, ESG eller qlim8? Kontakt os via formularen eller send en email. Vi svarer altid hurtigt."
         canonical="https://qlim8.com/kontakt"
       />
-      <PublicHeader />
+      <SiteHeader />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-24">
         <div className="text-center mb-10 sm:mb-16">

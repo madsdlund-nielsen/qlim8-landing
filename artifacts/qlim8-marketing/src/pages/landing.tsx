@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ChevronDown, ChevronUp, Globe } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { PublicFooter } from "@/components/public/PublicFooter";
 import { CTASection } from "@/components/public/CTASection";
 import { SeoHead } from "@/components/SeoHead";
 import { PromoVideoPlayer } from "@/components/public/PromoVideoPlayer";
+import { SiteHeader } from "@/components/public/SiteHeader";
 
 import feature1Img from "@assets/Feature_1_Kontrolcenter_1769884331461.jpg";
 import feature2Img from "@assets/Feature_2_Rapportering_1769884331462.jpg";
@@ -55,51 +56,13 @@ const FEATURES = [
 
 export default function Landing() {
   const [language, setLanguage] = useState<"da" | "en">("da");
-  const [headerFilled, setHeaderFilled] = useState(false);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [showPriceModal, setShowPriceModal] = useState(false);
-  const [showHeaderTagline, setShowHeaderTagline] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLElement>(null);
   const taglineRef = useRef<HTMLParagraphElement>(null);
 
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0.3]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroHeight = heroRef.current?.offsetHeight || 600;
-      setHeaderFilled(window.scrollY > heroHeight - 100);
-      
-      // Check if tagline has scrolled to header position
-      // Only apply the handoff effect on md+ screens where header tagline is visible
-      const isMdScreen = window.innerWidth >= 768;
-      if (taglineRef.current && headerRef.current && isMdScreen) {
-        const taglineRect = taglineRef.current.getBoundingClientRect();
-        const headerRect = headerRef.current.getBoundingClientRect();
-        
-        // Calculate centers
-        const taglineCenter = taglineRect.top + taglineRect.height / 2;
-        const headerCenter = headerRect.top + headerRect.height / 2;
-        
-        // Show in header when tagline center crosses header center
-        setShowHeaderTagline(taglineCenter <= headerCenter);
-      } else if (!isMdScreen) {
-        // On mobile, never show header tagline, always show hero tagline
-        setShowHeaderTagline(false);
-      }
-    };
-    
-    // Run once on mount to set initial state
-    handleScroll();
-    
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
 
 
   return (
@@ -109,66 +72,7 @@ export default function Landing() {
         description="ESG behøver ikke være dyrt. Få overblik over Scope 1, 2 & 3 samt en færdig VSME-rapport. Slip for dyre konsulenter. Fra 250 kr/md ved årsabonnement."
         canonical="https://qlim8.com/"
       />
-      {/* Header */}
-      <header
-        ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          headerFilled 
-            ? "bg-[#F5F5F0]/95 backdrop-blur-sm shadow-sm" 
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 relative">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className={`text-2xl font-bold transition-colors ${headerFilled ? "text-gray-900" : "text-white"}`}>
-                qlim8
-              </span>
-            </div>
-            
-            {/* Absolutely positioned tagline - centered on full header width */}
-            <div className="hidden md:block absolute left-0 right-0 top-1/2 -translate-y-1/2 pointer-events-none">
-              <span 
-                className={`block text-center text-xl sm:text-2xl transition-all duration-0 ${
-                  showHeaderTagline 
-                    ? `opacity-100 ${headerFilled ? "text-gray-700" : "text-white/90"}` 
-                    : "opacity-0"
-                }`}
-              >
-                {language === "da" 
-                  ? "ESG er nemt og billigt, lad mig vise dig hvordan"
-                  : "ESG is easy and affordable, let me show you how"
-                }
-              </span>
-            </div>
-            
-            <div className="flex items-center gap-2 sm:gap-3">
-              <a
-                href="/produkt"
-                className={`text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all ${
-                  headerFilled
-                    ? "bg-emerald-500 text-white hover:bg-emerald-600"
-                    : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
-                }`}
-                data-testid="button-products"
-              >
-                {language === "da" ? "Produkter" : "Products"}
-              </a>
-              <a
-                href="https://app.qlim8.com/auth"
-                className={`text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all ${
-                  headerFilled
-                    ? "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                    : "bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm"
-                }`}
-                data-testid="button-login"
-              >
-                Login
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader isHome />
 
       {/* Hero Section with Parallax Image */}
       <div ref={heroRef} className="relative min-h-screen">
@@ -195,7 +99,6 @@ export default function Landing() {
           <p 
             ref={taglineRef}
             className="text-xl sm:text-2xl text-white/90 max-w-2xl"
-            style={{ opacity: showHeaderTagline ? 0 : 1 }}
           >
             {language === "da" 
               ? "ESG er nemt og billigt, lad mig vise dig hvordan"

@@ -4,6 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { PublicFooter } from "@/components/public/PublicFooter";
 import { SeoHead } from "@/components/SeoHead";
+import { SiteHeader } from "@/components/public/SiteHeader";
 
 type BillingCycle = "monthly" | "yearly";
 type Currency = "dkk" | "eur";
@@ -158,27 +159,7 @@ export default function Pricing() {
         canonical="https://qlim8.com/pricing"
       />
 
-      <header className="sticky top-0 z-50 bg-[#F5F5F0]/95 backdrop-blur-sm border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4 sm:gap-6">
-              <a href="/" className="text-xs sm:text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors" data-testid="button-back">
-                ← Forside
-              </a>
-              <a href="/" data-testid="link-logo">
-                <span className="text-2xl font-bold text-gray-900">qlim8</span>
-              </a>
-            </div>
-            <a
-              href="https://app.qlim8.com/auth"
-              className="text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-100 text-gray-900 hover:bg-gray-200 transition-all"
-              data-testid="button-login"
-            >
-              Login
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24">
