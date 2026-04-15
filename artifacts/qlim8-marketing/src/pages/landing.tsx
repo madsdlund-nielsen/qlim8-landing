@@ -8,11 +8,11 @@ import { SeoHead } from "@/components/SeoHead";
 import { PromoVideoPlayer } from "@/components/public/PromoVideoPlayer";
 import { SiteHeader } from "@/components/public/SiteHeader";
 
-import feature1Img from "@assets/Feature_1_Kontrolcenter_1769884331461.jpg";
-import feature2Img from "@assets/Feature_2_Rapportering_1769884331462.jpg";
-import feature3Img from "@assets/Feature_3_Klimahovedbog_1769884331462.jpg";
-import feature4Img from "@assets/Feature_4_Wizard_1769884331463.jpg";
-import feature5Img from "@assets/Feature_5_Publicsite_1769884331463.jpg";
+import feature1Img from "@assets/Dashboard_1776248536007.png";
+import feature2Img from "@assets/Datakilder_1776248536008.png";
+import feature3Img from "@assets/Udledninger_1776248536011.png";
+import feature4Img from "@assets/Rapportering_1776248536009.png";
+import feature5Img from "@assets/Bragboard_1776248536006.png";
 
 const FEATURES = [
   {
