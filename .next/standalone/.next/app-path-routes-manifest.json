@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/cookies/page": "/cookies",
+  "/about/page": "/about",
+  "/pricing/page": "/pricing",
+  "/kontakt/page": "/kontakt",
+  "/page": "/",
+  "/viden/page": "/viden",
+  "/produkt/page": "/produkt",
+  "/karriere/page": "/karriere"
+}

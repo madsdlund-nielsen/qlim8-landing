@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/cookies/page": "app/cookies/page.js",
+  "/about/page": "app/about/page.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/kontakt/page": "app/kontakt/page.js",
+  "/page": "app/page.js",
+  "/viden/page": "app/viden/page.js",
+  "/produkt/page": "app/produkt/page.js",
+  "/karriere/page": "app/karriere/page.js"
+}
