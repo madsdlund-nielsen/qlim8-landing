@@ -1,23 +1,26 @@
 import type { MetadataRoute } from "next";
+import { articles } from "@/content/articles";
 
 const BASE_URL = "https://qlim8.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    { path: "/", priority: 1.0, changeFrequency: "weekly" as const },
-    { path: "/produkt", priority: 0.9, changeFrequency: "monthly" as const },
-    { path: "/pricing", priority: 0.9, changeFrequency: "monthly" as const },
-    { path: "/viden", priority: 0.8, changeFrequency: "weekly" as const },
-    { path: "/about", priority: 0.7, changeFrequency: "monthly" as const },
-    { path: "/kontakt", priority: 0.6, changeFrequency: "monthly" as const },
-    { path: "/karriere", priority: 0.5, changeFrequency: "monthly" as const },
-    { path: "/cookies", priority: 0.3, changeFrequency: "yearly" as const },
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 1.0 },
+    { url: `${BASE_URL}/produkt`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/pricing`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/viden`,    lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE_URL}/about`,    lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/kontakt`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/karriere`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/cookies`,  lastModified: new Date(), changeFrequency: "yearly",  priority: 0.3 },
   ];
 
-  return routes.map(({ path, priority, changeFrequency }) => ({
-    url: `${BASE_URL}${path}`,
-    lastModified: new Date(),
-    changeFrequency,
-    priority,
+  const articleRoutes: MetadataRoute.Sitemap = articles.map((a) => ({
+    url: `${BASE_URL}/viden/${a.slug}`,
+    lastModified: new Date(a.publishedAt),
+    changeFrequency: "monthly",
+    priority: 0.7,
   }));
+
+  return [...staticRoutes, ...articleRoutes];
 }
