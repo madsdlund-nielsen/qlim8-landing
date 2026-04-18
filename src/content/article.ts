@@ -11,10 +11,12 @@ export type ArticleSection =
   | { type: 'lead';          text: string }
   | { type: 'h2';            text: string }
   | { type: 'h3';            text: string }
+  | { type: 'h4';            text: string }
   | { type: 'paragraph';     text: string }
   | { type: 'list';          items: string[] }
   | { type: 'ordered-list';  items: string[] }
   | { type: 'callout';       text: string }
+  | { type: 'cta';           heading: string; text: string; buttonText: string; buttonHref: string }
 
 export type Article = {
   slug:        string

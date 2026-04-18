@@ -63,10 +63,29 @@ function Section({ section }: { section: ArticleSection }) {
           ))}
         </ol>
       )
+    case 'h4':
+      return (
+        <h4 className="text-base font-semibold text-gray-800 mt-6 mb-2">
+          {section.text}
+        </h4>
+      )
     case 'callout':
       return (
         <div className="my-8 p-5 bg-emerald-50 border border-emerald-200 rounded-xl text-[15px] text-emerald-900 leading-relaxed">
           {section.text}
+        </div>
+      )
+    case 'cta':
+      return (
+        <div className="my-10 p-7 bg-gray-900 rounded-2xl text-center">
+          <p className="text-white font-bold text-lg mb-2">{section.heading}</p>
+          <p className="text-gray-400 text-sm mb-5">{section.text}</p>
+          <a
+            href={section.buttonHref}
+            className="inline-block px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-full text-sm transition-colors"
+          >
+            {section.buttonText}
+          </a>
         </div>
       )
     default:
