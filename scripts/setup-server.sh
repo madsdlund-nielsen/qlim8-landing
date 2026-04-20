@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 # Kør én gang på en ny Ubuntu 24.04 VPS på Hetzner:
 #   curl -fsSL https://raw.githubusercontent.com/madsdlund-nielsen/qlim8-landing/main/scripts/setup-server.sh | bash
+# Eller med custom email:
+#   curl -fsSL https://raw.githubusercontent.com/madsdlund-nielsen/qlim8-landing/main/scripts/setup-server.sh | EMAIL=you@example.com bash
 set -euo pipefail
 
-DOMAIN="qlim8.com"
-EMAIL="din@email.com"           # <-- skift til din e-mail (Let's Encrypt advarsler)
-APP_DIR="/opt/qlim8"
+DOMAIN="${DOMAIN:-qlim8.com}"
+EMAIL="${EMAIL:-mads@viridis-ramosa.com}"
+APP_DIR="${APP_DIR:-/opt/qlim8}"
 
 # ── 1. System-opdatering ────────────────────────────────────────────────────
 apt-get update && apt-get upgrade -y
