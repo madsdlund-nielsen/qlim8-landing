@@ -1,5 +1,9 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
+# Next.js
+.next/
+out/
+
 # compiled output
 dist
 tmp
@@ -7,6 +11,11 @@ out-tsc
 *.tsbuildinfo
 .expo
 .expo-shared
+
+# env files
+.env
+.env.local
+.env.production
 
 # dependencies
 node_modules
