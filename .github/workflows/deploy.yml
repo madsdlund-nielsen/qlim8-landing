@@ -44,6 +44,17 @@ jobs:
     needs: build-and-push
 
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Copy config files to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HETZNER_HOST }}
+          username: ${{ secrets.HETZNER_USER }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          source: "docker-compose.yml,nginx.conf"
+          target: /opt/qlim8/
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
         with:
