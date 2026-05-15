@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Leaf, BookOpen, TrendingUp, Plug, Coins, ArrowRight } from 'lucide-react'
+import { BookOpen, TrendingUp, Plug, Coins, ArrowRight } from 'lucide-react'
 import { SiteHeader } from '@/components/public/SiteHeader'
 import { SiteFooter } from '@/components/public/SiteFooter'
 import { NewsletterForm } from '@/components/public/NewsletterForm'
@@ -47,20 +47,15 @@ export default function Viden() {
       <SiteHeader />
 
       {/* ── Hero ── */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-12 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full mb-6">
-          <Leaf className="h-3.5 w-3.5 text-emerald-600" />
-          <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wide">
-            Viden &amp; indsigt
-          </span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 leading-tight" data-testid="text-viden-title">
-          Klimaregnskab og ESG{' '}
-          <span className="block sm:inline">— forklaret enkelt</span>
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-12">
+        <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-4">
+          Blog
+        </p>
+        <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-5 tracking-tight leading-[1.05]" data-testid="text-blog-title">
+          ESG-viden uden konsulentjargon.
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Vi deler vores viden om klimaregnskab, CSRD-compliance og bæredygtighed for
-          danske virksomheder. Konkrete guides og opdateringer — uden konsulentjargon.
+        <p className="text-lg sm:text-xl text-gray-600 max-w-2xl leading-relaxed">
+          Konkrete guides til SMV'er om klimaregnskab, scope 1-3, VSME, L193 og hvad banken egentlig spørger om. Skrevet af mennesker der har bygget systemet.
         </p>
       </section>
 
@@ -72,8 +67,8 @@ export default function Viden() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {topics.map(({ Icon, title, description }) => (
             <div key={title} className="bg-white rounded-xl border border-gray-200 p-5">
-              <div className="w-9 h-9 bg-emerald-50 rounded-lg flex items-center justify-center mb-3">
-                <Icon className="h-[18px] w-[18px] text-emerald-600" />
+              <div className="w-9 h-9 bg-accent rounded-lg flex items-center justify-center mb-3">
+                <Icon className="h-[18px] w-[18px] text-primary" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-1 text-sm">{title}</h3>
               <p className="text-xs text-gray-500 leading-relaxed">{description}</p>
@@ -97,7 +92,7 @@ export default function Viden() {
               return (
                 <Link
                   key={article.slug}
-                  href={`/viden/${article.slug}`}
+                  href={`/blog/${article.slug}`}
                   className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-300 hover:shadow-sm transition-all flex flex-col"
                   data-testid={`card-article-${article.slug}`}
                 >
@@ -106,7 +101,7 @@ export default function Viden() {
                   >
                     {article.category}
                   </span>
-                  <h3 className="font-bold text-gray-900 mb-2 leading-snug group-hover:text-emerald-700 transition-colors">
+                  <h3 className="font-bold text-gray-900 mb-2 leading-snug group-hover:text-primary transition-colors">
                     {article.title}
                   </h3>
                   <p className="text-sm text-gray-500 leading-relaxed mb-4 flex-1">
@@ -114,7 +109,7 @@ export default function Viden() {
                   </p>
                   <div className="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-gray-100">
                     <span>{formatDate(article.publishedAt)}</span>
-                    <span className="flex items-center gap-1 text-emerald-600 font-medium group-hover:gap-2 transition-all">
+                    <span className="flex items-center gap-1 text-primary font-medium group-hover:gap-2 transition-all">
                       Læs <ArrowRight className="h-3 w-3" />
                     </span>
                   </div>

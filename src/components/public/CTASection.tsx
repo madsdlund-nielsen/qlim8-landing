@@ -23,7 +23,7 @@ export function CTASection({
 
   const renderButton = (btn: CTAButton, isPrimary: boolean) => {
     const className = isPrimary
-      ? "px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg transition-colors"
+      ? "px-8 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-colors"
       : isDark
         ? "px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors"
         : "px-8 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium rounded-lg transition-colors";

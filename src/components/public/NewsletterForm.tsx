@@ -34,7 +34,7 @@ export function NewsletterForm() {
   }
 
   return (
-    <div className="bg-emerald-50 rounded-2xl p-8 lg:p-12">
+    <div className="bg-accent rounded-2xl p-8 lg:p-12">
       <div className="max-w-xl mx-auto text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-3">
           Vil du have artiklerne direkte i indbakken?
@@ -50,7 +50,7 @@ export function NewsletterForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm"
+            className="px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
             data-testid="input-newsletter-name"
           />
           <input
@@ -59,7 +59,7 @@ export function NewsletterForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm"
+            className="px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
             data-testid="input-newsletter-email"
           />
           <button
@@ -75,7 +75,7 @@ export function NewsletterForm() {
           <p
             className={`mt-4 p-3 rounded-lg text-sm ${
               message.type === 'success'
-                ? 'bg-emerald-100 text-emerald-800'
+                ? 'bg-accent text-accent-foreground'
                 : 'bg-red-100 text-red-800'
             }`}
             data-testid={`message-${message.type}`}

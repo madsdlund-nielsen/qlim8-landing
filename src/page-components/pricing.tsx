@@ -62,12 +62,12 @@ function FeatureCell({ value }: { value: boolean | string }) {
   if (value === true) {
     return (
       <span className="flex justify-center">
-        <Check className="h-4 w-4 text-emerald-500" strokeWidth={2.5} />
+        <Check className="h-4 w-4 text-primary" strokeWidth={2.5} />
       </span>
     );
   }
   return (
-    <span className="text-[12px] text-center font-medium text-emerald-700 block leading-tight">
+    <span className="text-[12px] text-center font-medium text-primary block leading-tight">
       {value}
     </span>
   );
@@ -113,10 +113,10 @@ export default function Pricing() {
     const checkoutStatus = params.get("checkout");
     if (checkoutStatus === "success") {
       setShowSuccess(true);
-      window.history.replaceState({}, "", "/pricing");
+      window.history.replaceState({}, "", "/priser");
       setTimeout(() => { window.location.href = "https://app.qlim8.com/auth"; }, 2500);
     } else if (checkoutStatus === "cancelled") {
-      window.history.replaceState({}, "", "/pricing");
+      window.history.replaceState({}, "", "/priser");
       toast({ title: "Betaling annulleret", description: "Du kan altid prøve igen når du er klar." });
     }
   }, []);
@@ -159,12 +159,15 @@ export default function Pricing() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24">
 
           <div className="mb-10 sm:mb-14">
-            <p className="text-[11px] font-medium text-gray-400 uppercase tracking-[0.2em] mb-3" data-testid="text-pricing-label">
-              Prissætning
+            <p className="text-[11px] font-medium text-primary uppercase tracking-[0.2em] mb-3" data-testid="text-pricing-label">
+              Priser
             </p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.1] mb-6" data-testid="text-pricing-title">
-              Find den rette plan
+            <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-5" data-testid="text-pricing-title">
+              Fra 250 kr/md. Alt inkluderet.
             </h1>
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mb-8">
+              Ingen onboarding-gebyr, ingen lock-in. Opsig hvornår som helst. Alle priser er ekskl. moms.
+            </p>
 
             <div className="flex flex-col items-start gap-2">
               <div className="flex flex-wrap items-center gap-3">
@@ -209,7 +212,7 @@ export default function Pricing() {
                     initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
-                    className="text-sm text-emerald-600 font-medium"
+                    className="text-sm text-primary font-medium"
                   >
                     — spar 17%
                   </motion.span>
@@ -233,6 +236,7 @@ export default function Pricing() {
               <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid="plan-starter">
                 <div className="mb-5">
                   <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em] mb-1">Starter</p>
+                  <p className="text-xs text-gray-500 mb-3">Til SMV'er der starter ESG-arbejdet — banken har spurgt, og I skal have et tal.</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`starter-${billingCycle}-${currency}`}
@@ -265,7 +269,7 @@ export default function Pricing() {
                 <ul className="space-y-2 flex-1">
                   {["Scope 1/2/3 beregning", "AI fakturaupload", "VSME Basis-rapport", "1 API-integration", "Excel-eksport", "Email-support"].map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
-                      <Check className="h-4 w-4 text-emerald-500 mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                      <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
                       {f}
                     </li>
                   ))}
@@ -275,12 +279,13 @@ export default function Pricing() {
               {/* ── Premium ── */}
               <div className="bg-gray-900 rounded-2xl border border-gray-900 p-6 flex flex-col relative overflow-hidden" data-testid="plan-premium">
                 <div className="absolute top-4 right-4">
-                  <span className="text-[10px] font-semibold bg-emerald-500 text-white px-2.5 py-1 rounded-full uppercase tracking-[0.1em]">
+                  <span className="text-[10px] font-semibold bg-primary text-white px-2.5 py-1 rounded-full uppercase tracking-[0.1em]">
                     Mest populær
                   </span>
                 </div>
                 <div className="mb-5">
                   <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em] mb-1">Premium</p>
+                  <p className="text-xs text-gray-400 mb-3">Til SMV'er med kunde- og bankrapportering — VSME Comprehensive, leverandørdata, offentlig profil.</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`premium-${billingCycle}-${currency}`}
@@ -302,7 +307,7 @@ export default function Pricing() {
                 <button
                   onClick={() => handleCheckout("premium")}
                   disabled={!!loadingTier}
-                  className="w-full py-2.5 px-4 rounded-full bg-emerald-500 text-white text-sm font-medium hover:bg-emerald-400 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-5"
+                  className="w-full py-2.5 px-4 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-5"
                   data-testid="button-checkout-premium"
                 >
                   {loadingTier === "premium" ? (
@@ -313,7 +318,7 @@ export default function Pricing() {
                 <ul className="space-y-2 flex-1">
                   {["PDF-eksport", "VSME Comprehensive-rapport", "Reduction Hub & Scenario Builder", "Ubegrænsede integrationer", "Offentlig profil & Brag Board", "Direkte revisor-adgang", "Chat & telefon-support"].map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-gray-300">
-                      <Check className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                      <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
                       {f}
                     </li>
                   ))}
@@ -324,6 +329,7 @@ export default function Pricing() {
               <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid="plan-enterprise">
                 <div className="mb-5">
                   <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em] mb-1">Enterprise</p>
+                  <p className="text-xs text-gray-500 mb-3">Til større organisationer med flere CVR, komplet værdikæde og API-integration.</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <span className="text-4xl font-bold text-gray-900">Kontakt salg</span>
                   </div>
@@ -347,7 +353,7 @@ export default function Pricing() {
                     { label: "White-label PDF-eksport" },
                   ] as { label: string; note?: string }[]).map((f) => (
                     <li key={f.label} className="flex items-start gap-2 text-sm text-gray-600">
-                      <Check className="h-4 w-4 text-emerald-500 mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                      <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
                       <span>
                         {f.label}
                         {f.note && <span className="block text-xs text-gray-400 mt-0.5">({f.note})</span>}
@@ -395,7 +401,7 @@ export default function Pricing() {
                 <div key={i} data-testid={`faq-item-${i}`}>
                   <button
                     onClick={() => setFaqOpen(faqOpen === i ? null : i)}
-                    className="w-full flex items-center justify-between py-4 text-left text-sm font-medium text-gray-900 hover:text-emerald-700 transition-colors"
+                    className="w-full flex items-center justify-between py-4 text-left text-sm font-medium text-gray-900 hover:text-primary transition-colors"
                     data-testid={`faq-toggle-${i}`}
                   >
                     {item.q}
@@ -443,7 +449,7 @@ export default function Pricing() {
               transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
               className="flex flex-col items-center gap-4"
             >
-              <CheckCircle className="h-24 w-24 text-emerald-500" strokeWidth={1.5} />
+              <CheckCircle className="h-24 w-24 text-primary" strokeWidth={1.5} />
               <p className="text-lg font-medium text-gray-900">Betaling gennemført</p>
               <p className="text-sm text-gray-500">Du sendes videre til login...</p>
             </motion.div>

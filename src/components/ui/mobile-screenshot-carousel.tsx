@@ -172,7 +172,7 @@ export function MobileScreenshotCarousel({ images, className = "" }: MobileScree
           {/* Prev Button */}
           <button
             onClick={() => goToSlide('prev')}
-            className="w-11 h-11 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-11 h-11 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
             aria-label="Previous screenshot"
             data-testid="button-carousel-prev"
           >
@@ -185,8 +185,8 @@ export function MobileScreenshotCarousel({ images, className = "" }: MobileScree
               <button
                 key={`dot-${index}`}
                 onClick={() => handleDotClick(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
-                  index === currentIndex ? "bg-emerald-500" : "bg-gray-300 hover:bg-gray-400"
+                className={`w-2.5 h-2.5 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                  index === currentIndex ? "bg-primary" : "bg-gray-300 hover:bg-gray-400"
                 }`}
                 aria-label={`Go to screenshot ${index + 1}`}
                 data-testid={`button-carousel-dot-${index}`}
@@ -197,7 +197,7 @@ export function MobileScreenshotCarousel({ images, className = "" }: MobileScree
           {/* Next Button */}
           <button
             onClick={() => goToSlide('next')}
-            className="w-11 h-11 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-11 h-11 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
             aria-label="Next screenshot"
             data-testid="button-carousel-next"
           >

@@ -216,7 +216,7 @@ export function PromoVideoPlayer() {
             {/* Play / Pause */}
             <button
               onClick={() => setUserPaused((p) => !p)}
-              className="flex-shrink-0 w-9 h-9 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+              className="flex-shrink-0 w-9 h-9 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:border-primary hover:text-primary transition-colors"
               aria-label={userPaused ? "Afspil" : "Pause"}
               data-testid="promo-play-pause"
             >
@@ -228,7 +228,7 @@ export function PromoVideoPlayer() {
               {/* Thin progress bar */}
               <div className="h-0.5 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-emerald-500 rounded-full transition-none"
+                  className="h-full bg-primary rounded-full transition-none"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -241,7 +241,7 @@ export function PromoVideoPlayer() {
                     onClick={() => goTo(i)}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
                       i === currentIndex
-                        ? "bg-emerald-500 w-6"
+                        ? "bg-primary w-6"
                         : "bg-gray-300 hover:bg-gray-400 w-1.5"
                     }`}
                     aria-label={`Scene ${i + 1}`}

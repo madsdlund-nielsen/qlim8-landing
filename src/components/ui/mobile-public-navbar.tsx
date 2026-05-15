@@ -26,7 +26,7 @@ export function MobilePublicNavbar({ onGetAccess, onSignIn, showBackButton, onBa
             <a href="#features" className="text-sm text-gray-600 hover:text-gray-900 transition-colors" data-testid="link-product">
               {t('nav.product')}
             </a>
-            <a href="/viden" className="text-sm text-gray-600 hover:text-gray-900 transition-colors" data-testid="link-viden">
+            <a href="/blog" className="text-sm text-gray-600 hover:text-gray-900 transition-colors" data-testid="link-viden">
               Viden
             </a>
           </div>

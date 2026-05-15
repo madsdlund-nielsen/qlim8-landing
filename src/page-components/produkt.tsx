@@ -19,7 +19,7 @@ export default function Produkt() {
         <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gray-900 mb-6" data-testid="text-hero-title">
-              Klimaregnskab gjort <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">simpelt</span>
+              Klimaregnskab gjort <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">simpelt</span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8" data-testid="text-hero-subtitle">
               qlim8 er den mest intuitive platform til at tracke, beregne og rapportere dine CO2-emissioner. Designet specifikt til danske virksomheder med fokus på dansk lovgivning, emissionsfaktorer og compliance.
@@ -72,7 +72,7 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-cc1"
               />
-              <div className="absolute -z-10 -bottom-8 -right-8 w-full h-full bg-emerald-100/30 rounded-xl" />
+              <div className="absolute -z-10 -bottom-8 -right-8 w-full h-full bg-accent/40 rounded-xl" />
             </motion.div>
           </div>
 
@@ -160,7 +160,7 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-cl1"
               />
-              <div className="absolute -z-10 -bottom-8 -right-8 w-full h-full bg-emerald-100/30 rounded-xl" />
+              <div className="absolute -z-10 -bottom-8 -right-8 w-full h-full bg-accent/40 rounded-xl" />
             </motion.div>
           </div>
 
@@ -389,7 +389,7 @@ export default function Produkt() {
       <CTASection
         title="Klar til at se dit klimaregnskab?"
         description="Start med en gratis trial og se selv hvordan qlim8 transformerer klimaregnskab fra chore til competitive advantage."
-        primaryButton={{ text: "Se priser", href: "/pricing" }}
+        primaryButton={{ text: "Se priser", href: "/priser" }}
         secondaryButton={{ text: "Login", href: "https://app.qlim8.com/auth" }}
         variant="dark"
       />

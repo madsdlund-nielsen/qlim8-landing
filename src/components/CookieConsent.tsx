@@ -60,11 +60,11 @@ export function CookieConsent() {
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t border-gray-200 shadow-lg animate-in slide-in-from-bottom-5 duration-300">
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <div className="flex items-start gap-3 flex-1">
-          <Cookie className="h-5 w-5 text-emerald-600 mt-0.5 flex-shrink-0" />
+          <Cookie className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
           <div className="text-sm text-gray-600">
             <p>
               Vi bruger cookies til at forbedre din oplevelse og analysere trafik på siden.{" "}
-              <a href="/cookies" className="text-emerald-600 hover:underline">
+              <a href="/cookies" className="text-primary hover:underline">
                 Læs vores cookiepolitik
               </a>
             </p>
@@ -83,7 +83,7 @@ export function CookieConsent() {
           <Button
             size="sm"
             onClick={handleAccept}
-            className="flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-700"
+            className="flex-1 sm:flex-none bg-primary hover:bg-primary/90"
             data-testid="button-accept-cookies"
           >
             Acceptér alle
