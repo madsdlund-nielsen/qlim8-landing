@@ -12,9 +12,9 @@ export default function Handelsbetingelser() {
             Handelsbetingelser
           </h1>
           <p className="text-sm text-gray-600">
-            qlim8 ApS — ESG-platform (SaaS)
+            qlim8 — ESG-platform (SaaS)
             <br />
-            Version: 1.0 · Gældende fra: <span className="text-gray-500">[UDFYLDES INDEN GO-LIVE]</span>
+            Version: 1.0 · Gældende fra: <span className="text-gray-500">15. maj 2026</span>
           </p>
         </header>
 
