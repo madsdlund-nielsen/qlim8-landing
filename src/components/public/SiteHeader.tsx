@@ -7,7 +7,6 @@ interface SiteHeaderProps {
 }
 
 const NAV_ITEMS = [
-  { href: "/produkt", label: "Funktioner" },
   { href: "/priser", label: "Priser" },
   { href: "/metodologi", label: "Metodologi" },
   { href: "/blog", label: "Blog" },
