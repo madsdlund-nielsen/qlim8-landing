@@ -14,15 +14,33 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://qlim8.com"),
   title: {
-    default: "qlim8 » Automatisk Klimaregnskab & ESG til SMV",
+    default: "qlim8 » ESG uden besværet — klimaregnskab til danske SMV'er",
     template: "%s | qlim8",
   },
   description:
-    "ESG behøver ikke være dyrt. Få overblik over Scope 1, 2 & 3 samt en færdig VSME-rapport. Fra 250 kr/md.",
+    "Automatisk scope 1-3, VSME-rapport på 10 minutter, hosting i EU. Klimaregnskab uden regneark, konsulenter og kaos. Fra 250 kr/md.",
+  keywords: [
+    "klimaregnskab",
+    "ESG",
+    "VSME",
+    "scope 3",
+    "CSRD",
+    "L193",
+    "SMV",
+    "bæredygtighed",
+    "Danmark",
+  ],
+  authors: [{ name: "qlim8 ApS" }],
+  creator: "qlim8 ApS",
+  publisher: "qlim8 ApS",
   openGraph: {
     siteName: "qlim8",
     locale: "da_DK",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@qlim8",
   },
   icons: {
     icon: [
