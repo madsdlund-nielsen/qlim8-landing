@@ -1,5 +1,5 @@
 "use client";
-import { Leaf, Users, Target, Heart, User } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { MobileStickyCTA } from "@/components/ui/mobile-sticky-cta";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
@@ -10,80 +10,133 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-[#F5F5F0]">
       <SiteHeader />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-24 pb-24 sm:pb-16 lg:pb-24">
-        <div className="text-center mb-10 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6" data-testid="text-about-title">
-            Vi demokratiserer klimaregnskab
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-24 sm:pb-28">
+        <header className="mb-12">
+          <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-4">
+            Om os
+          </p>
+          <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
+            Vi er kedelige med vilje.
           </h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Hos qlim8 tror vi på, at alle virksomheder — uanset størrelse — fortjener adgang til professionelle klimaværktøjer. Vi tilbyder løsninger, der er både enkle og overkommelig.
+          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
+            qlim8 er bygget af én ingeniør, der var træt af at se SMV'er betale 80.000 kr for en ESG-rapport, banken kunne have læst på 5 minutter. Klimaregnskab burde være lige så uspændende som lønudbetaling: korrekt, til tiden, uden drama.
           </p>
-        </div>
+        </header>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 mb-10 sm:mb-16">
-          <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 text-center">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden mx-auto mb-3 sm:mb-4 border border-gray-300">
-              <img src="/branding/founder-mugshot.png" alt="Grundlægger" className="w-full h-full object-cover" />
+        <section className="space-y-7 mb-14">
+          <div className="flex items-start gap-5">
+            <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-gray-200 bg-white">
+              <img
+                src="/branding/founder-mugshot.png"
+                alt="qlim8 grundlægger"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Grundlægger</h3>
-            <p className="text-xs sm:text-sm text-gray-600">
-              Jeg grundlagde qlim8 med en klar mission: At bringe en håndgribelig løsning ud til danske virksomheder, der giver mulighed for reel klimahandling. Som civilingeniør med speciale i energisystemer og energiteknologier har jeg dedikeret mig til at levere løsninger der både er teknisk stærke, brugervenlige og bæredygtige.
-            </p>
-          </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 text-center">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-accent rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <Target className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+            <div>
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Grundlægger</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight mb-2">
+                Civilingeniør · energisystemer
+              </h2>
+              <p className="text-gray-700 text-[15px] leading-relaxed">
+                Jeg startede qlim8 fordi jeg havde set én konsulent for mange tage 60.000 kr for at klippe data fra Excel og kalde det "scope 3". Mit fag er energisystemer — og at automatisere det manuelle arbejde der alligevel skal laves. Det er den platform du logger ind på.
+              </p>
             </div>
-            <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Vores Mission</h3>
-            <p className="text-xs sm:text-sm text-gray-600">
-              At gøre klimaregnskab tilgængeligt og overkommeligt for danske SMV'er, så de kan fokusere på at drive bæredygtig forretning.
-            </p>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 text-center sm:col-span-2 md:col-span-1">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-accent rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <Leaf className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-            </div>
-            <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Vores Værdier</h3>
-            <p className="text-xs font-semibold text-primary mb-3 sm:mb-4 tracking-wide">Ordentlighed | Impact | Dialog</p>
-            <p className="text-xs sm:text-sm text-gray-600">
-              Vi dyrker faglig ordentlighed og den direkte dialog, hvor vejen fra tanke til handling er kort. For os handler det ikke om at bruge smarte buzzwords, men om at udvikle løsninger, der er teknisk robuste, brugervenlige, og som skaber en målbar værdi for både din forretning og klimaet.
-            </p>
-          </div>
-        </div>
+        </section>
 
-        <div className="bg-gray-50 rounded-2xl p-6 sm:p-8 lg:p-12">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">Hvorfor qlim8?</h2>
-          <div className="space-y-4 text-sm sm:text-base text-gray-600">
-            <p>
-              Mange danske SMV'er står over for stigende krav om ESG-rapportering fra banker, kunder og lovgivning. De eksisterende løsninger er ofte designet til store virksomheder med dedikerede bæredygtighedsafdelinger—og priser derefter.
-            </p>
-            <p>
-              qlim8 ændrer det. Vi har bygget en moderne, dansk-fokuseret platform, der automatiserer dataindsamling, anvender korrekte emissionsfaktorer og genererer revisionsklare rapporter. Alt sammen til en pris, som SMV'er kan forholde sig til.
-            </p>
-            <p>
-              Med integration til e-conomic, AI-drevet fakturaanalyse og danske emissionsfaktorer fra Energinet og Danmarks Statistik, får du et klimaregnskab, der er både præcist og effektivt.
-            </p>
+        <section className="space-y-10 mb-14">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight leading-tight mb-4">
+              Det vi tror på
+            </h2>
+            <ul className="space-y-4">
+              <li className="bg-white rounded-2xl p-6 border border-gray-100">
+                <p className="text-[15px] text-gray-800 leading-relaxed">
+                  <strong className="text-gray-900">Klimaregnskab er bogføring, ikke marketing.</strong> Ingen badges, ingen mærkninger, ingen falske grønne løfter. Bare tal, der står til revisorens efterprøvelse.
+                </p>
+              </li>
+              <li className="bg-white rounded-2xl p-6 border border-gray-100">
+                <p className="text-[15px] text-gray-800 leading-relaxed">
+                  <strong className="text-gray-900">Hvis det ikke er sporbart, så tæller det ikke.</strong> Hver beregning har et unikt ID, en kilde og en formel. Du skal kunne stå på mål for hver linje i dit klimaregnskab.
+                </p>
+              </li>
+              <li className="bg-white rounded-2xl p-6 border border-gray-100">
+                <p className="text-[15px] text-gray-800 leading-relaxed">
+                  <strong className="text-gray-900">SMV'er fortjener samme værktøjer som de store.</strong> CSRD-virksomheder har dedikerede teams. Du har 90 minutter en torsdag. Vi bygger til den virkelighed.
+                </p>
+              </li>
+              <li className="bg-white rounded-2xl p-6 border border-gray-100">
+                <p className="text-[15px] text-gray-800 leading-relaxed">
+                  <strong className="text-gray-900">Vi siger fra, når det er bullshit.</strong> Hvis et tal er for godt til at være sandt, flagger vi det. Hvis en metode ikke holder, bruger vi den ikke. Ingen "optimering" af scope-3-data.
+                </p>
+              </li>
+            </ul>
           </div>
-        </div>
+        </section>
 
-        <div className="mt-8 sm:mt-12 text-center">
-          <p className="text-xs sm:text-sm text-gray-500">
-            Spørgsmål? Kontakt os{" "}
-            <a href="/kontakt" className="text-primary hover:text-primary font-medium">
-              her.
+        <section className="bg-gray-900 text-gray-100 rounded-2xl p-7 sm:p-10 mb-12">
+          <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">Selskab</p>
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 leading-tight">
+            qlim8 ApS
+          </h2>
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm text-gray-300">
+            <div>
+              <dt className="text-gray-500 text-xs uppercase tracking-wide mb-0.5">CVR</dt>
+              <dd>DK46033736</dd>
+            </div>
+            <div>
+              <dt className="text-gray-500 text-xs uppercase tracking-wide mb-0.5">Stiftet</dt>
+              <dd>2024</dd>
+            </div>
+            <div>
+              <dt className="text-gray-500 text-xs uppercase tracking-wide mb-0.5">Hosting</dt>
+              <dd>Hetzner, Tyskland (EU)</dd>
+            </div>
+            <div>
+              <dt className="text-gray-500 text-xs uppercase tracking-wide mb-0.5">Kontakt</dt>
+              <dd>
+                <a href="mailto:kontakt@qlim8.com" className="hover:text-white transition-colors">
+                  kontakt@qlim8.com
+                </a>
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section className="text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight leading-tight mb-3">
+            Vil du høre mere?
+          </h2>
+          <p className="text-gray-600 text-[15px] leading-relaxed mb-6 max-w-xl mx-auto">
+            Skriv direkte. Ingen sales-team mellem dig og personen der har bygget platformen.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="/priser"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
+            >
+              Se priser
+              <ArrowRight className="h-4 w-4" />
             </a>
-          </p>
-        </div>
-      </div>
+            <a
+              href="mailto:kontakt@qlim8.com"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white border border-gray-200 text-gray-900 font-semibold text-base hover:border-gray-300 transition-colors"
+            >
+              <Mail className="h-4 w-4" />
+              kontakt@qlim8.com
+            </a>
+          </div>
+        </section>
+      </article>
 
       <SiteFooter />
 
-      <MobileStickyCTA 
-        text="Kom i gang" 
-        onClick={handleGetAccess} 
+      <MobileStickyCTA
+        text="Se priser"
+        onClick={handleGetAccess}
         showAfterScroll={300}
       />
     </div>

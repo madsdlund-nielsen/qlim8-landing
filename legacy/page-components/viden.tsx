@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BookOpen, TrendingUp, Plug, Coins, ArrowRight } from 'lucide-react'
+import { Leaf, BookOpen, TrendingUp, Plug, Coins, ArrowRight } from 'lucide-react'
 import { SiteHeader } from '@/components/public/SiteHeader'
 import { SiteFooter } from '@/components/public/SiteFooter'
 import { NewsletterForm } from '@/components/public/NewsletterForm'
@@ -47,15 +47,20 @@ export default function Viden() {
       <SiteHeader />
 
       {/* ── Hero ── */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-12">
-        <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-4">
-          Blog
-        </p>
-        <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-5 tracking-tight leading-[1.05]" data-testid="text-blog-title">
-          ESG-viden uden konsulentjargon.
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-12 text-center">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent border border-accent rounded-full mb-6">
+          <Leaf className="h-3.5 w-3.5 text-primary" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+            Viden &amp; indsigt
+          </span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 leading-tight" data-testid="text-viden-title">
+          Klimaregnskab og ESG{' '}
+          <span className="block sm:inline">— forklaret enkelt</span>
         </h1>
-        <p className="text-lg sm:text-xl text-gray-600 max-w-2xl leading-relaxed">
-          Konkrete guides til SMV'er om klimaregnskab, scope 1-3, VSME, L193 og hvad banken egentlig spørger om. Skrevet af mennesker der har bygget systemet.
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          Vi deler vores viden om klimaregnskab, CSRD-compliance og bæredygtighed for
+          danske virksomheder. Konkrete guides og opdateringer — uden konsulentjargon.
         </p>
       </section>
 

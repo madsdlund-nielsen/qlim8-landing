@@ -159,15 +159,12 @@ export default function Pricing() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24">
 
           <div className="mb-10 sm:mb-14">
-            <p className="text-[11px] font-medium text-primary uppercase tracking-[0.2em] mb-3" data-testid="text-pricing-label">
-              Priser
+            <p className="text-[11px] font-medium text-gray-400 uppercase tracking-[0.2em] mb-3" data-testid="text-pricing-label">
+              Prissætning
             </p>
-            <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-5" data-testid="text-pricing-title">
-              Fra 250 kr/md. Alt inkluderet.
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.1] mb-6" data-testid="text-pricing-title">
+              Find den rette plan
             </h1>
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mb-8">
-              Ingen onboarding-gebyr, ingen lock-in. Opsig hvornår som helst. Alle priser er ekskl. moms.
-            </p>
 
             <div className="flex flex-col items-start gap-2">
               <div className="flex flex-wrap items-center gap-3">
@@ -236,7 +233,6 @@ export default function Pricing() {
               <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid="plan-starter">
                 <div className="mb-5">
                   <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em] mb-1">Starter</p>
-                  <p className="text-xs text-gray-500 mb-3">Til SMV'er der starter ESG-arbejdet — banken har spurgt, og I skal have et tal.</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`starter-${billingCycle}-${currency}`}
@@ -285,7 +281,6 @@ export default function Pricing() {
                 </div>
                 <div className="mb-5">
                   <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em] mb-1">Premium</p>
-                  <p className="text-xs text-gray-400 mb-3">Til SMV'er med kunde- og bankrapportering — VSME Comprehensive, leverandørdata, offentlig profil.</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`premium-${billingCycle}-${currency}`}
@@ -329,7 +324,6 @@ export default function Pricing() {
               <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid="plan-enterprise">
                 <div className="mb-5">
                   <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em] mb-1">Enterprise</p>
-                  <p className="text-xs text-gray-500 mb-3">Til større organisationer med flere CVR, komplet værdikæde og API-integration.</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <span className="text-4xl font-bold text-gray-900">Kontakt salg</span>
                   </div>

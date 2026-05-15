@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Landing, { HOMEPAGE_FAQ_SCHEMA } from "@/page-components/landing";
+import Landing from "@/page-components/landing";
+import { HOMEPAGE_FAQ_SCHEMA } from "@/content/homepage-faqs";
 
 export const metadata: Metadata = {
   title: "qlim8 » ESG uden besværet — klimaregnskab til danske SMV'er fra 250 kr/md",
