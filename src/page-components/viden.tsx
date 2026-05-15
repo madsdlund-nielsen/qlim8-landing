@@ -48,9 +48,9 @@ export default function Viden() {
 
       {/* ── Hero ── */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-12 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full mb-6">
-          <Leaf className="h-3.5 w-3.5 text-emerald-600" />
-          <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wide">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent border border-accent rounded-full mb-6">
+          <Leaf className="h-3.5 w-3.5 text-primary" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-wide">
             Viden &amp; indsigt
           </span>
         </div>
@@ -72,8 +72,8 @@ export default function Viden() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {topics.map(({ Icon, title, description }) => (
             <div key={title} className="bg-white rounded-xl border border-gray-200 p-5">
-              <div className="w-9 h-9 bg-emerald-50 rounded-lg flex items-center justify-center mb-3">
-                <Icon className="h-[18px] w-[18px] text-emerald-600" />
+              <div className="w-9 h-9 bg-accent rounded-lg flex items-center justify-center mb-3">
+                <Icon className="h-[18px] w-[18px] text-primary" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-1 text-sm">{title}</h3>
               <p className="text-xs text-gray-500 leading-relaxed">{description}</p>
@@ -106,7 +106,7 @@ export default function Viden() {
                   >
                     {article.category}
                   </span>
-                  <h3 className="font-bold text-gray-900 mb-2 leading-snug group-hover:text-emerald-700 transition-colors">
+                  <h3 className="font-bold text-gray-900 mb-2 leading-snug group-hover:text-primary transition-colors">
                     {article.title}
                   </h3>
                   <p className="text-sm text-gray-500 leading-relaxed mb-4 flex-1">
@@ -114,7 +114,7 @@ export default function Viden() {
                   </p>
                   <div className="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-gray-100">
                     <span>{formatDate(article.publishedAt)}</span>
-                    <span className="flex items-center gap-1 text-emerald-600 font-medium group-hover:gap-2 transition-all">
+                    <span className="flex items-center gap-1 text-primary font-medium group-hover:gap-2 transition-all">
                       Læs <ArrowRight className="h-3 w-3" />
                     </span>
                   </div>

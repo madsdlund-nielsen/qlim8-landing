@@ -17,7 +17,7 @@ function Section({ section }: { section: ArticleSection }) {
   switch (section.type) {
     case 'lead':
       return (
-        <p className="text-xl text-gray-600 leading-relaxed font-medium mb-8 border-l-4 border-emerald-400 pl-5">
+        <p className="text-xl text-gray-600 leading-relaxed font-medium mb-8 border-l-4 border-primary pl-5">
           {section.text}
         </p>
       )
@@ -44,7 +44,7 @@ function Section({ section }: { section: ArticleSection }) {
         <ul className="space-y-2 my-5">
           {section.items.map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-gray-700 text-[17px]">
-              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
               {item}
             </li>
           ))}
@@ -55,7 +55,7 @@ function Section({ section }: { section: ArticleSection }) {
         <ol className="space-y-3 my-5">
           {section.items.map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-gray-700 text-[17px]">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center justify-center mt-0.5">
+              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-primary text-xs font-bold flex items-center justify-center mt-0.5">
                 {i + 1}
               </span>
               {item}
@@ -71,7 +71,7 @@ function Section({ section }: { section: ArticleSection }) {
       )
     case 'callout':
       return (
-        <div className="my-8 p-5 bg-emerald-50 border border-emerald-200 rounded-xl text-[15px] text-emerald-900 leading-relaxed">
+        <div className="my-8 p-5 bg-accent border border-accent rounded-xl text-[15px] text-accent-foreground leading-relaxed">
           {section.text}
         </div>
       )
@@ -82,7 +82,7 @@ function Section({ section }: { section: ArticleSection }) {
           <p className="text-gray-400 text-sm mb-5">{section.text}</p>
           <a
             href={section.buttonHref}
-            className="inline-block px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-full text-sm transition-colors"
+            className="inline-block px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full text-sm transition-colors"
           >
             {section.buttonText}
           </a>
@@ -154,7 +154,7 @@ export default function ArticleTemplate({ article }: { article: Article }) {
           </p>
           <a
             href="https://app.qlim8.com/auth"
-            className="inline-block px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-full text-sm transition-colors"
+            className="inline-block px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full text-sm transition-colors"
           >
             Prøv gratis
           </a>

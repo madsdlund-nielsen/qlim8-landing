@@ -20,7 +20,7 @@ export default function Karriere() {
           </p>
         </div>
 
-        <div className="bg-emerald-50 rounded-2xl p-6 sm:p-8 lg:p-12 mb-8 sm:mb-12 text-center">
+        <div className="bg-accent rounded-2xl p-6 sm:p-8 lg:p-12 mb-8 sm:mb-12 text-center">
           <p className="text-base sm:text-lg text-gray-700 font-medium">Der er i øjeblikket ingen ledige stillinger</p>
         </div>
 

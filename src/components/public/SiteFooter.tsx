@@ -19,7 +19,7 @@ export function SiteFooter() {
 
           <a
             href="https://app.qlim8.com/auth"
-            className="self-start px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold rounded-full transition-colors whitespace-nowrap"
+            className="self-start px-5 py-2.5 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-full transition-colors whitespace-nowrap"
           >
             Prøv gratis
           </a>

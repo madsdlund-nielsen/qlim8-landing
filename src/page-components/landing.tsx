@@ -162,8 +162,8 @@ export default function Landing() {
           className="fixed inset-0 z-0"
           style={{ opacity: heroOpacity, pointerEvents: "none" }}
         >
-          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0a2218 0%, #0f3d28 30%, #1a5c3a 60%, #14532d 80%, #0a2218 100%)" }} />
-          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(ellipse at 30% 50%, #22c55e 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, #16a34a 0%, transparent 50%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0d1d16 0%, #16261d 30%, #233a2c 60%, #1c2e23 80%, #0d1d16 100%)" }} />
+          <div className="absolute inset-0 opacity-15" style={{ backgroundImage: "radial-gradient(ellipse at 30% 50%, #2d6e4d 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, #214a39 0%, transparent 50%)" }} />
         </motion.div>
         
         <div className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-4 py-20">
@@ -196,7 +196,7 @@ export default function Landing() {
           >
             <a
               href="https://app.qlim8.com/auth?tab=register"
-              className="px-8 py-3 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-full transition-colors text-base sm:text-lg"
+              className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full transition-colors text-base sm:text-lg"
               data-testid="button-try-free"
             >
               {language === "da" ? "Prøv gratis" : "Try for free"}
@@ -426,7 +426,7 @@ function FAQSection({ language }: { language: "da" | "en" }) {
                 <span className="text-gray-900 font-semibold text-base sm:text-lg leading-snug">
                   {item.q}
                 </span>
-                <span className="flex-shrink-0 text-emerald-600">
+                <span className="flex-shrink-0 text-primary">
                   {openIndex === index ? (
                     <ChevronUp className="h-5 w-5" />
                   ) : (
@@ -507,13 +507,13 @@ function FeatureCard({ feature, index, language, isExpanded, onToggle, onPriceMo
             loading="lazy"
           />
         ) : (
-          <div className="rounded-xl shadow-lg w-full aspect-video bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+          <div className="rounded-xl shadow-lg w-full aspect-video bg-gradient-to-br from-accent to-accent flex items-center justify-center">
             <div className="text-center p-8">
-              <p className="text-sm font-medium text-emerald-500 uppercase tracking-wider mb-1">
+              <p className="text-sm font-medium text-primary uppercase tracking-wider mb-1">
                 {language === "da" ? "Fra" : "From"}
               </p>
-              <span className="text-5xl font-bold text-emerald-600">250 kr</span>
-              <p className="text-emerald-700 mt-2 font-medium">
+              <span className="text-5xl font-bold text-primary">250 kr</span>
+              <p className="text-primary mt-2 font-medium">
                 {language === "da" ? "/md ved årsabonnement" : "/month on annual plan"}
               </p>
             </div>
@@ -533,7 +533,7 @@ function FeatureCard({ feature, index, language, isExpanded, onToggle, onPriceMo
               {" "}
               <button
                 onClick={onPriceModalOpen}
-                className="text-emerald-600 hover:text-emerald-700 underline font-medium"
+                className="text-primary hover:text-primary underline font-medium"
                 data-testid="button-price-modal"
               >
                 {language === "da" ? "Se definitionerne her." : "See definitions here."}
@@ -546,7 +546,7 @@ function FeatureCard({ feature, index, language, isExpanded, onToggle, onPriceMo
         <div className="md:hidden">
           <button
             onClick={onToggle}
-            className="flex items-center gap-2 text-emerald-600 font-medium"
+            className="flex items-center gap-2 text-primary font-medium"
             data-testid={`button-expand-${feature.id}`}
           >
             {isExpanded ? (
@@ -577,7 +577,7 @@ function FeatureCard({ feature, index, language, isExpanded, onToggle, onPriceMo
                       {" "}
                       <button
                         onClick={onPriceModalOpen}
-                        className="text-emerald-600 hover:text-emerald-700 underline font-medium"
+                        className="text-primary hover:text-primary underline font-medium"
                       >
                         {language === "da" ? "Se definition af hvilke virksomheder vi servicerer her." : "See definitions here."}
                       </button>

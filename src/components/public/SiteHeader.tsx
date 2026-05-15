@@ -80,7 +80,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                   <a
                     href="https://app.qlim8.com/auth"
                     onClick={() => setMenuOpen(false)}
-                    className="block px-4 py-3 text-sm font-semibold text-white bg-emerald-500 hover:bg-emerald-600 transition-colors"
+                    className="block px-4 py-3 text-sm font-semibold text-white bg-primary hover:bg-primary/90 transition-colors"
                     data-testid="menu-try-free"
                   >
                     Prøv gratis

@@ -13,10 +13,10 @@ export default function CookiePolicy() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-accent to-background">
       <SiteHeader />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
-        <a href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-emerald-600 mb-8">
+        <a href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-8">
           <ArrowLeft className="h-4 w-4" />
           Tilbage til forsiden
         </a>
@@ -28,7 +28,7 @@ export default function CookiePolicy() {
           </p>
         </div>
 
-        <div className="prose prose-emerald max-w-none mb-8">
+        <div className="prose max-w-none mb-8">
           <p className="text-lg text-gray-600">
             qlim8 bruger cookies og lignende teknologier for at give dig den bedste oplevelse på vores hjemmeside. 
             Her kan du læse om, hvilke cookies vi bruger og hvorfor.
@@ -39,7 +39,7 @@ export default function CookiePolicy() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Shield className="h-5 w-5 text-emerald-600" />
+                <Shield className="h-5 w-5 text-primary" />
                 Nødvendige cookies
                 <Badge variant="secondary" className="ml-2">Altid aktive</Badge>
               </CardTitle>
@@ -126,7 +126,7 @@ export default function CookiePolicy() {
             <CardContent>
               <p className="text-muted-foreground">
                 Har du spørgsmål til vores brug af cookies? Kontakt os på{" "}
-                <a href="mailto:kontakt@qlim8.com" className="text-emerald-600 hover:underline">
+                <a href="mailto:kontakt@qlim8.com" className="text-primary hover:underline">
                   kontakt@qlim8.com
                 </a>
               </p>

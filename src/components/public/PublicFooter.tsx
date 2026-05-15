@@ -37,7 +37,7 @@ export function PublicFooter({ variant = "full", language }: PublicFooterProps) 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           <div className="col-span-2 md:col-span-1">
             <a href="/" className="flex items-center gap-2 mb-4">
-              <div className="bg-gradient-to-br from-emerald-500 to-teal-600 p-1.5 rounded-lg">
+              <div className="bg-gradient-to-br from-primary to-primary/70 p-1.5 rounded-lg">
                 <Leaf className="h-5 w-5 text-white fill-white" />
               </div>
               <div>

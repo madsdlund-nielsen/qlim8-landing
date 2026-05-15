@@ -27,7 +27,7 @@ export default function Kontakt() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Navn</label>
                 <input 
                   type="text"
-                  className="w-full px-4 py-3 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-base"
+                  className="w-full px-4 py-3 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base"
                   placeholder="Dit fulde navn"
                   data-testid="input-name"
                 />
@@ -36,7 +36,7 @@ export default function Kontakt() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                 <input 
                   type="email"
-                  className="w-full px-4 py-3 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-base"
+                  className="w-full px-4 py-3 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base"
                   placeholder="din@email.dk"
                   data-testid="input-email"
                 />
@@ -45,7 +45,7 @@ export default function Kontakt() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Virksomhed</label>
                 <input 
                   type="text"
-                  className="w-full px-4 py-3 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-base"
+                  className="w-full px-4 py-3 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base"
                   placeholder="Dit virksomhedsnavn"
                   data-testid="input-company"
                 />
@@ -54,7 +54,7 @@ export default function Kontakt() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Besked</label>
                 <textarea 
                   rows={5}
-                  className="w-full px-4 py-3 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none text-base"
+                  className="w-full px-4 py-3 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-base"
                   placeholder="Hvordan kan vi hjælpe dig?"
                   data-testid="input-message"
                 />
@@ -73,12 +73,12 @@ export default function Kontakt() {
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6 mt-8 md:mt-0">Kontaktinformation</h2>
             <div className="space-y-4 sm:space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="h-5 w-5 text-emerald-600" />
+                <div className="w-11 h-11 sm:w-12 sm:h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Email</h3>
-                  <a href="mailto:kontakt@qlim8.com" className="text-sm sm:text-base text-emerald-600 hover:text-emerald-700 break-all">
+                  <a href="mailto:kontakt@qlim8.com" className="text-sm sm:text-base text-primary hover:text-primary break-all">
                     kontakt@qlim8.com
                   </a>
                 </div>

@@ -34,8 +34,8 @@ export default function About() {
             </p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 text-center">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-emerald-100 rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <Target className="h-5 w-5 sm:h-6 sm:w-6 text-emerald-600" />
+            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-accent rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <Target className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
             </div>
             <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Vores Mission</h3>
             <p className="text-xs sm:text-sm text-gray-600">
@@ -43,11 +43,11 @@ export default function About() {
             </p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 text-center sm:col-span-2 md:col-span-1">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-emerald-100 rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <Leaf className="h-5 w-5 sm:h-6 sm:w-6 text-emerald-600" />
+            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-accent rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <Leaf className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
             </div>
             <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Vores Værdier</h3>
-            <p className="text-xs font-semibold text-emerald-600 mb-3 sm:mb-4 tracking-wide">Ordentlighed | Impact | Dialog</p>
+            <p className="text-xs font-semibold text-primary mb-3 sm:mb-4 tracking-wide">Ordentlighed | Impact | Dialog</p>
             <p className="text-xs sm:text-sm text-gray-600">
               Vi dyrker faglig ordentlighed og den direkte dialog, hvor vejen fra tanke til handling er kort. For os handler det ikke om at bruge smarte buzzwords, men om at udvikle løsninger, der er teknisk robuste, brugervenlige, og som skaber en målbar værdi for både din forretning og klimaet.
             </p>
@@ -72,7 +72,7 @@ export default function About() {
         <div className="mt-8 sm:mt-12 text-center">
           <p className="text-xs sm:text-sm text-gray-500">
             Spørgsmål? Kontakt os{" "}
-            <a href="/kontakt" className="text-emerald-600 hover:text-emerald-700 font-medium">
+            <a href="/kontakt" className="text-primary hover:text-primary font-medium">
               her.
             </a>
           </p>

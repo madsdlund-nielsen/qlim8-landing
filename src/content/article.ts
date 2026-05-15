@@ -1,7 +1,7 @@
 export type ArticleCategory = 'Compliance' | 'Scope 3' | 'Integration' | 'Økonomi'
 
 export const categoryMeta: Record<ArticleCategory, { bg: string; text: string }> = {
-  Compliance:  { bg: 'bg-emerald-50', text: 'text-emerald-700' },
+  Compliance:  { bg: 'bg-accent', text: 'text-primary' },
   'Scope 3':   { bg: 'bg-orange-50',  text: 'text-orange-700'  },
   Integration: { bg: 'bg-blue-50',    text: 'text-blue-700'    },
   Økonomi:     { bg: 'bg-teal-50',    text: 'text-teal-700'    },
