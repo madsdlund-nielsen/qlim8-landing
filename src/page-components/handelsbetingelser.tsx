@@ -21,7 +21,7 @@ export default function Handelsbetingelser() {
         <div className="prose prose-gray max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-lg prose-h3:mt-7 prose-h3:mb-2 prose-p:leading-relaxed prose-p:text-[15px] prose-li:text-[15px] prose-li:my-1 prose-ul:my-3 prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
 
           <h2>1. Indledning og aftalegrundlag</h2>
-          <p>1.1 Disse handelsbetingelser ("Betingelserne") regulerer aftalen mellem qlim8 ApS, CVR-nr. DK46033736, <span className="text-gray-500">Stenløkkevej 12, 5450</span> ("Leverandøren") og den erhvervsdrivende kunde ("Kunden"), der tegner abonnement på Leverandørens ESG-platform ("Tjenesten").</p>
+          <p>1.1 Disse handelsbetingelser ("Betingelserne") regulerer aftalen mellem qlim8, CVR-nr. DK46033736, <span className="text-gray-500">Stenløkkevej 12, 5450</span> ("Leverandøren") og den erhvervsdrivende kunde ("Kunden"), der tegner abonnement på Leverandørens ESG-platform ("Tjenesten").</p>
           <p>1.2 Betingelserne gælder, uanset om Kunden bestiller via Leverandørens hjemmeside, ved underskrift af ordrebekræftelse eller på baggrund af et særskilt tilbud.</p>
           <p>1.3 Tjenesten udbydes alene til erhvervsdrivende. Forbrugerbeskyttelseslovgivningen, herunder fortrydelsesretten efter forbrugeraftaleloven, finder ikke anvendelse.</p>
           <p>1.4 Kundens egne indkøbsbetingelser finder ikke anvendelse, medmindre Leverandøren skriftligt har accepteret dem.</p>
@@ -109,7 +109,7 @@ export default function Handelsbetingelser() {
           <p>17.2 Tvister, der ikke kan løses i mindelighed, skal afgøres ved <span className="text-gray-500">Retten i Odense</span> som første instans.</p>
 
           <p className="text-xs text-gray-500 pt-8 border-t border-gray-200 mt-12">
-            Kontakt: qlim8 ApS · CVR DK46033736 · <span className="text-gray-500">Stenløkkevej 12, 5450</span> · <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a> · <a href="tel:+4593901384">+45 93 90 13 84</a>
+            Kontakt: qlim8 · CVR DK46033736 · <span className="text-gray-500">Stenløkkevej 12, 5450</span> · <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a> · <a href="tel:+4593901384">+45 93 90 13 84</a>
           </p>
         </div>
       </article>
