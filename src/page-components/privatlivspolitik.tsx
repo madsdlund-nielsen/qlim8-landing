@@ -14,7 +14,7 @@ export default function Privatlivspolitik() {
           <p className="text-sm text-gray-600">
             qlim8 ApS — ESG-platform &amp; marketingsite
             <br />
-            Version: 1.0 · Senest opdateret: <span className="text-gray-500">[UDFYLDES INDEN GO-LIVE]</span>
+            Version: 1.0 · Senest opdateret: <span className="text-gray-500">15. maj 2026</span>
           </p>
         </header>
 
@@ -23,8 +23,8 @@ export default function Privatlivspolitik() {
           <h2>1. Dataansvarlig</h2>
           <p>Dataansvarlig for behandlingen af dine personoplysninger er:</p>
           <p>
-            qlim8 ApS<br />
-            <span className="text-gray-500">[UDFYLDES INDEN GO-LIVE — selskabsadresse]</span><br />
+            qlim8 <br />
+            <span className="text-gray-500">Stenløkkevej 12, 5450</span><br />
             CVR: DK46033736<br />
             E-mail: <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a><br />
             Telefon: <a href="tel:+4593901384">+45 93 90 13 84</a>
@@ -196,7 +196,7 @@ export default function Privatlivspolitik() {
           <p>Vi kan opdatere denne privatlivspolitik fra tid til anden. Den til enhver tid gældende version er tilgængelig på vores hjemmeside med angivelse af versionsnummer og opdateringsdato. Ved væsentlige ændringer informerer vi via e-mail eller i platformen.</p>
 
           <p className="text-xs text-gray-500 pt-8 border-t border-gray-200 mt-12">
-            Kontakt: qlim8 ApS · CVR DK46033736 · <span className="text-gray-500">[UDFYLDES INDEN GO-LIVE — adresse]</span> · <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a>
+            Kontakt: qlim8 · CVR DK46033736 · <span className="text-gray-500">Stenløkkevej 12, 5450</span> · <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a>
           </p>
         </div>
       </article>
