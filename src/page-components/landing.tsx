@@ -69,7 +69,7 @@ const COMMITMENTS = [
     body: "Vi har ca. 50.000 validerede emissionsfaktorer fra Klimakompasset, Energinet, EXIOBASE og førende EPD-databaser. Vi multiplicerer dem ikke kreativt med regioner og år for at få større tal. Vi vælger den rigtige faktor til den rigtige post.",
   },
   {
-    title: "4. Vi sælger ikke en sales call.",
+    title: "4. Vi behøver ikke en salgssamtale.",
     body: "Du behøver ikke booke en demo eller tale med en sælger. Opret en konto, klik rundt med eksempeldata, og forbind dit regnskab når du er klar. Det er det.",
   },
 ];
