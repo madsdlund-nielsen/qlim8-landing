@@ -13,9 +13,9 @@ export default function CookiePolicy() {
             Cookieerklæring
           </h1>
           <p className="text-sm text-gray-600">
-            qlim8 ApS — marketingsite
+            qlim8 — marketingsite
             <br />
-            Version: 1.0 · Senest opdateret: <span className="text-gray-500">[UDFYLDES INDEN GO-LIVE]</span>
+            Version: 1.0 · Senest opdateret: <span className="text-gray-500">15. maj 2026</span>
           </p>
         </header>
 
@@ -90,8 +90,6 @@ export default function CookiePolicy() {
             </table>
           </div>
 
-          <p><em>Bemærk: Den endelige liste bør genereres ved en cookie-scanning af det faktiske site (fx via Cookiebot, Cookie Information eller Cookiehub) og automatisk indlejres i denne erklæring eller i cookiebanneret.</em></p>
-
           <h2>4. Samtykke</h2>
           <p>Når du første gang besøger vores site, vises et cookiebanner, hvor du kan vælge, hvilke typer cookies du ønsker at acceptere. Du kan vælge mellem at acceptere alle, kun nødvendige, eller selv vælge kategorier.</p>
           <p>Dit samtykke er gyldigt i op til 12 måneder, hvorefter du vil blive bedt om at tage stilling på ny. Du kan til enhver tid ændre eller tilbagekalde dit samtykke via cookieindstillingerne på sitet.</p>
@@ -123,7 +121,7 @@ export default function CookiePolicy() {
           <h2>10. Kontakt</h2>
           <p>Spørgsmål til denne cookieerklæring kan rettes til:</p>
           <p>
-            qlim8 ApS<br />
+            qlim8<br />
             E-mail: <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a><br />
             CVR: DK46033736
           </p>
