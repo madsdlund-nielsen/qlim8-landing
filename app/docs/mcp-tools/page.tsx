@@ -6,11 +6,11 @@ import { SiteFooter } from "@/components/public/SiteFooter";
 export const metadata: Metadata = {
   title: "MCP Tools Reference | qlim8 docs",
   description:
-    "Fuld reference for alle 17 tools eksponeret af qlim8's MCP-server. Input-schemas, eksempel-output, scope-krav og tier-gates.",
+    "Full reference for all 17 tools exposed by the qlim8 MCP server. Input schemas, example output, scope requirements and tier gates.",
   alternates: { canonical: "https://qlim8.com/docs/mcp-tools" },
   openGraph: {
     title: "qlim8 MCP Tools Reference",
-    description: "Alle 17 MCP-tools — schemas, eksempler, scopes.",
+    description: "All 17 MCP tools — schemas, examples, scopes.",
     url: "https://qlim8.com/docs/mcp-tools",
     images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8 MCP tools" }],
   },
@@ -26,6 +26,7 @@ type Tool = {
   description: string;
   params: Param[];
   example: string;
+  trailer?: string;
 };
 
 const TOOLS: Tool[] = [
@@ -34,14 +35,18 @@ const TOOLS: Tool[] = [
     layer: 1,
     scope: "emissions:read",
     description:
-      "Returnerer total CO2e (market-based, i kg) aggregeret per scope for tenant'en. Brug til spørgsmål om total udledning, scope 1/2/3-fordeling eller år-til-år-sammenligning.",
+      "Returns total CO2e (market-based, in kg) aggregated by scope for this tenant. Use this to answer questions about total emissions, scope 1/2/3 breakdown, or year-over-year comparisons.",
     params: [
-      { name: "from", type: "string", required: false, description: "ISO 8601 datetime, filter på transaktionsdato start" },
-      { name: "to", type: "string", required: false, description: "ISO 8601 datetime, filter på transaktionsdato slut" },
+      { name: "from", type: "string", required: false, description: 'ISO 8601 datetime, filter on transaction date start, e.g. "2024-01-01T00:00:00Z"' },
+      { name: "to", type: "string", required: false, description: 'ISO 8601 datetime, filter on transaction date end, e.g. "2024-12-31T23:59:59Z"' },
     ],
     example: `{
   "total_co2e_kg": 142300.5,
-  "by_scope": { "1": 12000.0, "2": 45000.0, "3": 85300.5 },
+  "by_scope": {
+    "1": 12000.0,
+    "2": 45000.0,
+    "3": 85300.5
+  },
   "entry_count": 847
 }`,
   },
@@ -50,13 +55,13 @@ const TOOLS: Tool[] = [
     layer: 1,
     scope: "emissions:read",
     description:
-      "Cursor-pagineret liste af emission-entries (hver linket til en activity). Brug til detaljerede audits eller eksport af rå emission-data. Kald gentagne gange med next_cursor for at side igennem alle resultater.",
+      "Returns a cursor-paginated list of emission entries (each linked to an invoice/activity). Use for detailed audits or exporting raw emission data. Call repeatedly with next_cursor to page through all results.",
     params: [
-      { name: "from", type: "string", required: false, description: "ISO 8601 datetime start" },
-      { name: "to", type: "string", required: false, description: "ISO 8601 datetime slut" },
-      { name: "scope", type: '"1" | "2" | "3"', required: false, description: 'GHG-scope: "1" (direkte), "2" (el), "3" (værdikæde)' },
-      { name: "cursor", type: "string", required: false, description: "Opaque cursor fra forrige next_cursor" },
-      { name: "limit", type: "integer", required: false, description: "1–200 (default 25)" },
+      { name: "from", type: "string", required: false, description: "ISO 8601 datetime filter on transaction date start" },
+      { name: "to", type: "string", required: false, description: "ISO 8601 datetime filter on transaction date end" },
+      { name: "scope", type: '"1" | "2" | "3"', required: false, description: 'Filter to a GHG scope: "1" (direct), "2" (electricity), "3" (value chain)' },
+      { name: "cursor", type: "string", required: false, description: "Opaque cursor from a previous next_cursor response field" },
+      { name: "limit", type: "integer", required: false, description: "Results per page, 1–200 (default 25)" },
     ],
     example: `{
   "data": [
@@ -77,16 +82,54 @@ const TOOLS: Tool[] = [
     layer: 1,
     scope: "emissions:read",
     description:
-      "Fuld datalineage for en enkelt emission-entry: kildebilag, brugt emission factor, kategori-ændringshistorik og kryptografiske audit-event-hashes til uafhængig verifikation.",
+      "Returns the full data lineage for a single emission entry: the source invoice/activity, the emission factor used, category change history, and cryptographic audit event hashes for independent verification.",
     params: [
-      { name: "id", type: "string (uuid)", required: true, description: "UUID på emission-entry'en der skal traces" },
+      { name: "id", type: "string (uuid)", required: true, description: "UUID of the emission entry to trace" },
     ],
     example: `{
-  "emission_entry": { "id": "550e8400-...", "scope": "3", "co2e_market_based_kg": 1250.3, ... },
-  "activity_split": { "id": "7c9e6679-...", "category_mapped": "Road freight", "ai_confidence": 0.97, ... },
-  "activity": { "external_id": "INV-2024-0312", "amount": 45000.0, "currency": "DKK", ... },
-  "emission_factor": { "source": "Energistyrelsen 2023", "factor_value": 0.0501, "unit_denominator": "km", ... },
-  "history": { "category_changes": [], "audit_events": [{ "seq": 1, "action": "emission.calculated", "hash": "a3f8b2...", ... }] }
+  "emission_entry": {
+    "id": "550e8400-...",
+    "scope": "3",
+    "co2e_market_based_kg": 1250.3,
+    "co2e_location_based_kg": 1301.7,
+    "calculated_at": "2024-03-15T14:22:00.000Z",
+    "calculation_log": { "categoryName": "Road freight", "emissionFactorRegion": "DK", "emissionFactorYear": 2023 }
+  },
+  "activity_split": {
+    "id": "7c9e6679-...",
+    "category_mapped": "Road freight",
+    "amount_allocated_dkk": 45000.0,
+    "quantity_input": 2500.0,
+    "unit_input": "km",
+    "is_green_power": false,
+    "ai_confidence": 0.97,
+    "created_at": "2024-03-15T14:20:00.000Z"
+  },
+  "activity": {
+    "id": "abc12345-...",
+    "external_id": "INV-2024-0312",
+    "transaction_date": "2024-03-12T00:00:00.000Z",
+    "description": "Freight invoice March 2024",
+    "amount": 45000.0,
+    "currency": "DKK",
+    "ingested_at": "2024-03-15T14:00:00.000Z"
+  },
+  "emission_factor": {
+    "id": "ef123-...",
+    "source": "Energistyrelsen 2023",
+    "category": "Road freight",
+    "region": "DK",
+    "year": 2023,
+    "factor_value": 0.0501,
+    "unit_numerator": "kg CO2e",
+    "unit_denominator": "km"
+  },
+  "history": {
+    "category_changes": [],
+    "audit_events": [
+      { "id": "ae001-...", "seq": 1, "timestamp": "2024-03-15T14:22:00.000Z", "action": "emission.calculated", "actor_id": null, "hash": "a3f8b2...", "prev_hash": "000000..." }
+    ]
+  }
 }`,
   },
   {
@@ -94,17 +137,19 @@ const TOOLS: Tool[] = [
     layer: 1,
     scope: "activities:read",
     description:
-      "Cursor-pagineret liste af activities (bilag og transaktioner). Hver activity er et kildedokument som kan producere én eller flere emission-entries efter kategorisering.",
+      "Returns a cursor-paginated list of activities (invoices and transactions) for this tenant. Each activity is a source document that may produce one or more emission entries after categorization.",
     params: [
-      { name: "from", type: "string", required: false, description: "ISO 8601 datetime start" },
-      { name: "to", type: "string", required: false, description: "ISO 8601 datetime slut" },
-      { name: "cursor", type: "string", required: false, description: "Opaque cursor" },
-      { name: "limit", type: "integer", required: false, description: "1–200 (default 25)" },
+      { name: "from", type: "string", required: false, description: "ISO 8601 datetime filter on transaction date start" },
+      { name: "to", type: "string", required: false, description: "ISO 8601 datetime filter on transaction date end" },
+      { name: "cursor", type: "string", required: false, description: "Opaque cursor from a previous next_cursor" },
+      { name: "limit", type: "integer", required: false, description: "Results per page, 1–200 (default 25)" },
     ],
     example: `{
   "data": [
     {
       "id": "abc12345-...",
+      "department_id": null,
+      "data_source_id": "ds001-...",
       "external_id": "INV-2024-0312",
       "transaction_date": "2024-03-12T00:00:00.000Z",
       "description": "Freight invoice March 2024",
@@ -121,7 +166,7 @@ const TOOLS: Tool[] = [
     name: "list_reports",
     layer: 1,
     scope: "reports:read",
-    description: "Alle tidligere genererede compliance-rapporter for tenant'en (VSME, CSRD, m.fl.).",
+    description: "Returns all previously generated compliance reports for this tenant (VSME, CSRD, etc.).",
     params: [],
     example: `[
   {
@@ -138,9 +183,9 @@ const TOOLS: Tool[] = [
     name: "get_report_status",
     layer: 1,
     scope: "reports:read",
-    description: 'Status på et report-render-job. Poll indtil status er "completed" eller "failed". Status-værdier: queued → running → completed | failed.',
+    description: 'Returns the status of a report render job. Poll until status is "completed" or "failed".',
     params: [
-      { name: "id", type: "string (uuid)", required: true, description: "UUID på report-jobbet (fra generate_report)" },
+      { name: "id", type: "string (uuid)", required: true, description: "UUID of the report job (from generate_report) or a generated report" },
     ],
     example: `{
   "id": "job001-...",
@@ -150,18 +195,21 @@ const TOOLS: Tool[] = [
   "queued_at": "2025-01-10T08:50:00.000Z",
   "started_at": "2025-01-10T08:50:05.000Z",
   "completed_at": "2025-01-10T08:51:30.000Z",
+  "failed_at": null,
+  "failure_reason": null,
   "generated_report_id": "rpt001-..."
 }`,
+    trailer: "Status values: queued → running → completed | failed",
   },
   {
     name: "generate_report",
     layer: 1,
     scope: "reports:generate",
-    description: "Trigger et async report-render-job. Returnerer job-ID til polling med get_report_status. Idempotent for in-flight jobs.",
+    description: "Triggers an async report render job. Returns a job ID for polling with get_report_status. Idempotent for in-flight jobs.",
     params: [
-      { name: "report_year", type: "integer", required: true, description: "Kalenderår rapporten dækker, fx 2024" },
-      { name: "standard_type", type: "string", required: true, description: '"vsme_basic", "vsme_bp", "vsme_comprehensive" eller "csrd"' },
-      { name: "format", type: '"pdf" | "xlsx"', required: false, description: 'Output-format (default "pdf")' },
+      { name: "report_year", type: "integer", required: true, description: "Calendar year the report covers, e.g. 2024" },
+      { name: "standard_type", type: "string", required: true, description: '"vsme_basic", "vsme_bp", "vsme_comprehensive", or "csrd"' },
+      { name: "format", type: '"pdf" | "xlsx"', required: false, description: 'Output format (default: "pdf")' },
     ],
     example: `{
   "id": "job001-...",
@@ -169,6 +217,10 @@ const TOOLS: Tool[] = [
   "report_year": 2024,
   "standard_type": "vsme_basic",
   "queued_at": "2025-01-10T08:50:00.000Z",
+  "started_at": null,
+  "completed_at": null,
+  "failed_at": null,
+  "failure_reason": null,
   "generated_report_id": null
 }`,
   },
@@ -176,7 +228,7 @@ const TOOLS: Tool[] = [
     name: "list_targets",
     layer: 2,
     scope: "targets:read",
-    description: "Alle CO2-reduktionsmål for tenant'en.",
+    description: "Returns all CO2 reduction targets for this tenant.",
     params: [],
     example: `[
   {
@@ -187,7 +239,10 @@ const TOOLS: Tool[] = [
     "target_year": 2030,
     "target_reduction_percent": 46.2,
     "scope": "all",
-    "is_active": true
+    "category": null,
+    "description": "Aligned with 1.5°C pathway",
+    "is_active": true,
+    "created_at": "2023-06-01T10:00:00.000Z"
   }
 ]`,
   },
@@ -195,16 +250,16 @@ const TOOLS: Tool[] = [
     name: "create_target",
     layer: 2,
     scope: "targets:write",
-    description: "Opretter et nyt CO2-reduktionsmål. Returnerer det oprettede target med tildelt ID.",
+    description: "Creates a new CO2 reduction target. Returns the created target with its assigned ID.",
     params: [
-      { name: "name", type: "string", required: true, description: "Display-navn, max 120 tegn" },
-      { name: "baseline_year", type: "integer", required: true, description: "Referenceår, fx 2019" },
-      { name: "baseline_emissions", type: "number", required: true, description: "Total CO2e i baseline-år (tonnes), ≥ 0" },
-      { name: "target_year", type: "integer", required: true, description: "År for opnåelse, fx 2030" },
-      { name: "target_reduction_percent", type: "number", required: true, description: "Procent-reduktion, 0–100" },
-      { name: "scope", type: "string", required: false, description: '"1", "2", "3", "1+2" eller "all"' },
-      { name: "category", type: "string", required: false, description: 'Emission-kategori, fx "Purchased electricity"' },
-      { name: "description", type: "string", required: false, description: "Narrativ, max 2000 tegn" },
+      { name: "name", type: "string", required: true, description: "Display name, max 120 chars" },
+      { name: "baseline_year", type: "integer", required: true, description: "Reference year, e.g. 2019" },
+      { name: "baseline_emissions", type: "number", required: true, description: "Total CO2e in baseline year (tonnes), ≥ 0" },
+      { name: "target_year", type: "integer", required: true, description: "Year to achieve the reduction, e.g. 2030" },
+      { name: "target_reduction_percent", type: "number", required: true, description: "Percentage reduction, 0–100" },
+      { name: "scope", type: "string", required: false, description: '"1", "2", "3", "1+2", or "all"' },
+      { name: "category", type: "string", required: false, description: 'Emission category, e.g. "Purchased electricity"' },
+      { name: "description", type: "string", required: false, description: "Narrative, max 2000 chars" },
     ],
     example: `{
   "id": "tgt002-...",
@@ -222,11 +277,11 @@ const TOOLS: Tool[] = [
     name: "list_emission_factors",
     layer: 2,
     scope: "factors:read",
-    description: "Emission factor-katalog. Hver faktor mapper kategori + region + år til kg CO2e per enhed.",
+    description: "Returns the emission factor catalog. Each factor maps category + region + year to kg CO2e per unit.",
     params: [
-      { name: "category", type: "string", required: false, description: 'Filter på kategorinavn, fx "Electricity, Denmark"' },
-      { name: "region", type: "string", required: false, description: 'Region-kode, fx "DK", "EU", "WORLD"' },
-      { name: "cursor", type: "string", required: false, description: "Opaque cursor" },
+      { name: "category", type: "string", required: false, description: 'Filter by category name, e.g. "Electricity, Denmark"' },
+      { name: "region", type: "string", required: false, description: 'Filter by region code, e.g. "DK", "EU", "WORLD"' },
+      { name: "cursor", type: "string", required: false, description: "Opaque cursor from next_cursor" },
       { name: "limit", type: "integer", required: false, description: "1–200 (default 25)" },
     ],
     example: `{
@@ -249,12 +304,12 @@ const TOOLS: Tool[] = [
     name: "get_factor_citations",
     layer: 2,
     scope: "factors:read",
-    description: "Hvor mange af tenant'ens emission-entries der har brugt en specifik emission factor, plus en stikprøve af entry-ID'er. Til auditor self-service.",
+    description: "Returns how many of this tenant's emission entries used a specific emission factor, plus a sample of entry IDs. Use for auditor self-service.",
     params: [
-      { name: "id", type: "string (uuid)", required: true, description: "UUID på emission factor'en" },
+      { name: "id", type: "string (uuid)", required: true, description: "UUID of the emission factor" },
     ],
     example: `{
-  "factor": { "id": "ef001-...", "source": "Energistyrelsen 2023", "category": "Electricity, Denmark", "region": "DK", "year": 2023, "factor_value": 0.132 },
+  "factor": { "id": "ef001-...", "source": "Energistyrelsen 2023", "category": "Electricity, Denmark", "region": "DK", "year": 2023, "factor_value": 0.132, "unit_numerator": "kg CO2e", "unit_denominator": "kWh" },
   "citation_count": 142,
   "sample_emission_entry_ids": ["550e8400-...", "7c9e6679-..."]
 }`,
@@ -263,10 +318,10 @@ const TOOLS: Tool[] = [
     name: "list_suppliers",
     layer: 2,
     scope: "suppliers:read",
-    tierGate: "Enterprise (supplyChain)",
-    description: "Alle Scope 3-leverandørforbindelser inkl. disclosure-status. Enterprise-plan påkrævet.",
+    tierGate: "Enterprise (supplyChain feature)",
+    description: "Returns all Scope 3 supplier connections including disclosure status. Enterprise plan required.",
     params: [
-      { name: "year", type: "integer", required: false, description: "Filter på specifikt rapportår, fx 2024" },
+      { name: "year", type: "integer", required: false, description: "Filter to a specific report year, e.g. 2024" },
     ],
     example: `[
   {
@@ -279,7 +334,9 @@ const TOOLS: Tool[] = [
     "status": "active",
     "enterprise_trade_amount": 450000.0,
     "enterprise_trade_currency": "DKK",
-    "accepted_at": "2024-02-01T12:00:00.000Z"
+    "invited_email": "supplier@acme.dk",
+    "accepted_at": "2024-02-01T12:00:00.000Z",
+    "revoked_at": null
   }
 ]`,
   },
@@ -288,9 +345,9 @@ const TOOLS: Tool[] = [
     layer: 2,
     scope: "suppliers:read",
     tierGate: "Enterprise",
-    description: "Procentdel af total leverandør-spend dækket af aktive Scope 3-disclosures. Enterprise-plan påkrævet.",
+    description: "Returns the percentage of total supplier spend covered by active Scope 3 disclosures. Enterprise plan required.",
     params: [
-      { name: "year", type: "integer", required: false, description: "Rapportår (default: seneste år med data)" },
+      { name: "year", type: "integer", required: false, description: "Report year (defaults to most recent year with data)" },
     ],
     example: `{
   "report_year": 2024,
@@ -306,15 +363,15 @@ const TOOLS: Tool[] = [
     layer: 2,
     scope: "suppliers:read",
     tierGate: "Enterprise",
-    description: "Leverandører sorteret efter trade amount faldende — viser hvilke leverandører der udgør den største Scope 3-risiko. Enterprise-plan påkrævet.",
+    description: "Returns suppliers sorted by trade amount descending — shows which suppliers represent the largest Scope 3 risk. Enterprise plan required.",
     params: [
-      { name: "year", type: "integer", required: false, description: "Rapportår (default: seneste år med data)" },
+      { name: "year", type: "integer", required: false, description: "Report year (defaults to most recent year with data)" },
     ],
     example: `{
   "report_year": 2024,
   "suppliers": [
-    { "supplier_identifier": "12345678", "supplier_name": "Acme Transport A/S", "status": "active", "trade_amount": 450000.0 },
-    { "supplier_identifier": "87654321", "supplier_name": "BuildCo A/S", "status": "pending", "trade_amount": 320000.0 }
+    { "supplier_identifier": "12345678", "supplier_name": "Acme Transport A/S", "supplier_country": "DK", "status": "active", "trade_amount": 450000.0 },
+    { "supplier_identifier": "87654321", "supplier_name": "BuildCo A/S", "supplier_country": "DK", "status": "pending", "trade_amount": 320000.0 }
   ]
 }`,
   },
@@ -322,17 +379,21 @@ const TOOLS: Tool[] = [
     name: "list_webhooks",
     layer: 3,
     scope: "webhooks:read",
-    description: "Alle webhook-abonnementer for tenant'en.",
+    description: "Returns all webhook subscriptions for this tenant.",
     params: [],
     example: `[
   {
     "id": "wh001-...",
     "url": "https://your-app.com/webhooks/qlim8",
+    "description": "Production webhook",
     "events": ["emission.created", "report.completed"],
     "environment": "live",
     "is_active": true,
     "last_delivered_at": "2024-03-15T14:22:00.000Z",
-    "signing_secret_last_four": "Xk9p"
+    "last_failed_at": null,
+    "deactivated_reason": null,
+    "signing_secret_last_four": "Xk9p",
+    "created_at": "2024-01-01T00:00:00.000Z"
   }
 ]`,
   },
@@ -340,12 +401,12 @@ const TOOLS: Tool[] = [
     name: "create_webhook",
     layer: 3,
     scope: "webhooks:manage",
-    description: "Opretter et nyt webhook-abonnement. Returnerer signing_secret én gang — gem den sikkert. Tilgængelige events: emission.created, emission.updated, activity.created, report.completed, supplier.invited, supplier.accepted, target.created.",
+    description: "Creates a new webhook subscription. Returns the signing secret once — store it securely. Available event types (partial list — see full list at GET /api/mcp/schema): emission.created, emission.updated, activity.created, report.completed, supplier.invited, supplier.accepted, target.created.",
     params: [
-      { name: "url", type: "string (url)", required: true, description: "HTTPS-endpoint" },
-      { name: "events", type: "string[]", required: true, description: "Én eller flere event-typer at abonnere på" },
-      { name: "description", type: "string", required: false, description: "Human-readable label, max 200 tegn" },
-      { name: "environment", type: '"live" | "sandbox"', required: false, description: "Default: nøglens environment" },
+      { name: "url", type: "string (url)", required: true, description: 'HTTPS endpoint, e.g. "https://your-app.com/webhooks/qlim8"' },
+      { name: "events", type: "string[]", required: true, description: "One or more event types to subscribe to" },
+      { name: "description", type: "string", required: false, description: "Human-readable label, max 200 chars" },
+      { name: "environment", type: '"live" | "sandbox"', required: false, description: "Defaults to the key's environment" },
     ],
     example: `{
   "id": "wh001-...",
@@ -357,14 +418,15 @@ const TOOLS: Tool[] = [
   "signing_secret_last_four": "123.",
   "created_at": "2024-03-15T14:00:00.000Z"
 }`,
+    trailer: "Example output shows signing_secret only once. Use it to verify incoming payloads — see qlim8 docs for HMAC-SHA256 verification snippets.",
   },
   {
     name: "get_webhook_deliveries",
     layer: 3,
     scope: "webhooks:read",
-    description: "De 100 seneste leverings-forsøg for et webhook, nyeste først. Status-værdier: pending, delivered, failed, retrying.",
+    description: "Returns the 100 most recent delivery attempts for a webhook, newest first.",
     params: [
-      { name: "webhook_id", type: "string (uuid)", required: true, description: "UUID på webhook-abonnementet" },
+      { name: "webhook_id", type: "string (uuid)", required: true, description: "UUID of the webhook subscription" },
     ],
     example: `[
   {
@@ -374,18 +436,22 @@ const TOOLS: Tool[] = [
     "schema_version": "2026-05",
     "status": "delivered",
     "attempt_count": 1,
+    "last_attempt_at": "2024-03-15T14:22:05.000Z",
     "last_response_status": 200,
     "last_response_latency_ms": 87,
-    "delivered_at": "2024-03-15T14:22:05.000Z"
+    "next_attempt_at": null,
+    "delivered_at": "2024-03-15T14:22:05.000Z",
+    "created_at": "2024-03-15T14:22:00.000Z"
   }
 ]`,
+    trailer: "Delivery status values: pending, delivered, failed, retrying",
   },
 ];
 
 const LAYERS = [
-  { n: 1 as const, title: "Layer 1 — Core", note: "Mest almindelige use cases for agenter og analytikere." },
-  { n: 2 as const, title: "Layer 2 — Strategic", note: "Mål, factor-katalog og value-chain-tools (Enterprise)." },
-  { n: 3 as const, title: "Layer 3 — Infrastructure", note: "Webhook-abonnementer og delivery-logs." },
+  { n: 1 as const, title: "Layer 1 — Core" },
+  { n: 2 as const, title: "Layer 2 — Strategic" },
+  { n: 3 as const, title: "Layer 3 — Infrastructure" },
 ];
 
 function ToolCard({ tool }: { tool: Tool }) {
@@ -404,21 +470,21 @@ function ToolCard({ tool }: { tool: Tool }) {
       {tool.params.length > 0 ? (
         <div className="mb-4 overflow-x-auto">
           <p className="text-[13px] font-semibold text-gray-900 mb-2">Input schema</p>
-          <table className="w-full text-[13px]">
+          <table className="w-full text-[13px] border-collapse">
             <thead>
-              <tr className="border-b border-gray-200">
+              <tr className="border-b border-gray-300">
                 <th className="text-left font-semibold text-gray-700 py-2 pr-3">Parameter</th>
                 <th className="text-left font-semibold text-gray-700 py-2 pr-3">Type</th>
-                <th className="text-left font-semibold text-gray-700 py-2 pr-3">Krav</th>
-                <th className="text-left font-semibold text-gray-700 py-2">Beskrivelse</th>
+                <th className="text-left font-semibold text-gray-700 py-2 pr-3">Required</th>
+                <th className="text-left font-semibold text-gray-700 py-2">Description</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-gray-200">
               {tool.params.map((p) => (
                 <tr key={p.name} className="align-top">
                   <td className="py-2 pr-3 font-mono text-gray-900 whitespace-nowrap">{p.name}</td>
                   <td className="py-2 pr-3 font-mono text-gray-700 whitespace-nowrap">{p.type}</td>
-                  <td className="py-2 pr-3 text-gray-700">{p.required ? "Ja" : "Nej"}</td>
+                  <td className="py-2 pr-3 text-gray-700">{p.required ? "Yes" : "No"}</td>
                   <td className="py-2 text-gray-700">{p.description}</td>
                 </tr>
               ))}
@@ -427,16 +493,20 @@ function ToolCard({ tool }: { tool: Tool }) {
         </div>
       ) : (
         <p className="text-[13px] text-gray-600 mb-4">
-          <span className="font-semibold text-gray-900">Input schema:</span> ingen parametre
+          <span className="font-semibold text-gray-900">Input schema:</span> None
         </p>
       )}
 
       <div>
-        <p className="text-[13px] font-semibold text-gray-900 mb-2">Eksempel-output</p>
+        <p className="text-[13px] font-semibold text-gray-900 mb-2">Example output</p>
         <pre className="bg-gray-900 text-gray-100 text-xs rounded-xl p-4 overflow-x-auto">
           <code>{tool.example}</code>
         </pre>
       </div>
+
+      {tool.trailer && (
+        <p className="text-sm text-gray-600 mt-3">{tool.trailer}</p>
+      )}
     </div>
   );
 }
@@ -449,26 +519,26 @@ export default function Page() {
       <section className="px-4 sm:px-6 pt-14 sm:pt-24 pb-10">
         <div className="max-w-4xl mx-auto">
           <Link href="/docs" className="text-sm text-gray-600 hover:text-primary transition-colors mb-6 inline-block">
-            ← Tilbage til docs
+            ← Back to docs
           </Link>
           <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
-            MCP tools reference
+            qlim8 MCP Tools Reference
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mb-6">
-            Fuld reference for alle 17 tools eksponeret af qlim8's MCP-server. Tool-navne, beskrivelser og parametre er på engelsk og optimeret til LLM-konsumtion. Alle datoer er ISO 8601 UTC. Alle CO2e-værdier er i kilogram (kg) medmindre andet er noteret.
-          </p>
-          <p className="text-sm text-gray-600">
-            For setup og forbindelses-eksempler, se{" "}
+            Full reference for all 17 tools exposed by the qlim8 MCP server. For setup and connection examples see the{" "}
             <Link href="/docs/mcp-quickstart" className="text-primary font-semibold hover:underline">
               MCP Quickstart
             </Link>.
+          </p>
+          <p className="text-base text-gray-600 leading-relaxed max-w-2xl">
+            All tool names, descriptions, and parameter names are in English and optimised for LLM consumption. All dates are ISO 8601 UTC. All CO2e values are in kilograms (kg) unless noted.
           </p>
         </div>
       </section>
 
       <section className="px-4 sm:px-6 pb-10">
         <div className="max-w-4xl mx-auto border-t border-gray-200 pt-10">
-          <p className="font-semibold text-gray-900 mb-4">Indholdsfortegnelse</p>
+          <p className="font-semibold text-gray-900 mb-4">Contents</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1.5">
             {LAYERS.map((L) => (
               <div key={L.n}>
@@ -496,7 +566,6 @@ export default function Page() {
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-2">
                   {L.title}
                 </h2>
-                <p className="text-gray-600 text-[15px]">{L.note}</p>
               </div>
               <div className="space-y-6">
                 {TOOLS.filter((t) => t.layer === L.n).map((t) => (
@@ -508,10 +577,10 @@ export default function Page() {
 
           <div className="bg-gray-900 text-gray-100 rounded-2xl p-8 sm:p-12">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight text-white">
-              Foretrækker du REST?
+              Prefer REST?
             </h2>
             <p className="text-gray-300 text-base leading-relaxed mb-6 max-w-2xl">
-              Hvert MCP-tool har et tilsvarende REST-endpoint under <code className="text-[13px] bg-white/10 px-1.5 py-0.5 rounded">/api/v1</code>. Samme auth, samme rate-limits.
+              Every MCP tool has a corresponding REST endpoint under <code className="text-[13px] bg-white/10 px-1.5 py-0.5 rounded">/api/v1</code>. Same auth, same rate limits.
             </p>
             <Link href="/docs/api-reference" className="font-semibold text-white hover:underline text-sm">
               REST API endpoints →

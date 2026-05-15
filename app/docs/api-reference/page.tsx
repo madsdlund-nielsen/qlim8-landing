@@ -149,13 +149,14 @@ export default function Page() {
             REST API v1 reference
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
-            qlim8's public REST API. Bearer-tokens (apiKeys-tabellen), cursor-pagineret, RFC 7807-fejlformat, OpenAPI 3.1-spec eksponeret. Tier-gates per endpoint via subscriptionFeatures.
+            /api/v1/* er qlim8's public REST API. Auth via Bearer-tokens (apiKeys-tabellen). Cursor-pagineret, RFC 7807-fejlformat, OpenAPI 3.1-spec eksponeret. Routerne ligger i server/v1/ opdelt i 14 sub-moduler. Tier-gates pr. endpoint via subscriptionFeatures.ts.
           </p>
 
           <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 border-t border-gray-200 pt-6 text-sm">
             <div>
               <dt className="font-semibold text-gray-500 mb-1">Auth</dt>
               <dd className="font-mono text-gray-900">Authorization: Bearer &lt;key&gt;</dd>
+              <dd className="text-gray-600 text-[13px] mt-1">Keys er præfixet (fx tk_live_…).</dd>
             </div>
             <div>
               <dt className="font-semibold text-gray-500 mb-1">Errors</dt>
@@ -223,6 +224,16 @@ export default function Page() {
               <li>— Cursor-pagineret kun — ingen offset-pagination.</li>
               <li>— Bulk-operations mangler (fx batch-opret aktiviteter).</li>
               <li>— Rate-limit pr. tenant, ikke pr. nøgle — én nøgle kan udmatte hele tenant-bucketet.</li>
+            </ul>
+          </div>
+
+          <div className="border-t border-gray-200 pt-10">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5">Roadmap</h2>
+            <ul className="space-y-2 text-gray-700 text-base">
+              <li>— /v1/activities batch-POST.</li>
+              <li>— GraphQL-alternative for kompleks aggregation (under afvejning).</li>
+              <li>— Per-key rate-limit.</li>
+              <li>— Webhook-replay-bulk via filtre.</li>
             </ul>
           </div>
 
