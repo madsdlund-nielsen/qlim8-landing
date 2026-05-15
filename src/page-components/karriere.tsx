@@ -1,5 +1,4 @@
 "use client";
-import { Briefcase, MapPin, Clock } from "lucide-react";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 
@@ -7,70 +6,62 @@ export default function Karriere() {
   const openPositions: Array<{ title: string; department: string; location: string; type: string }> = [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-[#F5F5F0]">
       <SiteHeader />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-24">
-        <div className="text-center mb-10 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6" data-testid="text-karriere-title">
-            Bliv en del af klimarevolutionen
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-20 sm:pb-28">
+        <header className="mb-12">
+          <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6" data-testid="text-karriere-title">
+            Karriere hos qlim8
           </h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
             Vi søger passionerede mennesker, der vil hjælpe danske virksomheder med at blive mere bæredygtige. Er du klar til at gøre en forskel?
           </p>
-        </div>
+        </header>
 
-        <div className="bg-accent rounded-2xl p-6 sm:p-8 lg:p-12 mb-8 sm:mb-12 text-center">
-          <p className="text-base sm:text-lg text-gray-700 font-medium">Der er i øjeblikket ingen ledige stillinger</p>
-        </div>
+        <section className="border-t border-gray-200 pt-10 mb-12">
+          <p className="text-lg text-gray-700">
+            Der er i øjeblikket ingen ledige stillinger.
+          </p>
+        </section>
 
         {openPositions.length > 0 && (
-          <div className="mb-8 sm:mb-12">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Åbne stillinger</h2>
-            <div className="space-y-4">
+          <section className="border-t border-gray-200 pt-10 mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Åbne stillinger</h2>
+            <ul className="divide-y divide-gray-200">
               {openPositions.map((position, index) => (
-                <div 
+                <li
                   key={index}
-                  className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer"
+                  className="py-6"
                   data-testid={`card-position-${index}`}
                 >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                      <h3 className="font-bold text-gray-900 text-base sm:text-lg">{position.title}</h3>
-                      <p className="text-sm text-gray-500">{position.department}</p>
-                    </div>
-                    <div className="flex flex-wrap gap-3 sm:gap-4 text-sm text-gray-600">
-                      <div className="flex items-center gap-1">
-                        <MapPin className="h-4 w-4" />
-                        <span>{position.location}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span>{position.type}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  <h3 className="font-bold text-gray-900 text-lg mb-1">{position.title}</h3>
+                  <p className="text-sm text-gray-500 mb-2">{position.department}</p>
+                  <p className="text-sm text-gray-600">
+                    {position.location} · {position.type}
+                  </p>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </section>
         )}
 
-        <div className="bg-gray-100 rounded-2xl p-6 sm:p-8 text-center">
-          <Briefcase className="h-10 w-10 sm:h-12 sm:w-12 text-gray-400 mx-auto mb-3 sm:mb-4" />
-          <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Kan du ikke finde den rette stilling?</h3>
-          <p className="text-sm sm:text-base text-gray-600 mb-4">
+        <section className="border-t border-gray-200 pt-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">
+            Kan du ikke finde den rette stilling?
+          </h2>
+          <p className="text-gray-700 leading-relaxed mb-6 max-w-xl">
             Vi er altid interesserede i at høre fra dygtige mennesker. Send en uopfordret ansøgning til os.
           </p>
-          <a 
+          <a
             href="mailto:job@qlim8.com"
-            className="inline-flex items-center gap-2 px-6 py-4 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors text-sm sm:text-base min-h-[48px]"
+            className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
             data-testid="button-apply"
           >
             Send ansøgning
           </a>
-        </div>
-      </div>
+        </section>
+      </article>
 
       <SiteFooter />
     </div>

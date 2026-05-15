@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight, Check, ShieldCheck, Globe2, Building2, BookOpen, Gauge, FileText, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { SiteHeader } from "@/components/public/SiteHeader";
@@ -12,85 +12,96 @@ import {
 import { HOMEPAGE_FAQS } from "@/content/homepage-faqs";
 
 import dashboardImg from "@assets/qlim8-Dashboard_(2)_1775843644408.jpg";
-import f1Klimahovedbog from "@assets/Feature_3_Klimahovedbog_1769884331462.jpg";
-import f2Kontrolcenter from "@assets/Feature_1_Kontrolcenter_1769884331461.jpg";
-import f3Rapportering from "@assets/Feature_2_Rapportering_1769884331462.jpg";
+import kontrolcenterImg from "@assets/Feature_1_Kontrolcenter_1769884331461.jpg";
+import klimahovedbogImg from "@assets/Feature_3_Klimahovedbog_1769884331462.jpg";
+import rapporteringImg from "@assets/Feature_2_Rapportering_1769884331462.jpg";
 
 const SIGNUP_URL = "https://app.qlim8.com/auth?tab=register";
-const DEMO_URL = "/kontakt?subject=Book%20demo";
-
-const PROBLEMS = [
-  {
-    title: "Regneark, der knækker midt i scope-3",
-    body: "Manuel kategorisering af 1.000+ posteringer. Fejl bliver opdaget for sent. Ingen audit-trail når banken spørger.",
-  },
-  {
-    title: "Banken vil have ESG-data hvert kvartal",
-    body: "L193 ramte 1. januar. SMV'er er nu rapporteringspligtige overfor deres pengeinstitut. Konsulenter koster 80.000+ kr/år.",
-  },
-  {
-    title: "Kunderne kræver CSRD-leverandørdata",
-    body: "Store børsnoterede kunder under CSRD beder om dine scope-3-tal. Uden tal — ud af leverandørlisten.",
-  },
-];
 
 const FEATURES = [
   {
-    eyebrow: "Klimahovedbog",
-    title: "Hver post er sporbar — ned til bilagets nummer",
-    body: "Vi henter posteringer fra dit regnskabssystem og kategoriserer dem til scope 1, 2 og 3 med vores danske emissionsbibliotek. Hver beregning er audit-ready og kan eksporteres som dokumentation til revisor eller bank.",
+    title: "Sat op én gang. Kører i baggrunden.",
+    body: "Forbind dit regnskabssystem og dit Eloverblik én gang. Derefter henter qlim8 data automatisk — hver nat fra Dinero, e-conomic eller Billy, og ugentligt fra Eloverblik. AI-kategorisering placerer hver post i det rigtige scope, så dit klimaregnskab er opdateret når du har brug for det — ikke når du husker det. Når du tilkobler dit regnskab, henter qlim8 også tre måneders historisk data med det samme, så du har et reelt billede fra dag ét.",
     bullets: [
-      "Automatisk kategorisering af 12 måneders bogføring",
-      "Sporbar formel + emissionsfaktor på hver post",
-      "Eksporterbar bilagsfortegnelse",
+      "Natlig kørsel fra regnskab",
+      'Ugentlig kørsel fra Eloverblik med "Hent nu"-knap',
+      "AI-kategorisering til Scope 1, 2 og 3",
     ],
-    image: f1Klimahovedbog,
+    image: kontrolcenterImg,
     reverse: false,
   },
   {
-    eyebrow: "Kontrolcenter",
-    title: "Et dashboard for alt — uden support-tickets",
-    body: "Datakilder, fejl, mangler og næste handling — alt samlet på én skærm. Du behøver ikke at lære systemet at kende. Det fortæller dig, hvad der mangler.",
+    title: "Hver beregning kan spores tilbage til kilden",
+    body: 'Hver post i klimaregnskabet får et unikt ID, og du kan klikke fra dashboardet ned i den konkrete beregning — input, emissionsfaktor og kilde, sporbart fra dag ét. Når revisor spørger "hvor kommer det tal fra?", har du svaret.',
     bullets: [
-      "Realtids-status på regnskab + Eloverblik",
-      "Prioriteret liste over manglende data",
-      "Auto-flag ved usandsynlige tal",
+      "Validerede emissionsfaktorer fra Klimakompasset, Energinet, EXIOBASE og EPD-databaser",
+      "Unikt beregnings-ID på hver post, eksporterbart til Excel",
+      "Direkte revisor-portal med kommentering og signering (fra Premium)",
     ],
-    image: f2Kontrolcenter,
+    image: klimahovedbogImg,
     reverse: true,
   },
   {
-    eyebrow: "Rapporteringsstudio",
-    title: "VSME-rapport på 10 minutter — ikke 10 dage",
-    body: "Når 12 måneders data er klar, færdigudfylder vores wizard 90 % af VSME-rapporten automatisk. Du udfylder kun det, vi ikke kan se i regnskabet. Resten genererer sig selv.",
+    title: "Ikke bare et tal — en plan",
+    body: "Når du har målt, vil du have en plan. qlim8 sætter reduktionsmål baseret på dine egne tal og lader dig teste konkrete tiltag i Scenario Builder — se effekten af en elbil-flåde, ny leverandør eller halverede forretningsrejser før du beslutter dig. Når du er klar, deler du via en custom PDF-rapport eller dit offentlige Brag Board, så bank, kunder og samarbejdspartnere kan se hvor I er på vej hen.",
     bullets: [
-      "VSME Basis og Comprehensive",
-      "Klimakompasset-format på et klik",
-      "PDF + maskinlæsbar XBRL",
+      "Reduktionsmål baseret på dine egne tal",
+      "Scenario Builder — test tiltag før du beslutter",
+      "Deling via custom PDF eller offentligt Brag Board",
+      "Premium-features fra 625 kr/md",
     ],
-    image: f3Rapportering,
+    image: rapporteringImg,
     reverse: false,
+  },
+];
+
+const COMMITMENTS = [
+  {
+    title: "1. Vi viser kilden til hvert tal.",
+    body: "Hver beregning har et unikt ID, og du kan klikke fra dashboardet ned til den faktura eller måling, den stammer fra. Ingen blackbox — fordi din revisor skal kunne validere arbejdet uden at ringe til vores support.",
+  },
+  {
+    title: "2. Vi bruger danske data, ikke approximationer.",
+    body: "Eloverblik henter dit reelle elforbrug direkte fra Energinet. Klimakompassets danske emissionsfaktorer ligger nederst i datahierarkiet. Internationale platforme estimerer dansk data ud fra europæiske gennemsnit — vi gør det ikke.",
+  },
+  {
+    title: "3. Vi tæller ikke faktorer kreativt.",
+    body: "Vi har ca. 50.000 validerede emissionsfaktorer fra Klimakompasset, Energinet, EXIOBASE og førende EPD-databaser. Vi multiplicerer dem ikke kreativt med regioner og år for at få større tal. Vi vælger den rigtige faktor til den rigtige post.",
+  },
+  {
+    title: "4. Vi sælger ikke en sales call.",
+    body: "Du behøver ikke booke en demo eller tale med en sælger. Opret en konto, klik rundt med eksempeldata, og forbind dit regnskab når du er klar. Det er det.",
   },
 ];
 
 const STEPS = [
-  { n: "01", title: "Tilslut dine datakilder", body: "OAuth-forbindelse til Dinero/Billy/e-conomic og fuldmagt via Eloverblik. 10 minutter." },
-  { n: "02", title: "Vi kategoriserer", body: "Vores motor klassificerer dine posteringer til scope 1, 2 og 3 med en dansk emissionsfaktorbase." },
-  { n: "03", title: "Eksportér rapport", body: "VSME-rapport, Klimakompas-eksport eller leverandørdata til CSRD-kunder. På ét klik." },
+  {
+    n: "1",
+    title: "Opret en gratis konto",
+    body: "Du lander i platformen med eksempeldata. Ingen kreditkort, intet salgsmøde.",
+  },
+  {
+    n: "2",
+    title: "Klik dig rundt",
+    body: "En kort guided tur viser dig dashboard, klimahovedbog, rapporter og reduktionsmål — alt sammen med realistiske data, så du kan se præcis hvad du får.",
+  },
+  {
+    n: "3",
+    title: "Forbind dit regnskab",
+    body: "Når du er klar, henter qlim8 tre måneders historisk data fra dit regnskabssystem. Din egen data overtager dashboardet — og din 14-dages prøveperiode starter her.",
+  },
 ];
 
 const PLANS = [
   {
     name: "Starter",
-    price: "250",
-    period: "/md ved årligt",
-    monthlyPrice: "300 kr/md ved månedligt",
-    tag: "1 CVR · op til 5 mio. omsætning",
+    price: "250 kr/md",
+    tag: "Til SMV'er der skal levere VSME-rapport til banken og vil have det overstået ordentligt.",
     features: [
-      "Komplet klimaregnskab (scope 1-3)",
-      "Regnskabsintegration (Dinero/Billy/e-conomic)",
-      "Eloverblik-integration",
-      "VSME Basis-rapport",
+      "Komplet Scope 1-3 klimaregnskab",
+      "VSME Basis-rapport med wizard",
+      "Fuld audit trail på hver beregning",
+      "Alle danske integrationer",
     ],
     cta: "Start gratis",
     href: SIGNUP_URL,
@@ -98,16 +109,15 @@ const PLANS = [
   },
   {
     name: "Premium",
-    price: "625",
-    period: "/md ved årligt",
-    monthlyPrice: "750 kr/md ved månedligt",
-    tag: "Mest valgt · bank- og kunderapportering",
+    price: "625 kr/md",
+    badge: "Anbefalet til de fleste",
+    tag: "Til virksomheder der vil bruge ESG aktivt — reducere udledninger og dele resultater.",
     features: [
-      "Alt fra Starter, plus:",
-      "VSME Comprehensive",
-      "Public profile (kunde-deling)",
-      "Leverandørrapport-modul",
-      "Prioriteret support",
+      "Alt i Starter",
+      "VSME Comprehensive med wizard",
+      "Reduktionsmål + Scenario Builder",
+      "Custom PDF-rapport + offentligt Brag Board",
+      "Fuldt REST API + MCP",
     ],
     cta: "Start gratis",
     href: SIGNUP_URL,
@@ -115,24 +125,18 @@ const PLANS = [
   },
   {
     name: "Enterprise",
-    price: "Tilbud",
-    period: "",
-    monthlyPrice: "Skræddersyet til flere CVR-numre",
-    tag: "Flere CVR · værdikæde · custom integrationer",
+    price: "Kontakt",
+    tag: "Til organisationer der skal indsamle VSME-rapporter fra deres supply chain.",
     features: [
-      "Alt fra Premium, plus:",
-      "Flere CVR-numre",
-      "Komplet værdikæde-modul",
-      "API-adgang og SSO",
-      "Dedikeret onboarding",
+      "Alt i Premium",
+      "Dedikeret supply chain portal",
+      "Rollebaseret adgang og rettighedsstyring",
     ],
-    cta: "Kontakt salg",
-    href: DEMO_URL,
+    cta: "Kontakt os",
+    href: "/kontakt?subject=Enterprise",
     highlighted: false,
   },
 ];
-
-const FAQS = HOMEPAGE_FAQS;
 
 export default function Landing() {
   return (
@@ -140,33 +144,32 @@ export default function Landing() {
       <SiteHeader isHome />
 
       {/* 1. Hero */}
-      <section className="relative px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24">
+      <section className="px-4 sm:px-6 pt-14 sm:pt-24 pb-16 sm:pb-24">
         <div className="max-w-6xl mx-auto text-center">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent text-accent-foreground rounded-full text-xs font-semibold tracking-wide mb-6">
-            <Sparkles className="h-3.5 w-3.5" />
-            ESG uden besværet
-          </span>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6">
-            Klimaregnskab uden<br className="hidden sm:block" /> regneark, konsulenter og kaos.
+            ESG uden besværet
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-9">
-            qlim8 henter dine bogføringsdata, kategoriserer scope 1-3 automatisk og leverer en VSME-rapport, banken og kunderne forstår. Fra 250 kr/md.
+            Automatisk klimaregnskab og VSME-rapport for danske SMV'er — hentet direkte fra dit regnskabssystem og elforbrug. 10 minutter om måneden, ikke 10 dage.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-5">
             <a
               href={SIGNUP_URL}
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
             >
-              Opret gratis konto
+              Prøv platformen gratis
               <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href={DEMO_URL}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white border border-gray-200 text-gray-900 font-semibold text-base hover:border-gray-300 transition-colors"
+              href="/priser"
+              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white border border-gray-200 text-gray-900 font-semibold text-base hover:border-gray-300 transition-colors"
             >
-              Book 20-min demo
+              Se priser
             </a>
           </div>
+          <p className="text-sm text-gray-500 mb-14">
+            Eksempeldata · Ingen kreditkort · Forpligt dig først ved tilkobling
+          </p>
 
           <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
             <Image
@@ -180,88 +183,50 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* 2. Trust-strip */}
-      <section className="bg-white border-y border-gray-100 py-5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm text-gray-600">
-            <li className="flex items-center gap-2"><Building2 className="h-4 w-4 text-primary" /> CVR DK46033736</li>
-            <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> GDPR-compliant</li>
-            <li className="flex items-center gap-2"><Globe2 className="h-4 w-4 text-primary" /> Hosting i EU (Hetzner)</li>
-            <li className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-primary" /> VSME-format godkendt af EFRAG</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* 3. Integrations-bånd */}
-      <section className="py-10 sm:py-14 bg-[#F5F5F0]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-xs font-semibold text-gray-500 uppercase tracking-[0.15em] mb-6">
-            Integrerer med
-          </p>
-          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-gray-700">
-            {[
-              { name: "Dinero", note: "Regnskab" },
-              { name: "e-conomic", note: "Regnskab" },
-              { name: "Billy", note: "Regnskab" },
-              { name: "Eloverblik", note: "El & varme" },
-            ].map((item) => (
-              <li
-                key={item.name}
-                className="inline-flex flex-col items-center px-6 py-3 rounded-xl bg-white border border-gray-200 min-w-[140px]"
-              >
-                <span className="text-sm font-semibold text-gray-900">{item.name}</span>
-                <span className="text-[11px] text-gray-500 uppercase tracking-wide mt-0.5">{item.note}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 4. Problem-sektion */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl mb-14">
-            <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">Det gør I i dag</p>
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
-              ESG er bare blevet endnu et bjerg af papirarbejde.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {PROBLEMS.map((p) => (
-              <div key={p.title} className="bg-gray-50 rounded-2xl p-7 border border-gray-100">
-                <h3 className="text-lg font-bold text-gray-900 mb-3 leading-snug">{p.title}</h3>
-                <p className="text-gray-600 text-[15px] leading-relaxed">{p.body}</p>
+      {/* 2. Integrationsbånd */}
+      <section className="py-16 sm:py-24 bg-white border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <h2 className="text-center text-2xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-12">
+            Vi henter data direkte fra dine systemer
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 mb-10">
+            {["Dinero", "e-conomic", "Billy", "Eloverblik"].map((name) => (
+              <div key={name} className="text-center">
+                <p className="text-xl sm:text-2xl font-semibold text-gray-900">{name}</p>
               </div>
             ))}
           </div>
+          <p className="text-center text-sm text-gray-600 mb-2">
+            Eloverblik: officiel tredjepart hos Energinet
+          </p>
+          <p className="text-center text-sm text-gray-600">
+            Fuldt REST API · MCP-ready
+          </p>
+          <p className="text-center text-base text-gray-700 mt-10 max-w-2xl mx-auto leading-relaxed">
+            Sæt integrationerne op én gang. qlim8 henter regnskabsdata og elforbrug i baggrunden.
+          </p>
         </div>
       </section>
 
-      {/* 5–7. Løsning F1/F2/F3 */}
+      {/* 3-5. Features */}
       <section className="py-20 sm:py-28 bg-[#F5F5F0]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl mb-14">
-            <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">Det gør qlim8</p>
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
-              Tre moduler. Ét klimaregnskab. Nul konsulenter.
-            </h2>
-          </div>
           <div className="space-y-20 sm:space-y-28">
             {FEATURES.map((f) => (
               <div
-                key={f.eyebrow}
+                key={f.title}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${f.reverse ? "lg:[&>*:first-child]:order-2" : ""}`}
               >
                 <div>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">{f.eyebrow}</p>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-4">{f.title}</h3>
-                  <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">{f.body}</p>
-                  <ul className="space-y-2.5">
+                  <h3 className="text-2xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-5">
+                    {f.title}
+                  </h3>
+                  <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-7">
+                    {f.body}
+                  </p>
+                  <ul className="space-y-2 text-[15px] text-gray-800">
                     {f.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-3 text-gray-800">
-                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                        <span className="text-[15px]">{b}</span>
-                      </li>
+                      <li key={b} className="leading-relaxed">— {b}</li>
                     ))}
                   </ul>
                 </div>
@@ -274,69 +239,98 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* 8. Manifest */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-5">Manifest</p>
-          <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900 leading-[1.3] tracking-tight">
-            "Vi er kedelige med vilje. Vi tror på at ESG skal være lige så uspændende som lønudbetaling: korrekt, til tiden, og uden drama. Ingen brandnavne, ingen buzzwords, ingen falske grønne løfter."
-          </blockquote>
+      {/* 6. Bygget anderledes */}
+      <section className="py-20 sm:py-28 bg-gray-900 text-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="mb-14">
+            <h2 className="text-3xl sm:text-5xl font-bold leading-tight tracking-tight text-white mb-6">
+              Bygget anderledes
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+              De fleste ESG-platforme er bygget til store virksomheder med dedikerede bæredygtighedsteams og store budgetter. qlim8 er bygget til danske SMV'er. Det former hvert valg vi har truffet.
+            </p>
+          </div>
+
+          <div className="space-y-8 sm:space-y-10">
+            {COMMITMENTS.map((c) => (
+              <div key={c.title} className="border-t border-white/20 pt-7">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-snug">{c.title}</h3>
+                <p className="text-gray-300 text-[15px] sm:text-base leading-relaxed">{c.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-sm text-gray-400 mt-12">
+            Datakilder: Klimakompasset · Energinet · EXIOBASE · EPD International
+          </p>
         </div>
       </section>
 
-      {/* 9. 3-step */}
-      <section className="py-20 sm:py-28 bg-[#F5F5F0]">
+      {/* 7. Sådan kommer du i gang */}
+      <section className="py-20 sm:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl mb-14">
-            <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">Sådan kommer du i gang</p>
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
-              Tre skridt — første rapport indenfor en arbejdsuge.
+          <div className="mb-14 max-w-3xl">
+            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-4">
+              Sådan kommer du i gang
             </h2>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              Du behøver ikke vide noget om ESG før du opretter dig — det viser sig selv.
+            </p>
           </div>
-          <ol className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-14">
             {STEPS.map((s) => (
-              <li key={s.n} className="bg-white rounded-2xl p-7 border border-gray-100">
-                <span className="block text-primary font-bold text-sm tracking-[0.15em] mb-4">{s.n}</span>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 leading-snug">{s.title}</h3>
-                <p className="text-gray-600 text-[15px] leading-relaxed">{s.body}</p>
+              <li key={s.n}>
+                <p className="text-4xl font-bold text-gray-300 mb-4">{s.n}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-snug">
+                  {s.title}
+                </h3>
+                <p className="text-gray-700 text-[15px] leading-relaxed">{s.body}</p>
               </li>
             ))}
           </ol>
+          <div>
+            <a
+              href={SIGNUP_URL}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
+            >
+              Opret gratis konto
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <p className="text-sm text-gray-500 mt-4">
+              Ingen kreditkort · Eksempeldata · Forpligt dig først ved tilkobling
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* 10. Pricing-teaser */}
-      <section className="py-20 sm:py-28 bg-white">
+      {/* 8. Pricing-teaser */}
+      <section className="py-20 sm:py-28 bg-[#F5F5F0]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl mb-14 text-center mx-auto">
-            <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">Priser</p>
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-4">
-              Fra 250 kr/md. Alt inkluderet.
+          <div className="max-w-3xl mb-14">
+            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
+              Tre planer. Find den der passer.
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              Ingen onboarding-gebyr. Ingen lock-in. Opsig hvornår som helst.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {PLANS.map((p) => (
               <div
                 key={p.name}
-                className={`rounded-2xl p-7 border ${p.highlighted ? "border-primary bg-accent/40 shadow-lg" : "border-gray-200 bg-white"}`}
+                className={`relative rounded-2xl p-7 sm:p-8 border bg-white ${
+                  p.highlighted ? "border-primary shadow-lg" : "border-gray-200"
+                }`}
               >
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">{p.tag}</p>
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">{p.name}</h3>
-                <div className="mb-1">
-                  <span className="text-4xl font-bold text-gray-900">{p.price}{p.price !== "Tilbud" && " kr"}</span>
-                  <span className="text-sm text-gray-500 ml-1">{p.period}</span>
-                </div>
-                <p className="text-xs text-gray-500 mb-5">{p.monthlyPrice}</p>
-                <ul className="space-y-2 mb-7">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-gray-700">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                      <span>{f}</span>
-                    </li>
+                {p.badge && (
+                  <p className="text-xs font-semibold text-gray-500 mb-3">
+                    {p.badge}
+                  </p>
+                )}
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{p.name}</h3>
+                <p className="text-3xl font-bold text-gray-900 mb-4">{p.price}</p>
+                <p className="text-sm text-gray-600 leading-relaxed mb-6 min-h-[4rem]">{p.tag}</p>
+                <ul className="space-y-2 mb-8 text-sm text-gray-700">
+                  {p.features.map((feat) => (
+                    <li key={feat} className="leading-relaxed">— {feat}</li>
                   ))}
                 </ul>
                 <a
@@ -353,25 +347,26 @@ export default function Landing() {
             ))}
           </div>
 
-          <p className="text-center mt-8 text-sm text-gray-600">
-            <a href="/priser" className="text-primary font-semibold hover:underline">Se fuld feature-sammenligning →</a>
+          <p className="mt-10 text-sm text-gray-600">
+            <a href="/priser" className="text-primary font-semibold hover:underline">
+              Se fuld sammenligning →
+            </a>
           </p>
         </div>
       </section>
 
-      {/* 11. FAQ */}
-      <section className="py-20 sm:py-28 bg-[#F5F5F0]">
+      {/* 9. FAQ */}
+      <section className="py-20 sm:py-28 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">Spørgsmål & svar</p>
+          <div className="mb-10">
             <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
-              Det folk normalt spørger om.
+              Spørgsmål og svar
             </h2>
           </div>
-          <Accordion type="single" collapsible className="bg-white rounded-2xl border border-gray-200 px-6">
-            {FAQS.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="last:border-b-0">
-                <AccordionTrigger className="text-left text-base font-semibold text-gray-900 py-5">
+          <Accordion type="single" collapsible defaultValue="item-0" className="border-t border-gray-200">
+            {HOMEPAGE_FAQS.map((f, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="border-b border-gray-200">
+                <AccordionTrigger className="text-left text-base sm:text-lg font-semibold text-gray-900 py-5 hover:no-underline">
                   {f.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 text-[15px] leading-relaxed pb-5">
@@ -380,37 +375,30 @@ export default function Landing() {
               </AccordionItem>
             ))}
           </Accordion>
+          <p className="mt-10 text-sm text-gray-600">
+            <a href="/kontakt" className="text-primary font-semibold hover:underline">
+              Flere spørgsmål? Kontakt os →
+            </a>
+          </p>
         </div>
       </section>
 
-      {/* 12. Final CTA */}
-      <section className="py-20 sm:py-28 bg-white border-t border-gray-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-accent text-primary mb-6">
-            <Gauge className="h-6 w-6" />
-          </div>
+      {/* 10. Final CTA */}
+      <section className="py-20 sm:py-28 bg-[#F5F5F0] border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-5">
-            Klar til at få banken og kunderne ud af bagsædet?
+            ESG er nemt — kom selv og se
           </h2>
-          <p className="text-gray-600 text-lg leading-relaxed mb-8">
-            Opret en gratis konto, tilslut Dinero, og se dit første klimaregnskab indenfor en time.
+          <p className="text-gray-600 text-lg leading-relaxed mb-9 max-w-xl">
+            Du behøver hverken kreditkort eller salgsmøde. Opret en konto, klik dig rundt med eksempeldata, og tilkobl dit regnskab når du er klar.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={SIGNUP_URL}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
-            >
-              Opret gratis konto
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href={DEMO_URL}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white border border-gray-200 text-gray-900 font-semibold text-base hover:border-gray-300 transition-colors"
-            >
-              <FileText className="h-4 w-4" />
-              Book 20-min demo
-            </a>
-          </div>
+          <a
+            href={SIGNUP_URL}
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
+          >
+            Opret gratis konto
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </section>
 
@@ -418,4 +406,3 @@ export default function Landing() {
     </div>
   );
 }
-
