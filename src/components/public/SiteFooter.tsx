@@ -81,7 +81,7 @@ export function SiteFooter() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-y-3 gap-x-6 text-xs text-gray-500">
-          <span>© {new Date().getFullYear()} qlim8 ApS · CVR DK46033736</span>
+          <span>© {new Date().getFullYear()} qlim8 · CVR DK46033736</span>
           <nav className="flex flex-wrap gap-x-5 gap-y-2">
             {LEGAL_LINKS.map((link) => (
               <a
