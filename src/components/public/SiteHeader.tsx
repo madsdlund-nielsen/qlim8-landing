@@ -6,6 +6,14 @@ interface SiteHeaderProps {
   isHome?: boolean;
 }
 
+const NAV_ITEMS = [
+  { href: "/produkt", label: "Funktioner" },
+  { href: "/priser", label: "Priser" },
+  { href: "/metodologi", label: "Metodologi" },
+  { href: "/blog", label: "Blog" },
+  { href: "/api", label: "API" },
+];
+
 export function SiteHeader({ isHome = false }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -36,32 +44,46 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
       data-site-header
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex items-center justify-between gap-4">
+          <a href="/" data-testid="link-logo" className="flex items-center">
+            <span className="text-2xl font-bold text-gray-900">qlim8</span>
             {!isHome && (
-              <a
-                href="/"
-                className="text-xs sm:text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-                data-testid="button-back"
-              >
+              <span className="ml-4 text-xs sm:text-sm font-medium text-gray-500 hidden sm:inline">
                 ← Forside
-              </a>
+              </span>
             )}
-            <a href="/" data-testid="link-logo">
-              <span className="text-2xl font-bold text-gray-900">qlim8</span>
-            </a>
-          </div>
+          </a>
+
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-700">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="hover:text-primary transition-colors"
+                data-testid={`nav-${item.label.toLowerCase()}`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="https://app.qlim8.com/auth"
-              className="text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-100 text-gray-900 hover:bg-gray-200 transition-all"
+              className="hidden sm:inline-flex text-sm font-medium px-3 py-1.5 text-gray-700 hover:text-primary transition-colors"
               data-testid="button-signin"
             >
-              Login / Opret bruger
+              Log ind
+            </a>
+            <a
+              href="https://app.qlim8.com/auth?tab=register"
+              className="text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+              data-testid="button-register"
+            >
+              Opret gratis konto
             </a>
 
-            <div className="relative" data-site-header>
+            <div className="relative lg:hidden" data-site-header>
               <button
                 onClick={() => setMenuOpen((v) => !v)}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -76,38 +98,25 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
               </button>
 
               {menuOpen && (
-                <div className="absolute right-0 top-full mt-2 w-52 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden z-50">
+                <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden z-50">
+                  {NAV_ITEMS.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      data-testid={`menu-${item.label.toLowerCase()}`}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
                   <a
                     href="https://app.qlim8.com/auth"
                     onClick={() => setMenuOpen(false)}
-                    className="block px-4 py-3 text-sm font-semibold text-white bg-primary hover:bg-primary/90 transition-colors"
-                    data-testid="menu-try-free"
+                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors border-t border-gray-100 sm:hidden"
+                    data-testid="menu-signin"
                   >
-                    Prøv gratis
-                  </a>
-                  <a
-                    href="/produkt"
-                    onClick={() => setMenuOpen(false)}
-                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                    data-testid="menu-features"
-                  >
-                    Features
-                  </a>
-                  <a
-                    href="/pricing"
-                    onClick={() => setMenuOpen(false)}
-                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                    data-testid="menu-pricing"
-                  >
-                    Priser
-                  </a>
-                  <a
-                    href="/about"
-                    onClick={() => setMenuOpen(false)}
-                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                    data-testid="menu-about"
-                  >
-                    About
+                    Log ind
                   </a>
                 </div>
               )}
