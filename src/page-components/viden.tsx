@@ -97,7 +97,7 @@ export default function Viden() {
               return (
                 <Link
                   key={article.slug}
-                  href={`/viden/${article.slug}`}
+                  href={`/blog/${article.slug}`}
                   className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-300 hover:shadow-sm transition-all flex flex-col"
                   data-testid={`card-article-${article.slug}`}
                 >

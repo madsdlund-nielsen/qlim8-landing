@@ -16,11 +16,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: article.title,
     description: article.description,
-    alternates: { canonical: `https://qlim8.com/viden/${article.slug}` },
+    alternates: { canonical: `https://qlim8.com/blog/${article.slug}` },
     openGraph: {
       title: article.title,
       description: article.description,
-      url: `https://qlim8.com/viden/${article.slug}`,
+      url: `https://qlim8.com/blog/${article.slug}`,
       images: [{ url: '/opengraph.jpg', width: 1200, height: 630, alt: article.title }],
     },
   }

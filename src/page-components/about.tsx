@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/public/SiteFooter";
 
 export default function About() {
   const handleGetAccess = () => {
-    window.location.href = "/pricing";
+    window.location.href = "/priser";
   };
 
   return (

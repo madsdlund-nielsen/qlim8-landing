@@ -103,7 +103,7 @@ export default function ArticleTemplate({ article }: { article: Article }) {
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-16 pb-24">
         {/* Tilbage-link */}
         <Link
-          href="/viden"
+          href="/blog"
           className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-900 transition-colors mb-10"
           data-testid="link-back-to-viden"
         >

@@ -113,10 +113,10 @@ export default function Pricing() {
     const checkoutStatus = params.get("checkout");
     if (checkoutStatus === "success") {
       setShowSuccess(true);
-      window.history.replaceState({}, "", "/pricing");
+      window.history.replaceState({}, "", "/priser");
       setTimeout(() => { window.location.href = "https://app.qlim8.com/auth"; }, 2500);
     } else if (checkoutStatus === "cancelled") {
-      window.history.replaceState({}, "", "/pricing");
+      window.history.replaceState({}, "", "/priser");
       toast({ title: "Betaling annulleret", description: "Du kan altid prøve igen når du er klar." });
     }
   }, []);

@@ -389,7 +389,7 @@ export default function Produkt() {
       <CTASection
         title="Klar til at se dit klimaregnskab?"
         description="Start med en gratis trial og se selv hvordan qlim8 transformerer klimaregnskab fra chore til competitive advantage."
-        primaryButton={{ text: "Se priser", href: "/pricing" }}
+        primaryButton={{ text: "Se priser", href: "/priser" }}
         secondaryButton={{ text: "Login", href: "https://app.qlim8.com/auth" }}
         variant="dark"
       />

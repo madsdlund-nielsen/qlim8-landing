@@ -202,7 +202,7 @@ export default function Landing() {
               {language === "da" ? "Prøv gratis" : "Try for free"}
             </a>
             <a
-              href="/pricing"
+              href="/priser"
               className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full transition-colors text-base sm:text-lg backdrop-blur-sm"
               data-testid="button-see-pricing"
             >
@@ -268,7 +268,7 @@ export default function Landing() {
       <CTASection
         title={language === "da" ? "Lad os komme i gang" : "Let's get started"}
         description={language === "da" ? "Se hvad qlim8 kan gøre for din virksomheds klimaregnskab. Alt samlet i én enkel plan." : "See our pricing and start your climate accounting today."}
-        primaryButton={{ text: language === "da" ? "Se priser" : "See pricing", href: "/pricing" }}
+        primaryButton={{ text: language === "da" ? "Se priser" : "See pricing", href: "/priser" }}
         variant="light"
       />
 
