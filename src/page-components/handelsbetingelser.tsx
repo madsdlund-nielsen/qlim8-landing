@@ -8,9 +8,6 @@ export default function Handelsbetingelser() {
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-28">
         <header className="mb-10">
-          <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">
-            Juridisk
-          </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-4">
             Handelsbetingelser
           </h1>

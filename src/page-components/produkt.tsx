@@ -18,8 +18,8 @@ export default function Produkt() {
       <section className="relative overflow-hidden bg-[#F5F5F0]">
         <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gray-900 mb-6" data-testid="text-hero-title">
-              Klimaregnskab gjort <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">simpelt</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6" data-testid="text-hero-title">
+              Klimaregnskab gjort simpelt
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8" data-testid="text-hero-subtitle">
               qlim8 er den mest intuitive platform til at tracke, beregne og rapportere dine CO2-emissioner. Designet specifikt til danske virksomheder med fokus på dansk lovgivning, emissionsfaktorer og compliance.
@@ -56,7 +56,6 @@ export default function Produkt() {
                   { label: "Scope-opdeling", description: "Forstå øjeblikkelig hvor dine emissioner kommer fra" },
                   { label: "Historisk data", description: "Sammenlign år-til-år progression og track dine reduceringstiltag" }
                 ]} 
-                color="emerald" 
               />
             </motion.div>
             <motion.div 
@@ -72,7 +71,6 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-cc1"
               />
-              <div className="absolute -z-10 -bottom-8 -right-8 w-full h-full bg-accent/40 rounded-xl" />
             </motion.div>
           </div>
 
@@ -91,7 +89,6 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-cc2"
               />
-              <div className="absolute -z-10 -bottom-8 -left-8 w-full h-full bg-orange-100/30 rounded-xl" />
             </motion.div>
             <motion.div 
               className="space-y-6 order-1 lg:order-2"
@@ -115,7 +112,6 @@ export default function Produkt() {
                   { label: "Target tracking", description: "Få øjeblikkelig feedback hvis du er på vej til at misse dine reduktionsmål" },
                   { label: "Intelligent filtering", description: "du får kun besked når der er noget vigtigt, der kræver din opmærksomhed" }
                 ]} 
-                color="amber" 
               />
             </motion.div>
           </div>
@@ -144,7 +140,6 @@ export default function Produkt() {
                   { label: "Revisionsklar dokumentation", description: "Alle beregninger og kilder dokumenteret" },
                   { label: "Fejl-håndtering", description: "Dokumenter og ret fejl direkte uden at miste historik eller audit-trail" }
                 ]} 
-                color="emerald" 
               />
             </motion.div>
             <motion.div 
@@ -160,7 +155,6 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-cl1"
               />
-              <div className="absolute -z-10 -bottom-8 -right-8 w-full h-full bg-accent/40 rounded-xl" />
             </motion.div>
           </div>
 
@@ -179,7 +173,6 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-cl2"
               />
-              <div className="absolute -z-10 -bottom-8 -left-8 w-full h-full bg-blue-100/30 rounded-xl" />
             </motion.div>
             <motion.div 
               className="space-y-6 order-1 lg:order-2"
@@ -203,7 +196,6 @@ export default function Produkt() {
                   { label: "Indlæringssystem", description: "AI lærer fra dine korrektioner og bliver bedre over tid" },
                   { label: "Confidence scores", description: "Se hvor sikker AI'en er på hver kategori-forslag - er den mindre end 95% sikker vil den bede om dit input, men kun første gang" }
                 ]} 
-                color="blue" 
               />
             </motion.div>
           </div>
@@ -232,7 +224,6 @@ export default function Produkt() {
                   { label: "Completeness check", description: "Se præcist hvad der mangler før du rapporterer" },
                   { label: "PDF/Excel export", description: "Professionel formattering klar til revisor eller stakehold" }
                 ]} 
-                color="blue" 
               />
             </motion.div>
             <motion.div 
@@ -248,7 +239,6 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-rep1"
               />
-              <div className="absolute -z-10 -bottom-8 -right-8 w-full h-full bg-blue-100/30 rounded-xl" />
             </motion.div>
           </div>
 
@@ -267,7 +257,6 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-rep2"
               />
-              <div className="absolute -z-10 -bottom-8 -left-8 w-full h-full bg-indigo-100/30 rounded-xl" />
             </motion.div>
             <motion.div 
               className="space-y-6 order-1 lg:order-2"
@@ -291,7 +280,6 @@ export default function Produkt() {
                   { label: "Målgruppe-fokus", description: "Bestyrelse, revision, investor, eller offentlig hver får hvad de behøver" },
                   { label: "En-klik distribution", description: "Generer og send rapporter automatisk" }
                 ]} 
-                color="purple" 
               />
             </motion.div>
           </div>
@@ -320,7 +308,6 @@ export default function Produkt() {
                   { label: "Batch processing", description: "Upload 100 fakturaer og behandl dem alle samtidig" },
                   { label: "Udtraktion + kategorisering", description: "Fra faktura to CO2e beregning på sekunder" }
                 ]} 
-                color="purple" 
               />
             </motion.div>
             <motion.div 
@@ -336,7 +323,6 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-aiu1"
               />
-              <div className="absolute -z-10 -bottom-8 -right-8 w-full h-full bg-violet-100/30 rounded-xl" />
             </motion.div>
           </div>
 
@@ -355,7 +341,6 @@ export default function Produkt() {
                 className="rounded-xl shadow-xl border border-gray-200"
                 data-testid="img-feature-aiu2"
               />
-              <div className="absolute -z-10 -bottom-8 -left-8 w-full h-full bg-lime-100/30 rounded-xl" />
             </motion.div>
             <motion.div 
               className="space-y-6 order-1 lg:order-2"
@@ -379,7 +364,6 @@ export default function Produkt() {
                   { label: "Intelligent mapping", description: "Definér regler der automatisk kategoriseres dine transaktioner" },
                   { label: "Bi-directional audit", description: "Spor hver transaktion fra oprindelig faktura gennem klimaberegning" }
                 ]} 
-                color="teal" 
               />
             </motion.div>
           </div>

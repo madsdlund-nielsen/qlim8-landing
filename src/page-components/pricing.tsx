@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Check, Minus, Loader2, CheckCircle, Mail, ChevronDown } from "lucide-react";
+import { Loader2, CheckCircle, ChevronDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { SiteFooter } from "@/components/public/SiteFooter";
@@ -53,21 +53,13 @@ const FEATURE_ROWS: FeatureRow[] = [
 
 function FeatureCell({ value }: { value: boolean | string }) {
   if (value === false) {
-    return (
-      <span className="flex justify-center">
-        <Minus className="h-4 w-4 text-gray-300" strokeWidth={2} />
-      </span>
-    );
+    return <span className="block text-center text-gray-300">—</span>;
   }
   if (value === true) {
-    return (
-      <span className="flex justify-center">
-        <Check className="h-4 w-4 text-primary" strokeWidth={2.5} />
-      </span>
-    );
+    return <span className="block text-center text-gray-900">✓</span>;
   }
   return (
-    <span className="text-[12px] text-center font-medium text-primary block leading-tight">
+    <span className="block text-center text-[12px] font-medium text-gray-700 leading-tight">
       {value}
     </span>
   );
@@ -159,9 +151,6 @@ export default function Pricing() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24">
 
           <div className="mb-10 sm:mb-14">
-            <p className="text-[11px] font-medium text-primary uppercase tracking-[0.2em] mb-3" data-testid="text-pricing-label">
-              Priser
-            </p>
             <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-5" data-testid="text-pricing-title">
               Fra 250 kr/md. Alt inkluderet.
             </h1>
@@ -235,8 +224,8 @@ export default function Pricing() {
               {/* ── Starter ── */}
               <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid="plan-starter">
                 <div className="mb-5">
-                  <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em] mb-1">Starter</p>
-                  <p className="text-xs text-gray-500 mb-3">Til SMV'er der starter ESG-arbejdet — banken har spurgt, og I skal have et tal.</p>
+                  <h2 className="text-lg font-bold text-gray-900 mb-1">Starter</h2>
+                  <p className="text-sm text-gray-600 mb-4">Til SMV'er der starter ESG-arbejdet — banken har spurgt, og I skal have et tal.</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`starter-${billingCycle}-${currency}`}
@@ -249,7 +238,7 @@ export default function Pricing() {
                     </motion.span>
                     <span className="text-sm text-gray-400">/md</span>
                   </div>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-500">
                     {billingCycle === "yearly"
                       ? `Faktureret ${fmt(PRICES.starter.yearlyTotal[currency], currency)} årligt`
                       : "Faktureret månedligt"}
@@ -258,34 +247,26 @@ export default function Pricing() {
                 <button
                   onClick={() => handleCheckout("starter")}
                   disabled={!!loadingTier}
-                  className="w-full py-2.5 px-4 rounded-full border border-gray-900 text-gray-900 text-sm font-medium hover:bg-gray-900 hover:text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-5"
+                  className="w-full py-2.5 px-4 rounded-full border border-gray-900 text-gray-900 text-sm font-medium hover:bg-gray-900 hover:text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-6"
                   data-testid="button-checkout-starter"
                 >
                   {loadingTier === "starter" ? (
                     <><Loader2 className="h-4 w-4 animate-spin" />Forbereder...</>
                   ) : "Vælg Starter"}
                 </button>
-                <p className="text-[11px] text-gray-400 uppercase tracking-[0.12em] font-medium mb-3">Inkluderet</p>
-                <ul className="space-y-2 flex-1">
+                <p className="font-semibold text-gray-900 text-sm mb-3">Inkluderet</p>
+                <ul className="space-y-1.5 flex-1 text-sm text-gray-700">
                   {["Scope 1/2/3 beregning", "AI fakturaupload", "VSME Basis-rapport", "1 API-integration", "Excel-eksport", "Email-support"].map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
-                      <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                      {f}
-                    </li>
+                    <li key={f}>— {f}</li>
                   ))}
                 </ul>
               </div>
 
               {/* ── Premium ── */}
-              <div className="bg-gray-900 rounded-2xl border border-gray-900 p-6 flex flex-col relative overflow-hidden" data-testid="plan-premium">
-                <div className="absolute top-4 right-4">
-                  <span className="text-[10px] font-semibold bg-primary text-white px-2.5 py-1 rounded-full uppercase tracking-[0.1em]">
-                    Mest populær
-                  </span>
-                </div>
+              <div className="bg-gray-900 rounded-2xl border border-gray-900 p-6 flex flex-col" data-testid="plan-premium">
                 <div className="mb-5">
-                  <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em] mb-1">Premium</p>
-                  <p className="text-xs text-gray-400 mb-3">Til SMV'er med kunde- og bankrapportering — VSME Comprehensive, leverandørdata, offentlig profil.</p>
+                  <h2 className="text-lg font-bold text-white mb-1">Premium</h2>
+                  <p className="text-sm text-gray-400 mb-4">Til SMV'er med kunde- og bankrapportering — VSME Comprehensive, leverandørdata, offentlig profil.</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`premium-${billingCycle}-${currency}`}
@@ -307,20 +288,17 @@ export default function Pricing() {
                 <button
                   onClick={() => handleCheckout("premium")}
                   disabled={!!loadingTier}
-                  className="w-full py-2.5 px-4 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-5"
+                  className="w-full py-2.5 px-4 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-6"
                   data-testid="button-checkout-premium"
                 >
                   {loadingTier === "premium" ? (
                     <><Loader2 className="h-4 w-4 animate-spin" />Forbereder...</>
                   ) : "Vælg Premium"}
                 </button>
-                <p className="text-[11px] text-gray-500 uppercase tracking-[0.12em] font-medium mb-3">Alt i Starter, plus</p>
-                <ul className="space-y-2 flex-1">
+                <p className="font-semibold text-white text-sm mb-3">Alt i Starter, plus</p>
+                <ul className="space-y-1.5 flex-1 text-sm text-gray-300">
                   {["PDF-eksport", "VSME Comprehensive-rapport", "Reduction Hub & Scenario Builder", "Ubegrænsede integrationer", "Offentlig profil & Brag Board", "Direkte revisor-adgang", "Chat & telefon-support"].map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-gray-300">
-                      <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                      {f}
-                    </li>
+                    <li key={f}>— {f}</li>
                   ))}
                 </ul>
               </div>
@@ -328,23 +306,22 @@ export default function Pricing() {
               {/* ── Enterprise ── */}
               <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid="plan-enterprise">
                 <div className="mb-5">
-                  <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em] mb-1">Enterprise</p>
-                  <p className="text-xs text-gray-500 mb-3">Til større organisationer med flere CVR, komplet værdikæde og API-integration.</p>
+                  <h2 className="text-lg font-bold text-gray-900 mb-1">Enterprise</h2>
+                  <p className="text-sm text-gray-600 mb-4">Til større organisationer med flere CVR, komplet værdikæde og API-integration.</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <span className="text-4xl font-bold text-gray-900">Kontakt salg</span>
                   </div>
-                  <p className="text-xs text-gray-400">Tilpasset pris for din organisation</p>
+                  <p className="text-xs text-gray-500">Tilpasset pris for din organisation</p>
                 </div>
                 <a
                   href="mailto:hello@qlim8.com"
-                  className="w-full py-2.5 px-4 rounded-full border border-gray-900 text-gray-900 text-sm font-medium hover:bg-gray-900 hover:text-white transition-all flex items-center justify-center gap-2 mb-5"
+                  className="w-full py-2.5 px-4 rounded-full border border-gray-900 text-gray-900 text-sm font-medium hover:bg-gray-900 hover:text-white transition-all flex items-center justify-center mb-6"
                   data-testid="button-contact-enterprise"
                 >
-                  <Mail className="h-4 w-4" />
                   Kontakt os
                 </a>
-                <p className="text-[11px] text-gray-400 uppercase tracking-[0.12em] font-medium mb-3">Alt i Premium, plus</p>
-                <ul className="space-y-2 flex-1">
+                <p className="font-semibold text-gray-900 text-sm mb-3">Alt i Premium, plus</p>
+                <ul className="space-y-1.5 flex-1 text-sm text-gray-700">
                   {([
                     { label: "Komplet værdikæde via CVR", note: "kræver premium abonnement fra værdikæden – dog får I som Enterprise kunde en rabatkode til jeres leverandører" },
                     { label: "Fuld API-adgang" },
@@ -352,12 +329,9 @@ export default function Pricing() {
                     { label: "Dedikeret Customer Success Manager" },
                     { label: "White-label PDF-eksport" },
                   ] as { label: string; note?: string }[]).map((f) => (
-                    <li key={f.label} className="flex items-start gap-2 text-sm text-gray-600">
-                      <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                      <span>
-                        {f.label}
-                        {f.note && <span className="block text-xs text-gray-400 mt-0.5">({f.note})</span>}
-                      </span>
+                    <li key={f.label}>
+                      — {f.label}
+                      {f.note && <span className="block text-xs text-gray-500 ml-3 mt-0.5">({f.note})</span>}
                     </li>
                   ))}
                 </ul>
@@ -365,10 +339,10 @@ export default function Pricing() {
             </div>
 
             {/* ── Feature comparison table ── */}
-            <div className="mt-16 overflow-x-auto">
-              <p className="text-[11px] font-medium text-gray-400 uppercase tracking-[0.2em] mb-6">
+            <div className="mt-20 overflow-x-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 border-t border-gray-200 pt-10">
                 Komplet sammenligning
-              </p>
+              </h2>
               <table className="w-full border-collapse" data-testid="feature-comparison-table">
                 <thead>
                   <tr className="border-b border-gray-200">
@@ -393,9 +367,9 @@ export default function Pricing() {
           </div>
 
           <div className="mt-20" data-testid="faq-section">
-            <p className="text-[11px] font-medium text-gray-400 uppercase tracking-[0.2em] mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 border-t border-gray-200 pt-10">
               Ofte stillede spørgsmål
-            </p>
+            </h2>
             <div className="max-w-2xl divide-y divide-gray-100">
               {FAQ_ITEMS.map((item, i) => (
                 <div key={i} data-testid={`faq-item-${i}`}>

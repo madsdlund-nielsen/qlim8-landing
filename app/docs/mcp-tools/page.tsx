@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "MCP Tools Reference | qlim8 docs",
@@ -389,31 +388,18 @@ const LAYERS = [
   { n: 3 as const, title: "Layer 3 — Infrastructure", note: "Webhook-abonnementer og delivery-logs." },
 ];
 
-function LayerBadge({ n }: { n: 1 | 2 | 3 }) {
-  return (
-    <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-accent text-primary text-[11px] font-semibold uppercase tracking-wider">
-      Layer {n}
-    </span>
-  );
-}
-
 function ToolCard({ tool }: { tool: Tool }) {
   return (
     <div id={tool.name} className="bg-white rounded-2xl border border-gray-200 p-7 sm:p-8 scroll-mt-24">
-      <div className="flex items-center gap-3 flex-wrap mb-3">
-        <h3 className="text-lg sm:text-xl font-bold text-gray-900 font-mono">{tool.name}</h3>
-        <LayerBadge n={tool.layer} />
-        {tool.tierGate && (
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-gray-900 text-white text-[11px] font-semibold uppercase tracking-wider">
-            {tool.tierGate}
-          </span>
-        )}
-      </div>
-      <p className="text-gray-700 text-[15px] leading-relaxed mb-4">{tool.description}</p>
-      <p className="text-[13px] text-gray-600 mb-4">
-        <span className="font-semibold text-gray-900">Required scope:</span>{" "}
-        <code className="bg-gray-100 px-1.5 py-0.5 rounded">{tool.scope}</code>
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 font-mono mb-2">
+        {tool.name}
+      </h3>
+      <p className="text-sm text-gray-500 mb-4">
+        Layer {tool.layer}
+        {tool.tierGate && <> · {tool.tierGate}</>}
+        {" · "}Required scope: <code className="bg-gray-100 px-1.5 py-0.5 rounded text-[13px]">{tool.scope}</code>
       </p>
+      <p className="text-gray-700 text-[15px] leading-relaxed mb-4">{tool.description}</p>
 
       {tool.params.length > 0 ? (
         <div className="mb-4 overflow-x-auto">
@@ -447,7 +433,7 @@ function ToolCard({ tool }: { tool: Tool }) {
 
       <div>
         <p className="text-[13px] font-semibold text-gray-900 mb-2">Eksempel-output</p>
-        <pre className="bg-black/90 text-gray-100 text-xs rounded-xl p-4 overflow-x-auto">
+        <pre className="bg-gray-900 text-gray-100 text-xs rounded-xl p-4 overflow-x-auto">
           <code>{tool.example}</code>
         </pre>
       </div>
@@ -460,22 +446,16 @@ export default function Page() {
     <div className="min-h-screen bg-[#F5F5F0]">
       <SiteHeader />
 
-      <section className="px-4 sm:px-6 pt-14 sm:pt-20 pb-10">
+      <section className="px-4 sm:px-6 pt-14 sm:pt-24 pb-10">
         <div className="max-w-4xl mx-auto">
-          <Link
-            href="/docs"
-            className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-primary transition-colors mb-6"
-          >
-            <ArrowLeft className="h-4 w-4" /> Tilbage til docs
+          <Link href="/docs" className="text-sm text-gray-600 hover:text-primary transition-colors mb-6 inline-block">
+            ← Tilbage til docs
           </Link>
-          <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-4">
-            MCP Tools Reference
-          </p>
           <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
-            17 tools til AI-agenter.
+            MCP tools reference
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mb-6">
-            Fuld reference for alle tools eksponeret af qlim8's MCP-server. Tool-navne, beskrivelser og parametre er på engelsk og optimeret til LLM-konsumtion. Alle datoer er ISO 8601 UTC. Alle CO2e-værdier er i kilogram (kg) medmindre andet er noteret.
+            Fuld reference for alle 17 tools eksponeret af qlim8's MCP-server. Tool-navne, beskrivelser og parametre er på engelsk og optimeret til LLM-konsumtion. Alle datoer er ISO 8601 UTC. Alle CO2e-værdier er i kilogram (kg) medmindre andet er noteret.
           </p>
           <p className="text-sm text-gray-600">
             For setup og forbindelses-eksempler, se{" "}
@@ -487,25 +467,23 @@ export default function Page() {
       </section>
 
       <section className="px-4 sm:px-6 pb-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-7">
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">Indholdsfortegnelse</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
-              {LAYERS.map((L) => (
-                <div key={L.n}>
-                  <p className="font-semibold text-gray-900 text-sm mt-2 mb-1.5">{L.title}</p>
-                  <ul className="space-y-1">
-                    {TOOLS.filter((t) => t.layer === L.n).map((t) => (
-                      <li key={t.name}>
-                        <a href={`#${t.name}`} className="text-[13px] font-mono text-primary hover:underline">
-                          {t.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+        <div className="max-w-4xl mx-auto border-t border-gray-200 pt-10">
+          <p className="font-semibold text-gray-900 mb-4">Indholdsfortegnelse</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1.5">
+            {LAYERS.map((L) => (
+              <div key={L.n}>
+                <p className="font-semibold text-gray-900 text-sm mt-3 mb-1.5">{L.title}</p>
+                <ul className="space-y-1">
+                  {TOOLS.filter((t) => t.layer === L.n).map((t) => (
+                    <li key={t.name}>
+                      <a href={`#${t.name}`} className="text-[13px] font-mono text-primary hover:underline">
+                        {t.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -529,18 +507,14 @@ export default function Page() {
           ))}
 
           <div className="bg-gray-900 text-gray-100 rounded-2xl p-8 sm:p-12">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight text-white">
               Foretrækker du REST?
             </h2>
-            <p className="text-gray-300 text-[15px] sm:text-base leading-relaxed mb-6">
+            <p className="text-gray-300 text-base leading-relaxed mb-6 max-w-2xl">
               Hvert MCP-tool har et tilsvarende REST-endpoint under <code className="text-[13px] bg-white/10 px-1.5 py-0.5 rounded">/api/v1</code>. Samme auth, samme rate-limits.
             </p>
-            <Link
-              href="/docs/api-reference"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold text-sm hover:bg-gray-100 transition-colors"
-            >
-              REST API endpoints
-              <ArrowRight className="h-4 w-4" />
+            <Link href="/docs/api-reference" className="font-semibold text-white hover:underline text-sm">
+              REST API endpoints →
             </Link>
           </div>
         </div>
