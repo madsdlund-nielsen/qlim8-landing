@@ -33,12 +33,16 @@ export default async function ArticlePage({ params }: Props) {
   const article = articles.find((a) => a.slug === slug)
   if (!article) notFound()
 
+  const url = `https://qlim8.com/blog/${article.slug}`
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: article.title,
     description: article.description,
+    image: ['https://qlim8.com/opengraph.jpg'],
     datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
     author: {
       '@type': 'Organization',
       name: 'qlim8 ApS',
@@ -51,9 +55,20 @@ export default async function ArticlePage({ params }: Props) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://qlim8.com/blog/${article.slug}`,
+      '@id': url,
     },
     articleSection: article.category,
+    inLanguage: 'da-DK',
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'qlim8', item: 'https://qlim8.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://qlim8.com/blog' },
+      { '@type': 'ListItem', position: 3, name: article.title, item: url },
+    ],
   }
 
   return (
@@ -61,6 +76,10 @@ export default async function ArticlePage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <ArticleTemplate article={article} />
     </>
