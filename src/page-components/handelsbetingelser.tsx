@@ -21,7 +21,7 @@ export default function Handelsbetingelser() {
         <div className="prose prose-gray max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-lg prose-h3:mt-7 prose-h3:mb-2 prose-p:leading-relaxed prose-p:text-[15px] prose-li:text-[15px] prose-li:my-1 prose-ul:my-3 prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
 
           <h2>1. Indledning og aftalegrundlag</h2>
-          <p>1.1 Disse handelsbetingelser ("Betingelserne") regulerer aftalen mellem qlim8 ApS, CVR-nr. DK46033736, <span className="text-gray-500">[UDFYLDES INDEN GO-LIVE — adresse, postnr. og by]</span> ("Leverandøren") og den erhvervsdrivende kunde ("Kunden"), der tegner abonnement på Leverandørens ESG-platform ("Tjenesten").</p>
+          <p>1.1 Disse handelsbetingelser ("Betingelserne") regulerer aftalen mellem qlim8 ApS, CVR-nr. DK46033736, <span className="text-gray-500">Stenløkkevej 12, 5450</span> ("Leverandøren") og den erhvervsdrivende kunde ("Kunden"), der tegner abonnement på Leverandørens ESG-platform ("Tjenesten").</p>
           <p>1.2 Betingelserne gælder, uanset om Kunden bestiller via Leverandørens hjemmeside, ved underskrift af ordrebekræftelse eller på baggrund af et særskilt tilbud.</p>
           <p>1.3 Tjenesten udbydes alene til erhvervsdrivende. Forbrugerbeskyttelseslovgivningen, herunder fortrydelsesretten efter forbrugeraftaleloven, finder ikke anvendelse.</p>
           <p>1.4 Kundens egne indkøbsbetingelser finder ikke anvendelse, medmindre Leverandøren skriftligt har accepteret dem.</p>
@@ -56,8 +56,8 @@ export default function Handelsbetingelser() {
           <p>6.4 Leverandøren kan én gang årligt regulere priserne med et varsel på 60 dage. Prisreguleringer ud over nettoprisindekset giver Kunden ret til at opsige aftalen med virkning fra reguleringens ikrafttræden.</p>
 
           <h2>7. Abonnementsperiode og opsigelse</h2>
-          <p>7.1 Den indledende Abonnementsperiode er 12 måneder, medmindre andet fremgår af Ordrebekræftelsen. Aftalen forlænges automatisk med 12 måneder ad gangen, medmindre den opsiges skriftligt med 3 måneders varsel til udløbet.</p>
-          <p>7.2 Opsigelse skal ske skriftligt til Leverandørens kontakt-e-mail.</p>
+          <p>7.1 Den indledende Abonnementsperiode er 1 eller 12 måneder (Efter kundens valg), medmindre andet fremgår af Ordrebekræftelsen. Aftalen forlænges automatisk med samme frekvens som ved oprettelse, medmindre den opsiges enten skriftligt med 3 måneders varsel til udløbet af igangværende periode eller øjeblikkeligt via selvbetjening på der findes på Tjenesten.</p>
+          <p>7.2 Opsigelse skal ske skriftligt til Leverandørens kontakt-e-mail der til enhver tid kan findes på Leverandørens hjemmeside www.qlim8.com, eller via selvbetjening på Tjenesten.</p>
           <p>7.3 Leverandøren kan opsige aftalen med samme varsel. Ved Kundens væsentlige misligholdelse kan Leverandøren ophæve aftalen uden varsel.</p>
           <p>7.4 Ved aftalens ophør udløber Kundens brugsret. Kunden har i en periode på 30 dage efter ophør adgang til at eksportere Kundedata i et standardformat. Herefter sletter Leverandøren Kundedata, medmindre opbevaring følger af lovgivning.</p>
 
@@ -66,7 +66,7 @@ export default function Handelsbetingelser() {
           <p>8.2 Kunden indestår for, at Kundens brug af Tjenesten ikke krænker tredjemands rettigheder eller gældende lovgivning, herunder konkurrencelovgivning og databeskyttelseslovgivning.</p>
           <p>8.3 Kunden skal opretholde rimelige tekniske og organisatoriske foranstaltninger for at sikre Brugernes login og bør straks underrette Leverandøren ved mistanke om uautoriseret adgang.</p>
 
-          <h2>9. Service level og support</h2>
+          <h2>9. Service niveau og support</h2>
           <p>9.1 Leverandøren tilstræber en oppetid på 99,5 % målt månedligt, eksklusive planlagt vedligehold.</p>
           <p>9.2 Planlagt vedligehold varsles så vidt muligt mindst 48 timer i forvejen og lægges normalt uden for almindelig kontortid.</p>
           <p>9.3 Support ydes via e-mail på hverdage kl. 09-16 dansk tid. Svartider og prioritering fremgår af en eventuel SLA-bilag.</p>
@@ -106,10 +106,10 @@ export default function Handelsbetingelser() {
 
           <h2>17. Lovvalg og værneting</h2>
           <p>17.1 Aftalen er undergivet dansk ret med undtagelse af regler, der medfører anvendelse af andet lands ret.</p>
-          <p>17.2 Tvister, der ikke kan løses i mindelighed, skal afgøres ved <span className="text-gray-500">[UDFYLDES INDEN GO-LIVE — værneting]</span> som første instans.</p>
+          <p>17.2 Tvister, der ikke kan løses i mindelighed, skal afgøres ved <span className="text-gray-500">Retten i Odense</span> som første instans.</p>
 
           <p className="text-xs text-gray-500 pt-8 border-t border-gray-200 mt-12">
-            Kontakt: qlim8 ApS · CVR DK46033736 · <span className="text-gray-500">[UDFYLDES INDEN GO-LIVE — adresse]</span> · <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a> · <a href="tel:+4593901384">+45 93 90 13 84</a>
+            Kontakt: qlim8 ApS · CVR DK46033736 · <span className="text-gray-500">Stenløkkevej 12, 5450</span> · <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a> · <a href="tel:+4593901384">+45 93 90 13 84</a>
           </p>
         </div>
       </article>
