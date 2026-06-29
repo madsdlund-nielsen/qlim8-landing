@@ -13,6 +13,6 @@ These are **synced copies**. The canonical, always-current architecture docs liv
 [**qlim8-app**](https://github.com/madsdlund-nielsen/qlim8-app/tree/main/docs) repository
 (`docs/{en,da}/architecture/`). Last synced: 2026-06-29.
 
-> Note: the system-context and landing diagrams flag a known gap — the landing newsletter form
-> POSTs to a relative `/api/newsletter/signup` that has no handler/proxy on the landing side, so
-> it does not reach the app. See §5 and §8 of the architecture doc.
+> Note: the newsletter signup bridge was fixed in this change — the landing forms now POST to the
+> absolute app URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) and reach the app's
+> `/api/newsletter/signup` handler. See §5 and §8 of the architecture doc.

@@ -467,30 +467,25 @@ flowchart LR
   pages --- i18n
   pages --- content
   pages -.-> ga
-  cta -->|"HTTPS anchor — works"| appauth
-  checkout -->|"absolute NEXT_PUBLIC_API_URL — works"| appcheckout --> stripe
-  nlform -.->|"relative /api/newsletter/signup<br/>NO landing handler/proxy — dead-ends"| appnews
-
-  linkStyle 7 stroke:#dc2626,stroke-width:2px;
+  cta -->|"HTTPS anchor"| appauth
+  checkout -->|"absolute NEXT_PUBLIC_API_URL"| appcheckout --> stripe
+  nlform -->|"absolute NEXT_PUBLIC_API_URL (name + email)"| appnews
 
   classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
   classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
-  classDef issue fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-dasharray:4 3;
   class visitor persona;
-  class pages,i18n,content,checkout,cta,appauth,appcheckout,appnews internal;
+  class pages,i18n,content,checkout,cta,nlform,appauth,appcheckout,appnews internal;
   class ga,stripe external;
-  class nlform issue;
 ```
 
 _Eksporter: [SVG](../../diagrams/svg/06-landing-bridges.svg) · [PNG](../../diagrams/png/06-landing-bridges.png) · [Mermaid](../../diagrams/mmd/06-landing-bridges.mmd) · [Excalidraw](../../diagrams/excalidraw/06-landing-bridges.excalidraw)_
 
-> ⚠️ **Kendt hul (rød kant).** `NewsletterForm.tsx` POST'er til en **relativ**
-> `/api/newsletter/signup`. Landing-sitet har ingen Next.js API-rute, og dets `nginx.conf`
-> proxy'er alt til Next-containeren — der er ingen `/api`-rewrite til app'en — så requestet
-> rammer `qlim8.com/api/newsletter/signup` og giver 404. Pricing-checkout bruger derimod korrekt
-> den **absolutte** `NEXT_PUBLIC_API_URL` (`app.qlim8.com`). Dokumenteret her, ikke stille rettet.
-> Se note 1 i §7.
+> ✅ **Rettet.** `NewsletterForm.tsx` og `NewsletterSignupDialog.tsx` POST'er nu til den
+> **absolutte** app-URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) — samme mønster som
+> pricing-checkout — så requestet rammer app'ens `/api/newsletter/signup`-handler (CORS tillader
+> allerede `qlim8.com`-origin). Den email-only dialog sender nu også det påkrævede `name`.
+> Tidligere POST'ede den til en relativ sti, der endte blindt i Next-serveren. Se note 1 i §8.
 
 Mappen `legacy/` i landing-repoet er en backup fra før omskrivningen og er bevidst udeladt.
 
@@ -690,10 +685,10 @@ _Eksporter: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagr
 
 ## 8. Arkitektur-noter & kendte huller
 
-1. **Nyhedsbrev-broen er brudt (kendt hul).** Landing POST'er til en relativ
-   `/api/newsletter/signup` uden handler på landing-siden, uden Next-rewrite og uden nginx
-   `/api`-proxy → den når aldrig app'en. Det tilsigtede mål er app'ens `/api/newsletter`-handler
-   (brug en absolut `NEXT_PUBLIC_API_URL` ligesom checkout gør, eller tilføj en rewrite/proxy).
+1. **Nyhedsbrev-broen — rettet.** Landing-formularerne POST'er nu til den **absolutte** app-URL
+   (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) og rammer app'ens `/api/newsletter/signup`-handler;
+   den email-only dialog sender nu også det påkrævede `name`. (Tidligere endte en relativ
+   `/api/newsletter/signup` blindt i Next-serveren — ingen handler, ingen `/api`-proxy.)
 2. **Én proces.** Statisk SPA-servering, alle fire API-flader, alle workere og Playwright-poolen
    lever i én PM2 fork-instans. Der er ingen separat worker-/render-service.
 3. **pg-boss er ikke separat infrastruktur.** Den kører i app'ens PostgreSQL under `pgboss`-skemaet.

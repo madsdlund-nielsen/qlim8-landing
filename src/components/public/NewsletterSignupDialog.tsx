@@ -20,10 +20,14 @@ export function NewsletterSignupDialog() {
     setLoading(true)
     setMessage(null)
     try {
-      const res = await fetch('/api/newsletter/signup', {
+      // The newsletter endpoint lives on the app, not on this landing site — use an
+      // absolute URL (same pattern as the pricing checkout). The app requires a name,
+      // but this dialog only collects an email, so derive a display name from it.
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://app.qlim8.com'
+      const res = await fetch(`${API_BASE}/api/newsletter/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ name: email.split('@')[0], email }),
       })
       const data = await res.json()
       if (res.ok && data.success) {

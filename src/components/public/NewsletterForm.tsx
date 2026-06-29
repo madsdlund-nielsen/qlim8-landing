@@ -13,7 +13,11 @@ export function NewsletterForm() {
     setLoading(true)
     setMessage(null)
     try {
-      const res = await fetch('/api/newsletter/signup', {
+      // The newsletter endpoint lives on the app, not on this landing site — use an
+      // absolute URL (same pattern as the pricing checkout). A relative path would
+      // 404 against the Next server, which has no /api routes.
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://app.qlim8.com'
+      const res = await fetch(`${API_BASE}/api/newsletter/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),

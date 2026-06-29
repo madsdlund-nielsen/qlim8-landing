@@ -1,7 +1,6 @@
 %% qlim8 — Landing architecture & bridges to the app (Diagram 6).
-%% The red dashed edge is a KNOWN GAP: the newsletter form POSTs to a relative
-%% /api/newsletter/signup, but landing has no API route / nginx /api proxy, so it
-%% dead-ends at the Next server (404). Checkout + CTA use absolute app URLs and work.
+%% All three bridges use absolute app URLs and work: signup/login CTAs, pricing
+%% checkout, and the newsletter form (-> app /api/newsletter/signup with name + email).
 flowchart LR
   visitor["Marketing visitor"]
 
@@ -26,17 +25,13 @@ flowchart LR
   pages --- i18n
   pages --- content
   pages -.-> ga
-  cta -->|"HTTPS anchor — works"| appauth
-  checkout -->|"absolute NEXT_PUBLIC_API_URL — works"| appcheckout --> stripe
-  nlform -.->|"relative /api/newsletter/signup<br/>NO landing handler/proxy — dead-ends"| appnews
-
-  linkStyle 7 stroke:#dc2626,stroke-width:2px;
+  cta -->|"HTTPS anchor"| appauth
+  checkout -->|"absolute NEXT_PUBLIC_API_URL"| appcheckout --> stripe
+  nlform -->|"absolute NEXT_PUBLIC_API_URL (name + email)"| appnews
 
   classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
   classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
-  classDef issue fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-dasharray:4 3;
   class visitor persona;
-  class pages,i18n,content,checkout,cta,appauth,appcheckout,appnews internal;
+  class pages,i18n,content,checkout,cta,nlform,appauth,appcheckout,appnews internal;
   class ga,stripe external;
-  class nlform issue;
