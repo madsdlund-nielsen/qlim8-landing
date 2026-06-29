@@ -1,6 +1,7 @@
 "use client";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { NewsletterSignupDialog } from "@/components/public/NewsletterSignupDialog";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import {
@@ -160,12 +161,7 @@ export default function Landing() {
               Prøv platformen gratis
               <ArrowRight className="h-4 w-4" />
             </a>
-            <a
-              href="/priser"
-              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white border border-gray-200 text-gray-900 font-semibold text-base hover:border-gray-300 transition-colors"
-            >
-              Se priser
-            </a>
+            <NewsletterSignupDialog />
           </div>
           <p className="text-sm text-gray-500 mb-14">
             Eksempeldata · Ingen kreditkort · Forpligt dig først ved tilkobling
