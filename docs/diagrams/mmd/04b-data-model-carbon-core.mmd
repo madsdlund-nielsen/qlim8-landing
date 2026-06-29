@@ -1,0 +1,50 @@
+%% qlim8 — Carbon accounting core (Diagram 4b, detailed ER). Columns trimmed to keys.
+erDiagram
+  tenants ||--o{ dataSources : "owns"
+  tenants ||--o{ activities : "owns"
+  dataSources ||--o{ activities : "ingests"
+  activities ||--o{ activitySplits : "split into"
+  activitySplits }o--|| emissionCategories : "categorized as"
+  activitySplits ||--o| emissionEntries : "produces"
+  emissionCategories ||--o{ emissionFactors : "activity factor"
+  emissionCategories ||--o{ countryEmissionFactors : "spend factor (EXIOBASE)"
+  activitySplits }o--o| pcfRecords : "matched PCF (tier 1)"
+  emissionEntries ||--o{ emissionEntryCategoryChanges : "audit trail"
+
+  tenants {
+    uuid id PK
+    string subscriptionTier
+    string country
+  }
+  dataSources {
+    uuid id PK
+    uuid tenantId FK
+    string type
+    string syncStatus
+  }
+  activities {
+    uuid id PK
+    uuid tenantId FK
+    uuid dataSourceId FK
+    numeric amount
+    string currency
+  }
+  activitySplits {
+    uuid id PK
+    uuid activityId FK
+    uuid categoryId FK
+    uuid pcfRecordId FK
+    string validationStatus
+  }
+  emissionEntries {
+    uuid id PK
+    uuid splitId FK
+    string scope
+    numeric co2eKg
+    string method
+  }
+  emissionCategories {
+    uuid id PK
+    string scope
+    string exiobaseCode
+  }

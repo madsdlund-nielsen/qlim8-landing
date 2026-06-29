@@ -1,0 +1,42 @@
+%% qlim8 — Landing architecture & bridges to the app (Diagram 6).
+%% The red dashed edge is a KNOWN GAP: the newsletter form POSTs to a relative
+%% /api/newsletter/signup, but landing has no API route / nginx /api proxy, so it
+%% dead-ends at the Next server (404). Checkout + CTA use absolute app URLs and work.
+flowchart LR
+  visitor["Marketing visitor"]
+
+  subgraph landing["qlim8 Landing — Next.js 15 (standalone)"]
+    pages["Pages: / · /priser · /blog + [slug]<br/>/api + /docs/* · /kontakt · /om-os<br/>/metodologi · /karriere · legal"]
+    i18n["client-side i18n (8 langs)"]
+    content["hardcoded TS articles (no CMS)"]
+    ga["Google Analytics 4 (cookie consent)"]
+    nlform["Newsletter form"]
+    checkout["Pricing checkout"]
+    cta["Signup / login CTAs"]
+  end
+
+  subgraph app["qlim8 App — app.qlim8.com"]
+    appauth["/auth"]
+    appcheckout["/api/stripe/checkout-public"]
+    appnews["/api/newsletter/signup (handler)"]
+  end
+  stripe["Stripe Checkout"]
+
+  visitor --> pages
+  pages --- i18n
+  pages --- content
+  pages -.-> ga
+  cta -->|"HTTPS anchor — works"| appauth
+  checkout -->|"absolute NEXT_PUBLIC_API_URL — works"| appcheckout --> stripe
+  nlform -.->|"relative /api/newsletter/signup<br/>NO landing handler/proxy — dead-ends"| appnews
+
+  linkStyle 7 stroke:#dc2626,stroke-width:2px;
+
+  classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
+  classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
+  classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
+  classDef issue fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-dasharray:4 3;
+  class visitor persona;
+  class pages,i18n,content,checkout,cta,appauth,appcheckout,appnews internal;
+  class ga,stripe external;
+  class nlform issue;

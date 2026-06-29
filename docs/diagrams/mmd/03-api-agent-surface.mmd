@@ -1,0 +1,50 @@
+%% qlim8 — Public API + AI-agent integration surface (Diagram 3).
+%% qlim8 is its OWN OAuth 2.1 IdP. v1 and MCP share auth + rate limiting.
+flowchart LR
+  dev["Developer<br/>(API key holder)"]
+  connector["AI connector<br/>Claude Cowork / ChatGPT"]
+
+  subgraph as["OAuth 2.1 Authorization Server — qlim8 is its own IdP"]
+    disc["/.well-known/<br/>oauth-authorization-server"]
+    reg["/oauth/register (DCR)"]
+    authz["/oauth/authorize<br/>+ consent screen (PKCE)"]
+    token["/oauth/token · /oauth/revoke"]
+  end
+
+  subgraph shared["Shared gate"]
+    bearer["resolveBearerAuth"]
+    rl["rate limit"]
+    scopes["scopes: read · write · audit_pack"]
+  end
+
+  subgraph v1["Public API v1 — /api/v1/*"]
+    v1r["emissions · activities · factors · suppliers<br/>targets · reports(async) · webhooks · quota<br/>data-sources · scenarios · pcf · audit · lineage"]
+  end
+
+  subgraph mcp["MCP server — /api/mcp"]
+    mcptools["tools: emissions, activities, reports,<br/>suppliers, targets, factors, webhooks,<br/>dataSources, quota, categories, scenarios"]
+    mcpsess["in-memory sessions<br/>24h TTL — lost on restart"]
+  end
+
+  pg[("PostgreSQL — durable<br/>apiKeys · apiIdempotencyKeys<br/>oauthClients · oauthAccessTokens<br/>oauthRefreshTokens · oauthAuthorizationCodes")]
+
+  dev -->|"Bearer API key"| bearer
+  connector -->|discover| disc
+  connector --> reg --> authz --> token
+  token -->|"opaque tokens (sha256)"| pg
+  connector -->|"Bearer token"| bearer
+  bearer --> rl --> scopes
+  scopes --> v1r
+  scopes --> mcptools
+  v1r --> pg
+  mcptools --> pg
+  mcptools -. session state .-> mcpsess
+
+  classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
+  classDef store fill:#dcfce7,stroke:#16a34a,color:#14532d;
+  classDef security fill:#ffedd5,stroke:#ea580c,color:#7c2d12;
+  classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
+  class dev,connector persona;
+  class disc,reg,authz,token,bearer,rl,scopes security;
+  class v1r,mcptools,mcpsess internal;
+  class pg store;
