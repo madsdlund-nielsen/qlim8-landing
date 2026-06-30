@@ -41,12 +41,21 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
 ];
 
-export const HOMEPAGE_FAQ_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: HOMEPAGE_FAQS.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+export type HomepageFaq = { q: string; a: string };
+
+// Build the FAQPage JSON-LD from any FAQ list (bundled defaults or a
+// CMS-published override), so the structured data stays in sync with what's
+// rendered.
+export function buildFaqSchema(faqs: HomepageFaq[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
+export const HOMEPAGE_FAQ_SCHEMA = buildFaqSchema(HOMEPAGE_FAQS);

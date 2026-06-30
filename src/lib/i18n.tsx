@@ -5374,8 +5374,39 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  // CMS copy overrides for the i18n dictionary keys. Authored in the qlim8-app
+  // admin CMS (Marketing copy → "Site-wide strings"), published per language.
+  // Overrides take precedence over the bundled defaults; missing keys fall back.
+  const [overrides, setOverrides] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    // Only da/en are CMS-managed; other languages use the bundled dictionary.
+    if (language !== 'da' && language !== 'en') {
+      setOverrides({});
+      return;
+    }
+    let cancelled = false;
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://app.qlim8.com';
+    fetch(`${apiBase}/api/public/cms/marketing/i18n?language=${language}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data?.copy) return;
+        const flat: Record<string, string> = {};
+        for (const [k, v] of Object.entries(data.copy as Record<string, unknown>)) {
+          if (typeof v === 'string') flat[k] = v;
+        }
+        setOverrides(flat);
+      })
+      .catch(() => {
+        /* keep bundled defaults on any error */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [language]);
+
   const t = (key: string): string => {
-    return translations[language][key] || translations['en'][key] || key;
+    return overrides[key] || translations[language][key] || translations['en'][key] || key;
   };
 
   return (

@@ -2,7 +2,16 @@ import Link from 'next/link'
 import { SiteHeader } from '@/components/public/SiteHeader'
 import { SiteFooter } from '@/components/public/SiteFooter'
 import { NewsletterForm } from '@/components/public/NewsletterForm'
-import { articles } from '@/content/articles'
+import { articles as bundledArticles } from '@/content/articles'
+
+export type VidenArticle = {
+  slug: string
+  title: string
+  description: string
+  category: string
+  publishedAt: string
+  readingTime: number
+}
 
 function formatDate(iso: string) {
   return new Intl.DateTimeFormat('da-DK', {
@@ -12,7 +21,9 @@ function formatDate(iso: string) {
   }).format(new Date(iso))
 }
 
-export default function Viden() {
+// `articles` defaults to the bundled list; the blog index page passes a list
+// merged with CMS-published articles (DB wins by slug).
+export default function Viden({ articles = bundledArticles }: { articles?: VidenArticle[] }) {
   return (
     <div className="min-h-screen bg-[#F5F5F0]">
       <SiteHeader />
