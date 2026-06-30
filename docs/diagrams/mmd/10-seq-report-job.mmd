@@ -1,0 +1,24 @@
+%% qlim8 — Async v1 report job via pg-boss (Diagram 10).
+%% Exercises pg-boss + Playwright browser pool + S3 + outbound webhooks in one flow.
+sequenceDiagram
+  autonumber
+  participant C as API client / agent
+  participant API as /api/v1/reports
+  participant Q as pg-boss (v1.reports.render)
+  participant R as report worker (in-process)
+  participant POOL as Playwright browser pool
+  participant S3 as Hetzner S3
+  participant WHQ as pg-boss (v1.webhooks.deliver)
+  participant EP as Customer webhook endpoint
+
+  C->>API: POST /api/v1/reports (Bearer)
+  API->>Q: enqueue job
+  API-->>C: 202 + job id
+  Q->>R: dispatch
+  R->>POOL: render React sections -> PDF/XLSX
+  POOL-->>R: rendered file
+  R->>S3: store report (reports bucket)
+  R->>WHQ: enqueue report.completed
+  WHQ->>EP: POST signed webhook (HMAC)
+  C->>API: GET /api/v1/reports/{id} (poll)
+  API-->>C: completed + download URL

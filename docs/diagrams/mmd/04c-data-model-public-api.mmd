@@ -1,0 +1,43 @@
+%% qlim8 — Public API & OAuth storage (Diagram 4c, detailed ER). Columns trimmed to keys.
+erDiagram
+  tenants ||--o{ apiKeys : "tenant keys"
+  users ||--o{ apiKeys : "third-party keys"
+  tenants ||--o{ webhooks : "subscribes"
+  webhooks ||--o{ webhookDeliveries : "delivery attempts"
+  apiKeys ||--o{ apiIdempotencyKeys : "scopes replays"
+  oauthClients ||--o{ oauthAuthorizationCodes : "issues"
+  oauthClients ||--o{ oauthAccessTokens : "issues"
+  oauthClients ||--o{ oauthRefreshTokens : "issues"
+  oauthAccessTokens ||--o| oauthRefreshTokens : "rotates with"
+
+  apiKeys {
+    uuid id PK
+    string environment
+    string type
+    string scopes
+  }
+  webhooks {
+    uuid id PK
+    uuid tenantId FK
+    string signingSecret
+  }
+  webhookDeliveries {
+    uuid id PK
+    uuid webhookId FK
+    string status
+  }
+  oauthClients {
+    uuid id PK
+    string clientId
+    bool dynamicallyRegistered
+  }
+  oauthAccessTokens {
+    uuid id PK
+    string tokenHash
+    string scope
+  }
+  oauthRefreshTokens {
+    uuid id PK
+    string tokenHash
+    bool rotated
+  }

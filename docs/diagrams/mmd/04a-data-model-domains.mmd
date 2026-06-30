@@ -1,0 +1,52 @@
+%% qlim8 — Domain data model: bounded contexts (Diagram 4a).
+%% ~80 tables grouped by domain; representative tables only. Every business row is
+%% tenant-scoped (FK to tenants), so tenants is the hub the whole schema hangs off.
+flowchart TB
+  tenants[("tenants<br/>root — every row scoped here")]
+
+  subgraph auth["Auth & multi-tenancy"]
+    a1["users · departments · sessions<br/>loginHistory · mfaTrustedDevices<br/>mfaRecoveryCodes · passwordResetTokens<br/>emailVerificationCodes · tenantTeamInvitations"]
+  end
+  subgraph carbon["Carbon accounting core"]
+    c1["activities · activitySplits · emissionEntries<br/>emissionEntryCategoryChanges · dataSources<br/>emissionFactors · countryEmissionFactors<br/>emissionCategories · unitConversions<br/>priceIndices · currencyRates · categoryCorrections"]
+  end
+  subgraph reduce["Reduction & scenarios"]
+    r1["reductionGoals · reductionTargets<br/>scenarios · tiltag · activityOntology<br/>auditLog · dismissedRecommendations"]
+  end
+  subgraph rep["Reporting & compliance"]
+    rp1["generatedReports · apiReportJobs<br/>reportAttestations"]
+  end
+  subgraph tp["Third-party consultant"]
+    t1["thirdPartyAccessGrants<br/>ledgerCommentThreads · ledgerComments<br/>ledgerCommentReads"]
+  end
+  subgraph scope3["Supplier / Scope 3"]
+    sc1["supplierConnections"]
+  end
+  subgraph bill["Billing & quota"]
+    b1["invoiceBatches · invoiceQueueItems<br/>quota periods · quota purchases"]
+  end
+  subgraph pcf["PCF / EPD"]
+    p1["pcfDocuments · pcfExtractionDrafts<br/>pcfRecords"]
+  end
+  subgraph notif["Notifications & audit"]
+    n1["notifications · auditEvents · announcements<br/>userAnnouncementSeen · userVersionSeen"]
+  end
+  subgraph api["Public API & OAuth"]
+    ap1["apiKeys · apiIdempotencyKeys<br/>webhooks · webhookDeliveries<br/>oauthClients · oauthAccessTokens<br/>oauthRefreshTokens · oauthAuthorizationCodes"]
+  end
+
+  tenants --- auth
+  tenants --- carbon
+  tenants --- reduce
+  tenants --- rep
+  tenants --- tp
+  tenants --- scope3
+  tenants --- bill
+  tenants --- pcf
+  tenants --- notif
+  tenants --- api
+
+  classDef store fill:#dcfce7,stroke:#16a34a,color:#14532d;
+  classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
+  class tenants store;
+  class a1,c1,r1,rp1,t1,sc1,b1,p1,n1,ap1 internal;

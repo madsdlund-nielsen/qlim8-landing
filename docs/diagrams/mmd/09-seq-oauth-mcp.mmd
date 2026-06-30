@@ -1,0 +1,24 @@
+%% qlim8 — OAuth 2.1 / MCP connector auth (Diagram 9). qlim8 is its own IdP.
+sequenceDiagram
+  autonumber
+  participant C as AI connector
+  participant AS as qlim8 OAuth AS
+  actor U as User
+  participant MCP as /api/mcp
+  participant DB as PostgreSQL
+
+  C->>AS: GET /.well-known/oauth-authorization-server
+  AS-->>C: metadata
+  C->>AS: POST /oauth/register (DCR)
+  AS-->>C: client_id
+  C->>AS: GET /oauth/authorize (PKCE challenge)
+  AS->>U: login (Passport) + consent screen
+  U-->>AS: approve
+  AS-->>C: authorization code
+  C->>AS: POST /oauth/token (code + verifier)
+  AS->>DB: store opaque access/refresh (sha256)
+  AS-->>C: access + refresh tokens
+  C->>MCP: initialize (Authorization: Bearer)
+  Note over MCP: resolveBearerAuth + shared rate limit<br/>24h in-memory session (lost on restart)
+  MCP->>DB: tool calls (scope-checked)
+  MCP-->>C: results

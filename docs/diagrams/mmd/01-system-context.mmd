@@ -1,0 +1,55 @@
+%% qlim8 — System Context (Diagram 1). Doubles as the single-page overview.
+%% Node labels are English/technical; bilingual prose lives in the surrounding doc.
+%% Legend: purple=persona, blue=internal, grey dashed=external SaaS.
+flowchart LR
+  user["SME user<br/>(carbon accounting)"]
+  consult["Third-party consultant<br/>(multi-client portfolio)"]
+  admin["Super-admin"]
+  dev["Developer<br/>(API key holder)"]
+  agent["AI agent connector<br/>(Claude Cowork / ChatGPT)"]
+  visitor["Marketing visitor"]
+
+  subgraph qlim8["qlim8 product"]
+    app["qlim8 App — app.qlim8.com<br/>React SPA + Express (single process)"]
+    landing["qlim8 Landing — qlim8.com<br/>Next.js marketing site"]
+    devportal["Developer portal — developers.qlim8.com<br/>static OpenAPI docs"]
+  end
+
+  subgraph ext["External services"]
+    stripe["Stripe<br/>billing + webhooks"]
+    acct["Accounting systems<br/>Dinero/Visma · e-conomic · Xero · Billy"]
+    elo["Eloverblik / Energinet<br/>electricity metering"]
+    resend["Resend<br/>transactional email"]
+    ord["Ordbogen.ai<br/>LLM (invoice extraction)"]
+    posthog["PostHog EU<br/>product analytics"]
+    s3["Hetzner S3<br/>object storage"]
+    refdata["Reference data<br/>ECB FX · Eurostat/DST · CVR registry"]
+    ga["Google Analytics 4<br/>(landing only)"]
+  end
+
+  visitor --> landing
+  user --> app
+  consult --> app
+  admin --> app
+  dev -->|"REST /api/v1 (Bearer)"| app
+  agent -->|"MCP + OAuth 2.1"| app
+
+  landing -->|"signup / login CTA, checkout (HTTPS)"| app
+  landing -.-> ga
+
+  app --> stripe
+  app --> acct
+  app --> elo
+  app --> resend
+  app --> ord
+  app --> posthog
+  app --> s3
+  app --> refdata
+  app -. publishes OpenAPI .-> devportal
+
+  classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
+  classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
+  classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
+  class user,consult,admin,dev,agent,visitor persona;
+  class app,landing,devportal internal;
+  class stripe,acct,elo,resend,ord,posthog,s3,refdata,ga external;

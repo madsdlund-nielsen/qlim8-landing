@@ -1,0 +1,67 @@
+%% qlim8 — App runtime / container architecture (Diagram 2).
+%% IMPORTANT: everything inside "Express process" runs in ONE PM2 fork instance on
+%% port 5000 — SPA serving, all four route surfaces, AND every background worker.
+flowchart TB
+  browser["Browser — React 19 SPA<br/>Wouter · TanStack Query · PostHog JS"]
+  posthog["PostHog EU"]
+
+  subgraph nginxbox["nginx (app host) — TLS 443"]
+    nginx["location / &rarr; 127.0.0.1:5000<br/>/ingest/ + /ingest/static/ &rarr; PostHog<br/>WebSocket upgrade"]
+  end
+
+  subgraph proc["Express process — PM2 fork, single OS process, :5000"]
+    direction TB
+    subgraph mw["Middleware chain (in order)"]
+      direction TB
+      cors["CORS"] --> helmet["helmet / CSP / HSTS"] --> noindex["noindex"]
+      noindex --> stripehook["Stripe webhook<br/>express.raw — pre-json"]
+      stripehook --> json["express.json (+rawBody) · urlencoded"]
+      json --> logger["request logger (PII-redacted)"]
+      logger --> sess["session + Passport<br/>connect-pg-simple"]
+      sess --> tenant["tenant context<br/>+ third-party mutation guard"]
+    end
+
+    subgraph surfaces["Route surfaces"]
+      legacy["Legacy cookie API<br/>/api/* (~30 groups)"]
+      v1["Public API v1<br/>/api/v1/* — Bearer, RFC7807"]
+      mcp["MCP server<br/>/api/mcp — Streamable HTTP"]
+      oauth["OAuth 2.1 AS<br/>/oauth/* + /.well-known"]
+    end
+
+    subgraph svc["Core services"]
+      calc["calculationEngine<br/>3-tier, EXIOBASE"]
+      ai["aiService / invoiceWorker<br/>Ordbogen LLM"]
+      report["report generator<br/>jspdf + Playwright/React"]
+      email["emailService (Resend)"]
+      supplier["supplierShareService"]
+    end
+
+    subgraph jobs["Background jobs (in-process)"]
+      pgboss["pg-boss workers<br/>reports.render · webhooks.deliver · uploads.spreadsheet"]
+      cron["node-cron<br/>newsletter · tp-expiry · quota · eloverblik · login-prune"]
+      pool["Playwright browser pool"]
+    end
+  end
+
+  pg[("PostgreSQL 16<br/>app schema · pgboss schema · session")]
+  s3[("Hetzner S3<br/>PCF docs · reports")]
+
+  browser -->|HTTPS| nginx
+  nginx --> cors
+  tenant --> surfaces
+  surfaces --> svc
+  svc --> jobs
+  svc --> pg
+  jobs --> pg
+  report --> s3
+  ai --> s3
+  nginx -. first-party proxy .-> posthog
+
+  classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
+  classDef store fill:#dcfce7,stroke:#16a34a,color:#14532d;
+  classDef security fill:#ffedd5,stroke:#ea580c,color:#7c2d12;
+  classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
+  class browser,nginx,legacy,v1,mcp,calc,ai,report,email,supplier,pgboss,cron,pool internal;
+  class oauth,stripehook,sess,tenant security;
+  class pg,s3 store;
+  class posthog external;

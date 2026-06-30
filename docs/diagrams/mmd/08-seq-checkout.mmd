@@ -1,0 +1,21 @@
+%% qlim8 — Pricing checkout bridge: landing -> app -> Stripe (Diagram 8).
+sequenceDiagram
+  autonumber
+  actor V as Visitor (qlim8.com /priser)
+  participant L as Landing (Next.js)
+  participant A as App /api/stripe/checkout-public
+  participant S as Stripe
+  participant WH as App /api/stripe/webhook
+  participant DB as PostgreSQL
+
+  V->>L: choose plan, click subscribe
+  L->>A: POST checkout-public (absolute app URL, no auth)
+  A->>S: create Checkout Session
+  S-->>A: session URL
+  A-->>L: session URL
+  L->>S: redirect browser to Stripe hosted page
+  V->>S: complete payment
+  S->>WH: webhook event (raw body, pre-json)
+  Note over WH: signature verified with STRIPE_WEBHOOK_SECRET<br/>(mounted before express.json)
+  WH->>DB: update tenant / subscription
+  S-->>V: redirect to app.qlim8.com/auth

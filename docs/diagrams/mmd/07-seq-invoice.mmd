@@ -1,0 +1,30 @@
+%% qlim8 — Invoice ingest -> AI -> 3-tier calc -> emission entry (Diagram 7).
+sequenceDiagram
+  autonumber
+  actor U as User (browser)
+  participant N as nginx
+  participant API as Express upload route
+  participant S3 as Hetzner S3
+  participant W as invoiceWorker
+  participant LLM as Ordbogen LLM
+  participant CALC as calculationEngine
+  participant DB as PostgreSQL
+
+  U->>N: Upload invoice (PDF/Excel)
+  N->>API: POST /api/uploads (cookie auth)
+  API->>S3: store document
+  API->>DB: create invoiceBatch / queue item
+  API-->>U: 202 accepted
+  W->>S3: fetch document
+  W->>LLM: extract + classify line items
+  LLM-->>W: fields + category + confidence
+  alt low confidence
+    W->>DB: queue for human review
+  else confident
+    W->>CALC: evaluateCalculationHierarchy()
+    Note over CALC: tier 1 PCF/EPD -> tier 2 activity -> tier 3 spend<br/>(EXIOBASE, currency-deflated, country->DK fallback)
+    CALC-->>W: co2eKg + method + source
+    W->>DB: write activities, activitySplits, emissionEntries
+  end
+  W->>DB: update categoryCorrections (learned)
+  W-->>U: notification (entry ready)
