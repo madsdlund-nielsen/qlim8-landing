@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { HOMEPAGE_FAQS } from "@/content/homepage-faqs";
+import { HOMEPAGE_FAQS, type HomepageFaq } from "@/content/homepage-faqs";
 
 import dashboardImg from "@assets/qlim8-Dashboard_(2)_1775843644408.jpg";
 import kontrolcenterImg from "@assets/Feature_1_Kontrolcenter_1769884331461.jpg";
@@ -139,7 +139,9 @@ const PLANS = [
   },
 ];
 
-export default function Landing() {
+// `faqs` defaults to the bundled list; app/page.tsx passes a CMS-published
+// override (pageKey "homepage.faqs") when one exists.
+export default function Landing({ faqs = HOMEPAGE_FAQS }: { faqs?: HomepageFaq[] }) {
   return (
     <div className="min-h-screen bg-[#F5F5F0] overflow-x-hidden">
       <SiteHeader isHome />
@@ -360,7 +362,7 @@ export default function Landing() {
             </h2>
           </div>
           <Accordion type="single" collapsible defaultValue="item-0" className="border-t border-gray-200">
-            {HOMEPAGE_FAQS.map((f, i) => (
+            {faqs.map((f, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border-b border-gray-200">
                 <AccordionTrigger className="text-left text-base sm:text-lg font-semibold text-gray-900 py-5 hover:no-underline">
                   {f.q}

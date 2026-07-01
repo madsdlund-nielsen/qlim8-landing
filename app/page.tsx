@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Landing from "@/page-components/landing";
-import { HOMEPAGE_FAQ_SCHEMA } from "@/content/homepage-faqs";
+import { HOMEPAGE_FAQS, buildFaqSchema, type HomepageFaq } from "@/content/homepage-faqs";
+import { fetchMarketingCopy } from "@/lib/cms";
+
+// ISR — CMS-published homepage copy refreshes on this cadence (busted instantly
+// by the app's revalidate webhook on publish).
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "qlim8 » ESG uden besværet — klimaregnskab til danske SMV'er fra 250 kr/md",
@@ -76,7 +81,23 @@ const SOFTWARE_SCHEMA = {
   },
 };
 
-export default function Page() {
+// CMS-published homepage FAQ override (pageKey "homepage.faqs"), with a fallback
+// to the bundled list. Validated to the {q,a}[] shape so malformed copy can't
+// break the page or its structured data.
+async function resolveFaqs(): Promise<HomepageFaq[]> {
+  const copy = await fetchMarketingCopy("homepage.faqs", "da");
+  const items = copy?.items;
+  if (
+    Array.isArray(items) &&
+    items.every((i) => i && typeof i.q === "string" && typeof i.a === "string")
+  ) {
+    return items as HomepageFaq[];
+  }
+  return HOMEPAGE_FAQS;
+}
+
+export default async function Page() {
+  const faqs = await resolveFaqs();
   return (
     <>
       <script
@@ -89,9 +110,9 @@ export default function Page() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(HOMEPAGE_FAQ_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqSchema(faqs)) }}
       />
-      <Landing />
+      <Landing faqs={faqs} />
     </>
   );
 }
