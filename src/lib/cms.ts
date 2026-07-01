@@ -10,12 +10,28 @@ export const CMS_API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://app.qlim
 const REVALIDATE_SECONDS = 300;
 
 export interface ArticleSection {
-  type: "lead" | "h2" | "h3" | "h4" | "paragraph" | "list" | "ordered-list" | "callout" | "cta";
+  type:
+    | "lead"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "paragraph"
+    | "list"
+    | "ordered-list"
+    | "callout"
+    | "cta"
+    | "image"
+    | "richtext";
   text?: string;
   items?: string[];
   heading?: string;
   buttonText?: string;
   buttonHref?: string;
+  assetId?: string;
+  url?: string;
+  alt?: string;
+  caption?: string;
+  html?: string;
 }
 
 export interface CmsArticle {
@@ -68,4 +84,14 @@ export async function fetchMarketingCopy(
     ["cms-marketing", `cms-marketing-${pageKey}`],
   );
   return data?.copy ?? {};
+}
+
+/**
+ * Pull a CMS-published image URL out of a marketing-copy map, or undefined if
+ * the key is unset/blank. Callers pass the result (or a bundled `@assets`
+ * fallback) to next/image, so a missing/malformed override never breaks a page.
+ */
+export function cmsImageUrl(copy: Record<string, unknown>, key: string): string | undefined {
+  const v = copy[key];
+  return typeof v === "string" && v.trim().length > 0 ? v : undefined;
 }

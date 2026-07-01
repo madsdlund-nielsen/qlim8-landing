@@ -17,6 +17,8 @@ export type ArticleSection =
   | { type: 'ordered-list';  items: string[] }
   | { type: 'callout';       text: string }
   | { type: 'cta';           heading: string; text: string; buttonText: string; buttonHref: string }
+  | { type: 'image';         assetId?: string; url: string; alt: string; caption?: string }
+  | { type: 'richtext';      html: string }
 
 export type Article = {
   slug:        string

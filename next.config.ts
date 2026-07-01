@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   output: "standalone",
   images: {
     formats: ["image/avif", "image/webp"],
+    // CMS-managed images are served by qlim8-app at /api/cms/assets/:id; allow
+    // next/image to optimize them from the app origin (prod + local dev).
+    remotePatterns: [
+      { protocol: "https", hostname: "app.qlim8.com", pathname: "/api/cms/assets/**" },
+      { protocol: "http", hostname: "localhost", port: "5000", pathname: "/api/cms/assets/**" },
+    ],
   },
   async redirects() {
     return [

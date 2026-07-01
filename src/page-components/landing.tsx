@@ -1,6 +1,5 @@
 "use client";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import { NewsletterSignupDialog } from "@/components/public/NewsletterSignupDialog";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { SiteHeader } from "@/components/public/SiteHeader";
@@ -11,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HOMEPAGE_FAQS, type HomepageFaq } from "@/content/homepage-faqs";
+import { MarketingImage } from "@/components/public/MarketingImage";
 
 import dashboardImg from "@assets/qlim8-Dashboard_(2)_1775843644408.jpg";
 import kontrolcenterImg from "@assets/Feature_1_Kontrolcenter_1769884331461.jpg";
@@ -141,7 +141,20 @@ const PLANS = [
 
 // `faqs` defaults to the bundled list; app/page.tsx passes a CMS-published
 // override (pageKey "homepage.faqs") when one exists.
-export default function Landing({ faqs = HOMEPAGE_FAQS }: { faqs?: HomepageFaq[] }) {
+// Marketing images are CMS-overridable (pageKey "landing.images"); each prop
+// falls back to the bundled @assets import when no override is published.
+export interface LandingImages {
+  hero?: string;
+  features?: (string | undefined)[]; // by FEATURES order
+}
+
+export default function Landing({
+  faqs = HOMEPAGE_FAQS,
+  images = {},
+}: {
+  faqs?: HomepageFaq[];
+  images?: LandingImages;
+}) {
   return (
     <div className="min-h-screen bg-[#F5F5F0] overflow-x-hidden">
       <SiteHeader isHome />
@@ -170,11 +183,10 @@ export default function Landing({ faqs = HOMEPAGE_FAQS }: { faqs?: HomepageFaq[]
           </p>
 
           <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-            <Image
-              src={dashboardImg}
+            <MarketingImage
+              src={images.hero ?? dashboardImg}
               alt="qlim8 dashboard"
               priority
-              placeholder="blur"
               className="w-full h-auto"
             />
           </div>
@@ -210,7 +222,7 @@ export default function Landing({ faqs = HOMEPAGE_FAQS }: { faqs?: HomepageFaq[]
       <section className="py-20 sm:py-28 bg-[#F5F5F0]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="space-y-20 sm:space-y-28">
-            {FEATURES.map((f) => (
+            {FEATURES.map((f, i) => (
               <div
                 key={f.title}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${f.reverse ? "lg:[&>*:first-child]:order-2" : ""}`}
@@ -229,7 +241,7 @@ export default function Landing({ faqs = HOMEPAGE_FAQS }: { faqs?: HomepageFaq[]
                   </ul>
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200">
-                  <Image src={f.image} alt={f.title} placeholder="blur" className="w-full h-auto" />
+                  <MarketingImage src={images.features?.[i] ?? f.image} alt={f.title} className="w-full h-auto" />
                 </div>
               </div>
             ))}

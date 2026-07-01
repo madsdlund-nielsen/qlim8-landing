@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Landing from "@/page-components/landing";
 import { HOMEPAGE_FAQS, buildFaqSchema, type HomepageFaq } from "@/content/homepage-faqs";
-import { fetchMarketingCopy } from "@/lib/cms";
+import { fetchMarketingCopy, cmsImageUrl } from "@/lib/cms";
+import type { LandingImages } from "@/page-components/landing";
 
 // ISR — CMS-published homepage copy refreshes on this cadence (busted instantly
 // by the app's revalidate webhook on publish).
@@ -96,8 +97,20 @@ async function resolveFaqs(): Promise<HomepageFaq[]> {
   return HOMEPAGE_FAQS;
 }
 
+async function resolveLandingImages(): Promise<LandingImages> {
+  const copy = await fetchMarketingCopy("landing.images", "da");
+  return {
+    hero: cmsImageUrl(copy, "hero"),
+    features: [
+      cmsImageUrl(copy, "feature1"),
+      cmsImageUrl(copy, "feature2"),
+      cmsImageUrl(copy, "feature3"),
+    ],
+  };
+}
+
 export default async function Page() {
-  const faqs = await resolveFaqs();
+  const [faqs, images] = await Promise.all([resolveFaqs(), resolveLandingImages()]);
   return (
     <>
       <script
@@ -112,7 +125,7 @@ export default async function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqSchema(faqs)) }}
       />
-      <Landing faqs={faqs} />
+      <Landing faqs={faqs} images={images} />
     </>
   );
 }
