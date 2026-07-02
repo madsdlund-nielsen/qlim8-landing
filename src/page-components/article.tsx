@@ -79,6 +79,25 @@ function Section({ section }: { section: ArticleSection }) {
           </a>
         </div>
       )
+    case 'image':
+      return (
+        <figure className="my-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={section.url} alt={section.alt} className="w-full h-auto rounded-lg" />
+          {section.caption && (
+            <figcaption className="text-sm text-gray-500 mt-2 text-center">{section.caption}</figcaption>
+          )}
+        </figure>
+      )
+    case 'richtext':
+      // Sanitized on write by the app (server/cms/sanitizeRichText.ts); only
+      // super-admins author, so the stored HTML is trusted here.
+      return (
+        <div
+          className="prose prose-gray max-w-none my-5 text-[17px]"
+          dangerouslySetInnerHTML={{ __html: section.html }}
+        />
+      )
     default:
       return null
   }

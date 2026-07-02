@@ -4,7 +4,13 @@ import { MobileStickyCTA } from "@/components/ui/mobile-sticky-cta";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 
-export default function About() {
+// `founderImage` is CMS-overridable (pageKey "about.images", key "founder");
+// defaults to the bundled public asset.
+export default function About({
+  founderImage = "/branding/founder-mugshot.png",
+}: {
+  founderImage?: string;
+}) {
   const handleGetAccess = () => {
     window.location.href = "/priser";
   };
@@ -27,7 +33,7 @@ export default function About() {
           <div className="flex items-start gap-6">
             <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-gray-200 bg-white">
               <img
-                src="/branding/founder-mugshot.png"
+                src={founderImage}
                 alt="qlim8 grundlægger"
                 className="w-full h-full object-cover"
               />

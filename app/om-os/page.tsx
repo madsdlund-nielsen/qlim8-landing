@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import About from "@/page-components/about";
+import { fetchMarketingCopy, cmsImageUrl } from "@/lib/cms";
+
+// ISR — CMS-published copy/images refresh on this cadence.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Om qlim8 – Vi demokratiserer klimaregnskab",
@@ -35,14 +39,16 @@ const ORG_SCHEMA = {
   foundingLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressCountry: "DK" } },
 };
 
-export default function Page() {
+export default async function Page() {
+  const copy = await fetchMarketingCopy("about.images", "da");
+  const founderImage = cmsImageUrl(copy, "founder");
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
       />
-      <About />
+      <About founderImage={founderImage} />
     </>
   );
 }
