@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Karriere from "@/page-components/karriere";
+import { resolvePageCopy } from "@/lib/pageCopy";
+import { CAREERS_PAGE_KEY, CAREERS_COPY } from "@/content/copy/careers";
+
+// ISR — CMS-published copy refreshes on this cadence.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Karriere | Bliv en del af qlim8",
@@ -15,6 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <Karriere />;
+export default async function Page() {
+  const copy = await resolvePageCopy(CAREERS_PAGE_KEY, CAREERS_COPY);
+  return <Karriere copy={copy} />;
 }

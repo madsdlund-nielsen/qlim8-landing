@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Handelsbetingelser from "@/page-components/handelsbetingelser";
+import { resolvePageCopy } from "@/lib/pageCopy";
+import { LEGAL_TERMS_PAGE_KEY, LEGAL_TERMS_COPY } from "@/content/copy/legal";
+
+// ISR — CMS-published copy refreshes on this cadence.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Handelsbetingelser | qlim8",
@@ -14,6 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <Handelsbetingelser />;
+export default async function Page() {
+  const copy = await resolvePageCopy(LEGAL_TERMS_PAGE_KEY, LEGAL_TERMS_COPY);
+  return <Handelsbetingelser copy={copy} />;
 }

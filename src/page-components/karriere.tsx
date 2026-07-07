@@ -1,9 +1,12 @@
 "use client";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
+import { CAREERS_COPY, type CareersCopy } from "@/content/copy/careers";
 
-export default function Karriere() {
-  const openPositions: Array<{ title: string; department: string; location: string; type: string }> = [];
+// All copy lives in src/content/copy/careers.ts (pageKey "page.careers");
+// app/karriere/page.tsx passes the CMS-merged result.
+export default function Karriere({ copy = CAREERS_COPY }: { copy?: CareersCopy }) {
+  const openPositions = copy.openPositions;
 
   return (
     <div className="min-h-screen bg-[#F5F5F0]">
@@ -12,22 +15,24 @@ export default function Karriere() {
       <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-20 sm:pb-28">
         <header className="mb-12">
           <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6" data-testid="text-karriere-title">
-            Karriere hos qlim8
+            {copy.hero.title}
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-            Vi søger passionerede mennesker, der vil hjælpe danske virksomheder med at blive mere bæredygtige. Er du klar til at gøre en forskel?
+            {copy.hero.subtitle}
           </p>
         </header>
 
-        <section className="border-t border-gray-200 pt-10 mb-12">
-          <p className="text-lg text-gray-700">
-            Der er i øjeblikket ingen ledige stillinger.
-          </p>
-        </section>
+        {openPositions.length === 0 && (
+          <section className="border-t border-gray-200 pt-10 mb-12">
+            <p className="text-lg text-gray-700">
+              {copy.noOpenings}
+            </p>
+          </section>
+        )}
 
         {openPositions.length > 0 && (
           <section className="border-t border-gray-200 pt-10 mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Åbne stillinger</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">{copy.openPositionsTitle}</h2>
             <ul className="divide-y divide-gray-200">
               {openPositions.map((position, index) => (
                 <li
@@ -48,17 +53,17 @@ export default function Karriere() {
 
         <section className="border-t border-gray-200 pt-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-3">
-            Kan du ikke finde den rette stilling?
+            {copy.unsolicited.title}
           </h2>
           <p className="text-gray-700 leading-relaxed mb-6 max-w-xl">
-            Vi er altid interesserede i at høre fra dygtige mennesker. Send en uopfordret ansøgning til os.
+            {copy.unsolicited.body}
           </p>
           <a
-            href="mailto:job@qlim8.com"
+            href={`mailto:${copy.unsolicited.email}`}
             className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
             data-testid="button-apply"
           >
-            Send ansøgning
+            {copy.unsolicited.buttonLabel}
           </a>
         </section>
       </article>

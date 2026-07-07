@@ -5,51 +5,19 @@ import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { SiteHeader } from "@/components/public/SiteHeader";
+import { PRICING_COPY, type PricingCopy, type PriceSet } from "@/content/copy/pricing";
 
 type BillingCycle = "monthly" | "yearly";
 type Currency = "dkk" | "eur";
 
-const PRICES = {
-  starter: {
-    monthly: { dkk: 300, eur: 39 },
-    yearly:  { dkk: 250, eur: 32.5 },
-    yearlyTotal: { dkk: 3000, eur: 390 },
-  },
-  premium: {
-    monthly: { dkk: 750, eur: 99 },
-    yearly:  { dkk: 625, eur: 82.5 },
-    yearlyTotal: { dkk: 7500, eur: 990 },
-  },
-};
-
-interface FeatureRow {
-  label: string;
-  starter: boolean | string;
-  premium: boolean | string;
-  enterprise: boolean | string;
+function pick(prices: PriceSet, cycle: BillingCycle, cur: Currency): number {
+  if (cycle === "yearly") return cur === "dkk" ? prices.yearlyDkk : prices.yearlyEur;
+  return cur === "dkk" ? prices.monthlyDkk : prices.monthlyEur;
 }
 
-const FEATURE_ROWS: FeatureRow[] = [
-  { label: "Scope 1, 2 & 3 udledningsberegning",    starter: true,             premium: true,              enterprise: true },
-  { label: "Automatisk kategorisering (AI-faktura)", starter: true,             premium: true,              enterprise: true },
-  { label: "Manuel dataregistrering",                starter: true,             premium: true,              enterprise: true },
-  { label: "Excel/CSV-upload",                       starter: true,             premium: true,              enterprise: true },
-  { label: "Carbon Ledger (auditbar oversigt)",      starter: true,             premium: true,              enterprise: true },
-  { label: "VSME Basis-rapport",                     starter: true,             premium: true,              enterprise: true },
-  { label: "Excel-eksport",                          starter: true,             premium: true,              enterprise: true },
-  { label: "API-integrationer",                      starter: "1 integration",  premium: "Ubegrænsede",     enterprise: "Ubegrænsede" },
-  { label: "Email-support",                          starter: true,             premium: true,              enterprise: true },
-  { label: "PDF-eksport",                            starter: false,            premium: true,              enterprise: true },
-  { label: "VSME Comprehensive-rapport",             starter: false,            premium: true,              enterprise: true },
-  { label: "Reduction Hub & Scenario Builder",       starter: false,            premium: true,              enterprise: true },
-  { label: "Offentlig profil & Brag Board badge",   starter: false,            premium: true,              enterprise: true },
-  { label: "Direkte revisor-adgang",                 starter: false,            premium: true,              enterprise: true },
-  { label: "Chat & telefon-support",                 starter: false,            premium: true,              enterprise: true },
-  { label: "Komplet værdikæde via CVR",              starter: false,            premium: false,             enterprise: true },
-  { label: "Fuld API-adgang",                        starter: false,            premium: false,             enterprise: true },
-  { label: "SAML/SSO adgangskontrol",               starter: false,            premium: false,             enterprise: true },
-  { label: "Dedikeret Customer Success Manager",     starter: false,            premium: false,             enterprise: true },
-];
+function yearlyTotal(prices: PriceSet, cur: Currency): number {
+  return cur === "dkk" ? prices.yearlyTotalDkk : prices.yearlyTotalEur;
+}
 
 function FeatureCell({ value }: { value: boolean | string }) {
   if (value === false) {
@@ -65,34 +33,9 @@ function FeatureCell({ value }: { value: boolean | string }) {
   );
 }
 
-const FAQ_ITEMS = [
-  {
-    q: "Binder jeg mig til en aftale?",
-    a: "Nej. Du kan annullere dit abonnement til enhver tid — månedlige planer stopper ved slutningen af den betalte periode, årlige planer refunderes ikke, men du bevarer adgangen til udløb. Ingen opsigelsesgebyr.",
-  },
-  {
-    q: "Hvad sker der lige efter tilmelding?",
-    a: "Straks efter betaling oprettes din konto og du guides igennem en kort onboarding. Du kan begynde at registrere data og oprette dit første klimaregnskab samme dag.",
-  },
-  {
-    q: "Kan jeg skifte plan senere?",
-    a: "Ja. Du kan opgradere fra Starter til Premium når som helst — adgangen er øjeblikkelig. Prisen justeres forholdsmæssigt for resten af perioden.",
-  },
-  {
-    q: "Hvad er VSME, og er det obligatorisk?",
-    a: "VSME (Voluntary SME Standard) er en frivillig ESG-rapporteringsstandard målrettet SMV'er, udviklet af EFRAG. Den er frivillig, men efterspørges i stigende grad af banker og større kunder som dokumentation for dit klimaarbejde.",
-  },
-  {
-    q: "Har jeg brug for en revisor?",
-    a: "Ikke for at komme i gang. qlim8 genererer revisionsklare beregninger med kildehenvisninger, som din revisor nemt kan efterprøve. Premium-planen giver desuden direkte revisoradgang til platformen.",
-  },
-  {
-    q: "Hvad koster Historisk Import?",
-    a: "Historisk Import er et éngangsprodukt til Premium-kunder på 9.000 kr. Det giver dig mulighed for at importere op til ét år historiske regnskabsdata fra Dinero med automatisk AI-klassificering, så du hurtigt etablerer en baseline.",
-  },
-];
-
-export default function Pricing() {
+// All copy lives in src/content/copy/pricing.ts (pageKey "page.pricing");
+// app/priser/page.tsx passes the CMS-merged result.
+export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy }) {
   const { toast } = useToast();
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("yearly");
   const [currency, setCurrency] = useState<Currency>("dkk");
@@ -140,8 +83,8 @@ export default function Pricing() {
       ? `${val.toLocaleString("da-DK")} kr`
       : `€${val.toLocaleString("da-DK", { minimumFractionDigits: val % 1 !== 0 ? 1 : 0 })}`;
 
-  const starterPrice = billingCycle === "yearly" ? PRICES.starter.yearly : PRICES.starter.monthly;
-  const premiumPrice = billingCycle === "yearly" ? PRICES.premium.yearly : PRICES.premium.monthly;
+  const starterPrice = pick(copy.prices.starter, billingCycle, currency);
+  const premiumPrice = pick(copy.prices.premium, billingCycle, currency);
 
   return (
     <div className="min-h-screen bg-[#F5F5F0] flex flex-col">
@@ -152,10 +95,10 @@ export default function Pricing() {
 
           <div className="mb-10 sm:mb-14">
             <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-5" data-testid="text-pricing-title">
-              Fra 250 kr/md. Alt inkluderet.
+              {copy.header.title}
             </h1>
             <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mb-8">
-              Ingen onboarding-gebyr, ingen lock-in. Opsig hvornår som helst. Alle priser er ekskl. moms.
+              {copy.header.subtitle}
             </p>
 
             <div className="flex flex-col items-start gap-2">
@@ -203,7 +146,7 @@ export default function Pricing() {
                     exit={{ opacity: 0, y: -4 }}
                     className="text-sm text-primary font-medium"
                   >
-                    — spar 17%
+                    {copy.header.yearlySavingsNote}
                   </motion.span>
                 )}
               </AnimatePresence>
@@ -211,11 +154,12 @@ export default function Pricing() {
           </div>
 
           <div className="flex items-center gap-2 flex-wrap mb-8 sm:mb-10" data-testid="trust-bar">
-            <span className="text-xs text-gray-400">✓ Annuller til enhver tid</span>
-            <span className="text-gray-200 text-xs">·</span>
-            <span className="text-xs text-gray-400">✓ Ingen opsætningsgebyr</span>
-            <span className="text-gray-200 text-xs">·</span>
-            <span className="text-xs text-gray-400">✓ Alle priser ekskl. moms</span>
+            {copy.trustBar.map((item, i) => (
+              <span key={item} className="contents">
+                {i > 0 && <span className="text-gray-200 text-xs">·</span>}
+                <span className="text-xs text-gray-400">{item}</span>
+              </span>
+            ))}
           </div>
 
           <div className={`transition-all duration-300 ${loadingTier || showSuccess ? "opacity-40 pointer-events-none" : ""}`}>
@@ -224,8 +168,8 @@ export default function Pricing() {
               {/* ── Starter ── */}
               <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid="plan-starter">
                 <div className="mb-5">
-                  <h2 className="text-lg font-bold text-gray-900 mb-1">Starter</h2>
-                  <p className="text-sm text-gray-600 mb-4">Til SMV'er der starter ESG-arbejdet — banken har spurgt, og I skal have et tal.</p>
+                  <h2 className="text-lg font-bold text-gray-900 mb-1">{copy.starter.name}</h2>
+                  <p className="text-sm text-gray-600 mb-4">{copy.starter.tagline}</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`starter-${billingCycle}-${currency}`}
@@ -234,13 +178,13 @@ export default function Pricing() {
                       className="text-4xl font-bold text-gray-900"
                       data-testid="price-starter"
                     >
-                      {fmt(starterPrice[currency], currency)}
+                      {fmt(starterPrice, currency)}
                     </motion.span>
                     <span className="text-sm text-gray-400">/md</span>
                   </div>
                   <p className="text-xs text-gray-500">
                     {billingCycle === "yearly"
-                      ? `Faktureret ${fmt(PRICES.starter.yearlyTotal[currency], currency)} årligt`
+                      ? `Faktureret ${fmt(yearlyTotal(copy.prices.starter, currency), currency)} årligt`
                       : "Faktureret månedligt"}
                   </p>
                 </div>
@@ -252,11 +196,11 @@ export default function Pricing() {
                 >
                   {loadingTier === "starter" ? (
                     <><Loader2 className="h-4 w-4 animate-spin" />Forbereder...</>
-                  ) : "Vælg Starter"}
+                  ) : copy.starter.cta}
                 </button>
-                <p className="font-semibold text-gray-900 text-sm mb-3">Inkluderet</p>
+                <p className="font-semibold text-gray-900 text-sm mb-3">{copy.starter.includedLabel}</p>
                 <ul className="space-y-1.5 flex-1 text-sm text-gray-700">
-                  {["Scope 1/2/3 beregning", "AI fakturaupload", "VSME Basis-rapport", "1 API-integration", "Excel-eksport", "Email-support"].map((f) => (
+                  {copy.starter.features.map((f) => (
                     <li key={f}>— {f}</li>
                   ))}
                 </ul>
@@ -265,8 +209,8 @@ export default function Pricing() {
               {/* ── Premium ── */}
               <div className="bg-gray-900 rounded-2xl border border-gray-900 p-6 flex flex-col" data-testid="plan-premium">
                 <div className="mb-5">
-                  <h2 className="text-lg font-bold text-white mb-1">Premium</h2>
-                  <p className="text-sm text-gray-400 mb-4">Til SMV'er med kunde- og bankrapportering — VSME Comprehensive, leverandørdata, offentlig profil.</p>
+                  <h2 className="text-lg font-bold text-white mb-1">{copy.premium.name}</h2>
+                  <p className="text-sm text-gray-400 mb-4">{copy.premium.tagline}</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`premium-${billingCycle}-${currency}`}
@@ -275,13 +219,13 @@ export default function Pricing() {
                       className="text-4xl font-bold text-white"
                       data-testid="price-premium"
                     >
-                      {fmt(premiumPrice[currency], currency)}
+                      {fmt(premiumPrice, currency)}
                     </motion.span>
                     <span className="text-sm text-gray-400">/md</span>
                   </div>
                   <p className="text-xs text-gray-500">
                     {billingCycle === "yearly"
-                      ? `Faktureret ${fmt(PRICES.premium.yearlyTotal[currency], currency)} årligt`
+                      ? `Faktureret ${fmt(yearlyTotal(copy.prices.premium, currency), currency)} årligt`
                       : "Faktureret månedligt"}
                   </p>
                 </div>
@@ -293,11 +237,11 @@ export default function Pricing() {
                 >
                   {loadingTier === "premium" ? (
                     <><Loader2 className="h-4 w-4 animate-spin" />Forbereder...</>
-                  ) : "Vælg Premium"}
+                  ) : copy.premium.cta}
                 </button>
-                <p className="font-semibold text-white text-sm mb-3">Alt i Starter, plus</p>
+                <p className="font-semibold text-white text-sm mb-3">{copy.premium.includedLabel}</p>
                 <ul className="space-y-1.5 flex-1 text-sm text-gray-300">
-                  {["PDF-eksport", "VSME Comprehensive-rapport", "Reduction Hub & Scenario Builder", "Ubegrænsede integrationer", "Offentlig profil & Brag Board", "Direkte revisor-adgang", "Chat & telefon-support"].map((f) => (
+                  {copy.premium.features.map((f) => (
                     <li key={f}>— {f}</li>
                   ))}
                 </ul>
@@ -306,29 +250,23 @@ export default function Pricing() {
               {/* ── Enterprise ── */}
               <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid="plan-enterprise">
                 <div className="mb-5">
-                  <h2 className="text-lg font-bold text-gray-900 mb-1">Enterprise</h2>
-                  <p className="text-sm text-gray-600 mb-4">Til større organisationer med flere CVR, komplet værdikæde og API-integration.</p>
+                  <h2 className="text-lg font-bold text-gray-900 mb-1">{copy.enterprise.name}</h2>
+                  <p className="text-sm text-gray-600 mb-4">{copy.enterprise.tagline}</p>
                   <div className="flex items-baseline gap-1 mb-1">
-                    <span className="text-4xl font-bold text-gray-900">Kontakt salg</span>
+                    <span className="text-4xl font-bold text-gray-900">{copy.enterprise.priceLabel}</span>
                   </div>
-                  <p className="text-xs text-gray-500">Tilpasset pris for din organisation</p>
+                  <p className="text-xs text-gray-500">{copy.enterprise.priceNote}</p>
                 </div>
                 <a
                   href="mailto:hello@qlim8.com"
                   className="w-full py-2.5 px-4 rounded-full border border-gray-900 text-gray-900 text-sm font-medium hover:bg-gray-900 hover:text-white transition-all flex items-center justify-center mb-6"
                   data-testid="button-contact-enterprise"
                 >
-                  Kontakt os
+                  {copy.enterprise.cta}
                 </a>
-                <p className="font-semibold text-gray-900 text-sm mb-3">Alt i Premium, plus</p>
+                <p className="font-semibold text-gray-900 text-sm mb-3">{copy.enterprise.includedLabel}</p>
                 <ul className="space-y-1.5 flex-1 text-sm text-gray-700">
-                  {([
-                    { label: "Komplet værdikæde via CVR", note: "kræver premium abonnement fra værdikæden – dog får I som Enterprise kunde en rabatkode til jeres leverandører" },
-                    { label: "Fuld API-adgang" },
-                    { label: "SAML/SSO adgangskontrol" },
-                    { label: "Dedikeret Customer Success Manager" },
-                    { label: "White-label PDF-eksport" },
-                  ] as { label: string; note?: string }[]).map((f) => (
+                  {copy.enterprise.features.map((f) => (
                     <li key={f.label}>
                       — {f.label}
                       {f.note && <span className="block text-xs text-gray-500 ml-3 mt-0.5">({f.note})</span>}
@@ -341,19 +279,19 @@ export default function Pricing() {
             {/* ── Feature comparison table ── */}
             <div className="mt-20 overflow-x-auto">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 border-t border-gray-200 pt-10">
-                Komplet sammenligning
+                {copy.comparison.title}
               </h2>
               <table className="w-full border-collapse" data-testid="feature-comparison-table">
                 <thead>
                   <tr className="border-b border-gray-200">
                     <th className="text-left py-3 pr-4 text-sm font-medium text-gray-500 w-[44%]">Feature</th>
-                    <th className="text-center py-3 px-3 text-sm font-semibold text-gray-900 w-[18%]">Starter</th>
-                    <th className="text-center py-3 px-3 text-sm font-semibold text-gray-900 w-[18%]">Premium</th>
-                    <th className="text-center py-3 px-3 text-sm font-semibold text-gray-900 w-[18%]">Enterprise</th>
+                    <th className="text-center py-3 px-3 text-sm font-semibold text-gray-900 w-[18%]">{copy.starter.name}</th>
+                    <th className="text-center py-3 px-3 text-sm font-semibold text-gray-900 w-[18%]">{copy.premium.name}</th>
+                    <th className="text-center py-3 px-3 text-sm font-semibold text-gray-900 w-[18%]">{copy.enterprise.name}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {FEATURE_ROWS.map((row, i) => (
+                  {copy.comparison.rows.map((row, i) => (
                     <tr key={i} className={`border-b border-gray-100 ${i % 2 === 0 ? "" : "bg-gray-50/50"}`} data-testid={`feature-row-${i}`}>
                       <td className="py-3 pr-4 text-sm text-gray-700">{row.label}</td>
                       <td className="py-3 px-3 text-center"><FeatureCell value={row.starter} /></td>
@@ -368,10 +306,10 @@ export default function Pricing() {
 
           <div className="mt-20" data-testid="faq-section">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 border-t border-gray-200 pt-10">
-              Ofte stillede spørgsmål
+              {copy.faq.title}
             </h2>
             <div className="max-w-2xl divide-y divide-gray-100">
-              {FAQ_ITEMS.map((item, i) => (
+              {copy.faq.items.map((item, i) => (
                 <div key={i} data-testid={`faq-item-${i}`}>
                   <button
                     onClick={() => setFaqOpen(faqOpen === i ? null : i)}
@@ -403,7 +341,7 @@ export default function Pricing() {
           </div>
 
           <div className="mt-12 text-center text-xs text-gray-400">
-            Alle priser er ekskl. moms &nbsp;·&nbsp; Annuller når som helst
+            {copy.footerNote}
           </div>
         </div>
       </main>

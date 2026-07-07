@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import CookiePolicy from "@/page-components/cookies";
+import { resolvePageCopy } from "@/lib/pageCopy";
+import { LEGAL_COOKIES_PAGE_KEY, LEGAL_COOKIES_COPY } from "@/content/copy/legal";
+
+// ISR — CMS-published copy refreshes on this cadence.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Cookieerklæring | qlim8",
@@ -14,6 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <CookiePolicy />;
+export default async function Page() {
+  const copy = await resolvePageCopy(LEGAL_COOKIES_PAGE_KEY, LEGAL_COOKIES_COPY);
+  return <CookiePolicy copy={copy} />;
 }
