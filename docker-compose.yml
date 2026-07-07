@@ -5,6 +5,13 @@ services:
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
+      # Shared secret for the CMS pull/import (/api/cms/defaults,
+      # /api/cms/bundled-articles) and publish-revalidation (/api/revalidate)
+      # endpoints — must match CMS_REVALIDATE_SECRET in qlim8-app's .env.
+      # Read from a .env file placed next to this compose file on the server
+      # (docker compose auto-loads it for ${...} substitution); left unset
+      # here it resolves to an empty string and those endpoints fail closed.
+      - CMS_REVALIDATE_SECRET=${CMS_REVALIDATE_SECRET:-}
     expose:
       - "3000"
     networks:
