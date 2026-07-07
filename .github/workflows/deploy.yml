@@ -57,13 +57,29 @@ jobs:
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
+        env:
+          # Forwarded to the remote shell via `envs` below. The value travels
+          # over the SSH channel only, and GitHub masks it in logs.
+          CMS_REVALIDATE_SECRET: ${{ secrets.CMS_REVALIDATE_SECRET }}
         with:
           host: ${{ secrets.HETZNER_HOST }}
           username: ${{ secrets.HETZNER_USER }}
           key: ${{ secrets.HETZNER_SSH_KEY }}
+          envs: CMS_REVALIDATE_SECRET
+          # Upsert the secret into the gitignored .env docker-compose.yml
+          # reads via ${CMS_REVALIDATE_SECRET} substitution, then deploy.
           script: |
+            set -euo pipefail
             echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             cd /opt/qlim8
+            touch .env
+            if [ -n "${CMS_REVALIDATE_SECRET:-}" ]; then
+              if grep -q '^CMS_REVALIDATE_SECRET=' .env; then
+                sed -i "s|^CMS_REVALIDATE_SECRET=.*|CMS_REVALIDATE_SECRET=${CMS_REVALIDATE_SECRET}|" .env
+              else
+                printf '\nCMS_REVALIDATE_SECRET=%s\n' "${CMS_REVALIDATE_SECRET}" >> .env
+              fi
+            fi
             docker compose pull web
             docker compose up -d --no-build
             docker image prune -f
