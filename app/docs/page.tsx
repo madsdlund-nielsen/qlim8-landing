@@ -20,17 +20,17 @@ const DEVELOPER_DOCS = [
   {
     href: "/docs/mcp-quickstart",
     title: "MCP Quickstart",
-    body: "Forbind Claude Desktop, Cursor eller en custom agent til qlim8's MCP-server. Auth, sessioner og første tool-kald.",
+    body: "Forbind Claude eller ChatGPT til dine klimadata på få minutter — log ind med din qlim8-konto, ingen API-nøgle. Guide til almindelige brugere.",
   },
   {
     href: "/docs/mcp-tools",
     title: "MCP tool reference",
-    body: "Alle 17 MCP-tools — input-schemas, eksempel-output, scope-krav og tier-gates. Layer 1 (core), 2 (strategic), 3 (infrastructure).",
+    body: "Alle 31 MCP-tools, 3 resources og 3 prompts — den komplette reference vedligeholdes på developers.qlim8.com.",
   },
   {
     href: "/docs/api-reference",
     title: "REST API v1 reference",
-    body: "Komplet endpoint-liste under /api/v1: identity, emissions, factors, audit, suppliers, targets, reports, webhooks.",
+    body: "Bearer-auth med scopes, cursor-paginering og RFC 9457-fejl — komplet endpoint-reference på developers.qlim8.com.",
   },
 ];
 
@@ -124,10 +124,17 @@ export default function Page() {
         </div>
 
         <div className="mt-16 bg-gray-900 text-gray-100 rounded-2xl p-7 sm:p-10">
-          <h2 className="text-xl sm:text-2xl font-bold mb-3">En samlet docs-portal er på vej</h2>
-          <p className="text-gray-300 text-[15px] leading-relaxed">
-            Vi arbejder på developers.qlim8.com med søgbare guides, interaktiv API-explorer og videogennemgange. Indtil da finder du den fulde reference her og i platformen.
+          <h2 className="text-xl sm:text-2xl font-bold mb-3">developers.qlim8.com er live</h2>
+          <p className="text-gray-300 text-[15px] leading-relaxed mb-5">
+            Udviklerportalen samler den fulde reference: MCP-serverens 31 tools, interaktiv REST
+            API-reference (OpenAPI), auth-, webhook- og migrationsguides.
           </p>
+          <a
+            href="https://developers.qlim8.com"
+            className="inline-block bg-white text-gray-900 font-semibold rounded-full px-5 py-2.5 text-sm hover:bg-gray-200 transition-colors"
+          >
+            Åbn developers.qlim8.com ↗
+          </a>
         </div>
       </section>
 
