@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Metodologi from "@/page-components/metodologi";
+import { resolvePageCopy } from "@/lib/pageCopy";
+import { METHODOLOGY_PAGE_KEY, METHODOLOGY_COPY } from "@/content/copy/methodology";
+
+// ISR — CMS-published copy refreshes on this cadence.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Metodologi — sådan beregner qlim8 dit klimaregnskab",
@@ -15,6 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <Metodologi />;
+export default async function Page() {
+  const copy = await resolvePageCopy(METHODOLOGY_PAGE_KEY, METHODOLOGY_COPY);
+  return <Metodologi copy={copy} />;
 }

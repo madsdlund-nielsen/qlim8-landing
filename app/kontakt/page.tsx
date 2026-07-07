@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Kontakt from "@/page-components/kontakt";
+import { resolvePageCopy } from "@/lib/pageCopy";
+import { CONTACT_PAGE_KEY, CONTACT_COPY } from "@/content/copy/contact";
+
+// ISR — CMS-published copy refreshes on this cadence.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Kontakt qlim8 – Vi er her for at hjælpe",
@@ -15,6 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <Kontakt />;
+export default async function Page() {
+  const copy = await resolvePageCopy(CONTACT_PAGE_KEY, CONTACT_COPY);
+  return <Kontakt copy={copy} />;
 }

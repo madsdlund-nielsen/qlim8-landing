@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Privatlivspolitik from "@/page-components/privatlivspolitik";
+import { resolvePageCopy } from "@/lib/pageCopy";
+import { LEGAL_PRIVACY_PAGE_KEY, LEGAL_PRIVACY_COPY } from "@/content/copy/legal";
+
+// ISR — CMS-published copy refreshes on this cadence.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Privatlivspolitik | qlim8",
@@ -14,6 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <Privatlivspolitik />;
+export default async function Page() {
+  const copy = await resolvePageCopy(LEGAL_PRIVACY_PAGE_KEY, LEGAL_PRIVACY_COPY);
+  return <Privatlivspolitik copy={copy} />;
 }

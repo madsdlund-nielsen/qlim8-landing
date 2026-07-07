@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import About from "@/page-components/about";
 import { fetchMarketingCopy, cmsImageUrl } from "@/lib/cms";
+import { resolvePageCopy } from "@/lib/pageCopy";
+import { ABOUT_PAGE_KEY, ABOUT_COPY } from "@/content/copy/about";
 
 // ISR — CMS-published copy/images refresh on this cadence.
 export const revalidate = 300;
@@ -40,15 +42,18 @@ const ORG_SCHEMA = {
 };
 
 export default async function Page() {
-  const copy = await fetchMarketingCopy("about.images", "da");
-  const founderImage = cmsImageUrl(copy, "founder");
+  const [copy, imageCopy] = await Promise.all([
+    resolvePageCopy(ABOUT_PAGE_KEY, ABOUT_COPY),
+    fetchMarketingCopy("about.images", "da"),
+  ]);
+  const founderImage = cmsImageUrl(imageCopy, "founder");
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
       />
-      <About founderImage={founderImage} />
+      <About copy={copy} founderImage={founderImage} />
     </>
   );
 }
