@@ -4,98 +4,26 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "MCP Quickstart | qlim8 docs",
+  title: "MCP Quickstart — forbind din AI-assistent | qlim8 docs",
   description:
-    "Get started with the qlim8 MCP server: 17 tools for AI agents, JSON-RPC 2.0 over Streamable HTTP. Connection examples for Claude Desktop, Cursor and curl.",
+    "Forbind Claude eller ChatGPT til dine qlim8-klimadata på få minutter. Log ind med din qlim8-konto — ingen API-nøgle, ingen kode. Guide til almindelige brugere.",
   alternates: { canonical: "https://qlim8.com/docs/mcp-quickstart" },
   openGraph: {
     title: "qlim8 MCP Quickstart",
-    description: "Connect LLM agents directly to qlim8 via the Model Context Protocol.",
+    description: "Chat med dine klimadata i Claude eller ChatGPT — uden kode.",
     url: "https://qlim8.com/docs/mcp-quickstart",
     images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8 MCP" }],
   },
 };
 
-const claudeDesktopConfig = `{
-  "mcpServers": {
-    "qlim8": {
-      "type": "http",
-      "url": "https://app.qlim8.com/api/mcp",
-      "headers": {
-        "Authorization": "Bearer qk_live_<your-64-hex-key>"
-      }
-    }
-  }
-}`;
+const MCP_URL = "https://app.qlim8.com/api/mcp";
 
-const cursorConfig = `{
-  "mcp": {
-    "servers": {
-      "qlim8": {
-        "url": "https://app.qlim8.com/api/mcp",
-        "headers": { "Authorization": "Bearer qk_live_<your-64-hex-key>" }
-      }
-    }
-  }
-}`;
-
-const curlInit = `# 1. Initialize session
-curl -X POST https://app.qlim8.com/api/mcp \\
-  -H "Authorization: Bearer qk_live_<your-key>" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "jsonrpc": "2.0",
-    "id": 1,
-    "method": "initialize",
-    "params": {
-      "protocolVersion": "2024-11-05",
-      "capabilities": {},
-      "clientInfo": { "name": "my-agent", "version": "1.0" }
-    }
-  }'
-# → Response includes "mcp-session-id" header`;
-
-const curlList = `# 2. List available tools
-curl -X POST https://app.qlim8.com/api/mcp \\
-  -H "Authorization: Bearer qk_live_<your-key>" \\
-  -H "mcp-session-id: <session-id-from-step-1>" \\
-  -H "Content-Type: application/json" \\
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'`;
-
-const curlCall = `# 3. Call a tool
-curl -X POST https://app.qlim8.com/api/mcp \\
-  -H "mcp-session-id: <session-id>" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "jsonrpc": "2.0",
-    "id": 3,
-    "method": "tools/call",
-    "params": {
-      "name": "get_emissions_summary",
-      "arguments": { "from": "2024-01-01T00:00:00Z", "to": "2024-12-31T23:59:59Z" }
-    }
-  }'`;
-
-const tierGateError = `{
-  "code": -32602,
-  "message": "Your current plan is growth. This tool requires Enterprise (supplyChain feature). Upgrade at https://qlim8.com/upgrade",
-  "data": { "required_tier": "enterprise", "upgrade_url": "https://qlim8.com/upgrade" }
-}`;
-
-const ERROR_CODES: { code: string; meaning: string }[] = [
-  { code: "-32602", meaning: "Invalid params — bad UUID, missing field, insufficient scope, or tier gate" },
-  { code: "-32001", meaning: "Auth / session error — missing Bearer token, revoked key, session not found" },
-  { code: "-32603", meaning: "Internal server error" },
-  { code: "HTTP 404 on session-id", meaning: "Session expired or server restarted — send a fresh initialize request" },
-];
-
-const CLIENTS: { name: string; notes: string }[] = [
-  { name: "Claude Desktop", notes: "Full support via HTTP transport" },
-  { name: "Cursor", notes: "Full support via MCP server config" },
-  { name: "Replit Agent", notes: "HTTP transport supported" },
-  { name: "Lovable", notes: "HTTP transport supported" },
-  { name: "OpenAI agents", notes: "Via MCP-compatible shim libraries" },
-  { name: "Custom agents", notes: "Any client that speaks JSON-RPC 2.0 over HTTP" },
+const EXAMPLE_PROMPTS = [
+  "Hvad var vores samlede CO2e-udledning i 2025, fordelt på scope 1, 2 og 3?",
+  "Vis vores udledninger måned for måned i 2025 — er der et sæsonmønster?",
+  "Hvilke kategorier driver mest af vores Scope 3? Brug GHG Protocol-opdelingen.",
+  "Er vi på sporet mod vores 2030-reduktionsmål?",
+  "Hvilke leverandører udgør den største del af vores værdikæde-eksponering?",
 ];
 
 function CodeBlock({ children }: { children: string }) {
@@ -118,6 +46,21 @@ function Section({ number, title, children }: { number: string; title: string; c
   );
 }
 
+function Steps({ items }: { items: React.ReactNode[] }) {
+  return (
+    <ol className="space-y-3">
+      {items.map((item, i) => (
+        <li key={i} className="flex gap-4">
+          <span className="flex-none w-7 h-7 rounded-full bg-gray-900 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+            {i + 1}
+          </span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export default function Page() {
   return (
     <div className="min-h-screen bg-[#F5F5F0]">
@@ -126,27 +69,29 @@ export default function Page() {
       <section className="px-4 sm:px-6 pt-14 sm:pt-24 pb-12 sm:pb-16">
         <div className="max-w-3xl mx-auto">
           <Link href="/docs" className="text-sm text-gray-600 hover:text-primary transition-colors mb-6 inline-block">
-            ← Back to docs
+            ← Tilbage til docs
           </Link>
           <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
-            qlim8 MCP Server — Quickstart
+            Forbind din AI-assistent til dine klimadata
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
-            The qlim8 MCP (Model Context Protocol) server exposes 17 curated tools that let AI agents (Claude, Cursor, Copilot, Replit, Lovable, and any MCP-compatible client) interact directly with carbon accounting data. The server follows the MCP specification and is compatible with all standard MCP clients.
+            Med qlim8's MCP-server kan Claude og ChatGPT svare på spørgsmål direkte fra jeres
+            klimaregnskab — udledninger, rapporter, mål og leverandører. Du logger bare ind med
+            din qlim8-konto. <strong>Ingen API-nøgle, ingen kode.</strong>
           </p>
 
           <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-4 border-t border-gray-200 pt-6 text-sm">
             <div>
-              <dt className="font-semibold text-gray-500 mb-1">Endpoint</dt>
-              <dd className="font-mono text-gray-900 break-all">https://app.qlim8.com/api/mcp</dd>
+              <dt className="font-semibold text-gray-500 mb-1">Server-adresse</dt>
+              <dd className="font-mono text-gray-900 break-all">{MCP_URL}</dd>
             </div>
             <div>
-              <dt className="font-semibold text-gray-500 mb-1">Transport</dt>
-              <dd className="text-gray-900">Streamable HTTP (POST for requests, GET for SSE notifications, DELETE to close)</dd>
+              <dt className="font-semibold text-gray-500 mb-1">Login</dt>
+              <dd className="text-gray-900">Din qlim8-konto (OAuth) — ingen API-nøgle nødvendig</dd>
             </div>
             <div>
-              <dt className="font-semibold text-gray-500 mb-1">Auth</dt>
-              <dd className="text-gray-900">Same API keys as /api/v1 — Bearer token in Authorization header</dd>
+              <dt className="font-semibold text-gray-500 mb-1">Adgang</dt>
+              <dd className="text-gray-900">Kun læseadgang som standard; kun jeres egne data</dd>
             </div>
           </dl>
         </div>
@@ -154,207 +99,154 @@ export default function Page() {
 
       <section className="px-4 sm:px-6 pb-20 sm:pb-28">
         <div className="max-w-3xl mx-auto space-y-12 sm:space-y-16">
-          <Section number="1" title="Prerequisites">
-            <ol className="space-y-3 list-decimal list-inside">
+          <Section number="1" title="Før du starter">
+            <ul className="space-y-3 list-disc list-inside">
               <li>
-                <strong>API key</strong> — mint one at <em>Collectors → API Keys → Generate Key</em> in the app. Request only the scopes you need (see{" "}
-                <Link href="/docs/mcp-tools" className="text-primary font-semibold hover:underline">
-                  Tool reference
-                </Link>{" "}
-                for per-tool requirements).
+                <strong>En qlim8-brugerkonto</strong> i jeres virksomheds miljø.
               </li>
               <li>
-                <strong>MCP-compatible client</strong> — Claude Desktop, Cursor, or any client that supports Streamable HTTP.
+                <strong>En administrator skal godkende forbindelsen.</strong> Godkendelsesskærmen
+                vises kun for qlim8-administratorer. Er du ikke selv admin, klarer en
+                admin-kollega login-trinnet én gang — derefter virker forbindelsen for den
+                chat-konto, den blev tilføjet på.
               </li>
-            </ol>
-          </Section>
-
-          <Section number="2" title="Connecting with an MCP client">
-            <p>
-              <strong>Claude Desktop</strong> (<code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">claude_desktop_config.json</code>):
-            </p>
-            <CodeBlock>{claudeDesktopConfig}</CodeBlock>
-            <p>
-              <strong>Cursor</strong> (<code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">.cursorrules</code> or settings):
-            </p>
-            <CodeBlock>{cursorConfig}</CodeBlock>
-            <p>
-              <strong>Manual (curl / raw HTTP)</strong>:
-            </p>
-            <CodeBlock>{curlInit}</CodeBlock>
-            <CodeBlock>{curlList}</CodeBlock>
-            <CodeBlock>{curlCall}</CodeBlock>
-            <p>Discover the tool catalog (no auth required):</p>
-            <CodeBlock>{`curl https://app.qlim8.com/api/mcp/schema`}</CodeBlock>
-          </Section>
-
-          <Section number="3" title="Layer 1 — Core tools">
-            <p>These tools cover the most common use cases for agents and analysts.</p>
-            <div className="space-y-5">
-              <div>
-                <p className="font-mono font-semibold text-gray-900 mb-1">get_emissions_summary</p>
-                <p className="text-[15px]">Returns total CO2e aggregated by scope for a date range.</p>
-                <CodeBlock>{`{ "from": "2024-01-01T00:00:00Z", "to": "2024-12-31T23:59:59Z" }
-
-{
-  "total_co2e_kg": 142300.5,
-  "by_scope": { "1": 12000, "2": 45000, "3": 85300.5 },
-  "entry_count": 847
-}`}</CodeBlock>
-              </div>
-              <div>
-                <p className="font-mono font-semibold text-gray-900 mb-1">list_emissions</p>
-                <p className="text-[15px]">Cursor-paginated list of emission entries. Repeat with next_cursor for all pages.</p>
-                <CodeBlock>{`{ "scope": "3", "from": "2024-01-01T00:00:00Z", "limit": 50 }`}</CodeBlock>
-              </div>
-              <div>
-                <p className="font-mono font-semibold text-gray-900 mb-1">get_emission_lineage</p>
-                <p className="text-[15px]">Full traceability for a single emission entry — source invoice, emission factor, category history, and audit hashes.</p>
-                <CodeBlock>{`{ "id": "550e8400-e29b-41d4-a716-446655440000" }`}</CodeBlock>
-              </div>
-              <div>
-                <p className="font-mono font-semibold text-gray-900 mb-1">list_activities</p>
-                <p className="text-[15px]">Lists source invoices/transactions before categorization.</p>
-                <CodeBlock>{`{ "from": "2024-01-01T00:00:00Z", "to": "2024-03-31T23:59:59Z", "limit": 100 }`}</CodeBlock>
-              </div>
-              <div>
-                <p className="font-mono font-semibold text-gray-900 mb-1">list_reports</p>
-                <p className="text-[15px]">Lists previously generated compliance reports (VSME, CSRD).</p>
-              </div>
-              <div>
-                <p className="font-mono font-semibold text-gray-900 mb-1">get_report_status</p>
-                <p className="text-[15px]">Polls a report render job by ID until status is "completed" or "failed".</p>
-                <CodeBlock>{`{ "id": "job-uuid-here" }`}</CodeBlock>
-              </div>
-              <div>
-                <p className="font-mono font-semibold text-gray-900 mb-1">generate_report</p>
-                <p className="text-[15px]">Queues a new report render. Returns a job ID for polling with get_report_status. Safe to retry — returns the existing in-flight job if already queued.</p>
-                <CodeBlock>{`{ "report_year": 2024, "standard_type": "vsme_basic", "format": "pdf" }`}</CodeBlock>
-                <p className="text-sm text-gray-600 mt-2">
-                  Available <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">standard_type</code> values: <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">vsme_basic</code>, <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">vsme_bp</code>, <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">vsme_comprehensive</code>, <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">csrd</code>.
-                </p>
-              </div>
-            </div>
-          </Section>
-
-          <Section number="4" title="Layer 2 — Strategic tools">
-            <div className="space-y-5">
-              <div>
-                <p className="font-mono font-semibold text-gray-900 mb-1">list_targets / create_target</p>
-                <p className="text-[15px]">Read and create CO2 reduction targets.</p>
-                <CodeBlock>{`{
-  "name": "Science-Based Target 2030",
-  "baseline_year": 2019,
-  "baseline_emissions": 500.0,
-  "target_year": 2030,
-  "target_reduction_percent": 46.2,
-  "scope": "all"
-}`}</CodeBlock>
-              </div>
-              <div>
-                <p className="font-mono font-semibold text-gray-900 mb-1">list_emission_factors / get_factor_citations</p>
-                <p className="text-[15px]">Browse the emission factor catalog and see which entries used a specific factor.</p>
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900 mb-1">Value-chain tools (Enterprise plan required)</p>
-                <p className="text-[15px]">
-                  <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">list_suppliers</code>, <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">get_value_chain_coverage</code>, <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">get_value_chain_exposure</code> require the <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">supplyChain</code> feature (Enterprise tier). Calling them on a Growth or Starter plan returns a structured error:
-                </p>
-                <CodeBlock>{tierGateError}</CodeBlock>
-              </div>
-            </div>
-          </Section>
-
-          <Section number="5" title="Layer 3 — Infrastructure tools">
-            <div className="space-y-3">
-              <p className="font-mono font-semibold text-gray-900">list_webhooks / create_webhook / get_webhook_deliveries</p>
-              <p>Manage webhook subscriptions and inspect delivery logs.</p>
-              <p>When creating a webhook the <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">signing_secret</code> is returned once — store it securely.</p>
-            </div>
-            <p className="pt-3">
-              <Link href="/docs/mcp-tools" className="text-primary font-semibold hover:underline text-sm">
-                See full tool reference →
-              </Link>
-            </p>
-          </Section>
-
-          <Section number="6" title="Error reference">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
-                <thead>
-                  <tr className="border-b border-gray-300">
-                    <th className="text-left font-semibold text-gray-900 py-2 pr-4 align-top">Error code</th>
-                    <th className="text-left font-semibold text-gray-900 py-2 align-top">Meaning</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {ERROR_CODES.map((e) => (
-                    <tr key={e.code}>
-                      <td className="py-3 pr-4 font-mono text-[13px] text-gray-900 align-top whitespace-nowrap">{e.code}</td>
-                      <td className="py-3 text-gray-700 align-top">{e.meaning}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </Section>
-
-          <Section number="7" title="Rate limits">
-            <p>The MCP server shares rate-limit buckets with the REST API (<Link href="/docs/api-reference" className="text-primary font-semibold hover:underline">/api/v1</Link>):</p>
-            <ul className="space-y-2 text-[15px]">
-              <li>— Read operations: <strong>600 requests / minute per API key</strong></li>
-              <li>— Write operations: <strong>60 requests / minute per API key</strong></li>
-              <li>— Sandbox keys: 10× stricter</li>
+              <li>
+                <strong>AI-abonnement:</strong> Claude understøtter custom connectors på alle
+                planer — også gratisplanen (dog maks. én connector dér). ChatGPT kræver en betalt
+                plan (Plus, Pro, Business, Enterprise eller Edu).
+              </li>
             </ul>
           </Section>
 
-          <Section number="8" title="Session behaviour">
+          <Section number="2" title="Claude (claude.ai, desktop og mobil)">
+            <Steps
+              items={[
+                <>Åbn <strong>Settings → Connectors</strong> i Claude.</>,
+                <>Klik på <strong>Add custom connector</strong>.</>,
+                <>
+                  Giv den navnet <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">qlim8</code>{" "}
+                  og indsæt adressen{" "}
+                  <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded break-all">{MCP_URL}</code>.
+                  Lad OAuth-felterne under &quot;Advanced settings&quot; stå tomme.
+                </>,
+                <>
+                  Klik <strong>Add</strong> og derefter <strong>Connect</strong>. Din browser åbner
+                  qlim8 — log ind og godkend adgangen.
+                </>,
+                <>
+                  Tilbage i Claude: slå qlim8 til i chattens værktøjsmenu og stil dit første
+                  spørgsmål.
+                </>,
+              ]}
+            />
+            <p className="text-sm text-gray-600">
+              På <strong>Team/Enterprise-planer</strong> skal en organisations-Owner først tilføje
+              connectoren under <em>Organization Settings → Connectors</em> — derefter klikker
+              hvert medlem selv på <em>Connect</em> og logger ind.
+            </p>
+          </Section>
+
+          <Section number="3" title="ChatGPT">
+            <Steps
+              items={[
+                <>
+                  Åbn <strong>Settings → Apps → Advanced settings</strong> og slå{" "}
+                  <strong>Developer mode</strong> til. (I Business/Enterprise-workspaces skal en
+                  admin muligvis først tillade custom apps.)
+                </>,
+                <>
+                  Gå tilbage til <strong>Apps</strong> og vælg at tilføje en app: navn{" "}
+                  <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">qlim8</code>,
+                  MCP-server-URL{" "}
+                  <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded break-all">{MCP_URL}</code>,
+                  og vælg <strong>OAuth</strong> som godkendelse (lad client-felterne stå tomme).
+                </>,
+                <>
+                  Gem og klik <strong>Connect</strong> — log ind hos qlim8 og godkend adgangen.
+                </>,
+                <>Aktivér qlim8-appen i chatten og spørg løs.</>,
+              ]}
+            />
+            <p className="text-sm text-gray-600">
+              Custom MCP-connectors (kaldet <em>apps</em> i ChatGPT) kræver Plus, Pro, Business,
+              Enterprise eller Edu — de er ikke tilgængelige på gratisplanen.
+            </p>
+          </Section>
+
+          <Section number="4" title="Gemini">
             <p>
-              Sessions are stored in-memory and expire after 24 hours or on server restart. MCP clients handle session loss automatically by re-sending <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">initialize</code>. No data is lost — only the protocol handshake needs to be repeated.
+              Googles Gemini-app understøtter <strong>endnu ikke</strong> custom MCP-connectors for
+              almindelige brugere — hverken på web eller mobil. Tekniske alternativer findes
+              (Gemini CLI og Gemini Enterprise kan forbinde til serveren), men der er ingen
+              brugervenlig vej endnu. Vi tilføjer en trin-for-trin-guide her, så snart Google åbner
+              for det.
             </p>
           </Section>
 
-          <Section number="9" title="Client compatibility">
-            <p>The server follows the MCP specification (protocol version 2024-11-05). It is compatible with:</p>
-            <div className="overflow-x-auto mt-2">
-              <table className="w-full text-sm border-collapse">
-                <thead>
-                  <tr className="border-b border-gray-300">
-                    <th className="text-left font-semibold text-gray-900 py-2 pr-4 align-top">Client</th>
-                    <th className="text-left font-semibold text-gray-900 py-2 align-top">Notes</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {CLIENTS.map((c) => (
-                    <tr key={c.name}>
-                      <td className="py-3 pr-4 font-semibold text-gray-900 whitespace-nowrap align-top">{c.name}</td>
-                      <td className="py-3 text-gray-700 align-top">{c.notes}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="text-sm text-gray-600 pt-2">
-              Tool descriptions and input schemas are written for LLM consumption — precise, concise, with format hints on every parameter. They work equally well across Claude, GPT-4, and Gemini models.
+          <Section number="5" title="Hvad kan du spørge om?">
+            <p>Når forbindelsen er oprettet, kan du stille spørgsmål som:</p>
+            <ul className="space-y-3">
+              {EXAMPLE_PROMPTS.map((p) => (
+                <li key={p} className="bg-white rounded-xl border border-gray-200 px-5 py-3.5 text-[15px] text-gray-800">
+                  &quot;{p}&quot;
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-gray-600">
+              Assistenten henter tallene live fra qlim8 — samme tal som i platformen, med samme
+              beregningsgrundlag og kildesporing.
             </p>
           </Section>
 
-          <section className="bg-gray-900 text-gray-100 rounded-2xl p-8 sm:p-12 mt-4">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight text-white">
-              Ready to go deeper?
-            </h2>
-            <p className="text-gray-300 text-base leading-relaxed mb-7 max-w-2xl">
-              See the full reference for all 17 tools — input schemas, example output, and scope requirements — or check out the REST API alternative.
+          <Section number="6" title="Sikkerhed &amp; adgang">
+            <ul className="space-y-3 list-disc list-inside">
+              <li>
+                <strong>Admin-godkendelse:</strong> kun qlim8-administratorer kan godkende en ny
+                forbindelse.
+              </li>
+              <li>
+                <strong>Kun læseadgang som standard.</strong> Admin kan aktivt vælge skriveadgang
+                til (fx oprette reduktionsmål eller starte rapporter) på godkendelsesskærmen.
+              </li>
+              <li>
+                <strong>Kun jeres egne data.</strong> Assistenten kan udelukkende se jeres
+                virksomheds miljø — aldrig andre kunders.
+              </li>
+              <li>
+                <strong>Fortryd når som helst:</strong> forbindelsen tilbagekaldes i qlim8 under{" "}
+                <em>Collectors → API Keys</em>.
+              </li>
+              <li>
+                <strong>Teknisk:</strong> OAuth 2.1 med PKCE; adgangstokens udløber automatisk
+                efter 1 time og fornyes i op til 60 dage.
+              </li>
+            </ul>
+          </Section>
+
+          <div className="bg-gray-900 text-gray-100 rounded-2xl p-7 sm:p-10">
+            <h2 className="text-xl sm:text-2xl font-bold mb-3">Til udviklere</h2>
+            <p className="text-gray-300 text-[15px] leading-relaxed mb-5">
+              API-nøgle-baseret opsætning (Claude Code, Cursor, curl), den fulde reference for alle
+              31 MCP-tools og REST API v1-dokumentationen bor på udviklerportalen.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 text-sm">
-              <Link href="/docs/mcp-tools" className="font-semibold text-white hover:underline">
-                MCP tool reference →
-              </Link>
-              <Link href="/docs/api-reference" className="font-semibold text-white hover:underline">
-                REST API endpoints →
-              </Link>
+            <div className="flex flex-wrap gap-3 text-sm">
+              <a
+                href="https://developers.qlim8.com/mcp/"
+                className="bg-white text-gray-900 font-semibold rounded-full px-5 py-2.5 hover:bg-gray-200 transition-colors"
+              >
+                developers.qlim8.com/mcp ↗
+              </a>
+              <a
+                href="https://app.qlim8.com/api/mcp/schema"
+                className="border border-gray-600 text-gray-100 font-semibold rounded-full px-5 py-2.5 hover:border-gray-400 transition-colors"
+              >
+                Maskinlæsbart tool-katalog ↗
+              </a>
             </div>
-          </section>
+            <div className="mt-6">
+              <CodeBlock>{`curl https://app.qlim8.com/api/mcp/schema`}</CodeBlock>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -28,7 +28,7 @@ const CAPABILITIES = [
   },
   {
     title: "MCP-server (live)",
-    body: "17 kuraterede tools til AI-agenter via Anthropic's Model Context Protocol. Fungerer med Claude Desktop, Cursor, Replit, Lovable og custom JSON-RPC-klienter.",
+    body: "31 kuraterede tools til AI-agenter via Anthropic's Model Context Protocol. Claude og ChatGPT forbinder med OAuth — helt uden API-nøgle — og Claude Code, Cursor, Replit, Lovable og custom JSON-RPC-klienter bruger samme Bearer-nøgler som REST-API'en.",
   },
   {
     title: "Granulær adgang",
@@ -97,7 +97,7 @@ export default function Page() {
         <div className="bg-gray-900 text-gray-100 rounded-2xl p-7 sm:p-10">
           <h2 className="text-xl sm:text-2xl font-bold mb-3">MCP — forbind en agent</h2>
           <p className="text-gray-300 text-[15px] leading-relaxed mb-5">
-            Tilføj qlim8 som MCP-server i Claude Desktop eller Cursor med samme Bearer-token. Agenten har derefter adgang til alle 17 tools direkte.
+            Almindelige brugere forbinder Claude eller ChatGPT via OAuth — uden API-nøgle (se MCP Quickstart). Udviklere tilføjer qlim8 i fx Claude Code eller Cursor med samme Bearer-token som REST-API'en. Agenten har derefter adgang til alle 31 tools direkte.
           </p>
           <pre className="bg-black/40 text-gray-100 text-xs sm:text-sm rounded-xl p-5 overflow-x-auto">
             <code>{`{
