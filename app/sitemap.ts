@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/content/articles";
+import { ALL_MARKETING_NODES, MARKETING_HUBS } from "@/content/marketing";
 
 const BASE_URL = "https://qlim8.com";
 
@@ -7,7 +8,7 @@ const BASE_URL = "https://qlim8.com";
 // (Blog routes derive lastModified from each article's publishedAt instead, so
 // they don't need this.) Using a stable date avoids telling crawlers that every
 // page changed on every deploy, which `new Date()` would otherwise do.
-const SITE_UPDATED = new Date("2026-06-08");
+const SITE_UPDATED = new Date("2026-07-20");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // The blog index is effectively "modified" whenever the newest article ships.
@@ -41,5 +42,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...articleRoutes];
+  // Marketing hubs (Kundetyper / Produkt / Integrationer) + their leaves,
+  // derived from the content collections. Coming-soon pages (Appelsin) are
+  // excluded — they render noindex until they ship.
+  const hubRoutes: MetadataRoute.Sitemap = MARKETING_HUBS.map((h) => ({
+    url: `${BASE_URL}${h.route}`,
+    lastModified: SITE_UPDATED,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  const marketingRoutes: MetadataRoute.Sitemap = ALL_MARKETING_NODES
+    .filter((n) => n.status !== "coming-soon")
+    .map((n) => ({
+      url: `${BASE_URL}/${n.collection}/${n.slug}`,
+      lastModified: SITE_UPDATED,
+      changeFrequency: "monthly",
+      priority: n.parentSlug ? 0.6 : 0.7,
+    }));
+
+  return [...staticRoutes, ...articleRoutes, ...hubRoutes, ...marketingRoutes];
 }

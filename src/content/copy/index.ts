@@ -17,6 +17,7 @@ import {
   LEGAL_TERMS_COPY,
   LEGAL_PRIVACY_COPY,
 } from "./legal";
+import { ALL_MARKETING_NODES, MARKETING_HUBS } from "@/content/marketing";
 
 export const COPY_DEFAULTS: Record<string, unknown> = {
   [HOME_PAGE_KEY]: HOME_COPY,
@@ -35,5 +36,14 @@ export const COPY_DEFAULTS: Record<string, unknown> = {
   [LEGAL_TERMS_PAGE_KEY]: LEGAL_TERMS_COPY,
   [LEGAL_PRIVACY_PAGE_KEY]: LEGAL_PRIVACY_COPY,
 };
+
+// Register the ~40 marketing pages (3 hubs + industry/feature/integration leaves)
+// so the app admin CMS can edit each one's copy against its pageKey.
+for (const hub of MARKETING_HUBS) {
+  COPY_DEFAULTS[hub.pageKey] = hub.defaults;
+}
+for (const node of ALL_MARKETING_NODES) {
+  COPY_DEFAULTS[node.pageKey] = node.defaults;
+}
 
 export const COPY_PAGE_KEYS = Object.keys(COPY_DEFAULTS);

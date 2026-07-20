@@ -1,20 +1,78 @@
 "use client";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { PRIMARY_NAV, type NavTop } from "@/content/navigation";
 
 interface SiteHeaderProps {
   isHome?: boolean;
 }
 
-const NAV_ITEMS = [
-  { href: "/priser", label: "Priser" },
-  { href: "/metodologi", label: "Metodologi" },
-  { href: "/blog", label: "Blog" },
-  { href: "/api", label: "API" },
-];
+const TRIGGER_CLASS =
+  "bg-transparent text-gray-700 hover:text-primary hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-primary px-0 h-auto";
+
+function MegaMenu({ item }: { item: NavTop }) {
+  const groups = item.groups ?? [];
+  const withBlurb = groups.length <= 2; // keep the wide Produkt menu compact
+  return (
+    <NavigationMenuContent>
+      <div className="p-6" style={{ width: `min(90vw, ${Math.min(groups.length, 4) * 230 + 32}px)` }}>
+        <div
+          className="grid gap-x-8 gap-y-5"
+          style={{ gridTemplateColumns: `repeat(${Math.min(groups.length, 4)}, minmax(0, 1fr))` }}
+        >
+          {groups.map((g) => (
+            <div key={g.heading || item.label}>
+              {g.heading && (
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+                  {g.heading}
+                </p>
+              )}
+              <ul className="space-y-1">
+                {g.items.map((leaf) => (
+                  <li key={leaf.href}>
+                    <NavigationMenuLink asChild>
+                      <a href={leaf.href} className="block rounded-lg px-3 py-2 hover:bg-gray-50 transition-colors">
+                        <span className="flex items-center gap-2 text-sm font-medium text-gray-900">
+                          {leaf.label}
+                          {leaf.comingSoon && (
+                            <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-semibold text-primary">
+                              Snart
+                            </span>
+                          )}
+                        </span>
+                        {withBlurb && leaf.blurb && (
+                          <span className="block text-xs text-gray-500 mt-0.5">{leaf.blurb}</span>
+                        )}
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <a
+          href={item.href}
+          className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+        >
+          Se alle {item.label.toLowerCase()} →
+        </a>
+      </div>
+    </NavigationMenuContent>
+  );
+}
 
 export function SiteHeader({ isHome = false }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openSection, setOpenSection] = useState<string | null>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -53,18 +111,32 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
             )}
           </a>
 
-          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-700">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="hover:text-primary transition-colors"
-                data-testid={`nav-${item.label.toLowerCase()}`}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          <NavigationMenu className="hidden lg:flex">
+            <NavigationMenuList className="gap-5">
+              {PRIMARY_NAV.map((item) =>
+                item.groups && item.groups.length > 0 ? (
+                  <NavigationMenuItem key={item.label}>
+                    <NavigationMenuTrigger className={TRIGGER_CLASS} data-testid={`nav-${item.label.toLowerCase()}`}>
+                      {item.label}
+                    </NavigationMenuTrigger>
+                    <MegaMenu item={item} />
+                  </NavigationMenuItem>
+                ) : (
+                  <NavigationMenuItem key={item.label}>
+                    <NavigationMenuLink asChild>
+                      <a
+                        href={item.href}
+                        className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                        data-testid={`nav-${item.label.toLowerCase()}`}
+                      >
+                        {item.label}
+                      </a>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ),
+              )}
+            </NavigationMenuList>
+          </NavigationMenu>
 
           <div className="flex items-center gap-2 sm:gap-3">
             <a
@@ -97,18 +169,65 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
               </button>
 
               {menuOpen && (
-                <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden z-50">
-                  {NAV_ITEMS.map((item) => (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                      data-testid={`menu-${item.label.toLowerCase()}`}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
+                <div className="absolute right-0 top-full mt-2 w-72 max-h-[80vh] overflow-y-auto bg-white rounded-xl shadow-lg border border-gray-100 z-50">
+                  {PRIMARY_NAV.map((item) =>
+                    item.groups && item.groups.length > 0 ? (
+                      <div key={item.label} className="border-b border-gray-100 last:border-0">
+                        <button
+                          onClick={() =>
+                            setOpenSection((s) => (s === item.label ? null : item.label))
+                          }
+                          className="flex w-full items-center justify-between px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-50 transition-colors"
+                        >
+                          {item.label}
+                          <ChevronDown
+                            className={
+                              "h-4 w-4 text-gray-400 transition-transform " +
+                              (openSection === item.label ? "rotate-180" : "")
+                            }
+                          />
+                        </button>
+                        {openSection === item.label && (
+                          <div className="pb-2">
+                            <a
+                              href={item.href}
+                              onClick={() => setMenuOpen(false)}
+                              className="block px-6 py-2 text-sm font-semibold text-primary hover:bg-gray-50"
+                            >
+                              Se alle {item.label.toLowerCase()} →
+                            </a>
+                            {item.groups.map((g) =>
+                              g.items.map((leaf) => (
+                                <a
+                                  key={leaf.href}
+                                  href={leaf.href}
+                                  onClick={() => setMenuOpen(false)}
+                                  className="flex items-center gap-2 px-6 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+                                >
+                                  {leaf.label}
+                                  {leaf.comingSoon && (
+                                    <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-semibold text-primary">
+                                      Snart
+                                    </span>
+                                  )}
+                                </a>
+                              )),
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
+                        data-testid={`menu-${item.label.toLowerCase()}`}
+                      >
+                        {item.label}
+                      </a>
+                    ),
+                  )}
                   <a
                     href="https://app.qlim8.com/auth"
                     onClick={() => setMenuOpen(false)}
