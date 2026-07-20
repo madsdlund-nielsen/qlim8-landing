@@ -1,6 +1,11 @@
 import { Linkedin } from "lucide-react";
+import { FOOTER_SOLUTIONS } from "@/content/navigation";
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
+  {
+    heading: "Løsninger",
+    links: FOOTER_SOLUTIONS.map((l) => ({ label: l.label, href: l.href })),
+  },
   {
     heading: "Produkt",
     links: [
@@ -37,7 +42,7 @@ export function SiteFooter() {
   return (
     <footer className="bg-gray-900 text-gray-400 py-14 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
           <div className="space-y-4">
             <a href="/" className="inline-block">
               <span className="font-bold text-xl tracking-tight text-white">qlim8</span>
