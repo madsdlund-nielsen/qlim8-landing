@@ -8,7 +8,7 @@ const BASE_URL = "https://qlim8.com";
 // (Blog routes derive lastModified from each article's publishedAt instead, so
 // they don't need this.) Using a stable date avoids telling crawlers that every
 // page changed on every deploy, which `new Date()` would otherwise do.
-const SITE_UPDATED = new Date("2026-06-08");
+const SITE_UPDATED = new Date("2026-07-20");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // The blog index is effectively "modified" whenever the newest article ships.

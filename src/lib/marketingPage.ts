@@ -5,6 +5,7 @@
 
 import type { Metadata } from "next";
 import type { MarketingNode, MarketingHub, MarketingPageCopy } from "@/content/marketing/types";
+import type { NavLeaf } from "@/content/navigation";
 import { getAncestors } from "@/content/marketing";
 
 const BASE_URL = "https://qlim8.com";
@@ -104,4 +105,42 @@ export function buildMarketingJsonLd(node: MarketingNode, copy: MarketingPageCop
   }
 
   return schemas;
+}
+
+/** Structured data for a section hub: CollectionPage (with an ItemList of its
+ *  cards) + BreadcrumbList. Lets crawlers/LLMs see the hub as a section index. */
+export function buildHubJsonLd(hub: MarketingHub, cards: NavLeaf[]): object[] {
+  const url = `${BASE_URL}${hub.route}`;
+
+  const collectionPage = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: hub.title,
+    description: hub.seoDescription,
+    url,
+    inLanguage: "da-DK",
+    isPartOf: { "@type": "WebSite", name: "qlim8", url: BASE_URL },
+    provider: ORG,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: cards.length,
+      itemListElement: cards.map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: c.label,
+        url: `${BASE_URL}${c.href}`,
+      })),
+    },
+  };
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "qlim8", item: `${BASE_URL}/` },
+      { "@type": "ListItem", position: 2, name: hub.title, item: url },
+    ],
+  };
+
+  return [collectionPage, breadcrumb];
 }
