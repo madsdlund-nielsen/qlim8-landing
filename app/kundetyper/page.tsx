@@ -16,7 +16,7 @@ export default async function Page() {
     KUNDETYPER_HUB.pageKey,
     KUNDETYPER_HUB.defaults,
   );
-  const jsonLd = buildHubJsonLd(KUNDETYPER_HUB, cards);
+  const jsonLd = buildHubJsonLd(KUNDETYPER_HUB, cards, copy.faq?.items);
   return (
     <>
       {jsonLd.map((s, i) => (

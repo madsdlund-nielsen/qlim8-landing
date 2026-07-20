@@ -119,6 +119,11 @@ export interface MarketingHubCopy {
   cardsSubheading?: string;
   /** Optional differentiation columns shown under the cards. */
   differentiators: FeatureItem[];
+  /** Filled in for every hub by the FAQ augmentation in ./index. */
+  faq?: {
+    title: string;
+    items: FaqItem[];
+  };
   closingCta: {
     title: string;
     description: string;

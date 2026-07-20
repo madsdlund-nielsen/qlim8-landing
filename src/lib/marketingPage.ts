@@ -4,7 +4,7 @@
 // and the structured-data breadcrumb come from one source.
 
 import type { Metadata } from "next";
-import type { MarketingNode, MarketingHub, MarketingPageCopy } from "@/content/marketing/types";
+import type { MarketingNode, MarketingHub, MarketingPageCopy, FaqItem } from "@/content/marketing/types";
 import type { NavLeaf } from "@/content/navigation";
 import { getAncestors } from "@/content/marketing";
 
@@ -108,8 +108,9 @@ export function buildMarketingJsonLd(node: MarketingNode, copy: MarketingPageCop
 }
 
 /** Structured data for a section hub: CollectionPage (with an ItemList of its
- *  cards) + BreadcrumbList. Lets crawlers/LLMs see the hub as a section index. */
-export function buildHubJsonLd(hub: MarketingHub, cards: NavLeaf[]): object[] {
+ *  cards) + BreadcrumbList + FAQPage. Lets crawlers/LLMs see the hub as a
+ *  section index and read its FAQ. */
+export function buildHubJsonLd(hub: MarketingHub, cards: NavLeaf[], faqItems?: FaqItem[]): object[] {
   const url = `${BASE_URL}${hub.route}`;
 
   const collectionPage = {
@@ -142,5 +143,19 @@ export function buildHubJsonLd(hub: MarketingHub, cards: NavLeaf[]): object[] {
     ],
   };
 
-  return [collectionPage, breadcrumb];
+  const schemas: object[] = [collectionPage, breadcrumb];
+
+  if (faqItems?.length) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+  }
+
+  return schemas;
 }

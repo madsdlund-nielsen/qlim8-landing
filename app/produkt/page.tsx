@@ -16,7 +16,7 @@ export default async function Page() {
     PRODUKT_HUB.pageKey,
     PRODUKT_HUB.defaults,
   );
-  const jsonLd = buildHubJsonLd(PRODUKT_HUB, cards);
+  const jsonLd = buildHubJsonLd(PRODUKT_HUB, cards, copy.faq?.items);
   return (
     <>
       {jsonLd.map((s, i) => (

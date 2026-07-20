@@ -16,7 +16,7 @@ export default async function Page() {
     INTEGRATIONER_HUB.pageKey,
     INTEGRATIONER_HUB.defaults,
   );
-  const jsonLd = buildHubJsonLd(INTEGRATIONER_HUB, cards);
+  const jsonLd = buildHubJsonLd(INTEGRATIONER_HUB, cards, copy.faq?.items);
   return (
     <>
       {jsonLd.map((s, i) => (

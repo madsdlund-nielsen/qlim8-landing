@@ -2,7 +2,7 @@
 // Shared renderer for the three section hub pages (Kundetyper / Produkt /
 // Integrationer). A hero + differentiation intro, an embla carousel of cards
 // linking to the collection's featured leaves, differentiators, and a CTA.
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { CTASection } from "@/components/public/CTASection";
@@ -139,6 +139,26 @@ export default function MarketingHubTemplate({
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{d.title}</h3>
                   <p className="text-gray-600 leading-relaxed text-[15px]">{d.body}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ */}
+      {copy.faq && copy.faq.items.length > 0 && (
+        <section className="py-16 sm:py-20">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">{copy.faq.title}</h2>
+            <div className="divide-y divide-gray-200 border-y border-gray-200">
+              {copy.faq.items.map((f, i) => (
+                <details key={i} className="group py-4">
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 font-semibold text-gray-900 list-none">
+                    {f.q}
+                    <Plus className="h-5 w-5 text-gray-400 shrink-0 transition-transform group-open:rotate-45" />
+                  </summary>
+                  <p className="mt-3 text-gray-600 leading-relaxed">{f.a}</p>
+                </details>
               ))}
             </div>
           </div>
