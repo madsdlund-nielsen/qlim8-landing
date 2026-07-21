@@ -68,6 +68,37 @@ test("accepts any object array when the bundled default is empty (open positions
   assert.equal(merged.openPositions.length, 1);
 });
 
+test("surfaces a CMS-authored top-level section the default omits (howItWorks)", () => {
+  const howItWorks = {
+    title: "Sådan kan du komme i gang",
+    steps: [
+      { title: "Opret konto", body: "Det koster ingenting." },
+      { title: "Demo tal", body: "Start i sandkassen." },
+    ],
+  };
+  const merged = mergeCopy(DEFAULTS, { howItWorks }) as typeof DEFAULTS & {
+    howItWorks?: typeof howItWorks;
+  };
+  assert.deepEqual(merged.howItWorks, howItWorks);
+  // Existing keys are untouched.
+  assert.equal(merged.hero.title, "Standard titel");
+});
+
+test("ignores a malformed override-only top-level key", () => {
+  const merged = mergeCopy(DEFAULTS, {
+    howItWorks: { title: "x", steps: null },
+  }) as typeof DEFAULTS & { howItWorks?: unknown };
+  assert.ok(!("howItWorks" in merged));
+});
+
+test("does NOT surface unknown keys nested below the page root", () => {
+  const merged = mergeCopy(DEFAULTS, {
+    hero: { title: "Ny", extra: { deep: "junk" } },
+  });
+  assert.equal(merged.hero.title, "Ny");
+  assert.ok(!("extra" in merged.hero));
+});
+
 test("keeps optional extra keys on array items (e.g. plan badge)", () => {
   const defaults = { plans: [{ name: "Starter", cta: "Køb" }] };
   const merged = mergeCopy(defaults, {
