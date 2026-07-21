@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { articles } from "@/content/articles";
+import { secretsMatch } from "@/lib/secretCompare";
 
 // Exposes the bundled blog articles (src/content/*.ts) to the qlim8-app
 // admin CMS for a one-time import into cms_articles. Once imported, the CMS
@@ -13,7 +14,7 @@ export async function GET(request: NextRequest) {
   if (!secret) {
     return NextResponse.json({ error: "CMS_REVALIDATE_SECRET not configured" }, { status: 503 });
   }
-  if (request.headers.get("x-revalidate-secret") !== secret) {
+  if (!secretsMatch(request.headers.get("x-revalidate-secret"), secret)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   return NextResponse.json({ articles });

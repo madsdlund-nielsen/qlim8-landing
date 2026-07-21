@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { revalidateTag, revalidatePath } from "next/cache";
+import { secretsMatch } from "@/lib/secretCompare";
 
 // On-publish revalidation webhook called by qlim8-app's CMS publish endpoints.
 // Authenticated with a shared secret (CMS_REVALIDATE_SECRET, set in both repos'
@@ -10,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   const secret = process.env.CMS_REVALIDATE_SECRET;
-  if (!secret || request.headers.get("x-revalidate-secret") !== secret) {
+  if (!secretsMatch(request.headers.get("x-revalidate-secret"), secret)) {
     return NextResponse.json({ ok: false, message: "Unauthorized" }, { status: 401 });
   }
 
