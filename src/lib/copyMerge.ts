@@ -14,6 +14,19 @@ function isPlainObject(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null && !Array.isArray(v);
 }
 
+/**
+ * A value is "well-formed" if it's built only from scalars, plain objects and
+ * arrays (recursively) — i.e. structurally sane JSON with no null/undefined
+ * holes. Used to vet CMS-authored keys that the bundled default doesn't define
+ * and therefore has no shape template to validate against.
+ */
+function isWellFormed(v: unknown): boolean {
+  if (isScalar(v)) return true;
+  if (Array.isArray(v)) return v.every(isWellFormed);
+  if (isPlainObject(v)) return Object.values(v).every(isWellFormed);
+  return false;
+}
+
 function mergeScalar(defaultValue: Scalar, override: unknown): Scalar {
   if (typeof override === typeof defaultValue) return override as Scalar;
   // Feature-comparison cells are boolean|string unions; allow crossing over.
@@ -56,17 +69,23 @@ function mergeArray(defaults: unknown[], override: unknown): unknown[] {
   // (e.g. bullets: string[]) are validated recursively; extra keys (badge,
   // note, …) pass through untouched.
   return override.map((item) => {
-    const merged = mergeCopy(template, item) as Record<string, unknown>;
+    const merged = mergeCopy(template, item, false) as Record<string, unknown>;
     return { ...(item as Record<string, unknown>), ...merged };
   });
 }
 
 /**
- * Merge a CMS override onto bundled defaults. Objects merge key-by-key
- * (unknown override keys are ignored), arrays are replaced wholesale after
- * per-item shape validation, scalars require a compatible type.
+ * Merge a CMS override onto bundled defaults. Objects merge key-by-key, arrays
+ * are replaced wholesale after per-item shape validation, scalars require a
+ * compatible type.
+ *
+ * `allowNewKeys` (true only at the top level) lets a CMS-authored top-level
+ * section that the bundled default omits — e.g. a `howItWorks` block added in
+ * the CMS — surface, provided its value is well-formed. Nested unknown keys are
+ * still ignored (they have no shape template and are more likely stale/junk),
+ * preserving the defensive contract everywhere below the page root.
  */
-export function mergeCopy<T>(defaults: T, override: unknown): T {
+export function mergeCopy<T>(defaults: T, override: unknown, allowNewKeys = true): T {
   if (override === undefined || override === null) return defaults;
   if (isScalar(defaults)) {
     return mergeScalar(defaults, override) as T;
@@ -79,7 +98,14 @@ export function mergeCopy<T>(defaults: T, override: unknown): T {
     const result: Record<string, unknown> = { ...defaults };
     for (const [key, defaultValue] of Object.entries(defaults)) {
       if (key in override) {
-        result[key] = mergeCopy(defaultValue, override[key]);
+        result[key] = mergeCopy(defaultValue, override[key], false);
+      }
+    }
+    if (allowNewKeys) {
+      for (const [key, overrideValue] of Object.entries(override)) {
+        if (!(key in defaults) && isWellFormed(overrideValue)) {
+          result[key] = overrideValue;
+        }
       }
     }
     return result as T;
