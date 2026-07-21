@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { COPY_DEFAULTS, COPY_PAGE_KEYS } from "@/content/copy";
+import { secretsMatch } from "@/lib/secretCompare";
 
 // Serves the site's bundled default marketing copy to the qlim8-app admin
 // CMS, so the editor can display the actual current content of each page.
@@ -13,7 +14,7 @@ export async function GET(request: NextRequest) {
   if (!secret) {
     return NextResponse.json({ error: "CMS_REVALIDATE_SECRET not configured" }, { status: 503 });
   }
-  if (request.headers.get("x-revalidate-secret") !== secret) {
+  if (!secretsMatch(request.headers.get("x-revalidate-secret"), secret)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
