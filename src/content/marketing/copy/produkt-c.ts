@@ -1,4 +1,4 @@
-import type { MarketingPageCopy, MarketingHubCopy } from "@/content/marketing/types";
+import type { MarketingPageCopy } from "@/content/marketing/types";
 
 // Produkt-copy (batch C) — features:
 //   PR_TILTAG           reduktions-tiltag / -tracking   (kilde: reduction-tracking.md)

@@ -1,4 +1,4 @@
-import type { MarketingPageCopy, MarketingHubCopy } from "@/content/marketing/types";
+import type { MarketingPageCopy } from "@/content/marketing/types";
 
 // Kundetyper — batch B: Revisorer, Plastfabrikanter, Rådgivere, Konsulenter,
 // Frisører, Store virksomheder. Danish long-form marketing copy, typed as data.

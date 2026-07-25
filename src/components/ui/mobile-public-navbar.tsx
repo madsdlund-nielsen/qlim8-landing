@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { Logo } from "@/components/ui/logo";
 
