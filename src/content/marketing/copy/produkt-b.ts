@@ -1,4 +1,4 @@
-import type { MarketingPageCopy, MarketingHubCopy } from "@/content/marketing/types";
+import type { MarketingPageCopy } from "@/content/marketing/types";
 
 // Report-detail marketing copy: recipient variants (Modtagere) + themes + VSME modules.
 // Voice per docs/da/marketing/_shared/brand-voice.md + positioning.md.

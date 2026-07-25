@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Cookie, X } from "lucide-react";
+import { Cookie } from "lucide-react";
 
 const GA_MEASUREMENT_ID = "G-B98XTFG3KX";
 const COOKIE_CONSENT_KEY = "qlim8_cookie_consent";

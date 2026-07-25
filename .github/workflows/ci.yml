@@ -1,0 +1,43 @@
+name: CI
+
+# This repo previously had no CI checks: deploy.yml builds and ships a Docker
+# image on push to main, but nothing verified the code first. A linter that
+# never runs is not a guardrail, so this workflow gives PRs the three cheap
+# signals that exist locally.
+#
+# Deliberately scoped to pull requests and main. It does NOT gate deploy.yml —
+# wiring these into the deploy path is a separate decision, since it changes
+# what can reach production.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+env:
+  NODE_VERSION: "22"
+
+jobs:
+  checks:
+    name: Lint, typecheck & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      # --legacy-peer-deps mirrors the Dockerfile, which is the build of record.
+      - run: npm ci --legacy-peer-deps
+
+      # `lint` fails on errors only; the existing warnings are a tracked
+      # backlog. `npm run lint:strict` is the ratchet for later.
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
