@@ -9,8 +9,29 @@ env:
   IMAGE: ghcr.io/madsdlund-nielsen/qlim8-landing
 
 jobs:
+  # Gate. ci.yml runs these on pull requests, but deploy triggers on push to
+  # main, so without this job anything that reaches main by another route — a
+  # direct push, an admin merge, a branch that never opened a PR — would ship
+  # unverified. Cheap to re-run, and it is the difference between "checked on
+  # the way in" and "checked before it ships".
+  checks:
+    name: Lint, typecheck & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      # --legacy-peer-deps mirrors the Dockerfile, which is the build of record.
+      - run: npm ci --legacy-peer-deps
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+
   build-and-push:
     name: Build Docker image
+    needs: [checks]
     runs-on: ubuntu-latest
     permissions:
       contents: read
