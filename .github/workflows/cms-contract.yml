@@ -1,0 +1,51 @@
+name: CMS contract
+
+# Verifies that qlim8-app's public CMS API still matches what src/lib/cms.ts
+# expects.
+#
+# This is deliberately NOT part of ci.yml, for two reasons:
+#
+# 1. It runs mainly on a schedule, because qlim8-app can break this contract
+#    with no commit in this repo. A pull-request-only gate would never fire for
+#    the most likely failure.
+# 2. It reaches out to production, so making it block every PR would couple
+#    merging here to app.qlim8.com being up — which is the wrong trade. PRs run
+#    it only when src/lib/cms.ts itself changes, i.e. when the contract could be
+#    broken from this side.
+#
+# A passing `next build` proves nothing here: cms.ts is fail-soft by design, so
+# the site builds and deploys happily while silently serving bundled defaults.
+
+on:
+  schedule:
+    # Every 6 hours. Marketing content is not latency-critical, and this is a
+    # 2-person team — hourly would be noise for a failure mode that degrades
+    # gracefully rather than taking the site down.
+    - cron: "0 */6 * * *"
+  pull_request:
+    paths:
+      - "src/lib/cms.ts"
+      - "scripts/check-cms-contract.mjs"
+      - ".github/workflows/cms-contract.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: cms-contract-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  contract:
+    name: Verify CMS API contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # No install step: the script uses only built-in fetch.
+      - name: Check CMS contract
+        run: node scripts/check-cms-contract.mjs
+        env:
+          CMS_API_BASE: https://app.qlim8.com

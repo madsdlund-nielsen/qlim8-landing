@@ -48,14 +48,51 @@ export type CmsArticleSummary = Omit<CmsArticle, "sections">;
 
 type Language = "da" | "en";
 
+/**
+ * Fetch JSON from the app's public CMS API, falling back to null on any
+ * failure so the site keeps rendering its bundled defaults.
+ *
+ * The fallback is deliberate, but it used to be *silent*, which made one
+ * failure mode invisible: the app answers an unknown `/api/public/cms/*` path
+ * with HTTP 200 and the SPA's HTML shell rather than a 404. `res.ok` therefore
+ * passed, `res.json()` threw on the HTML, and the bare `catch` swallowed it —
+ * so renaming a CMS route in qlim8-app would leave this site building,
+ * deploying, and quietly serving stale bundled copy forever, with no signal
+ * anywhere.
+ *
+ * Every miss is now logged, and a non-JSON content-type is treated as a miss
+ * explicitly rather than by way of a parse exception. These logs are what
+ * scripts/check-cms-contract.mjs and the cms-contract workflow assert against.
+ */
 async function cmsFetch<T>(path: string, tags: string[]): Promise<T | null> {
   try {
     const res = await fetch(`${CMS_API_BASE}${path}`, {
       next: { revalidate: REVALIDATE_SECONDS, tags },
     });
-    if (!res.ok) return null;
+
+    if (!res.ok) {
+      console.warn(`[cms] ${res.status} from ${path} — falling back to bundled defaults`);
+      return null;
+    }
+
+    // An unknown /api path returns 200 + text/html (the SPA shell), which would
+    // otherwise surface only as an opaque JSON parse error.
+    const contentType = res.headers.get("content-type") ?? "";
+    if (!contentType.includes("application/json")) {
+      console.warn(
+        `[cms] non-JSON response from ${path} (content-type: ${contentType || "none"}) — ` +
+          `the endpoint has most likely moved or been renamed in qlim8-app. ` +
+          `Falling back to bundled defaults.`,
+      );
+      return null;
+    }
+
     return (await res.json()) as T;
-  } catch {
+  } catch (err) {
+    console.warn(
+      `[cms] request to ${path} failed — falling back to bundled defaults:`,
+      err instanceof Error ? err.message : err,
+    );
     return null;
   }
 }
