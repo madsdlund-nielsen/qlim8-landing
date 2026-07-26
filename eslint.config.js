@@ -31,9 +31,6 @@ export default tseslint.config(
       'out/**',
       'next-env.d.ts',
       'attached_assets/**',
-      // `legacy/` is unreferenced dead code slated for deletion, and
-      // tsconfig.json already excludes it. No value in linting it.
-      'legacy/**',
       '**/*.d.ts',
     ],
   },
