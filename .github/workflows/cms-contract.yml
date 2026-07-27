@@ -15,6 +15,17 @@ name: CMS contract
 #
 # A passing `next build` proves nothing here: cms.ts is fail-soft by design, so
 # the site builds and deploys happily while silently serving bundled defaults.
+#
+# KNOWN LIMIT — scheduled runs auto-disable on quiet repos. GitHub disables a
+# workflow's `schedule` triggers after ~60 days without repo activity, and no
+# workflow step can reset that clock. The symptom is exactly the failure mode
+# this check exists to catch: the contract breaks while nobody is watching,
+# and nothing goes red because the schedule itself is off.
+#   Check:      `gh workflow list` — this workflow shows "disabled_inactivity"
+#   Re-enable:  `gh workflow enable cms-contract.yml`
+# A keepalive-commit action could prevent this, but for a repo that receives
+# regular commits it is machinery without a payoff — a quarterly calendar
+# reminder to run the check above is the proportionate mitigation.
 
 on:
   schedule:
