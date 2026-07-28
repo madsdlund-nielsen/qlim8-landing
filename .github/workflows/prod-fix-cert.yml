@@ -1,0 +1,99 @@
+name: Prod — re-issue TLS certificate (one-off)
+
+# TEMPORARY, one-off recovery for the 2026-07-27 certificate expiry. Removed in a
+# follow-up commit on this branch; not intended to reach main.
+#
+# Diagnosed in run 30357380154: the stored renewal config says
+#
+#   authenticator = standalone
+#
+# Standalone binds port 80 to answer the ACME challenge, but the nginx container
+# owns port 80, so every renewal since June failed with "Some challenges have
+# failed". The webroot challenge directory does not even exist
+# (/var/www/certbot/.well-known/acme-challenge/: No such file or directory),
+# which is consistent — webroot has never been used for this lineage.
+#
+# `certonly --webroot` is used rather than `renew` on purpose: `renew` reuses the
+# stored authenticator, so it would fail exactly the same way. `certonly`
+# REWRITES the renewal config, which both issues a working certificate now and
+# repairs the lineage so unattended renewals succeed from here on.
+#
+# nginx.conf already serves /.well-known/acme-challenge/ from /var/www/certbot in
+# its :80 block (ahead of the HTTPS redirect), and the certbot container mounts
+# that same certbot-www volume read-write, so the challenge can be written and
+# served without stopping anything.
+
+on:
+  push:
+    branches: [claude/health-check-connection-failure-cobvev]
+
+concurrency:
+  group: prod-fix-cert
+  cancel-in-progress: false
+
+jobs:
+  reissue:
+    name: Re-issue qlim8.com certificate via webroot
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Re-issue over SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HETZNER_HOST }}
+          username: ${{ secrets.HETZNER_USER }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          command_timeout: 10m
+          script: |
+            set -u
+            cd /opt/qlim8 || exit 1
+
+            echo "=== BEFORE ==="
+            docker compose run --rm --entrypoint \
+              "sh -c 'grep -E \"^authenticator\" /etc/letsencrypt/renewal/qlim8.com.conf 2>&1'" certbot 2>&1 | tail -2
+
+            echo "=== ensuring the webroot challenge dir exists ==="
+            # certbot creates it, but nginx must be able to serve from it; the
+            # certbot container has this volume read-write.
+            docker compose run --rm --entrypoint \
+              "sh -c 'mkdir -p /var/www/certbot/.well-known/acme-challenge && echo ok'" certbot 2>&1 | tail -1
+
+            echo "=== issuing via webroot ==="
+            docker compose run --rm --entrypoint \
+              "certbot certonly --webroot -w /var/www/certbot \
+               -d qlim8.com -d www.qlim8.com \
+               --agree-tos -m mads@viridis-ramosa.com \
+               --non-interactive --force-renewal" certbot 2>&1 | tail -30
+
+            echo "=== AFTER: stored authenticator (must now say webroot) ==="
+            docker compose run --rm --entrypoint \
+              "sh -c 'grep -E \"^authenticator\" /etc/letsencrypt/renewal/qlim8.com.conf 2>&1'" certbot 2>&1 | tail -2
+
+            echo "=== AFTER: certificate state ==="
+            docker compose run --rm --entrypoint "certbot certificates" certbot 2>&1 | grep -E "Certificate Name|Expiry|Identifiers"
+
+            echo "=== putting it into service ==="
+            # The 6h reload loop would pick this up eventually; restart makes it
+            # immediate.
+            docker compose restart nginx 2>&1 | tail -5
+            sleep 3
+            docker compose ps 2>&1 | tail -5
+
+      - name: Verify from the internet
+        if: always()
+        run: |
+          set +e
+          for i in 1 2 3 4 5 6; do
+            code=$(curl -sS --connect-timeout 8 --max-time 20 -o /dev/null -w "%{http_code}" "https://qlim8.com/" 2>/dev/null)
+            echo "attempt ${i}: https://qlim8.com/ -> ${code}"
+            if [ "$code" = "200" ]; then
+              echo "--- certificate now served ---"
+              echo | openssl s_client -connect qlim8.com:443 -servername qlim8.com 2>/dev/null \
+                | openssl x509 -noout -subject -dates
+              echo "✓ qlim8.com is back"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::warning::qlim8.com still not returning 200 — see the SSH step output"
+          exit 0
