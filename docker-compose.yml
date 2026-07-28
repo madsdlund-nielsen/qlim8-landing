@@ -31,6 +31,19 @@ services:
       - web
     networks:
       - proxy
+    # Reload every 6h so a renewed certificate actually reaches the running
+    # server. nginx reads the cert files ONCE at startup and holds them in
+    # memory — the certbot container below can renew the files on disk without
+    # nginx ever noticing. That is exactly what happened on 2026-07-27: the
+    # certificate issued Apr 28 expired at 20:16Z while nginx kept serving it,
+    # and every visitor got NET::ERR_CERT_DATE_INVALID until nginx was
+    # restarted by hand.
+    #
+    # The reload runs in the background; `nginx -g "daemon off;"` stays PID 1 so
+    # the container still dies (and `restart: unless-stopped` fires) if nginx
+    # itself exits. `$${!}` is an escaped `${!}` — compose would otherwise try
+    # to interpolate it.
+    command: /bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'
 
   certbot:
     image: certbot/certbot
@@ -38,6 +51,15 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-www:/var/www/certbot
+    # Renews into the certbot-etc volume using the webroot challenge that
+    # nginx.conf serves from /.well-known/acme-challenge/. Renewal only rewrites
+    # the files on disk — the nginx service above is what actually puts a renewed
+    # certificate into service, via its 6h reload loop.
+    #
+    # Do NOT add a host-level `certbot renew` cron alongside this. Host certbot
+    # writes to the host's /etc/letsencrypt, which is a different filesystem from
+    # this named volume, so those renewals never reach nginx. scripts/setup-server.sh
+    # used to install exactly such a cron; it has been removed.
     entrypoint: /bin/sh -c 'trap exit TERM; while :; do certbot renew --quiet; sleep 12h & wait $${!}; done'
 
 networks:

@@ -3,8 +3,8 @@
 #   curl -fsSL https://raw.githubusercontent.com/madsdlund-nielsen/qlim8-landing/main/scripts/setup-server.sh | bash
 set -euo pipefail
 
-DOMAIN="qlim8.com"
-EMAIL="din@email.com"           # <-- skift til din e-mail (Let's Encrypt advarsler)
+# Domæne og Let's Encrypt-e-mail sættes i scripts/init-letsencrypt.sh, som
+# udsteder certifikatet — de bruges ikke her.
 APP_DIR="/opt/qlim8"
 
 # ── 1. System-opdatering ────────────────────────────────────────────────────
@@ -22,66 +22,39 @@ ufw allow 443/tcp
 ufw --force enable
 
 # ── 4. Certbot (Let's Encrypt) ───────────────────────────────────────────────
-snap install --classic certbot
-ln -sf /snap/bin/certbot /usr/bin/certbot
+# BEVIDST TOMT. Certifikater håndteres udelukkende af certbot-containeren i
+# docker-compose.yml, som skriver til det navngivne volume `certbot-etc`.
+#
+# Her stod tidligere en host-installeret certbot (snap) der udstedte med
+# --standalone til hostens /etc/letsencrypt, plus et /etc/cron.d/certbot-renew
+# job. Det er fjernet, fordi hostens /etc/letsencrypt er et ANDET filsystem end
+# det volume nginx-containeren læser fra — fornyelser dér nåede aldrig frem til
+# nginx. Kombineret med at intet genindlæste nginx udløb certifikatet
+# 2026-07-27 20:16Z mens nginx blev ved med at servere det gamle.
+#
+# Bootstrap af certifikat sker med scripts/init-letsencrypt.sh EFTER første
+# deploy (se trin 3 nedenfor). Fornyelse sker derefter automatisk: certbot
+# fornyer hver 12. time, og nginx genindlæser hver 6. time.
+#
+# Kører du dette script på en server der stadig har det gamle cron-job:
+#   rm -f /etc/cron.d/certbot-renew
+rm -f /etc/cron.d/certbot-renew
 
-# Hent certifikat (port 80 skal være fri — Docker er ikke startet endnu)
-certbot certonly \
-  --standalone \
-  --non-interactive \
-  --agree-tos \
-  --email "$EMAIL" \
-  -d "$DOMAIN" \
-  -d "www.$DOMAIN"
-
-# Auto-fornyelse: stop nginx → forny → start nginx igen
-cat > /etc/cron.d/certbot-renew << 'EOF'
-0 3 * * * root certbot renew --quiet \
-  --pre-hook  "docker compose -f /opt/qlim8/docker-compose.yml stop nginx" \
-  --post-hook "docker compose -f /opt/qlim8/docker-compose.yml start nginx"
-EOF
-
-# ── 5. Deploy-mappe ──────────────────────────────────────────────────────────
+# ── 5. Deploy-mappe + config ─────────────────────────────────────────────────
+# Både docker-compose.yml og nginx.conf hentes direkte fra repoet. De blev
+# tidligere skrevet som en heredoc-kopi her i scriptet, hvilket drev fra
+# repoets version — bl.a. monterede kopien hostens /etc/letsencrypt i stedet
+# for volumet `certbot-etc`, så de to filer beskrev to forskellige
+# certifikat-lagre. Deploy-workflowet scp'er alligevel repoets version ud over
+# denne ved hver deploy, så repoet er eneste kilde til sandhed.
 mkdir -p "$APP_DIR"
-cat > "$APP_DIR/docker-compose.yml" << 'COMPOSE'
-services:
-  web:
-    image: ghcr.io/madsdlund-nielsen/qlim8-landing:latest
-    restart: unless-stopped
-    environment:
-      - NODE_ENV=production
-      - NEXT_TELEMETRY_DISABLED=1
-    expose:
-      - "3000"
-    networks:
-      - proxy
+for f in docker-compose.yml nginx.conf; do
+  curl -fsSL \
+    "https://raw.githubusercontent.com/madsdlund-nielsen/qlim8-landing/main/$f" \
+    -o "$APP_DIR/$f"
+done
 
-  nginx:
-    image: nginx:alpine
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /opt/qlim8/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - /etc/letsencrypt:/etc/letsencrypt:ro
-    depends_on:
-      - web
-    networks:
-      - proxy
-
-networks:
-  proxy:
-    driver: bridge
-COMPOSE
-
-# ── 6. nginx-konfiguration ───────────────────────────────────────────────────
-# Hentes direkte fra repoet (samme som nginx.conf i roden)
-curl -fsSL \
-  "https://raw.githubusercontent.com/madsdlund-nielsen/qlim8-landing/main/nginx.conf" \
-  -o "$APP_DIR/nginx.conf"
-
-# ── 7. Log ind på GHCR og start services ────────────────────────────────────
+# ── 6. Log ind på GHCR og start services ────────────────────────────────────
 echo ""
 echo "──────────────────────────────────────────────"
 echo "Server klar. Næste skridt:"
@@ -93,7 +66,11 @@ echo ""
 echo "2. Start services:"
 echo "   cd $APP_DIR && docker compose pull && docker compose up -d"
 echo ""
-echo "3. Tilføj GitHub Secrets i dit repo:"
+echo "3. Udsted certifikat (kun første gang — nginx starter ikke uden):"
+echo "   bash scripts/init-letsencrypt.sh"
+echo "   Derefter fornyer certbot hver 12. time, og nginx genindlæser hver 6. time."
+echo ""
+echo "4. Tilføj GitHub Secrets i dit repo:"
 echo "   HETZNER_HOST  = $(curl -s ifconfig.me)"
 echo "   HETZNER_USER  = root"
 echo "   HETZNER_SSH_KEY = (indhold af din private SSH-nøgle)"
