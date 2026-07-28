@@ -206,11 +206,11 @@ export const artikel: Article = {
     { type: 'h2', text: 'Hvordan vi håndterer det i qlim8' },
     {
       type: 'paragraph',
-      text: 'For klarhedens skyld om hvordan vi har struktureret det i platformen: qlim8 Starter (fra 250 kr/md ved årsbetaling) dækker VSME Basis komplet med wizard, audit trail og den officielle EFRAG Excel-eksport. Det er bygget til at få dig fra "jeg har et regnskabssystem" til "jeg har en bankklar Basis-rapport" på under en arbejdsdag.',
+      text: 'For klarhedens skyld om hvordan vi har struktureret det i platformen: qlim8 Starter (fra 300 kr/md ved årsbetaling) dækker VSME Basis komplet med wizard, audit trail og den officielle EFRAG Excel-eksport. Det er bygget til at få dig fra "jeg har et regnskabssystem" til "jeg har en bankklar Basis-rapport" på under en arbejdsdag.',
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Premium (fra 625 kr/md ved årsbetaling) tilføjer VSME Comprehensive med wizard for C1-C7, Scenario Builder for at modellere reduktionstiltag før I forpligter jer til dem, Reduction Hub til at sætte og spore mål over tid, samt custom PDF-rapporter. Det er bygget til den virksomhed, der har taget skridtet og vil arbejde med ESG strategisk.',
+      text: 'qlim8 Premium (fra 1.195 kr/md ved årsbetaling) tilføjer VSME Comprehensive med wizard for C1-C7, Scenario Builder for at modellere reduktionstiltag før I forpligter jer til dem, Reduction Hub til at sætte og spore mål over tid, samt custom PDF-rapporter. Det er bygget til den virksomhed, der har taget skridtet og vil arbejde med ESG strategisk.',
     },
     {
       type: 'paragraph',

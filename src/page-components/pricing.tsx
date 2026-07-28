@@ -8,15 +8,16 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { PRICING_COPY, type PricingCopy, type PriceSet } from "@/content/copy/pricing";
 
 type BillingCycle = "monthly" | "yearly";
-type Currency = "dkk" | "eur";
 
-function pick(prices: PriceSet, cycle: BillingCycle, cur: Currency): number {
-  if (cycle === "yearly") return cur === "dkk" ? prices.yearlyDkk : prices.yearlyEur;
-  return cur === "dkk" ? prices.monthlyDkk : prices.monthlyEur;
-}
+/**
+ * Subscriptions are billed in DKK only — the Stripe products carry no EUR
+ * prices. Still posted to /api/stripe/checkout-public so the bridge keeps its
+ * existing request shape.
+ */
+const CURRENCY = "dkk" as const;
 
-function yearlyTotal(prices: PriceSet, cur: Currency): number {
-  return cur === "dkk" ? prices.yearlyTotalDkk : prices.yearlyTotalEur;
+function pick(prices: PriceSet, cycle: BillingCycle): number {
+  return cycle === "yearly" ? prices.yearlyDkk : prices.monthlyDkk;
 }
 
 function FeatureCell({ value }: { value: boolean | string }) {
@@ -38,7 +39,6 @@ function FeatureCell({ value }: { value: boolean | string }) {
 export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy }) {
   const { toast } = useToast();
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("yearly");
-  const [currency, setCurrency] = useState<Currency>("dkk");
   const [loadingTier, setLoadingTier] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
@@ -64,7 +64,7 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ billingCycle, tier, currency }),
+        body: JSON.stringify({ billingCycle, tier, currency: CURRENCY }),
       });
       const data = await res.json();
       if (data.url) {
@@ -78,13 +78,10 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
     }
   };
 
-  const fmt = (val: number, cur: Currency) =>
-    cur === "dkk"
-      ? `${val.toLocaleString("da-DK")} kr`
-      : `€${val.toLocaleString("da-DK", { minimumFractionDigits: val % 1 !== 0 ? 1 : 0 })}`;
+  const fmt = (val: number) => `${val.toLocaleString("da-DK")} kr`;
 
-  const starterPrice = pick(copy.prices.starter, billingCycle, currency);
-  const premiumPrice = pick(copy.prices.premium, billingCycle, currency);
+  const starterPrice = pick(copy.prices.starter, billingCycle);
+  const premiumPrice = pick(copy.prices.premium, billingCycle);
 
   return (
     <div className="min-h-screen bg-[#F5F5F0] flex flex-col">
@@ -120,22 +117,6 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
                 </button>
               </div>
 
-              <div className="inline-flex items-center border border-gray-300 rounded-full p-0.5 bg-white" data-testid="currency-toggle">
-                <button
-                  onClick={() => setCurrency("dkk")}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${currency === "dkk" ? "bg-gray-900 text-white" : "text-gray-500 hover:text-gray-700"}`}
-                  data-testid="toggle-dkk"
-                >
-                  DKK
-                </button>
-                <button
-                  onClick={() => setCurrency("eur")}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${currency === "eur" ? "bg-gray-900 text-white" : "text-gray-500 hover:text-gray-700"}`}
-                  data-testid="toggle-eur"
-                >
-                  EUR
-                </button>
-              </div>
               </div>
 
               <AnimatePresence mode="wait">
@@ -172,19 +153,19 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
                   <p className="text-sm text-gray-600 mb-4">{copy.starter.tagline}</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
-                      key={`starter-${billingCycle}-${currency}`}
+                      key={`starter-${billingCycle}`}
                       initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="text-4xl font-bold text-gray-900"
                       data-testid="price-starter"
                     >
-                      {fmt(starterPrice, currency)}
+                      {fmt(starterPrice)}
                     </motion.span>
                     <span className="text-sm text-gray-400">/md</span>
                   </div>
                   <p className="text-xs text-gray-500">
                     {billingCycle === "yearly"
-                      ? `Faktureret ${fmt(yearlyTotal(copy.prices.starter, currency), currency)} årligt`
+                      ? `Faktureret ${fmt(copy.prices.starter.yearlyTotalDkk)} årligt`
                       : "Faktureret månedligt"}
                   </p>
                 </div>
@@ -213,19 +194,19 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
                   <p className="text-sm text-gray-400 mb-4">{copy.premium.tagline}</p>
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
-                      key={`premium-${billingCycle}-${currency}`}
+                      key={`premium-${billingCycle}`}
                       initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="text-4xl font-bold text-white"
                       data-testid="price-premium"
                     >
-                      {fmt(premiumPrice, currency)}
+                      {fmt(premiumPrice)}
                     </motion.span>
                     <span className="text-sm text-gray-400">/md</span>
                   </div>
                   <p className="text-xs text-gray-500">
                     {billingCycle === "yearly"
-                      ? `Faktureret ${fmt(yearlyTotal(copy.prices.premium, currency), currency)} årligt`
+                      ? `Faktureret ${fmt(copy.prices.premium.yearlyTotalDkk)} årligt`
                       : "Faktureret månedligt"}
                   </p>
                 </div>

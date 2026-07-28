@@ -4,7 +4,7 @@ import type { MarketingPageCopy } from "@/content/marketing/types";
 // Voice per docs/da/marketing/_shared/brand-voice.md + positioning.md.
 // Grounded in docs/da/marketing/features/csrd-vsme-reporting.md and compliance/{vsme,csrd}.md.
 // Fixed CTA conventions applied throughout. Pricing = live landing numbers
-// (Starter fra 250 kr/md, Premium 625 kr/md).
+// (Starter fra 300 kr/md, Premium 1.195 kr/md).
 
 const primaryCta = {
   label: "Opret gratis konto",
@@ -109,7 +109,7 @@ export const PR_MODTAGERE: MarketingPageCopy = {
       },
       {
         q: "Skal jeg have en dyr plan for at få flere modtager-varianter?",
-        a: "Rapporteringen er en del af platformen. Starter fra 250 kr/md dækker VSME Basic; Premium på 625 kr/md tilføjer VSME Comprehensive og revisor-adgang. Se priser for hvad hver plan indeholder.",
+        a: "Rapporteringen er en del af platformen. Starter fra 300 kr/md dækker VSME Basic; Premium på 1.195 kr/md tilføjer VSME Comprehensive og revisor-adgang. Se priser for hvad hver plan indeholder.",
       },
       {
         q: "Kan revisoren bekræfte tallene i rapporten?",
@@ -223,7 +223,7 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det at lave bestyrelsesrapporter?",
-        a: "Rapporteringen er en del af platformen. Starter fra 250 kr/md; Premium på 625 kr/md tilføjer bl.a. VSME Comprehensive og revisor-adgang. Se priser for detaljerne.",
+        a: "Rapporteringen er en del af platformen. Starter fra 300 kr/md; Premium på 1.195 kr/md tilføjer bl.a. VSME Comprehensive og revisor-adgang. Se priser for detaljerne.",
       },
     ],
   },
@@ -333,7 +333,7 @@ export const PR_INVESTOR: MarketingPageCopy = {
       },
       {
         q: "Hvilken plan skal jeg have for investor-rapportering?",
-        a: "Rapporteringen er en del af platformen. For fuld Scope 3 og de udvidede datapunkter er Premium (625 kr/md) typisk det rette; Starter fra 250 kr/md dækker grundopgørelsen og VSME Basic. Se priser.",
+        a: "Rapporteringen er en del af platformen. For fuld Scope 3 og de udvidede datapunkter er Premium (1.195 kr/md) typisk det rette; Starter fra 300 kr/md dækker grundopgørelsen og VSME Basic. Se priser.",
       },
     ],
   },
@@ -443,7 +443,7 @@ export const PR_BANK: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det at lave en bankrapport?",
-        a: "Rapporteringen er en del af platformen. Starter fra 250 kr/md dækker grundopgørelsen; skal du levere fuld Scope 3 eller de udvidede datapunkter banken beder om, er Premium (625 kr/md) typisk det rette. Se priser.",
+        a: "Rapporteringen er en del af platformen. Starter fra 300 kr/md dækker grundopgørelsen; skal du levere fuld Scope 3 eller de udvidede datapunkter banken beder om, er Premium (1.195 kr/md) typisk det rette. Se priser.",
       },
     ],
   },
@@ -553,7 +553,7 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
       },
       {
         q: "Hvilken plan skal jeg have for at dele Scope 3-data?",
-        a: "Rapporteringen er en del af platformen. Starter fra 250 kr/md dækker grundopgørelsen; for fuld Scope 3-detaljering er Premium (625 kr/md) typisk det rette. Se priser.",
+        a: "Rapporteringen er en del af platformen. Starter fra 300 kr/md dækker grundopgørelsen; for fuld Scope 3-detaljering er Premium (1.195 kr/md) typisk det rette. Se priser.",
       },
     ],
   },
@@ -786,7 +786,7 @@ export const PR_VSME: MarketingPageCopy = {
       },
       {
         q: "Laver qlim8 begge moduler?",
-        a: "Ja. Starter fra 250 kr/md dækker VSME Basic; Premium på 625 kr/md tilføjer VSME Comprehensive og revisor-adgang. Du kan skifte modul når kravet ændrer sig — samme klimaregnskab ligger bag begge.",
+        a: "Ja. Starter fra 300 kr/md dækker VSME Basic; Premium på 1.195 kr/md tilføjer VSME Comprehensive og revisor-adgang. Du kan skifte modul når kravet ændrer sig — samme klimaregnskab ligger bag begge.",
       },
       {
         q: "Er en VSME-rapport fra qlim8 revisor-klar?",
@@ -851,7 +851,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
     {
       pain: "Konsulent-tilbuddet på din første VSME-rapport er uforholdsmæssigt dyrt.",
       solution:
-        "VSME Basic er inkluderet fra Starter (fra 250 kr/md); du betaler et abonnement, ikke et engangs-projekt.",
+        "VSME Basic er inkluderet fra Starter (fra 300 kr/md); du betaler et abonnement, ikke et engangs-projekt.",
       outcome: "Erstat et førstegangs-konsulenthonorar på 75.000-200.000 kr. [antagelse — markeds-research] med en inkluderet feature.",
     },
   ],
@@ -880,7 +880,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
   valueStats: [
     { value: "4-8 timer", label: "til en Basic-rapport", note: "[antagelse: pilot-tal, 2 brugere]" },
     { value: "40+", label: "datapunkter (EFRAG B1-B11)" },
-    { value: "Fra 250 kr/md", label: "Basic inkluderet i Starter" },
+    { value: "Fra 300 kr/md", label: "Basic inkluderet i Starter" },
     { value: "Grøn valideringsfane", label: "for krævede Basic-rækker" },
   ],
   faq: {
@@ -900,11 +900,11 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
       },
       {
         q: "Er VSME Basic inkluderet i abonnementet?",
-        a: "Ja. VSME Basic er inkluderet fra Starter (fra 250 kr/md). Du betaler et abonnement frem for et førstegangs-konsulenthonorar på typisk 75.000-200.000 kr. [antagelse — markeds-research]. Se priser.",
+        a: "Ja. VSME Basic er inkluderet fra Starter (fra 300 kr/md). Du betaler et abonnement frem for et førstegangs-konsulenthonorar på typisk 75.000-200.000 kr. [antagelse — markeds-research]. Se priser.",
       },
       {
         q: "Kan jeg opgradere til Comprehensive senere?",
-        a: "Ja. Comprehensive ligger på Premium (625 kr/md) og bruger samme klimaregnskab. Kommer der et krav om det udvidede modul fra en bank eller stor kunde, skifter du modul uden at indsamle data forfra.",
+        a: "Ja. Comprehensive ligger på Premium (1.195 kr/md) og bruger samme klimaregnskab. Kommer der et krav om det udvidede modul fra en bank eller stor kunde, skifter du modul uden at indsamle data forfra.",
       },
     ],
   },
@@ -991,7 +991,7 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
     { value: "100+", label: "datapunkter (EFRAG C1-C9)" },
     { value: "1-2 dage", label: "vs. 2-4 ugers konsulent", note: "[antagelse: pilot-tal]" },
     { value: "Fuld Scope 3", label: "med værdikæde-rollup" },
-    { value: "625 kr/md", label: "Comprehensive på Premium" },
+    { value: "1.195 kr/md", label: "Comprehensive på Premium" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål",
@@ -1014,7 +1014,7 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
       },
       {
         q: "Hvad koster VSME Comprehensive?",
-        a: "Comprehensive ligger på Premium (625 kr/md) og bruger samme klimaregnskab som Basic. Se priser. Rammer CSRD dig senere, genbruges datagrundlaget via en ESRS E1-mapping — ingen ny indsamling.",
+        a: "Comprehensive ligger på Premium (1.195 kr/md) og bruger samme klimaregnskab som Basic. Se priser. Rammer CSRD dig senere, genbruges datagrundlaget via en ESRS E1-mapping — ingen ny indsamling.",
       },
     ],
   },

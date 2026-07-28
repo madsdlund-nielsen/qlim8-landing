@@ -27,7 +27,7 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
       "Native dansk regnskabsdata: Dinero, e-conomic, Billy og Eloverblik — intet mapping-projekt.",
       "1.159 danske emissions-kategorier og DK-specifikke el-faktorer (Energinet, 5-minutters granularitet).",
       "VSME Basic / VSME Comprehensive-rapport i underskrifts-klar PDF med audit-spor bag hvert tal.",
-      "Fast pris fra 250 kr./md. — ingen konsulent-fee på 75.000+ kr. [antagelse: 2 konsulent-firma-interviews, sample size 4].",
+      "Fast pris fra 300 kr./md. — ingen konsulent-fee på 75.000+ kr. [antagelse: 2 konsulent-firma-interviews, sample size 4].",
     ],
   },
   cardsHeading: "Find din branche",
@@ -47,7 +47,7 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
     {
       title: "1/10 af en konsulent, opdateret hele året",
       body:
-        "Et førstegangs-VSME-engagement hos et konsulenthus løber typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4] — og rapporten er et øjebliksbillede. qlim8 koster fra 250 kr./md., holder tallene løbende opdateret, og du ejer selv dine data.",
+        "Et førstegangs-VSME-engagement hos et konsulenthus løber typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4] — og rapporten er et øjebliksbillede. qlim8 koster fra 300 kr./md., holder tallene løbende opdateret, og du ejer selv dine data.",
     },
     {
       title: "Klar på 1 dag, ikke efter 6 måneders implementering",
@@ -173,7 +173,7 @@ export const KT_TOMRER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det for et lille tømrerfirma?",
-        a: "Starter koster fra 250 kr./md. og dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (625 kr./md.) tilføjer Scenario Planner, Klimaagent og VSME Comprehensive.",
+        a: "Starter koster fra 300 kr./md. og dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (1.195 kr./md.) tilføjer Scenario Planner, Klimaagent og VSME Comprehensive.",
       },
     ],
   },
@@ -271,7 +271,7 @@ export const KT_MALER: MarketingPageCopy = {
   valueStats: [
     { value: "1.159", label: "danske kategorier din maling og kemi mappes mod" },
     { value: "70-80 %", label: "af fakturalinjer kategoriseres automatisk", note: "[antagelse: confidence ≥ 0,85]" },
-    { value: "fra 250 kr./md.", label: "for basis-flow og VSME Basic" },
+    { value: "fra 300 kr./md.", label: "for basis-flow og VSME Basic" },
     { value: "7 år", label: "audit-spor til revisor" },
   ],
   faq: {
@@ -295,7 +295,7 @@ export const KT_MALER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Starter koster fra 250 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (625 kr./md.) tilføjer VSME Comprehensive, Scenario Planner og Klimaagent.",
+        a: "Starter koster fra 300 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (1.195 kr./md.) tilføjer VSME Comprehensive, Scenario Planner og Klimaagent.",
       },
     ],
   },
@@ -417,7 +417,7 @@ export const KT_ELEKTRIKER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Starter koster fra 250 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (625 kr./md.) tilføjer VSME Comprehensive, Scenario Planner og Klimaagent.",
+        a: "Starter koster fra 300 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (1.195 kr./md.) tilføjer VSME Comprehensive, Scenario Planner og Klimaagent.",
       },
     ],
   },
@@ -576,7 +576,7 @@ export const KT_VVS: MarketingPageCopy = {
       },
       {
         q: "Hvad er forskellen på VSME Basic og Comprehensive for et VVS-firma?",
-        a: "VSME Basic dækker de grundlæggende scope-summer og nøgletal og følger med Starter (fra 250 kr./md.). VSME Comprehensive udvider modellen og følger med Premium (625 kr./md.) sammen med Scenario Planner, Klimaagent og reduktions-tracking.",
+        a: "VSME Basic dækker de grundlæggende scope-summer og nøgletal og følger med Starter (fra 300 kr./md.). VSME Comprehensive udvider modellen og følger med Premium (1.195 kr./md.) sammen med Scenario Planner, Klimaagent og reduktions-tracking.",
       },
       {
         q: "Skal jeg have en ESG-medarbejder eller en konsulent?",
@@ -691,7 +691,7 @@ export const KT_VVS_BODY: ArticleSection[] = [
   },
   {
     type: "paragraph",
-    text: "qlim8 Starter koster fra 250 kr./md. og dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (625 kr./md.) tilføjer VSME Comprehensive, Scenario Planner, Klimaagent og reduktions-tracking med op til 7.500 aktiviteter og 5 seats. Til sammenligning løber et førstegangs-VSME-engagement hos et konsulenthus typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4] — og giver dig et øjebliksbillede i stedet for et tal, du ejer og kan opdatere hele året.",
+    text: "qlim8 Starter koster fra 300 kr./md. og dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (1.195 kr./md.) tilføjer VSME Comprehensive, Scenario Planner, Klimaagent og reduktions-tracking med op til 7.500 aktiviteter og 5 seats. Til sammenligning løber et førstegangs-VSME-engagement hos et konsulenthus typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4] — og giver dig et øjebliksbillede i stedet for et tal, du ejer og kan opdatere hele året.",
   },
 ];
 
@@ -805,7 +805,7 @@ export const KT_ENTREPRENOER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det for et entreprenørfirma?",
-        a: "Starter koster fra 250 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Har du mange fakturaer og brug for underleverandør-koordinering og VSME Comprehensive, giver Premium (625 kr./md.) op til 7.500 aktiviteter og 5 seats.",
+        a: "Starter koster fra 300 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Har du mange fakturaer og brug for underleverandør-koordinering og VSME Comprehensive, giver Premium (1.195 kr./md.) op til 7.500 aktiviteter og 5 seats.",
       },
     ],
   },
@@ -928,7 +928,7 @@ export const KT_VOGNMAND: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det for et vognmandsfirma?",
-        a: "Starter koster fra 250 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Kører du meget og vil bruge Scenario Planner til at teste optimeringer, giver Premium (625 kr./md.) op til 7.500 aktiviteter og 5 seats.",
+        a: "Starter koster fra 300 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Kører du meget og vil bruge Scenario Planner til at teste optimeringer, giver Premium (1.195 kr./md.) op til 7.500 aktiviteter og 5 seats.",
       },
     ],
   },

@@ -10,12 +10,12 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Priser | qlim8 – Starter, Premium & Enterprise",
   description:
-    "Vælg den plan der passer til din virksomhed. Starter fra 250 kr/md, Premium fra 625 kr/md (ved årlig betaling). Alle priser er ekskl. moms.",
+    "Vælg den plan der passer til din virksomhed. Starter fra 300 kr/md, Premium fra 1.195 kr/md (ved årlig betaling). Alle priser er ekskl. moms.",
   alternates: { canonical: "https://qlim8.com/priser" },
   openGraph: {
     title: "Priser | qlim8 – Starter, Premium & Enterprise",
     description:
-      "Vælg den plan der passer til din virksomhed. Starter fra 250 kr/md, Premium fra 625 kr/md.",
+      "Vælg den plan der passer til din virksomhed. Starter fra 300 kr/md, Premium fra 1.195 kr/md.",
     url: "https://qlim8.com/priser",
     images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8 priser" }],
   },

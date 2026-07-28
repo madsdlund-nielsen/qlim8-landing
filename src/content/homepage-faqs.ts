@@ -1,7 +1,7 @@
 export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   {
     q: "Hvad er qlim8?",
-    a: "qlim8 er en dansk SaaS-platform der laver automatisk klimaregnskab og VSME-rapportering for små og mellemstore virksomheder. Platformen henter data direkte fra danske regnskabssystemer (Dinero, e-conomic, Billy) og fra Eloverblik som officiel tredjepart hos Energinet, og leverer revisionsklare Scope 1-3 beregninger. Priserne starter ved 250 kr/md.",
+    a: "qlim8 er en dansk SaaS-platform der laver automatisk klimaregnskab og VSME-rapportering for små og mellemstore virksomheder. Platformen henter data direkte fra danske regnskabssystemer (Dinero, e-conomic, Billy) og fra Eloverblik som officiel tredjepart hos Energinet, og leverer revisionsklare Scope 1-3 beregninger. Priserne starter ved 300 kr/md.",
   },
   {
     q: "Hvem er qlim8 til?",
@@ -13,7 +13,7 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Hvad koster qlim8?",
-    a: "qlim8 koster fra 250 kr/md (Starter), 625 kr/md (Premium), eller skræddersyet pris for større organisationer (Enterprise). Alle planer faktureres årligt og kan opsiges når som helst. Du kan oprette en gratis konto og prøve hele platformen med eksempeldata uden kreditkort.",
+    a: "qlim8 koster fra 300 kr/md (Starter), 1.195 kr/md (Premium), eller skræddersyet pris for større organisationer (Enterprise). Alle planer faktureres årligt og kan opsiges når som helst. Du kan oprette en gratis konto og prøve hele platformen med eksempeldata uden kreditkort.",
   },
   {
     q: "Hvor lang tid tager det at lave et klimaregnskab i qlim8?",

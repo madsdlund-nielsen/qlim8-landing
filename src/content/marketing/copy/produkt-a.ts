@@ -507,7 +507,7 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
     },
     {
       pain: "En førstegangs-VSME hos en konsulent koster typisk et femcifret til sekscifret beløb, og du skal betale igen næste år.",
-      solution: "Rapporterne genereres fra platformen som en del af abonnementet — Starter fra 250 kr/md, Premium 625 kr/md.",
+      solution: "Rapporterne genereres fra platformen som en del af abonnementet — Starter fra 300 kr/md, Premium 1.195 kr/md.",
       outcome: "Du erstatter en konsulent-regning på 75.000-200.000 kr. [antagelse: markeds-research, ikke kundevalideret] med et abonnement.",
     },
     {

@@ -11,14 +11,14 @@ import type { LandingImages } from "@/page-components/landing";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "qlim8 » ESG uden besværet — klimaregnskab til danske SMV'er fra 250 kr/md",
+  title: "qlim8 » ESG uden besværet — klimaregnskab til danske SMV'er fra 300 kr/md",
   description:
-    "qlim8 henter din bogføring, kategoriserer scope 1-3 automatisk og leverer en VSME-rapport banken og kunderne forstår. Hosted i EU. Fra 250 kr/md.",
+    "qlim8 henter din bogføring, kategoriserer scope 1-3 automatisk og leverer en VSME-rapport banken og kunderne forstår. Hosted i EU. Fra 300 kr/md.",
   alternates: { canonical: "https://qlim8.com/" },
   openGraph: {
     title: "qlim8 » ESG uden besværet — klimaregnskab til SMV'er",
     description:
-      "Automatisk scope 1-3, VSME-rapport på 10 minutter, fuld kontrol over data. Hosted i EU. Fra 250 kr/md.",
+      "Automatisk scope 1-3, VSME-rapport på 10 minutter, fuld kontrol over data. Hosted i EU. Fra 300 kr/md.",
     url: "https://qlim8.com/",
     images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8" }],
   },

@@ -136,7 +136,7 @@ export const KT_REVISOR: MarketingPageCopy = {
     items: [
       {
         q: "Skal jeg betale en licens pr. klient?",
-        a: "Nej. Klient-tenanten betaler selv sit abonnement (Starter fra 250 kr/md, Premium 625 kr/md). Din tredjeparts-adgang koster ikke seat-fee, så du kan tilføje ubegrænset klienter uden at din egen omkostning stiger.",
+        a: "Nej. Klient-tenanten betaler selv sit abonnement (Starter fra 300 kr/md, Premium 1.195 kr/md). Din tredjeparts-adgang koster ikke seat-fee, så du kan tilføje ubegrænset klienter uden at din egen omkostning stiger.",
       },
       {
         q: "Kan jeg komme til at ændre en klients data ved en fejl?",
@@ -314,7 +314,7 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "qlim8 starter fra 250 kr/md på Starter-planen, og Premium er 625 kr/md. For en produktionsvirksomhed med Scope 3-behov og PCF er det typisk Premium eller derover, der passer. Se prissiden for detaljerne.",
+        a: "qlim8 starter fra 300 kr/md på Starter-planen, og Premium er 1.195 kr/md. For en produktionsvirksomhed med Scope 3-behov og PCF er det typisk Premium eller derover, der passer. Se prissiden for detaljerne.",
       },
     ],
   },
@@ -456,7 +456,7 @@ export const KT_RAADGIVER: MarketingPageCopy = {
       },
       {
         q: "Betaler jeg for hver kunde, jeg rådgiver?",
-        a: "Nej. Kunde-tenanten betaler selv sit abonnement (Starter fra 250 kr/md, Premium 625 kr/md). Din adgang som rådgiver koster ikke ekstra, så du lægger ikke licens-omkostning til din egen drift.",
+        a: "Nej. Kunde-tenanten betaler selv sit abonnement (Starter fra 300 kr/md, Premium 1.195 kr/md). Din adgang som rådgiver koster ikke ekstra, så du lægger ikke licens-omkostning til din egen drift.",
       },
       {
         q: "Kan jeg bruge qlim8 til reduktionsrådgivning, ikke kun rapportering?",
@@ -622,7 +622,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
       },
       {
         q: "Betaler jeg licens pr. kunde?",
-        a: "Nej. Kunde-tenanten betaler selv abonnementet (Starter fra 250 kr/md, Premium 625 kr/md). Din adgang som konsulent koster ikke ekstra, så du kan tage også mindre opgaver rentabelt.",
+        a: "Nej. Kunde-tenanten betaler selv abonnementet (Starter fra 300 kr/md, Premium 1.195 kr/md). Din adgang som konsulent koster ikke ekstra, så du kan tage også mindre opgaver rentabelt.",
       },
       {
         q: "Kan mine kunder rapportere compliant efter VSME og CSRD?",
@@ -680,7 +680,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       pain:
         "Du har ikke tid til et langt konsulent-forløb, og et konsulenthonorar giver ikke mening for en salon af din størrelse.",
       solution:
-        "qlim8 koster fra 250 kr/md på Starter-planen — en brøkdel af et konsulent-engagement. Du laver regnskabet selv med platformens hjælp og ejer dine egne data.",
+        "qlim8 koster fra 300 kr/md på Starter-planen — en brøkdel af et konsulent-engagement. Du laver regnskabet selv med platformens hjælp og ejer dine egne data.",
       outcome:
         "Compliance uden konsulent, til en pris der passer en lille virksomhed.",
     },
@@ -743,7 +743,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       note: "[antagelse: interne onboarding-estimater]",
     },
     {
-      value: "Fra 250 kr/md",
+      value: "Fra 300 kr/md",
       label: "Starter-plan",
       note: "en brøkdel af et konsulenthonorar",
     },
@@ -771,7 +771,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "qlim8 starter fra 250 kr/md på Starter-planen. For de fleste saloner er det rigeligt til at lave og vedligeholde et klimaregnskab. Premium er 625 kr/md, hvis du får brug for mere. Se prissiden for detaljerne.",
+        a: "qlim8 starter fra 300 kr/md på Starter-planen. For de fleste saloner er det rigeligt til at lave og vedligeholde et klimaregnskab. Premium er 1.195 kr/md, hvis du får brug for mere. Se prissiden for detaljerne.",
       },
       {
         q: "Hvad indgår i regnskabet for en frisør?",

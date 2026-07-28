@@ -123,7 +123,7 @@ export const HOME_COPY: HomeCopy = {
         "Reduktionsmål baseret på dine egne tal",
         "Scenario Builder — test tiltag før du beslutter",
         "Deling via custom PDF eller offentligt Brag Board",
-        "Premium-features fra 625 kr/md",
+        "Premium-features fra 1.195 kr/md",
       ],
     },
   ],
@@ -176,7 +176,7 @@ export const HOME_COPY: HomeCopy = {
     plans: [
       {
         name: "Starter",
-        price: "250 kr/md",
+        price: "300 kr/md",
         tag: "Til SMV'er der skal levere VSME-rapport til banken og vil have det overstået ordentligt.",
         features: [
           "Komplet Scope 1-3 klimaregnskab",
@@ -190,7 +190,7 @@ export const HOME_COPY: HomeCopy = {
       },
       {
         name: "Premium",
-        price: "625 kr/md",
+        price: "1.195 kr/md",
         badge: "Anbefalet til de fleste",
         tag: "Til virksomheder der vil bruge ESG aktivt — reducere udledninger og dele resultater.",
         features: [
