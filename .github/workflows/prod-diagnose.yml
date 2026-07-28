@@ -1,0 +1,99 @@
+name: Prod — diagnose landing host
+
+# READ-ONLY diagnostics for the landing host (qlim8.com / 91.107.239.106), run
+# over the same SSH channel deploy.yml uses. Exists because the certificate
+# renewal is failing on that box and the deploy key lives in GitHub Secrets, so
+# Actions is the one place that can reach it.
+#
+# Every command below inspects and prints. Nothing is started, stopped, renewed,
+# written or deleted — in particular `certbot renew` is NOT run here, because a
+# renewal attempt has side effects (Let's Encrypt rate limits, rewritten state).
+# `certbot certificates` and the stored renewal config are read instead.
+#
+# Context (2026-07-28): the site served a certificate that expired Jul 27 20:16Z.
+# The nginx container was recreated by a successful deploy — which reloads certs
+# from the certbot-etc volume — and the expired cert was STILL served. So the
+# renewal itself is failing, not just its delivery to nginx. Prime suspect is the
+# stored lineage still specifying `authenticator = standalone`, a leftover from
+# the host-certbot setup: standalone needs port 80, which nginx holds.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/health-check-connection-failure-cobvev]
+
+concurrency:
+  group: prod-diagnose-landing
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    name: SSH diagnostics (read-only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Reachability from the runner
+        run: |
+          set +e
+          for target in "https://qlim8.com/" "http://qlim8.com/" "https://www.qlim8.com/"; do
+            code=$(curl -sS --connect-timeout 8 --max-time 20 -o /dev/null -w "%{http_code}" "$target" 2>&1)
+            echo "${target} -> ${code}"
+          done
+          echo "--- certificate as served to the internet ---"
+          echo | openssl s_client -connect qlim8.com:443 -servername qlim8.com 2>/dev/null \
+            | openssl x509 -noout -subject -dates 2>&1
+          exit 0
+
+      - name: Diagnose over SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HETZNER_HOST }}
+          username: ${{ secrets.HETZNER_USER }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          command_timeout: 5m
+          # Deliberately NOT `set -e`: the failures are the diagnosis.
+          script: |
+            cd /opt/qlim8 || exit 1
+
+            echo "=============== HOST ==============="
+            hostname; uptime; date -u
+
+            echo "=============== COMPOSE ============"
+            docker compose ps 2>&1
+
+            echo "=============== CERTBOT LOGS ======="
+            # The actual renewal error, if the container has attempted one.
+            docker compose logs certbot --tail 80 2>&1
+
+            echo "=============== CERT STATE ========="
+            docker compose run --rm --entrypoint "certbot certificates" certbot 2>&1 | head -40
+
+            echo "--- stored renewal config (authenticator is the suspect) ---"
+            docker compose run --rm --entrypoint \
+              "sh -c 'cat /etc/letsencrypt/renewal/qlim8.com.conf 2>&1'" certbot 2>&1 | head -40
+
+            echo "--- what nginx is actually reading from the volume ---"
+            docker compose exec -T nginx sh -c \
+              'openssl x509 -noout -subject -dates -in /etc/letsencrypt/live/qlim8.com/fullchain.pem' 2>&1
+
+            echo "=============== ACME WEBROOT ======="
+            # Does the webroot challenge path actually work end to end?
+            echo "files currently in the challenge dir:"
+            docker compose run --rm --entrypoint \
+              "sh -c 'ls -la /var/www/certbot/.well-known/acme-challenge/ 2>&1'" certbot 2>&1 | head -10
+
+            echo "=============== NGINX ==============="
+            docker compose exec -T nginx nginx -t 2>&1
+            echo "--- is the 6h reload loop present (added 2026-07-28)? ---"
+            docker compose exec -T nginx ps -o pid,args 2>&1 | head -10
+
+            echo "=============== LEGACY CRON ========"
+            # Removed from setup-server.sh; confirm it is gone from the box too.
+            ls -l /etc/cron.d/certbot-renew 2>&1 || echo "legacy cron absent (good)"
+            echo "--- host-level certbot, if any ---"
+            which certbot 2>&1 || echo "no host certbot (expected)"
+
+            echo "=============== RESOURCES =========="
+            df -h / 2>&1
+            free -m 2>&1
+            echo "=============== END ================"
