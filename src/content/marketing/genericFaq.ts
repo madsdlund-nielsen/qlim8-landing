@@ -22,7 +22,7 @@ export const GENERIC_ESG_FAQ: FaqItem[] = [
   },
   {
     q: "Hvor hurtigt kan jeg komme i gang med qlim8?",
-    a: "Når dit regnskabssystem er tilkoblet, har du et grundlæggende klimaregnskab samme dag — qlim8 henter historiske data ved første tilkobling og opdaterer derefter automatisk. Du kan oprette en gratis konto uden kreditkort og prøve platformen med eksempeldata med det samme. Priserne starter ved 250 kr/md.",
+    a: "Når dit regnskabssystem er tilkoblet, har du et grundlæggende klimaregnskab samme dag — qlim8 henter historiske data ved første tilkobling og opdaterer derefter automatisk. Du kan oprette en gratis konto uden kreditkort og prøve platformen med eksempeldata med det samme. Priserne starter ved 300 kr/md.",
   },
 ];
 

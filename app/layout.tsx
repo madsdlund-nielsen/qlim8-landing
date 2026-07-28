@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | qlim8",
   },
   description:
-    "Automatisk scope 1-3, VSME-rapport på 10 minutter, hosting i EU. Klimaregnskab uden regneark, konsulenter og kaos. Fra 250 kr/md.",
+    "Automatisk scope 1-3, VSME-rapport på 10 minutter, hosting i EU. Klimaregnskab uden regneark, konsulenter og kaos. Fra 300 kr/md.",
   keywords: [
     "klimaregnskab",
     "ESG",

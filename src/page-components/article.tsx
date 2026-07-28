@@ -49,7 +49,7 @@ export default function ArticleTemplate({ article }: { article: Article }) {
         <div className="mt-14 p-7 bg-gray-900 rounded-2xl">
           <p className="text-white font-bold text-lg mb-2">Klar til at komme i gang?</p>
           <p className="text-gray-300 text-sm mb-5 max-w-xl">
-            qlim8 gør klimaregnskabet automatisk. Fra 250 kr/md.
+            qlim8 gør klimaregnskabet automatisk. Fra 300 kr/md.
           </p>
           <a
             href="https://app.qlim8.com/auth?tab=register"

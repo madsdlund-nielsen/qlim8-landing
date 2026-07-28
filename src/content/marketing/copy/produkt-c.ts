@@ -81,7 +81,7 @@ export const PR_TILTAG: MarketingPageCopy = {
       solution:
         "Reduktions-modulet er inkluderet i Premium og opdaterer løbende — ikke en engangs-review, men et levende dashboard.",
       outcome:
-        "Løbende tracking til Premium-pris (625 kr/md) i stedet for en årlig konsulent-review til 25.000-50.000 kr.",
+        "Løbende tracking til Premium-pris (1.195 kr/md) i stedet for en årlig konsulent-review til 25.000-50.000 kr.",
     },
   ],
   features: [
@@ -183,7 +183,7 @@ export const PR_TILTAG: MarketingPageCopy = {
       },
       {
         q: "Er reduktions-modulet med i alle abonnementer?",
-        a: "Starter (fra 250 kr/md) har basis reduktions-tracking med ét mål. Det fulde modul — ubegrænsede mål, SBTi-skabeloner og scenario-til-target-konvertering — er inkluderet i Premium (625 kr/md). Enterprise tilføjer mål pr. afdeling.",
+        a: "Starter (fra 300 kr/md) har basis reduktions-tracking med ét mål. Det fulde modul — ubegrænsede mål, SBTi-skabeloner og scenario-til-target-konvertering — er inkluderet i Premium (1.195 kr/md). Enterprise tilføjer mål pr. afdeling.",
       },
       {
         q: "Kan vi sætte mål pr. afdeling?",
@@ -237,7 +237,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       pain:
         "Konsulent-kortlægning koster 50.000-150.000 kr. pr. beslutning [antagelse], og det er et engangs-svar der forældes så snart forudsætningerne ændrer sig.",
       solution:
-        "Scenario Planner er inkluderet i Premium (625 kr/md) og kører løbende, så I kan modellere igen hver gang tallene skifter.",
+        "Scenario Planner er inkluderet i Premium (1.195 kr/md) og kører løbende, så I kan modellere igen hver gang tallene skifter.",
       outcome:
         "Erstat konsulent-kortlægning på 50.000-150.000 kr. pr. beslutning [antagelse] med en inkluderet feature.",
     },
@@ -364,7 +364,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       },
       {
         q: "Hvilket abonnement kræver Scenario Planner?",
-        a: "Scenario Planner er en Premium-feature (625 kr/md) og er ikke inkluderet i Starter. Enterprise tilføjer leverandør-allokering i scenarier, fx effekten af at flytte en leverandør fra Tyskland til Sverige, som påvirker Scope 3.",
+        a: "Scenario Planner er en Premium-feature (1.195 kr/md) og er ikke inkluderet i Starter. Enterprise tilføjer leverandør-allokering i scenarier, fx effekten af at flytte en leverandør fra Tyskland til Sverige, som påvirker Scope 3.",
       },
       {
         q: "Kan en konsulent bruge det til klient-rådgivning?",
@@ -530,7 +530,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     items: [
       {
         q: "Koster det ekstra at give min revisor adgang?",
-        a: "Nej. Med tredjeparts-adgang får revisoren et audit-pack-scope uden egen betalt seat. Det er klient-tenant der betaler abonnementet (Starter fra 250 kr/md eller Premium 625 kr/md), og revisorens adgang lægger ikke licens-omkostning oveni.",
+        a: "Nej. Med tredjeparts-adgang får revisoren et audit-pack-scope uden egen betalt seat. Det er klient-tenant der betaler abonnementet (Starter fra 300 kr/md eller Premium 1.195 kr/md), og revisorens adgang lægger ikke licens-omkostning oveni.",
       },
       {
         q: "Kan revisoren ændre i vores regnskab?",
@@ -912,7 +912,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       },
       {
         q: "Kan profilen ligge på vores eget domæne?",
-        a: "På Enterprise-tier kan du white-labele profilen på eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand. Premium (625 kr/md) giver den delbare qlim8-URL og badge i standard-format.",
+        a: "På Enterprise-tier kan du white-labele profilen på eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand. Premium (1.195 kr/md) giver den delbare qlim8-URL og badge i standard-format.",
       },
     ],
   },

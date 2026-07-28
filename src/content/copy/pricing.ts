@@ -4,13 +4,16 @@
 
 export const PRICING_PAGE_KEY = "page.pricing";
 
+/**
+ * DKK only — the Stripe Starter and Premium products carry no EUR prices, so
+ * there is nothing for the page to offer in EUR. `monthlyDkk` and `yearlyDkk`
+ * are both per-month figures; `yearlyTotalDkk` is what is actually charged
+ * once up front on the yearly cycle.
+ */
 export interface PriceSet {
   monthlyDkk: number;
-  monthlyEur: number;
   yearlyDkk: number;
-  yearlyEur: number;
   yearlyTotalDkk: number;
-  yearlyTotalEur: number;
 }
 
 export interface PricingFeatureRow {
@@ -77,32 +80,29 @@ export interface PricingCopy {
 
 export const PRICING_COPY: PricingCopy = {
   header: {
-    title: "Fra 250 kr/md. Alt inkluderet.",
+    title: "Fra 300 kr/md. Alt inkluderet.",
     subtitle:
       "Ingen onboarding-gebyr, ingen lock-in. Opsig hvornår som helst. Alle priser er ekskl. moms.",
-    yearlySavingsNote: "— spar 17%",
+    yearlySavingsNote: "— spar op til 24%",
   },
   trustBar: [
     "✓ Annuller til enhver tid",
     "✓ Ingen opsætningsgebyr",
     "✓ Alle priser ekskl. moms",
   ],
+  // Mirrors the live Stripe prices on prod_Uy1uuoULKPwZGG (Starter) and
+  // prod_Uy1yQOC4sUWFAB (Premium). Keep in step with `PRICES` in the app's
+  // client/src/features/account/pages/pricing.tsx.
   prices: {
     starter: {
-      monthlyDkk: 300,
-      monthlyEur: 39,
-      yearlyDkk: 250,
-      yearlyEur: 32.5,
-      yearlyTotalDkk: 3000,
-      yearlyTotalEur: 390,
+      monthlyDkk: 395,
+      yearlyDkk: 300,
+      yearlyTotalDkk: 3600,
     },
     premium: {
-      monthlyDkk: 750,
-      monthlyEur: 99,
-      yearlyDkk: 625,
-      yearlyEur: 82.5,
-      yearlyTotalDkk: 7500,
-      yearlyTotalEur: 990,
+      monthlyDkk: 1495,
+      yearlyDkk: 1195,
+      yearlyTotalDkk: 14340,
     },
   },
   starter: {

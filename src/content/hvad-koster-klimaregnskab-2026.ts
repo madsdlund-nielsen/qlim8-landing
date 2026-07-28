@@ -105,11 +105,11 @@ export const artikel: Article = {
     { type: 'paragraph', text: 'Lad mig være konkret om qlim8\'s egne priser, for det er den eneste platform, jeg kan udtale mig fagligt præcist om.' },
     {
       type: 'paragraph',
-      text: 'qlim8 Starter koster 300 kroner om måneden ved månedlig betaling, eller 3.000 kroner om året ved årsbetaling. Det svarer til 250 kroner om måneden effektivt, hvis du vælger årsbetaling. Den dækker komplet Scope 1, 2 og 3 klimaregnskab med AI-kategorisering, fuld audit trail på hver beregning, VSME Basis-rapport med wizard, Excel-eksport og adgang til alle danske integrationer (Dinero, e-conomic, Billy og Eloverblik).',
+      text: 'qlim8 Starter koster 395 kroner om måneden ved månedlig betaling, eller 3.600 kroner om året ved årsbetaling. Det svarer til 300 kroner om måneden effektivt, hvis du vælger årsbetaling. Den dækker komplet Scope 1, 2 og 3 klimaregnskab med AI-kategorisering, fuld audit trail på hver beregning, VSME Basis-rapport med wizard, Excel-eksport og adgang til alle danske integrationer (Dinero, e-conomic, Billy og Eloverblik).',
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Premium koster 750 kroner om måneden ved månedlig betaling, eller 7.500 kroner om året ved årsbetaling. Det svarer til 625 kroner om måneden effektivt på årsbetaling. Premium inkluderer alt i Starter plus VSME Comprehensive, reduktionsmål, Scenario Builder, custom PDF-rapporter, offentligt Brag Board og fuldt REST API + MCP-integration.',
+      text: 'qlim8 Premium koster 1.495 kroner om måneden ved månedlig betaling, eller 14.340 kroner om året ved årsbetaling. Det svarer til 1.195 kroner om måneden effektivt på årsbetaling. Premium inkluderer alt i Starter plus VSME Comprehensive, reduktionsmål, Scenario Builder, custom PDF-rapporter, offentligt Brag Board og fuldt REST API + MCP-integration.',
     },
     {
       type: 'paragraph',
@@ -117,7 +117,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Derudover findes en enkelt vigtig add-on: I kan tilkøbe yderligere historisk data, hvis I vil have en baseline længere tilbage i tiden end de tre måneder, der hentes automatisk ved tilkobling. Prisen svarer typisk til et års abonnement på jeres tier — så omkring 3.000-7.500 kroner som engangsbeløb, afhængig af hvilken plan I er på.',
+      text: 'Derudover findes en enkelt vigtig add-on: I kan tilkøbe yderligere historisk data, hvis I vil have en baseline længere tilbage i tiden end de tre måneder, der hentes automatisk ved tilkobling. Det er et engangsbeløb på 3.600 kroner på Starter og 9.000 kroner på Premium.',
     },
     {
       type: 'paragraph',

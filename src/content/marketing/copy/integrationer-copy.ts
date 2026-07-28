@@ -218,7 +218,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Regnskabsintegrationerne er med fra Starter, der starter fra 250 kr/md. Premium (625 kr/md) tilføjer flere integrationer og funktioner. Se /priser for detaljer.",
+        a: "Regnskabsintegrationerne er med fra Starter, der starter fra 300 kr/md. Premium (1.195 kr/md) tilføjer flere integrationer og funktioner. Se /priser for detaljer.",
       },
     ],
   },
@@ -371,7 +371,7 @@ export const IN_DINERO: MarketingPageCopy = {
       },
       {
         q: "Hvad koster Dinero-integrationen?",
-        a: "Den er inkluderet fra Starter, der starter fra 250 kr/md. Premium koster 625 kr/md og tilføjer flere integrationer og funktioner. Se /priser.",
+        a: "Den er inkluderet fra Starter, der starter fra 300 kr/md. Premium koster 1.195 kr/md og tilføjer flere integrationer og funktioner. Se /priser.",
       },
     ],
   },
@@ -524,7 +524,7 @@ export const IN_BILLY: MarketingPageCopy = {
       },
       {
         q: "Hvad koster Billy-integrationen?",
-        a: "Den er med fra Starter, der starter fra 250 kr/md. Premium (625 kr/md) tilføjer flere integrationer og funktioner. Se /priser for detaljer.",
+        a: "Den er med fra Starter, der starter fra 300 kr/md. Premium (1.195 kr/md) tilføjer flere integrationer og funktioner. Se /priser for detaljer.",
       },
     ],
   },
@@ -646,7 +646,7 @@ export const IN_APPELSIN: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det, når integrationen kommer?",
-        a: "Regnskabsintegrationer er en del af abonnementet fra Starter (fra 250 kr/md); Premium koster 625 kr/md. Den endelige placering for Appelsin meldes ud ved lancering. Se /priser.",
+        a: "Regnskabsintegrationer er en del af abonnementet fra Starter (fra 300 kr/md); Premium koster 1.195 kr/md. Den endelige placering for Appelsin meldes ud ved lancering. Se /priser.",
       },
     ],
   },
