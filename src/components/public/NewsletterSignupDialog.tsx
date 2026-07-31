@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import { resolveSignupSource, trackNewsletterSignup } from '@/lib/tracking'
 
 export function NewsletterSignupDialog() {
   const [email, setEmail] = useState('')
@@ -31,6 +32,7 @@ export function NewsletterSignupDialog() {
       })
       const data = await res.json()
       if (res.ok && data.success) {
+        trackNewsletterSignup(resolveSignupSource('forside-dialog'))
         setMessage({ type: 'success', text: 'Tak for tilmeldingen! Check din email.' })
         setEmail('')
       } else {

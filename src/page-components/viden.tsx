@@ -74,7 +74,7 @@ export default function Viden({ articles = bundledArticles }: { articles?: Viden
 
       {/* Nyhedsbrev */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 pb-20">
-        <NewsletterForm />
+        <NewsletterForm source="blog-index" />
       </section>
 
       <SiteFooter />

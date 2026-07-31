@@ -1,7 +1,19 @@
 "use client"
 import { useState } from 'react'
+import { resolveSignupSource, trackNewsletterSignup } from '@/lib/tracking'
 
-export function NewsletterForm() {
+type NewsletterFormProps = {
+  /** Placement label used when the URL carries no campaign token. */
+  source?: string
+  heading?: string
+  description?: string
+}
+
+export function NewsletterForm({
+  source = 'web',
+  heading = 'Vil du have artiklerne direkte i indbakken?',
+  description = 'Tilmeld dig og få nye artikler om klimaregnskab, compliance og bæredygtighed — uden spam, kun indhold der gavner din virksomhed.',
+}: NewsletterFormProps = {}) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
@@ -24,6 +36,7 @@ export function NewsletterForm() {
       })
       const data = await res.json()
       if (res.ok && data.success) {
+        trackNewsletterSignup(resolveSignupSource(source))
         setMessage({ type: 'success', text: 'Tak for tilmeldingen! Check din email.' })
         setName('')
         setEmail('')
@@ -40,13 +53,8 @@ export function NewsletterForm() {
   return (
     <div className="bg-accent rounded-2xl p-8 lg:p-12">
       <div className="max-w-xl mx-auto text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-3">
-          Vil du have artiklerne direkte i indbakken?
-        </h2>
-        <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-          Tilmeld dig og få nye artikler om klimaregnskab, compliance og bæredygtighed —
-          uden spam, kun indhold der gavner din virksomhed.
-        </p>
+        <h2 className="text-2xl font-bold text-gray-900 mb-3">{heading}</h2>
+        <p className="text-gray-600 mb-6 text-sm leading-relaxed">{description}</p>
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
             type="text"
