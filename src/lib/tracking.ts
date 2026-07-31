@@ -36,8 +36,14 @@ export function resolveSignupSource(fallback: string): string {
   );
 }
 
-/** Report a completed newsletter signup to GA4, tagged with its source. */
+/**
+ * Report a completed newsletter signup to GA4, tagged with its source.
+ *
+ * The parameter is `signup_source`, not `source` — GA4 already has a built-in
+ * traffic-source dimension by that name, and a custom definition would collide
+ * with it in reports.
+ */
 export function trackNewsletterSignup(source: string) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("event", "newsletter_signup", { source });
+  window.gtag("event", "newsletter_signup", { signup_source: source });
 }
