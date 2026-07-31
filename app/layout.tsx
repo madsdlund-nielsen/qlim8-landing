@@ -14,7 +14,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://qlim8.com"),
   title: {
-    default: "qlim8 » ESG uden besværet — klimaregnskab til danske SMV'er",
+    default: "qlim8 - ESG er nemt",
     template: "%s | qlim8",
   },
   description:
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     "bæredygtighed",
     "Danmark",
   ],
-  authors: [{ name: "qlim8 ApS" }],
-  creator: "qlim8 ApS",
-  publisher: "qlim8 ApS",
+  authors: [{ name: "qlim8" }],
+  creator: "qlim8",
+  publisher: "qlim8",
   openGraph: {
     siteName: "qlim8",
     locale: "da_DK",

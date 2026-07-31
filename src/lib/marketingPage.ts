@@ -12,7 +12,7 @@ const BASE_URL = "https://qlim8.com";
 
 const ORG = {
   "@type": "Organization",
-  name: "qlim8 ApS",
+  name: "qlim8",
   url: BASE_URL,
   logo: { "@type": "ImageObject", url: `${BASE_URL}/favicon.svg` },
 };

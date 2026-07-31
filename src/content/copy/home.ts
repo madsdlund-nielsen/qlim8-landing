@@ -84,7 +84,7 @@ const SIGNUP_URL = "https://app.qlim8.com/auth?tab=register";
 
 export const HOME_COPY: HomeCopy = {
   hero: {
-    title: "ESG uden besværet",
+    title: "ESG er nemt",
     subtitle:
       "Automatisk klimaregnskab og VSME-rapport for danske SMV'er — hentet direkte fra dit regnskabssystem og elforbrug. 10 minutter om måneden, ikke 10 dage.",
     ctaPrimary: "Prøv platformen gratis",

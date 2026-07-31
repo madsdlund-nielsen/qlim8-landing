@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const ORG_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "qlim8 ApS",
+  name: "qlim8",
   url: "https://qlim8.com",
   logo: "https://qlim8.com/favicon.svg",
   description:
