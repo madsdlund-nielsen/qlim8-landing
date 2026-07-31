@@ -48,7 +48,7 @@ export function SiteFooter() {
               <span className="font-bold text-xl tracking-tight text-white">qlim8</span>
             </a>
             <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
-              ESG uden besværet. Klimaregnskab, scope-3 og rapportering bygget til danske SMV'er.
+              ESG er nemt. Klimaregnskab, scope-3 og rapportering bygget til danske SMV'er.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a

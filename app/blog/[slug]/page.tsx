@@ -76,12 +76,12 @@ export default async function ArticlePage({ params }: Props) {
     dateModified: article.publishedAt,
     author: {
       '@type': 'Organization',
-      name: 'qlim8 ApS',
+      name: 'qlim8',
       url: 'https://qlim8.com',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'qlim8 ApS',
+      name: 'qlim8',
       logo: { '@type': 'ImageObject', url: 'https://qlim8.com/favicon.svg' },
     },
     mainEntityOfPage: {
