@@ -446,11 +446,11 @@ flowchart LR
   visitor["Marketing visitor"]
 
   subgraph landing["qlim8 Landing — Next.js 15 (standalone)"]
-    pages["Pages: / · /priser · /blog + [slug]<br/>/api + /docs/* · /kontakt · /om-os<br/>/metodologi · /karriere · legal"]
+    pages["Pages: / · /priser · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
     i18n["client-side i18n (8 langs)"]
     content["hardcoded TS articles (no CMS)"]
     ga["Google Analytics 4 (cookie consent)"]
-    nlform["Newsletter form"]
+    nlform["Newsletter form<br/>(/nyhedsbrev · /blog · hero modal)"]
     checkout["Pricing checkout"]
     cta["Signup / login CTAs"]
   end
@@ -469,6 +469,7 @@ flowchart LR
   cta -->|"HTTPS anchor"| appauth
   checkout -->|"absolute NEXT_PUBLIC_API_URL"| appcheckout --> stripe
   nlform -->|"absolute NEXT_PUBLIC_API_URL (name + email)"| appnews
+  nlform -.->|"newsletter_signup event (?ref / ?utm_source)"| ga
 
   classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
@@ -483,7 +484,8 @@ _Exports: [SVG](../../diagrams/svg/06-landing-bridges.svg) · [PNG](../../diagra
 > ✅ **Fixed.** `NewsletterForm.tsx` and `NewsletterSignupDialog.tsx` now POST to the
 > **absolute** app URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) — the same pattern as the
 > pricing checkout — so the request reaches the app's `/api/newsletter/signup` handler (CORS
-> already allows the `qlim8.com` origin). The email-only dialog now also sends the required `name`.
+> already allows the `qlim8.com` origin). Both surfaces collect a real name and email — the hero
+> dialog no longer derives a display name from the email's local part.
 > Previously it POSTed to a relative path that dead-ended at the Next server. See note 1 in §8.
 
 The `legacy/` directory in the landing repo is a pre-rewrite backup and is intentionally omitted.
@@ -686,8 +688,14 @@ _Exports: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagram
 
 1. **Newsletter bridge — fixed.** The landing forms now POST to the **absolute** app URL
    (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) and reach the app's `/api/newsletter/signup`
-   handler; the email-only dialog now also sends the required `name`. (Previously a relative
+   handler; both surfaces collect a real name and email. (Previously a relative
    `/api/newsletter/signup` dead-ended at the Next server — no handler, no `/api` proxy.)
+   Signup lives on the standalone `/nyhedsbrev` page, in an embedded block on `/blog` and
+   article pages, and in the homepage hero dialog — the last of which also opens from
+   `/?nyhedsbrev=1`, so a single link can point at signup without leaving the homepage.
+   A successful signup fires a GA4 `newsletter_signup` event carrying a `signup_source`
+   token resolved from `?ref` then `?utm_source` (`src/lib/tracking.ts`), which is how
+   off-site placements are attributed. The POST body itself stays `{ name, email }`.
 2. **One process.** SPA static serving, all four API surfaces, every worker, and the Playwright
    pool live in a single PM2 fork instance. There is no separate worker/render service.
 3. **pg-boss is not separate infra.** It runs in the app's PostgreSQL under the `pgboss` schema.
