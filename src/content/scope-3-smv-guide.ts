@@ -15,7 +15,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Scope 1 — direkte udledninger fra egne kilder som firmabiler og gasfyr — er nemt. I kender forbruget. I har fakturaerne. Scope 2 — købt el og varme — er også nemt. I har eldeklarationen fra Energinet og varmemålerne. Det er typisk 10-30 procent af jeres samlede aftryk, og det er fuldt under jeres kontrol at måle.',
+      text: 'Scope 1: direkte udledninger fra egne kilder som firmabiler og gasfyr, er nemt. I kender forbruget. I har fakturaerne. Scope 2: købt el og varme: er også nemt. I har eldeklarationen fra Energinet og varmemålerne. Det er typisk 10-30 procent af jeres samlede aftryk, og det er fuldt under jeres kontrol at måle.',
     },
     {
       type: 'paragraph',
@@ -27,7 +27,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Scope 3 er ikke en præcis videnskab. Det er en disciplineret tilnærmelse, hvor det handler om at have en metode, der er defensibel — ikke perfekt. Lad mig forklare, hvordan I gør det.',
+      text: 'Scope 3 er ikke en præcis videnskab. Det er en disciplineret tilnærmelse, hvor det handler om at have en metode, der er defensibel, ikke perfekt. Lad mig forklare, hvordan I gør det.',
     },
 
     { type: 'h2', text: 'Hvad Scope 3 reelt dækker' },
@@ -41,23 +41,23 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Kategori 1 — Indkøbte varer og services er nærmest altid den største. Alt I køber: råvarer, kontorartikler, software-abonnementer, marketingydelser, revisorhjælp, rengøring. For en typisk produktionsvirksomhed kan denne kategori alene udgøre 50-70 procent af det samlede klimaaftryk.',
+      text: 'Kategori 1: Indkøbte varer og services er nærmest altid den største. Alt I køber: råvarer, kontorartikler, software-abonnementer, marketingydelser, revisorhjælp, rengøring. For en typisk produktionsvirksomhed kan denne kategori alene udgøre 50-70 procent af det samlede klimaaftryk.',
     },
     {
       type: 'paragraph',
-      text: 'Kategori 4 — Upstream transport og distribution er den anden tunge. Det er den transport, jeres leverandører bruger på at bringe varer til jer. Hvis I køber komponenter fra Tyskland eller Kina, ligger der transport-emissioner indbygget her, som I sjældent ser direkte.',
+      text: 'Kategori 4: Upstream transport og distribution er den anden tunge. Det er den transport, jeres leverandører bruger på at bringe varer til jer. Hvis I køber komponenter fra Tyskland eller Kina, ligger der transport-emissioner indbygget her, som I sjældent ser direkte.',
     },
     {
       type: 'paragraph',
-      text: 'Kategori 6 — Forretningsrejser er ofte mindre, men kan være betydelig for konsulentvirksomheder eller virksomheder med international aktivitet.',
+      text: 'Kategori 6: Forretningsrejser er ofte mindre, men kan være betydelig for konsulentvirksomheder eller virksomheder med international aktivitet.',
     },
     {
       type: 'paragraph',
-      text: 'Kategori 7 — Pendling dækker medarbejdernes transport til og fra arbejde. For større SMV\'er kan det være væsentlig; for små er det mindre.',
+      text: 'Kategori 7: Pendling dækker medarbejdernes transport til og fra arbejde. For større SMV\'er kan det være væsentlig; for små er det mindre.',
     },
     {
       type: 'paragraph',
-      text: 'De øvrige kategorier — affaldsbehandling, lejede aktiver, investeringer, brug af solgte produkter, end-of-life-behandling og lignende — er typisk relevante for specifikke brancher. En byggevirksomhed skal medtage end-of-life. En software-virksomhed skal typisk medtage data-center-aktivitet. En finansiel virksomhed skal medtage investeringernes klimaaftryk.',
+      text: 'De øvrige kategorier (affaldsbehandling, lejede aktiver, investeringer, brug af solgte produkter, end-of-life-behandling og lignende) er typisk relevante for specifikke brancher. En byggevirksomhed skal medtage end-of-life. En software-virksomhed skal typisk medtage data-center-aktivitet. En finansiel virksomhed skal medtage investeringernes klimaaftryk.',
     },
     {
       type: 'paragraph',
@@ -79,15 +79,15 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Aktivitets-baseret beregning bygger på fysiske mængder ganget med specifikke emissionsfaktorer. I har købt 2.000 liter diesel — gange med en faktor for diesel giver præcise CO2-tal. I har købt 500 kg stål — gange med en faktor for stål giver et estimat. Det her er mere præcist end spend-baseret beregning, men det kræver, at I har de fysiske mængder, og at I kan matche dem mod en relevant emissionsfaktor. For ting som energi, brændstof og specifikke materialer er det den klart bedste tilgang.',
+      text: 'Aktivitets-baseret beregning bygger på fysiske mængder ganget med specifikke emissionsfaktorer. I har købt 2.000 liter diesel, gange med en faktor for diesel giver præcise CO2-tal. I har købt 500 kg stål: gange med en faktor for stål giver et estimat. Det her er mere præcist end spend-baseret beregning, men det kræver, at I har de fysiske mængder, og at I kan matche dem mod en relevant emissionsfaktor. For ting som energi, brændstof og specifikke materialer er det den klart bedste tilgang.',
     },
     {
       type: 'paragraph',
-      text: 'Spend-baseret beregning bygger på pengebeløb ganget med en branchespecifik emissionsfaktor. I har brugt 250.000 kroner på indkøb af stål — gange med en spend-baseret faktor for stålindustrien giver et estimat. Det her er den mindst præcise tilgang, men det er også den eneste, der kan dække den lange hale af mindre leverandører og indkøb, hvor I ikke har fysiske mængder eller specifikke data.',
+      text: 'Spend-baseret beregning bygger på pengebeløb ganget med en branchespecifik emissionsfaktor. I har brugt 250.000 kroner på indkøb af stål, gange med en spend-baseret faktor for stålindustrien giver et estimat. Det her er den mindst præcise tilgang, men det er også den eneste, der kan dække den lange hale af mindre leverandører og indkøb, hvor I ikke har fysiske mængder eller specifikke data.',
     },
     {
       type: 'paragraph',
-      text: 'Hvis I udelukkende bruger leverandør-specifik data, får I aldrig færdiggjort et regnskab. Hvis I udelukkende bruger spend-baseret beregning, får I et regnskab, der er forkert i begge ender — for præcist for de største poster og for unøjagtigt for kompliceret. Hybrid er ikke en kompromis, det er den anbefalede tilgang i selve GHG Protocol Scope 3 Standard.',
+      text: 'Hvis I udelukkende bruger leverandør-specifik data, får I aldrig færdiggjort et regnskab. Hvis I udelukkende bruger spend-baseret beregning, får I et regnskab, der er forkert i begge ender, for præcist for de største poster og for unøjagtigt for kompliceret. Hybrid er ikke en kompromis, det er den anbefalede tilgang i selve GHG Protocol Scope 3 Standard.',
     },
 
     { type: 'h2', text: 'Spend-baseret modellens skjulte fælder' },
@@ -97,7 +97,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Inflation kan forvride beregningen markant. De fleste spend-baserede emissionsfaktorer er knyttet til et bestemt basisår — typisk hentet fra EXIOBASE eller lignende input-output-modeller. EXIOBASE\'s nyeste validerede version er på publiceringstidspunktet altid nogle år gammel. Hvis I bruger 2025-fakturabeløb mod faktorer, der er baseret på 2020-priser, fortolker modellen jeres højere priser som højere udledning — selvom det i virkeligheden bare er inflation. En faktura på 13.000 kroner for brædder i 2025 og 10.000 kroner for præcis samme brædder i 2020 burde give samme CO2-tal. I praksis vil en simpel spend-baseret model vise 30 procent højere udledning for 2025-fakturaen.',
+      text: 'Inflation kan forvride beregningen markant. De fleste spend-baserede emissionsfaktorer er knyttet til et bestemt basisår, typisk hentet fra EXIOBASE eller lignende input-output-modeller. EXIOBASE\'s nyeste validerede version er på publiceringstidspunktet altid nogle år gammel. Hvis I bruger 2025-fakturabeløb mod faktorer, der er baseret på 2020-priser, fortolker modellen jeres højere priser som højere udledning, selvom det i virkeligheden bare er inflation. En faktura på 13.000 kroner for brædder i 2025 og 10.000 kroner for præcis samme brædder i 2020 burde give samme CO2-tal. I praksis vil en simpel spend-baseret model vise 30 procent højere udledning for 2025-fakturaen.',
     },
     {
       type: 'paragraph',
@@ -105,7 +105,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Spend-baseret beregning straffer grønnere indkøb. Det er den mest paradoksale fælde, og den, der får flest virksomheder til at miste tilliden til metoden. Hvis I køber et dyrere, mere bæredygtigt materiale — for eksempel et certificeret FSC-træ frem for konventionelt — så viser en simpel spend-baseret model jeres udledning som højere, fordi prisen er højere. Det er ikke ondsindet — det er bare en konsekvens af, at modellen ikke kan skelne mellem to produkter i samme kategori. Det betyder, at I i de mest material kategorier ikke kan stole på spend-baseret data alene, hvis I gør et reelt bæredygtighedsarbejde.',
+      text: 'Spend-baseret beregning straffer grønnere indkøb. Det er den mest paradoksale fælde, og den, der får flest virksomheder til at miste tilliden til metoden. Hvis I køber et dyrere, mere bæredygtigt materiale, for eksempel et certificeret FSC-træ frem for konventionelt. Så viser en simpel spend-baseret model jeres udledning som højere, fordi prisen er højere. Det er ikke ondsindet: det er bare en konsekvens af, at modellen ikke kan skelne mellem to produkter i samme kategori. Det betyder, at I i de mest material kategorier ikke kan stole på spend-baseret data alene, hvis I gør et reelt bæredygtighedsarbejde.',
     },
     {
       type: 'paragraph',
@@ -113,7 +113,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Spend-baseret beregning er stadig nyttig — særligt som baseline og for den lange hale af mindre poster. Men I skal vide, hvad I har tilbage, når I bruger den.',
+      text: 'Spend-baseret beregning er stadig nyttig, særligt som baseline og for den lange hale af mindre poster. Men I skal vide, hvad I har tilbage, når I bruger den.',
     },
 
     { type: 'h2', text: 'Materialitet: Hvor I skal lægge indsatsen' },
@@ -127,27 +127,27 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det er en kæmpe befrielse for de fleste, der starter Scope 3-arbejdet. I behøver ikke at samle data om alt med samme præcision. I skal være præcise, hvor det betyder noget — hvor en mindre fejl forskyder det samlede tal mærkbart — og I kan tillade jer mindre præcision i de små poster.',
+      text: 'Det er en kæmpe befrielse for de fleste, der starter Scope 3-arbejdet. I behøver ikke at samle data om alt med samme præcision. I skal være præcise, hvor det betyder noget, hvor en mindre fejl forskyder det samlede tal mærkbart, og I kan tillade jer mindre præcision i de små poster.',
     },
     {
       type: 'paragraph',
-      text: 'Hvordan ved I, hvad der er material, før I har beregnet det? I starter typisk med et hurtigt baseline-estimat baseret på rene spend-baserede tal. Det giver jer ikke det rigtige tal, men det giver jer fordelingen — hvilke kategorier udgør hvilken procentdel af jeres samlede aftryk. Når I så ved, at indkøbte varer udgør 65 procent og forretningsrejser udgør 8 procent, kan I lægge jeres indsats på indkøbte varer og være tilfreds med en grovere beregning af forretningsrejser.',
+      text: 'Hvordan ved I, hvad der er material, før I har beregnet det? I starter typisk med et hurtigt baseline-estimat baseret på rene spend-baserede tal. Det giver jer ikke det rigtige tal, men det giver jer fordelingen, hvilke kategorier udgør hvilken procentdel af jeres samlede aftryk. Når I så ved, at indkøbte varer udgør 65 procent og forretningsrejser udgør 8 procent, kan I lægge jeres indsats på indkøbte varer og være tilfreds med en grovere beregning af forretningsrejser.',
     },
     { type: 'paragraph', text: 'Det handler om at gøre det rigtige arbejde der, hvor det rykker, og spare tid der, hvor det ikke gør.' },
     {
       type: 'paragraph',
-      text: 'For SMV\'er der leverer til CSRD-omfattede virksomheder, er der en ekstra dimension her. Den nye Value Chain Cap fra Omnibus I-direktivet, som trådte i kraft 24. februar 2026, betyder, at store kunder ikke længere må kræve mere Scope 3-data fra jer end det, VSME-standarden specificerer. Det giver jer en juridisk grænse for, hvor langt I skal gå med jeres egen Scope 3-detaljering for at imødekomme leverandørkrav. I behøver ikke gå længere end VSME — selvom kunden måtte bede om det. Det er beskyttelse, der er værd at kende, før I bruger måneder på at indhente data, ingen lov kræver, at I afleverer.',
+      text: 'For SMV\'er der leverer til CSRD-omfattede virksomheder, er der en ekstra dimension her. Den nye Value Chain Cap fra Omnibus I-direktivet, som trådte i kraft 24. februar 2026, betyder, at store kunder ikke længere må kræve mere Scope 3-data fra jer end det, VSME-standarden specificerer. Det giver jer en juridisk grænse for, hvor langt I skal gå med jeres egen Scope 3-detaljering for at imødekomme leverandørkrav. I behøver ikke gå længere end VSME, selvom kunden måtte bede om det. Det er beskyttelse, der er værd at kende, før I bruger måneder på at indhente data, ingen lov kræver, at I afleverer.',
     },
 
     { type: 'h2', text: 'Hybrid: Den realistiske vej' },
     { type: 'paragraph', text: 'Lad mig samle det op til en konkret metodologi, der reelt virker for en dansk SMV i 2026.' },
     {
       type: 'paragraph',
-      text: 'For Scope 2 og specifikke aktivitetsdata i Scope 3: Brug aktivitetsbaseret beregning med fysiske enheder og konkrete emissionsfaktorer. El, varme, brændstof, flyrejser med kendte ruter, transport med kendte vægter og distancer — alt det, hvor I har præcise tal og kan matche dem mod validerede faktorer fra Klimakompasset, Energinet eller relevante internationale kilder. Det er den højeste datakvalitet I kan opnå uden direkte leverandørdata.',
+      text: 'For Scope 2 og specifikke aktivitetsdata i Scope 3: Brug aktivitetsbaseret beregning med fysiske enheder og konkrete emissionsfaktorer. El, varme, brændstof, flyrejser med kendte ruter, transport med kendte vægter og distancer: alt det, hvor I har præcise tal og kan matche dem mod validerede faktorer fra Klimakompasset, Energinet eller relevante internationale kilder. Det er den højeste datakvalitet I kan opnå uden direkte leverandørdata.',
     },
     {
       type: 'paragraph',
-      text: 'For de 3-5 store, materiale indkøbskategorier i Scope 3: Stræb efter aktivitetsbaseret beregning hvor muligt, og overvej direkte leverandørdata for de allerstørste leverandører. Hvis I har en hovedleverandør, der udgør 15 procent af jeres samlede indkøb, så er det værd at spørge dem om deres klimaregnskab. CSRD-omfattede virksomheder er typisk forpligtet til at kunne svare på det — og leverandører der ikke er CSRD-omfattede, har ofte alligevel data fra deres egen VSME-rapportering.',
+      text: 'For de 3-5 store, materiale indkøbskategorier i Scope 3: Stræb efter aktivitetsbaseret beregning hvor muligt, og overvej direkte leverandørdata for de allerstørste leverandører. Hvis I har en hovedleverandør, der udgør 15 procent af jeres samlede indkøb, så er det værd at spørge dem om deres klimaregnskab. CSRD-omfattede virksomheder er typisk forpligtet til at kunne svare på det, og leverandører der ikke er CSRD-omfattede, har ofte alligevel data fra deres egen VSME-rapportering.',
     },
     {
       type: 'paragraph',
@@ -155,7 +155,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'For alle tre tilgange: Dokumenter datakvaliteten ærligt. En god platform — eller en god konsulent — kan vægte hver post baseret på datatype og give jer et samlet kvalitetsscore. I qlim8 bruger vi et pointsystem fra 1 til 5 baseret på datatype, og den samlede score er vægtet efter udledningens størrelse. Det betyder, at en upræcis post på 100 ton udledning trækker mere ned i scoren end en upræcis post på 1 ton. Det er sådan, materialitetsprincippet implementeres i praksis.',
+      text: 'For alle tre tilgange: Dokumenter datakvaliteten ærligt. En god platform, eller en god konsulent, kan vægte hver post baseret på datatype og give jer et samlet kvalitetsscore. I qlim8 bruger vi et pointsystem fra 1 til 5 baseret på datatype, og den samlede score er vægtet efter udledningens størrelse. Det betyder, at en upræcis post på 100 ton udledning trækker mere ned i scoren end en upræcis post på 1 ton. Det er sådan, materialitetsprincippet implementeres i praksis.',
     },
     { type: 'paragraph', text: 'Det er ikke en perfekt metode. Det er en defensibel metode.' },
 
@@ -163,7 +163,7 @@ export const artikel: Article = {
     { type: 'paragraph', text: 'Hvis I står overfor jeres første Scope 3-beregning og vil have en realistisk tilgang, her er rækkefølgen.' },
     {
       type: 'paragraph',
-      text: 'Trin 1: Lav en grov baseline. Brug spend-baseret beregning på alle indkøb i regnskabsåret. Det giver jer et samlet Scope 3-tal og — vigtigere — fordelingen på de 15 kategorier. Det her tager dage hvis I gør det manuelt og minutter hvis I bruger software, der trækker fakturaerne automatisk fra jeres regnskabssystem.',
+      text: 'Trin 1: Lav en grov baseline. Brug spend-baseret beregning på alle indkøb i regnskabsåret. Det giver jer et samlet Scope 3-tal og, vigtigere, fordelingen på de 15 kategorier. Det her tager dage hvis I gør det manuelt og minutter hvis I bruger software, der trækker fakturaerne automatisk fra jeres regnskabssystem.',
     },
     {
       type: 'paragraph',
@@ -171,7 +171,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Trin 3: Forbedr de materiale kategorier. Gå fra spend-baseret til aktivitetsbaseret beregning hvor I kan finde fysiske mængder. For en transportvirksomhed kan det være at gå fra "vi har brugt 250.000 kroner på diesel" til "vi har købt 12.500 liter diesel" — det giver et markant mere præcist tal. For en byggevirksomhed kan det være at gå fra "stål 500.000 kroner" til "stål 8.500 kg".',
+      text: 'Trin 3: Forbedr de materiale kategorier. Gå fra spend-baseret til aktivitetsbaseret beregning hvor I kan finde fysiske mængder. For en transportvirksomhed kan det være at gå fra "vi har brugt 250.000 kroner på diesel" til "vi har købt 12.500 liter diesel". Det giver et markant mere præcist tal. For en byggevirksomhed kan det være at gå fra "stål 500.000 kroner" til "stål 8.500 kg".',
     },
     {
       type: 'paragraph',
@@ -179,7 +179,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Trin 5: Vær ærlig om resten. For alt det andet — den lange hale af kontorartikler, software-abonnementer, marketingydelser, og mindre indkøb — vær åben om, at I bruger spend-baseret beregning, og at det er et estimat. Det er den datakvalitetsscore I rapporterer på dashboardet og i rapportens forside. Det er ikke en svaghed, det er ærlighed.',
+      text: 'Trin 5: Vær ærlig om resten. For alt det andet (den lange hale af kontorartikler, software-abonnementer, marketingydelser, og mindre indkøb) vær åben om, at I bruger spend-baseret beregning, og at det er et estimat. Det er den datakvalitetsscore I rapporterer på dashboardet og i rapportens forside. Det er ikke en svaghed, det er ærlighed.',
     },
     {
       type: 'paragraph',
@@ -205,7 +205,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'I Scope 3 belønnes ærlig usikkerhed — ikke falsk præcision. Det er det, jeg vil have, I tager med fra denne artikel.',
+      text: 'I Scope 3 belønnes ærlig usikkerhed, ikke falsk præcision. Det er det, jeg vil have, I tager med fra denne artikel.',
     },
   ],
 }

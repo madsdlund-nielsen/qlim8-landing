@@ -122,7 +122,7 @@ export default function Landing({
                   </p>
                   <ul className="space-y-2 text-[15px] text-gray-800">
                     {f.bullets.map((b) => (
-                      <li key={b} className="leading-relaxed">— {b}</li>
+                      <li key={b} className="leading-relaxed">, {b}</li>
                     ))}
                   </ul>
                 </div>
@@ -226,7 +226,7 @@ export default function Landing({
                 <p className="text-sm text-gray-600 leading-relaxed mb-6 min-h-[4rem]">{p.tag}</p>
                 <ul className="space-y-2 mb-8 text-sm text-gray-700">
                   {p.features.map((feat) => (
-                    <li key={feat} className="leading-relaxed">— {feat}</li>
+                    <li key={feat} className="leading-relaxed">, {feat}</li>
                   ))}
                 </ul>
                 <a

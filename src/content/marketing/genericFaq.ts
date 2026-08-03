@@ -10,19 +10,19 @@ import type { FaqItem, MarketingCollection } from "./types";
 export const GENERIC_ESG_FAQ: FaqItem[] = [
   {
     q: "Hvad er et klimaregnskab?",
-    a: "Et klimaregnskab opgør din virksomheds udledning af drivhusgasser (CO₂e) fordelt på Scope 1, 2 og 3. qlim8 bygger det oven på dit eksisterende regnskab: vi henter posteringer fra dit regnskabssystem og elforbrug fra Eloverblik og omregner dem til udledninger med validerede emissionsfaktorer — så du slipper for regneark.",
+    a: "Et klimaregnskab opgør din virksomheds udledning af drivhusgasser (CO₂e) fordelt på Scope 1, 2 og 3. qlim8 bygger det oven på dit eksisterende regnskab: vi henter posteringer fra dit regnskabssystem og elforbrug fra Eloverblik og omregner dem til udledninger med validerede emissionsfaktorer, så du slipper for regneark.",
   },
   {
     q: "Hvad er forskellen på Scope 1, 2 og 3?",
-    a: "Scope 1 er direkte udledninger fra kilder, du selv ejer eller kontrollerer — fx egne køretøjer og gasfyr. Scope 2 er indirekte udledninger fra købt energi som el og fjernvarme. Scope 3 dækker resten af værdikæden — indkøb, transport, affald, forretningsrejser — og udgør typisk 70-90 % af en SMV's samlede aftryk. qlim8 beregner alle tre automatisk.",
+    a: "Scope 1 er direkte udledninger fra kilder, du selv ejer eller kontrollerer, fx egne køretøjer og gasfyr. Scope 2 er indirekte udledninger fra købt energi som el og fjernvarme. Scope 3 dækker resten af værdikæden: indkøb, transport, affald, forretningsrejser, og udgør typisk 70-90 % af en SMV's samlede aftryk. qlim8 beregner alle tre automatisk.",
   },
   {
     q: "Skal min virksomhed lave et klimaregnskab?",
-    a: "Der er sjældent et direkte lovkrav for mindre virksomheder, men i praksis bliver et klimaregnskab i stigende grad krævet af banken (til finansiering), af større kunder og i offentlige og private udbud — ofte fordi de selv er underlagt CSRD og skal bruge data fra deres leverandørkæde. qlim8 gør det håndterbart uden ekstern konsulent.",
+    a: "Der er sjældent et direkte lovkrav for mindre virksomheder, men i praksis bliver et klimaregnskab i stigende grad krævet af banken (til finansiering), af større kunder og i offentlige og private udbud, ofte fordi de selv er underlagt CSRD og skal bruge data fra deres leverandørkæde. qlim8 gør det håndterbart uden ekstern konsulent.",
   },
   {
     q: "Hvor hurtigt kan jeg komme i gang med qlim8?",
-    a: "Når dit regnskabssystem er tilkoblet, har du et grundlæggende klimaregnskab samme dag — qlim8 henter historiske data ved første tilkobling og opdaterer derefter automatisk. Du kan oprette en gratis konto uden kreditkort og prøve platformen med eksempeldata med det samme. Priserne starter ved 300 kr/md.",
+    a: "Når dit regnskabssystem er tilkoblet, har du et grundlæggende klimaregnskab samme dag. Qlim8 henter historiske data ved første tilkobling og opdaterer derefter automatisk. Du kan oprette en gratis konto uden kreditkort og prøve platformen med eksempeldata med det samme. Priserne starter ved 300 kr/md.",
   },
 ];
 
@@ -32,7 +32,7 @@ export const HUB_FAQ_SEED: Record<MarketingCollection, FaqItem[]> = {
   kundetyper: [
     {
       q: "Understøtter qlim8 min branche?",
-      a: "qlim8 er bygget til danske SMV'er på tværs af brancher — fra håndværk og transport til produktion, rådgivning og revision. Klimaregnskabet bygges på dit regnskab og elforbrug, så metoden er den samme uanset branche; det er dine data og din værdikæde, der afgør, hvor udledningerne ligger. Find din branche ovenfor for de konkrete pointer.",
+      a: "qlim8 er bygget til danske SMV'er på tværs af brancher, fra håndværk og transport til produktion, rådgivning og revision. Klimaregnskabet bygges på dit regnskab og elforbrug, så metoden er den samme uanset branche; det er dine data og din værdikæde, der afgør, hvor udledningerne ligger. Find din branche ovenfor for de konkrete pointer.",
     },
     {
       q: "Hvorfor er qlim8 bygget specifikt til danske virksomheder?",
@@ -42,7 +42,7 @@ export const HUB_FAQ_SEED: Record<MarketingCollection, FaqItem[]> = {
   produkt: [
     {
       q: "Hvad kan jeg bruge qlim8 til?",
-      a: "qlim8 samler klimaregnskabet ét sted: et dashboard med overblik, udforskning af data bag tallene, rapportering (Excel, PDF, VSME) klar til revisor og bank, samt tiltag, scenarier, revisor-adgang og leverandørkæde, så klimaregnskabet bliver et arbejdsredskab hele året — ikke kun en årlig rapport.",
+      a: "qlim8 samler klimaregnskabet ét sted: et dashboard med overblik, udforskning af data bag tallene, rapportering (Excel, PDF, VSME) klar til revisor og bank, samt tiltag, scenarier, revisor-adgang og leverandørkæde, så klimaregnskabet bliver et arbejdsredskab hele året, ikke kun en årlig rapport.",
     },
     {
       q: "Kan jeg prøve produktet gratis?",
@@ -56,7 +56,7 @@ export const HUB_FAQ_SEED: Record<MarketingCollection, FaqItem[]> = {
     },
     {
       q: "Skal jeg indtaste data manuelt?",
-      a: "Nej — det er hele pointen. qlim8 henter dine posteringer og dit elforbrug automatisk og kategoriserer dem i det rigtige scope, så du undgår manuel indtastning i regneark. Du kan altid gennemgå og justere kategoriseringen.",
+      a: "Nej: det er hele pointen. qlim8 henter dine posteringer og dit elforbrug automatisk og kategoriserer dem i det rigtige scope, så du undgår manuel indtastning i regneark. Du kan altid gennemgå og justere kategoriseringen.",
     },
   ],
 };

@@ -3,7 +3,7 @@ import Karriere from "@/page-components/karriere";
 import { resolvePageCopy } from "@/lib/pageCopy";
 import { CAREERS_PAGE_KEY, CAREERS_COPY } from "@/content/copy/careers";
 
-// ISR — CMS-published copy refreshes on this cadence.
+// ISR: CMS-published copy refreshes on this cadence.
 export const revalidate = 300;
 
 export const metadata: Metadata = {

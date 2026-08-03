@@ -30,7 +30,7 @@ export function NewsletterSignupDialog() {
     const params = new URLSearchParams(window.location.search)
     if (!params.has(DEEP_LINK_PARAM)) return
     setOpen(true)
-    // Drop our own param but keep the rest — resolveSignupSource reads ?ref and
+    // Drop our own param but keep the rest: resolveSignupSource reads ?ref and
     // ?utm_source straight off the URL when the form is submitted, so clearing the
     // whole query string here would throw the campaign token away first.
     params.delete(DEEP_LINK_PARAM)
@@ -44,7 +44,7 @@ export function NewsletterSignupDialog() {
     setLoading(true)
     setMessage(null)
     try {
-      // The newsletter endpoint lives on the app, not on this landing site — use an
+      // The newsletter endpoint lives on the app, not on this landing site, use an
       // absolute URL (same pattern as the pricing checkout).
       const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://app.qlim8.com'
       const res = await fetch(`${API_BASE}/api/newsletter/signup`, {
@@ -83,7 +83,7 @@ export function NewsletterSignupDialog() {
         <DialogHeader>
           <DialogTitle>Skriv dig op til nyheder og udgivelser</DialogTitle>
           <DialogDescription>
-            Få besked om nye funktioner, udgivelser og indhold om klimaregnskab — uden spam.
+            Få besked om nye funktioner, udgivelser og indhold om klimaregnskab, uden spam.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">

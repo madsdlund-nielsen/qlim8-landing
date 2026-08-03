@@ -55,7 +55,7 @@ type Language = "da" | "en";
  * The fallback is deliberate, but it used to be *silent*, which made one
  * failure mode invisible: the app answers an unknown `/api/public/cms/*` path
  * with HTTP 200 and the SPA's HTML shell rather than a 404. `res.ok` therefore
- * passed, `res.json()` threw on the HTML, and the bare `catch` swallowed it —
+ * passed, `res.json()` threw on the HTML, and the bare `catch` swallowed it, 
  * so renaming a CMS route in qlim8-app would leave this site building,
  * deploying, and quietly serving stale bundled copy forever, with no signal
  * anywhere.
@@ -71,7 +71,7 @@ async function cmsFetch<T>(path: string, tags: string[]): Promise<T | null> {
     });
 
     if (!res.ok) {
-      console.warn(`[cms] ${res.status} from ${path} — falling back to bundled defaults`);
+      console.warn(`[cms] ${res.status} from ${path}, falling back to bundled defaults`);
       return null;
     }
 
@@ -80,7 +80,7 @@ async function cmsFetch<T>(path: string, tags: string[]): Promise<T | null> {
     const contentType = res.headers.get("content-type") ?? "";
     if (!contentType.includes("application/json")) {
       console.warn(
-        `[cms] non-JSON response from ${path} (content-type: ${contentType || "none"}) — ` +
+        `[cms] non-JSON response from ${path} (content-type: ${contentType || "none"}), ` +
           `the endpoint has most likely moved or been renamed in qlim8-app. ` +
           `Falling back to bundled defaults.`,
       );
@@ -90,7 +90,7 @@ async function cmsFetch<T>(path: string, tags: string[]): Promise<T | null> {
     return (await res.json()) as T;
   } catch (err) {
     console.warn(
-      `[cms] request to ${path} failed — falling back to bundled defaults:`,
+      `[cms] request to ${path} failed, falling back to bundled defaults:`,
       err instanceof Error ? err.message : err,
     );
     return null;

@@ -4,7 +4,7 @@ import { secretsMatch } from "@/lib/secretCompare";
 
 // Serves the site's bundled default marketing copy to the qlim8-app admin
 // CMS, so the editor can display the actual current content of each page.
-// Shares the revalidate-webhook secret (CMS_REVALIDATE_SECRET) — the app
+// Shares the revalidate-webhook secret (CMS_REVALIDATE_SECRET), the app
 // proxies requests here server-side and never exposes the secret to browsers.
 
 export const dynamic = "force-dynamic";

@@ -10,8 +10,8 @@ env:
 
 jobs:
   # Gate. ci.yml runs these on pull requests, but deploy triggers on push to
-  # main, so without this job anything that reaches main by another route — a
-  # direct push, an admin merge, a branch that never opened a PR — would ship
+  # main, so without this job anything that reaches main by another route: a
+  # direct push, an admin merge, a branch that never opened a PR: would ship
   # unverified. Cheap to re-run, and it is the difference between "checked on
   # the way in" and "checked before it ships".
   checks:

@@ -16,21 +16,21 @@ const heroSecondaryCta = { label: "Se priser", href: "/priser" } as const;
 const bookDemo = { label: "Book demo", href: "/kontakt" } as const;
 
 // ---------------------------------------------------------------------------
-// PR_MODTAGERE — overblik-side der samler de fire modtager-varianter
+// PR_MODTAGERE: overblik-side der samler de fire modtager-varianter
 // ---------------------------------------------------------------------------
 
 export const PR_MODTAGERE: MarketingPageCopy = {
   hero: {
     eyebrow: "Modtagere",
-    title: "Ét klimaregnskab — fire rapporter til dem der spørger",
+    title: "Ét klimaregnskab: fire rapporter til dem der spørger",
     subtitle:
-      "Bestyrelsen, investorerne, banken og dine samarbejdspartnere vil have det samme klimaregnskab — men de vil se det forskelligt. qlim8 tilpasser samme datagrundlag til hver modtager, så du ikke bygger fire versioner i hånden.",
+      "Bestyrelsen, investorerne, banken og dine samarbejdspartnere vil have det samme klimaregnskab, men de vil se det forskelligt. qlim8 tilpasser samme datagrundlag til hver modtager, så du ikke bygger fire versioner i hånden.",
     primaryCta,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
     heading: "Samme tal, forskellige læsere",
-    body: "Dit klimaregnskab er ét sæt tal med kildecitation tilbage til hver faktura. Men bestyrelsen vil have mål og afvigelse, investoren vil have sammenlignelighed år-til-år, banken vil have præcis de datapunkter deres kreditmodel kræver, og din store kunde vil have din del af deres Scope 3. Fire modtagere, fire forventninger — og indtil nu fire gange manuelt arbejde. qlim8 genererer hver variant fra det samme underliggende regnskab, så tallene altid stemmer på tværs, og du ikke risikerer at bestyrelsen og banken ser to forskellige CO₂e-tal for samme år.",
+    body: "Dit klimaregnskab er ét sæt tal med kildecitation tilbage til hver faktura. Men bestyrelsen vil have mål og afvigelse, investoren vil have sammenlignelighed år-til-år, banken vil have præcis de datapunkter deres kreditmodel kræver, og din store kunde vil have din del af deres Scope 3. Fire modtagere, fire forventninger, og indtil nu fire gange manuelt arbejde. qlim8 genererer hver variant fra det samme underliggende regnskab, så tallene altid stemmer på tværs, og du ikke risikerer at bestyrelsen og banken ser to forskellige CO₂e-tal for samme år.",
     bullets: [
       "Bestyrelsesrapport: beslutningsklar med mål, afvigelse og risiko.",
       "Investorrapport: sammenlignelig, GHG Protocol-konsistent, med trend.",
@@ -88,7 +88,7 @@ export const PR_MODTAGERE: MarketingPageCopy = {
   ],
   valueStats: [
     { value: "4", label: "modtager-varianter fra ét regnskab" },
-    { value: "1", label: "datagrundlag — tallene stemmer altid" },
+    { value: "1", label: "datagrundlag: tallene stemmer altid" },
     { value: "2-3 dage", label: "sparet pr. rapporteringsrunde", note: "[antagelse: interne tidsestimater]" },
     { value: "7 år", label: "audit-trail bag hver rapport" },
   ],
@@ -97,11 +97,11 @@ export const PR_MODTAGERE: MarketingPageCopy = {
     items: [
       {
         q: "Er det de samme tal i alle fire rapporter?",
-        a: "Ja. Alle varianter trækkes fra det samme klimaregnskab med samme kildecitation. Forskellen er hvad der fremhæves og hvordan det præsenteres — ikke selve tallene. Det er hele pointen: bestyrelsen og banken ser konsistente CO₂e-tal.",
+        a: "Ja. Alle varianter trækkes fra det samme klimaregnskab med samme kildecitation. Forskellen er hvad der fremhæves og hvordan det præsenteres, ikke selve tallene. Det er hele pointen: bestyrelsen og banken ser konsistente CO₂e-tal.",
       },
       {
         q: "Kan jeg tilpasse hvilke datapunkter en bestemt modtager får?",
-        a: "Hver variant er forudskåret til sin typiske modtager. Bestyrelsesrapporten fokuserer på mål og afvigelse, bankrapporten på de rå datakrav. Du vælger variant og genererer — grundlaget er det samme underliggende regnskab.",
+        a: "Hver variant er forudskåret til sin typiske modtager. Bestyrelsesrapporten fokuserer på mål og afvigelse, bankrapporten på de rå datakrav. Du vælger variant og genererer: grundlaget er det samme underliggende regnskab.",
       },
       {
         q: "Hvad sker der med en rapport hvis jeg retter regnskabet bagefter?",
@@ -118,7 +118,7 @@ export const PR_MODTAGERE: MarketingPageCopy = {
     ],
   },
   closingCta: {
-    title: "Byg ét klimaregnskab — send det til alle der spørger",
+    title: "Byg ét klimaregnskab: send det til alle der spørger",
     description:
       "Opret en gratis konto, kobl dit regnskab på, og se hvordan samme datagrundlag bliver til en bestyrelses-, investor-, bank- og partner-rapport.",
     primary: primaryCta,
@@ -127,13 +127,13 @@ export const PR_MODTAGERE: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_BESTYRELSE — klimaregnskab til bestyrelsen
+// PR_BESTYRELSE: klimaregnskab til bestyrelsen
 // ---------------------------------------------------------------------------
 
 export const PR_BESTYRELSE: MarketingPageCopy = {
   hero: {
     eyebrow: "Modtagere",
-    title: "Klimaregnskab til bestyrelsen — beslutningsklart",
+    title: "Klimaregnskab til bestyrelsen: beslutningsklart",
     subtitle:
       "Bestyrelsen skal ikke læse en revisionsrapport på 40 sider. De skal se status mod mål, afvigelsen fra sidste år og de risici der kræver en beslutning. qlim8 genererer den rapport direkte fra dit regnskab.",
     primaryCta,
@@ -143,7 +143,7 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
     heading: "Et bestyrelsesmøde er ikke en revision",
     body: "Når klimaregnskabet skal på dagsordenen, har bestyrelsen ét spørgsmål: hvordan går det, og hvad skal vi beslutte? Et 100-siders EFRAG-ark svarer ikke på det. Et klimaregnskab til bestyrelsen skal vise, om I når jeres mål, hvor I afviger, og hvilke risici der er materielle nok til en beslutning. qlim8 tager det samme datagrundlag som din compliance-rapport og skærer det til et møde: overblik, trend og afvigelse på de sider bestyrelsen faktisk læser. Tallene er GHG Protocol-konsistente og har kildecitation tilbage til fakturaen, så et spørgsmål fra et bestyrelsesmedlem kan besvares på stedet.",
     bullets: [
-      "Status mod jeres reduktionsmål — grønt/rødt, ikke rådata.",
+      "Status mod jeres reduktionsmål: grønt/rødt, ikke rådata.",
       "Afvigelse fra sidste år, forklaret.",
       "De risici der kræver en beslutning, ikke alle 100 datapunkter.",
     ],
@@ -164,7 +164,7 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
     {
       pain: "Et bestyrelsesmedlem spørger 'hvor kommer det tal fra?', og du kan ikke svare i mødet.",
       solution:
-        "Hver post har kildecitation tilbage til den oprindelige faktura — svaret er ét klik væk.",
+        "Hver post har kildecitation tilbage til den oprindelige faktura. Svaret er ét klik væk.",
       outcome: "Bestyrelsens tillid til tallene bygges i mødet, ikke i en opfølgnings-mail en uge efter.",
     },
     {
@@ -193,7 +193,7 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
     },
     {
       title: "Låst efter godkendelse",
-      body: "Når bestyrelsen har set en version, kan den låses. Retter du regnskabet bagefter, bevarer den godkendte rapport tilstanden ved godkendelsen — så referatet altid matcher det materiale bestyrelsen faktisk fik.",
+      body: "Når bestyrelsen har set en version, kan den låses. Retter du regnskabet bagefter, bevarer den godkendte rapport tilstanden ved godkendelsen, så referatet altid matcher det materiale bestyrelsen faktisk fik.",
     },
   ],
   valueStats: [
@@ -207,7 +207,7 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
     items: [
       {
         q: "Hvad indeholder et klimaregnskab til bestyrelsen?",
-        a: "Status mod jeres reduktionsmål, afvigelse fra sidste år og de risici der kræver en beslutning. Det er skåret til et møde — ikke den fulde compliance-rapport, men bygget på præcis samme datagrundlag med kildecitation pr. tal.",
+        a: "Status mod jeres reduktionsmål, afvigelse fra sidste år og de risici der kræver en beslutning. Det er skåret til et møde, ikke den fulde compliance-rapport, men bygget på præcis samme datagrundlag med kildecitation pr. tal.",
       },
       {
         q: "Kan bestyrelsen stole på at tallene kan sammenlignes med sidste år?",
@@ -215,7 +215,7 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
       },
       {
         q: "Skal jeg bygge bestyrelsesrapporten oven på compliance-rapporten?",
-        a: "Nej. Begge trækkes fra det samme klimaregnskab. Du vælger bestyrelses-varianten og genererer — der er ikke to datasæt at holde synkroniseret.",
+        a: "Nej. Begge trækkes fra det samme klimaregnskab. Du vælger bestyrelses-varianten og genererer, der er ikke to datasæt at holde synkroniseret.",
       },
       {
         q: "Hvad hvis vi retter regnskabet efter bestyrelsen har godkendt rapporten?",
@@ -237,25 +237,25 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_INVESTOR — ESG-data til investorer/ejere
+// PR_INVESTOR: ESG-data til investorer/ejere
 // ---------------------------------------------------------------------------
 
 export const PR_INVESTOR: MarketingPageCopy = {
   hero: {
     eyebrow: "Modtagere",
-    title: "ESG-data til investorer — sammenligneligt og konsistent",
+    title: "ESG-data til investorer: sammenligneligt og konsistent",
     subtitle:
       "Investorer og ejere skal kunne holde jeres klimatal op mod resten af porteføljen. qlim8 leverer GHG Protocol-konsistente tal med trend over år, så jeres rapportering står mål med det investoren ser fra andre selskaber.",
     primaryCta,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
-    heading: "Investoren sammenligner — sørg for at det kan lade sig gøre",
-    body: "En investor læser aldrig kun jeres klimaregnskab. De læser det ved siden af ti andre selskabers. Det, der gør jeres tal brugbare for dem, er ikke detaljeringsgraden — det er sammenligneligheden: at Scope 1, 2 og 3 er opgjort GHG Protocol-konsistent, at metoden er den samme fra år til år, og at trenden er reel. qlim8 opgør jeres klimaregnskab efter en fast metode og genererer en investorrapport der viser udviklingen over tid med kildecitation bag hvert tal. Investoren kan tage tallene direkte ind i deres egen porteføljerapportering uden at skulle spørge hvordan I har regnet.",
+    heading: "Investoren sammenligner: sørg for at det kan lade sig gøre",
+    body: "En investor læser aldrig kun jeres klimaregnskab. De læser det ved siden af ti andre selskabers. Det, der gør jeres tal brugbare for dem, er ikke detaljeringsgraden: det er sammenligneligheden: at Scope 1, 2 og 3 er opgjort GHG Protocol-konsistent, at metoden er den samme fra år til år, og at trenden er reel. qlim8 opgør jeres klimaregnskab efter en fast metode og genererer en investorrapport der viser udviklingen over tid med kildecitation bag hvert tal. Investoren kan tage tallene direkte ind i deres egen porteføljerapportering uden at skulle spørge hvordan I har regnet.",
     bullets: [
       "GHG Protocol-konsistent Scope 1, 2 og 3.",
       "Trend over år på samme metodegrundlag.",
-      "Kildecitation bag hvert tal — klar til investorens due diligence.",
+      "Kildecitation bag hvert tal, klar til investorens due diligence.",
     ],
   },
   painPoints: [
@@ -287,7 +287,7 @@ export const PR_INVESTOR: MarketingPageCopy = {
   features: [
     {
       title: "GHG Protocol-konsistent opgørelse",
-      body: "Scope 1, 2 og 3 opgøres efter GHG Protocol, så jeres tal er sammenlignelige med andre selskaber i investorens portefølje. Bemærk: konsistent, ikke akkrediteret — vi opgør efter standarden, vi udsteder ikke certifikater.",
+      body: "Scope 1, 2 og 3 opgøres efter GHG Protocol, så jeres tal er sammenlignelige med andre selskaber i investorens portefølje. Bemærk: konsistent, ikke akkrediteret, vi opgør efter standarden, vi udsteder ikke certifikater.",
     },
     {
       title: "Trend over år",
@@ -295,7 +295,7 @@ export const PR_INVESTOR: MarketingPageCopy = {
     },
     {
       title: "Scope 3 med kildecitation",
-      body: "Scope 3-posterne — inkl. indkøb (kat. 1) — har kildecitation tilbage til fakturaen. Investorens spørgsmål om det største og mest usikre scope besvares på forhånd.",
+      body: "Scope 3-posterne, inkl. indkøb (kat. 1): har kildecitation tilbage til fakturaen. Investorens spørgsmål om det største og mest usikre scope besvares på forhånd.",
     },
     {
       title: "Klar til due diligence",
@@ -329,7 +329,7 @@ export const PR_INVESTOR: MarketingPageCopy = {
       },
       {
         q: "Kan jeg lave investor-rapporten hvert kvartal uden at starte forfra?",
-        a: "Ja. Rapporten genereres fra det levende klimaregnskab, så en ny periode er en ny generering — ikke et nyt regneark. Metoden holdes konstant, så trenden forbliver læsbar.",
+        a: "Ja. Rapporten genereres fra det levende klimaregnskab, så en ny periode er en ny generering, ikke et nyt regneark. Metoden holdes konstant, så trenden forbliver læsbar.",
       },
       {
         q: "Hvilken plan skal jeg have for investor-rapportering?",
@@ -347,13 +347,13 @@ export const PR_INVESTOR: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_BANK — ESG-rapport til banken (L193 / finansiering)
+// PR_BANK: ESG-rapport til banken (L193 / finansiering)
 // ---------------------------------------------------------------------------
 
 export const PR_BANK: MarketingPageCopy = {
   hero: {
     eyebrow: "Modtagere",
-    title: "ESG-rapport til banken — klar til upload",
+    title: "ESG-rapport til banken: klar til upload",
     subtitle:
       "Banken beder om ESG-data før de godkender finansieringen, ofte med reference til L193-datakravene. qlim8 leverer præcis de datapunkter i et klar-til-upload dokument, så finansieringen ikke venter på et regneark.",
     primaryCta,
@@ -361,7 +361,7 @@ export const PR_BANK: MarketingPageCopy = {
   },
   intro: {
     heading: "Bankens ESG-krav skal ikke forsinke lånet",
-    body: "Flere og flere banker beder om ESG- og klimadata før de godkender et lån eller en kreditramme — ofte med henvisning til L193 og deres egne bæredygtighedskrav til udlån. Problemet er sjældent tallene; det er formatet. Banken vil have bestemte datapunkter, opgjort på en måde deres kreditmodel kan læse, med dokumentation bag. qlim8 tager dit klimaregnskab og genererer en bankrapport med præcis de datapunkter banken efterspørger, hver med kildecitation tilbage til fakturaen. Du uploader ét dokument i stedet for at oversætte dit regnskab til bankens skema i hånden — så ESG-kravet bliver et vedhæftet bilag, ikke en flaskehals i finansieringen.",
+    body: "Flere og flere banker beder om ESG- og klimadata før de godkender et lån eller en kreditramme, ofte med henvisning til L193 og deres egne bæredygtighedskrav til udlån. Problemet er sjældent tallene; det er formatet. Banken vil have bestemte datapunkter, opgjort på en måde deres kreditmodel kan læse, med dokumentation bag. qlim8 tager dit klimaregnskab og genererer en bankrapport med præcis de datapunkter banken efterspørger, hver med kildecitation tilbage til fakturaen. Du uploader ét dokument i stedet for at oversætte dit regnskab til bankens skema i hånden. Så ESG-kravet bliver et vedhæftet bilag, ikke en flaskehals i finansieringen.",
     bullets: [
       "De datapunkter bankens ESG-/L193-krav beder om.",
       "Klar-til-upload dokumentation med kildecitation.",
@@ -372,7 +372,7 @@ export const PR_BANK: MarketingPageCopy = {
     {
       pain: "Banken sender et ESG-skema du ikke ved hvordan du udfylder, og finansieringen står stille imens.",
       solution:
-        "qlim8 genererer en bankrapport med de datapunkter bankens krav efterspørger — færdigt udfyldt fra dit regnskab.",
+        "qlim8 genererer en bankrapport med de datapunkter bankens krav efterspørger, færdigt udfyldt fra dit regnskab.",
       outcome: "ESG-kravet bliver et vedhæftet bilag, ikke en uges forsinkelse på lånet.",
     },
     {
@@ -397,7 +397,7 @@ export const PR_BANK: MarketingPageCopy = {
   features: [
     {
       title: "Bankens datapunkter, forudfyldt",
-      body: "Rapporten indeholder de klima- og ESG-datapunkter bankens krav — herunder L193-relaterede — efterspørger, trukket direkte fra dit klimaregnskab. Du oversætter ikke dit regnskab til bankens skema i hånden.",
+      body: "Rapporten indeholder de klima- og ESG-datapunkter bankens krav, herunder L193-relaterede, efterspørger, trukket direkte fra dit klimaregnskab. Du oversætter ikke dit regnskab til bankens skema i hånden.",
     },
     {
       title: "Klar-til-upload dokumentation",
@@ -457,15 +457,15 @@ export const PR_BANK: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_SAMARBEJDSPARTNERE — dél klimadata med kunder/leverandører (deres Scope 3)
+// PR_SAMARBEJDSPARTNERE: dél klimadata med kunder/leverandører (deres Scope 3)
 // ---------------------------------------------------------------------------
 
 export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
   hero: {
     eyebrow: "Modtagere",
-    title: "Dél dine klimadata — ét link, ikke et regneark",
+    title: "Dél dine klimadata: ét link, ikke et regneark",
     subtitle:
-      "Dine store kunder og leverandører beder om din del af deres Scope 3. I stedet for at udfylde deres regneark hver gang, deler du ét link med de tal de skal bruge — trukket direkte fra dit klimaregnskab.",
+      "Dine store kunder og leverandører beder om din del af deres Scope 3. I stedet for at udfylde deres regneark hver gang, deler du ét link med de tal de skal bruge, trukket direkte fra dit klimaregnskab.",
     primaryCta,
     secondaryCta: heroSecondaryCta,
   },
@@ -500,7 +500,7 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
     {
       pain: "Kunden vil have tallene i et bestemt filformat til deres eget system.",
       solution:
-        "Tallene kan hentes som PDF, Excel eller JSON — det format partnerens system kan læse.",
+        "Tallene kan hentes som PDF, Excel eller JSON, det format partnerens system kan læse.",
       outcome: "Partnerens system-integration kører uden manuel indtastning i begge ender.",
     },
   ],
@@ -511,7 +511,7 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
     },
     {
       title: "Skåret til partnerens Scope 3",
-      body: "Rapporten viser din del af partnerens værdikæde — din Scope 3-relevante udledning — opgjort GHG Protocol-konsistent, så tallene kan lægges direkte ind hos dem.",
+      body: "Rapporten viser din del af partnerens værdikæde, din Scope 3-relevante udledning, opgjort GHG Protocol-konsistent, så tallene kan lægges direkte ind hos dem.",
     },
     {
       title: "Kildecitation følger med",
@@ -519,11 +519,11 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
     },
     {
       title: "Flere formater",
-      body: "Ud over det delte link kan tallene hentes som PDF, Excel eller JSON. Skal partnerens system have en fil i et bestemt format, er det ét valg — ikke en genindtastning.",
+      body: "Ud over det delte link kan tallene hentes som PDF, Excel eller JSON. Skal partnerens system have en fil i et bestemt format, er det ét valg, ikke en genindtastning.",
     },
     {
       title: "Opdateres når dit regnskab gør",
-      body: "Grundlaget er dit levende klimaregnskab. Retter du en faktura, er de delte tal opdaterede næste gang partneren henter dem — du sender ikke en rettet version rundt manuelt.",
+      body: "Grundlaget er dit levende klimaregnskab. Retter du en faktura, er de delte tal opdaterede næste gang partneren henter dem. Du sender ikke en rettet version rundt manuelt.",
     },
   ],
   valueStats: [
@@ -536,7 +536,7 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
     title: "Ofte stillede spørgsmål",
     items: [
       {
-        q: "Min store kunde beder om vores CO₂-tal til deres Scope 3 — hvad deler jeg?",
+        q: "Min store kunde beder om vores CO₂-tal til deres Scope 3. Hvad deler jeg?",
         a: "Din del af deres værdikæde: dine relevante udledninger opgjort GHG Protocol-konsistent. qlim8 samler det i en rapport du deler som ét link, i stedet for at udfylde kundens eget regneark.",
       },
       {
@@ -545,7 +545,7 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
       },
       {
         q: "Kan partneren stole på tallene?",
-        a: "Hvert tal har kildecitation tilbage til den oprindelige faktura, og der er 7-årig audit-trail bag. Partneren — eller deres revisor — kan følge sporet, så tallene kan bruges direkte i deres egen rapportering.",
+        a: "Hvert tal har kildecitation tilbage til den oprindelige faktura, og der er 7-årig audit-trail bag. Partneren, eller deres revisor, kan følge sporet, så tallene kan bruges direkte i deres egen rapportering.",
       },
       {
         q: "Hvad hvis vi retter regnskabet efter vi har delt tallene?",
@@ -567,30 +567,30 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_TEMAER — vælg rapportens visuelle tema (Light Nordic vs. McKinsey)
+// PR_TEMAER: vælg rapportens visuelle tema (Light Nordic vs. McKinsey)
 // ---------------------------------------------------------------------------
 
 export const PR_TEMAER: MarketingPageCopy = {
   hero: {
     eyebrow: "Rapport",
-    title: "Vælg rapportens tema — Light Nordic eller McKinsey",
+    title: "Vælg rapportens tema: Light Nordic eller McKinsey",
     subtitle:
-      "Samme klimaregnskab, to visuelle udtryk. Vælg 'Light Nordic' for et rent, nordisk look eller 'McKinsey' for et stringent konsulent-udtryk. Tallene er de samme — indpakningen matcher modtageren.",
+      "Samme klimaregnskab, to visuelle udtryk. Vælg 'Light Nordic' for et rent, nordisk look eller 'McKinsey' for et stringent konsulent-udtryk. Tallene er de samme: indpakningen matcher modtageren.",
     primaryCta,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
     heading: "Indpakningen betyder noget, når rapporten skal læses",
-    body: "En rapport til bestyrelsen og en rapport til en investor kan indeholde de samme tal og stadig fungere bedst i hvert sit udtryk. qlim8 lader dig vælge rapportens visuelle tema uden at røre ved indholdet. 'Light Nordic' er rent, luftigt og nordisk — velegnet når rapporten skal signalere åbenhed og enkelhed. 'McKinsey' er stringent, tæt og konsulent-agtigt — velegnet når modtageren forventer et analytisk, beslutnings-tungt udtryk. Du skifter tema med ét valg og genererer rapporten igen; tallene, kildecitationen og strukturen er uændrede. Så du bruger ikke tid i et layoutprogram — du vælger det udtryk der passer til hvem der læser.",
+    body: "En rapport til bestyrelsen og en rapport til en investor kan indeholde de samme tal og stadig fungere bedst i hvert sit udtryk. qlim8 lader dig vælge rapportens visuelle tema uden at røre ved indholdet. 'Light Nordic' er rent, luftigt og nordisk. Velegnet når rapporten skal signalere åbenhed og enkelhed. 'McKinsey' er stringent, tæt og konsulent-agtigt, velegnet når modtageren forventer et analytisk, beslutnings-tungt udtryk. Du skifter tema med ét valg og genererer rapporten igen; tallene, kildecitationen og strukturen er uændrede. Så du bruger ikke tid i et layoutprogram, du vælger det udtryk der passer til hvem der læser.",
     bullets: [
       "To temaer: Light Nordic (rent, nordisk) og McKinsey (stringent, konsulent).",
-      "Samme tal og kildecitation — kun det visuelle skifter.",
+      "Samme tal og kildecitation, kun det visuelle skifter.",
       "Skift tema med ét valg, generér igen.",
     ],
   },
   painPoints: [
     {
-      pain: "Standard-rapporten passer ikke til modtageren — den er enten for pyntet eller for tør.",
+      pain: "Standard-rapporten passer ikke til modtageren. Den er enten for pyntet eller for tør.",
       solution:
         "Vælg mellem to temaer der rammer hver sin forventning: nordisk enkelhed eller konsulent-stringens.",
       outcome: "Rapporten møder modtagerens forventning uden at du rører ved tallene.",
@@ -617,19 +617,19 @@ export const PR_TEMAER: MarketingPageCopy = {
   features: [
     {
       title: "Light Nordic",
-      body: "Et rent, luftigt og nordisk udtryk med god luft omkring tallene, dæmpet farvebrug og enkel typografi. Velegnet når rapporten skal signalere åbenhed og gennemsigtighed — fx til samarbejdspartnere eller en offentlig-orienteret læser.",
+      body: "Et rent, luftigt og nordisk udtryk med god luft omkring tallene, dæmpet farvebrug og enkel typografi. Velegnet når rapporten skal signalere åbenhed og gennemsigtighed, fx til samarbejdspartnere eller en offentlig-orienteret læser.",
     },
     {
       title: "McKinsey",
-      body: "Et stringent, tæt og analytisk udtryk i konsulent-stil: kompakte tabeller, tydelig informationshierarki og et beslutnings-tungt look. Velegnet når modtageren — fx en investor eller en professionel bestyrelse — forventer et konsulent-agtigt oplæg.",
+      body: "Et stringent, tæt og analytisk udtryk i konsulent-stil: kompakte tabeller, tydelig informationshierarki og et beslutnings-tungt look. Velegnet når modtageren, fx en investor eller en professionel bestyrelse, forventer et konsulent-agtigt oplæg.",
     },
     {
       title: "Samme indhold i begge",
-      body: "Uanset tema er tallene, strukturen og kildecitationen den samme. Temaet ændrer typografi, farver og layout — ikke hvad rapporten siger eller hvor tallene kommer fra.",
+      body: "Uanset tema er tallene, strukturen og kildecitationen den samme. Temaet ændrer typografi, farver og layout, ikke hvad rapporten siger eller hvor tallene kommer fra.",
     },
     {
       title: "Skift uden reformatering",
-      body: "Vælg tema før du genererer, og rapporten kommer ud færdig-designet i PDF. Vil du se den anden version, skifter du tema og genererer igen — ingen manuel opsætning i et layoutprogram.",
+      body: "Vælg tema før du genererer, og rapporten kommer ud færdig-designet i PDF. Vil du se den anden version, skifter du tema og genererer igen, ingen manuel opsætning i et layoutprogram.",
     },
     {
       title: "Konsistent på tværs af modtager-varianter",
@@ -641,7 +641,7 @@ export const PR_TEMAER: MarketingPageCopy = {
     steps: [
       {
         title: "1. Generér dit klimaregnskab",
-        body: "Kobl dit regnskab på, og lad qlim8 opgøre klimaregnskabet. Temavalget ændrer ikke tallene — grundlaget er det samme uanset udtryk.",
+        body: "Kobl dit regnskab på, og lad qlim8 opgøre klimaregnskabet. Temavalget ændrer ikke tallene: grundlaget er det samme uanset udtryk.",
       },
       {
         title: "2. Vælg tema",
@@ -653,7 +653,7 @@ export const PR_TEMAER: MarketingPageCopy = {
       },
       {
         title: "4. Skift hvis modtageren kræver det",
-        body: "Vil en anden modtager have det andet udtryk, skifter du tema og genererer igen. Samme kilde, nyt look — ingen ny opsætning.",
+        body: "Vil en anden modtager have det andet udtryk, skifter du tema og genererer igen. Samme kilde, nyt look, ingen ny opsætning.",
       },
     ],
   },
@@ -668,7 +668,7 @@ export const PR_TEMAER: MarketingPageCopy = {
     items: [
       {
         q: "Hvad er forskellen på Light Nordic og McKinsey?",
-        a: "Light Nordic er et rent, luftigt og nordisk udtryk med dæmpede farver og god luft. McKinsey er stringent, tæt og analytisk i konsulent-stil med kompakte tabeller. Vælg det der matcher modtagerens forventning — indholdet er det samme i begge.",
+        a: "Light Nordic er et rent, luftigt og nordisk udtryk med dæmpede farver og god luft. McKinsey er stringent, tæt og analytisk i konsulent-stil med kompakte tabeller. Vælg det der matcher modtagerens forventning. Indholdet er det samme i begge.",
       },
       {
         q: "Ændrer temaet på tallene i rapporten?",
@@ -676,7 +676,7 @@ export const PR_TEMAER: MarketingPageCopy = {
       },
       {
         q: "Kan jeg skifte tema efter jeg har genereret en rapport?",
-        a: "Ja. Du vælger det andet tema og genererer rapporten igen fra samme datagrundlag. Der er ikke to versioner at vedligeholde — det er ét klik imellem udtrykkene.",
+        a: "Ja. Du vælger det andet tema og genererer rapporten igen fra samme datagrundlag. Der er ikke to versioner at vedligeholde. Det er ét klik imellem udtrykkene.",
       },
       {
         q: "Virker temaet sammen med modtager-varianterne?",
@@ -698,20 +698,20 @@ export const PR_TEMAER: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_VSME — hvad VSME-standarden er + at qlim8 laver Basic og Comprehensive
+// PR_VSME: hvad VSME-standarden er + at qlim8 laver Basic og Comprehensive
 // ---------------------------------------------------------------------------
 
 export const PR_VSME: MarketingPageCopy = {
   hero: {
     eyebrow: "VSME",
-    title: "VSME-rapport direkte fra dit regnskab — Basic og Comprehensive",
+    title: "VSME-rapport direkte fra dit regnskab: Basic og Comprehensive",
     subtitle:
       "VSME er EFRAG's frivillige rapporteringsstandard for SMV'er. qlim8 genererer både VSME Basic og VSME Comprehensive fra dit klimaregnskab, med kildecitation pr. tal og revisor-sign-off.",
     primaryCta,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
-    heading: "Hvad er VSME — og hvorfor beder de om det?",
+    heading: "Hvad er VSME: og hvorfor beder de om det?",
     body: "VSME (Voluntary SME Standard) er EFRAG's frivillige standard for små og mellemstore virksomheder. Den er tænkt som et trin på vejen mod CSRD: er du ikke CSRD-pligtig, kan du rapportere via VSME, og store kunder og banker accepterer den som dokumentation. Standarden findes i to moduler. VSME Basic dækker 40+ datapunkter, primært klima og governance. VSME Comprehensive dækker 100+ datapunkter og tilføjer bl.a. bredere social og governance. For en typisk dansk SMV der har fået en 'send os jeres CO₂-tal'-anmodning er Basic ofte tilstrækkeligt. qlim8 genererer begge moduler direkte fra dit klimaregnskab, så du ikke udfylder EFRAG-arket i hånden.",
     bullets: [
       "VSME Basic: 40+ datapunkter (EFRAG-spec), primært klima og governance.",
@@ -724,18 +724,18 @@ export const PR_VSME: MarketingPageCopy = {
       pain: "En kunde eller bank beder om en VSME-rapport, og du ved ikke hvor du skal starte.",
       solution:
         "qlim8 mapper EFRAG's VSME-felter mod dit klimaregnskab og genererer rapporten som PDF eller Excel.",
-      outcome: "Førstegangs-VSME bliver dage-arbejde frem for et konsulent-engagement til 75.000-200.000 kr. [antagelse — markeds-research].",
+      outcome: "Førstegangs-VSME bliver dage-arbejde frem for et konsulent-engagement til 75.000-200.000 kr. [antagelse, markeds-research].",
     },
     {
       pain: "EFRAG-Excel-arket er tomt, og du skal udfylde 40+ datapunkter manuelt med dokumentation bag hvert tal.",
       solution:
         "Tallene lander i arkets officielle celler direkte fra dit regnskab, hver med kildecitation.",
-      outcome: "40-80 timers manuel udfyldning falder bort [antagelse — pilot-tal].",
+      outcome: "40-80 timers manuel udfyldning falder bort [antagelse, pilot-tal].",
     },
     {
       pain: "Du er usikker på om du skal bruge Basic eller Comprehensive.",
       solution:
-        "qlim8 laver begge. Starter dækker Basic; Premium tilføjer Comprehensive — du kan skifte når kravet ændrer sig.",
+        "qlim8 laver begge. Starter dækker Basic; Premium tilføjer Comprehensive. Du kan skifte når kravet ændrer sig.",
       outcome: "Du vælger modul efter behov, ikke efter hvad et konsulenthus kan levere.",
     },
     {
@@ -760,11 +760,11 @@ export const PR_VSME: MarketingPageCopy = {
     },
     {
       title: "Kildecitation pr. tal",
-      body: "Hver post har en klikbar kildecitation tilbage til den oprindelige aktivitet. Når revisoren spørger hvor et tal kommer fra, er svaret ét klik væk — fakturaerne bag ligger i sporet.",
+      body: "Hver post har en klikbar kildecitation tilbage til den oprindelige aktivitet. Når revisoren spørger hvor et tal kommer fra, er svaret ét klik væk. Fakturaerne bag ligger i sporet.",
     },
     {
       title: "Skalerer til CSRD",
-      body: "Rammer CSRD dit segment senere, bruger vi samme data med en anden template-mapping (ESRS E1). Du indsamler ikke data forfra — VSME er trinnet, ikke en blindgyde.",
+      body: "Rammer CSRD dit segment senere, bruger vi samme data med en anden template-mapping (ESRS E1). Du indsamler ikke data forfra: VSME er trinnet, ikke en blindgyde.",
     },
   ],
   valueStats: [
@@ -786,11 +786,11 @@ export const PR_VSME: MarketingPageCopy = {
       },
       {
         q: "Laver qlim8 begge moduler?",
-        a: "Ja. Starter fra 300 kr/md dækker VSME Basic; Premium på 1.195 kr/md tilføjer VSME Comprehensive og revisor-adgang. Du kan skifte modul når kravet ændrer sig — samme klimaregnskab ligger bag begge.",
+        a: "Ja. Starter fra 300 kr/md dækker VSME Basic; Premium på 1.195 kr/md tilføjer VSME Comprehensive og revisor-adgang. Du kan skifte modul når kravet ændrer sig. Samme klimaregnskab ligger bag begge.",
       },
       {
         q: "Er en VSME-rapport fra qlim8 revisor-klar?",
-        a: "Hver post har kildecitation tilbage til fakturaen, der er 7-årig audit-trail, og revisor kan signere rapporten kryptografisk i platformen. Bemærk: qlim8 opgør efter standarden — vi er ikke et akkrediteringsorgan, og revisionen udføres af din revisor.",
+        a: "Hver post har kildecitation tilbage til fakturaen, der er 7-årig audit-trail, og revisor kan signere rapporten kryptografisk i platformen. Bemærk: qlim8 opgør efter standarden: vi er ikke et akkrediteringsorgan, og revisionen udføres af din revisor.",
       },
       {
         q: "Hvad hvis jeg senere bliver CSRD-pligtig?",
@@ -808,7 +808,7 @@ export const PR_VSME: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_VSME_BASIS — VSME Basic-modulet
+// PR_VSME_BASIS: VSME Basic-modulet
 // ---------------------------------------------------------------------------
 
 export const PR_VSME_BASIS: MarketingPageCopy = {
@@ -821,8 +821,8 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
     secondaryCta: heroSecondaryCta,
   },
   intro: {
-    heading: "Hvad VSME Basic dækker — og hvem det passer til",
-    body: "VSME Basic er EFRAG's korte modul: 40+ datapunkter der primært dækker klima (Scope 1 og 2, ofte indkøb i Scope 3) og governance. Det passer til den typiske danske SMV der har fået en 'send os jeres CO₂-tal'-anmodning fra en stor kunde, en bank eller frivilligt før CSRD. Manuel udfyldning af EFRAG's Basic-ark tager typisk 40-80 timer, fordi hver post skal kilde-dokumenteres i hånden. qlim8 mapper Basic-felterne (B1-B11) mod dit klimaregnskab og genererer rapporten som PDF eller Excel med dine tal indsat i de officielle celler. Pilotbrugere når rapporten på 4-8 timer — primært brugt på at kvalitetsreviewe, ikke på at taste ind [antagelse: pilot-tal, 2 brugere].",
+    heading: "Hvad VSME Basic dækker: og hvem det passer til",
+    body: "VSME Basic er EFRAG's korte modul: 40+ datapunkter der primært dækker klima (Scope 1 og 2, ofte indkøb i Scope 3) og governance. Det passer til den typiske danske SMV der har fået en 'send os jeres CO₂-tal'-anmodning fra en stor kunde, en bank eller frivilligt før CSRD. Manuel udfyldning af EFRAG's Basic-ark tager typisk 40-80 timer, fordi hver post skal kilde-dokumenteres i hånden. qlim8 mapper Basic-felterne (B1-B11) mod dit klimaregnskab og genererer rapporten som PDF eller Excel med dine tal indsat i de officielle celler. Pilotbrugere når rapporten på 4-8 timer: primært brugt på at kvalitetsreviewe, ikke på at taste ind [antagelse: pilot-tal, 2 brugere].",
     bullets: [
       "40+ datapunkter, primært klima og governance (EFRAG B1-B11).",
       "Til SMV'er med en kunde-, bank- eller frivillig VSME-anmodning.",
@@ -852,7 +852,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
       pain: "Konsulent-tilbuddet på din første VSME-rapport er uforholdsmæssigt dyrt.",
       solution:
         "VSME Basic er inkluderet fra Starter (fra 300 kr/md); du betaler et abonnement, ikke et engangs-projekt.",
-      outcome: "Erstat et førstegangs-konsulenthonorar på 75.000-200.000 kr. [antagelse — markeds-research] med en inkluderet feature.",
+      outcome: "Erstat et førstegangs-konsulenthonorar på 75.000-200.000 kr. [antagelse, markeds-research] med en inkluderet feature.",
     },
   ],
   features: [
@@ -900,7 +900,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
       },
       {
         q: "Er VSME Basic inkluderet i abonnementet?",
-        a: "Ja. VSME Basic er inkluderet fra Starter (fra 300 kr/md). Du betaler et abonnement frem for et førstegangs-konsulenthonorar på typisk 75.000-200.000 kr. [antagelse — markeds-research]. Se priser.",
+        a: "Ja. VSME Basic er inkluderet fra Starter (fra 300 kr/md). Du betaler et abonnement frem for et førstegangs-konsulenthonorar på typisk 75.000-200.000 kr. [antagelse, markeds-research]. Se priser.",
       },
       {
         q: "Kan jeg opgradere til Comprehensive senere?",
@@ -918,13 +918,13 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_VSME_COMPREHENSIVE — VSME Comprehensive-modulet
+// PR_VSME_COMPREHENSIVE: VSME Comprehensive-modulet
 // ---------------------------------------------------------------------------
 
 export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
   hero: {
     eyebrow: "VSME Comprehensive",
-    title: "VSME Comprehensive — det udvidede modul, fra dit regnskab",
+    title: "VSME Comprehensive: det udvidede modul, fra dit regnskab",
     subtitle:
       "Comprehensive er det store VSME-modul: 100+ datapunkter, fuld Scope 3 og bredere politik, mål og governance. qlim8 genererer det fra dit klimaregnskab, når en bank eller stor kunde beder om mere end grundtallene.",
     primaryCta,
@@ -932,7 +932,7 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
   },
   intro: {
     heading: "Når Basic ikke er nok",
-    body: "VSME Comprehensive er EFRAG's udvidede modul: 100+ datapunkter i cellerne C1-C9. Det tilføjer bredere social og governance oven på klimadelen, fuld Scope 3 og oplysninger om politikker og mål. Du får typisk brug for det når en bank stiller det som betingelse for finansiering, eller når en stor kunde beder om mere end de grundlæggende CO₂-tal til deres egen værdikæde-rapportering. Manuel udfyldning af Comprehensive er et større stykke arbejde end Basic — over 100 poster, hver med dokumentation. qlim8 mapper C1-C9-felterne mod dit klimaregnskab og genererer rapporten med tallene indsat i de officielle celler. Pilotbrugere når Comprehensive på 1-2 dages arbejde frem for et konsulent-engagement på 2-4 uger [antagelse].",
+    body: "VSME Comprehensive er EFRAG's udvidede modul: 100+ datapunkter i cellerne C1-C9. Det tilføjer bredere social og governance oven på klimadelen, fuld Scope 3 og oplysninger om politikker og mål. Du får typisk brug for det når en bank stiller det som betingelse for finansiering, eller når en stor kunde beder om mere end de grundlæggende CO₂-tal til deres egen værdikæde-rapportering. Manuel udfyldning af Comprehensive er et større stykke arbejde end Basic, over 100 poster, hver med dokumentation. qlim8 mapper C1-C9-felterne mod dit klimaregnskab og genererer rapporten med tallene indsat i de officielle celler. Pilotbrugere når Comprehensive på 1-2 dages arbejde frem for et konsulent-engagement på 2-4 uger [antagelse].",
     bullets: [
       "100+ datapunkter i EFRAG-cellerne C1-C9.",
       "Fuld Scope 3 plus bredere social, governance, politik og mål.",
@@ -959,7 +959,7 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
       outcome: "Scope 3-tabellerne er konsoliderede fra de leverandører der allerede har delt data.",
     },
     {
-      pain: "Du skal bruge C1-C9 nu, men ved at CSRD rammer dig senere — og frygter at lave alt om.",
+      pain: "Du skal bruge C1-C9 nu, men ved at CSRD rammer dig senere, og frygter at lave alt om.",
       solution:
         "Comprehensive bruger samme data som en senere ESRS E1-mapping til CSRD. Datagrundlaget genbruges.",
       outcome: "Comprehensive i dag bliver springbræt til CSRD, ikke spildt arbejde.",
@@ -1014,7 +1014,7 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
       },
       {
         q: "Hvad koster VSME Comprehensive?",
-        a: "Comprehensive ligger på Premium (1.195 kr/md) og bruger samme klimaregnskab som Basic. Se priser. Rammer CSRD dig senere, genbruges datagrundlaget via en ESRS E1-mapping — ingen ny indsamling.",
+        a: "Comprehensive ligger på Premium (1.195 kr/md) og bruger samme klimaregnskab som Basic. Se priser. Rammer CSRD dig senere, genbruges datagrundlaget via en ESRS E1-mapping, ingen ny indsamling.",
       },
     ],
   },

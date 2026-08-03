@@ -2,7 +2,7 @@
 // Kundetyper (industries), Produkt (features), Integrationer (integrations).
 //
 // One schema drives ~40 pages. Two typed objects per page:
-//   - MarketingPageCopy: the CMS-editable copy body. IMPORTANT — every array
+//   - MarketingPageCopy: the CMS-editable copy body. IMPORTANT: every array
 //     here MUST be homogeneous (all items the same shape). resolvePageCopy runs
 //     it through mergeCopy (src/lib/copyMerge.ts), whose mergeArray validates
 //     each override item against defaults[0] as a template and silently falls
@@ -11,7 +11,7 @@
 //   - MarketingNode: static routing/SEO/hierarchy metadata, NOT CMS-merged.
 //     Carries an optional bundled-only `body` (ArticleSection[]) escape hatch
 //     for editorial long-form prose, rendered by the existing article Section
-//     switch — bundled-only, so it sidesteps the array-merge constraint.
+//     switch: bundled-only, so it sidesteps the array-merge constraint.
 
 import type { ArticleSection } from "@/content/article";
 
@@ -133,7 +133,7 @@ export interface MarketingHubCopy {
 }
 
 // ---------------------------------------------------------------------------
-// Node metadata (routing / SEO / hierarchy) — not CMS-merged
+// Node metadata (routing / SEO / hierarchy), not CMS-merged
 // ---------------------------------------------------------------------------
 
 export interface MarketingNode {
@@ -155,7 +155,7 @@ export interface MarketingNode {
   featured?: boolean;
   /** Sibling slugs (same collection) shown as related links. */
   related?: string[];
-  /** Bundled default copy — resolved + CMS-merged at request time. */
+  /** Bundled default copy: resolved + CMS-merged at request time. */
   defaults: MarketingPageCopy;
   /** Optional bundled-only editorial long-form (flagship pages). */
   body?: ArticleSection[];

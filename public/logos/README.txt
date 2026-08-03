@@ -12,5 +12,5 @@ For at aktivere logoer, opdater landing.tsx-sektionen til at rendere
 
 Vigtigt: brug officielle brand-kit-versioner. Logoer er beskyttet af
 varemærkeret. Vi rapporterer det blot som integration ("Integrerer med")
-— ikke som partnerskab, certificering eller endorsement. Footer-disclaimer
+, ikke som partnerskab, certificering eller endorsement. Footer-disclaimer
 "Logoer tilhører respektive ejere" findes allerede i SiteFooter.tsx.

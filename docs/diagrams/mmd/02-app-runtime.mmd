@@ -1,20 +1,20 @@
-%% qlim8 — App runtime / container architecture (Diagram 2).
+%% qlim8, App runtime / container architecture (Diagram 2).
 %% IMPORTANT: everything inside "Express process" runs in ONE PM2 fork instance on
-%% port 5000 — SPA serving, all four route surfaces, AND every background worker.
+%% port 5000: SPA serving, all four route surfaces, AND every background worker.
 flowchart TB
-  browser["Browser — React 19 SPA<br/>Wouter · TanStack Query · PostHog JS"]
+  browser["Browser, React 19 SPA<br/>Wouter · TanStack Query · PostHog JS"]
   posthog["PostHog EU"]
 
-  subgraph nginxbox["nginx (app host) — TLS 443"]
+  subgraph nginxbox["nginx (app host), TLS 443"]
     nginx["location / &rarr; 127.0.0.1:5000<br/>/ingest/ + /ingest/static/ &rarr; PostHog<br/>WebSocket upgrade"]
   end
 
-  subgraph proc["Express process — PM2 fork, single OS process, :5000"]
+  subgraph proc["Express process: PM2 fork, single OS process, :5000"]
     direction TB
     subgraph mw["Middleware chain (in order)"]
       direction TB
       cors["CORS"] --> helmet["helmet / CSP / HSTS"] --> noindex["noindex"]
-      noindex --> stripehook["Stripe webhook<br/>express.raw — pre-json"]
+      noindex --> stripehook["Stripe webhook<br/>express.raw, pre-json"]
       stripehook --> json["express.json (+rawBody) · urlencoded"]
       json --> logger["request logger (PII-redacted)"]
       logger --> sess["session + Passport<br/>connect-pg-simple"]
@@ -23,8 +23,8 @@ flowchart TB
 
     subgraph surfaces["Route surfaces"]
       legacy["Legacy cookie API<br/>/api/* (~30 groups)"]
-      v1["Public API v1<br/>/api/v1/* — Bearer, RFC7807"]
-      mcp["MCP server<br/>/api/mcp — Streamable HTTP"]
+      v1["Public API v1<br/>/api/v1/*, Bearer, RFC7807"]
+      mcp["MCP server<br/>/api/mcp, Streamable HTTP"]
       oauth["OAuth 2.1 AS<br/>/oauth/* + /.well-known"]
     end
 

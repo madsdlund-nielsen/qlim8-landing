@@ -7,7 +7,7 @@ import { fetchArticleBySlug, fetchPublishedArticles, type CmsArticle } from '@/l
 
 type Props = { params: Promise<{ slug: string }> }
 
-// ISR — published CMS articles refresh on this cadence; the app's revalidate
+// ISR: published CMS articles refresh on this cadence; the app's revalidate
 // webhook busts the per-slug tag immediately on publish/unpublish.
 export const revalidate = 300
 

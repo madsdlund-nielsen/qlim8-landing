@@ -1,4 +1,4 @@
-// ESLint 9 flat config — kept deliberately in step with qlim8-app's config so
+// ESLint 9 flat config: kept deliberately in step with qlim8-app's config so
 // the two repos enforce the same guardrails and a contributor moving between
 // them meets the same rules.
 //
@@ -13,7 +13,7 @@
 // necessary: two components deliberately render a plain <img> for CMS images of
 // unknown intrinsic size and suppress no-img-element inline. Without the plugin
 // registered those suppressions reference an undefined rule, which is itself an
-// ESLint error — so the rule has to exist for the documented intent to hold.
+// ESLint error, so the rule has to exist for the documented intent to hold.
 
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
@@ -53,7 +53,7 @@ export default tseslint.config(
     settings: { react: { version: 'detect' } },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      // Next.js correctness rules — the ones that catch real App Router
+      // Next.js correctness rules: the ones that catch real App Router
       // mistakes rather than style. no-img-element is a warning: the two
       // deliberate <img> uses suppress it inline, and any new one should be a
       // visible prompt to reach for next/image first, not a hard block.

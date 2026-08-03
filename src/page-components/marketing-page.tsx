@@ -1,6 +1,6 @@
 // The single reusable renderer for every industry / feature / integration leaf
 // page. Driven entirely by a MarketingNode + its resolved MarketingPageCopy.
-// Server component (no client hooks) — FAQ uses native <details>.
+// Server component (no client hooks): FAQ uses native <details>.
 import { ArrowRight, Check, Plus } from "lucide-react";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";

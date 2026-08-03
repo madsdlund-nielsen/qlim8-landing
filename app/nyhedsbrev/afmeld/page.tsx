@@ -3,7 +3,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { UnsubscribeForm } from "@/components/public/UnsubscribeForm";
 
-// Reachable only via a signed link in our emails — keep it out of search
+// Reachable only via a signed link in our emails, keep it out of search
 // indexes and the sitemap (it is deliberately not listed in app/sitemap.ts).
 export const metadata: Metadata = {
   title: "Afmeld nyhedsbrev | qlim8",

@@ -51,7 +51,7 @@ export const ABOUT_COPY: AboutCopy = {
   founder: {
     title: "Grundlæggeren",
     role: "Civilingeniør, energisystemer",
-    body: 'Jeg startede qlim8 fordi jeg havde set én konsulent for mange tage 60.000 kr for at klippe data fra Excel og kalde det "scope 3". Mit fag er energisystemer — og at automatisere det manuelle arbejde der alligevel skal laves. Det er den platform du logger ind på.',
+    body: 'Jeg startede qlim8 fordi jeg havde set én konsulent for mange tage 60.000 kr for at klippe data fra Excel og kalde det "scope 3". Mit fag er energisystemer, og at automatisere det manuelle arbejde der alligevel skal laves. Det er den platform du logger ind på.',
     imageAlt: "qlim8 grundlægger",
   },
   beliefs: {

@@ -20,7 +20,7 @@ export interface LegalCopy {
 
 export const LEGAL_COOKIES_COPY: LegalCopy = {
   title: "Cookieerklæring",
-  metaLine: "qlim8 — marketingsite",
+  metaLine: "qlim8: marketingsite",
   versionLine: "Version: 1.0 · Senest opdateret: 15. maj 2026",
   bodyHtml: `<h2>1. Hvad er cookies?</h2>
 <p>Cookies er små tekstfiler, som lagres på din enhed (computer, tablet eller smartphone), når du besøger vores hjemmeside. Cookies bruges til at få hjemmesiden til at fungere, til at huske dine valg, samt til at indsamle statistik om brugen af sitet.</p>
@@ -76,7 +76,7 @@ export const LEGAL_COOKIES_COPY: LegalCopy = {
 
 export const LEGAL_TERMS_COPY: LegalCopy = {
   title: "Handelsbetingelser",
-  metaLine: "qlim8 — ESG-platform (SaaS)",
+  metaLine: "qlim8: ESG-platform (SaaS)",
   versionLine: "Version: 1.0 · Gældende fra: 15. maj 2026",
   bodyHtml: `<h2>1. Indledning og aftalegrundlag</h2>
 <p>1.1 Disse handelsbetingelser ("Betingelserne") regulerer aftalen mellem qlim8, CVR-nr. DK46033736, Stenløkkevej 12, 5450 ("Leverandøren") og den erhvervsdrivende kunde ("Kunden"), der tegner abonnement på Leverandørens ESG-platform ("Tjenesten").</p>
@@ -154,7 +154,7 @@ export const LEGAL_TERMS_COPY: LegalCopy = {
 
 export const LEGAL_PRIVACY_COPY: LegalCopy = {
   title: "Privatlivspolitik",
-  metaLine: "qlim8 ApS — ESG-platform & marketingsite",
+  metaLine: "qlim8 ApS: ESG-platform & marketingsite",
   versionLine: "Version: 1.0 · Senest opdateret: 15. maj 2026",
   bodyHtml: `<h2>1. Dataansvarlig</h2>
 <p>Dataansvarlig for behandlingen af dine personoplysninger er:</p>
@@ -214,7 +214,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <h2>4. Formål og retsgrundlag</h2>
 <p>Vi behandler personoplysninger til følgende formål med følgende retsgrundlag efter databeskyttelsesforordningen (GDPR):</p>
 <h3>4.1 Levering af platformen og kundeforholdet</h3>
-<p>Formål: At give Brugere adgang, levere funktionalitet, drift, support og fakturering.<br />Retsgrundlag: Opfyldelse af aftale (GDPR art. 6, stk. 1, litra b) for kundens kontaktpersoner, og legitim interesse (art. 6, stk. 1, litra f) for de øvrige Brugere — idet det er nødvendigt for at kunne levere tjenesten til kunden.</p>
+<p>Formål: At give Brugere adgang, levere funktionalitet, drift, support og fakturering.<br />Retsgrundlag: Opfyldelse af aftale (GDPR art. 6, stk. 1, litra b) for kundens kontaktpersoner, og legitim interesse (art. 6, stk. 1, litra f) for de øvrige Brugere. Idet det er nødvendigt for at kunne levere tjenesten til kunden.</p>
 <h3>4.2 Sikkerhed og logning</h3>
 <p>Formål: At forebygge misbrug, opdage sikkerhedshændelser og overholde forpligtelser.<br />Retsgrundlag: Legitim interesse (art. 6, stk. 1, litra f) i at sikre platformens og kundernes data.</p>
 <h3>4.3 Nyhedsbrev og markedsføring</h3>
@@ -230,7 +230,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <p>Tilmelding sker via dobbelt opt-in (du modtager en bekræftelses-e-mail). Vi registrerer tidspunkt for samtykke samt indholdet af det samtykke, du har givet.</p>
 <p>Du kan til enhver tid afmelde dig via linket i bunden af hvert nyhedsbrev. Vi kan herefter opbevare dokumentation for tidligere samtykke i op til 2 år efter afmelding for at kunne dokumentere overholdelse af markedsføringsloven.</p>
 <h2>7. Behandling af kundens ESG-data (vi er databehandler)</h2>
-<p>Når en virksomhedskunde bruger platformen, kan kunden uploade eller indtaste data — herunder ESG-data — der i nogle tilfælde indeholder personoplysninger om f.eks. medarbejdere, leverandører eller andre tredjeparter.</p>
+<p>Når en virksomhedskunde bruger platformen, kan kunden uploade eller indtaste data, herunder ESG-data, der i nogle tilfælde indeholder personoplysninger om f.eks. medarbejdere, leverandører eller andre tredjeparter.</p>
 <p>For sådanne oplysninger er kunden dataansvarlig, og vi handler som databehandler. Det betyder, at vi alene behandler oplysningerne efter dokumenteret instruks fra kunden i henhold til den databehandleraftale, der er indgået med kunden.</p>
 <p>Hvis du er medarbejder hos eller registreret i en kundes brug af platformen, skal henvendelser om dine rettigheder rettes til den pågældende kunde som dataansvarlig.</p>
 <h2>8. Modtagere, databehandlere og kilder</h2>
@@ -247,12 +247,12 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 </ul>
 <p>Vi henter desuden data fra følgende kilder:</p>
 <ul>
-<li>Energinet DataHub via Eloverblik — elforbrugs- og produktionsdata på baggrund af kundens elektroniske fuldmagt, jf. afsnit 3.5.</li>
-<li>Kundens regnskabssystem (Dinero, Billy eller e-conomic) — bogføringsdata på baggrund af kundens OAuth-autorisation, jf. afsnit 3.6.</li>
+<li>Energinet DataHub via Eloverblik: elforbrugs- og produktionsdata på baggrund af kundens elektroniske fuldmagt, jf. afsnit 3.5.</li>
+<li>Kundens regnskabssystem (Dinero, Billy eller e-conomic), bogføringsdata på baggrund af kundens OAuth-autorisation, jf. afsnit 3.6.</li>
 </ul>
 <p>En opdateret liste over underdatabehandlere udleveres til kunder på anmodning og fremgår af databehandleraftalen.</p>
 <h2>9. Overførsel til tredjelande</h2>
-<p>Vores kerneinfrastruktur — hosting (Hetzner, Tyskland), webhotel (Simply, Danmark) og AI-behandling (Ordbogen.ai, Danmark) — er placeret inden for EU/EØS, og data behandlet af disse leverandører forlader ikke EU/EØS.</p>
+<p>Vores kerneinfrastruktur: hosting (Hetzner, Tyskland), webhotel (Simply, Danmark) og AI-behandling (Ordbogen.ai, Danmark): er placeret inden for EU/EØS, og data behandlet af disse leverandører forlader ikke EU/EØS.</p>
 <p>Visse leverandører er dog etableret i USA, herunder Stripe (betaling) og Resend (e-mail-udsendelse). For så vidt angår Resend gælder det, at selvom udsendelse kan ske via en EU-region, opbevarer Resend account-data, logs og e-mail-metadata i USA.</p>
 <p>Når personoplysninger overføres til tredjelande, sikrer vi et lovligt overførselsgrundlag, fx:</p>
 <ul>
