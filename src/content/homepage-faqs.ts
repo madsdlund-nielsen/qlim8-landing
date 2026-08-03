@@ -5,11 +5,11 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Hvem er qlim8 til?",
-    a: "qlim8 er designet til danske SMV'er der har behov for klimaregnskab og ESG-rapportering — typisk fordi banken, en større kunde eller en leverandørkæde kræver det. Platformen kan også bruges af revisorer og bogholdere der laver klimaregnskab på vegne af deres kunder.",
+    a: "qlim8 er designet til danske SMV'er der har behov for klimaregnskab og ESG-rapportering, typisk fordi banken, en større kunde eller en leverandørkæde kræver det. Platformen kan også bruges af revisorer og bogholdere der laver klimaregnskab på vegne af deres kunder.",
   },
   {
     q: "Hvad er VSME, og skal min virksomhed lave en VSME-rapport?",
-    a: "VSME (Voluntary SME standard) er en frivillig bæredygtighedsrapportering udarbejdet af EFRAG specifikt til små og mellemstore virksomheder. Den er ikke lovpligtig, men bliver i stigende grad krævet af banker, større kunder og virksomheder underlagt CSRD. VSME findes i to versioner — Basis og Comprehensive — og qlim8 understøtter begge med indbygget rapport-wizard.",
+    a: "VSME (Voluntary SME standard) er en frivillig bæredygtighedsrapportering udarbejdet af EFRAG specifikt til små og mellemstore virksomheder. Den er ikke lovpligtig, men bliver i stigende grad krævet af banker, større kunder og virksomheder underlagt CSRD. VSME findes i to versioner, Basis og Comprehensive, og qlim8 understøtter begge med indbygget rapport-wizard.",
   },
   {
     q: "Hvad koster qlim8?",
@@ -29,11 +29,11 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Er qlim8's beregninger revisionsklare?",
-    a: "Ja. Hver beregning får et unikt ID, og du kan klikke fra dashboardet ned til den faktura eller måling den stammer fra — input, emissionsfaktor og kilde er sporbart fra dag ét. På Premium kan din revisor få direkte adgang til platformen med rettigheder til at kommentere og signere beregninger.",
+    a: "Ja. Hver beregning får et unikt ID, og du kan klikke fra dashboardet ned til den faktura eller måling den stammer fra: input, emissionsfaktor og kilde er sporbart fra dag ét. På Premium kan din revisor få direkte adgang til platformen med rettigheder til at kommentere og signere beregninger.",
   },
   {
     q: "Hvad er forskellen på Scope 1, 2 og 3?",
-    a: "Scope 1 er direkte udledninger fra kilder din virksomhed ejer eller kontrollerer, eksempelvis egne køretøjer og gasfyr. Scope 2 er indirekte udledninger fra købt energi som elektricitet og fjernvarme. Scope 3 dækker alle øvrige indirekte udledninger i værdikæden — indkøb, transport, affald, forretningsrejser — og udgør typisk 70-90% af en SMV's samlede klimaaftryk. qlim8 beregner alle tre scopes automatisk.",
+    a: "Scope 1 er direkte udledninger fra kilder din virksomhed ejer eller kontrollerer, eksempelvis egne køretøjer og gasfyr. Scope 2 er indirekte udledninger fra købt energi som elektricitet og fjernvarme. Scope 3 dækker alle øvrige indirekte udledninger i værdikæden (indkøb, transport, affald, forretningsrejser) og udgør typisk 70-90% af en SMV's samlede klimaaftryk. qlim8 beregner alle tre scopes automatisk.",
   },
   {
     q: "Kan jeg prøve qlim8 gratis?",

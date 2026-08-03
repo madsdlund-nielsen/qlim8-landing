@@ -3,13 +3,13 @@ import CookiePolicy from "@/page-components/cookies";
 import { resolvePageCopy } from "@/lib/pageCopy";
 import { LEGAL_COOKIES_PAGE_KEY, LEGAL_COOKIES_COPY } from "@/content/copy/legal";
 
-// ISR — CMS-published copy refreshes on this cadence.
+// ISR: CMS-published copy refreshes on this cadence.
 export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Cookieerklæring | qlim8",
   description:
-    "Oversigt over de cookies, qlim8 bruger på marketingsitet — nødvendige, statistik- og marketing-cookies, samtykke, tredjeparter og dine rettigheder.",
+    "Oversigt over de cookies, qlim8 bruger på marketingsitet: nødvendige, statistik- og marketing-cookies, samtykke, tredjeparter og dine rettigheder.",
   alternates: { canonical: "https://qlim8.com/cookies" },
   openGraph: {
     title: "Cookieerklæring | qlim8",

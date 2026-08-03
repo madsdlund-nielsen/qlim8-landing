@@ -1,6 +1,6 @@
 // Tests for the defensive CMS-override merge. Run with:
 //   npm test   (node --experimental-strip-types --test)
-// The merge must never let malformed CMS data break a page — anything that
+// The merge must never let malformed CMS data break a page, anything that
 // doesn't match the bundled default's shape falls back to the default.
 import { test } from "node:test";
 import assert from "node:assert/strict";

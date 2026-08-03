@@ -1,4 +1,4 @@
-%% qlim8 — Deployment & CI/CD topology (Diagram 5). Two INDEPENDENT deployments on
+%% qlim8, Deployment & CI/CD topology (Diagram 5). Two INDEPENDENT deployments on
 %% Hetzner, bridged only over public HTTPS + Stripe. Two nginx, two certbot.
 flowchart TB
   subgraph ghapp["GitHub: qlim8-app"]
@@ -11,12 +11,12 @@ flowchart TB
   end
 
   subgraph hetzner["Hetzner (Germany)"]
-    subgraph appvm["App host — app.qlim8.com (CX22, Ubuntu)"]
+    subgraph appvm["App host, app.qlim8.com (CX22, Ubuntu)"]
       anginx["nginx 80/443 + certbot<br/>Let's Encrypt"]
-      pm2["PM2 fork — 1 instance<br/>dist/index.js :5000"]
+      pm2["PM2 fork, 1 instance<br/>dist/index.js :5000"]
       pg[("PostgreSQL 16<br/>app + pgboss + session")]
     end
-    subgraph landvm["Landing host — qlim8.com (docker compose)"]
+    subgraph landvm["Landing host, qlim8.com (docker compose)"]
       lnginx["nginx container 80/443"]
       lweb["web container<br/>Next standalone :3000"]
       lcertbot["certbot container<br/>renew every 12h"]

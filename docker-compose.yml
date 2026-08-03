@@ -7,7 +7,7 @@ services:
       - NEXT_TELEMETRY_DISABLED=1
       # Shared secret for the CMS pull/import (/api/cms/defaults,
       # /api/cms/bundled-articles) and publish-revalidation (/api/revalidate)
-      # endpoints — must match CMS_REVALIDATE_SECRET in qlim8-app's .env.
+      # endpoints: must match CMS_REVALIDATE_SECRET in qlim8-app's .env.
       # Read from a .env file placed next to this compose file on the server
       # (docker compose auto-loads it for ${...} substitution); left unset
       # here it resolves to an empty string and those endpoints fail closed.
@@ -33,7 +33,7 @@ services:
       - proxy
     # Reload every 6h so a renewed certificate actually reaches the running
     # server. nginx reads the cert files ONCE at startup and holds them in
-    # memory — the certbot container below can renew the files on disk without
+    # memory: the certbot container below can renew the files on disk without
     # nginx ever noticing. That is exactly what happened on 2026-07-27: the
     # certificate issued Apr 28 expired at 20:16Z while nginx kept serving it,
     # and every visitor got NET::ERR_CERT_DATE_INVALID until nginx was
@@ -41,7 +41,7 @@ services:
     #
     # The reload runs in the background; `nginx -g "daemon off;"` stays PID 1 so
     # the container still dies (and `restart: unless-stopped` fires) if nginx
-    # itself exits. `$${!}` is an escaped `${!}` — compose would otherwise try
+    # itself exits. `$${!}` is an escaped `${!}`: compose would otherwise try
     # to interpolate it.
     command: /bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'
 
@@ -53,7 +53,7 @@ services:
       - certbot-www:/var/www/certbot
     # Renews into the certbot-etc volume using the webroot challenge that
     # nginx.conf serves from /.well-known/acme-challenge/. Renewal only rewrites
-    # the files on disk — the nginx service above is what actually puts a renewed
+    # the files on disk: the nginx service above is what actually puts a renewed
     # certificate into service, via its 6h reload loop.
     #
     # Do NOT add a host-level `certbot renew` cron alongside this. Host certbot

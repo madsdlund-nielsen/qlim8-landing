@@ -1,7 +1,7 @@
 // Structural deep-merge of CMS-published marketing-copy overrides over the
 // bundled default copy modules (src/content/copy/*). The merge is defensive:
 // an override value is only applied when it matches the shape of the default
-// it replaces, so malformed or partial CMS data can never break a page —
+// it replaces, so malformed or partial CMS data can never break a page, 
 // anything that doesn't validate silently falls back to the bundled default.
 
 type Scalar = string | number | boolean;
@@ -16,7 +16,7 @@ function isPlainObject(v: unknown): v is Record<string, unknown> {
 
 /**
  * A value is "well-formed" if it's built only from scalars, plain objects and
- * arrays (recursively) — i.e. structurally sane JSON with no null/undefined
+ * arrays (recursively): i.e. structurally sane JSON with no null/undefined
  * holes. Used to vet CMS-authored keys that the bundled default doesn't define
  * and therefore has no shape template to validate against.
  */
@@ -80,8 +80,8 @@ function mergeArray(defaults: unknown[], override: unknown): unknown[] {
  * compatible type.
  *
  * `allowNewKeys` (true only at the top level) lets a CMS-authored top-level
- * section that the bundled default omits — e.g. a `howItWorks` block added in
- * the CMS — surface, provided its value is well-formed. Nested unknown keys are
+ * section that the bundled default omits: e.g. a `howItWorks` block added in
+ * the CMS: surface, provided its value is well-formed. Nested unknown keys are
  * still ignored (they have no shape template and are more likely stale/junk),
  * preserving the defensive contract everywhere below the page root.
  */

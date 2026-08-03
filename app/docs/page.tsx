@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Docs | qlim8 — Vejledninger, integration og API",
+  title: "Docs | qlim8: Vejledninger, integration og API",
   description:
     "Dokumentation for qlim8's ESG-platform: onboarding, MCP-server, REST API, datakilder og metodologi.",
   alternates: { canonical: "https://qlim8.com/docs" },
@@ -20,17 +20,17 @@ const DEVELOPER_DOCS = [
   {
     href: "/docs/mcp-quickstart",
     title: "MCP Quickstart",
-    body: "Forbind Claude eller ChatGPT til dine klimadata på få minutter — log ind med din qlim8-konto, ingen API-nøgle. Guide til almindelige brugere.",
+    body: "Forbind Claude eller ChatGPT til dine klimadata på få minutter, log ind med din qlim8-konto, ingen API-nøgle. Guide til almindelige brugere.",
   },
   {
     href: "/docs/mcp-tools",
     title: "MCP tool reference",
-    body: "Alle 31 MCP-tools, 3 resources og 3 prompts — den komplette reference vedligeholdes på developers.qlim8.com.",
+    body: "Alle 31 MCP-tools, 3 resources og 3 prompts, den komplette reference vedligeholdes på developers.qlim8.com.",
   },
   {
     href: "/docs/api-reference",
     title: "REST API v1 reference",
-    body: "Bearer-auth med scopes, cursor-paginering og RFC 9457-fejl — komplet endpoint-reference på developers.qlim8.com.",
+    body: "Bearer-auth med scopes, cursor-paginering og RFC 9457-fejl, komplet endpoint-reference på developers.qlim8.com.",
   },
 ];
 
@@ -44,7 +44,7 @@ const GENERAL_DOCS = [
   {
     href: "/metodologi",
     title: "Metodologi",
-    body: "Alle emissionsfaktorer, datakilder og beregningsmetoder — fuld åbenhed om hvordan dit klimaregnskab produceres.",
+    body: "Alle emissionsfaktorer, datakilder og beregningsmetoder, fuld åbenhed om hvordan dit klimaregnskab produceres.",
   },
   {
     href: "mailto:kontakt@qlim8.com?subject=Docs%20sp%C3%B8rgsm%C3%A5l",

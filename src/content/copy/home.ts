@@ -2,7 +2,7 @@
 // The admin CMS in qlim8-app reads these defaults via /api/cms/defaults and
 // stores per-field overrides; src/page-components/landing.tsx renders the
 // merged result. Keep this file as the single source of truth for the
-// bundled text — the JSX must not carry copy of its own.
+// bundled text: the JSX must not carry copy of its own.
 //
 // FAQ items and marketing images intentionally live under their original
 // pageKeys ("homepage.faqs", "landing.images") and are not part of this map.
@@ -86,7 +86,7 @@ export const HOME_COPY: HomeCopy = {
   hero: {
     title: "ESG er nemt",
     subtitle:
-      "Automatisk klimaregnskab og VSME-rapport for danske SMV'er — hentet direkte fra dit regnskabssystem og elforbrug. 10 minutter om måneden, ikke 10 dage.",
+      "Automatisk klimaregnskab og VSME-rapport for danske SMV'er, hentet direkte fra dit regnskabssystem og elforbrug. 10 minutter om måneden, ikke 10 dage.",
     ctaPrimary: "Prøv platformen gratis",
     ctaNote: "Eksempeldata · Ingen kreditkort · Forpligt dig først ved tilkobling",
   },
@@ -100,7 +100,7 @@ export const HOME_COPY: HomeCopy = {
   features: [
     {
       title: "Sat op én gang. Kører i baggrunden.",
-      body: "Forbind dit regnskabssystem og dit Eloverblik én gang. Derefter henter qlim8 data automatisk — hver nat fra Dinero, e-conomic eller Billy, og ugentligt fra Eloverblik. AI-kategorisering placerer hver post i det rigtige scope, så dit klimaregnskab er opdateret når du har brug for det — ikke når du husker det. Når du tilkobler dit regnskab, henter qlim8 også tre måneders historisk data med det samme, så du har et reelt billede fra dag ét.",
+      body: "Forbind dit regnskabssystem og dit Eloverblik én gang. Derefter henter qlim8 data automatisk: hver nat fra Dinero, e-conomic eller Billy, og ugentligt fra Eloverblik. AI-kategorisering placerer hver post i det rigtige scope, så dit klimaregnskab er opdateret når du har brug for det, ikke når du husker det. Når du tilkobler dit regnskab, henter qlim8 også tre måneders historisk data med det samme, så du har et reelt billede fra dag ét.",
       bullets: [
         "Natlig kørsel fra regnskab",
         'Ugentlig kørsel fra Eloverblik med "Hent nu"-knap',
@@ -109,7 +109,7 @@ export const HOME_COPY: HomeCopy = {
     },
     {
       title: "Hver beregning kan spores tilbage til kilden",
-      body: 'Hver post i klimaregnskabet får et unikt ID, og du kan klikke fra dashboardet ned i den konkrete beregning — input, emissionsfaktor og kilde, sporbart fra dag ét. Når revisor spørger "hvor kommer det tal fra?", har du svaret.',
+      body: 'Hver post i klimaregnskabet får et unikt ID, og du kan klikke fra dashboardet ned i den konkrete beregning: input, emissionsfaktor og kilde, sporbart fra dag ét. Når revisor spørger "hvor kommer det tal fra?", har du svaret.',
       bullets: [
         "Validerede emissionsfaktorer fra Klimakompasset, Energinet, EXIOBASE og EPD-databaser",
         "Unikt beregnings-ID på hver post, eksporterbart til Excel",
@@ -117,11 +117,11 @@ export const HOME_COPY: HomeCopy = {
       ],
     },
     {
-      title: "Ikke bare et tal — en plan",
-      body: "Når du har målt, vil du have en plan. qlim8 sætter reduktionsmål baseret på dine egne tal og lader dig teste konkrete tiltag i Scenario Builder — se effekten af en elbil-flåde, ny leverandør eller halverede forretningsrejser før du beslutter dig. Når du er klar, deler du via en custom PDF-rapport eller dit offentlige Brag Board, så bank, kunder og samarbejdspartnere kan se hvor I er på vej hen.",
+      title: "Ikke bare et tal: en plan",
+      body: "Når du har målt, vil du have en plan. qlim8 sætter reduktionsmål baseret på dine egne tal og lader dig teste konkrete tiltag i Scenario Builder: se effekten af en elbil-flåde, ny leverandør eller halverede forretningsrejser før du beslutter dig. Når du er klar, deler du via en custom PDF-rapport eller dit offentlige Brag Board, så bank, kunder og samarbejdspartnere kan se hvor I er på vej hen.",
       bullets: [
         "Reduktionsmål baseret på dine egne tal",
-        "Scenario Builder — test tiltag før du beslutter",
+        "Scenario Builder: test tiltag før du beslutter",
         "Deling via custom PDF eller offentligt Brag Board",
         "Premium-features fra 1.195 kr/md",
       ],
@@ -134,11 +134,11 @@ export const HOME_COPY: HomeCopy = {
     commitments: [
       {
         title: "1. Vi viser kilden til hvert tal.",
-        body: "Hver beregning har et unikt ID, og du kan klikke fra dashboardet ned til den faktura eller måling, den stammer fra. Ingen blackbox — fordi din revisor skal kunne validere arbejdet uden at ringe til vores support.",
+        body: "Hver beregning har et unikt ID, og du kan klikke fra dashboardet ned til den faktura eller måling, den stammer fra. Ingen blackbox, fordi din revisor skal kunne validere arbejdet uden at ringe til vores support.",
       },
       {
         title: "2. Vi bruger danske data, ikke approximationer.",
-        body: "Eloverblik henter dit reelle elforbrug direkte fra Energinet. Klimakompassets danske emissionsfaktorer ligger nederst i datahierarkiet. Internationale platforme estimerer dansk data ud fra europæiske gennemsnit — vi gør det ikke.",
+        body: "Eloverblik henter dit reelle elforbrug direkte fra Energinet. Klimakompassets danske emissionsfaktorer ligger nederst i datahierarkiet. Internationale platforme estimerer dansk data ud fra europæiske gennemsnit. Vi gør det ikke.",
       },
       {
         title: "3. Vi tæller ikke faktorer kreativt.",
@@ -153,7 +153,7 @@ export const HOME_COPY: HomeCopy = {
   },
   steps: {
     title: "Sådan kommer du i gang",
-    intro: "Du behøver ikke vide noget om ESG før du opretter dig — det viser sig selv.",
+    intro: "Du behøver ikke vide noget om ESG før du opretter dig. Det viser sig selv.",
     items: [
       {
         title: "Opret en gratis konto",
@@ -161,11 +161,11 @@ export const HOME_COPY: HomeCopy = {
       },
       {
         title: "Klik dig rundt",
-        body: "En kort guided tur viser dig dashboard, klimahovedbog, rapporter og reduktionsmål — alt sammen med realistiske data, så du kan se præcis hvad du får.",
+        body: "En kort guided tur viser dig dashboard, klimahovedbog, rapporter og reduktionsmål, alt sammen med realistiske data, så du kan se præcis hvad du får.",
       },
       {
         title: "Forbind dit regnskab",
-        body: "Når du er klar, henter qlim8 tre måneders historisk data fra dit regnskabssystem. Din egen data overtager dashboardet — og din 14-dages prøveperiode starter her.",
+        body: "Når du er klar, henter qlim8 tre måneders historisk data fra dit regnskabssystem. Din egen data overtager dashboardet, og din 14-dages prøveperiode starter her.",
       },
     ],
     ctaLabel: "Opret gratis konto",
@@ -192,7 +192,7 @@ export const HOME_COPY: HomeCopy = {
         name: "Premium",
         price: "1.195 kr/md",
         badge: "Anbefalet til de fleste",
-        tag: "Til virksomheder der vil bruge ESG aktivt — reducere udledninger og dele resultater.",
+        tag: "Til virksomheder der vil bruge ESG aktivt, reducere udledninger og dele resultater.",
         features: [
           "Alt i Starter",
           "VSME Comprehensive med wizard",
@@ -225,7 +225,7 @@ export const HOME_COPY: HomeCopy = {
     linkLabel: "Flere spørgsmål? Kontakt os →",
   },
   finalCta: {
-    title: "ESG er nemt — kom selv og se",
+    title: "ESG er nemt: kom selv og se",
     body: "Du behøver hverken kreditkort eller salgsmøde. Opret en konto, klik dig rundt med eksempeldata, og tilkobl dit regnskab når du er klar.",
     ctaLabel: "Opret gratis konto",
   },

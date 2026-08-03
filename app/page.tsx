@@ -7,7 +7,7 @@ import { HOME_PAGE_KEY, HOME_COPY } from "@/content/copy/home";
 import { PRICING_COPY } from "@/content/copy/pricing";
 import type { LandingImages } from "@/page-components/landing";
 
-// ISR — CMS-published homepage copy refreshes on this cadence (busted instantly
+// ISR: CMS-published homepage copy refreshes on this cadence (busted instantly
 // by the app's revalidate webhook on publish).
 export const revalidate = 300;
 
@@ -47,7 +47,7 @@ const ORG_SCHEMA = {
 };
 
 // Both price fields come from one argument so they can't drift apart, and the
-// figures themselves come from PRICING_COPY — the same source /priser builds its
+// figures themselves come from PRICING_COPY: the same source /priser builds its
 // schema from. Uses the yearly-billed effective prices, matching the "fra 300
 // kr/md" claim in the page description.
 const softwareOffer = (name: string, monthlyDkk: number) => ({

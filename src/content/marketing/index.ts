@@ -28,7 +28,7 @@ export const ALL_MARKETING_NODES: MarketingNode[] = [
 // Every page gets the generic qlim8/ESG questions appended to its own FAQ (with
 // de-dup), and every hub gets a FAQ built from a per-section seed + the generic
 // set. This flows into the rendered FAQ, the FAQPage JSON-LD, and the CMS copy
-// defaults — so each page carries a page-specific + general mix for answer
+// defaults, so each page carries a page-specific + general mix for answer
 // engines and search ranking. Runs once at module load; de-dup makes it safe.
 for (const node of ALL_MARKETING_NODES) {
   node.defaults.faq.items = mergeFaqItems(node.defaults.faq.items, GENERIC_ESG_FAQ);

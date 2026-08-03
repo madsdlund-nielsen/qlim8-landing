@@ -10,7 +10,7 @@ import { PRICING_COPY, type PricingCopy, type PriceSet } from "@/content/copy/pr
 type BillingCycle = "monthly" | "yearly";
 
 /**
- * Subscriptions are billed in DKK only — the Stripe products carry no EUR
+ * Subscriptions are billed in DKK only: the Stripe products carry no EUR
  * prices. Still posted to /api/stripe/checkout-public so the bridge keeps its
  * existing request shape.
  */
@@ -22,7 +22,7 @@ function pick(prices: PriceSet, cycle: BillingCycle): number {
 
 function FeatureCell({ value }: { value: boolean | string }) {
   if (value === false) {
-    return <span className="block text-center text-gray-300">—</span>;
+    return <span className="block text-center text-gray-300">-</span>;
   }
   if (value === true) {
     return <span className="block text-center text-gray-900">✓</span>;
@@ -182,7 +182,7 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
                 <p className="font-semibold text-gray-900 text-sm mb-3">{copy.starter.includedLabel}</p>
                 <ul className="space-y-1.5 flex-1 text-sm text-gray-700">
                   {copy.starter.features.map((f) => (
-                    <li key={f}>— {f}</li>
+                    <li key={f}>, {f}</li>
                   ))}
                 </ul>
               </div>
@@ -223,7 +223,7 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
                 <p className="font-semibold text-white text-sm mb-3">{copy.premium.includedLabel}</p>
                 <ul className="space-y-1.5 flex-1 text-sm text-gray-300">
                   {copy.premium.features.map((f) => (
-                    <li key={f}>— {f}</li>
+                    <li key={f}>, {f}</li>
                   ))}
                 </ul>
               </div>
@@ -249,7 +249,7 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
                 <ul className="space-y-1.5 flex-1 text-sm text-gray-700">
                   {copy.enterprise.features.map((f) => (
                     <li key={f.label}>
-                      — {f.label}
+, {f.label}
                       {f.note && <span className="block text-xs text-gray-500 ml-3 mt-0.5">({f.note})</span>}
                     </li>
                   ))}

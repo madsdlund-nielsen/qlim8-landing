@@ -117,7 +117,7 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
               <p className="font-semibold text-gray-900 mb-3">{copy.auditTrail.containsLabel}</p>
               <ul className="space-y-1 text-gray-700">
                 {copy.auditTrail.contains.map((item) => (
-                  <li key={item}>— {item}</li>
+                  <li key={item}>, {item}</li>
                 ))}
               </ul>
             </div>

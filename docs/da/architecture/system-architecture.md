@@ -1,4 +1,4 @@
-# Systemarkitektur — qlim8 app + landing, fra ende til anden
+# Systemarkitektur: qlim8 app + landing, fra ende til anden
 
 > Status: stabil · Sidst opdateret: 2026-06-29 · Ejer: qlim8-teamet
 
@@ -12,7 +12,7 @@
 Dette dokument er den **visuelle reference** for hele qlim8-produktet: klimaregnskabs-SaaS'en
 (`qlim8-app`, **app.qlim8.com**) og marketing-sitet (`qlim8-landing`, **qlim8.com**). Det
 supplerer prosaen i [`overview.md`](https://github.com/madsdlund-nielsen/qlim8-app/blob/main/docs/da/architecture/overview.md), [`data-flow.md`](https://github.com/madsdlund-nielsen/qlim8-app/blob/main/docs/da/architecture/data-flow.md) og
-[`deployment.md`](https://github.com/madsdlund-nielsen/qlim8-app/blob/main/docs/da/architecture/deployment.md) med et lagdelt sæt diagrammer — fra et landskab i fugleperspektiv
+[`deployment.md`](https://github.com/madsdlund-nielsen/qlim8-app/blob/main/docs/da/architecture/deployment.md) med et lagdelt sæt diagrammer, fra et landskab i fugleperspektiv
 ned til enkelte request-flows.
 
 Diagrammerne er skrevet i [Mermaid](https://mermaid.js.org) og renderes inline på GitHub. Hvert
@@ -27,16 +27,16 @@ diagram er også eksporteret til **SVG, PNG og Excalidraw** under
 
 ## Sådan læses dokumentet
 
-Læs oppefra og ned — hvert afsnit zoomer ind:
+Læs oppefra og ned: hvert afsnit zoomer ind:
 
-1. **Systemkontekst** — hvem bruger hvad, og alle eksterne afhængigheder.
-2. **App-runtime** — request-livscyklussen inde i den ene server-proces.
-3. **Public API & agent-flade** — v1 / MCP / OAuth-trioen (et produkt-differentiator).
-4. **Domænemodel** — det ~80-tabellers skema, grupperet efter bounded context.
-5. **Landing & app-broer** — hvordan marketing-sitet afleverer til app'en.
-6. **Deployment & CI/CD** — hvor det hele kører.
-7. **Nøgleflows** — sekvensdiagrammer for de bærende scenarier.
-8. **Arkitektur-noter & kendte huller** — det et diagram alene kan vildlede om.
+1. **Systemkontekst**: hvem bruger hvad, og alle eksterne afhængigheder.
+2. **App-runtime**: request-livscyklussen inde i den ene server-proces.
+3. **Public API & agent-flade**: v1 / MCP / OAuth-trioen (et produkt-differentiator).
+4. **Domænemodel**: det ~80-tabellers skema, grupperet efter bounded context.
+5. **Landing & app-broer**: hvordan marketing-sitet afleverer til app'en.
+6. **Deployment & CI/CD**: hvor det hele kører.
+7. **Nøgleflows**: sekvensdiagrammer for de bærende scenarier.
+8. **Arkitektur-noter & kendte huller**: det et diagram alene kan vildlede om.
 
 ### Signaturforklaring
 
@@ -67,9 +67,9 @@ flowchart LR
   visitor["Marketing visitor"]
 
   subgraph qlim8["qlim8 product"]
-    app["qlim8 App — app.qlim8.com<br/>React SPA + Express (single process)"]
-    landing["qlim8 Landing — qlim8.com<br/>Next.js marketing site"]
-    devportal["Developer portal — developers.qlim8.com<br/>static OpenAPI docs"]
+    app["qlim8 App, app.qlim8.com<br/>React SPA + Express (single process)"]
+    landing["qlim8 Landing, qlim8.com<br/>Next.js marketing site"]
+    devportal["Developer portal, developers.qlim8.com<br/>static OpenAPI docs"]
   end
 
   subgraph ext["External services"]
@@ -122,24 +122,24 @@ De to produkter er **separate deployments**, der kun forbindes over offentlig HT
 ## 2. App-runtime / container-arkitektur
 
 Request-livscyklussen inde i app'en. Det vigtigste dette diagram fortæller: **SPA'en, alle fire
-API-flader og alle baggrundsworkere kører i én PM2 fork-proces** på port 5000 — der er ingen
+API-flader og alle baggrundsworkere kører i én PM2 fork-proces** på port 5000, der er ingen
 separat worker-tier.
 
 ```mermaid
 flowchart TB
-  browser["Browser — React 19 SPA<br/>Wouter · TanStack Query · PostHog JS"]
+  browser["Browser, React 19 SPA<br/>Wouter · TanStack Query · PostHog JS"]
   posthog["PostHog EU"]
 
-  subgraph nginxbox["nginx (app host) — TLS 443"]
+  subgraph nginxbox["nginx (app host), TLS 443"]
     nginx["location / &rarr; 127.0.0.1:5000<br/>/ingest/ + /ingest/static/ &rarr; PostHog<br/>WebSocket upgrade"]
   end
 
-  subgraph proc["Express process — PM2 fork, single OS process, :5000"]
+  subgraph proc["Express process: PM2 fork, single OS process, :5000"]
     direction TB
     subgraph mw["Middleware chain (in order)"]
       direction TB
       cors["CORS"] --> helmet["helmet / CSP / HSTS"] --> noindex["noindex"]
-      noindex --> stripehook["Stripe webhook<br/>express.raw — pre-json"]
+      noindex --> stripehook["Stripe webhook<br/>express.raw, pre-json"]
       stripehook --> json["express.json (+rawBody) · urlencoded"]
       json --> logger["request logger (PII-redacted)"]
       logger --> sess["session + Passport<br/>connect-pg-simple"]
@@ -148,8 +148,8 @@ flowchart TB
 
     subgraph surfaces["Route surfaces"]
       legacy["Legacy cookie API<br/>/api/* (~30 groups)"]
-      v1["Public API v1<br/>/api/v1/* — Bearer, RFC7807"]
-      mcp["MCP server<br/>/api/mcp — Streamable HTTP"]
+      v1["Public API v1<br/>/api/v1/*, Bearer, RFC7807"]
+      mcp["MCP server<br/>/api/mcp, Streamable HTTP"]
       oauth["OAuth 2.1 AS<br/>/oauth/* + /.well-known"]
     end
 
@@ -196,18 +196,18 @@ _Eksporter: [SVG](../../diagrams/svg/02-app-runtime.svg) · [PNG](../../diagrams
 
 Noter:
 - **Stripe-webhooken er monteret før `express.json()`**, så den rå body er tilgængelig til
-  signaturverifikation — den ligger uden for den normale JSON-sti (se `server/index.ts`).
+  signaturverifikation. Den ligger uden for den normale JSON-sti (se `server/index.ts`).
 - **nginx proxy'er PostHog first-party** via `/ingest/` (events) og `/ingest/static/`
   (SDK-assets); browseren taler aldrig direkte med PostHog, hvilket gør analytics
   ad-blocker-resistent.
-- Baggrundsworkere startes i `httpServer.listen`-callbacket — samme proces, samme hukommelse.
+- Baggrundsworkere startes i `httpServer.listen`-callbacket: samme proces, samme hukommelse.
 
 ---
 
 ## 3. Public API & AI-agent-flade
 
-Et zoom på **v1 + MCP + OAuth**-trioen. qlim8 er sin **egen OAuth 2.1 Identity Provider** — der
-er ingen ekstern IdP — hvilket lader AI-connectors (Claude Cowork, ChatGPT) autentificere og
+Et zoom på **v1 + MCP + OAuth**-trioen. qlim8 er sin **egen OAuth 2.1 Identity Provider**, der
+er ingen ekstern IdP, hvilket lader AI-connectors (Claude Cowork, ChatGPT) autentificere og
 betjene MCP-værktøjerne. v1 og MCP deler samme bearer-auth og rate-limiting-kode.
 
 ```mermaid
@@ -215,7 +215,7 @@ flowchart LR
   dev["Developer<br/>(API key holder)"]
   connector["AI connector<br/>Claude Cowork / ChatGPT"]
 
-  subgraph as["OAuth 2.1 Authorization Server — qlim8 is its own IdP"]
+  subgraph as["OAuth 2.1 Authorization Server. Qlim8 is its own IdP"]
     disc["/.well-known/<br/>oauth-authorization-server"]
     reg["/oauth/register (DCR)"]
     authz["/oauth/authorize<br/>+ consent screen (PKCE)"]
@@ -228,16 +228,16 @@ flowchart LR
     scopes["scopes: read · write · audit_pack"]
   end
 
-  subgraph v1["Public API v1 — /api/v1/*"]
+  subgraph v1["Public API v1, /api/v1/*"]
     v1r["emissions · activities · factors · suppliers<br/>targets · reports(async) · webhooks · quota<br/>data-sources · scenarios · pcf · audit · lineage"]
   end
 
-  subgraph mcp["MCP server — /api/mcp"]
+  subgraph mcp["MCP server, /api/mcp"]
     mcptools["tools: emissions, activities, reports,<br/>suppliers, targets, factors, webhooks,<br/>dataSources, quota, categories, scenarios"]
-    mcpsess["in-memory sessions<br/>24h TTL — lost on restart"]
+    mcpsess["in-memory sessions<br/>24h TTL, lost on restart"]
   end
 
-  pg[("PostgreSQL — durable<br/>apiKeys · apiIdempotencyKeys<br/>oauthClients · oauthAccessTokens<br/>oauthRefreshTokens · oauthAuthorizationCodes")]
+  pg[("PostgreSQL, durable<br/>apiKeys · apiIdempotencyKeys<br/>oauthClients · oauthAccessTokens<br/>oauthRefreshTokens · oauthAuthorizationCodes")]
 
   dev -->|"Bearer API key"| bearer
   connector -->|discover| disc
@@ -277,7 +277,7 @@ scoped til `tenants`); 4b og 4c viser de to mest værdifulde domæner i detaljer
 
 ```mermaid
 flowchart TB
-  tenants[("tenants<br/>root — every row scoped here")]
+  tenants[("tenants<br/>root, every row scoped here")]
 
   subgraph auth["Auth & multi-tenancy"]
     a1["users · departments · sessions<br/>loginHistory · mfaTrustedDevices<br/>mfaRecoveryCodes · passwordResetTokens<br/>emailVerificationCodes · tenantTeamInvitations"]
@@ -446,7 +446,7 @@ Hvordan marketing-sitet er bygget, og præcis hvor det afleverer til app'en.
 flowchart LR
   visitor["Marketing visitor"]
 
-  subgraph landing["qlim8 Landing — Next.js 15 (standalone)"]
+  subgraph landing["qlim8 Landing, Next.js 15 (standalone)"]
     pages["Pages: / · /priser · /blog + [slug]<br/>/api + /docs/* · /kontakt · /om-os<br/>/metodologi · /karriere · legal"]
     i18n["client-side i18n (8 langs)"]
     content["hardcoded TS articles (no CMS)"]
@@ -456,7 +456,7 @@ flowchart LR
     cta["Signup / login CTAs"]
   end
 
-  subgraph app["qlim8 App — app.qlim8.com"]
+  subgraph app["qlim8 App, app.qlim8.com"]
     appauth["/auth"]
     appcheckout["/api/stripe/checkout-public"]
     appnews["/api/newsletter/signup (handler)"]
@@ -482,8 +482,8 @@ flowchart LR
 _Eksporter: [SVG](../../diagrams/svg/06-landing-bridges.svg) · [PNG](../../diagrams/png/06-landing-bridges.png) · [Mermaid](../../diagrams/mmd/06-landing-bridges.mmd) · [Excalidraw](../../diagrams/excalidraw/06-landing-bridges.excalidraw)_
 
 > ✅ **Rettet.** `NewsletterForm.tsx` og `NewsletterSignupDialog.tsx` POST'er nu til den
-> **absolutte** app-URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) — samme mønster som
-> pricing-checkout — så requestet rammer app'ens `/api/newsletter/signup`-handler (CORS tillader
+> **absolutte** app-URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`), samme mønster som
+> pricing-checkout, så requestet rammer app'ens `/api/newsletter/signup`-handler (CORS tillader
 > allerede `qlim8.com`-origin). Den email-only dialog sender nu også det påkrævede `name`.
 > Tidligere POST'ede den til en relativ sti, der endte blindt i Next-serveren. Se note 1 i §8.
 
@@ -494,7 +494,7 @@ Mappen `legacy/` i landing-repoet er en backup fra før omskrivningen og er bevi
 ## 6. Deployment & CI/CD-topologi
 
 To **uafhængige** deployments på Hetzner (Tyskland), hver med sin egen nginx, certbot og
-release-pipeline. De deler hverken database eller internt netværk — kun offentlig HTTPS + Stripe.
+release-pipeline. De deler hverken database eller internt netværk, kun offentlig HTTPS + Stripe.
 
 ```mermaid
 flowchart TB
@@ -508,12 +508,12 @@ flowchart TB
   end
 
   subgraph hetzner["Hetzner (Germany)"]
-    subgraph appvm["App host — app.qlim8.com (CX22, Ubuntu)"]
+    subgraph appvm["App host, app.qlim8.com (CX22, Ubuntu)"]
       anginx["nginx 80/443 + certbot<br/>Let's Encrypt"]
-      pm2["PM2 fork — 1 instance<br/>dist/index.js :5000"]
+      pm2["PM2 fork, 1 instance<br/>dist/index.js :5000"]
       pg[("PostgreSQL 16<br/>app + pgboss + session")]
     end
-    subgraph landvm["Landing host — qlim8.com (docker compose)"]
+    subgraph landvm["Landing host, qlim8.com (docker compose)"]
       lnginx["nginx container 80/443"]
       lweb["web container<br/>Next standalone :3000"]
       lcertbot["certbot container<br/>renew every 12h"]
@@ -685,10 +685,10 @@ _Eksporter: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagr
 
 ## 8. Arkitektur-noter & kendte huller
 
-1. **Nyhedsbrev-broen — rettet.** Landing-formularerne POST'er nu til den **absolutte** app-URL
+1. **Nyhedsbrev-broen: rettet.** Landing-formularerne POST'er nu til den **absolutte** app-URL
    (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) og rammer app'ens `/api/newsletter/signup`-handler;
    den email-only dialog sender nu også det påkrævede `name`. (Tidligere endte en relativ
-   `/api/newsletter/signup` blindt i Next-serveren — ingen handler, ingen `/api`-proxy.)
+   `/api/newsletter/signup` blindt i Next-serveren, ingen handler, ingen `/api`-proxy.)
 2. **Én proces.** Statisk SPA-servering, alle fire API-flader, alle workere og Playwright-poolen
    lever i én PM2 fork-instans. Der er ingen separat worker-/render-service.
 3. **pg-boss er ikke separat infrastruktur.** Den kører i app'ens PostgreSQL under `pgboss`-skemaet.

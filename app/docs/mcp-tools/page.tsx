@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://qlim8.com/docs/mcp-tools" },
   openGraph: {
     title: "qlim8 MCP Tools Reference",
-    description: "31 MCP-tools — komplet reference på developers.qlim8.com.",
+    description: "31 MCP-tools: komplet reference på developers.qlim8.com.",
     url: "https://qlim8.com/docs/mcp-tools",
     images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8 MCP tools" }],
   },
@@ -20,7 +20,7 @@ const LINKS = [
   {
     href: "https://developers.qlim8.com/mcp/",
     title: "Tool-oversigt (developers.qlim8.com)",
-    body: "Alle 31 tools grupperet i tre lag med scope, læse/skrive-adgang og tier-gates — plus opsætning for Claude, ChatGPT, Claude Code, Cursor og curl.",
+    body: "Alle 31 tools grupperet i tre lag med scope, læse/skrive-adgang og tier-gates, plus opsætning for Claude, ChatGPT, Claude Code, Cursor og curl.",
   },
   {
     href: "https://developers.qlim8.com/mcp-tools-reference.md",
@@ -30,7 +30,7 @@ const LINKS = [
   {
     href: "https://app.qlim8.com/api/mcp/schema",
     title: "Maskinlæsbart katalog (JSON)",
-    body: "Live discovery-dokument direkte fra serveren — ingen login nødvendigt. Til LLM-klienter og integrationer, der vil læse overfladen programmatisk.",
+    body: "Live discovery-dokument direkte fra serveren, ingen login nødvendigt. Til LLM-klienter og integrationer, der vil læse overfladen programmatisk.",
   },
 ];
 
@@ -49,12 +49,12 @@ export default function Page() {
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
             qlim8's MCP-server eksponerer <strong>31 kuraterede tools</strong>, 3 resources og 3
-            prompts — fra emissions-opsummeringer og rapportgenerering til værdikæde, mål,
+            prompts, fra emissions-opsummeringer og rapportgenerering til værdikæde, mål,
             scenarier og webhooks. Hvert tool kræver et specifikt scope, og læse-tools er markeret
             som sikre at auto-køre.
           </p>
           <p className="mt-4 text-gray-600 leading-relaxed max-w-2xl">
-            Den komplette reference vedligeholdes ét sted — på udviklerportalen — så den altid
+            Den komplette reference vedligeholdes ét sted, på udviklerportalen, så den altid
             matcher serverens faktiske katalog.
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function Page() {
 
           <div className="pt-6">
             <Link href="/docs/mcp-quickstart" className="text-primary font-semibold hover:underline">
-              Ny her? Start med MCP Quickstart — forbind Claude eller ChatGPT uden kode →
+              Ny her? Start med MCP Quickstart: forbind Claude eller ChatGPT uden kode →
             </Link>
           </div>
         </div>

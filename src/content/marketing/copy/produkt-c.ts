@@ -1,6 +1,6 @@
 import type { MarketingPageCopy } from "@/content/marketing/types";
 
-// Produkt-copy (batch C) — features:
+// Produkt-copy (batch C): features:
 //   PR_TILTAG           reduktions-tiltag / -tracking   (kilde: reduction-tracking.md)
 //   PR_SCENARIER        scenario planner                (kilde: scenario-planner.md)
 //   PR_REVISOR_ADGANG   revisor / tredjeparts-adgang    (kilde: for-accountants.md)
@@ -19,27 +19,27 @@ const HERO_SECONDARY_CTA = { label: "Se priser", href: "/priser" } as const;
 const DEMO_CTA = { label: "Book demo", href: "/kontakt" } as const;
 
 // ---------------------------------------------------------------------------
-// PR_TILTAG — Reduktions-tiltag og fremdrift
+// PR_TILTAG: Reduktions-tiltag og fremdrift
 // ---------------------------------------------------------------------------
 
 export const PR_TILTAG: MarketingPageCopy = {
   hero: {
     eyebrow: "Tiltag",
-    title: "Sæt et reduktions-mål — og se hver måned om I er på vej",
+    title: "Sæt et reduktions-mål: og se hver måned om I er på vej",
     subtitle:
-      "Opret konkrete reduktionstiltag, knyt dem til dit klimaregnskab, og følg fremdriften mod målet måned for måned. Ikke en hensigt i en strategi-fil — målbar bevægelse.",
+      "Opret konkrete reduktionstiltag, knyt dem til dit klimaregnskab, og følg fremdriften mod målet måned for måned. Ikke en hensigt i en strategi-fil: målbar bevægelse.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
     heading: "Et mål uden måling er bare en hensigt",
     body:
-      "\"50 % reduktion i 2030\" lyder konkret, indtil du opdager at det kræver målbar fremdrift hver eneste måned — ikke en heroisk indsats i Q4 2029. Problemet i de fleste virksomheder er, at målet står i en strategi-fil, mens det faktiske regnskab ligger et andet sted. Afstemningen sker manuelt én gang om året, og så er det ofte for sent at korrigere. qlim8 forbinder dine mål med det faktiske klimaregnskab: du opretter et mål, tilknytter de tiltag der skal levere reduktionen, og ser rød-gul-grøn-status pr. måned. Halter et tiltag, opdager du det inden for 1-2 måneder — mens der stadig er tid at gøre noget.",
+      "\"50 % reduktion i 2030\" lyder konkret, indtil du opdager at det kræver målbar fremdrift hver eneste måned, ikke en heroisk indsats i Q4 2029. Problemet i de fleste virksomheder er, at målet står i en strategi-fil, mens det faktiske regnskab ligger et andet sted. Afstemningen sker manuelt én gang om året, og så er det ofte for sent at korrigere. qlim8 forbinder dine mål med det faktiske klimaregnskab: du opretter et mål, tilknytter de tiltag der skal levere reduktionen, og ser rød-gul-grøn-status pr. måned. Halter et tiltag, opdager du det inden for 1-2 måneder, mens der stadig er tid at gøre noget.",
     bullets: [
       "Absolutte eller intensitets-baserede mål mod et valgt baseline-år",
       "SBTi-konforme target-skabeloner (1,5 °C, well-below-2 °C)",
       "Tiltag-status: planlagt → i gang → implementeret → verificeret",
-      "Read-only bestyrelses-link — deles uden ekstra seat-cost",
+      "Read-only bestyrelses-link: deles uden ekstra seat-cost",
     ],
   },
   painPoints: [
@@ -49,7 +49,7 @@ export const PR_TILTAG: MarketingPageCopy = {
       solution:
         "qlim8 kobler målet direkte på det faktiske klimaregnskab, så mål-trajektorien og den reelle udledning vises i samme graf hver måned.",
       outcome:
-        "Fra én manuel afstemning om året til løbende status — 4-8 timer sparet pr. kvartal på afstemning [antagelse: pilot-interview].",
+        "Fra én manuel afstemning om året til løbende status, 4-8 timer sparet pr. kvartal på afstemning [antagelse: pilot-interview].",
     },
     {
       pain:
@@ -61,7 +61,7 @@ export const PR_TILTAG: MarketingPageCopy = {
     },
     {
       pain:
-        "Et tiltag leverer ikke som forventet — men det opdager I først ved årsopgørelsen, hvor det er for sent at rette op.",
+        "Et tiltag leverer ikke som forventet, men det opdager I først ved årsopgørelsen, hvor det er for sent at rette op.",
       solution:
         "Månedlig fremdrift pr. tiltag gør at et halt tiltag lyser rødt med det samme, og du kan klikke ind og se hvilke aktiviteter der trækker op.",
       outcome:
@@ -73,13 +73,13 @@ export const PR_TILTAG: MarketingPageCopy = {
       solution:
         "Indbyggede SBTi-konforme skabeloner (1,5 °C, well-below-2 °C) giver et videnskabeligt funderet mål frem for et tal I selv har fundet på.",
       outcome:
-        "Målet er dokumenterbart metodisk funderet — mindre eksponering mod greenwashing-kritik.",
+        "Målet er dokumenterbart metodisk funderet, mindre eksponering mod greenwashing-kritik.",
     },
     {
       pain:
         "Konsulent-tracking af reduktioner koster 25.000-50.000 kr. for en årlig review, og resten af året famler I i blinde.",
       solution:
-        "Reduktions-modulet er inkluderet i Premium og opdaterer løbende — ikke en engangs-review, men et levende dashboard.",
+        "Reduktions-modulet er inkluderet i Premium og opdaterer løbende, ikke en engangs-review, men et levende dashboard.",
       outcome:
         "Løbende tracking til Premium-pris (1.195 kr/md) i stedet for en årlig konsulent-review til 25.000-50.000 kr.",
     },
@@ -103,7 +103,7 @@ export const PR_TILTAG: MarketingPageCopy = {
     {
       title: "Månedlig fremdrifts-graf",
       body:
-        "En kurve viser mål-trajektorie mod faktisk udledning, opdateret hver måned — ikke et kvartals- eller års-snapshot. Rød-gul-grøn-status pr. mål gør det til et sekunds-tjek.",
+        "En kurve viser mål-trajektorie mod faktisk udledning, opdateret hver måned, ikke et kvartals- eller års-snapshot. Rød-gul-grøn-status pr. mål gør det til et sekunds-tjek.",
     },
     {
       title: "ROI pr. tiltag",
@@ -137,7 +137,7 @@ export const PR_TILTAG: MarketingPageCopy = {
       {
         title: "4. Del med bestyrelsen",
         body:
-          "Send read-only-linket før kvartalsmødet. Ingen slide-produktion, ingen \"hvad skete der i Q3?\" — status står live.",
+          "Send read-only-linket før kvartalsmødet. Ingen slide-produktion, ingen \"hvad skete der i Q3?\". Status står live.",
       },
     ],
   },
@@ -167,15 +167,15 @@ export const PR_TILTAG: MarketingPageCopy = {
     items: [
       {
         q: "Hvad er forskellen på et mål og et tiltag?",
-        a: "Et mål er destinationen — fx 50 % reduktion på Scope 1+2 i 2030. Et tiltag er en konkret handling der skal levere reduktionen, fx skift til elbiler eller ny varmekilde. I qlim8 knytter du tiltag til mål og følger hvert tiltag fra planlagt til verificeret.",
+        a: "Et mål er destinationen: fx 50 % reduktion på Scope 1+2 i 2030. Et tiltag er en konkret handling der skal levere reduktionen, fx skift til elbiler eller ny varmekilde. I qlim8 knytter du tiltag til mål og følger hvert tiltag fra planlagt til verificeret.",
       },
       {
         q: "Hvad er et SBTi-konformt mål?",
-        a: "Det er et reduktions-mål der følger en trajektorie i tråd med Science Based Targets initiative — enten en 1,5 °C- eller well-below-2 °C-kurve. qlim8 har skabelonerne indbygget, så du vælger kurven i stedet for at regne den ud selv. Det gør målet videnskabeligt funderet frem for et tal du selv har sat.",
+        a: "Det er et reduktions-mål der følger en trajektorie i tråd med Science Based Targets initiative: enten en 1,5 °C- eller well-below-2 °C-kurve. qlim8 har skabelonerne indbygget, så du vælger kurven i stedet for at regne den ud selv. Det gør målet videnskabeligt funderet frem for et tal du selv har sat.",
       },
       {
         q: "Hvor ofte opdateres fremdriften?",
-        a: "Månedligt. Så snart nyt regnskabsdata er i systemet, genberegnes fremdriften mod målet. Det betyder at et tiltag der ikke leverer, viser sig inden for 1-2 måneder — ikke først ved årsafslutning.",
+        a: "Månedligt. Så snart nyt regnskabsdata er i systemet, genberegnes fremdriften mod målet. Det betyder at et tiltag der ikke leverer, viser sig inden for 1-2 måneder, ikke først ved årsafslutning.",
       },
       {
         q: "Kan bestyrelsen få adgang uden at vi betaler for en ekstra bruger?",
@@ -183,7 +183,7 @@ export const PR_TILTAG: MarketingPageCopy = {
       },
       {
         q: "Er reduktions-modulet med i alle abonnementer?",
-        a: "Starter (fra 300 kr/md) har basis reduktions-tracking med ét mål. Det fulde modul — ubegrænsede mål, SBTi-skabeloner og scenario-til-target-konvertering — er inkluderet i Premium (1.195 kr/md). Enterprise tilføjer mål pr. afdeling.",
+        a: "Starter (fra 300 kr/md) har basis reduktions-tracking med ét mål. Det fulde modul (ubegrænsede mål, SBTi-skabeloner og scenario-til-target-konvertering) er inkluderet i Premium (1.195 kr/md). Enterprise tilføjer mål pr. afdeling.",
       },
       {
         q: "Kan vi sætte mål pr. afdeling?",
@@ -201,24 +201,24 @@ export const PR_TILTAG: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_SCENARIER — Scenario Planner
+// PR_SCENARIER: Scenario Planner
 // ---------------------------------------------------------------------------
 
 export const PR_SCENARIER: MarketingPageCopy = {
   hero: {
     eyebrow: "Scenarier",
-    title: "Test reduktionen på dit eget regnskab — før du investerer",
+    title: "Test reduktionen på dit eget regnskab: før du investerer",
     subtitle:
       "Simulér fremtidige reduktionsstier direkte på dit faktiske klimaregnskab, sammenlign scenarier mod målet, og beslut på data i stedet for mavefornemmelse.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
-    heading: "\"Hvor meget CO₂e sparer vi?\" — svaret på minutter, ikke uger",
+    heading: "\"Hvor meget CO₂e sparer vi?\": svaret på minutter, ikke uger",
     body:
-      "Skal I skifte til elbiler? Udskifte jeres største leverandør? Indføre fjernarbejde? Hver beslutning koster penge, og ledelsen vil typisk vide hvor meget CO₂e den sparer, før de underskriver. Den klassiske vej er en konsulent-analyse: 4-6 uger og 50.000-150.000 kr. pr. beslutning [antagelse: pilot-interview] — og når svaret kommer, er beslutningen ofte allerede taget. qlim8 Scenario Planner går den anden vej. Du markerer de aktiviteter et tiltag påvirker, vælger tiltaget, og systemet genberegner den nye total på dit eget regnskab. Du sammenligner flere scenarier side om side, deler med ledelsen, og konverterer det godkendte scenarie til et reduktions-mål med ét klik.",
+      "Skal I skifte til elbiler? Udskifte jeres største leverandør? Indføre fjernarbejde? Hver beslutning koster penge, og ledelsen vil typisk vide hvor meget CO₂e den sparer, før de underskriver. Den klassiske vej er en konsulent-analyse: 4-6 uger og 50.000-150.000 kr. pr. beslutning [antagelse: pilot-interview], og når svaret kommer, er beslutningen ofte allerede taget. qlim8 Scenario Planner går den anden vej. Du markerer de aktiviteter et tiltag påvirker, vælger tiltaget, og systemet genberegner den nye total på dit eget regnskab. Du sammenligner flere scenarier side om side, deler med ledelsen, og konverterer det godkendte scenarie til et reduktions-mål med ét klik.",
     bullets: [
-      "Modellér på dine egne tal — ikke en generisk online-kalkulator",
+      "Modellér på dine egne tal, ikke en generisk online-kalkulator",
       "Sammenlign op til 4 scenarier side om side mod baseline",
       "Se både CO₂e-effekt og økonomisk indvirkning",
       "Konvertér et godkendt scenarie til et reduktions-mål med ét klik",
@@ -227,7 +227,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
   painPoints: [
     {
       pain:
-        "Ledelsen beder om \"hvor meget CO₂e sparer vi\", men der findes ikke et one-button-svar — og en konsulent-rapport tager 6 uger.",
+        "Ledelsen beder om \"hvor meget CO₂e sparer vi\", men der findes ikke et one-button-svar, og en konsulent-rapport tager 6 uger.",
       solution:
         "Scenario Planner modellerer ændringen direkte på dit klimaregnskab og viser den nye total på minutter, med kilde-citation på tallene.",
       outcome:
@@ -245,7 +245,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       pain:
         "I risikerer at investere 200.000 kr. i et tiltag ud fra en antaget effekt der viser sig at være helt forkert.",
       solution:
-        "Fordi modellen bruger dine faktiske aktiviteter og faktorer, ser I den reelle effekt før pengene bindes — fx at et elbil-skift kun giver 8 % og ikke de antagede 30 %.",
+        "Fordi modellen bruger dine faktiske aktiviteter og faktorer, ser I den reelle effekt før pengene bindes, fx at et elbil-skift kun giver 8 % og ikke de antagede 30 %.",
       outcome:
         "Undgå fejl-investeringer ved at se det reelle hjemtag før beslutningen tages.",
     },
@@ -255,7 +255,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       solution:
         "Baseline og scenarie vises side om side med gemte forudsætninger og dato, så grundlaget er gennemsigtigt og efterprøvbart.",
       outcome:
-        "Ingen \"hvor kom estimatet fra?\"-runder — forudsætningerne er gemt med scenariet.",
+        "Ingen \"hvor kom estimatet fra?\"-runder. Forudsætningerne er gemt med scenariet.",
     },
     {
       pain:
@@ -263,7 +263,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       solution:
         "Konvertér det godkendte scenarie til et reduktions-mål med ét klik, så tiltaget måles mod det faktiske regnskab fremover.",
       outcome:
-        "Fra plan til målt fremdrift uden at genindtaste noget — planen bliver til et sporet mål.",
+        "Fra plan til målt fremdrift uden at genindtaste noget. Planen bliver til et sporet mål.",
     },
   ],
   features: [
@@ -309,7 +309,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       {
         title: "2. Vælg tiltag og aktiviteter",
         body:
-          "Marker de aktiviteter tiltaget påvirker — fx firmabil-kørslen — og vælg tiltaget. Systemet genberegner totalen med de nye faktorer.",
+          "Marker de aktiviteter tiltaget påvirker, fx firmabil-kørslen, og vælg tiltaget. Systemet genberegner totalen med de nye faktorer.",
       },
       {
         title: "3. Sammenlign mod mål",
@@ -348,7 +348,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
     items: [
       {
         q: "Hvordan adskiller det sig fra en online CO₂-kalkulator?",
-        a: "En online-kalkulator bruger gennemsnitstal og ved intet om din virksomhed. Scenario Planner modellerer ændringen på dit eget klimaregnskab — dine faktiske aktiviteter og de rigtige emissionsfaktorer — så tallet afspejler netop jeres situation, ikke et branchegennemsnit.",
+        a: "En online-kalkulator bruger gennemsnitstal og ved intet om din virksomhed. Scenario Planner modellerer ændringen på dit eget klimaregnskab, dine faktiske aktiviteter og de rigtige emissionsfaktorer, så tallet afspejler netop jeres situation, ikke et branchegennemsnit.",
       },
       {
         q: "Kan jeg sammenligne flere scenarier på én gang?",
@@ -356,7 +356,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       },
       {
         q: "Viser scenariet også den økonomiske effekt?",
-        a: "Ja. Hvert scenarie beregner både CO₂e-effekt og økonomisk indvirkning, så beslutningen bliver en afvejning på data — ikke kun et klima-tal isoleret fra kronerne.",
+        a: "Ja. Hvert scenarie beregner både CO₂e-effekt og økonomisk indvirkning, så beslutningen bliver en afvejning på data, ikke kun et klima-tal isoleret fra kronerne.",
       },
       {
         q: "Hvad sker der når vi har besluttet os?",
@@ -373,7 +373,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
     ],
   },
   closingCta: {
-    title: "Beslut din næste reduktion på data — ikke på et gæt",
+    title: "Beslut din næste reduktion på data: ikke på et gæt",
     description:
       "Modellér tiltag på dit eget klimaregnskab, sammenlign scenarier mod målet, og konvertér det godkendte til et reduktions-mål. Inkluderet i Premium.",
     primary: PRIMARY_CTA,
@@ -382,13 +382,13 @@ export const PR_SCENARIER: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_REVISOR_ADGANG — Revisor / tredjeparts-adgang
+// PR_REVISOR_ADGANG: Revisor / tredjeparts-adgang
 // ---------------------------------------------------------------------------
 
 export const PR_REVISOR_ADGANG: MarketingPageCopy = {
   hero: {
     eyebrow: "Revisor-adgang",
-    title: "Giv din revisor direkte adgang — slut med frem-og-tilbage-mails",
+    title: "Giv din revisor direkte adgang: slut med frem-og-tilbage-mails",
     subtitle:
       "Lad din revisor eller rådgiver arbejde direkte i klimaregnskabet med read-only audit-adgang. De validerer data og følger audit-sporet selv, uden at I sender filer frem og tilbage.",
     primaryCta: PRIMARY_CTA,
@@ -397,12 +397,12 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
   intro: {
     heading: "Én adgang i stedet for tolv fil-versioner",
     body:
-      "Rapporterings-sæsonen ender ofte i en mail-kæde: revisoren beder om et bilag, du sender en Excel-fil, de spørger hvor et tal kommer fra, du graver i regnskabet, og sådan fortsætter det. qlim8 vender det om. Med tredjeparts-adgang får din revisor eller rådgiver et audit-pack-scope: fuld lineage på hver kg CO₂e tilbage til kilde-fakturaen, read-only, så de kan validere data uden at kunne ændre noget ved et uheld. De ser det samme regnskab som dig, i realtid. Når rapporten er klar, sender du en sign-off-anmodning, og revisorens underskrift låses kryptografisk — selv hvis regnskabet senere ændres, forbliver den underskrevne version uændret.",
+      "Rapporterings-sæsonen ender ofte i en mail-kæde: revisoren beder om et bilag, du sender en Excel-fil, de spørger hvor et tal kommer fra, du graver i regnskabet, og sådan fortsætter det. qlim8 vender det om. Med tredjeparts-adgang får din revisor eller rådgiver et audit-pack-scope: fuld lineage på hver kg CO₂e tilbage til kilde-fakturaen, read-only, så de kan validere data uden at kunne ændre noget ved et uheld. De ser det samme regnskab som dig, i realtid. Når rapporten er klar, sender du en sign-off-anmodning, og revisorens underskrift låses kryptografisk, selv hvis regnskabet senere ændres, forbliver den underskrevne version uændret.",
     bullets: [
-      "Audit-pack-scope: fuld lineage, read-only — designet til revisor-arbejde",
+      "Audit-pack-scope: fuld lineage, read-only, designet til revisor-arbejde",
       "Kryptografisk sign-off, så den underskrevne rapport-version låses",
       "Privat kommentar-tråd pr. klient og pr. emission-post",
-      "Ét konsulent-login dækker ubegrænset klienter — ingen seat-fee pr. klient",
+      "Ét konsulent-login dækker ubegrænset klienter, ingen seat-fee pr. klient",
     ],
   },
   painPoints: [
@@ -412,7 +412,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
       solution:
         "Audit-pack-scope giver revisoren fuld lineage: de klikker sig fra en kg CO₂e tilbage til kilde-fakturaen selv, uden at spørge dig.",
       outcome:
-        "Færre frem-og-tilbage-mails — revisoren validerer sporet direkte i stedet for at bede om bilag.",
+        "Færre frem-og-tilbage-mails: revisoren validerer sporet direkte i stedet for at bede om bilag.",
     },
     {
       pain:
@@ -434,17 +434,17 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
       pain:
         "Du er nervøs for ved et uheld at ændre klientens data, mens du gennemgår regnskabet.",
       solution:
-        "Audit-pack-scope er read-only — du kan se hver post og hele sporet, men ikke ændre noget. Klientens data er beskyttet.",
+        "Audit-pack-scope er read-only: du kan se hver post og hele sporet, men ikke ændre noget. Klientens data er beskyttet.",
       outcome:
         "Ingen risiko for utilsigtede ændringer i klient-data under review.",
     },
     {
       pain:
-        "En underskrevet rapport skal kunne stå fast — men i regneark kan tallene ændre sig efter din underskrift.",
+        "En underskrevet rapport skal kunne stå fast, men i regneark kan tallene ændre sig efter din underskrift.",
       solution:
         "Sign-off-flowet giver en kryptografisk underskrift der låses til rapport-versionen. Ændrer klienten regnskabet senere, forbliver den underskrevne version uændret.",
       outcome:
-        "Audit-integritet som CSRD og VSME kræver — din underskrift kan ikke rykkes bagudrettet.",
+        "Audit-integritet som CSRD og VSME kræver. Din underskrift kan ikke rykkes bagudrettet.",
     },
   ],
   features: [
@@ -461,7 +461,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     {
       title: "Kryptografisk sign-off",
       body:
-        "Når rapporten er klar, anmoder du om underskrift, og din signatur låses kryptografisk til versionen. Selv om klienten senere ændrer regnskabet, står den underskrevne rapport uændret — den audit-integritet CSRD og VSME kræver.",
+        "Når rapporten er klar, anmoder du om underskrift, og din signatur låses kryptografisk til versionen. Selv om klienten senere ændrer regnskabet, står den underskrevne rapport uændret, den audit-integritet CSRD og VSME kræver.",
     },
     {
       title: "Private kommentar-tråde",
@@ -495,7 +495,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
       {
         title: "3. Valider og kommentér",
         body:
-          "Revisoren validerer data og efterlader noter i den private kommentar-tråd pr. post — uden at kunne ændre tallene.",
+          "Revisoren validerer data og efterlader noter i den private kommentar-tråd pr. post, uden at kunne ændre tallene.",
       },
       {
         title: "4. Sign-off og lås",
@@ -522,7 +522,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     },
     {
       value: "Read-only",
-      label: "audit-pack — ingen utilsigtede ændringer",
+      label: "audit-pack: ingen utilsigtede ændringer",
     },
   ],
   faq: {
@@ -555,7 +555,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     ],
   },
   closingCta: {
-    title: "Lad din revisor validere regnskabet — uden en eneste bilags-mail",
+    title: "Lad din revisor validere regnskabet: uden en eneste bilags-mail",
     description:
       "Giv din revisor eller rådgiver read-only audit-adgang med fuld lineage og kryptografisk sign-off. Ét login dækker ubegrænset klienter, uden seat-fee.",
     primary: PRIMARY_CTA,
@@ -564,24 +564,24 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_LEVERANDOERKAEDE — Scope 3 værdikæde
+// PR_LEVERANDOERKAEDE: Scope 3 værdikæde
 // ---------------------------------------------------------------------------
 
 export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
   hero: {
     eyebrow: "Leverandørkæde",
-    title: "Saml Scope 3 fra leverandørerne — send ét link, ikke 50 mails",
+    title: "Saml Scope 3 fra leverandørerne: send ét link, ikke 50 mails",
     subtitle:
       "Kortlæg dine leverandører via CVR-opslag, inviter dem til at dele deres Scope 3-data direkte, og se dækningsgrad og eksponering i ét regnskab. Slut med at jagte leverandører i mailtråde.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
-    heading: "Scope 3 er 70-90 % af aftrykket — og det ligger hos andre",
+    heading: "Scope 3 er 70-90 % af aftrykket: og det ligger hos andre",
     body:
-      "Scope 3 dækker alle udledninger uden for din egen drift, og det er typisk 70-90 % af det samlede CO₂e-aftryk. Problemet er at data ligger spredt hos hundredvis af leverandører, transportører og affaldshåndtere. CSRD og VSME kræver at du dokumenterer det — og Excel med 47 vedhæftninger skalerer ikke. qlim8 Værdikæde gør indsamlingen til en self-service-portal. Du kortlægger leverandøren via CVR-opslag, sender én invitation, og leverandøren logger ind og deler kun det relevante — ikke hele deres regnskab. Du ser tallene live i dit eget regnskab, med kilde, dato og leverandørens egen signatur. Reminder-mails sendes automatisk, så indsamlingen kører i baggrunden hen over kvartalet.",
+      "Scope 3 dækker alle udledninger uden for din egen drift, og det er typisk 70-90 % af det samlede CO₂e-aftryk. Problemet er at data ligger spredt hos hundredvis af leverandører, transportører og affaldshåndtere. CSRD og VSME kræver at du dokumenterer det, og Excel med 47 vedhæftninger skalerer ikke. qlim8 Værdikæde gør indsamlingen til en self-service-portal. Du kortlægger leverandøren via CVR-opslag, sender én invitation, og leverandøren logger ind og deler kun det relevante, ikke hele deres regnskab. Du ser tallene live i dit eget regnskab, med kilde, dato og leverandørens egen signatur. Reminder-mails sendes automatisk, så indsamlingen kører i baggrunden hen over kvartalet.",
     bullets: [
-      "Kortlæg leverandører via CVR-opslag — ingen manuel stamdata",
+      "Kortlæg leverandører via CVR-opslag, ingen manuel stamdata",
       "Ét delt regnskab i stedet for 47 Excel-vedhæftninger",
       "Audit-trail: hver delt værdi har kilde + dato (gemmes i 7 år)",
       "Dækningsgrad og eksponering pr. leverandør, live i regnskabet",
@@ -610,7 +610,7 @@ export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
       solution:
         "Hver delt værdi har kilde og dato i en audit-log der gemmes i 7 år, som CSRD kræver. Din revisor kan læse leverandør-sporet direkte via audit-pack-scope.",
       outcome:
-        "Dokumenteret Scope 3-datakæde — markant lavere CSRD-revisor-risiko end mail-baseret indsamling.",
+        "Dokumenteret Scope 3-datakæde: markant lavere CSRD-revisor-risiko end mail-baseret indsamling.",
     },
     {
       pain:
@@ -622,11 +622,11 @@ export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
     },
     {
       pain:
-        "I ved ikke hvor stor en del af jeres Scope 3 der faktisk er dækket af data — versus estimeret eller manglende.",
+        "I ved ikke hvor stor en del af jeres Scope 3 der faktisk er dækket af data, versus estimeret eller manglende.",
       solution:
         "Portalen viser dækningsgrad og eksponering pr. leverandør, så I ser præcis hvor meget der er dokumenteret og hvor hullerne er.",
       outcome:
-        "Overblik over dækningsgrad frem for et gæt — I ved hvilke leverandører der mangler at levere.",
+        "Overblik over dækningsgrad frem for et gæt, I ved hvilke leverandører der mangler at levere.",
     },
   ],
   features: [
@@ -638,7 +638,7 @@ export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
     {
       title: "Self-service leverandør-portal",
       body:
-        "Leverandøren får et login og deler kun det relevante — ikke hele deres regnskab. Data lander i samme format hver gang, så du slipper for at oversætte 12 forskellige Excel-skabeloner.",
+        "Leverandøren får et login og deler kun det relevante, ikke hele deres regnskab. Data lander i samme format hver gang, så du slipper for at oversætte 12 forskellige Excel-skabeloner.",
     },
     {
       title: "Automatiske reminders",
@@ -667,7 +667,7 @@ export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
       {
         title: "1. Kortlæg leverandøren",
         body:
-          "Slå leverandøren op på CVR og opret dem i værdikæden. Ingen manuel stamdata — kortlægningen er et par klik.",
+          "Slå leverandøren op på CVR og opret dem i værdikæden. Ingen manuel stamdata: kortlægningen er et par klik.",
       },
       {
         title: "2. Send ét link",
@@ -731,12 +731,12 @@ export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
       },
       {
         q: "Hvilket abonnement kræver værdikæde-modulet?",
-        a: "At sende leverandør-invitationer og modtage struktureret data er en Enterprise-feature. Starter og Premium kan modtage invitationer som leverandør — altså dele deres egne tal med en større kunde — men ikke selv sende dem.",
+        a: "At sende leverandør-invitationer og modtage struktureret data er en Enterprise-feature. Starter og Premium kan modtage invitationer som leverandør, altså dele deres egne tal med en større kunde, men ikke selv sende dem.",
       },
     ],
   },
   closingCta: {
-    title: "Saml din Scope 3 ét sted — og send aldrig en opfølgnings-mail igen",
+    title: "Saml din Scope 3 ét sted: og send aldrig en opfølgnings-mail igen",
     description:
       "Kortlæg leverandører via CVR, send ét link, og se deres Scope 3-data flyde ind i dit regnskab med audit-trail. Ubegrænsede supplier-connections i Enterprise.",
     primary: PRIMARY_CTA,
@@ -745,13 +745,13 @@ export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// PR_BRAGBOARD — Offentlig ESG-profil
+// PR_BRAGBOARD: Offentlig ESG-profil
 // ---------------------------------------------------------------------------
 
 export const PR_BRAGBOARD: MarketingPageCopy = {
   hero: {
     eyebrow: "Brag Board",
-    title: "Vis dine klima-tal til markedet — og lad kunderne tjekke",
+    title: "Vis dine klima-tal til markedet: og lad kunderne tjekke",
     subtitle:
       "En delbar, offentlig ESG-profil med dit klimaregnskab: opt-in, audit-bakket og leverandør-klar. Gør ESG til et salgsargument i udbud og kundedialog i stedet for en PDF du sender manuelt.",
     primaryCta: PRIMARY_CTA,
@@ -760,9 +760,9 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
   intro: {
     heading: "Fra \"vi er ved at lave en strategi\" til verificerbare tal",
     body:
-      "Når en kunde, bank eller udbudsgiver spørger om dit CO₂e-aftryk, har du tre valg: sende en PDF (manuelt arbejde hver gang), sige \"vi er ved at lave noget\" (og miste troværdighed), eller dele en profil med dine faktiske tal og lade dem tjekke. qlim8s offentlige ESG-profil er det tredje. Du aktiverer en delbar URL — fx qlim8.com/p/dinvirksomhed — der viser dit klimaregnskab i det format du vælger. Du bestemmer hvilke felter der er offentlige, og profilen opdateres automatisk når regnskabet ændres, så du undgår versions-mareridt. Det vigtige er at hver påstand er audit-bakket: profilen viser ikke \"vi er klimavenlige\", men \"Scope 1: 12 tons, Scope 2: 5 tons, Scope 3: 145 tons (kilde: VSME-rapport 2025)\".",
+      "Når en kunde, bank eller udbudsgiver spørger om dit CO₂e-aftryk, har du tre valg: sende en PDF (manuelt arbejde hver gang), sige \"vi er ved at lave noget\" (og miste troværdighed), eller dele en profil med dine faktiske tal og lade dem tjekke. qlim8s offentlige ESG-profil er det tredje. Du aktiverer en delbar URL: fx qlim8.com/p/dinvirksomhed, der viser dit klimaregnskab i det format du vælger. Du bestemmer hvilke felter der er offentlige, og profilen opdateres automatisk når regnskabet ændres, så du undgår versions-mareridt. Det vigtige er at hver påstand er audit-bakket: profilen viser ikke \"vi er klimavenlige\", men \"Scope 1: 12 tons, Scope 2: 5 tons, Scope 3: 145 tons (kilde: VSME-rapport 2025)\".",
     bullets: [
-      "Delbar URL — ingen PDF at vedhæfte i 47 mails",
+      "Delbar URL: ingen PDF at vedhæfte i 47 mails",
       "Opt-in og granulær: du vælger præcis hvad der vises",
       "Audit-bakket: hver påstand har kilde-citation",
       "Badge til hjemmeside og e-mail-signatur",
@@ -775,7 +775,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       solution:
         "En delbar URL erstatter PDF'en. Du sender ét link der altid viser de aktuelle tal, og profilen opdateres automatisk når regnskabet ændres.",
       outcome:
-        "Spar 15-30 minutter pr. kunde-forespørgsel — ved 50 forespørgsler/år er det ~12-25 timer [antagelse: pilot-tal].",
+        "Spar 15-30 minutter pr. kunde-forespørgsel. Ved 50 forespørgsler/år er det ~12-25 timer [antagelse: pilot-tal].",
     },
     {
       pain:
@@ -791,13 +791,13 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       solution:
         "Profilen viser konkrete tal med kilde og underskrift, ikke løse påstande. Alt er bakket af et audit-trail, og du vælger opt-in hvad der vises.",
       outcome:
-        "Verificerbar dokumentation frem for markedsføring — lavere eksponering mod greenwashing-kritik.",
+        "Verificerbar dokumentation frem for markedsføring, lavere eksponering mod greenwashing-kritik.",
     },
     {
       pain:
         "En intern note kunne ved et uheld blive offentlig, og en statisk hjemmeside-sektion drifter væk fra det faktiske regnskab.",
       solution:
-        "Profilen er opt-in og granulær — du styrer felt for felt hvad der vises — og den trækker live fra regnskabet, så den aldrig bliver forældet.",
+        "Profilen er opt-in og granulær, du styrer felt for felt hvad der vises, og den trækker live fra regnskabet, så den aldrig bliver forældet.",
       outcome:
         "Ingen \"en intern note blev offentlig\"-uheld og ingen manuel opdatering af tal på hjemmesiden.",
     },
@@ -807,7 +807,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       solution:
         "En audit-bakket profil er et salgsargument i udbud og kundedialog, og schema.org-markup gør at Google fremhæver tallene i søge-snippets.",
       outcome:
-        "For en virksomhed med 5 mio. i omsætning er tilbud hvor klima var blocker typisk 5-15 % af pipeline — 250.000-750.000 kr. i potentiel impact [antagelse: sales-feedback].",
+        "For en virksomhed med 5 mio. i omsætning er tilbud hvor klima var blocker typisk 5-15 % af pipeline, 250.000-750.000 kr. i potentiel impact [antagelse: sales-feedback].",
     },
   ],
   features: [
@@ -819,7 +819,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
     {
       title: "Opt-in og granulær kontrol",
       body:
-        "Profilen er aldrig auto-offentlig — du aktiverer den bevidst og vælger felt for felt hvad der vises: kun aggregerede tal, pr. scope, eller pr. kategori. Du bestemmer præcis hvad markedet ser.",
+        "Profilen er aldrig auto-offentlig: du aktiverer den bevidst og vælger felt for felt hvad der vises: kun aggregerede tal, pr. scope, eller pr. kategori. Du bestemmer præcis hvad markedet ser.",
     },
     {
       title: "Audit-bakket data",
@@ -853,7 +853,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       {
         title: "2. Vælg hvad der vises",
         body:
-          "Bestem felt for felt hvad der er offentligt — aggregerede tal, pr. scope, eller pr. kategori — så du kun deler det du vil.",
+          "Bestem felt for felt hvad der er offentligt, aggregerede tal, pr. scope, eller pr. kategori. Så du kun deler det du vil.",
       },
       {
         title: "3. Del URL og badge",
@@ -880,7 +880,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
     },
     {
       value: "Opt-in",
-      label: "aldrig auto-offentlig — du vælger felterne",
+      label: "aldrig auto-offentlig: du vælger felterne",
     },
     {
       value: "Auto",
@@ -892,7 +892,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
     items: [
       {
         q: "Bliver mit regnskab automatisk offentligt?",
-        a: "Nej. Profilen er opt-in og bliver aldrig offentlig af sig selv. Du aktiverer den bevidst og vælger felt for felt hvad der vises — kun aggregerede tal, pr. scope, eller pr. kategori. Resten forbliver privat.",
+        a: "Nej. Profilen er opt-in og bliver aldrig offentlig af sig selv. Du aktiverer den bevidst og vælger felt for felt hvad der vises, kun aggregerede tal, pr. scope, eller pr. kategori. Resten forbliver privat.",
       },
       {
         q: "Hvordan undgår jeg at det ligner greenwashing?",
@@ -904,7 +904,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       },
       {
         q: "Kan jeg bruge profilen i udbud og salg?",
-        a: "Ja — det er netop pointen. Du deler URL'en i tilbud, e-mail-signatur og LinkedIn, og et badge på hjemmesiden. Når blocker'en \"har de tal vi kan stole på?\" fjernes tidligt, går grønne tilbud typisk 1-3 uger hurtigere igennem [antagelse: pilot-feedback].",
+        a: "Ja: det er netop pointen. Du deler URL'en i tilbud, e-mail-signatur og LinkedIn, og et badge på hjemmesiden. Når blocker'en \"har de tal vi kan stole på?\" fjernes tidligt, går grønne tilbud typisk 1-3 uger hurtigere igennem [antagelse: pilot-feedback].",
       },
       {
         q: "Hjælper profilen på Google?",

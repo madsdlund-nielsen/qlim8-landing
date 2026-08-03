@@ -1,6 +1,6 @@
 import type { MarketingPageCopy } from "@/content/marketing/types";
 
-// Kundetyper — batch B: Revisorer, Plastfabrikanter, Rådgivere, Konsulenter,
+// Kundetyper: batch B: Revisorer, Plastfabrikanter, Rådgivere, Konsulenter,
 // Frisører, Store virksomheder. Danish long-form marketing copy, typed as data.
 // Brand-voice + positioning per docs/da/marketing/_shared/*. Fixed CTA conventions.
 
@@ -12,13 +12,13 @@ const HERO_SECONDARY_CTA = { label: "Se priser", href: "/priser" };
 const CLOSING_SECONDARY_CTA = { label: "Book demo", href: "/kontakt" };
 
 // ---------------------------------------------------------------------------
-// Revisorer — 3rd-party / partner audience
+// Revisorer: 3rd-party / partner audience
 // ---------------------------------------------------------------------------
 
 export const KT_REVISOR: MarketingPageCopy = {
   hero: {
     eyebrow: "For revisorer og bogholdere",
-    title: "Tilbyd klimaregnskab som ydelse — uden licens-omkostning pr. klient",
+    title: "Tilbyd klimaregnskab som ydelse: uden licens-omkostning pr. klient",
     subtitle:
       "Dine kunder spørger allerede om CO₂e-tal. Med qlim8 håndterer du alle dine klienters klimaregnskab fra ét konsulent-login, mens klienten selv betaler abonnementet.",
     primaryCta: PRIMARY_CTA,
@@ -27,11 +27,11 @@ export const KT_REVISOR: MarketingPageCopy = {
   intro: {
     heading: "Klimaregnskab er en oplagt udvidelse af din praksis",
     body:
-      "Data ligger allerede i den bogføring, du håndterer. Problemet er, at de fleste ESG-platforme er bygget til kunden — ikke til dig, der betjener 20 kunder på én gang. Så snart hver klient kræver sin egen licens og sit eget system at lære, æder det marginen på ydelsen, før du er begyndt. qlim8 vender det om. Vores tredjeparts-adgang giver dig ét login, der dækker ubegrænset klienter, og audit-pack-scope giver dig fuld lineage read-only: du ser hver kg CO₂e tilbage til kilde-fakturaen uden at kunne ændre klientens data ved en fejl. Du bygger en ny fakturerbar ydelse oven på det regnskabsarbejde, du allerede laver.",
+      "Data ligger allerede i den bogføring, du håndterer. Problemet er, at de fleste ESG-platforme er bygget til kunden, ikke til dig, der betjener 20 kunder på én gang. Så snart hver klient kræver sin egen licens og sit eget system at lære, æder det marginen på ydelsen, før du er begyndt. qlim8 vender det om. Vores tredjeparts-adgang giver dig ét login, der dækker ubegrænset klienter, og audit-pack-scope giver dig fuld lineage read-only: du ser hver kg CO₂e tilbage til kilde-fakturaen uden at kunne ændre klientens data ved en fejl. Du bygger en ny fakturerbar ydelse oven på det regnskabsarbejde, du allerede laver.",
     bullets: [
-      "Ét konsulent-login dækker ubegrænset klienter — ingen seat-fee pr. kunde.",
+      "Ét konsulent-login dækker ubegrænset klienter, ingen seat-fee pr. kunde.",
       "Klient-tenant betaler abonnementet; du lægger ikke licens til dit eget regnskab.",
-      "Audit-pack-scope: fuld lineage, read-only — bygget til revisorarbejde.",
+      "Audit-pack-scope: fuld lineage, read-only, bygget til revisorarbejde.",
       "Kryptografisk sign-off på rapporter, der låses efter din underskrift.",
     ],
   },
@@ -40,7 +40,7 @@ export const KT_REVISOR: MarketingPageCopy = {
       pain:
         "ESG-konsulentsoftware koster typisk pr. klient-licens. Med 20 kunder er licensen alene en fast omkostning, før du har faktureret en eneste time.",
       solution:
-        "qlim8 lægger abonnementet hos klient-tenanten. Din tredjeparts-adgang koster ikke seat-fee — du tilføjer klienter uden at din egen omkostning stiger.",
+        "qlim8 lægger abonnementet hos klient-tenanten. Din tredjeparts-adgang koster ikke seat-fee, du tilføjer klienter uden at din egen omkostning stiger.",
       outcome:
         "0 kr. i licens-omkostning på din side; hele fakturaen er dækningsbidrag på arbejdet.",
     },
@@ -64,7 +64,7 @@ export const KT_REVISOR: MarketingPageCopy = {
       pain:
         "Du er ansvarlig for det, du underskriver. En rapport, klienten kan ændre bagefter, er en risiko for din underskrift.",
       solution:
-        "Sign-off-flowet er bygget til revisorpraksis. Din underskrift på en rapport er kryptografisk verificeret og låst — ændrer klienten regnskabet senere, forbliver den underskrevne version uændret.",
+        "Sign-off-flowet er bygget til revisorpraksis. Din underskrift på en rapport er kryptografisk verificeret og låst, ændrer klienten regnskabet senere, forbliver den underskrevne version uændret.",
       outcome:
         "Den audit-integritet, som CSRD og VSME kræver, uden manuel versionsstyring.",
     },
@@ -74,14 +74,14 @@ export const KT_REVISOR: MarketingPageCopy = {
       solution:
         "Privat kommentar-tråd pr. klient og pr. emission-post holder din interne dokumentation adskilt fra det, klienten ser.",
       outcome:
-        "Intern dokumentation forbliver intern — pr. klient, pr. post.",
+        "Intern dokumentation forbliver intern, pr. klient, pr. post.",
     },
   ],
   features: [
     {
       title: "Ét login, ubegrænset klienter",
       body:
-        "Tredjeparts-adgangs-flowet giver dig ét konsulent-login med en liste over alle dine klient-tenants og rød/gul/grøn-status pr. rapport. Du klikker en klient og er inde — ingen skift mellem 20 separate konti, ingen ny licens pr. relation.",
+        "Tredjeparts-adgangs-flowet giver dig ét konsulent-login med en liste over alle dine klient-tenants og rød/gul/grøn-status pr. rapport. Du klikker en klient og er inde: ingen skift mellem 20 separate konti, ingen ny licens pr. relation.",
     },
     {
       title: "Audit-pack-scope: read-only med fuld lineage",
@@ -91,7 +91,7 @@ export const KT_REVISOR: MarketingPageCopy = {
     {
       title: "Kryptografisk sign-off",
       body:
-        "Når rapporten er klar, anmoder du om underskrift. Din sign-off er kryptografisk verificeret og låst til den version, du godkendte. Selv hvis regnskabet ændres bagefter, står den underskrevne rapport uændret — audit-sikker efter CSRD- og VSME-standard.",
+        "Når rapporten er klar, anmoder du om underskrift. Din sign-off er kryptografisk verificeret og låst til den version, du godkendte. Selv hvis regnskabet ændres bagefter, står den underskrevne rapport uændret, audit-sikker efter CSRD- og VSME-standard.",
     },
     {
       title: "Hvid-mærket rapport",
@@ -132,7 +132,7 @@ export const KT_REVISOR: MarketingPageCopy = {
     },
   ],
   faq: {
-    title: "Ofte stillede spørgsmål — revisorer og bogholdere",
+    title: "Ofte stillede spørgsmål: revisorer og bogholdere",
     items: [
       {
         q: "Skal jeg betale en licens pr. klient?",
@@ -140,7 +140,7 @@ export const KT_REVISOR: MarketingPageCopy = {
       },
       {
         q: "Kan jeg komme til at ændre en klients data ved en fejl?",
-        a: "Nej. Audit-pack-scope er read-only. Du ser fuld lineage — hver kg CO₂e tilbage til kilde-fakturaen — men du har ikke write-access til klientens tal. Det er designet, så du ikke utilsigtet kan ændre noget under et revisorforløb.",
+        a: "Nej. Audit-pack-scope er read-only. Du ser fuld lineage, hver kg CO₂e tilbage til kilde-fakturaen, men du har ikke write-access til klientens tal. Det er designet, så du ikke utilsigtet kan ændre noget under et revisorforløb.",
       },
       {
         q: "Hvordan fungerer sign-off, og holder den ved revision?",
@@ -170,7 +170,7 @@ export const KT_REVISOR: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// Plastik fabrikanter — energy-intensive manufacturing
+// Plastik fabrikanter: energy-intensive manufacturing
 // ---------------------------------------------------------------------------
 
 export const KT_PLASTFABRIKANT: MarketingPageCopy = {
@@ -185,9 +185,9 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
   intro: {
     heading: "Klimaregnskabet skal kunne følge med produktionen",
     body:
-      "For en plastikproducent ligger CO₂e-aftrykket to steder: i den energi, ekstruderingen og sprøjtestøbningen bruger (Scope 1 og 2), og i det granulat og de råvarer, du køber ind (Scope 3). Oveni presser kunderne på med krav om produkt-specifikke tal, og CSRD begynder at forplante sig op gennem værdikæden. qlim8 trækker elforbruget direkte fra Eloverblik og bygger et GHG Protocol-konsistent klimaregnskab oven på din bogføring — inklusive et produkt-carbon-footprint (PCF), du kan give videre til kunden. Vær opmærksom på afgrænsningen: vi laver corporate carbon accounting og PCF, ikke fuld cradle-to-grave livscyklus-analyse (LCA) med miljømærkning. Skal du bruge et detaljeret EPD-miljømærke, er det et LCA-værktøj, du skal supplere med.",
+      "For en plastikproducent ligger CO₂e-aftrykket to steder: i den energi, ekstruderingen og sprøjtestøbningen bruger (Scope 1 og 2), og i det granulat og de råvarer, du køber ind (Scope 3). Oveni presser kunderne på med krav om produkt-specifikke tal, og CSRD begynder at forplante sig op gennem værdikæden. qlim8 trækker elforbruget direkte fra Eloverblik og bygger et GHG Protocol-konsistent klimaregnskab oven på din bogføring, inklusive et produkt-carbon-footprint (PCF), du kan give videre til kunden. Vær opmærksom på afgrænsningen: vi laver corporate carbon accounting og PCF, ikke fuld cradle-to-grave livscyklus-analyse (LCA) med miljømærkning. Skal du bruge et detaljeret EPD-miljømærke, er det et LCA-værktøj, du skal supplere med.",
     bullets: [
-      "Scope 1+2 fra din energi — elforbrug hentes automatisk fra Eloverblik.",
+      "Scope 1+2 fra din energi: elforbrug hentes automatisk fra Eloverblik.",
       "Scope 3 fra råvarer og granulat, bygget på dine indkøbsdata.",
       "Produkt-carbon-footprint (PCF), du kan dele med kunder.",
       "GHG Protocol-konsistent output til VSME- og CSRD-rapportering.",
@@ -206,7 +206,7 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
       pain:
         "Granulat og råvarer er den største post i dit aftryk, men leverandørerne oplyser sjældent CO₂e, og du ender med at gætte.",
       solution:
-        "qlim8 kategoriserer dine indkøb og sætter emissionsfaktorer på råvarerne, så Scope 3 kategori 1 (indkøbte varer) bliver et dokumenteret tal med kilde — ikke et skøn.",
+        "qlim8 kategoriserer dine indkøb og sætter emissionsfaktorer på råvarerne, så Scope 3 kategori 1 (indkøbte varer) bliver et dokumenteret tal med kilde, ikke et skøn.",
       outcome:
         "Sporbart Scope 3-indkøbstal med citation pr. faktor, klar til revision.",
     },
@@ -216,13 +216,13 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
       solution:
         "qlim8 beregner et produkt-carbon-footprint (PCF) på virksomheds- og produktniveau, du kan dele direkte med kunden i et struktureret format.",
       outcome:
-        "Et PCF-tal at svare med, når kundens indkøb spørger — i stedet for 'det har vi ikke'.",
+        "Et PCF-tal at svare med, når kundens indkøb spørger, i stedet for 'det har vi ikke'.",
     },
     {
       pain:
         "CSRD rammer dine større kunder først, og de sender kravet videre ned i værdikæden til dig som leverandør.",
       solution:
-        "Bliver du inviteret ind i en kundes værdikæde-portal, deler du kun det relevante Scope 3-tal — ikke hele dit regnskab — med audit-log og dato på hver delt værdi.",
+        "Bliver du inviteret ind i en kundes værdikæde-portal, deler du kun det relevante Scope 3-tal, ikke hele dit regnskab, med audit-log og dato på hver delt værdi.",
       outcome:
         "Du svarer på kundens CSRD-krav på minutter i stedet for dage med email-frem-og-tilbage.",
     },
@@ -232,7 +232,7 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
       solution:
         "Vær ærlig med dig selv om behovet: qlim8 leverer corporate carbon accounting og PCF, ikke fuld cradle-to-grave LCA. Skal du have et akkrediteret EPD-miljømærke, kombinerer du qlim8 med et dedikeret LCA-værktøj.",
       outcome:
-        "Klarhed over hvad du får — et solidt CO₂e-regnskab og PCF — uden falske løfter om LCA.",
+        "Klarhed over hvad du får, et solidt CO₂e-regnskab og PCF, uden falske løfter om LCA.",
     },
   ],
   features: [
@@ -249,7 +249,7 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
     {
       title: "Produkt-carbon-footprint (PCF)",
       body:
-        "Beregn et CO₂e-tal på produktniveau, du kan dele med kunder, der stiller krav. Det er svaret, når indkøb spørger om produktets aftryk — leveret i et struktureret format i stedet for et løst estimat.",
+        "Beregn et CO₂e-tal på produktniveau, du kan dele med kunder, der stiller krav. Det er svaret, når indkøb spørger om produktets aftryk, leveret i et struktureret format i stedet for et løst estimat.",
     },
     {
       title: "Værdikæde-svar til dine kunder",
@@ -264,7 +264,7 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
     {
       title: "Scenario Planner for reduktioner",
       body:
-        "Overvej du at skifte til grøn strøm eller genanvendt granulat? Scenario Planner viser, hvad tiltaget betyder for dit samlede aftryk, før du investerer — så beslutningen bygger på et tal, ikke en fornemmelse.",
+        "Overvej du at skifte til grøn strøm eller genanvendt granulat? Scenario Planner viser, hvad tiltaget betyder for dit samlede aftryk, før du investerer, så beslutningen bygger på et tal, ikke en fornemmelse.",
     },
   ],
   valueStats: [
@@ -290,7 +290,7 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
     },
   ],
   faq: {
-    title: "Ofte stillede spørgsmål — plastikproducenter",
+    title: "Ofte stillede spørgsmål: plastikproducenter",
     items: [
       {
         q: "Kan qlim8 håndtere vores el-tunge produktion?",
@@ -302,14 +302,14 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
       },
       {
         q: "Kan vi levere et produkt-CO₂e-tal til vores kunder?",
-        a: "Ja. qlim8 beregner et produkt-carbon-footprint (PCF), du kan dele i struktureret format, når kunder stiller krav. Bemærk, at et PCF ikke er det samme som et akkrediteret EPD-miljømærke — se spørgsmålet om LCA nedenfor.",
+        a: "Ja. qlim8 beregner et produkt-carbon-footprint (PCF), du kan dele i struktureret format, når kunder stiller krav. Bemærk, at et PCF ikke er det samme som et akkrediteret EPD-miljømærke, se spørgsmålet om LCA nedenfor.",
       },
       {
         q: "Laver qlim8 en fuld LCA / EPD-miljømærkning?",
         a: "Nej. qlim8 laver corporate carbon accounting og PCF, ikke fuld cradle-to-grave livscyklus-analyse (LCA) med miljømærkning. Har du brug for et akkrediteret EPD, skal du supplere med et dedikeret LCA-værktøj. Vi er ærlige om den afgrænsning frem for at love mere, end vi bygger.",
       },
       {
-        q: "Vores største kunde er CSRD-pligtig — hvad betyder det for os?",
+        q: "Vores største kunde er CSRD-pligtig. Hvad betyder det for os?",
         a: "CSRD-krav forplanter sig ned i værdikæden. Bliver du inviteret ind i en kundes værdikæde-portal, deler du kun det relevante Scope 3-tal med audit-log og dato, uden at udlevere hele dit regnskab. Du bidrager til kundens rapportering på minutter frem for dage.",
       },
       {
@@ -321,14 +321,14 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
   closingCta: {
     title: "Få styr på Scope 1, 2 og 3 for din produktion",
     description:
-      "Opret en gratis konto, kobl Eloverblik på, og se dit energi- og råvareaftryk samlet i ét regnskab — eller book en demo, hvor vi gennemgår PCF og værdikæde-svar.",
+      "Opret en gratis konto, kobl Eloverblik på, og se dit energi- og råvareaftryk samlet i ét regnskab, eller book en demo, hvor vi gennemgår PCF og værdikæde-svar.",
     primary: PRIMARY_CTA,
     secondary: CLOSING_SECONDARY_CTA,
   },
 };
 
 // ---------------------------------------------------------------------------
-// Rådgivere — advisors / engineering consultancies (3rd-party)
+// Rådgivere: advisors / engineering consultancies (3rd-party)
 // ---------------------------------------------------------------------------
 
 export const KT_RAADGIVER: MarketingPageCopy = {
@@ -343,11 +343,11 @@ export const KT_RAADGIVER: MarketingPageCopy = {
   intro: {
     heading: "Rådgivning skalerer ikke på regneark",
     body:
-      "Som rådgiver eller ingeniørhus er klima og ESG en naturlig udvidelse af det, du allerede laver for kunderne. Men når hvert kunde-projekt er et nyt regneark, du bygger fra bunden, kan du ikke tage flere opgaver uden at ansætte flere hænder. Grundlaget er heller ikke sporbart: når kunden — eller kundens revisor — spørger, hvor et tal kommer fra, mangler du kildehenvisningen. qlim8 giver dig ét rådgiver-login med adgang til alle dine kunders klimaregnskab via tredjeparts-adgang. Data trækkes automatisk fra kundens regnskab, hver emission har fuld lineage, og du rådgiver på et fælles, opdateret grundlag i stedet for at vedligeholde 20 løsrevne filer.",
+      "Som rådgiver eller ingeniørhus er klima og ESG en naturlig udvidelse af det, du allerede laver for kunderne. Men når hvert kunde-projekt er et nyt regneark, du bygger fra bunden, kan du ikke tage flere opgaver uden at ansætte flere hænder. Grundlaget er heller ikke sporbart: når kunden, eller kundens revisor, spørger, hvor et tal kommer fra, mangler du kildehenvisningen. qlim8 giver dig ét rådgiver-login med adgang til alle dine kunders klimaregnskab via tredjeparts-adgang. Data trækkes automatisk fra kundens regnskab, hver emission har fuld lineage, og du rådgiver på et fælles, opdateret grundlag i stedet for at vedligeholde 20 løsrevne filer.",
     bullets: [
       "Ét rådgiver-login på tværs af alle dine kunder.",
-      "Kunde-tenant betaler abonnementet — ingen licens hos dig.",
-      "Fuld lineage pr. emission — sporbart rådgivningsgrundlag.",
+      "Kunde-tenant betaler abonnementet: ingen licens hos dig.",
+      "Fuld lineage pr. emission, sporbart rådgivningsgrundlag.",
       "Scenario Planner og tiltag som konkrete rådgivningsværktøjer.",
     ],
   },
@@ -366,13 +366,13 @@ export const KT_RAADGIVER: MarketingPageCopy = {
       solution:
         "Hver emission i qlim8 har fuld lineage tilbage til kilde-fakturaen med faktor-citation. Du kan altid dokumentere, hvorfor et tal ser ud, som det gør.",
       outcome:
-        "Rådgivning, der holder ved revision — ingen 'det tal kan jeg ikke lige forklare'.",
+        "Rådgivning, der holder ved revision. Ingen 'det tal kan jeg ikke lige forklare'.",
     },
     {
       pain:
         "Du vil rådgive proaktivt om reduktioner, men uden et værktøj er scenarier og tiltag noget, du regner i hånden hver gang.",
       solution:
-        "Scenario Planner lader dig modellere konkrete tiltag — grøn strøm, transportskift, materialevalg — og vise kunden effekten på det samlede regnskab, før de investerer.",
+        "Scenario Planner lader dig modellere konkrete tiltag (grøn strøm, transportskift, materialevalg) og vise kunden effekten på det samlede regnskab, før de investerer.",
       outcome:
         "Reduktionsrådgivning bakket op af tal i stedet for et fagligt skøn.",
     },
@@ -412,7 +412,7 @@ export const KT_RAADGIVER: MarketingPageCopy = {
     {
       title: "Scenario Planner og tiltag",
       body:
-        "Modellér konkrete reduktionstiltag og vis kunden effekten på det samlede aftryk, før beslutningen tages. Rådgivningen bliver kvantificeret — et tal på bordet frem for et fagligt gæt.",
+        "Modellér konkrete reduktionstiltag og vis kunden effekten på det samlede aftryk, før beslutningen tages. Rådgivningen bliver kvantificeret: et tal på bordet frem for et fagligt gæt.",
     },
     {
       title: "VSME- og CSRD-rapportering",
@@ -448,7 +448,7 @@ export const KT_RAADGIVER: MarketingPageCopy = {
     },
   ],
   faq: {
-    title: "Ofte stillede spørgsmål — rådgivere",
+    title: "Ofte stillede spørgsmål: rådgivere",
     items: [
       {
         q: "Hvordan får jeg adgang til mine kunders klimaregnskab?",
@@ -486,7 +486,7 @@ export const KT_RAADGIVER: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// Konsulenter — sustainability consultants (3rd-party)
+// Konsulenter: sustainability consultants (3rd-party)
 // ---------------------------------------------------------------------------
 
 export const KT_KONSULENT: MarketingPageCopy = {
@@ -494,16 +494,16 @@ export const KT_KONSULENT: MarketingPageCopy = {
     eyebrow: "For bæredygtighedskonsulenter",
     title: "Lever målbare klimaregnskaber og reduktionsplaner til flere kunder",
     subtitle:
-      "Du vil levere klimaregnskab og reduktionsplaner, der kan måles og følges — ikke en engangs-rapport. qlim8 giver dig værktøjerne til at gøre det effektivt på tværs af hele din kundeportefølje.",
+      "Du vil levere klimaregnskab og reduktionsplaner, der kan måles og følges, ikke en engangs-rapport. qlim8 giver dig værktøjerne til at gøre det effektivt på tværs af hele din kundeportefølje.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
     heading: "Fra engangs-rapport til målbar, løbende leverance",
     body:
-      "Som bæredygtighedskonsulent er din værdi ikke selve regnearket — det er de reduktioner, du hjælper kunden med at nå. Men når hvert klimaregnskab bygges manuelt, går det meste af tiden til datasamling, og reduktionsplanen bliver et statisk dokument, ingen følger op på. qlim8 vender forholdet om. Data trækkes automatisk fra kundens regnskab, så du starter med et grundlag, ikke et tomt ark. Scenario Planner og tiltags-værktøjet lader dig bygge reduktionsplaner, der er kvantificerede og kan spores over tid. Og med tredjeparts-adgang håndterer du hele din portefølje fra ét konsulent-login, uden at betale licens pr. kunde. Du leverer det, kunden faktisk køber — målbar fremdrift — til flere kunder på samme tid.",
+      "Som bæredygtighedskonsulent er din værdi ikke selve regnearket. Det er de reduktioner, du hjælper kunden med at nå. Men når hvert klimaregnskab bygges manuelt, går det meste af tiden til datasamling, og reduktionsplanen bliver et statisk dokument, ingen følger op på. qlim8 vender forholdet om. Data trækkes automatisk fra kundens regnskab, så du starter med et grundlag, ikke et tomt ark. Scenario Planner og tiltags-værktøjet lader dig bygge reduktionsplaner, der er kvantificerede og kan spores over tid. Og med tredjeparts-adgang håndterer du hele din portefølje fra ét konsulent-login, uden at betale licens pr. kunde. Du leverer det, kunden faktisk køber, målbar fremdrift, til flere kunder på samme tid.",
     bullets: [
-      "Automatisk datagrundlag — mindre tid på indsamling, mere på rådgivning.",
+      "Automatisk datagrundlag: mindre tid på indsamling, mere på rådgivning.",
       "Scenario- og tiltags-værktøj til kvantificerede reduktionsplaner.",
       "Ét konsulent-login til hele porteføljen via tredjeparts-adgang.",
       "Målsætninger og reduktion-tracking, der følges hele året.",
@@ -560,7 +560,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
     {
       title: "Scenario Planner",
       body:
-        "Modellér konkrete reduktionstiltag og se effekten på kundens samlede aftryk, før beslutningen tages. Dine anbefalinger bliver kvantificerede — et tal på bordet i stedet for et fagligt gæt.",
+        "Modellér konkrete reduktionstiltag og se effekten på kundens samlede aftryk, før beslutningen tages. Dine anbefalinger bliver kvantificerede, et tal på bordet i stedet for et fagligt gæt.",
     },
     {
       title: "Målsætninger og reduktion-tracking",
@@ -606,7 +606,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
     },
   ],
   faq: {
-    title: "Ofte stillede spørgsmål — konsulenter",
+    title: "Ofte stillede spørgsmål: konsulenter",
     items: [
       {
         q: "Kan jeg håndtere flere kunder fra ét login?",
@@ -614,7 +614,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
       },
       {
         q: "Hvordan bygger jeg en reduktionsplan, kunden faktisk følger?",
-        a: "qlim8 kombinerer Scenario Planner med målsætninger og reduktion-tracking. Du modellerer tiltag, sætter mål og kobler tiltagene på, så både du og kunden kan følge fremdriften mod målet løbende — planen bliver et levende værktøj frem for et PDF i en skuffe.",
+        a: "qlim8 kombinerer Scenario Planner med målsætninger og reduktion-tracking. Du modellerer tiltag, sætter mål og kobler tiltagene på, så både du og kunden kan følge fremdriften mod målet løbende. Planen bliver et levende værktøj frem for et PDF i en skuffe.",
       },
       {
         q: "Kan jeg vise kunden effekten af et tiltag, før de investerer?",
@@ -644,7 +644,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// Frisør — small service business example
+// Frisør: small service business example
 // ---------------------------------------------------------------------------
 
 export const KT_FRISOER: MarketingPageCopy = {
@@ -657,14 +657,14 @@ export const KT_FRISOER: MarketingPageCopy = {
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
-    heading: "Lille virksomhed, rigtig anmodning — men enkel at svare på",
+    heading: "Lille virksomhed, rigtig anmodning: men enkel at svare på",
     body:
-      "En frisørsalon har et lille CO₂e-aftryk sammenlignet med en fabrik, og det skal copyen ikke lade som om andet. Men det ændrer ikke på, at banken, en leverandør eller kæden pludselig beder om et klimaregnskab, og at du ikke har tid til at lære CSRD for at svare. Værdien i qlim8 for dig er ikke omfang — det er fart og enkelhed. Vi trækker dit elforbrug fra Eloverblik og bygger et regnskab oven på din bogføring, så du får et klar-til-brug dokument uden at ansætte en konsulent. Du bruger en eftermiddag, ikke en måned, og du får et ærligt, GHG Protocol-konsistent tal, du kan sende videre med ro i maven.",
+      "En frisørsalon har et lille CO₂e-aftryk sammenlignet med en fabrik, og det skal copyen ikke lade som om andet. Men det ændrer ikke på, at banken, en leverandør eller kæden pludselig beder om et klimaregnskab, og at du ikke har tid til at lære CSRD for at svare. Værdien i qlim8 for dig er ikke omfang. Det er fart og enkelhed. Vi trækker dit elforbrug fra Eloverblik og bygger et regnskab oven på din bogføring, så du får et klar-til-brug dokument uden at ansætte en konsulent. Du bruger en eftermiddag, ikke en måned, og du får et ærligt, GHG Protocol-konsistent tal, du kan sende videre med ro i maven.",
     bullets: [
       "Bygget til små virksomheder uden ESG-specialist.",
       "El fra Eloverblik, vand og produkter fra din bogføring.",
       "Klar-til-brug rapport til bank, leverandør eller kæde.",
-      "En eftermiddags arbejde — ikke et konsulent-projekt.",
+      "En eftermiddags arbejde, ikke et konsulent-projekt.",
     ],
   },
   painPoints: [
@@ -672,7 +672,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       pain:
         "Banken, en leverandør eller din kæde har bedt om ESG-tal, og du aner ikke, hvor du skal starte. Du driver en salon, ikke en miljøafdeling.",
       solution:
-        "qlim8 guider dig gennem et klimaregnskab i almindeligt sprog. Du kobler dit elforbrug på fra Eloverblik og lader os bygge resten oven på din bogføring — ingen CSRD-uddannelse nødvendig.",
+        "qlim8 guider dig gennem et klimaregnskab i almindeligt sprog. Du kobler dit elforbrug på fra Eloverblik og lader os bygge resten oven på din bogføring, ingen CSRD-uddannelse nødvendig.",
       outcome:
         "Et færdigt klimaregnskab på en eftermiddag i stedet for uger med usikkerhed [antagelse: interne onboarding-estimater, ikke kundevalideret].",
     },
@@ -680,7 +680,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       pain:
         "Du har ikke tid til et langt konsulent-forløb, og et konsulenthonorar giver ikke mening for en salon af din størrelse.",
       solution:
-        "qlim8 koster fra 300 kr/md på Starter-planen — en brøkdel af et konsulent-engagement. Du laver regnskabet selv med platformens hjælp og ejer dine egne data.",
+        "qlim8 koster fra 300 kr/md på Starter-planen, en brøkdel af et konsulent-engagement. Du laver regnskabet selv med platformens hjælp og ejer dine egne data.",
       outcome:
         "Compliance uden konsulent, til en pris der passer en lille virksomhed.",
     },
@@ -696,7 +696,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       pain:
         "Du er bange for at overdrive eller love noget grønt, du ikke kan stå inde for, hvis nogen spørger nærmere.",
       solution:
-        "qlim8 laver et ærligt, GHG Protocol-konsistent regnskab, hvor hvert tal har en kilde. Salonens aftryk er lille — og det viser regnskabet, uden pynt.",
+        "qlim8 laver et ærligt, GHG Protocol-konsistent regnskab, hvor hvert tal har en kilde. Salonens aftryk er lille, og det viser regnskabet, uden pynt.",
       outcome:
         "Et troværdigt tal, du kan forsvare, frem for en grøn påstand uden dækning.",
     },
@@ -706,7 +706,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       solution:
         "qlim8 leverer regnskabet i en klar-til-brug PDF efter VSME Basic. Du henter dokumentet og sender det videre, som det er.",
       outcome:
-        "En færdig rapport at sende til bank, leverandør eller kæde — uden reformatering.",
+        "En færdig rapport at sende til bank, leverandør eller kæde, uden reformatering.",
     },
   ],
   features: [
@@ -723,7 +723,7 @@ export const KT_FRISOER: MarketingPageCopy = {
     {
       title: "Klar-til-brug rapport",
       body:
-        "Regnskabet kommer ud i en færdig PDF efter VSME Basic, klar til at sende til bank, leverandør eller kæde. Ingen reformatering, ingen 'vi mangler lige en tabel' — bare et dokument, du henter og sender.",
+        "Regnskabet kommer ud i en færdig PDF efter VSME Basic, klar til at sende til bank, leverandør eller kæde. Ingen reformatering, ingen 'vi mangler lige en tabel': bare et dokument, du henter og sender.",
     },
     {
       title: "Almindeligt sprog hele vejen",
@@ -733,7 +733,7 @@ export const KT_FRISOER: MarketingPageCopy = {
     {
       title: "Ærligt tal, du kan forsvare",
       body:
-        "Hvert tal er GHG Protocol-konsistent og har en kilde. Salonens aftryk er lille, og det viser regnskabet uden pynt — så du aldrig kommer til at overdrive noget grønt, du ikke kan stå inde for.",
+        "Hvert tal er GHG Protocol-konsistent og har en kilde. Salonens aftryk er lille, og det viser regnskabet uden pynt. Så du aldrig kommer til at overdrive noget grønt, du ikke kan stå inde for.",
     },
   ],
   valueStats: [
@@ -759,7 +759,7 @@ export const KT_FRISOER: MarketingPageCopy = {
     },
   ],
   faq: {
-    title: "Ofte stillede spørgsmål — frisørsaloner",
+    title: "Ofte stillede spørgsmål: frisørsaloner",
     items: [
       {
         q: "Er et klimaregnskab overhovedet relevant for en lille salon?",
@@ -779,7 +779,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       },
       {
         q: "Kan jeg sende rapporten direkte til min bank?",
-        a: "Ja. Regnskabet kommer ud i en klar-til-brug PDF efter VSME Basic. Du henter dokumentet og sender det, som det er, til bank, leverandør eller kæde — uden at skulle formatere noget selv.",
+        a: "Ja. Regnskabet kommer ud i en klar-til-brug PDF efter VSME Basic. Du henter dokumentet og sender det, som det er, til bank, leverandør eller kæde, uden at skulle formatere noget selv.",
       },
       {
         q: "Skal jeg forstå CSRD for at bruge det?",
@@ -797,7 +797,7 @@ export const KT_FRISOER: MarketingPageCopy = {
 };
 
 // ---------------------------------------------------------------------------
-// Store virksomheder — large companies, supply-chain angle
+// Store virksomheder: large companies, supply-chain angle
 // ---------------------------------------------------------------------------
 
 export const KT_STORE: MarketingPageCopy = {
@@ -812,9 +812,9 @@ export const KT_STORE: MarketingPageCopy = {
   intro: {
     heading: "Scope 3-indsamling, der ikke starter forfra hvert kvartal",
     body:
-      "For en CSRD-pligtig virksomhed er det centrale problem ikke om, men hvordan du konsoliderer Scope 3 fra dine mange leverandører år efter år. Den klassiske vej er en Excel-tracker, månedlige reminder-mails og et årligt konsulent-engagement — en model, der ikke skalerer og ikke bygger intern kapacitet. qlim8's værdikæde-portal gør indsamlingen til self-service: dine leverandører får eget login, deler kun det relevante CO₂e-tal, og du ser dataen live i dit regnskab med audit-log og dato. En vigtig afgrænsning: qlim8 er bygget til dansk-forankrede mellemstore og store virksomheder, ikke til globale enterprises med 10.000+ ansatte og en fuld in-house ESG-afdeling. Har du det behov, vinder Microsoft Sustainability Manager eller Sphera. Er du derimod dansk CSRD-pligtig med leverandører i EU/UK, er vi bygget til netop din situation.",
+      "For en CSRD-pligtig virksomhed er det centrale problem ikke om, men hvordan du konsoliderer Scope 3 fra dine mange leverandører år efter år. Den klassiske vej er en Excel-tracker, månedlige reminder-mails og et årligt konsulent-engagement: en model, der ikke skalerer og ikke bygger intern kapacitet. qlim8's værdikæde-portal gør indsamlingen til self-service: dine leverandører får eget login, deler kun det relevante CO₂e-tal, og du ser dataen live i dit regnskab med audit-log og dato. En vigtig afgrænsning: qlim8 er bygget til dansk-forankrede mellemstore og store virksomheder, ikke til globale enterprises med 10.000+ ansatte og en fuld in-house ESG-afdeling. Har du det behov, vinder Microsoft Sustainability Manager eller Sphera. Er du derimod dansk CSRD-pligtig med leverandører i EU/UK, er vi bygget til netop din situation.",
     bullets: [
-      "Send ét link — leverandøren deler data via eget login.",
+      "Send ét link: leverandøren deler data via eget login.",
       "Scope 3 kategori 1-15 aggregeret i ét regnskab.",
       "ESRS E1-mapping og 7-års audit-spor til CSRD.",
       "Bygget til dansk-forankrede virksomheder, ikke globale enterprises.",
@@ -857,7 +857,7 @@ export const KT_STORE: MarketingPageCopy = {
       pain:
         "I overvejer en stor global enterprise-platform, men er usikre på, om den passer til en dansk-forankret virksomhed med danske leverandører.",
       solution:
-        "Vær ærlig om skalaen: er I 10.000+ ansatte med en fuld in-house ESG-afdeling, vinder Microsoft eller Sphera. Er I dansk CSRD-pligtig med leverandører i EU/UK, er qlim8 bygget til jer — med native dansk regnskabsdata og en portal, jeres SMV-leverandører faktisk bruger.",
+        "Vær ærlig om skalaen: er I 10.000+ ansatte med en fuld in-house ESG-afdeling, vinder Microsoft eller Sphera. Er I dansk CSRD-pligtig med leverandører i EU/UK, er qlim8 bygget til jer, med native dansk regnskabsdata og en portal, jeres SMV-leverandører faktisk bruger.",
       outcome:
         "Den rigtige platform til jeres skala, uden at betale for enterprise-features, I ikke bruger.",
     },
@@ -917,7 +917,7 @@ export const KT_STORE: MarketingPageCopy = {
     },
   ],
   faq: {
-    title: "Ofte stillede spørgsmål — store virksomheder",
+    title: "Ofte stillede spørgsmål: store virksomheder",
     items: [
       {
         q: "Hvordan samler vi Scope 3 fra mange leverandører?",
@@ -925,7 +925,7 @@ export const KT_STORE: MarketingPageCopy = {
       },
       {
         q: "Holder Scope 3-dataen ved en CSRD-revision?",
-        a: "Ja. Hver delt værdi har kilde, dato og leverandørens signatur, og audit-loggen gemmes i 7 år. Revisoren får read-only audit-pack-adgang og kan spore hele data-kæden uden en separat anmodning — det er den dokumentation, CSRD kræver.",
+        a: "Ja. Hver delt værdi har kilde, dato og leverandørens signatur, og audit-loggen gemmes i 7 år. Revisoren får read-only audit-pack-adgang og kan spore hele data-kæden uden en separat anmodning. Det er den dokumentation, CSRD kræver.",
       },
       {
         q: "Er qlim8 en enterprise-platform på niveau med Microsoft eller Sphera?",

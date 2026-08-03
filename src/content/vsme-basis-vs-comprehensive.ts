@@ -4,7 +4,7 @@ export const artikel: Article = {
   slug: 'vsme-basis-vs-comprehensive',
   title: 'Den ultimative VSME-guide: Skal din SMV vælge Basis- eller Comprehensive-modulet?',
   description:
-    'EFRAG har defineret to moduler af VSME-standarden — Basis og Comprehensive. Den rigtige beslutning afhænger af, hvem der spørger efter jeres data og hvor I står strategisk. Her er den ærlige guide.',
+    'EFRAG har defineret to moduler af VSME-standarden, Basis og Comprehensive. Den rigtige beslutning afhænger af, hvem der spørger efter jeres data og hvor I står strategisk. Her er den ærlige guide.',
   category: 'Compliance',
   publishedAt: '2026-05-06',
   readingTime: 14,
@@ -15,7 +15,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det korte svar er, at det afhænger af, hvem der spørger efter dine data, og hvor I står strategisk. Det lange svar er det her — og det vigtigste, mange SMV\'er ikke ved: Comprehensive er ikke "mere af det samme", det er noget andet, til en anden situation. At vælge forkert er en reel risiko, både hvis I undervælger og hvis I overvælger.',
+      text: 'Det korte svar er, at det afhænger af, hvem der spørger efter dine data, og hvor I står strategisk. Det lange svar er det her, og det vigtigste, mange SMV\'er ikke ved: Comprehensive er ikke "mere af det samme", det er noget andet, til en anden situation. At vælge forkert er en reel risiko, både hvis I undervælger og hvis I overvælger.',
     },
     {
       type: 'paragraph',
@@ -25,7 +25,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'VSME i 2026: Mere end en frivillig standard' },
     {
       type: 'paragraph',
-      text: 'VSME — Voluntary Sustainability Reporting Standard for non-listed SMEs — blev udviklet af EFRAG (European Financial Reporting Advisory Group) og godkendt i november 2024. Standarden blev finaliseret i december samme år, og den 30. juli 2025 vedtog EU-Kommissionen den officielt som Recommendation 2025/1710. Det betyder, at den nu er en formel europæisk anbefaling — ikke en juridisk bindende rapporteringspligt, men en officielt anerkendt fælles standard.',
+      text: 'VSME: Voluntary Sustainability Reporting Standard for non-listed SMEs, blev udviklet af EFRAG (European Financial Reporting Advisory Group) og godkendt i november 2024. Standarden blev finaliseret i december samme år, og den 30. juli 2025 vedtog EU-Kommissionen den officielt som Recommendation 2025/1710. Det betyder, at den nu er en formel europæisk anbefaling, ikke en juridisk bindende rapporteringspligt, men en officielt anerkendt fælles standard.',
     },
     {
       type: 'paragraph',
@@ -33,7 +33,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det er en bestemmelse, jeg synes alle danske SMV\'er burde kende. Hvis jeres største kunde har sendt et 40-siders ESG-spørgeskema med krav, der går langt ud over VSME, har I nu et juridisk grundlag for at sige nej. I behøver ikke svare på alt. I skal svare på VSME — hverken mere eller mindre. Det er et juridisk loft, ikke et gulv.',
+      text: 'Det er en bestemmelse, jeg synes alle danske SMV\'er burde kende. Hvis jeres største kunde har sendt et 40-siders ESG-spørgeskema med krav, der går langt ud over VSME, har I nu et juridisk grundlag for at sige nej. I behøver ikke svare på alt. I skal svare på VSME, hverken mere eller mindre. Det er et juridisk loft, ikke et gulv.',
     },
     {
       type: 'paragraph',
@@ -60,11 +60,11 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'For en almindelig dansk SMV med 15-50 ansatte og en tilkoblet datakilde tager VSME Basis typisk få timer at færdiggøre med den rigtige software — og 3-6 uger med manuelt arbejde i Excel.',
+      text: 'For en almindelig dansk SMV med 15-50 ansatte og en tilkoblet datakilde tager VSME Basis typisk få timer at færdiggøre med den rigtige software, og 3-6 uger med manuelt arbejde i Excel.',
     },
     {
       type: 'paragraph',
-      text: 'Hvem Basis-modulet er nok for: Mikrovirksomheder og SMV\'er, der primært skal levere data til banken som led i den årlige kreditrevurdering. SMV\'er i lav-eksponerede brancher — typisk service, rådgivning, mindre handel, kontoraktivitet — hvor banken nøjes med branchedata suppleret med jeres basale tal. Virksomheder, der ikke er en strategisk leverandør til CSRD-omfattede storkunder med specifikke krav om transitions-planer.',
+      text: 'Hvem Basis-modulet er nok for: Mikrovirksomheder og SMV\'er, der primært skal levere data til banken som led i den årlige kreditrevurdering. SMV\'er i lav-eksponerede brancher (typisk service, rådgivning, mindre handel, kontoraktivitet) hvor banken nøjes med branchedata suppleret med jeres basale tal. Virksomheder, der ikke er en strategisk leverandør til CSRD-omfattede storkunder med specifikke krav om transitions-planer.',
     },
     { type: 'paragraph', text: 'Hvis I er der, så er Basis tilstrækkeligt. Lav det, læg det fra jer, og brug tiden på at drive forretning.' },
 
@@ -84,15 +84,15 @@ export const artikel: Article = {
     { type: 'paragraph', text: 'De tre centrale disclosures er:' },
     {
       type: 'paragraph',
-      text: 'C2 — Beskrivelse af praksis, politikker og fremtidige initiativer. Hvor Basis-modulet spørger om I har en bæredygtighedspolitik, beder Comprehensive jer beskrive den med eksempler og dokumentation. Hvad gør I konkret? Hvad har I planer om?',
+      text: 'C2: Beskrivelse af praksis, politikker og fremtidige initiativer. Hvor Basis-modulet spørger om I har en bæredygtighedspolitik, beder Comprehensive jer beskrive den med eksempler og dokumentation. Hvad gør I konkret? Hvad har I planer om?',
     },
     {
       type: 'paragraph',
-      text: 'C3 — GHG-reduktionsmål og klima-omstillingsplaner. Det her er den tunge disclosure for de fleste SMV\'er. I skal definere konkrete reduktionsmål for Scope 1, 2 og 3, dokumentere baseline, og lægge en troværdig plan for, hvordan I når målet. EFRAG\'s eget eksempel i deres Supporting Guide følger en fiktiv SMV i en klima-intensiv branche, der reducerer fra 5.000 tCO2e i 2025 til 3.850 tCO2e i 2030 — en 23 % reduktion. Det er den slags konkrete, dokumenterede mål, Comprehensive forventer.',
+      text: 'C3: GHG-reduktionsmål og klima-omstillingsplaner. Det her er den tunge disclosure for de fleste SMV\'er. I skal definere konkrete reduktionsmål for Scope 1, 2 og 3, dokumentere baseline, og lægge en troværdig plan for, hvordan I når målet. EFRAG\'s eget eksempel i deres Supporting Guide følger en fiktiv SMV i en klima-intensiv branche, der reducerer fra 5.000 tCO2e i 2025 til 3.850 tCO2e i 2030, en 23 % reduktion. Det er den slags konkrete, dokumenterede mål, Comprehensive forventer.',
     },
     {
       type: 'paragraph',
-      text: 'C7 — Medarbejderforhold og leverandørkæde-hensyn. En udvidet beskrivelse af, hvordan I behandler både egne medarbejdere og dem i jeres værdikæde.',
+      text: 'C7: Medarbejderforhold og leverandørkæde-hensyn. En udvidet beskrivelse af, hvordan I behandler både egne medarbejdere og dem i jeres værdikæde.',
     },
     {
       type: 'paragraph',
@@ -100,11 +100,11 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det her er ikke noget, man fylder ud i et regneark på en eftermiddag. Det er en strategisk øvelse, der typisk involverer flere i ledelsen, en eller flere workshops, og ofte en konsulent eller intern bæredygtighedsmedarbejder, der kan facilitere processen. Comprehensive er det modul, hvor en god konsulents dømmekraft reelt skaber værdi — at oversætte en virksomheds strategi til den rigtige form i C2 og C3 er præcis det, software ikke kan og ikke bør automatisere fuldt ud.',
+      text: 'Det her er ikke noget, man fylder ud i et regneark på en eftermiddag. Det er en strategisk øvelse, der typisk involverer flere i ledelsen, en eller flere workshops, og ofte en konsulent eller intern bæredygtighedsmedarbejder, der kan facilitere processen. Comprehensive er det modul, hvor en god konsulents dømmekraft reelt skaber værdi: at oversætte en virksomheds strategi til den rigtige form i C2 og C3 er præcis det, software ikke kan og ikke bør automatisere fuldt ud.',
     },
     {
       type: 'paragraph',
-      text: 'Hvem Comprehensive-modulet er rigtigt for: SMV\'er, der er strategisk leverandør til CSRD-omfattede virksomheder, der eksplicit beder om Comprehensive (eller dets indhold). Virksomheder, der vil bruge ESG som aktiv konkurrencefordel — vinde udbud, tiltrække investorer, differentiere sig overfor banker med bæredygtighedslinkede lånevilkår. Virksomheder, der i forvejen har en bæredygtighedsstrategi og bare mangler at formalisere den.',
+      text: 'Hvem Comprehensive-modulet er rigtigt for: SMV\'er, der er strategisk leverandør til CSRD-omfattede virksomheder, der eksplicit beder om Comprehensive (eller dets indhold). Virksomheder, der vil bruge ESG som aktiv konkurrencefordel: vinde udbud, tiltrække investorer, differentiere sig overfor banker med bæredygtighedslinkede lånevilkår. Virksomheder, der i forvejen har en bæredygtighedsstrategi og bare mangler at formalisere den.',
     },
 
     { type: 'h2', text: 'Det virkelige spørgsmål: Hvem spørger efter hvad?' },
@@ -114,11 +114,11 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Banken spørger næsten altid efter Basis. Bankerne kører i kreditmodeller, der har brug for kvantificerbare data: udledning, energiforbrug, eksponering mod fysiske og omstillingsrisici. De har ikke brug for at vide, om I har en politik for medarbejderudvikling formuleret i fem afsnit. Min erfaring fra at tale med bankrådgivere over hele Danmark — Nykredit, Jyske Bank, Danske Bank Erhverv, Sparekassen Sjælland-Fyn, og flere mindre lokalbanker — er at de stort set alle tager imod VSME Basis som tilstrækkelig dokumentation, så længe tallene er sporbare og rapporten er i det officielle format.',
+      text: 'Banken spørger næsten altid efter Basis. Bankerne kører i kreditmodeller, der har brug for kvantificerbare data: udledning, energiforbrug, eksponering mod fysiske og omstillingsrisici. De har ikke brug for at vide, om I har en politik for medarbejderudvikling formuleret i fem afsnit. Min erfaring fra at tale med bankrådgivere over hele Danmark (Nykredit, Jyske Bank, Danske Bank Erhverv, Sparekassen Sjælland-Fyn, og flere mindre lokalbanker) er at de stort set alle tager imod VSME Basis som tilstrækkelig dokumentation, så længe tallene er sporbare og rapporten er i det officielle format.',
     },
     {
       type: 'paragraph',
-      text: 'Store CSRD-kunder spørger efter Comprehensive — men kun til en grænse. Det er her, Value Chain Cap fra Omnibus I-direktivet bliver afgørende. Hvis jeres største kunde er en CSRD-omfattet virksomhed med over 1.000 medarbejdere, må de stille spørgsmål om VSME-indhold, men de må ikke længere kræve mere end det. Hvis I har lavet VSME Basis og en mindre del af Comprehensive — typisk C3 om reduktionsmål, som er det, store kunder primært bruger til deres egen Scope 3-rapportering — så har I dækket, hvad I lovligt skal levere. Hvis kunden alligevel kræver mere, har I et legitimt grundlag for at sige nej eller forhandle.',
+      text: 'Store CSRD-kunder spørger efter Comprehensive, men kun til en grænse. Det er her, Value Chain Cap fra Omnibus I-direktivet bliver afgørende. Hvis jeres største kunde er en CSRD-omfattet virksomhed med over 1.000 medarbejdere, må de stille spørgsmål om VSME-indhold, men de må ikke længere kræve mere end det. Hvis I har lavet VSME Basis og en mindre del af Comprehensive, typisk C3 om reduktionsmål, som er det, store kunder primært bruger til deres egen Scope 3-rapportering. Så har I dækket, hvad I lovligt skal levere. Hvis kunden alligevel kræver mere, har I et legitimt grundlag for at sige nej eller forhandle.',
     },
     {
       type: 'paragraph',
@@ -141,11 +141,11 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Hvis I gør det manuelt i Excel, ganger I tiden med 30-50, fordi I selv skal slå emissionsfaktorer op, opdatere dem løbende, og bygge VSME-strukturen fra bunden. Det er ikke umuligt — det er bare meget mere arbejde.',
+      text: 'Hvis I gør det manuelt i Excel, ganger I tiden med 30-50, fordi I selv skal slå emissionsfaktorer op, opdatere dem løbende, og bygge VSME-strukturen fra bunden. Det er ikke umuligt: det er bare meget mere arbejde.',
     },
     {
       type: 'paragraph',
-      text: 'VSME Comprehensive i praksis for samme virksomhed: Basis-data er stadig grundlaget, men dertil kommer mindst tre faser. Først en strategiproces, hvor ledelsen definerer reduktionsmål og handlinger — typisk en workshop på en halv eller hel dag. Derefter scenario-modellering, hvor I tester forskellige tiltag og deres effekt: udskiftning af bilflåde, energirenovering, leverandørskift, og lignende. Det er den proces, vi har bygget vores Scenario Builder til, fordi det er det, der konkret kan automatiseres med ordentlig data. Og endelig dokumentation i de specifikke disclosures C1-C7 efter EFRAG\'s Supporting Guides — det er typisk her, en konsulent eller intern facilitator gør størst forskel, fordi det handler om at oversætte strategi til den rigtige form.',
+      text: 'VSME Comprehensive i praksis for samme virksomhed: Basis-data er stadig grundlaget, men dertil kommer mindst tre faser. Først en strategiproces, hvor ledelsen definerer reduktionsmål og handlinger, typisk en workshop på en halv eller hel dag. Derefter scenario-modellering, hvor I tester forskellige tiltag og deres effekt: udskiftning af bilflåde, energirenovering, leverandørskift, og lignende. Det er den proces, vi har bygget vores Scenario Builder til, fordi det er det, der konkret kan automatiseres med ordentlig data. Og endelig dokumentation i de specifikke disclosures C1-C7 efter EFRAG\'s Supporting Guides: det er typisk her, en konsulent eller intern facilitator gør størst forskel, fordi det handler om at oversætte strategi til den rigtige form.',
     },
     {
       type: 'paragraph',
@@ -161,16 +161,16 @@ export const artikel: Article = {
     { type: 'paragraph', text: 'Lad mig give dig den nuancerede version, fordi den er vigtig.' },
     {
       type: 'paragraph',
-      text: 'Juridisk er VSME frivilligt i dag, og det forbliver formelt frivilligt i hvert fald de næste par år. EU-Kommissionen har i deres Omnibus-pakke fra februar 2025 foreslået, at VSME skal kunne bruges som basis for en fremtidig delegeret retsakt, der gælder for virksomheder mellem 250 og 1.000 medarbejdere — altså som en obligatorisk standard for det segment, der er for stort til at være "rigtig SMV" men for lille til at være omfattet af CSRD. Den proces er igangværende, men der er ingen klar tidslinje, og det politiske klima er præget af modsatrettede signaler. Det danske erhvervsministerium har eksplicit talt om at "trykke på pauseknappen" på dele af ESG-regelsættet, og en del af CSRD-tærsklerne diskuteres aktivt i Bruxelles.',
+      text: 'Juridisk er VSME frivilligt i dag, og det forbliver formelt frivilligt i hvert fald de næste par år. EU-Kommissionen har i deres Omnibus-pakke fra februar 2025 foreslået, at VSME skal kunne bruges som basis for en fremtidig delegeret retsakt, der gælder for virksomheder mellem 250 og 1.000 medarbejdere, altså som en obligatorisk standard for det segment, der er for stort til at være "rigtig SMV" men for lille til at være omfattet af CSRD. Den proces er igangværende, men der er ingen klar tidslinje, og det politiske klima er præget af modsatrettede signaler. Det danske erhvervsministerium har eksplicit talt om at "trykke på pauseknappen" på dele af ESG-regelsættet, og en del af CSRD-tærsklerne diskuteres aktivt i Bruxelles.',
     },
     {
       type: 'paragraph',
-      text: 'Min ærlige vurdering: Jeg ville ikke planlægge ud fra, at VSME bliver juridisk obligatorisk for danske SMV\'er under 250 medarbejdere de næste fem år. Det er ikke umuligt — særligt hvis EU\'s politik for bæredygtighedsstandarder tager en mere ekspansiv retning igen — men det er heller ikke sandsynligt på kort sigt.',
+      text: 'Min ærlige vurdering: Jeg ville ikke planlægge ud fra, at VSME bliver juridisk obligatorisk for danske SMV\'er under 250 medarbejdere de næste fem år. Det er ikke umuligt, særligt hvis EU\'s politik for bæredygtighedsstandarder tager en mere ekspansiv retning igen, men det er heller ikke sandsynligt på kort sigt.',
     },
     { type: 'paragraph', text: 'Det er bare ikke det interessante spørgsmål.' },
     {
       type: 'paragraph',
-      text: 'Det interessante spørgsmål er, om VSME bliver kommercielt obligatorisk. Og det er allerede sket. Banker har konvergeret om det. Store CSRD-kunder har konvergeret om det. EU-Kommissionen har officielt anbefalet det. Value Chain Cap har gjort det til det juridiske loft for hvad nogen må kræve af jer. Det er ikke et lovkrav — det er det facto-standard for bæredygtighedsdokumentation i SMV-segmentet i Europa, og det er stort set sikkert at forblive det.',
+      text: 'Det interessante spørgsmål er, om VSME bliver kommercielt obligatorisk. Og det er allerede sket. Banker har konvergeret om det. Store CSRD-kunder har konvergeret om det. EU-Kommissionen har officielt anbefalet det. Value Chain Cap har gjort det til det juridiske loft for hvad nogen må kræve af jer. Det er ikke et lovkrav: det er det facto-standard for bæredygtighedsdokumentation i SMV-segmentet i Europa, og det er stort set sikkert at forblive det.',
     },
     {
       type: 'paragraph',
@@ -188,7 +188,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det er den hurtigste vej til bankklar dokumentation. Det er det, langt de fleste umiddelbare interessenter — bank, mindre kunder, leverandørkæder — har brug for. Det giver jer baseline-data, I kan bygge ovenpå, når og hvis Comprehensive bliver relevant. Og det undgår det meget reelle problem, at I overinvesterer i en strategiproces, før I er klar til at gennemføre den.',
+      text: 'Det er den hurtigste vej til bankklar dokumentation. Det er det, langt de fleste umiddelbare interessenter (bank, mindre kunder, leverandørkæder) har brug for. Det giver jer baseline-data, I kan bygge ovenpå, når og hvis Comprehensive bliver relevant. Og det undgår det meget reelle problem, at I overinvesterer i en strategiproces, før I er klar til at gennemføre den.',
     },
     {
       type: 'paragraph',
@@ -196,7 +196,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Den ene store undtagelse: Hvis I i forvejen har en aktiv bæredygtighedsstrategi, med klare interne mål og dokumenteret arbejde, så er Comprehensive en mindre opgave end det lyder, fordi I i praksis allerede har lavet meget af arbejdet. Det er bare at få det struktureret i den rigtige form. I så fald kan I springe direkte til Comprehensive uden at gå over Basis først — men det er en undtagelse, ikke standard-vejen.',
+      text: 'Den ene store undtagelse: Hvis I i forvejen har en aktiv bæredygtighedsstrategi, med klare interne mål og dokumenteret arbejde, så er Comprehensive en mindre opgave end det lyder, fordi I i praksis allerede har lavet meget af arbejdet. Det er bare at få det struktureret i den rigtige form. I så fald kan I springe direkte til Comprehensive uden at gå over Basis først, men det er en undtagelse, ikke standard-vejen.',
     },
     {
       type: 'paragraph',
@@ -214,7 +214,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Forskellen er ikke kun feature-niveau — det er en anden brugersituation. Hvis I er i tvivl om hvilken I skal vælge, så start med Starter, brug et eller to kvartaler på at få Basis på plads, og opgrader når I har et konkret behov for Comprehensive. Det er den rækkefølge, vi anbefaler alle nye kunder, der ikke kommer ind med et akut Comprehensive-krav fra en kunde.',
+      text: 'Forskellen er ikke kun feature-niveau. Det er en anden brugersituation. Hvis I er i tvivl om hvilken I skal vælge, så start med Starter, brug et eller to kvartaler på at få Basis på plads, og opgrader når I har et konkret behov for Comprehensive. Det er den rækkefølge, vi anbefaler alle nye kunder, der ikke kommer ind med et akut Comprehensive-krav fra en kunde.',
     },
 
     { type: 'h2', text: 'VSME er et skjold, ikke kun en byrde' },
@@ -224,11 +224,11 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Hvis I gør VSME ordentligt — og det er ligegyldigt om I starter med Basis eller går hele vejen til Comprehensive — så har I dokumentation, der er beskyttet af både regulatorisk konsensus, EU-anbefaling og direktiv-tekst. Jeres bankrådgiver kan ikke kræve mere end VSME. Jeres store CSRD-kunde kan ikke kræve mere end VSME. Den uendelige række af stadigt mere detaljerede spørgeskemaer, som mange SMV\'er har frygtet, har nu et juridisk loft.',
+      text: 'Hvis I gør VSME ordentligt, og det er ligegyldigt om I starter med Basis eller går hele vejen til Comprehensive, så har I dokumentation, der er beskyttet af både regulatorisk konsensus, EU-anbefaling og direktiv-tekst. Jeres bankrådgiver kan ikke kræve mere end VSME. Jeres store CSRD-kunde kan ikke kræve mere end VSME. Den uendelige række af stadigt mere detaljerede spørgeskemaer, som mange SMV\'er har frygtet, har nu et juridisk loft.',
     },
     {
       type: 'paragraph',
-      text: 'Det er ikke kun en compliance-øvelse. Det er en investering i, at I — én gang — laver dokumentationen rigtigt og kan henvise alle videre til den. Bank, kunde, leverandør, revisor, investor. Samme dokument, samme format, samme audit trail, samme metode.',
+      text: 'Det er ikke kun en compliance-øvelse. Det er en investering i, at I, én gang, laver dokumentationen rigtigt og kan henvise alle videre til den. Bank, kunde, leverandør, revisor, investor. Samme dokument, samme format, samme audit trail, samme metode.',
     },
     {
       type: 'paragraph',

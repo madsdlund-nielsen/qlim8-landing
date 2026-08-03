@@ -4,16 +4,16 @@ import { fetchMarketingCopy, cmsImageUrl } from "@/lib/cms";
 import { resolvePageCopy } from "@/lib/pageCopy";
 import { ABOUT_PAGE_KEY, ABOUT_COPY } from "@/content/copy/about";
 
-// ISR — CMS-published copy/images refresh on this cadence.
+// ISR: CMS-published copy/images refresh on this cadence.
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Om qlim8 – Vi demokratiserer klimaregnskab",
+  title: "Om qlim8: Vi demokratiserer klimaregnskab",
   description:
     "qlim8 er grundlagt af en civilingeniør med speciale i energisystemer. Vi gør professionelt klimaregnskab og ESG tilgængeligt for alle danske SMV'er til en overkommelig pris.",
   alternates: { canonical: "https://qlim8.com/om-os" },
   openGraph: {
-    title: "Om qlim8 – Vi demokratiserer klimaregnskab",
+    title: "Om qlim8: Vi demokratiserer klimaregnskab",
     description:
       "Vi gør professionelt klimaregnskab og ESG tilgængeligt for alle danske SMV'er.",
     url: "https://qlim8.com/om-os",

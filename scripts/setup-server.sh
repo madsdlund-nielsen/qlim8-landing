@@ -4,7 +4,7 @@
 set -euo pipefail
 
 # Domæne og Let's Encrypt-e-mail sættes i scripts/init-letsencrypt.sh, som
-# udsteder certifikatet — de bruges ikke her.
+# udsteder certifikatet: de bruges ikke her.
 APP_DIR="/opt/qlim8"
 
 # ── 1. System-opdatering ────────────────────────────────────────────────────
@@ -28,7 +28,7 @@ ufw --force enable
 # Her stod tidligere en host-installeret certbot (snap) der udstedte med
 # --standalone til hostens /etc/letsencrypt, plus et /etc/cron.d/certbot-renew
 # job. Det er fjernet, fordi hostens /etc/letsencrypt er et ANDET filsystem end
-# det volume nginx-containeren læser fra — fornyelser dér nåede aldrig frem til
+# det volume nginx-containeren læser fra: fornyelser dér nåede aldrig frem til
 # nginx. Kombineret med at intet genindlæste nginx udløb certifikatet
 # 2026-07-27 20:16Z mens nginx blev ved med at servere det gamle.
 #
@@ -43,7 +43,7 @@ rm -f /etc/cron.d/certbot-renew
 # ── 5. Deploy-mappe + config ─────────────────────────────────────────────────
 # Både docker-compose.yml og nginx.conf hentes direkte fra repoet. De blev
 # tidligere skrevet som en heredoc-kopi her i scriptet, hvilket drev fra
-# repoets version — bl.a. monterede kopien hostens /etc/letsencrypt i stedet
+# repoets version: bl.a. monterede kopien hostens /etc/letsencrypt i stedet
 # for volumet `certbot-etc`, så de to filer beskrev to forskellige
 # certifikat-lagre. Deploy-workflowet scp'er alligevel repoets version ud over
 # denne ved hver deploy, så repoet er eneste kilde til sandhed.
@@ -66,7 +66,7 @@ echo ""
 echo "2. Start services:"
 echo "   cd $APP_DIR && docker compose pull && docker compose up -d"
 echo ""
-echo "3. Udsted certifikat (kun første gang — nginx starter ikke uden):"
+echo "3. Udsted certifikat (kun første gang: nginx starter ikke uden):"
 echo "   bash scripts/init-letsencrypt.sh"
 echo "   Derefter fornyer certbot hver 12. time, og nginx genindlæser hver 6. time."
 echo ""

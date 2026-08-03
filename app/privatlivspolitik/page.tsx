@@ -3,13 +3,13 @@ import Privatlivspolitik from "@/page-components/privatlivspolitik";
 import { resolvePageCopy } from "@/lib/pageCopy";
 import { LEGAL_PRIVACY_PAGE_KEY, LEGAL_PRIVACY_COPY } from "@/content/copy/legal";
 
-// ISR — CMS-published copy refreshes on this cadence.
+// ISR: CMS-published copy refreshes on this cadence.
 export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Privatlivspolitik | qlim8",
   description:
-    "Sådan behandler qlim8 ApS personoplysninger om besøgende, brugere og kunder — dataansvar, retsgrundlag, opbevaring og dine rettigheder under GDPR.",
+    "Sådan behandler qlim8 ApS personoplysninger om besøgende, brugere og kunder: dataansvar, retsgrundlag, opbevaring og dine rettigheder under GDPR.",
   alternates: { canonical: "https://qlim8.com/privatlivspolitik" },
   openGraph: {
     title: "Privatlivspolitik | qlim8",

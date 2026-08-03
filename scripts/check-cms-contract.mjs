@@ -4,7 +4,7 @@
  *
  * Why this exists, and why a passing `next build` is not enough:
  *
- * src/lib/cms.ts is deliberately fail-soft — every fetch falls back to bundled
+ * src/lib/cms.ts is deliberately fail-soft: every fetch falls back to bundled
  * defaults so a CMS outage degrades the marketing site instead of breaking it.
  * That is the right runtime behaviour, but it means the build succeeds whether
  * or not the CMS contract still holds. Rename a route in qlim8-app and this
@@ -95,7 +95,7 @@ async function main() {
           pass(`article shape matches CmsArticleSummary (sample slug: "${sampleSlug}")`);
         }
       } else {
-        console.log("  – list is empty; skipping item shape check");
+        console.log("  - list is empty; skipping item shape check");
       }
     }
   }
@@ -117,7 +117,7 @@ async function main() {
       }
     }
   } else {
-    console.log("\n– no published article available; skipping detail check");
+    console.log("\n- no published article available; skipping detail check");
   }
 
   // ── 3. Marketing copy ──────────────────────────────────────────────────────
@@ -126,7 +126,7 @@ async function main() {
   if (copy !== null) {
     // `copy` may legitimately be empty ({}), meaning nothing is published for
     // this page and the site uses its bundled defaults. What must hold is that
-    // the envelope exists and is an object — src/lib/cms.ts reads `data.copy`.
+    // the envelope exists and is an object: src/lib/cms.ts reads `data.copy`.
     if (typeof copy !== "object" || copy === null || Array.isArray(copy)) {
       fail(`expected an object envelope, got ${Array.isArray(copy) ? "array" : typeof copy}`);
     } else if (!("copy" in copy)) {
@@ -135,13 +135,13 @@ async function main() {
       fail(`"copy" is ${typeof copy.copy}, expected an object`);
     } else {
       const n = Object.keys(copy.copy).length;
-      pass(`envelope has a "copy" object (${n} key(s)${n === 0 ? " — nothing published, defaults apply" : ""})`);
+      pass(`envelope has a "copy" object (${n} key(s)${n === 0 ? ", nothing published, defaults apply" : ""})`);
     }
   }
 
   console.log("");
   if (failures > 0) {
-    console.error(`CMS contract FAILED — ${failures} problem(s).`);
+    console.error(`CMS contract FAILED, ${failures} problem(s).`);
     console.error(
       `The marketing site will keep building and deploying regardless; it will ` +
         `just silently serve bundled defaults for the affected content.`,

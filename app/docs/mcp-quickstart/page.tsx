@@ -4,13 +4,13 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "MCP Quickstart — forbind din AI-assistent | qlim8 docs",
+  title: "MCP Quickstart: forbind din AI-assistent | qlim8 docs",
   description:
-    "Forbind Claude eller ChatGPT til dine qlim8-klimadata på få minutter. Log ind med din qlim8-konto — ingen API-nøgle, ingen kode. Guide til almindelige brugere.",
+    "Forbind Claude eller ChatGPT til dine qlim8-klimadata på få minutter. Log ind med din qlim8-konto: ingen API-nøgle, ingen kode. Guide til almindelige brugere.",
   alternates: { canonical: "https://qlim8.com/docs/mcp-quickstart" },
   openGraph: {
     title: "qlim8 MCP Quickstart",
-    description: "Chat med dine klimadata i Claude eller ChatGPT — uden kode.",
+    description: "Chat med dine klimadata i Claude eller ChatGPT, uden kode.",
     url: "https://qlim8.com/docs/mcp-quickstart",
     images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8 MCP" }],
   },
@@ -20,7 +20,7 @@ const MCP_URL = "https://app.qlim8.com/api/mcp";
 
 const EXAMPLE_PROMPTS = [
   "Hvad var vores samlede CO2e-udledning i 2025, fordelt på scope 1, 2 og 3?",
-  "Vis vores udledninger måned for måned i 2025 — er der et sæsonmønster?",
+  "Vis vores udledninger måned for måned i 2025, er der et sæsonmønster?",
   "Hvilke kategorier driver mest af vores Scope 3? Brug GHG Protocol-opdelingen.",
   "Er vi på sporet mod vores 2030-reduktionsmål?",
   "Hvilke leverandører udgør den største del af vores værdikæde-eksponering?",
@@ -76,7 +76,7 @@ export default function Page() {
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
             Med qlim8's MCP-server kan Claude og ChatGPT svare på spørgsmål direkte fra jeres
-            klimaregnskab — udledninger, rapporter, mål og leverandører. Du logger bare ind med
+            klimaregnskab: udledninger, rapporter, mål og leverandører. Du logger bare ind med
             din qlim8-konto. <strong>Ingen API-nøgle, ingen kode.</strong>
           </p>
 
@@ -87,7 +87,7 @@ export default function Page() {
             </div>
             <div>
               <dt className="font-semibold text-gray-500 mb-1">Login</dt>
-              <dd className="text-gray-900">Din qlim8-konto (OAuth) — ingen API-nøgle nødvendig</dd>
+              <dd className="text-gray-900">Din qlim8-konto (OAuth), ingen API-nøgle nødvendig</dd>
             </div>
             <div>
               <dt className="font-semibold text-gray-500 mb-1">Adgang</dt>
@@ -107,12 +107,12 @@ export default function Page() {
               <li>
                 <strong>En administrator skal godkende forbindelsen.</strong> Godkendelsesskærmen
                 vises kun for qlim8-administratorer. Er du ikke selv admin, klarer en
-                admin-kollega login-trinnet én gang — derefter virker forbindelsen for den
+                admin-kollega login-trinnet én gang. Derefter virker forbindelsen for den
                 chat-konto, den blev tilføjet på.
               </li>
               <li>
                 <strong>AI-abonnement:</strong> Claude understøtter custom connectors på alle
-                planer — også gratisplanen (dog maks. én connector dér). ChatGPT kræver en betalt
+                planer, også gratisplanen (dog maks. én connector dér). ChatGPT kræver en betalt
                 plan (Plus, Pro, Business, Enterprise eller Edu).
               </li>
             </ul>
@@ -131,7 +131,7 @@ export default function Page() {
                 </>,
                 <>
                   Klik <strong>Add</strong> og derefter <strong>Connect</strong>. Din browser åbner
-                  qlim8 — log ind og godkend adgangen.
+                  qlim8, log ind og godkend adgangen.
                 </>,
                 <>
                   Tilbage i Claude: slå qlim8 til i chattens værktøjsmenu og stil dit første
@@ -141,7 +141,7 @@ export default function Page() {
             />
             <p className="text-sm text-gray-600">
               På <strong>Team/Enterprise-planer</strong> skal en organisations-Owner først tilføje
-              connectoren under <em>Organization Settings → Connectors</em> — derefter klikker
+              connectoren under <em>Organization Settings → Connectors</em>, derefter klikker
               hvert medlem selv på <em>Connect</em> og logger ind.
             </p>
           </Section>
@@ -162,21 +162,21 @@ export default function Page() {
                   og vælg <strong>OAuth</strong> som godkendelse (lad client-felterne stå tomme).
                 </>,
                 <>
-                  Gem og klik <strong>Connect</strong> — log ind hos qlim8 og godkend adgangen.
+                  Gem og klik <strong>Connect</strong>, log ind hos qlim8 og godkend adgangen.
                 </>,
                 <>Aktivér qlim8-appen i chatten og spørg løs.</>,
               ]}
             />
             <p className="text-sm text-gray-600">
               Custom MCP-connectors (kaldet <em>apps</em> i ChatGPT) kræver Plus, Pro, Business,
-              Enterprise eller Edu — de er ikke tilgængelige på gratisplanen.
+              Enterprise eller Edu: de er ikke tilgængelige på gratisplanen.
             </p>
           </Section>
 
           <Section number="4" title="Gemini">
             <p>
               Googles Gemini-app understøtter <strong>endnu ikke</strong> custom MCP-connectors for
-              almindelige brugere — hverken på web eller mobil. Tekniske alternativer findes
+              almindelige brugere, hverken på web eller mobil. Tekniske alternativer findes
               (Gemini CLI og Gemini Enterprise kan forbinde til serveren), men der er ingen
               brugervenlig vej endnu. Vi tilføjer en trin-for-trin-guide her, så snart Google åbner
               for det.
@@ -193,7 +193,7 @@ export default function Page() {
               ))}
             </ul>
             <p className="text-sm text-gray-600">
-              Assistenten henter tallene live fra qlim8 — samme tal som i platformen, med samme
+              Assistenten henter tallene live fra qlim8, samme tal som i platformen, med samme
               beregningsgrundlag og kildesporing.
             </p>
           </Section>
@@ -210,7 +210,7 @@ export default function Page() {
               </li>
               <li>
                 <strong>Kun jeres egne data.</strong> Assistenten kan udelukkende se jeres
-                virksomheds miljø — aldrig andre kunders.
+                virksomheds miljø, aldrig andre kunders.
               </li>
               <li>
                 <strong>Fortryd når som helst:</strong> forbindelsen tilbagekaldes i qlim8 under{" "}

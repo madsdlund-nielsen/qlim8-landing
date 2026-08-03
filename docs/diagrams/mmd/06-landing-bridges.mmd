@@ -1,10 +1,10 @@
-%% qlim8 — Landing architecture & bridges to the app (Diagram 6).
+%% qlim8, Landing architecture & bridges to the app (Diagram 6).
 %% All three bridges use absolute app URLs and work: signup/login CTAs, pricing
 %% checkout, and the newsletter form (-> app /api/newsletter/signup with name + email).
 flowchart LR
   visitor["Marketing visitor"]
 
-  subgraph landing["qlim8 Landing — Next.js 15 (standalone)"]
+  subgraph landing["qlim8 Landing, Next.js 15 (standalone)"]
     pages["Pages: / · /priser · /blog + [slug]<br/>/api + /docs/* · /kontakt · /om-os<br/>/metodologi · /karriere · legal"]
     i18n["client-side i18n (8 langs)"]
     content["hardcoded TS articles (no CMS)"]
@@ -14,7 +14,7 @@ flowchart LR
     cta["Signup / login CTAs"]
   end
 
-  subgraph app["qlim8 App — app.qlim8.com"]
+  subgraph app["qlim8 App, app.qlim8.com"]
     appauth["/auth"]
     appcheckout["/api/stripe/checkout-public"]
     appnews["/api/newsletter/signup (handler)"]

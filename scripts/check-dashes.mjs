@@ -7,7 +7,7 @@
  * reader is not only string literals. It is also JSX text, Markdown, and the
  * section banners in comments that authors copy when they add a new block. A
  * rule bound to the AST would cover the first two and miss the rest, so this
- * bans the character outright inside COVERED — a check with no false negatives
+ * bans the character outright inside COVERED: a check with no false negatives
  * beats one with a clever scope.
  *
  * The en-dash is only wrong when it is doing an em-dash's job. Between two
@@ -32,11 +32,12 @@ const COVERED = [
 ];
 
 /**
- * src/lib/i18n.tsx is a dead 8-language translation table: I18nProvider is
- * mounted but nothing calls t() or useI18n(). It is excluded rather than
- * cleaned so this check never becomes the reason someone keeps it alive.
+ * Nothing is exempt. src/lib/i18n.tsx is a dead 8-language translation table
+ * (I18nProvider is mounted, but nothing calls t() or useI18n()); it was cleaned
+ * along with the rest rather than skipped, so that deleting it later is a
+ * separate decision this check does not lean on either way.
  */
-const EXCLUDED = ["src/lib/i18n.tsx"];
+const EXCLUDED = [];
 
 const EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".md", ".mdx", ".css", ".html"]);
 
@@ -99,9 +100,10 @@ for (const f of findings) {
 }
 console.error(`
 Brug det tegn dansk grammatik kræver i stedet:
-  ", "  forklarende tilføjelse, modstilling, foran ledsætning
-  ": "  overskrift eller punktliste af formen "Label — uddybning"
-  ". "  hvor komma ville være kommasplejsning
-  "-"   sammensætninger; "–" kun mellem tal eller ord i et interval
+  ", "   forklarende tilføjelse, modstilling, og foran en ledsætning
+  ": "   overskrift eller punkt af formen "Label" + uddybning, og foran en opremsning
+  ". "   hvor et komma ville give kommasplejsning
+  "( )"  indskud der selv indeholder kommaer
+  "-"    sammensætninger. Kun mellem to tal eller to ord i et interval bruges "–"
 `);
 process.exit(1);

@@ -5,7 +5,7 @@
 export const PRICING_PAGE_KEY = "page.pricing";
 
 /**
- * DKK only — the Stripe Starter and Premium products carry no EUR prices, so
+ * DKK only: the Stripe Starter and Premium products carry no EUR prices, so
  * there is nothing for the page to offer in EUR. `monthlyDkk` and `yearlyDkk`
  * are both per-month figures; `yearlyTotalDkk` is what is actually charged
  * once up front on the yearly cycle.
@@ -83,7 +83,7 @@ export const PRICING_COPY: PricingCopy = {
     title: "Fra 300 kr/md. Alt inkluderet.",
     subtitle:
       "Ingen onboarding-gebyr, ingen lock-in. Opsig hvornår som helst. Alle priser er ekskl. moms.",
-    yearlySavingsNote: "— spar op til 24%",
+    yearlySavingsNote: "Spar op til 24%",
   },
   trustBar: [
     "✓ Annuller til enhver tid",
@@ -107,7 +107,7 @@ export const PRICING_COPY: PricingCopy = {
   },
   starter: {
     name: "Starter",
-    tagline: "Til SMV'er der starter ESG-arbejdet — banken har spurgt, og I skal have et tal.",
+    tagline: "Til SMV'er der starter ESG-arbejdet: banken har spurgt, og I skal have et tal.",
     cta: "Vælg Starter",
     includedLabel: "Inkluderet",
     features: [
@@ -122,7 +122,7 @@ export const PRICING_COPY: PricingCopy = {
   premium: {
     name: "Premium",
     tagline:
-      "Til SMV'er med kunde- og bankrapportering — VSME Comprehensive, leverandørdata, offentlig profil.",
+      "Til SMV'er med kunde- og bankrapportering: VSME Comprehensive, leverandørdata, offentlig profil.",
     cta: "Vælg Premium",
     includedLabel: "Alt i Starter, plus",
     features: [
@@ -145,7 +145,7 @@ export const PRICING_COPY: PricingCopy = {
     features: [
       {
         label: "Komplet værdikæde via CVR",
-        note: "kræver premium abonnement fra værdikæden – dog får I som Enterprise kunde en rabatkode til jeres leverandører",
+        note: "kræver premium abonnement fra værdikæden, dog får I som Enterprise kunde en rabatkode til jeres leverandører",
       },
       { label: "Fuld API-adgang" },
       { label: "SAML/SSO adgangskontrol" },
@@ -182,7 +182,7 @@ export const PRICING_COPY: PricingCopy = {
     items: [
       {
         q: "Binder jeg mig til en aftale?",
-        a: "Nej. Du kan annullere dit abonnement til enhver tid — månedlige planer stopper ved slutningen af den betalte periode, årlige planer refunderes ikke, men du bevarer adgangen til udløb. Ingen opsigelsesgebyr.",
+        a: "Nej. Du kan annullere dit abonnement til enhver tid: månedlige planer stopper ved slutningen af den betalte periode, årlige planer refunderes ikke, men du bevarer adgangen til udløb. Ingen opsigelsesgebyr.",
       },
       {
         q: "Hvad sker der lige efter tilmelding?",
@@ -190,7 +190,7 @@ export const PRICING_COPY: PricingCopy = {
       },
       {
         q: "Kan jeg skifte plan senere?",
-        a: "Ja. Du kan opgradere fra Starter til Premium når som helst — adgangen er øjeblikkelig. Prisen justeres forholdsmæssigt for resten af perioden.",
+        a: "Ja. Du kan opgradere fra Starter til Premium når som helst. Adgangen er øjeblikkelig. Prisen justeres forholdsmæssigt for resten af perioden.",
       },
       {
         q: "Hvad er VSME, og er det obligatorisk?",

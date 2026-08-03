@@ -44,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Marketing hubs (Kundetyper / Produkt / Integrationer) + their leaves,
   // derived from the content collections. Coming-soon pages (Appelsin) are
-  // excluded — they render noindex until they ship.
+  // excluded: they render noindex until they ship.
   const hubRoutes: MetadataRoute.Sitemap = MARKETING_HUBS.map((h) => ({
     url: `${BASE_URL}${h.route}`,
     lastModified: SITE_UPDATED,

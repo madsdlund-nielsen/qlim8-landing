@@ -2,7 +2,7 @@
 // Generate openable .excalidraw scenes from the rendered SVGs (run render.mjs first).
 // Each scene embeds the SVG as an image element, so it opens on excalidraw.com as an
 // editable canvas. For native shape-level editing, import the matching .mmd instead
-// (Insert -> Mermaid). Pure Node — no browser required.
+// (Insert -> Mermaid). Pure Node: no browser required.
 //
 //   node docs/diagrams/render.mjs       # produces svg/
 //   node docs/diagrams/excalidraw.mjs   # produces excalidraw/

@@ -19,33 +19,33 @@ const CLOSING_SECONDARY_CTA = {
 } as const;
 
 // ===========================================================================
-// PRODUKT — hub
+// PRODUKT: hub
 // ===========================================================================
 export const PRODUKT_HUB_COPY: MarketingHubCopy = {
   hero: {
     eyebrow: "Produkt",
     title: "Én platform fra faktura til revisor-klar rapport",
     subtitle:
-      "qlim8 samler dit klimaregnskab, din dataudforskning, din rapportering og dine reduktioner ét sted — bygget oven på det regnskab du allerede har.",
+      "qlim8 samler dit klimaregnskab, din dataudforskning, din rapportering og dine reduktioner ét sted, bygget oven på det regnskab du allerede har.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
-    heading: "Dit klimaregnskab — bygget oven på dit regnskab",
-    body: "De fleste ESG-værktøjer beder dig starte forfra: eksportér til CSV, byg et mapping-projekt, hyr en konsulent. qlim8 gør det modsatte. Vi tager udgangspunkt i at dine tal allerede findes — i Dinero, e-conomic, Billy og Eloverblik — og bygger klimaregnskabet oven på dem. Fra det samme datagrundlag får du et dashboard med dit CO₂e-aftryk, værktøjer til at grave ned i hvor emissionerne kommer fra, færdige VSME- og CSRD-rapporter med kildehenvisning, og et sted at planlægge og spore reduktioner. Hvert tal er sporbart tilbage til den oprindelige faktura, så revisoren kan følge kæden uden en eneste opfølgnings-mail. Det er forskellen mellem klimaregnskab og klima-markedsføring.",
+    heading: "Dit klimaregnskab: bygget oven på dit regnskab",
+    body: "De fleste ESG-værktøjer beder dig starte forfra: eksportér til CSV, byg et mapping-projekt, hyr en konsulent. qlim8 gør det modsatte. Vi tager udgangspunkt i at dine tal allerede findes (i Dinero, e-conomic, Billy og Eloverblik) og bygger klimaregnskabet oven på dem. Fra det samme datagrundlag får du et dashboard med dit CO₂e-aftryk, værktøjer til at grave ned i hvor emissionerne kommer fra, færdige VSME- og CSRD-rapporter med kildehenvisning, og et sted at planlægge og spore reduktioner. Hvert tal er sporbart tilbage til den oprindelige faktura, så revisoren kan følge kæden uden en eneste opfølgnings-mail. Det er forskellen mellem klimaregnskab og klima-markedsføring.",
     bullets: [
-      "Dansk regnskabsdata native — Dinero, e-conomic, Billy og Eloverblik, ingen CSV-flyt",
-      "Audit-spor på hver kg CO₂e — sporbart tilbage til bilaget",
+      "Dansk regnskabsdata native: Dinero, e-conomic, Billy og Eloverblik, ingen CSV-flyt",
+      "Audit-spor på hver kg CO₂e, sporbart tilbage til bilaget",
       "ESG som salgsværktøj hele året, ikke kun en rapport én gang om året",
     ],
   },
   cardsHeading: "Udforsk produktet",
   cardsSubheading:
-    "Otte moduler, ét datagrundlag — fra det daglige overblik til den underskrevne rapport.",
+    "Otte moduler, ét datagrundlag, fra det daglige overblik til den underskrevne rapport.",
   differentiators: [
     {
       title: "Dansk regnskabsdata som fundament",
-      body: "Vi understøtter Dinero, e-conomic og Billy native og kategoriserer mod 1.159 danske emissions-kategorier fra Klimakompasset. Ingen mapping-projekt, ingen manuel CSV-eksport — dit klimaregnskab er 80 % færdigt i det øjeblik din bogføring er tilsluttet.",
+      body: "Vi understøtter Dinero, e-conomic og Billy native og kategoriserer mod 1.159 danske emissions-kategorier fra Klimakompasset. Ingen mapping-projekt, ingen manuel CSV-eksport. Dit klimaregnskab er 80 % færdigt i det øjeblik din bogføring er tilsluttet.",
     },
     {
       title: "Audit-spor indbygget, ikke tilkøbt",
@@ -53,11 +53,11 @@ export const PRODUKT_HUB_COPY: MarketingHubCopy = {
     },
     {
       title: "ESG som salgsværktøj, ikke compliance-byrde",
-      body: "Scenarier, reduktions-tiltag og delbare profiler gør klimaregnskabet brugbart hele året. Du bruger det til at vinde grønne udbud og svare kunder — ikke kun til at aflevere en rapport, når banken beder om det.",
+      body: "Scenarier, reduktions-tiltag og delbare profiler gør klimaregnskabet brugbart hele året. Du bruger det til at vinde grønne udbud og svare kunder, ikke kun til at aflevere en rapport, når banken beder om det.",
     },
     {
       title: "Fra SMV til enterprise-værdikæde i samme platform",
-      body: "Start som SMV med basis-flow og VSME Basic. Voks til scenarier, revisor-adgang og en leverandørportal der samler Scope 3 fra 100+ leverandører — uden at skifte system eller migrere data undervejs.",
+      body: "Start som SMV med basis-flow og VSME Basic. Voks til scenarier, revisor-adgang og en leverandørportal der samler Scope 3 fra 100+ leverandører, uden at skifte system eller migrere data undervejs.",
     },
   ],
   closingCta: {
@@ -70,23 +70,23 @@ export const PRODUKT_HUB_COPY: MarketingHubCopy = {
 };
 
 // ===========================================================================
-// PR_DASHBOARD — Dashboard
+// PR_DASHBOARD: Dashboard
 // ===========================================================================
 export const PR_DASHBOARD: MarketingPageCopy = {
   hero: {
     eyebrow: "Produkt",
     title: "Hele dit klimaregnskab på én skærm",
     subtitle:
-      "Scope 1, 2 og 3, fordelt på kategorier, med udviklingen over tid og status mod dine mål — samlet på ét dashboard i stedet for tolv regneark.",
+      "Scope 1, 2 og 3, fordelt på kategorier, med udviklingen over tid og status mod dine mål, samlet på ét dashboard i stedet for tolv regneark.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
     heading: "Mandag-morgen-overblik uden regneark",
-    body: "Et klimaregnskab er ikke meget værd, hvis du skal samle det manuelt hver gang nogen spørger. qlim8-dashboardet giver dig det samlede billede med det samme: dit CO₂e-aftryk fordelt på Scope 1, 2 og 3, brudt ned på kategorier, med kurven over tid og hvor langt du er fra dine reduktionsmål. Tallene opdateres, i takt med at dine fakturaer synkroniseres fra bogføringen, så det du ser mandag morgen, er retvisende — ikke en måned gammelt. Skal CFO'en bruge et tal til bestyrelsen, en kunde bede om jeres aftryk, eller banken spørge før et grønt lån, er svaret allerede på skærmen. Ingen konsolidering, ingen \"vi vender tilbage\".",
+    body: "Et klimaregnskab er ikke meget værd, hvis du skal samle det manuelt hver gang nogen spørger. qlim8-dashboardet giver dig det samlede billede med det samme: dit CO₂e-aftryk fordelt på Scope 1, 2 og 3, brudt ned på kategorier, med kurven over tid og hvor langt du er fra dine reduktionsmål. Tallene opdateres, i takt med at dine fakturaer synkroniseres fra bogføringen, så det du ser mandag morgen, er retvisende, ikke en måned gammelt. Skal CFO'en bruge et tal til bestyrelsen, en kunde bede om jeres aftryk, eller banken spørge før et grønt lån, er svaret allerede på skærmen. Ingen konsolidering, ingen \"vi vender tilbage\".",
     bullets: [
       "Scope 1, 2 og 3 fordelt på kategorier i ét overblik",
-      "Udvikling over tid — se om kurven knækker den rigtige vej",
+      "Udvikling over tid: se om kurven knækker den rigtige vej",
       "Status mod mål, så du ved hvor langt du er fra target",
     ],
   },
@@ -94,12 +94,12 @@ export const PR_DASHBOARD: MarketingPageCopy = {
     {
       pain: "Hver gang nogen spørger om jeres CO₂-tal, går der en halv dag med at samle tal fra forskellige ark og tjekke om de er opdaterede.",
       solution: "Dashboardet holder det samlede billede aktuelt, i takt med at fakturaerne synkroniseres fra din bogføring.",
-      outcome: "Overblikket er klar mandag morgen — ikke efter en halv dags konsolidering.",
+      outcome: "Overblikket er klar mandag morgen, ikke efter en halv dags konsolidering.",
     },
     {
       pain: "Du ved, at Scope 3 fylder mest, men du kan ikke se fordelingen mellem scopes og kategorier uden at bygge en pivottabel.",
       solution: "Aftrykket vises fordelt på Scope 1, 2 og 3 og brudt ned på kategori direkte i dashboardet.",
-      outcome: "Du ser med det samme, hvor de store poster ligger — uden at røre Excel.",
+      outcome: "Du ser med det samme, hvor de store poster ligger, uden at røre Excel.",
     },
     {
       pain: "Ledelsen vil vide, om I bevæger jer den rigtige vej, men et enkelt årstal siger ikke, om kurven knækker.",
@@ -109,12 +109,12 @@ export const PR_DASHBOARD: MarketingPageCopy = {
     {
       pain: "I har sat et reduktionsmål, men ingen kan svare på, hvor langt I egentlig er fra det lige nu.",
       solution: "Dashboardet viser status mod dine mål, så afstanden til target altid er synlig.",
-      outcome: "Målet bliver noget du styrer efter løbende — ikke noget du opdager, du missede ved årets slutning.",
+      outcome: "Målet bliver noget du styrer efter løbende, ikke noget du opdager, du missede ved årets slutning.",
     },
     {
       pain: "Tallene i regnearket er så gamle, at ingen tør bruge dem til en kundepræsentation eller et bank-møde.",
       solution: "Dashboardet afspejler de senest synkroniserede fakturaer, så du kan bruge tallene, mens de stadig er friske.",
-      outcome: "Du deler tal, du tør stå inde for — uden at tjekke datoen på et regneark først.",
+      outcome: "Du deler tal, du tør stå inde for, uden at tjekke datoen på et regneark først.",
     },
   ],
   features: [
@@ -136,7 +136,7 @@ export const PR_DASHBOARD: MarketingPageCopy = {
     },
     {
       title: "Live-opdatering fra bogføringen",
-      body: "Tallene bygger på de fakturaer, der synkroniseres fra Dinero, e-conomic eller Billy. Når ny data kommer ind, opdateres overblikket — du behøver ikke genindtaste eller genberegne noget.",
+      body: "Tallene bygger på de fakturaer, der synkroniseres fra Dinero, e-conomic eller Billy. Når ny data kommer ind, opdateres overblikket. Du behøver ikke genindtaste eller genberegne noget.",
     },
   ],
   howItWorks: {
@@ -152,7 +152,7 @@ export const PR_DASHBOARD: MarketingPageCopy = {
       },
       {
         title: "Åbn dashboardet",
-        body: "Se dit samlede CO₂e-aftryk, fordelingen på kategorier, kurven over tid og status mod dine mål — samlet på én skærm.",
+        body: "Se dit samlede CO₂e-aftryk, fordelingen på kategorier, kurven over tid og status mod dine mål, samlet på én skærm.",
       },
       {
         title: "Gå dybere, når du vil",
@@ -183,7 +183,7 @@ export const PR_DASHBOARD: MarketingPageCopy = {
       },
       {
         q: "Hvordan følger jeg mit reduktionsmål?",
-        a: "Når du har sat et mål, viser dashboardet din status mod det — altså hvor langt du er fra target. Afstanden er synlig løbende, så du kan styre efter målet hele året.",
+        a: "Når du har sat et mål, viser dashboardet din status mod det, altså hvor langt du er fra target. Afstanden er synlig løbende, så du kan styre efter målet hele året.",
       },
       {
         q: "Skal jeg indtaste tal manuelt for at få et dashboard?",
@@ -191,7 +191,7 @@ export const PR_DASHBOARD: MarketingPageCopy = {
       },
       {
         q: "Kan jeg gå fra et tal til de bagvedliggende bilag?",
-        a: "Ja. Fra dashboardet kan du klikke videre til Udforskning for at filtrere data og finde de konkrete fakturaer, der ligger bag et tal — hver kg CO₂e er sporbar tilbage til kilden.",
+        a: "Ja. Fra dashboardet kan du klikke videre til Udforskning for at filtrere data og finde de konkrete fakturaer, der ligger bag et tal. Hver kg CO₂e er sporbar tilbage til kilden.",
       },
     ],
   },
@@ -205,7 +205,7 @@ export const PR_DASHBOARD: MarketingPageCopy = {
 };
 
 // ===========================================================================
-// PR_UDFORSKNING — Udforskning
+// PR_UDFORSKNING: Udforskning
 // ===========================================================================
 export const PR_UDFORSKNING: MarketingPageCopy = {
   hero: {
@@ -218,7 +218,7 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
   },
   intro: {
     heading: "Fra ét stort tal til de konkrete poster",
-    body: "Dashboardet giver dig overblikket. Udforskning giver dig svarene. Når du kan se, at Scope 3 fylder mest, er det næste spørgsmål altid: hvor kommer det fra? Med Udforskning filtrerer du data på scope, kategori, afdeling, leverandør og periode og graver dig ned fra det samlede aftryk til de konkrete aktiviteter bag. Vil du vide, hvilken afdeling der driver transportemissionerne, hvilke leverandører der vejer tungest i indkøb, eller om et bestemt kvartal skiller sig ud, kan du isolere det på få klik. Det gør det muligt at prioritere reduktioner der rent faktisk rykker — og at svare præcist, når revisoren eller ledelsen spørger til et bestemt tal, i stedet for at gætte.",
+    body: "Dashboardet giver dig overblikket. Udforskning giver dig svarene. Når du kan se, at Scope 3 fylder mest, er det næste spørgsmål altid: hvor kommer det fra? Med Udforskning filtrerer du data på scope, kategori, afdeling, leverandør og periode og graver dig ned fra det samlede aftryk til de konkrete aktiviteter bag. Vil du vide, hvilken afdeling der driver transportemissionerne, hvilke leverandører der vejer tungest i indkøb, eller om et bestemt kvartal skiller sig ud, kan du isolere det på få klik. Det gør det muligt at prioritere reduktioner der rent faktisk rykker, og at svare præcist, når revisoren eller ledelsen spørger til et bestemt tal, i stedet for at gætte.",
     bullets: [
       "Filtrér på scope, kategori, afdeling, leverandør og periode",
       "Grav fra det samlede aftryk ned til de enkelte aktiviteter",
@@ -227,7 +227,7 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
   },
   painPoints: [
     {
-      pain: "Du kan se, at aftrykket er stort, men ikke hvilke konkrete udgifter der driver det — så du ved ikke, hvor du skal sætte ind.",
+      pain: "Du kan se, at aftrykket er stort, men ikke hvilke konkrete udgifter der driver det, så du ved ikke, hvor du skal sætte ind.",
       solution: "Udforskning lader dig filtrere ned fra scope til kategori til den enkelte aktivitet, så du ser præcis hvilke poster der vejer tungest.",
       outcome: "Du prioriterer de reduktioner der rykker, i stedet for at gætte.",
     },
@@ -238,7 +238,7 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
     },
     {
       pain: "Én enkelt leverandør kan stå for en stor del af dit indkøbs-aftryk, men det drukner i totalen.",
-      solution: "Filtrér på leverandør og se, hvem der vejer tungest — grundlaget for en samtale om reduktion eller leverandørskifte.",
+      solution: "Filtrér på leverandør og se, hvem der vejer tungest, grundlaget for en samtale om reduktion eller leverandørskifte.",
       outcome: "Du finder de få leverandører, hvor en indsats faktisk batter.",
     },
     {
@@ -249,13 +249,13 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
     {
       pain: "Revisoren spørger til et bestemt tal, og du kan ikke hurtigt vise, hvilke posteringer der ligger bag.",
       solution: "Udforskning viser de aktiviteter bag et tal, og hver post er sporbar tilbage til sin faktura.",
-      outcome: "Revisorens spørgsmål besvares med det samme — ingen \"vi vender tilbage\".",
+      outcome: "Revisorens spørgsmål besvares med det samme, ingen \"vi vender tilbage\".",
     },
   ],
   features: [
     {
       title: "Filtrér på scope",
-      body: "Isolér Scope 1, 2 eller 3 — helt ned til de 15 Scope 3-kategorier. Du ser aftrykket for præcis den del af regnskabet, du arbejder med, uden støj fra resten.",
+      body: "Isolér Scope 1, 2 eller 3, helt ned til de 15 Scope 3-kategorier. Du ser aftrykket for præcis den del af regnskabet, du arbejder med, uden støj fra resten.",
     },
     {
       title: "Filtrér på kategori",
@@ -267,7 +267,7 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
     },
     {
       title: "Filtrér på leverandør",
-      body: "Find de leverandører der vejer tungest i dit indkøbs-aftryk. Det er grundlaget for en konkret leverandør-samtale — eller for at prioritere, hvem du inviterer ind i værdikæde-modulet.",
+      body: "Find de leverandører der vejer tungest i dit indkøbs-aftryk. Det er grundlaget for en konkret leverandør-samtale, eller for at prioritere, hvem du inviterer ind i værdikæde-modulet.",
     },
     {
       title: "Filtrér på periode",
@@ -291,7 +291,7 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
       },
       {
         title: "Find kilden",
-        body: "Se de aktiviteter bag tallet, og følg sporet tilbage til den konkrete faktura — så du ved præcis, hvad der driver emissionen.",
+        body: "Se de aktiviteter bag tallet, og følg sporet tilbage til den konkrete faktura, så du ved præcis, hvad der driver emissionen.",
       },
       {
         title: "Handl på indsigten",
@@ -310,7 +310,7 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
     items: [
       {
         q: "Hvilke dimensioner kan jeg filtrere på?",
-        a: "Du kan filtrere dine emissioner på scope, kategori, afdeling, leverandør og periode — og kombinere dem. Det gør det muligt at isolere præcis den del af aftrykket, du vil undersøge.",
+        a: "Du kan filtrere dine emissioner på scope, kategori, afdeling, leverandør og periode, og kombinere dem. Det gør det muligt at isolere præcis den del af aftrykket, du vil undersøge.",
       },
       {
         q: "Kan jeg se aftrykket pr. afdeling?",
@@ -337,19 +337,19 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
   closingCta: {
     title: "Grav ned i tallene bag dit klimaregnskab",
     description:
-      "Opret en gratis konto og udforsk dine emissioner på tværs af scope, kategori, afdeling, leverandør og periode — helt ned til det enkelte bilag.",
+      "Opret en gratis konto og udforsk dine emissioner på tværs af scope, kategori, afdeling, leverandør og periode, helt ned til det enkelte bilag.",
     primary: PRIMARY_CTA,
     secondary: CLOSING_SECONDARY_CTA,
   },
 };
 
 // ===========================================================================
-// PR_DATA_UDTRAEK — Data udtræk (child of Udforskning)
+// PR_DATA_UDTRAEK: Data udtræk (child of Udforskning)
 // ===========================================================================
 export const PR_DATA_UDTRAEK: MarketingPageCopy = {
   hero: {
     eyebrow: "Produkt · Udforskning",
-    title: "Træk dine tal ud — til analyse, regneark eller revisor",
+    title: "Træk dine tal ud: til analyse, regneark eller revisor",
     subtitle:
       "Eksportér rå- og aggregerede data i strukturerede formater, og behold sporbarheden hele vejen tilbage til det oprindelige bilag.",
     primaryCta: PRIMARY_CTA,
@@ -357,33 +357,33 @@ export const PR_DATA_UDTRAEK: MarketingPageCopy = {
   },
   intro: {
     heading: "Dine data, ikke låst inde",
-    body: "Nogle gange skal tallene ud af platformen — til en egen analyse i regnearket, til controlleren der vil krydstjekke, eller til revisoren der vil have datagrundlaget ved siden af rapporten. Data udtræk lader dig trække både rådata (den enkelte aktivitet med sin emissions-faktor) og aggregerede data (summeret pr. scope, kategori eller periode) ud i strukturerede formater. Det vigtige er, at sporbarheden følger med: hver linje i eksporten bærer sin emission-lineage — kæden fra kg CO₂e tilbage til den konkrete faktura. Du får altså ikke et løsrevet tal, men et tal med kilde. Det betyder, at dit eget regneark og revisorens stikprøve peger på præcis samme grundlag, og at ingen skal gætte, hvor et tal kom fra.",
+    body: "Nogle gange skal tallene ud af platformen, til en egen analyse i regnearket, til controlleren der vil krydstjekke, eller til revisoren der vil have datagrundlaget ved siden af rapporten. Data udtræk lader dig trække både rådata (den enkelte aktivitet med sin emissions-faktor) og aggregerede data (summeret pr. scope, kategori eller periode) ud i strukturerede formater. Det vigtige er, at sporbarheden følger med: hver linje i eksporten bærer sin emission-lineage, kæden fra kg CO₂e tilbage til den konkrete faktura. Du får altså ikke et løsrevet tal, men et tal med kilde. Det betyder, at dit eget regneark og revisorens stikprøve peger på præcis samme grundlag, og at ingen skal gætte, hvor et tal kom fra.",
     bullets: [
       "Rådata pr. aktivitet og aggregerede tal pr. scope, kategori eller periode",
       "Strukturerede eksportformater til egne analyser og videre bearbejdning",
-      "Emission-lineage følger med — sporbart tilbage til bilaget",
+      "Emission-lineage følger med, sporbart tilbage til bilaget",
     ],
   },
   painPoints: [
     {
-      pain: "Du vil lave din egen analyse i Excel, men platformens tal kan kun ses på skærmen — ikke tages ud.",
+      pain: "Du vil lave din egen analyse i Excel, men platformens tal kan kun ses på skærmen, ikke tages ud.",
       solution: "Data udtræk eksporterer både rå og aggregerede emissioner i strukturerede formater, du kan åbne i regnearket.",
-      outcome: "Din analyse bygger på platformens tal — ikke på tal du har tastet af manuelt.",
+      outcome: "Din analyse bygger på platformens tal, ikke på tal du har tastet af manuelt.",
     },
     {
       pain: "Revisoren vil have datagrundlaget ved siden af selve rapporten, og du ender med at klippe det sammen i hånden.",
       solution: "Træk det underliggende datasæt ud i ét eksport-format, som revisoren kan arbejde videre med direkte.",
-      outcome: "Datagrundlaget afleveres samlet — ingen manuel sammenklipning før revision.",
+      outcome: "Datagrundlaget afleveres samlet: ingen manuel sammenklipning før revision.",
     },
     {
       pain: "Når du eksporterer tal til et andet system, mister du oplysningen om, hvor hvert tal kom fra.",
-      solution: "Hver eksporteret post bærer sin emission-lineage — sporet tilbage til den oprindelige faktura følger med ud.",
-      outcome: "Sporbarheden overlever eksporten — ingen løsrevne tal uden kilde.",
+      solution: "Hver eksporteret post bærer sin emission-lineage, sporet tilbage til den oprindelige faktura følger med ud.",
+      outcome: "Sporbarheden overlever eksporten: ingen løsrevne tal uden kilde.",
     },
     {
       pain: "Du har brug for tallene på både detalje- og oversigtsniveau, men kan kun få den ene visning ad gangen.",
       solution: "Vælg mellem rådata pr. aktivitet og aggregerede tal pr. scope, kategori eller periode i samme udtræks-flow.",
-      outcome: "Du får præcis det granularitetsniveau, opgaven kræver — uden at bygge det om.",
+      outcome: "Du får præcis det granularitetsniveau, opgaven kræver, uden at bygge det om.",
     },
   ],
   features: [
@@ -401,7 +401,7 @@ export const PR_DATA_UDTRAEK: MarketingPageCopy = {
     },
     {
       title: "Emission-lineage i eksporten",
-      body: "Hver post bærer sin sporbarhed — kæden fra kg CO₂e tilbage til den oprindelige faktura. Dit regneark og revisorens stikprøve peger dermed på præcis samme grundlag.",
+      body: "Hver post bærer sin sporbarhed: kæden fra kg CO₂e tilbage til den oprindelige faktura. Dit regneark og revisorens stikprøve peger dermed på præcis samme grundlag.",
     },
     {
       title: "Datagrundlag til revisor",
@@ -440,7 +440,7 @@ export const PR_DATA_UDTRAEK: MarketingPageCopy = {
     items: [
       {
         q: "Hvilke data kan jeg trække ud?",
-        a: "Du kan eksportere både rådata pr. aktivitet — med emissions-faktor og beregnet kg CO₂e — og aggregerede tal summeret pr. scope, kategori eller periode. Du vælger det granularitetsniveau, opgaven kræver.",
+        a: "Du kan eksportere både rådata pr. aktivitet, med emissions-faktor og beregnet kg CO₂e, og aggregerede tal summeret pr. scope, kategori eller periode. Du vælger det granularitetsniveau, opgaven kræver.",
       },
       {
         q: "Bevares sporbarheden, når jeg eksporterer?",
@@ -465,7 +465,7 @@ export const PR_DATA_UDTRAEK: MarketingPageCopy = {
     ],
   },
   closingCta: {
-    title: "Tag dine tal med — med kilden i behold",
+    title: "Tag dine tal med: med kilden i behold",
     description:
       "Opret en gratis konto og træk rå- eller aggregerede emissionsdata ud til egne analyser, regneark eller revisor, uden at miste sporet tilbage til bilaget.",
     primary: PRIMARY_CTA,
@@ -474,20 +474,20 @@ export const PR_DATA_UDTRAEK: MarketingPageCopy = {
 };
 
 // ===========================================================================
-// PR_RAPPORTERING — Rapportering (hub for report features)
+// PR_RAPPORTERING: Rapportering (hub for report features)
 // ===========================================================================
 export const PR_RAPPORTERING: MarketingPageCopy = {
   hero: {
     eyebrow: "Produkt",
-    title: "Fra data til færdig rapport — klar til revisor, bank og bestyrelse",
+    title: "Fra data til færdig rapport: klar til revisor, bank og bestyrelse",
     subtitle:
       "Generér VSME-rapporter som Excel eller PDF direkte fra dit regnskab, med kildehenvisning pr. tal og et audit-trail der holder ved revision.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
-    heading: "Rapporten er ikke et projekt — den er et klik",
-    body: "VSME og CSRD er ikke valgfri længere: banker kræver tallene før grønne lån, store kunder kræver dem fra deres leverandører. Problemet er ikke ambitionen, men omfanget — EFRAG-skabelonen dækker 40+ datapunkter for VSME Basic og over 100 for Comprehensive, og hver påstand skal kunne dokumenteres i op til 7 år. qlim8 tager skabelonen som software, ikke som dokument. Vi læser dit klimaregnskab, indsætter dine tal i de rigtige felter, og genererer rapporten som Excel eller PDF med en klikbar kildehenvisning pr. post. Herunder finder du de enkelte rapport-typer: struktureret Excel til revisor, underskrifts-klar PDF til modtageren, og det audit-trail der gør, at revisorens spørgsmål besvares, før de bliver stillet.",
+    heading: "Rapporten er ikke et projekt: den er et klik",
+    body: "VSME og CSRD er ikke valgfri længere: banker kræver tallene før grønne lån, store kunder kræver dem fra deres leverandører. Problemet er ikke ambitionen, men omfanget: EFRAG-skabelonen dækker 40+ datapunkter for VSME Basic og over 100 for Comprehensive, og hver påstand skal kunne dokumenteres i op til 7 år. qlim8 tager skabelonen som software, ikke som dokument. Vi læser dit klimaregnskab, indsætter dine tal i de rigtige felter, og genererer rapporten som Excel eller PDF med en klikbar kildehenvisning pr. post. Herunder finder du de enkelte rapport-typer: struktureret Excel til revisor, underskrifts-klar PDF til modtageren, og det audit-trail der gør, at revisorens spørgsmål besvares, før de bliver stillet.",
     bullets: [
       "VSME Basic og Comprehensive genereret direkte fra dit regnskab",
       "Excel og PDF med kildehenvisning pr. kg CO₂e",
@@ -503,22 +503,22 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
     {
       pain: "Revisoren spørger, hvor et bestemt tal kommer fra, og du bruger dage på at grave posteringer frem manuelt.",
       solution: "Hver post i rapporten har en klikbar kildehenvisning tilbage til de fakturaer, den bygger på.",
-      outcome: "Revisorens spørgsmål besvares på ét klik — ingen manuel bilagsjagt.",
+      outcome: "Revisorens spørgsmål besvares på ét klik, ingen manuel bilagsjagt.",
     },
     {
       pain: "En førstegangs-VSME hos en konsulent koster typisk et femcifret til sekscifret beløb, og du skal betale igen næste år.",
-      solution: "Rapporterne genereres fra platformen som en del af abonnementet — Starter fra 300 kr/md, Premium 1.195 kr/md.",
+      solution: "Rapporterne genereres fra platformen som en del af abonnementet, Starter fra 300 kr/md, Premium 1.195 kr/md.",
       outcome: "Du erstatter en konsulent-regning på 75.000-200.000 kr. [antagelse: markeds-research, ikke kundevalideret] med et abonnement.",
     },
     {
       pain: "Du retter regnskabet efter, at rapporten er afleveret, og er nu i tvivl om, hvad der egentlig stod i den underskrevne version.",
-      solution: "Når en rapport er underskrevet, låses dataen — den signerede rapport viser tilstanden ved underskrift, selv om regnskabet ændres bagefter.",
-      outcome: "Den afleverede rapport står fast — du kan rette regnskabet uden at rykke ved historikken.",
+      solution: "Når en rapport er underskrevet, låses dataen. Den signerede rapport viser tilstanden ved underskrift, selv om regnskabet ændres bagefter.",
+      outcome: "Den afleverede rapport står fast: du kan rette regnskabet uden at rykke ved historikken.",
     },
     {
-      pain: "Forskellige modtagere — bank, bestyrelse, kunde — vil have rapporten i forskellig form, og du reformaterer i hånden hver gang.",
+      pain: "Forskellige modtagere (bank, bestyrelse, kunde) vil have rapporten i forskellig form, og du reformaterer i hånden hver gang.",
       solution: "Samme datagrundlag kommer ud som struktureret Excel til videre bearbejdning eller som modtager-tilpasset PDF.",
-      outcome: "Én rapport, flere formater — uden manuel reformatering pr. modtager.",
+      outcome: "Én rapport, flere formater, uden manuel reformatering pr. modtager.",
     },
   ],
   features: [
@@ -613,12 +613,12 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
 };
 
 // ===========================================================================
-// PR_EXCEL — Excel rapport
+// PR_EXCEL: Excel rapport
 // ===========================================================================
 export const PR_EXCEL: MarketingPageCopy = {
   hero: {
     eyebrow: "Produkt · Rapportering",
-    title: "Struktureret Excel-rapport — med kilden på hvert tal",
+    title: "Struktureret Excel-rapport: med kilden på hvert tal",
     subtitle:
       "Eksportér dit klimaregnskab som en struktureret Excel-fil til revisor eller videre bearbejdning, hvor hvert tal bærer sin kildehenvisning.",
     primaryCta: PRIMARY_CTA,
@@ -626,10 +626,10 @@ export const PR_EXCEL: MarketingPageCopy = {
   },
   intro: {
     heading: "Til revisoren der vil regne videre",
-    body: "Nogle modtagere vil ikke have en pæn PDF — de vil have tallene i et regneark, de kan arbejde i. Revisoren skal tage stikprøver, controlleren skal krydstjekke, og bæredygtighedsansvarlige skal bygge deres egen opstilling oven på tallene. Excel-rapporten giver dem en struktureret fil, hvor VSME-tallene ligger i faste, genkendelige felter, og hvor hvert tal bærer en kildehenvisning tilbage til de fakturaer, det bygger på. Det betyder, at modtageren ikke får et løsrevet tal, men et tal med spor: klik ind, se hvilke posteringer der ligger bag, og krydstjek mod bogføringen. Det gør revisionen hurtigere, fordi spørgsmålet \"hvor kommer det tal fra?\" allerede er besvaret i selve arket.",
+    body: "Nogle modtagere vil ikke have en pæn PDF. De vil have tallene i et regneark, de kan arbejde i. Revisoren skal tage stikprøver, controlleren skal krydstjekke, og bæredygtighedsansvarlige skal bygge deres egen opstilling oven på tallene. Excel-rapporten giver dem en struktureret fil, hvor VSME-tallene ligger i faste, genkendelige felter, og hvor hvert tal bærer en kildehenvisning tilbage til de fakturaer, det bygger på. Det betyder, at modtageren ikke får et løsrevet tal, men et tal med spor: klik ind, se hvilke posteringer der ligger bag, og krydstjek mod bogføringen. Det gør revisionen hurtigere, fordi spørgsmålet \"hvor kommer det tal fra?\" allerede er besvaret i selve arket.",
     bullets: [
       "Struktureret Excel med VSME-tallene i faste felter",
-      "Kildehenvisning på hvert tal — sporbart tilbage til fakturaen",
+      "Kildehenvisning på hvert tal, sporbart tilbage til fakturaen",
       "Til revisor, controller og videre bearbejdning i regnearket",
     ],
   },
@@ -637,7 +637,7 @@ export const PR_EXCEL: MarketingPageCopy = {
     {
       pain: "Revisoren beder om tallene i Excel, og du sidder med en PDF, du skal taste af eller kopiere manuelt.",
       solution: "Excel-rapporten leverer VSME-tallene i en struktureret fil, revisoren kan arbejde direkte i.",
-      outcome: "Revisoren får et regneark, ikke en PDF at taste af — færre fejl, hurtigere revision.",
+      outcome: "Revisoren får et regneark, ikke en PDF at taste af, færre fejl, hurtigere revision.",
     },
     {
       pain: "Når du krydstjekker et tal mod bogføringen, kan du ikke se, hvilke fakturaer det dækker.",
@@ -647,12 +647,12 @@ export const PR_EXCEL: MarketingPageCopy = {
     {
       pain: "Du vil bygge din egen opstilling oven på VSME-tallene, men de ligger låst i et rapportformat.",
       solution: "Den strukturerede Excel-fil åbner direkte i regnearket, klar til dine egne formler og pivottabeller.",
-      outcome: "Du bygger videre på tallene med det samme — uden en manuel udtræks-runde først.",
+      outcome: "Du bygger videre på tallene med det samme, uden en manuel udtræks-runde først.",
     },
     {
       pain: "Hver gang tallene opdateres, skal du reformatere Excel-arket, så det passer til revisorens forventning.",
       solution: "Arket genereres med samme faste struktur hver gang, direkte fra det aktuelle regnskab.",
-      outcome: "Du genererer en ny, konsistent version på sekunder — ingen manuel reformatering.",
+      outcome: "Du genererer en ny, konsistent version på sekunder, ingen manuel reformatering.",
     },
   ],
   features: [
@@ -662,7 +662,7 @@ export const PR_EXCEL: MarketingPageCopy = {
     },
     {
       title: "Kildehenvisning pr. tal",
-      body: "Hvert tal er forsynet med sin kilde — sporet tilbage til de fakturaer, det bygger på. Modtageren kan verificere hvert tal uden at spørge dig.",
+      body: "Hvert tal er forsynet med sin kilde, sporet tilbage til de fakturaer, det bygger på. Modtageren kan verificere hvert tal uden at spørge dig.",
     },
     {
       title: "Klar til videre bearbejdning",
@@ -735,51 +735,51 @@ export const PR_EXCEL: MarketingPageCopy = {
 };
 
 // ===========================================================================
-// PR_PDF — PDF rapport
+// PR_PDF: PDF rapport
 // ===========================================================================
 export const PR_PDF: MarketingPageCopy = {
   hero: {
     eyebrow: "Produkt · Rapportering",
-    title: "Underskrifts-klar PDF — tilpasset den der skal læse den",
+    title: "Underskrifts-klar PDF: tilpasset den der skal læse den",
     subtitle:
-      "Generér en færdig, underskrifts-klar PDF af dit klimaregnskab, med valg af tema og et layout tilpasset modtageren — bestyrelse, investor, bank eller samarbejdspartner.",
+      "Generér en færdig, underskrifts-klar PDF af dit klimaregnskab, med valg af tema og et layout tilpasset modtageren: bestyrelse, investor, bank eller samarbejdspartner.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
     heading: "Rapporten der er klar til at blive delt og underskrevet",
-    body: "Når klimaregnskabet skal ud af huset — til bestyrelsesmødet, til banken før et grønt lån, til en kunde der beder om jeres tal — skal det se færdigt ud og kunne underskrives. PDF-rapporten giver dig præcis det: en underskrifts-klar rapport, hvor tallene fra dit regnskab er sat op i et gennemført layout, hver med kildehenvisning. Du vælger et tema, der passer til afsenderen, og et layout der er tilpasset modtageren, så en bestyrelse får det, en bestyrelse skal bruge, og banken det, banken efterspørger. Både temaerne og modtager-typerne har deres egne detaljesider, så du kan gå i dybden med, hvordan hver variant ser ud. Resultatet er en rapport, du tør sende videre — uden manuel opsætning i tekstbehandling.",
+    body: "Når klimaregnskabet skal ud af huset, til bestyrelsesmødet, til banken før et grønt lån, til en kunde der beder om jeres tal, skal det se færdigt ud og kunne underskrives. PDF-rapporten giver dig præcis det: en underskrifts-klar rapport, hvor tallene fra dit regnskab er sat op i et gennemført layout, hver med kildehenvisning. Du vælger et tema, der passer til afsenderen, og et layout der er tilpasset modtageren, så en bestyrelse får det, en bestyrelse skal bruge, og banken det, banken efterspørger. Både temaerne og modtager-typerne har deres egne detaljesider, så du kan gå i dybden med, hvordan hver variant ser ud. Resultatet er en rapport, du tør sende videre, uden manuel opsætning i tekstbehandling.",
     bullets: [
       "Underskrifts-klar PDF direkte fra dit regnskab",
-      "Temaer — bl.a. Light Nordic og McKinsey — se hver temas egen side",
+      "Temaer: bl.a. Light Nordic og McKinsey: se hver temas egen side",
       "Tilpasset modtageren: bestyrelse, investor, bank, samarbejdspartner",
     ],
   },
   painPoints: [
     {
       pain: "Rapporten skal se professionel ud til bestyrelsen, og du bruger timer på at sætte tal og grafer op i tekstbehandling.",
-      solution: "PDF-rapporten genereres med et gennemført layout direkte fra dit regnskab — opsætningen er lavet for dig.",
+      solution: "PDF-rapporten genereres med et gennemført layout direkte fra dit regnskab. Opsætningen er lavet for dig.",
       outcome: "Du sender en færdig rapport uden manuel opsætning i Word.",
     },
     {
-      pain: "Banken, bestyrelsen og en kunde vil hver især have rapporten i en form, der passer dem — og du laver den om hver gang.",
+      pain: "Banken, bestyrelsen og en kunde vil hver især have rapporten i en form, der passer dem, og du laver den om hver gang.",
       solution: "Layoutet tilpasses modtageren, så samme datagrundlag præsenteres, som netop den modtager forventer.",
-      outcome: "Én rapport dækker flere modtagere — uden at bygge den om fra bunden.",
+      outcome: "Én rapport dækker flere modtagere, uden at bygge den om fra bunden.",
     },
     {
       pain: "Rapporten skal underskrives, men din PDF er bare et eksport uden et sign-off-flow.",
       solution: "PDF'en er underskrifts-klar og indgår i revisorens gennemgangs- og signeringsflow.",
-      outcome: "Underskriften sker i et defineret flow — ikke som en løs mail-tråd.",
+      outcome: "Underskriften sker i et defineret flow, ikke som en løs mail-tråd.",
     },
     {
       pain: "Du vil have rapportens udtryk til at matche afsenderen, men har kun ét fast format at vælge imellem.",
-      solution: "Vælg mellem temaer — fx Light Nordic eller McKinsey — der giver rapporten forskellige visuelle udtryk.",
-      outcome: "Rapportens udtryk matcher afsenderen — uden en designer involveret.",
+      solution: "Vælg mellem temaer, fx Light Nordic eller McKinsey, der giver rapporten forskellige visuelle udtryk.",
+      outcome: "Rapportens udtryk matcher afsenderen, uden en designer involveret.",
     },
     {
       pain: "En modtager sætter spørgsmålstegn ved et tal, og du kan ikke pege på, hvad det bygger på, direkte i rapporten.",
       solution: "Hvert tal i PDF'en bærer sin kildehenvisning tilbage til det underliggende datagrundlag.",
-      outcome: "Tallene i den delte rapport er dokumenterede — ikke bare påstande.",
+      outcome: "Tallene i den delte rapport er dokumenterede, ikke bare påstande.",
     },
   ],
   features: [
@@ -789,11 +789,11 @@ export const PR_PDF: MarketingPageCopy = {
     },
     {
       title: "Temaer",
-      body: "Vælg et tema — fx Light Nordic eller McKinsey — der giver rapporten det udtryk, der passer til afsenderen. Hvert tema har sin egen detaljeside, hvor du kan se udtrykket.",
+      body: "Vælg et tema, fx Light Nordic eller McKinsey, der giver rapporten det udtryk, der passer til afsenderen. Hvert tema har sin egen detaljeside, hvor du kan se udtrykket.",
     },
     {
       title: "Tilpasset modtageren",
-      body: "Layoutet tilpasses den, der skal læse rapporten — bestyrelse, investor, bank eller samarbejdspartner. Hver modtager-type har sin egen detaljeside med, hvad varianten fremhæver.",
+      body: "Layoutet tilpasses den, der skal læse rapporten: bestyrelse, investor, bank eller samarbejdspartner. Hver modtager-type har sin egen detaljeside med, hvad varianten fremhæver.",
     },
     {
       title: "Kildehenvisning bevaret",
@@ -809,7 +809,7 @@ export const PR_PDF: MarketingPageCopy = {
     steps: [
       {
         title: "Vælg skabelon og modtager",
-        body: "Vælg VSME Basic eller Comprehensive, og hvem rapporten er til — bestyrelse, investor, bank eller samarbejdspartner.",
+        body: "Vælg VSME Basic eller Comprehensive, og hvem rapporten er til: bestyrelse, investor, bank eller samarbejdspartner.",
       },
       {
         title: "Vælg tema",
@@ -844,7 +844,7 @@ export const PR_PDF: MarketingPageCopy = {
       },
       {
         q: "Kan rapporten tilpasses forskellige modtagere?",
-        a: "Ja. Layoutet tilpasses modtageren — bestyrelse, investor, bank eller samarbejdspartner. Hver modtager-type har sin egen detaljeside, der beskriver, hvad netop den variant fremhæver.",
+        a: "Ja. Layoutet tilpasses modtageren: bestyrelse, investor, bank eller samarbejdspartner. Hver modtager-type har sin egen detaljeside, der beskriver, hvad netop den variant fremhæver.",
       },
       {
         q: "Bevares kildehenvisningerne i PDF-format?",
@@ -859,38 +859,38 @@ export const PR_PDF: MarketingPageCopy = {
   closingCta: {
     title: "Send en rapport, du tør stå inde for",
     description:
-      "Opret en gratis konto og generér en underskrifts-klar PDF af dit klimaregnskab — med tema og layout tilpasset modtageren. Eller book en demo.",
+      "Opret en gratis konto og generér en underskrifts-klar PDF af dit klimaregnskab, med tema og layout tilpasset modtageren. Eller book en demo.",
     primary: PRIMARY_CTA,
     secondary: CLOSING_SECONDARY_CTA,
   },
 };
 
 // ===========================================================================
-// PR_AUDIT — Audit Trail
+// PR_AUDIT: Audit Trail
 // ===========================================================================
 export const PR_AUDIT: MarketingPageCopy = {
   hero: {
     eyebrow: "Produkt · Rapportering",
     title: "Et revisor-klart spor over hvem der ændrede hvad hvornår",
     subtitle:
-      "Hver kategori-ændring, faktor og datakilde logges automatisk, så du kan dokumentere hele datakæden bag dit klimaregnskab — uden at føre log i hånden.",
+      "Hver kategori-ændring, faktor og datakilde logges automatisk, så du kan dokumentere hele datakæden bag dit klimaregnskab, uden at føre log i hånden.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
     heading: "Dokumentationen der besvarer spørgsmålet før det stilles",
-    body: "Et klimaregnskab holder kun ved revision, hvis du kan vise, hvordan tallene blev til. CSRD kræver et audit-trail i op til 7 år, og en revisor vil altid spørge: hvem ændrede den kategori, hvilken faktor blev brugt, og hvornår? Med qlim8 er svaret ikke et regneark, nogen håber er opdateret — det er et spor, systemet fører automatisk. Hver kategori-ændring, hver emissions-faktor og hver datakilde logges i takt med, at du arbejder, og sammen med kildehenvisningen pr. kg CO₂e giver det en ubrudt kæde fra det færdige tal tilbage til den oprindelige faktura. Det gør revisionen hurtigere og mindre nervepirrende: der er ingen \"hvor kom det tal fra?\"-øjeblikke, fordi historikken allerede ligger der.",
+    body: "Et klimaregnskab holder kun ved revision, hvis du kan vise, hvordan tallene blev til. CSRD kræver et audit-trail i op til 7 år, og en revisor vil altid spørge: hvem ændrede den kategori, hvilken faktor blev brugt, og hvornår? Med qlim8 er svaret ikke et regneark, nogen håber er opdateret. Det er et spor, systemet fører automatisk. Hver kategori-ændring, hver emissions-faktor og hver datakilde logges i takt med, at du arbejder, og sammen med kildehenvisningen pr. kg CO₂e giver det en ubrudt kæde fra det færdige tal tilbage til den oprindelige faktura. Det gør revisionen hurtigere og mindre nervepirrende: der er ingen \"hvor kom det tal fra?\"-øjeblikke, fordi historikken allerede ligger der.",
     bullets: [
       "Hver kategori-ændring, faktor og datakilde logges automatisk",
-      "7-årigt audit-trail — CSRD-krav — indbygget, ikke tilkøbt",
+      "7-årigt audit-trail, CSRD-krav, indbygget, ikke tilkøbt",
       "Hvem ændrede hvad hvornår, sporet tilbage til bilaget",
     ],
   },
   painPoints: [
     {
-      pain: "Revisoren spørger, hvem der ændrede en kategori, og hvornår — og I har ingen samlet log, kun folks hukommelse.",
+      pain: "Revisoren spørger, hvem der ændrede en kategori, og hvornår, og I har ingen samlet log, kun folks hukommelse.",
       solution: "Hver kategori-ændring logges automatisk med hvem, hvad og hvornår, i takt med at der arbejdes.",
-      outcome: "Spørgsmålet besvares fra loggen — ikke fra hukommelsen.",
+      outcome: "Spørgsmålet besvares fra loggen, ikke fra hukommelsen.",
     },
     {
       pain: "Et tal bygger på en bestemt emissions-faktor, men du kan ikke dokumentere, hvilken faktor der faktisk blev brugt.",
@@ -905,18 +905,18 @@ export const PR_AUDIT: MarketingPageCopy = {
     {
       pain: "Revisionen trækker ud, fordi hvert spørgsmål udløser en manuel jagt gennem gamle mails og filer.",
       solution: "Hele datakæden ligger samlet i sporet, med kildehenvisning fra tal tilbage til faktura.",
-      outcome: "Revisorens spørgsmål besvares på stedet — ingen bilagsjagt i mails.",
+      outcome: "Revisorens spørgsmål besvares på stedet, ingen bilagsjagt i mails.",
     },
     {
       pain: "Flere kolleger arbejder i regnskabet, og du kan ikke se, hvem der stod bag en bestemt rettelse.",
       solution: "Loggen registrerer hvem der foretog hver ændring, så ansvaret altid kan spores.",
-      outcome: "Ændringer kan altid henføres til en person — ingen anonyme rettelser.",
+      outcome: "Ændringer kan altid henføres til en person, ingen anonyme rettelser.",
     },
   ],
   features: [
     {
       title: "Automatisk logning af ændringer",
-      body: "Hver kategori-ændring registreres af systemet, i takt med at du arbejder. Du behøver ikke føre en separat log — sporet opstår som et biprodukt af det almindelige arbejde.",
+      body: "Hver kategori-ændring registreres af systemet, i takt med at du arbejder. Du behøver ikke føre en separat log. Sporet opstår som et biprodukt af det almindelige arbejde.",
     },
     {
       title: "Faktor- og kildesporing",
@@ -928,7 +928,7 @@ export const PR_AUDIT: MarketingPageCopy = {
     },
     {
       title: "7-årig retention",
-      body: "Audit-trailet bevares i 7 år, som CSRD kræver. Dokumentationen er der, når revisionen kommer — uden et separat arkiverings-projekt.",
+      body: "Audit-trailet bevares i 7 år, som CSRD kræver. Dokumentationen er der, når revisionen kommer, uden et separat arkiverings-projekt.",
     },
     {
       title: "Ubrudt kæde til bilaget",
@@ -940,7 +940,7 @@ export const PR_AUDIT: MarketingPageCopy = {
     steps: [
       {
         title: "Arbejd som du plejer",
-        body: "Kategorisér fakturaer, ret et forslag, vælg en faktor. Der er ingen ekstra logge-trin — sporet skabes automatisk, mens du arbejder.",
+        body: "Kategorisér fakturaer, ret et forslag, vælg en faktor. Der er ingen ekstra logge-trin: sporet skabes automatisk, mens du arbejder.",
       },
       {
         title: "Systemet logger hver ændring",
@@ -971,7 +971,7 @@ export const PR_AUDIT: MarketingPageCopy = {
       },
       {
         q: "Skal jeg selv føre loggen?",
-        a: "Nej. Sporet skabes automatisk, i takt med at du arbejder i regnskabet. Der er ikke et ekstra logge-trin — dokumentationen opstår som et biprodukt af det almindelige arbejde.",
+        a: "Nej. Sporet skabes automatisk, i takt med at du arbejder i regnskabet. Der er ikke et ekstra logge-trin: dokumentationen opstår som et biprodukt af det almindelige arbejde.",
       },
       {
         q: "Hvor længe bevares audit-trailet?",
@@ -983,7 +983,7 @@ export const PR_AUDIT: MarketingPageCopy = {
       },
       {
         q: "Kan jeg se, hvem der ændrede et bestemt tal?",
-        a: "Ja. Loggen registrerer, hvem der foretog hver ændring, så en rettelse altid kan henføres til en person — også når flere kolleger arbejder i samme regnskab.",
+        a: "Ja. Loggen registrerer, hvem der foretog hver ændring, så en rettelse altid kan henføres til en person, også når flere kolleger arbejder i samme regnskab.",
       },
       {
         q: "Hvad hvis jeg retter regnskabet, efter en rapport er lavet?",

@@ -13,7 +13,7 @@ export function NewsletterForm() {
     setLoading(true)
     setMessage(null)
     try {
-      // The newsletter endpoint lives on the app, not on this landing site — use an
+      // The newsletter endpoint lives on the app, not on this landing site, use an
       // absolute URL (same pattern as the pricing checkout). A relative path would
       // 404 against the Next server, which has no /api routes.
       const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://app.qlim8.com'
@@ -44,7 +44,7 @@ export function NewsletterForm() {
           Vil du have artiklerne direkte i indbakken?
         </h2>
         <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-          Tilmeld dig og få nye artikler om klimaregnskab, compliance og bæredygtighed —
+          Tilmeld dig og få nye artikler om klimaregnskab, compliance og bæredygtighed, 
           uden spam, kun indhold der gavner din virksomhed.
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">

@@ -4,7 +4,7 @@ export const artikel: Article = {
   slug: 'l193-bankens-esg-krav-smv',
   title: 'L193 er i kraft: Hvad bankens nye ESG-krav reelt betyder for din SMV',
   description:
-    'Lov L193 trådte i kraft 1. januar 2026 og gør banker, realkredit og kapitalforvaltere forpligtede til at integrere ESG i kreditvurderingen. Hvad betyder det reelt for din SMV — og hvilken dokumentation bør du have klar?',
+    'Lov L193 trådte i kraft 1. januar 2026 og gør banker, realkredit og kapitalforvaltere forpligtede til at integrere ESG i kreditvurderingen. Hvad betyder det reelt for din SMV, og hvilken dokumentation bør du have klar?',
   category: 'Compliance',
   publishedAt: '2026-04-15',
   readingTime: 13,
@@ -22,7 +22,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'Hvad L193 reelt siger' },
     {
       type: 'paragraph',
-      text: 'L193 er ikke én lov, men en samlelov der ændrer i flere centrale finanslove — herunder lov om finansiel virksomhed §72. Den blev fremsat af Erhvervsministeriet i april 2025 og var oprindeligt sat til at træde i kraft 1. juli 2025. Den endelige ikrafttrædelse blev udskudt til 1. januar 2026, hvor Finanstilsynet samtidig kommunikerede nye bestemmelser om kreditinstitutters styring af ESG-relaterede risici.',
+      text: 'L193 er ikke én lov, men en samlelov der ændrer i flere centrale finanslove, herunder lov om finansiel virksomhed §72. Den blev fremsat af Erhvervsministeriet i april 2025 og var oprindeligt sat til at træde i kraft 1. juli 2025. Den endelige ikrafttrædelse blev udskudt til 1. januar 2026, hvor Finanstilsynet samtidig kommunikerede nye bestemmelser om kreditinstitutters styring af ESG-relaterede risici.',
     },
     {
       type: 'paragraph',
@@ -36,16 +36,16 @@ export const artikel: Article = {
       type: 'paragraph',
       text: 'Bemærk hvad loven ikke siger. Den siger ikke, at danske SMV\'er skal lave deres egne ESG-rapporter. Den siger ikke, at SMV\'er skal aflevere bestemte typer dokumentation i bestemte formater. Den siger ikke noget om bøder til virksomheder, der ikke kan dokumentere deres klimaaftryk.',
     },
-    { type: 'paragraph', text: 'Loven er rettet mod den finansielle sektor. Konsekvenserne for SMV\'er er indirekte — men de er reelle.' },
+    { type: 'paragraph', text: 'Loven er rettet mod den finansielle sektor. Konsekvenserne for SMV\'er er indirekte, men de er reelle.' },
 
     { type: 'h2', text: 'Finanstilsynet vs. Danske Bank: Et varsel om hvor det her er på vej hen' },
     {
       type: 'paragraph',
-      text: 'Den 9. september 2025 — tre måneder før L193 trådte i kraft — offentliggjorde Finanstilsynet en redegørelse efter en inspektion af Danske Banks styring af ESG-relaterede kreditrisici. Inspektionen var foretaget i marts og april samme år.',
+      text: 'Den 9. september 2025, tre måneder før L193 trådte i kraft, offentliggjorde Finanstilsynet en redegørelse efter en inspektion af Danske Banks styring af ESG-relaterede kreditrisici. Inspektionen var foretaget i marts og april samme år.',
     },
     {
       type: 'paragraph',
-      text: 'Det handler ikke om en bagatel. Tilsynet pegede på, at banken kun havde indhentet data fra en begrænset del af sin udlånsportefølje, at fokus havde været på de største kunder, og at størstedelen af erhvervsudlånene i praksis ikke fik analyseret væsentlige ESG-forhold. Bankens egne kontroller blev vurderet som utilstrækkelige, fordi de primært byggede på stikprøver og på, om bankens interne ESG-værktøj overhovedet var udfyldt — ikke om indholdet var validt.',
+      text: 'Det handler ikke om en bagatel. Tilsynet pegede på, at banken kun havde indhentet data fra en begrænset del af sin udlånsportefølje, at fokus havde været på de største kunder, og at størstedelen af erhvervsudlånene i praksis ikke fik analyseret væsentlige ESG-forhold. Bankens egne kontroller blev vurderet som utilstrækkelige, fordi de primært byggede på stikprøver og på, om bankens interne ESG-værktøj overhovedet var udfyldt, ikke om indholdet var validt.',
     },
     {
       type: 'paragraph',
@@ -53,11 +53,11 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det her er det, jeg vil bede dig hænge fast i: tilsynet stiller bankerne til ansvar for at have data på de mindre kunder, ikke kun de store. Det betyder, at presset på SMV\'erne kommer indirekte gennem bankerne — uanset hvad EU måtte beslutte om CSRD-tærsklerne, og uanset om regeringen vil "trykke på pauseknappen" andre steder i ESG-regelsættet.',
+      text: 'Det her er det, jeg vil bede dig hænge fast i: tilsynet stiller bankerne til ansvar for at have data på de mindre kunder, ikke kun de store. Det betyder, at presset på SMV\'erne kommer indirekte gennem bankerne: uanset hvad EU måtte beslutte om CSRD-tærsklerne, og uanset om regeringen vil "trykke på pauseknappen" andre steder i ESG-regelsættet.',
     },
     {
       type: 'paragraph',
-      text: 'Danske Bank har selv kommunikeret, at de for langt de fleste SMV-kunder ikke forventer en stor databyrde, fordi de henter branchedata fra andre kilder. Det er et fair budskab — men det er også et budskab fra én bank, og det betyder ikke, at alle banker har samme tilgang, eller at det vil gælde for alle SMV-segmenter i alle brancher.',
+      text: 'Danske Bank har selv kommunikeret, at de for langt de fleste SMV-kunder ikke forventer en stor databyrde, fordi de henter branchedata fra andre kilder. Det er et fair budskab, men det er også et budskab fra én bank, og det betyder ikke, at alle banker har samme tilgang, eller at det vil gælde for alle SMV-segmenter i alle brancher.',
     },
     {
       type: 'paragraph',
@@ -65,15 +65,15 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det har en konkret konsekvens. Hvis din virksomhed faktisk har investeret i lavere energiforbrug, en elektrificeret flåde, mere effektive processer eller grønnere indkøb end branchegennemsnittet, så vil banken — i fravær af jeres egne data — kategorisere jer ud fra branchen, ikke ud fra jer. I bliver bedømt som gennemsnittet, ikke som det I reelt er. Den modsatte sag er også sand: hvis I udleder mere end branchen, vurderer banken jer som mindre risikable end I egentlig er, og det er en kortvarig fordel, der ikke holder, når reelle data kommer ind i billedet.',
+      text: 'Det har en konkret konsekvens. Hvis din virksomhed faktisk har investeret i lavere energiforbrug, en elektrificeret flåde, mere effektive processer eller grønnere indkøb end branchegennemsnittet, så vil banken, i fravær af jeres egne data, kategorisere jer ud fra branchen, ikke ud fra jer. I bliver bedømt som gennemsnittet, ikke som det I reelt er. Den modsatte sag er også sand: hvis I udleder mere end branchen, vurderer banken jer som mindre risikable end I egentlig er, og det er en kortvarig fordel, der ikke holder, når reelle data kommer ind i billedet.',
     },
     {
       type: 'paragraph',
-      text: 'For SMV\'er der reelt arbejder med deres bæredygtighed og kunne dokumentere lavere udledning end branchegennemsnittet, betyder det noget konkret. I efterlader penge på bordet ved at lade banken bruge branchedata. Det er ikke nødvendigvis 2 % rentebesparelse i morgen — men det er en konkurrencefordel, der kan dokumenteres over tid, og som typisk indgår i det, bankerne kalder bæredygtighedslinkede lånevilkår, hvor præstation under et benchmark giver bedre rente.',
+      text: 'For SMV\'er der reelt arbejder med deres bæredygtighed og kunne dokumentere lavere udledning end branchegennemsnittet, betyder det noget konkret. I efterlader penge på bordet ved at lade banken bruge branchedata. Det er ikke nødvendigvis 2 % rentebesparelse i morgen, men det er en konkurrencefordel, der kan dokumenteres over tid, og som typisk indgår i det, bankerne kalder bæredygtighedslinkede lånevilkår, hvor præstation under et benchmark giver bedre rente.',
     },
     {
       type: 'paragraph',
-      text: 'Med andre ord: branchedata fra banken er en bekvem default for både dem og dig. Men egen dokumenteret data er det, der gør, at I står stærkere end gennemsnittet — hvis I altså står stærkere. Og hvis I står stærkere, så lad være med at lade gennemsnittet definere jer.',
+      text: 'Med andre ord: branchedata fra banken er en bekvem default for både dem og dig. Men egen dokumenteret data er det, der gør, at I står stærkere end gennemsnittet, hvis I altså står stærkere. Og hvis I står stærkere, så lad være med at lade gennemsnittet definere jer.',
     },
 
     { type: 'h2', text: 'Hvad bankerne reelt vil spørge dig om' },
@@ -83,11 +83,11 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'For SMV\'er i lav-eksponerede brancher — serviceydelser, rådgivning, mindre handel, en del kontoraktivitet — vil bankerne typisk nøjes med branchedata og måske en kort dialog ved næste statussamtale. Du vil opleve, at de spørger til energiforbrug og måske til transportflåde, men der vil sjældent være krav om en formel ESG-rapport for at få din kassekredit fornyet.',
+      text: 'For SMV\'er i lav-eksponerede brancher (serviceydelser, rådgivning, mindre handel, en del kontoraktivitet) vil bankerne typisk nøjes med branchedata og måske en kort dialog ved næste statussamtale. Du vil opleve, at de spørger til energiforbrug og måske til transportflåde, men der vil sjældent være krav om en formel ESG-rapport for at få din kassekredit fornyet.',
     },
     {
       type: 'paragraph',
-      text: 'For SMV\'er i højt eksponerede brancher er billedet et andet. Katrine Ziska, fagansvarlig for bæredygtighed i Jyske Bank Erhverv, har offentligt nævnt landbrug, transport, energi og industri som de fire brancher med højest udledning relativt til øvrige, og som derfor får mest opmærksomhed. Hvis din virksomhed driver transportflåde, byggeri og anlæg, fødevareproduktion, energi, eller landbrug, så regn med at få konkrete dataspørgsmål — ikke om to år, men ved næste eller næstnæste bankmøde.',
+      text: 'For SMV\'er i højt eksponerede brancher er billedet et andet. Katrine Ziska, fagansvarlig for bæredygtighed i Jyske Bank Erhverv, har offentligt nævnt landbrug, transport, energi og industri som de fire brancher med højest udledning relativt til øvrige, og som derfor får mest opmærksomhed. Hvis din virksomhed driver transportflåde, byggeri og anlæg, fødevareproduktion, energi, eller landbrug, så regn med at få konkrete dataspørgsmål, ikke om to år, men ved næste eller næstnæste bankmøde.',
     },
     {
       type: 'paragraph',
@@ -113,7 +113,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'VSME som det fælles sprog' },
     {
       type: 'paragraph',
-      text: 'Når jeg taler med revisorer og bankrådgivere om, hvilket format dokumentationen bør have, peger næsten alle på samme standard: VSME — Voluntary Sustainability Reporting Standard for SMEs.',
+      text: 'Når jeg taler med revisorer og bankrådgivere om, hvilket format dokumentationen bør have, peger næsten alle på samme standard: VSME, Voluntary Sustainability Reporting Standard for SMEs.',
     },
     {
       type: 'paragraph',
@@ -121,15 +121,15 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Standarden er delt op i to moduler: Basis og Comprehensive. Basis-modulet er bagudskuende og fokuserer på, hvad I faktisk har gjort — energiforbrug, drivhusgasemissioner i Scope 1, 2 og 3, vandforbrug, affald, basale sociale forhold. Comprehensive-modulet bygger ovenpå med en strategisk dimension: politikker, handlinger og målsætninger (PAT — Policies, Actions, Targets).',
+      text: 'Standarden er delt op i to moduler: Basis og Comprehensive. Basis-modulet er bagudskuende og fokuserer på, hvad I faktisk har gjort: energiforbrug, drivhusgasemissioner i Scope 1, 2 og 3, vandforbrug, affald, basale sociale forhold. Comprehensive-modulet bygger ovenpå med en strategisk dimension: politikker, handlinger og målsætninger (PAT: Policies, Actions, Targets).',
     },
     {
       type: 'paragraph',
-      text: 'For de fleste SMV-bankmøder er VSME Basis nok. Bankerne har konvergeret om det, og store revisionshuse — Beierholm, BDO og andre — kalder det "adgangsbilletten" for SMV-kunder, der vil sikre kapitaladgang på fornuftige vilkår.',
+      text: 'For de fleste SMV-bankmøder er VSME Basis nok. Bankerne har konvergeret om det, og store revisionshuse (Beierholm, BDO og andre) kalder det "adgangsbilletten" for SMV-kunder, der vil sikre kapitaladgang på fornuftige vilkår.',
     },
     {
       type: 'paragraph',
-      text: 'VSME-skabelonen leveres af EFRAG som et Excel-dokument. Det er bevidst, og det er vigtigt. Excel-formatet kan maskinaflæses af bankernes systemer, hvilket betyder, at de kan trække jeres data direkte ind i deres egne kreditmodeller uden manuel indtastning. Hvis du leverer din ESG-dokumentation som en pæn PDF i et hjemmelavet design, er der en god chance for, at bankrådgiveren skal indtaste tallene i hånden — eller at dokumentationen overhovedet ikke kommer ind i kreditmodellen.',
+      text: 'VSME-skabelonen leveres af EFRAG som et Excel-dokument. Det er bevidst, og det er vigtigt. Excel-formatet kan maskinaflæses af bankernes systemer, hvilket betyder, at de kan trække jeres data direkte ind i deres egne kreditmodeller uden manuel indtastning. Hvis du leverer din ESG-dokumentation som en pæn PDF i et hjemmelavet design, er der en god chance for, at bankrådgiveren skal indtaste tallene i hånden, eller at dokumentationen overhovedet ikke kommer ind i kreditmodellen.',
     },
     {
       type: 'paragraph',
@@ -148,21 +148,21 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det er mange penge, men jeg vil ikke pege fingre ad konsulenterne. Jeg har samarbejdet med flere danske bæredygtighedskonsulenter, og jeg har stor respekt for deres arbejde. Det de leverer er reel værdi — særligt på de områder, hvor menneskelig dømmekraft og strategisk rådgivning er afgørende: at vurdere dobbeltvæsentlighed, at lægge en reduktionsstrategi der passer til netop jeres forretning, at fortolke regulatorisk nuance, at hjælpe jer gennem et bankmøde med en konkret historie om jeres omstillingsplan. Det er svært at automatisere god dømmekraft, og det burde man heller ikke prøve på.',
+      text: 'Det er mange penge, men jeg vil ikke pege fingre ad konsulenterne. Jeg har samarbejdet med flere danske bæredygtighedskonsulenter, og jeg har stor respekt for deres arbejde. Det de leverer er reel værdi: særligt på de områder, hvor menneskelig dømmekraft og strategisk rådgivning er afgørende: at vurdere dobbeltvæsentlighed, at lægge en reduktionsstrategi der passer til netop jeres forretning, at fortolke regulatorisk nuance, at hjælpe jer gennem et bankmøde med en konkret historie om jeres omstillingsplan. Det er svært at automatisere god dømmekraft, og det burde man heller ikke prøve på.',
     },
     {
       type: 'paragraph',
-      text: 'Det konsulenter ofte ikke skal bruges på, er det manuelle dataindsamlingsarbejde — at sidde og finde fakturaer, finde emissionsfaktorer, og indtaste dem i et regneark. Det er det, jeg kalder rugbrødsarbejdet. Det er ikke konsulentens kompetenceområde, og det er ikke det, du betaler 1.500 kr i timen for. Det er et tegn på, at processen er forkert designet, hvis du gør det.',
+      text: 'Det konsulenter ofte ikke skal bruges på, er det manuelle dataindsamlingsarbejde: at sidde og finde fakturaer, finde emissionsfaktorer, og indtaste dem i et regneark. Det er det, jeg kalder rugbrødsarbejdet. Det er ikke konsulentens kompetenceområde, og det er ikke det, du betaler 1.500 kr i timen for. Det er et tegn på, at processen er forkert designet, hvis du gør det.',
     },
     { type: 'h3', text: 'Vej 2: Gør-det-selv i Excel' },
     {
       type: 'paragraph',
-      text: 'Gratis, hvis du regner med 0 kroner i timeløn. Men du skal regne med, at en direktør eller bogholder bruger 3-6 uger på at samle bilag, slå emissionsfaktorer op manuelt, bygge en model, tjekke for fejl, og strukturere alt i den rigtige form. Det er en reel intern omkostning, der ofte er højere end konsulentregningen, og som derudover producerer et statisk regnskab, der er forældet den dag, det er færdigt. Næste år skal øvelsen laves igen — og det viser sig, at folk har glemt, hvilke valg de traf første gang.',
+      text: 'Gratis, hvis du regner med 0 kroner i timeløn. Men du skal regne med, at en direktør eller bogholder bruger 3-6 uger på at samle bilag, slå emissionsfaktorer op manuelt, bygge en model, tjekke for fejl, og strukturere alt i den rigtige form. Det er en reel intern omkostning, der ofte er højere end konsulentregningen, og som derudover producerer et statisk regnskab, der er forældet den dag, det er færdigt. Næste år skal øvelsen laves igen, og det viser sig, at folk har glemt, hvilke valg de traf første gang.',
     },
     { type: 'h3', text: 'Vej 3: Brug software' },
     {
       type: 'paragraph',
-      text: 'Det er den vej, jeg har bygget qlim8 til. Ideen er enkel: dataindsamling, kategorisering, beregning og rapport-eksport er en computer-opgave, ikke en menneske-opgave. Hvis software kan trække fakturaerne direkte fra dit regnskabssystem, kategorisere dem ved hjælp af AI, slå emissionsfaktorer op i et opdateret katalog og bygge en VSME-rapport — hvorfor skulle et menneske gøre det manuelt?',
+      text: 'Det er den vej, jeg har bygget qlim8 til. Ideen er enkel: dataindsamling, kategorisering, beregning og rapport-eksport er en computer-opgave, ikke en menneske-opgave. Hvis software kan trække fakturaerne direkte fra dit regnskabssystem, kategorisere dem ved hjælp af AI, slå emissionsfaktorer op i et opdateret katalog og bygge en VSME-rapport. Hvorfor skulle et menneske gøre det manuelt?',
     },
     {
       type: 'paragraph',
@@ -176,15 +176,15 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'For det første: dine tal skal være sporbare. Hvis bankrådgiveren — eller mere sandsynligt: din revisor på vej til bankmødet — peger på et tal og spørger "hvor kommer det fra?", skal du kunne svare med konkrete fakturaer eller målinger, og du skal kunne vise hvilken emissionsfaktor der er brugt og hvor den kommer fra. Det er det, vi i qlim8 har bygget som et immutable audit trail. Hver beregning har et unikt ID, og du kan klikke fra det samlede tal ned til de enkelte poster. Det er ikke en feature, det er en grundforventning. Hvis din metode ikke kan det, har du et problem næste gang banken eller revisoren spørger.',
+      text: 'For det første: dine tal skal være sporbare. Hvis bankrådgiveren, eller mere sandsynligt: din revisor på vej til bankmødet, peger på et tal og spørger "hvor kommer det fra?", skal du kunne svare med konkrete fakturaer eller målinger, og du skal kunne vise hvilken emissionsfaktor der er brugt og hvor den kommer fra. Det er det, vi i qlim8 har bygget som et immutable audit trail. Hver beregning har et unikt ID, og du kan klikke fra det samlede tal ned til de enkelte poster. Det er ikke en feature, det er en grundforventning. Hvis din metode ikke kan det, har du et problem næste gang banken eller revisoren spørger.',
     },
     {
       type: 'paragraph',
-      text: 'For det andet: dine emissionsfaktorer skal være validerede og opdaterede. Klimakompasset opdateres af Erhvervsstyrelsen og Energistyrelsen årligt. Eldeklarationerne fra Eloverblik (Energinet) opdateres løbende. EXIOBASE og de internationale EPD-databaser opdateres efter andre kadence. Det er meget vanskeligt at holde et Excel-ark synkroniseret med det. Det er en af de mest reelle fordele ved at have data i en specialiseret platform — opdateringen sker, uden at du skal gøre noget.',
+      text: 'For det andet: dine emissionsfaktorer skal være validerede og opdaterede. Klimakompasset opdateres af Erhvervsstyrelsen og Energistyrelsen årligt. Eldeklarationerne fra Eloverblik (Energinet) opdateres løbende. EXIOBASE og de internationale EPD-databaser opdateres efter andre kadence. Det er meget vanskeligt at holde et Excel-ark synkroniseret med det. Det er en af de mest reelle fordele ved at have data i en specialiseret platform. Opdateringen sker, uden at du skal gøre noget.',
     },
     {
       type: 'paragraph',
-      text: 'For det tredje: dit datakvalitetsbillede skal være ærligt. I qlim8 viser vi en datakvalitetsscore øverst på dashboardet, og på forsiden af hver PDF-rapport. Den er bygget på et pointsystem: LCA og produkt-PCF får 5 point, EPD\'er får 4, fysiske enheder med en konkret emissionsfaktor får 3, spend-baserede estimater får 1, og manuelt valg af kategori under 5% confidence trækker fra. Det er vægtet efter virksomhedens samlede udledning. Det er ikke marketing, det er et tal. Min holdning er, at virksomhederne skal bære deres fejl som en rustning — ærligheden er deres skjold. Når banken kan se, at I selv er transparente om jeres datakvalitet, bygger I tillid, ikke modsat.',
+      text: 'For det tredje: dit datakvalitetsbillede skal være ærligt. I qlim8 viser vi en datakvalitetsscore øverst på dashboardet, og på forsiden af hver PDF-rapport. Den er bygget på et pointsystem: LCA og produkt-PCF får 5 point, EPD\'er får 4, fysiske enheder med en konkret emissionsfaktor får 3, spend-baserede estimater får 1, og manuelt valg af kategori under 5% confidence trækker fra. Det er vægtet efter virksomhedens samlede udledning. Det er ikke marketing, det er et tal. Min holdning er, at virksomhederne skal bære deres fejl som en rustning. Ærligheden er deres skjold. Når banken kan se, at I selv er transparente om jeres datakvalitet, bygger I tillid, ikke modsat.',
     },
     {
       type: 'paragraph',
@@ -206,15 +206,15 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Få overblik over dine basale data. El- og varmeforbrug, brændstof til køretøjer, de største indkøbskategorier, transport- og forretningsrejser. Du behøver ikke beregne klimaaftrykket endnu — du skal bare vide, hvilke data der findes, og hvor de findes. Hvis det meste ligger i dit regnskabssystem (Dinero, e-conomic, Billy) og på din elregning, er du allerede 80% i mål med dataindsamlingen.',
+      text: 'Få overblik over dine basale data. El- og varmeforbrug, brændstof til køretøjer, de største indkøbskategorier, transport- og forretningsrejser. Du behøver ikke beregne klimaaftrykket endnu: du skal bare vide, hvilke data der findes, og hvor de findes. Hvis det meste ligger i dit regnskabssystem (Dinero, e-conomic, Billy) og på din elregning, er du allerede 80% i mål med dataindsamlingen.',
     },
     {
       type: 'paragraph',
-      text: 'Vælg din vej bevidst — konsulent, gør-det-selv, eller software. Vær ærlig om hvilken vej der reelt passer til jer. Er der nogen i organisationen, der har tid og lyst til at lave et Excel-ark om året? Har I en konsulent, I allerede betaler for at lave andre ting, der kan udvide til ESG? Eller skal det her bare køre i baggrunden uden at fylde i hverdagen?',
+      text: 'Vælg din vej bevidst: konsulent, gør-det-selv, eller software. Vær ærlig om hvilken vej der reelt passer til jer. Er der nogen i organisationen, der har tid og lyst til at lave et Excel-ark om året? Har I en konsulent, I allerede betaler for at lave andre ting, der kan udvide til ESG? Eller skal det her bare køre i baggrunden uden at fylde i hverdagen?',
     },
     {
       type: 'paragraph',
-      text: 'Start med VSME Basis. Sigt på at have en baseline klar. Det udvidede Comprehensive-modul med reduktionsstrategi og målsætninger er der ingen grund til at starte med — bygges ovenpå senere, når banken eller en stor kunde beder om det.',
+      text: 'Start med VSME Basis. Sigt på at have en baseline klar. Det udvidede Comprehensive-modul med reduktionsstrategi og målsætninger er der ingen grund til at starte med: bygges ovenpå senere, når banken eller en stor kunde beder om det.',
     },
     {
       type: 'paragraph',
@@ -228,7 +228,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det er heller ikke en krise. De fleste SMV\'er kommer til at klare sig fint. Bankerne har generelt en pragmatisk tilgang, og Finanstilsynet har — i hvert fald foreløbigt — fokuseret på, at bankerne har styr på risikostyringen, ikke på at straffe SMV\'er for at mangle data.',
+      text: 'Det er heller ikke en krise. De fleste SMV\'er kommer til at klare sig fint. Bankerne har generelt en pragmatisk tilgang, og Finanstilsynet har, i hvert fald foreløbigt, fokuseret på, at bankerne har styr på risikostyringen, ikke på at straffe SMV\'er for at mangle data.',
     },
     {
       type: 'paragraph',
@@ -236,7 +236,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Min anbefaling er simpel: byg en proces, ikke et projekt. Du vil ikke kun aflevere en rapport til banken én gang. Du vil aflevere den hvert år, og du vil supplere den med stadig flere data, efterhånden som kravene udvikler sig. Vælg en metode, der ikke gør det til en månedlang øvelse hvert år. Hvad enten det er software, en god konsulent du arbejder med løbende, eller et kombineret setup — vælg noget, du kan leve med over tid.',
+      text: 'Min anbefaling er simpel: byg en proces, ikke et projekt. Du vil ikke kun aflevere en rapport til banken én gang. Du vil aflevere den hvert år, og du vil supplere den med stadig flere data, efterhånden som kravene udvikler sig. Vælg en metode, der ikke gør det til en månedlang øvelse hvert år. Hvad enten det er software, en god konsulent du arbejder med løbende, eller et kombineret setup. Vælg noget, du kan leve med over tid.',
     },
     {
       type: 'paragraph',

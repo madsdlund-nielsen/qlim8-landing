@@ -1,4 +1,4 @@
-# System architecture — qlim8 app + landing, end to end
+# System architecture: qlim8 app + landing, end to end
 
 > Status: stable · Last updated: 2026-06-29 · Owner: qlim8 team
 
@@ -27,16 +27,16 @@ truth. See that folder's README to regenerate the exports.
 
 ## How to read this document
 
-Work top to bottom — each section zooms in:
+Work top to bottom: each section zooms in:
 
-1. **System context** — who uses what, and every external dependency.
-2. **App runtime** — the request lifecycle inside the single server process.
-3. **Public API & agent surface** — the v1 / MCP / OAuth triad (a product differentiator).
-4. **Domain data model** — the ~80-table schema, grouped by bounded context.
-5. **Landing & app bridges** — how the marketing site hands off to the app.
-6. **Deployment & CI/CD** — where it all runs.
-7. **Key flows** — sequence diagrams for the load-bearing scenarios.
-8. **Architectural notes & known gaps** — the things a diagram alone could mislead you on.
+1. **System context**: who uses what, and every external dependency.
+2. **App runtime**: the request lifecycle inside the single server process.
+3. **Public API & agent surface**: the v1 / MCP / OAuth triad (a product differentiator).
+4. **Domain data model**: the ~80-table schema, grouped by bounded context.
+5. **Landing & app bridges**: how the marketing site hands off to the app.
+6. **Deployment & CI/CD**: where it all runs.
+7. **Key flows**: sequence diagrams for the load-bearing scenarios.
+8. **Architectural notes & known gaps**: the things a diagram alone could mislead you on.
 
 ### Legend
 
@@ -67,9 +67,9 @@ flowchart LR
   visitor["Marketing visitor"]
 
   subgraph qlim8["qlim8 product"]
-    app["qlim8 App — app.qlim8.com<br/>React SPA + Express (single process)"]
-    landing["qlim8 Landing — qlim8.com<br/>Next.js marketing site"]
-    devportal["Developer portal — developers.qlim8.com<br/>static OpenAPI docs"]
+    app["qlim8 App, app.qlim8.com<br/>React SPA + Express (single process)"]
+    landing["qlim8 Landing, qlim8.com<br/>Next.js marketing site"]
+    devportal["Developer portal, developers.qlim8.com<br/>static OpenAPI docs"]
   end
 
   subgraph ext["External services"]
@@ -123,23 +123,23 @@ CTAs and Stripe checkout). All product data lives in the EU (Hetzner Germany).
 
 The request lifecycle inside the app. The most important thing this diagram says: **the SPA,
 all four API surfaces, and every background worker run in a single PM2 fork process** on port
-5000 — there is no separate worker tier.
+5000: there is no separate worker tier.
 
 ```mermaid
 flowchart TB
-  browser["Browser — React 19 SPA<br/>Wouter · TanStack Query · PostHog JS"]
+  browser["Browser, React 19 SPA<br/>Wouter · TanStack Query · PostHog JS"]
   posthog["PostHog EU"]
 
-  subgraph nginxbox["nginx (app host) — TLS 443"]
+  subgraph nginxbox["nginx (app host), TLS 443"]
     nginx["location / &rarr; 127.0.0.1:5000<br/>/ingest/ + /ingest/static/ &rarr; PostHog<br/>WebSocket upgrade"]
   end
 
-  subgraph proc["Express process — PM2 fork, single OS process, :5000"]
+  subgraph proc["Express process: PM2 fork, single OS process, :5000"]
     direction TB
     subgraph mw["Middleware chain (in order)"]
       direction TB
       cors["CORS"] --> helmet["helmet / CSP / HSTS"] --> noindex["noindex"]
-      noindex --> stripehook["Stripe webhook<br/>express.raw — pre-json"]
+      noindex --> stripehook["Stripe webhook<br/>express.raw, pre-json"]
       stripehook --> json["express.json (+rawBody) · urlencoded"]
       json --> logger["request logger (PII-redacted)"]
       logger --> sess["session + Passport<br/>connect-pg-simple"]
@@ -148,8 +148,8 @@ flowchart TB
 
     subgraph surfaces["Route surfaces"]
       legacy["Legacy cookie API<br/>/api/* (~30 groups)"]
-      v1["Public API v1<br/>/api/v1/* — Bearer, RFC7807"]
-      mcp["MCP server<br/>/api/mcp — Streamable HTTP"]
+      v1["Public API v1<br/>/api/v1/*, Bearer, RFC7807"]
+      mcp["MCP server<br/>/api/mcp, Streamable HTTP"]
       oauth["OAuth 2.1 AS<br/>/oauth/* + /.well-known"]
     end
 
@@ -196,17 +196,17 @@ _Exports: [SVG](../../diagrams/svg/02-app-runtime.svg) · [PNG](../../diagrams/p
 
 Notes:
 - The **Stripe webhook is mounted before `express.json()`** so the raw body is available for
-  signature verification — it sits outside the normal JSON path (see `server/index.ts`).
+  signature verification, it sits outside the normal JSON path (see `server/index.ts`).
 - **nginx proxies PostHog first-party** via `/ingest/` (events) and `/ingest/static/` (SDK
   assets); the browser never talks to PostHog directly, which keeps analytics ad-blocker-resistant.
-- Background workers are started in the `httpServer.listen` callback — same process, same memory.
+- Background workers are started in the `httpServer.listen` callback: same process, same memory.
 
 ---
 
 ## 3. Public API & AI-agent surface
 
-A zoom on the **v1 + MCP + OAuth** triad. qlim8 is its **own OAuth 2.1 Identity Provider** —
-there is no external IdP — which lets AI connectors (Claude Cowork, ChatGPT) authenticate and
+A zoom on the **v1 + MCP + OAuth** triad. qlim8 is its **own OAuth 2.1 Identity Provider**, 
+there is no external IdP, which lets AI connectors (Claude Cowork, ChatGPT) authenticate and
 drive the MCP tools. v1 and MCP share the same bearer-auth and rate-limiting code.
 
 ```mermaid
@@ -214,7 +214,7 @@ flowchart LR
   dev["Developer<br/>(API key holder)"]
   connector["AI connector<br/>Claude Cowork / ChatGPT"]
 
-  subgraph as["OAuth 2.1 Authorization Server — qlim8 is its own IdP"]
+  subgraph as["OAuth 2.1 Authorization Server. Qlim8 is its own IdP"]
     disc["/.well-known/<br/>oauth-authorization-server"]
     reg["/oauth/register (DCR)"]
     authz["/oauth/authorize<br/>+ consent screen (PKCE)"]
@@ -227,16 +227,16 @@ flowchart LR
     scopes["scopes: read · write · audit_pack"]
   end
 
-  subgraph v1["Public API v1 — /api/v1/*"]
+  subgraph v1["Public API v1, /api/v1/*"]
     v1r["emissions · activities · factors · suppliers<br/>targets · reports(async) · webhooks · quota<br/>data-sources · scenarios · pcf · audit · lineage"]
   end
 
-  subgraph mcp["MCP server — /api/mcp"]
+  subgraph mcp["MCP server, /api/mcp"]
     mcptools["tools: emissions, activities, reports,<br/>suppliers, targets, factors, webhooks,<br/>dataSources, quota, categories, scenarios"]
-    mcpsess["in-memory sessions<br/>24h TTL — lost on restart"]
+    mcpsess["in-memory sessions<br/>24h TTL, lost on restart"]
   end
 
-  pg[("PostgreSQL — durable<br/>apiKeys · apiIdempotencyKeys<br/>oauthClients · oauthAccessTokens<br/>oauthRefreshTokens · oauthAuthorizationCodes")]
+  pg[("PostgreSQL, durable<br/>apiKeys · apiIdempotencyKeys<br/>oauthClients · oauthAccessTokens<br/>oauthRefreshTokens · oauthAuthorizationCodes")]
 
   dev -->|"Bearer API key"| bearer
   connector -->|discover| disc
@@ -276,7 +276,7 @@ scoped to `tenants`); 4b and 4c show the two highest-value domains in detail.
 
 ```mermaid
 flowchart TB
-  tenants[("tenants<br/>root — every row scoped here")]
+  tenants[("tenants<br/>root, every row scoped here")]
 
   subgraph auth["Auth & multi-tenancy"]
     a1["users · departments · sessions<br/>loginHistory · mfaTrustedDevices<br/>mfaRecoveryCodes · passwordResetTokens<br/>emailVerificationCodes · tenantTeamInvitations"]
@@ -445,7 +445,7 @@ How the marketing site is built and exactly where it hands off to the app.
 flowchart LR
   visitor["Marketing visitor"]
 
-  subgraph landing["qlim8 Landing — Next.js 15 (standalone)"]
+  subgraph landing["qlim8 Landing, Next.js 15 (standalone)"]
     pages["Pages: / · /priser · /blog + [slug]<br/>/api + /docs/* · /kontakt · /om-os<br/>/metodologi · /karriere · legal"]
     i18n["client-side i18n (8 langs)"]
     content["hardcoded TS articles (no CMS)"]
@@ -455,7 +455,7 @@ flowchart LR
     cta["Signup / login CTAs"]
   end
 
-  subgraph app["qlim8 App — app.qlim8.com"]
+  subgraph app["qlim8 App, app.qlim8.com"]
     appauth["/auth"]
     appcheckout["/api/stripe/checkout-public"]
     appnews["/api/newsletter/signup (handler)"]
@@ -481,8 +481,8 @@ flowchart LR
 _Exports: [SVG](../../diagrams/svg/06-landing-bridges.svg) · [PNG](../../diagrams/png/06-landing-bridges.png) · [Mermaid](../../diagrams/mmd/06-landing-bridges.mmd) · [Excalidraw](../../diagrams/excalidraw/06-landing-bridges.excalidraw)_
 
 > ✅ **Fixed.** `NewsletterForm.tsx` and `NewsletterSignupDialog.tsx` now POST to the
-> **absolute** app URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) — the same pattern as the
-> pricing checkout — so the request reaches the app's `/api/newsletter/signup` handler (CORS
+> **absolute** app URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`), the same pattern as the
+> pricing checkout, so the request reaches the app's `/api/newsletter/signup` handler (CORS
 > already allows the `qlim8.com` origin). The email-only dialog now also sends the required `name`.
 > Previously it POSTed to a relative path that dead-ended at the Next server. See note 1 in §8.
 
@@ -493,7 +493,7 @@ The `legacy/` directory in the landing repo is a pre-rewrite backup and is inten
 ## 6. Deployment & CI/CD topology
 
 Two **independent** deployments on Hetzner (Germany), each with its own nginx, certbot, and
-release pipeline. They share no database and no internal network — only public HTTPS + Stripe.
+release pipeline. They share no database and no internal network, only public HTTPS + Stripe.
 
 ```mermaid
 flowchart TB
@@ -507,12 +507,12 @@ flowchart TB
   end
 
   subgraph hetzner["Hetzner (Germany)"]
-    subgraph appvm["App host — app.qlim8.com (CX22, Ubuntu)"]
+    subgraph appvm["App host, app.qlim8.com (CX22, Ubuntu)"]
       anginx["nginx 80/443 + certbot<br/>Let's Encrypt"]
-      pm2["PM2 fork — 1 instance<br/>dist/index.js :5000"]
+      pm2["PM2 fork, 1 instance<br/>dist/index.js :5000"]
       pg[("PostgreSQL 16<br/>app + pgboss + session")]
     end
-    subgraph landvm["Landing host — qlim8.com (docker compose)"]
+    subgraph landvm["Landing host, qlim8.com (docker compose)"]
       lnginx["nginx container 80/443"]
       lweb["web container<br/>Next standalone :3000"]
       lcertbot["certbot container<br/>renew every 12h"]
@@ -684,10 +684,10 @@ _Exports: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagram
 
 ## 8. Architectural notes & known gaps
 
-1. **Newsletter bridge — fixed.** The landing forms now POST to the **absolute** app URL
+1. **Newsletter bridge: fixed.** The landing forms now POST to the **absolute** app URL
    (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) and reach the app's `/api/newsletter/signup`
    handler; the email-only dialog now also sends the required `name`. (Previously a relative
-   `/api/newsletter/signup` dead-ended at the Next server — no handler, no `/api` proxy.)
+   `/api/newsletter/signup` dead-ended at the Next server, no handler, no `/api` proxy.)
 2. **One process.** SPA static serving, all four API surfaces, every worker, and the Playwright
    pool live in a single PM2 fork instance. There is no separate worker/render service.
 3. **pg-boss is not separate infra.** It runs in the app's PostgreSQL under the `pgboss` schema.

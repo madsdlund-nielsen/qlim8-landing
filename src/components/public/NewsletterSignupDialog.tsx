@@ -20,7 +20,7 @@ export function NewsletterSignupDialog() {
     setLoading(true)
     setMessage(null)
     try {
-      // The newsletter endpoint lives on the app, not on this landing site — use an
+      // The newsletter endpoint lives on the app, not on this landing site, use an
       // absolute URL (same pattern as the pricing checkout). The app requires a name,
       // but this dialog only collects an email, so derive a display name from it.
       const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://app.qlim8.com'
@@ -58,7 +58,7 @@ export function NewsletterSignupDialog() {
         <DialogHeader>
           <DialogTitle>Skriv dig op til nyheder og udgivelser</DialogTitle>
           <DialogDescription>
-            Få besked om nye funktioner, udgivelser og indhold om klimaregnskab — uden spam.
+            Få besked om nye funktioner, udgivelser og indhold om klimaregnskab, uden spam.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">

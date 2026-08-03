@@ -20,7 +20,7 @@ const LINKS = [
   {
     href: "https://developers.qlim8.com/api-reference/",
     title: "Interaktiv API-reference",
-    body: "Alle /api/v1-endpoints med parametre, svar-skemaer og eksempler — identity, emissions, factors, audit, suppliers, targets, reports, scenarier og webhooks.",
+    body: "Alle /api/v1-endpoints med parametre, svar-skemaer og eksempler: identity, emissions, factors, audit, suppliers, targets, reports, scenarier og webhooks.",
   },
   {
     href: "https://developers.qlim8.com/guides/authentication.md",
@@ -35,7 +35,7 @@ const LINKS = [
   {
     href: "https://api.qlim8.com/api/v1/openapi.json",
     title: "OpenAPI 3.1-spec (JSON)",
-    body: "Den autoritative, maskinlæsbare kontrakt for hele REST-overfladen — genereret direkte fra serveren.",
+    body: "Den autoritative, maskinlæsbare kontrakt for hele REST-overfladen, genereret direkte fra serveren.",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function Page() {
             cursor-paginering, idempotente writes og RFC 9457-fejlformat.
           </p>
           <p className="mt-4 text-gray-600 leading-relaxed max-w-2xl">
-            Den komplette, altid opdaterede reference vedligeholdes på udviklerportalen —
+            Den komplette, altid opdaterede reference vedligeholdes på udviklerportalen, 
             genereret fra serverens OpenAPI-spec, så dokumentation og API aldrig driver fra
             hinanden.
           </p>

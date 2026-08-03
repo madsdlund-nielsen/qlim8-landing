@@ -3,16 +3,16 @@ import Metodologi from "@/page-components/metodologi";
 import { resolvePageCopy } from "@/lib/pageCopy";
 import { METHODOLOGY_PAGE_KEY, METHODOLOGY_COPY } from "@/content/copy/methodology";
 
-// ISR — CMS-published copy refreshes on this cadence.
+// ISR: CMS-published copy refreshes on this cadence.
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Metodologi — sådan beregner qlim8 dit klimaregnskab",
+  title: "Metodologi: sådan beregner qlim8 dit klimaregnskab",
   description:
-    "Alle emissionsfaktorer, datakilder og beregningsmetoder vi bruger til at producere dit scope 1-3 klimaregnskab. DEFRA, BEIS, Klimakompasset, GHG Protocol — fuld åbenhed, ingen sorte bokse.",
+    "Alle emissionsfaktorer, datakilder og beregningsmetoder vi bruger til at producere dit scope 1-3 klimaregnskab. DEFRA, BEIS, Klimakompasset, GHG Protocol, fuld åbenhed, ingen sorte bokse.",
   alternates: { canonical: "https://qlim8.com/metodologi" },
   openGraph: {
-    title: "qlim8 metodologi — alle emissionsfaktorer og beregninger",
+    title: "qlim8 metodologi: alle emissionsfaktorer og beregninger",
     description:
       "Fuld åbenhed om kilder, faktorer og beregningsmetoder. DEFRA, BEIS, Klimakompasset, GHG Protocol.",
     url: "https://qlim8.com/metodologi",
