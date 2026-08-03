@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "REST API v1 Reference | qlim8 docs",
+  title: "REST API v1 Reference",
   description:
     "qlim8's offentlige REST API (/api/v1): Bearer-auth med scopes, cursor-paginering, RFC 9457-fejl og webhooks. Den komplette reference bor på developers.qlim8.com.",
   alternates: { canonical: "https://qlim8.com/docs/api-reference" },

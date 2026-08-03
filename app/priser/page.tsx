@@ -8,12 +8,12 @@ import { PRICING_PAGE_KEY, PRICING_COPY, type PricingCopy } from "@/content/copy
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Priser | qlim8: Starter, Premium & Enterprise",
+  title: "Priser: Starter, Premium & Enterprise",
   description:
     "Vælg den plan der passer til din virksomhed. Starter fra 300 kr/md, Premium fra 1.195 kr/md (ved årlig betaling). Alle priser er ekskl. moms.",
   alternates: { canonical: "https://qlim8.com/priser" },
   openGraph: {
-    title: "Priser | qlim8: Starter, Premium & Enterprise",
+    title: "Priser: Starter, Premium & Enterprise | qlim8",
     description:
       "Vælg den plan der passer til din virksomhed. Starter fra 300 kr/md, Premium fra 1.195 kr/md.",
     url: "https://qlim8.com/priser",

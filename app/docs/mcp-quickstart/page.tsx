@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "MCP Quickstart: forbind din AI-assistent | qlim8 docs",
+  title: "MCP Quickstart: forbind din AI-assistent",
   description:
     "Forbind Claude eller ChatGPT til dine qlim8-klimadata på få minutter. Log ind med din qlim8-konto: ingen API-nøgle, ingen kode. Guide til almindelige brugere.",
   alternates: { canonical: "https://qlim8.com/docs/mcp-quickstart" },

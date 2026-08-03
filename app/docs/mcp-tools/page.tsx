@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "MCP Tools Reference | qlim8 docs",
+  title: "MCP Tools Reference",
   description:
     "qlim8's MCP-server eksponerer 31 tools, 3 resources og 3 prompts. Den komplette, altid opdaterede reference bor på developers.qlim8.com.",
   alternates: { canonical: "https://qlim8.com/docs/mcp-tools" },
