@@ -447,11 +447,11 @@ flowchart LR
   visitor["Marketing visitor"]
 
   subgraph landing["qlim8 Landing — Next.js 15 (standalone)"]
-    pages["Pages: / · /priser · /blog + [slug]<br/>/api + /docs/* · /kontakt · /om-os<br/>/metodologi · /karriere · legal"]
+    pages["Pages: / · /priser · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
     i18n["client-side i18n (8 langs)"]
     content["hardcoded TS articles (no CMS)"]
     ga["Google Analytics 4 (cookie consent)"]
-    nlform["Newsletter form"]
+    nlform["Newsletter form<br/>(/nyhedsbrev · /blog · hero modal)"]
     checkout["Pricing checkout"]
     cta["Signup / login CTAs"]
   end
@@ -470,6 +470,7 @@ flowchart LR
   cta -->|"HTTPS anchor"| appauth
   checkout -->|"absolute NEXT_PUBLIC_API_URL"| appcheckout --> stripe
   nlform -->|"absolute NEXT_PUBLIC_API_URL (name + email)"| appnews
+  nlform -.->|"newsletter_signup event (?ref / ?utm_source)"| ga
 
   classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
@@ -484,7 +485,8 @@ _Eksporter: [SVG](../../diagrams/svg/06-landing-bridges.svg) · [PNG](../../diag
 > ✅ **Rettet.** `NewsletterForm.tsx` og `NewsletterSignupDialog.tsx` POST'er nu til den
 > **absolutte** app-URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) — samme mønster som
 > pricing-checkout — så requestet rammer app'ens `/api/newsletter/signup`-handler (CORS tillader
-> allerede `qlim8.com`-origin). Den email-only dialog sender nu også det påkrævede `name`.
+> allerede `qlim8.com`-origin). Begge flader indsamler et rigtigt navn og en email — hero-dialogen
+> udleder ikke længere et visningsnavn fra email'ens lokale del.
 > Tidligere POST'ede den til en relativ sti, der endte blindt i Next-serveren. Se note 1 i §8.
 
 Mappen `legacy/` i landing-repoet er en backup fra før omskrivningen og er bevidst udeladt.
@@ -687,8 +689,14 @@ _Eksporter: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagr
 
 1. **Nyhedsbrev-broen — rettet.** Landing-formularerne POST'er nu til den **absolutte** app-URL
    (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) og rammer app'ens `/api/newsletter/signup`-handler;
-   den email-only dialog sender nu også det påkrævede `name`. (Tidligere endte en relativ
+   begge flader indsamler et rigtigt navn og en email. (Tidligere endte en relativ
    `/api/newsletter/signup` blindt i Next-serveren — ingen handler, ingen `/api`-proxy.)
+   Tilmelding findes på den selvstændige `/nyhedsbrev`-side, som indlejret blok på `/blog`
+   og artikelsider, og i hero-dialogen på forsiden — sidstnævnte åbner også fra
+   `/?nyhedsbrev=1`, så ét link kan pege på tilmelding uden at forlade forsiden.
+   En gennemført tilmelding sender et GA4-event `newsletter_signup` med et `signup_source`-token,
+   der udledes af `?ref` og dernæst `?utm_source` (`src/lib/tracking.ts`) — sådan attribueres
+   placeringer uden for sitet. Selve POST-bodyen forbliver `{ name, email }`.
 2. **Én proces.** Statisk SPA-servering, alle fire API-flader, alle workere og Playwright-poolen
    lever i én PM2 fork-instans. Der er ingen separat worker-/render-service.
 3. **pg-boss er ikke separat infrastruktur.** Den kører i app'ens PostgreSQL under `pgboss`-skemaet.
