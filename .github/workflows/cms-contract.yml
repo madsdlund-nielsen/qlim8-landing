@@ -9,7 +9,7 @@ name: CMS contract
 #    with no commit in this repo. A pull-request-only gate would never fire for
 #    the most likely failure.
 # 2. It reaches out to production, so making it block every PR would couple
-#    merging here to app.qlim8.com being up: which is the wrong trade. PRs run
+#    merging here to app.qlim8.com being up, which is the wrong trade. PRs run
 #    it only when src/lib/cms.ts itself changes, i.e. when the contract could be
 #    broken from this side.
 #
@@ -21,16 +21,16 @@ name: CMS contract
 # workflow step can reset that clock. The symptom is exactly the failure mode
 # this check exists to catch: the contract breaks while nobody is watching,
 # and nothing goes red because the schedule itself is off.
-#   Check:      `gh workflow list`: this workflow shows "disabled_inactivity"
+#   Check:      `gh workflow list` shows "disabled_inactivity" for this workflow
 #   Re-enable:  `gh workflow enable cms-contract.yml`
 # A keepalive-commit action could prevent this, but for a repo that receives
-# regular commits it is machinery without a payoff: a quarterly calendar
+# regular commits it is machinery without a payoff. A quarterly calendar
 # reminder to run the check above is the proportionate mitigation.
 
 on:
   schedule:
     # Every 6 hours. Marketing content is not latency-critical, and this is a
-    # 2-person team: hourly would be noise for a failure mode that degrades
+    # 2-person team. Hourly would be noise for a failure mode that degrades
     # gracefully rather than taking the site down.
     - cron: "0 */6 * * *"
   pull_request:

@@ -1,4 +1,6 @@
-name: Prod: diagnose landing host
+# The quotes are load-bearing: an unquoted `Prod: diagnose ...` makes YAML read
+# the second colon as a nested mapping, and GitHub rejects the whole file.
+name: "Prod: diagnose landing host"
 
 # READ-ONLY diagnostics for the landing host (qlim8.com / 91.107.239.106), run
 # over the same SSH channel deploy.yml uses. Exists because the certificate
@@ -6,21 +8,22 @@ name: Prod: diagnose landing host
 # Actions is the one place that can reach it.
 #
 # Every command below inspects and prints. Nothing is started, stopped, renewed,
-# written or deleted: in particular `certbot renew` is NOT run here, because a
+# written or deleted. In particular `certbot renew` is NOT run here, because a
 # renewal attempt has side effects (Let's Encrypt rate limits, rewritten state).
 # `certbot certificates` and the stored renewal config are read instead.
 #
 # Context (2026-07-28): the site served a certificate that expired Jul 27 20:16Z.
-# The nginx container was recreated by a successful deploy: which reloads certs
-# from the certbot-etc volume: and the expired cert was STILL served. So the
+# The nginx container was recreated by a successful deploy (which reloads certs
+# from the certbot-etc volume) and the expired cert was STILL served. So the
 # renewal itself is failing, not just its delivery to nginx. Prime suspect is the
 # stored lineage still specifying `authenticator = standalone`, a leftover from
 # the host-certbot setup: standalone needs port 80, which nginx holds.
 
+# Dispatch-only. This is an on-demand probe, so there is no branch whose commits
+# should trigger it; it previously auto-ran on the investigation branch that has
+# since been merged and deleted.
 on:
   workflow_dispatch:
-  push:
-    branches: [claude/health-check-connection-failure-cobvev]
 
 concurrency:
   group: prod-diagnose-landing

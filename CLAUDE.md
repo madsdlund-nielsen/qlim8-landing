@@ -12,7 +12,7 @@ app.qlim8.com and also hosts the CMS this site reads from.
 ```bash
 npm ci --legacy-peer-deps   # matches the Dockerfile, which is the build of record
 npm run dev                 # next dev
-npm run lint                # eslint + the dash guard
+npm run lint                # eslint + the dash guard + the workflow guard
 npm run typecheck           # tsc --noEmit
 npm test                    # src/lib/copyMerge.test.ts
 npm run build               # next build (standalone output)
@@ -63,6 +63,12 @@ the guard rejects it.
 
 This applies to CMS-authored copy too, which the guard cannot see. Text written
 in the app's `/admin` editor is held to the same rule.
+
+Note the interaction with `.github/`, which the dash guard does not cover.
+Substituting `: ` for `—` inside an unquoted YAML value produces a file GitHub
+cannot parse, and the symptom is a failing run with no jobs on every push,
+regardless of the workflow's triggers. `scripts/check-workflows.mjs` now parses
+every workflow during `npm run lint` so this fails on the branch instead.
 
 ## Deployment
 
