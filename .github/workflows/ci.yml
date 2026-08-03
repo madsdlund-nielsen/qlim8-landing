@@ -5,8 +5,8 @@ name: CI
 # never runs is not a guardrail, so this workflow gives PRs the three cheap
 # signals that exist locally.
 #
-# Deliberately scoped to pull requests and main. It does NOT gate deploy.yml, 
-# wiring these into the deploy path is a separate decision, since it changes
+# Deliberately scoped to pull requests and main. It does NOT gate deploy.yml.
+# Wiring these into the deploy path is a separate decision, since it changes
 # what can reach production.
 
 on:
@@ -44,8 +44,8 @@ jobs:
 
       # `next build` catches what lint/typecheck can't (prerender errors,
       # broken page exports). Without this, a build-only breakage surfaces
-      # for the first time inside the Docker build at deploy time: on main,
-      # after merge. The cache step keeps the added cost to ~a minute.
+      # for the first time inside the Docker build at deploy time (on main,
+      # after merge). The cache step keeps the added cost to ~a minute.
       - uses: actions/cache@v4
         with:
           path: .next/cache
