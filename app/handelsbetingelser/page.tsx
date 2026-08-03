@@ -7,7 +7,7 @@ import { LEGAL_TERMS_PAGE_KEY, LEGAL_TERMS_COPY } from "@/content/copy/legal";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Handelsbetingelser | qlim8",
+  title: "Handelsbetingelser",
   description:
     "qlim8's handelsbetingelser for ESG-platformen (SaaS). Aftalegrundlag, abonnement, priser, databehandling, ansvar og opsigelse for erhvervsdrivende kunder.",
   alternates: { canonical: "https://qlim8.com/handelsbetingelser" },

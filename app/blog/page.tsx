@@ -8,7 +8,7 @@ import { fetchPublishedArticles } from "@/lib/cms";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Viden om ESG & Klimaregnskab | qlim8",
+  title: "Viden om ESG & Klimaregnskab",
   description:
     "Artikler og guides om klimaregnskab, VSME-standarden, Scope 1-3 emissioner og ESG-compliance for danske virksomheder. Hold dig opdateret med de seneste krav.",
   alternates: { canonical: "https://qlim8.com/blog" },

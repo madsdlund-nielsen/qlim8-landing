@@ -7,12 +7,12 @@ import { CAREERS_PAGE_KEY, CAREERS_COPY } from "@/content/copy/careers";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Karriere | Bliv en del af qlim8",
+  title: "Karriere: bliv en del af holdet",
   description:
     "Vi søger passionerede mennesker der vil hjælpe danske virksomheder med at blive mere bæredygtige. Se ledige stillinger eller send en uopfordret ansøgning til qlim8.",
   alternates: { canonical: "https://qlim8.com/karriere" },
   openGraph: {
-    title: "Karriere | Bliv en del af qlim8",
+    title: "Karriere: bliv en del af holdet | qlim8",
     description:
       "Vi søger passionerede mennesker der vil hjælpe danske virksomheder med at blive mere bæredygtige.",
     url: "https://qlim8.com/karriere",

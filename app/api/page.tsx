@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/public/SiteFooter";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "API & MCP | qlim8: Programmatisk adgang til klimaregnskabsdata",
+  title: "API & MCP: Programmatisk adgang til klimaregnskabsdata",
   description:
     "qlim8 tilbyder REST API og en live MCP-server til programmatisk adgang til klimaregnskab, scope 1-3 og leverandørrapportering. Ideelt til CSRD-værdikædedata og AI-agenter.",
   alternates: { canonical: "https://qlim8.com/api" },

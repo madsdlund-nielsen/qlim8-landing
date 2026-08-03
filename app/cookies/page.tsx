@@ -7,7 +7,7 @@ import { LEGAL_COOKIES_PAGE_KEY, LEGAL_COOKIES_COPY } from "@/content/copy/legal
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Cookieerklæring | qlim8",
+  title: "Cookieerklæring",
   description:
     "Oversigt over de cookies, qlim8 bruger på marketingsitet: nødvendige, statistik- og marketing-cookies, samtykke, tredjeparter og dine rettigheder.",
   alternates: { canonical: "https://qlim8.com/cookies" },

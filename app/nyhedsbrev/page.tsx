@@ -4,7 +4,7 @@ import Nyhedsbrev from "@/page-components/nyhedsbrev";
 // Canonical stays free of query parameters: campaign links (?ref=, ?utm_*)
 // must not register as separate pages.
 export const metadata: Metadata = {
-  title: "Nyhedsbrev | qlim8",
+  title: "Nyhedsbrev",
   description:
     "Få konkrete guides til klimaregnskab, scope 1-3, VSME og L193 direkte i indbakken. Skrevet til danske SMV'er, uden konsulentjargon og uden spam.",
   alternates: { canonical: "https://qlim8.com/nyhedsbrev" },

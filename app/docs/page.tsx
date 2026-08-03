@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Docs | qlim8: Vejledninger, integration og API",
+  title: "Docs: Vejledninger, integration og API",
   description:
     "Dokumentation for qlim8's ESG-platform: onboarding, MCP-server, REST API, datakilder og metodologi.",
   alternates: { canonical: "https://qlim8.com/docs" },

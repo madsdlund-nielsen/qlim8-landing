@@ -6,7 +6,7 @@ import { UnsubscribeForm } from "@/components/public/UnsubscribeForm";
 // Reachable only via a signed link in our emails, keep it out of search
 // indexes and the sitemap (it is deliberately not listed in app/sitemap.ts).
 export const metadata: Metadata = {
-  title: "Afmeld nyhedsbrev | qlim8",
+  title: "Afmeld nyhedsbrev",
   robots: { index: false, follow: false },
 };
 
