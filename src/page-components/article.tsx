@@ -60,7 +60,7 @@ export default function ArticleTemplate({ article }: { article: Article }) {
         </div>
 
         <div className="mt-10">
-          <NewsletterForm />
+          <NewsletterForm source="artikel" />
         </div>
       </main>
 

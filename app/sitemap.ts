@@ -29,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/docs/mcp-tools`,      lastModified: SITE_UPDATED,          changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/docs/api-reference`,  lastModified: SITE_UPDATED,          changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/kontakt`,             lastModified: SITE_UPDATED,          changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/nyhedsbrev`,          lastModified: SITE_UPDATED,          changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/karriere`,            lastModified: SITE_UPDATED,          changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE_URL}/cookies`,             lastModified: SITE_UPDATED,          changeFrequency: "yearly",  priority: 0.3 },
     { url: `${BASE_URL}/privatlivspolitik`,   lastModified: SITE_UPDATED,          changeFrequency: "yearly",  priority: 0.3 },

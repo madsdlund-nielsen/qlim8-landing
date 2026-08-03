@@ -1,4 +1,4 @@
-# qlim8-landing — Claude Code Reference
+# qlim8-landing: Claude Code Reference
 
 ## Project Overview
 The public marketing site at **qlim8.com**. Next.js 15 App Router, React 19,
