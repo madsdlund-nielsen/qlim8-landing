@@ -1,5 +1,6 @@
 import { Linkedin } from "lucide-react";
 import { FOOTER_SOLUTIONS } from "@/content/navigation";
+import { Wordmark } from "@/components/Wordmark";
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
@@ -46,7 +47,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
           <div className="space-y-4">
             <a href="/" className="inline-block">
-              <span className="font-bold text-xl tracking-tight text-white">qlim8</span>
+              <Wordmark className="h-6 text-[#f8fafc]" />
             </a>
             <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
               ESG er nemt. Klimaregnskab, scope-3 og rapportering bygget til danske SMV'er.

@@ -10,6 +10,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { PRIMARY_NAV, type NavTop } from "@/content/navigation";
+import { Wordmark } from "@/components/Wordmark";
 
 interface SiteHeaderProps {
   isHome?: boolean;
@@ -103,7 +104,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between gap-4">
           <a href="/" data-testid="link-logo" className="flex items-center">
-            <span className="text-2xl font-bold text-gray-900">qlim8</span>
+            <Wordmark className="h-7 text-[#2b303b]" />
             {!isHome && (
               <span className="ml-4 text-xs sm:text-sm font-medium text-gray-500 hidden sm:inline">
                 ← Forside
