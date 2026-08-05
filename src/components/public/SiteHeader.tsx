@@ -104,7 +104,16 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between gap-4">
           <a href="/" data-testid="link-logo" className="flex items-center">
-            <Wordmark className="h-7 text-[#2b303b]" />
+            {/* Full "laas" (wordmark + [climate]) needs ~160px width for the
+                annotation to stay legible, so it is desktop-only; phones fall
+                back to the wordmark alone, exactly as the design manual says
+                below 160px. */}
+            <Wordmark className="h-7 w-auto text-[#2b303b] sm:hidden" />
+            <img
+              src="/brand/qlim8-laas-primaer.svg"
+              alt="qlim8"
+              className="hidden h-14 w-auto sm:block"
+            />
             {!isHome && (
               <span className="ml-4 text-xs sm:text-sm font-medium text-gray-500 hidden sm:inline">
                 ← Forside
