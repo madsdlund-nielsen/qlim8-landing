@@ -21,8 +21,12 @@ const nextConfig: NextConfig = {
       { source: "/index.md", destination: "/md" },
       { source: "/:path*.md", destination: "/md/:path*" },
       // A route folder beginning with a dot is not reliably picked up by the
-      // App Router, so the handler lives at /well-known and is mapped here.
+      // App Router, so the handlers live at /well-known and are mapped here.
       { source: "/.well-known/mcp.json", destination: "/well-known/mcp.json" },
+      {
+        source: "/.well-known/mcp-registry-auth",
+        destination: "/well-known/mcp-registry-auth",
+      },
     ];
   },
   async redirects() {
