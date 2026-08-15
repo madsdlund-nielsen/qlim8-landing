@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
+import { JsonLd } from "@/components/JsonLd";
+import { buildBreadcrumbSchema, buildFaqPageSchema, BASE_URL, ORG_REF, SOFTWARE_ID, WEBSITE_ID } from "@/lib/schema";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -36,8 +38,52 @@ const CAPABILITIES = [
   },
 ];
 
+
+// /api is a marketing page about the programmatic surface, not a route handler.
+// It carried the heaviest MCP copy on the site and no structured data at all.
+const API_FAQ = [
+  {
+    q: "Hvad er qlim8's MCP-server?",
+    a: "Det er en live server, der taler Model Context Protocol, den standard AI-assistenter bruger til at hente data fra et system. Claude, ChatGPT, Claude Code, Cursor og egne agenter kan kalde 31 kuraterede tools og hente emissioner, generere rapporter, oprette mål og planlægge reduktioner. Endpointet er https://app.qlim8.com/api/mcp.",
+  },
+  {
+    q: "Hvordan forbinder jeg uden en API-nøgle?",
+    a: "Claude og ChatGPT forbinder via OAuth 2.1 med dynamisk klient-registrering, så der er ingen nøgle at kopiere. Consent gives af en tenant-admin og er read-only som default. Udviklere kan i stedet bruge samme Bearer-nøgle som REST-API'et.",
+  },
+  {
+    q: "Kan jeg læse tool-kataloget programmatisk?",
+    a: "Ja. https://app.qlim8.com/api/mcp/schema er et uautentificeret discovery-dokument med alle 31 tools, deres scopes, annotationer og konventioner for paginering, datoer og fejl.",
+  },
+  {
+    q: "Kan en AI-agent lave en VSME-rapport?",
+    a: "Ja. generate_report sætter en VSME Basis eller Comprehensive-rapport i gang for et rapportår, og get_report_status følger jobbet. Kaldet er idempotent pr. år, standard og format. MCP-adgang kræver Premium.",
+  },
+];
+
+const PAGE_SCHEMA = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "API og MCP: programmatisk adgang til klimaregnskabsdata",
+    description:
+      "qlim8's REST API v1 og MCP-server giver programmatisk adgang til Scope 1-3 emissioner, VSME-rapporter, leverandørdata og webhooks.",
+    url: `${BASE_URL}/api`,
+    inLanguage: "da-DK",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": SOFTWARE_ID },
+    publisher: ORG_REF,
+  },
+  buildFaqPageSchema(API_FAQ),
+  buildBreadcrumbSchema([
+    { name: "qlim8", href: "/" },
+    { name: "API og MCP", href: "/api" },
+  ]),
+];
+
 export default function Page() {
   return (
+    <>
+      <JsonLd schema={PAGE_SCHEMA} />
     <div className="min-h-screen bg-[#F5F5F0]">
       <SiteHeader />
 
@@ -132,5 +178,6 @@ export default function Page() {
 
       <SiteFooter />
     </div>
+    </>
   );
 }

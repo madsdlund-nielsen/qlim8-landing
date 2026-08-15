@@ -153,7 +153,10 @@ export interface MarketingNode {
   status?: "live" | "coming-soon";
   /** Whether this node appears as a card on its hub page. */
   featured?: boolean;
-  /** Sibling slugs (same collection) shown as related links. */
+  /**
+   * Slugs shown as related links. A bare `"slug"` resolves inside this node's
+   * collection; `"collection/slug"` crosses collections (see getRelated).
+   */
   related?: string[];
   /** Bundled default copy: resolved + CMS-merged at request time. */
   defaults: MarketingPageCopy;

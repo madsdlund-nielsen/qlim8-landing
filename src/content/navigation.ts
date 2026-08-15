@@ -39,6 +39,7 @@ const MENU_SLUGS: Record<MarketingCollection, string[]> = {
   ],
   integrationer: [
     "e-conomic", "dinero", "billy", "appelsin", "eloverblik", "rest-api", "mcp-server",
+    "vsme-rapport-med-ai-agent",
   ],
 };
 

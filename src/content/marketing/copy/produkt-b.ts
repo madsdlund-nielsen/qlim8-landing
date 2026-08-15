@@ -766,6 +766,10 @@ export const PR_VSME: MarketingPageCopy = {
       title: "Skalerer til CSRD",
       body: "Rammer CSRD dit segment senere, bruger vi samme data med en anden template-mapping (ESRS E1). Du indsamler ikke data forfra: VSME er trinnet, ikke en blindgyde.",
     },
+    {
+      title: "Spørg din AI om VSME-tallene",
+      body: "Dine VSME-tal er også tilgængelige for Claude og ChatGPT gennem qlim8's indbyggede MCP-server, standarden AI-assistenter bruger til at hente data fra et system. Du kan spørge til Scope 3 pr. kategori eller bede assistenten starte rapporten, uden at åbne dashboardet. Se /integrationer/vsme-rapport-med-ai-agent.",
+    },
   ],
   valueStats: [
     { value: "Basic + Comprehensive", label: "begge moduler i platformen" },
@@ -791,6 +795,10 @@ export const PR_VSME: MarketingPageCopy = {
       {
         q: "Er en VSME-rapport fra qlim8 revisor-klar?",
         a: "Hver post har kildecitation tilbage til fakturaen, der er 7-årig audit-trail, og revisor kan signere rapporten kryptografisk i platformen. Bemærk: qlim8 opgør efter standarden: vi er ikke et akkrediteringsorgan, og revisionen udføres af din revisor.",
+      },
+      {
+        q: "Kan jeg spørge Claude eller ChatGPT om mine VSME-tal?",
+        a: "Ja. qlim8 har en indbygget MCP-server (Model Context Protocol), altså den standard AI-assistenter bruger til at hente data fra et system. Du forbinder Claude eller ChatGPT via OAuth uden en API-nøgle, og kan derefter spørge til Scope 1-3, få Scope 3 delt op på GHG-protokollens 15 kategorier eller bede assistenten sætte VSME-rapporten i gang. MCP-adgang kræver Premium. Læs mere på /integrationer/vsme-rapport-med-ai-agent.",
       },
       {
         q: "Hvad hvis jeg senere bliver CSRD-pligtig?",
@@ -875,6 +883,10 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
     {
       title: "PDF og Excel ud",
       body: "Rapporten kan hentes som PDF eller Excel i EFRAG-arkets format. Du leverer det format modtageren beder om uden at reformatere.",
+    },
+    {
+      title: "Start rapporten fra din AI-assistent",
+      body: "Har du Premium, kan Claude eller ChatGPT sætte VSME Basic i gang for dig gennem qlim8's MCP-server, standarden AI-assistenter bruger til at hente data fra et system. Du beder om rapportåret, og assistenten følger jobbet til filen er klar. Se /integrationer/vsme-rapport-med-ai-agent.",
     },
   ],
   valueStats: [
@@ -985,6 +997,10 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
     {
       title: "Springbræt til CSRD",
       body: "Rammer CSRD dit segment (fx Wave 3), bruger vi samme data med en ESRS E1-mapping. Comprehensive i dag betyder at du ikke indsamler data forfra når CSRD-kravet kommer.",
+    },
+    {
+      title: "Hele Scope 3 kan spørges i naturligt sprog",
+      body: "Comprehensive og MCP-adgang følges ad på Premium, så din AI-assistent kan hente Scope 3 delt op på GHG-protokollens 15 kategorier, præcis den opdeling EFRAG-arket udfyldes med. Claude og ChatGPT forbinder via OAuth uden en API-nøgle. Se /integrationer/vsme-rapport-med-ai-agent.",
     },
   ],
   valueStats: [

@@ -985,9 +985,9 @@ export const IN_REST_API: MarketingPageCopy = {
 export const IN_MCP: MarketingPageCopy = {
   hero: {
     eyebrow: "For AI-assistenter",
-    title: "Spørg dit klimaregnskab i naturligt sprog via MCP",
+    title: "Snak med din egen AI om dit klimaregnskab",
     subtitle:
-      "qlim8's MCP-server forbinder din AI-assistent (Claude, ChatGPT og andre) til dine klimadata. 31 tools lader assistenten hente emissioner, generere rapporter og planlægge reduktioner, uden at en udvikler skal bygge en integration.",
+      "qlim8 AI-integration med vores egen MCP-server. Spørg Claude eller ChatGPT om dine tal i naturligt sprog, og få svar hentet direkte fra dit klimaregnskab. 31 tools lader assistenten hente emissioner, generere rapporter og planlægge reduktioner, uden at en udvikler skal bygge en integration.",
     primaryCta: PRIMARY_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
@@ -1066,6 +1066,11 @@ export const IN_MCP: MarketingPageCopy = {
       body:
         "Hvert tool kræver et scope, og manglende scope giver en tydelig fejl. Write-tools skrives i den tamper-evidente audit-kæde med markeringen \"via mcp\".",
     },
+    {
+      title: "VSME-rapporten kan startes fra chatten",
+      body:
+        "generate_report sætter en VSME Basis eller Comprehensive-rapport i gang for et rapportår, og get_report_status følger jobbet til filen er klar. Assistenten kan også hente Scope 3 delt op på GHG-protokollens 15 kategorier, den samme opdeling EFRAG-arket udfyldes med. Se /integrationer/vsme-rapport-med-ai-agent.",
+    },
   ],
   howItWorks: {
     title: "Sådan kommer du i gang",
@@ -1118,12 +1123,16 @@ export const IN_MCP: MarketingPageCopy = {
         a: "De 31 tools spænder fra emissions-opslag (get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), aktiviteter og rapporter til leverandører, mål, emissionsfaktorer, scenarier og tiltag, PCF-records, afdelinger og webhooks. Den fulde liste med scopes står i /docs/mcp-tools.",
       },
       {
+        q: "Kan assistenten hjælpe med VSME-rapporten?",
+        a: "Ja. Den kan hente alle tallene rapporten bygger på, altså Scope 1-3, energiforbrug og Scope 3 pr. GHG-kategori, og den kan starte selve rapporten med generate_report for VSME Basis, VSME BP eller VSME Comprehensive. De narrative afsnit om politikker, risici og governance udfylder I fortsat selv. Der er en side om det på /integrationer/vsme-rapport-med-ai-agent.",
+      },
+      {
         q: "Er det sikkert at lade en agent ændre data?",
         a: "Hvert tool bærer en adfærds-annotering (read-only kontra muterende) og kræver et scope, så en klient kan auto-køre sikre opslag men bede om bekræftelse før noget ændres. OAuth er read-only som default, og alle writes skrives i en tamper-evident audit-kæde med markeringen \"via mcp\".",
       },
       {
         q: "Kræver MCP en bestemt plan?",
-        a: "Grundlæggende adgang deler nøgle- og scope-model med REST-API'et. Enkelte tools er tier-gated: fx leverandør- og værdikæde-tools kræver Enterprise, og scenarie-tools kræver scenarie-funktionen. Skriv til os via /kontakt om Enterprise-adgang.",
+        a: "Ja. MCP-adgang kræver Premium, fordi den sælges som en del af API-integrationerne. Derudover deler serveren nøgle- og scope-model med REST-API'et, og enkelte tools går videre: leverandør- og værdikæde-tools kræver Enterprise, og scenarie-tools kræver scenarie-funktionen. Se /priser, eller skriv til os via /kontakt om Enterprise-adgang.",
       },
     ],
   },
@@ -1131,6 +1140,183 @@ export const IN_MCP: MarketingPageCopy = {
     title: "Lad din assistent svare på dine klimaspørgsmål",
     description:
       "Opret en konto og forbind Claude eller ChatGPT via OAuth, eller tilføj qlim8 i Claude Code med en Bearer-nøgle. Start med /docs/mcp-quickstart og se alle tools i /docs/mcp-tools.",
+    primary: PRIMARY_CTA,
+    secondary: DEMO_CTA,
+  },
+};
+
+// ---------------------------------------------------------------------------
+// VSME-rapportering via AI-agent
+// ---------------------------------------------------------------------------
+// The page that owns the VSME x MCP intersection. It exists because the two
+// entities never met anywhere on the site: the VSME product pages rendered no
+// mention of MCP at all, and the MCP page mentioned VSME four times in passing,
+// so a model asked for "dansk VSME-software med MCP-server" had no single
+// document to anchor on.
+//
+// Ground truth for every claim below:
+//   docs/da/integrations/mcp-overview.md          (transport, auth, 31 tools)
+//   qlim8-app server/mcp/lib/catalog.ts           (tool names and scopes)
+//   qlim8-app server/reports/vsme.ts              (what a VSME report contains)
+//   qlim8-app shared/subscriptionFeatures.ts      (VSME Basis: starter,
+//                                                  Comprehensive og MCP: premium)
+//
+// Terminology: the hero sells the outcome, and "MCP" is explained the first time
+// it appears in the body. See "Terminology" in CLAUDE.md.
+
+export const IN_VSME_MCP: MarketingPageCopy = {
+  hero: {
+    eyebrow: "VSME og AI-assistenter",
+    title: "Lad din AI hente tallene til VSME-rapporten",
+    subtitle:
+      "qlim8 AI-integration med vores egen MCP-server. Spørg Claude eller ChatGPT om dine VSME-tal, bed assistenten sætte rapporten i gang, og få den tilbage som PDF eller som EFRAG's eget Excel-ark.",
+    primaryCta: PRIMARY_CTA,
+    secondaryCta: HERO_SECONDARY_CTA,
+  },
+  intro: {
+    heading: "VSME-rapportering, spurgt i naturligt sprog",
+    body:
+      "qlim8 er en dansk ESG-platform til klimaregnskab og VSME-rapportering, og den udstiller dine tal direkte til AI-assistenter gennem en indbygget MCP-server. MCP (Model Context Protocol) er den standard, Claude og ChatGPT bruger, når de skal hente data fra et system i stedet for at gætte. I praksis betyder det, at du kan skrive \"hvad er vores Scope 3 fordelt på de 15 GHG-kategorier?\" eller \"start VSME Basis-rapporten for 2025\" i din assistent, og få svaret hentet live fra dit eget klimaregnskab. Overfladen er 31 tools, 3 resources og 3 prompts. Claude og ChatGPT forbinder via OAuth 2.1 uden en API-nøgle at kopiere, mens Claude Code og Cursor bruger samme Bearer-nøgle som REST-API'et.",
+    bullets: [
+      "VSME Basis og Comprehensive, genereret gennem generate_report og hentet igen med get_report_status.",
+      "Scope 1-3 med Scope 3 fordelt på GHG-protokollens 15 kategorier, det samme opslag rapporten selv bruger.",
+      "Read-only som default, og hvert write havner i den tamper-evidente audit-kæde.",
+    ],
+  },
+  painPoints: [
+    {
+      pain:
+        "VSME-rapporten kræver tal fra flere hjørner af regnskabet, og du skal ind i dashboardet hver gang nogen spørger til ét af dem.",
+      solution:
+        "Assistenten henter tallene direkte: samlet CO2e, fordelingen på scope, energiforbruget og Scope 3 pr. kategori, uden at du åbner qlim8.",
+      outcome:
+        "Spørgsmål fra bank, revisor eller bestyrelse kan besvares, mens du står med telefonen i hånden.",
+    },
+    {
+      pain:
+        "Du ved ikke, om I skal vælge VSME Basis eller Comprehensive, og forskellen er svær at læse ud af standarden.",
+      solution:
+        "Bed assistenten sammenligne, hvad I allerede har data til. Den kan læse jeres emissioner, mål og datakilder og pege på, hvad der mangler for hver af de to versioner.",
+      outcome:
+        "Valget bliver truffet på jeres egne data i stedet for på en generisk vejledning.",
+    },
+    {
+      pain:
+        "Revisoren spørger, hvor et enkelt tal i rapporten kommer fra, og du skal grave manuelt i bilag og faktorer.",
+      solution:
+        "get_emission_lineage giver hele sporet for en postering: kildeaktiviteten, emissionsfaktoren, kategoriskift og audit-hashes. get_factor_citations viser, hvilke posteringer der brugte en given faktor.",
+      outcome:
+        "Revisoren kan selv følge tallet til bunds, i stedet for at bede dig om et nyt udtræk.",
+    },
+    {
+      pain:
+        "Du er nervøs for at give en AI-agent adgang til noget, der ender i en rapport, banken læser.",
+      solution:
+        "Hvert tool er markeret som read-only eller muterende og kræver et scope. OAuth-consent gives kun af en tenant-admin og er read-only som default.",
+      outcome:
+        "Assistenten kan læse alt, hvad du giver den lov til, og kun ændre noget, du udtrykkeligt har åbnet for.",
+    },
+  ],
+  features: [
+    {
+      title: "Start VSME-rapporten fra din assistent",
+      body:
+        "generate_report sætter et render-job i gang for et rapportår og en standard (vsme_basic, vsme_bp eller vsme_comprehensive) i PDF eller Excel. Kaldet er idempotent pr. år, standard og format, så et gentaget forsøg henter det eksisterende job i stedet for at lave et nyt. get_report_status følger det til dørs.",
+    },
+    {
+      title: "Scope 3 i GHG-protokollens 15 kategorier",
+      body:
+        "get_emissions_by_scope3_category giver den samme opdeling, som VSME-arket selv udfyldes med, og beløb der ikke kan henføres, kommer tilbage som unclassified i stedet for at forsvinde. Det er de tal, der lander i EFRAG-skabelonens celler for Scope 3.",
+    },
+    {
+      title: "EFRAG's eget regneark, udfyldt celle for celle",
+      body:
+        "Comprehensive-rapporten patcher den officielle EFRAG-skabelon, så arkets egen valideringsfane kvitterer for hver påkrævet række. Basis leveres som en PDF med B1 stamdata, B2 energi, B3 drivhusgasser, B4 reduktionsmål og B5 klimapolitikker.",
+    },
+    {
+      title: "Revisorens attesteringer er også et opslag",
+      body:
+        "get_report_attestations viser tredjeparts-underskrifter på en rapport. Attesteringen er låst til den præcise version, revisoren skrev under på, så assistenten ikke kan komme til at referere en nyere udgave.",
+    },
+    {
+      title: "Mål og reduktioner i samme samtale",
+      body:
+        "list_targets og create_target dækker VSME's B4-reduktionsmål, og scenarie-toolsene lader assistenten udkaste en reduktionsplan, du kan tage stilling til bagefter.",
+    },
+    {
+      title: "Ingen integration at bygge",
+      body:
+        "Claude og ChatGPT forbinder via OAuth 2.1 med dynamisk klient-registrering. Claude Code, Cursor og egne JSON-RPC-klienter peger på /api/mcp med en Bearer-nøgle. Ingen af delene kræver, at nogen skriver kode.",
+    },
+  ],
+  howItWorks: {
+    title: "Fra spørgsmål til færdig VSME-rapport",
+    steps: [
+      {
+        title: "1. Forbind assistenten",
+        body:
+          "Tilslut Claude eller ChatGPT via OAuth, eller tilføj qlim8 i Claude Code eller Cursor med en Bearer-nøgle. Trin for trin i /docs/mcp-quickstart.",
+      },
+      {
+        title: "2. Spørg til tallene",
+        body:
+          "\"Hvad var vores samlede CO2e i 2025 fordelt på scope?\" eller \"hvilke Scope 3-kategorier fylder mest?\". Assistenten vælger selv det rette tool og henter live tal.",
+      },
+      {
+        title: "3. Bed om rapporten",
+        body:
+          "\"Start VSME Basis for 2025 som PDF.\" Assistenten kalder generate_report og følger jobbet med get_report_status, til den er klar.",
+      },
+      {
+        title: "4. Send den videre",
+        body:
+          "Rapporten ligger i qlim8 sammen med et fuldt input-snapshot, klar til banken, kunden eller revisoren, og hvert write står i audit-loggen markeret \"via mcp\".",
+      },
+    ],
+  },
+  valueStats: [
+    { value: "31 tools", label: "til hele klimaregnskabet" },
+    { value: "B1-B11", label: "VSME-afsnit dækket" },
+    { value: "15", label: "Scope 3-kategorier" },
+    { value: "OAuth", label: "ingen nøgle at kopiere" },
+  ],
+  faq: {
+    title: "Ofte stillede spørgsmål om VSME og AI-assistenter",
+    items: [
+      {
+        q: "Kan min AI-assistent lave hele VSME-rapporten for mig?",
+        a: "Den kan hente alle tallene og sætte rapporten i gang. Assistenten kalder generate_report med rapportår, standard (VSME Basis, VSME BP eller VSME Comprehensive) og format, og følger jobbet med get_report_status, til filen er klar i qlim8. De narrative afsnit, altså politikker, risici og governance, udfylder I stadig selv i rapport-guiden: det er jeres virksomheds egne oplysninger, ikke noget der kan udledes af regnskabet.",
+      },
+      {
+        q: "Hvad er en MCP-server, sagt uden fagsprog?",
+        a: "Det er en standardiseret måde at lade en AI-assistent hente data fra et system. MCP står for Model Context Protocol. I stedet for at du kopierer tal ind i en chat, spørger assistenten qlim8 direkte og får de rigtige, aktuelle tal tilbage. Det er den samme mekanisme, Claude og ChatGPT bruger, når de kobles på andre værktøjer.",
+      },
+      {
+        q: "Hvilke VSME-tal kan assistenten hente?",
+        a: "Samlet CO2e og fordelingen på Scope 1, 2 og 3, Scope 3 delt op på GHG-protokollens 15 kategorier, emissioner pr. beregningskategori, de enkelte posteringer med fuldt spor tilbage til bilag og emissionsfaktor, jeres datakilder, reduktionsmål og tidligere genererede rapporter med attesteringer.",
+      },
+      {
+        q: "Kræver det en bestemt plan?",
+        a: "VSME Basis er med fra Starter. VSME Comprehensive kræver Premium. MCP-adgang kræver også Premium, fordi den sælges som en del af API-integrationerne. Enkelte tools går videre end det: leverandør- og værdikæde-tools kræver Enterprise, og scenarie-tools kræver scenarie-funktionen. Se /priser.",
+      },
+      {
+        q: "Kan assistenten ændre mine tal ved et uheld?",
+        a: "Nej, ikke uden at du har givet lov. Hvert tool er markeret som enten read-only eller muterende og kræver et bestemt scope. OAuth-adgang er read-only som default, og consent gives kun af en tenant-admin. Alt, der ændrer data, skrives i en tamper-evident audit-kæde med markeringen \"via mcp\", så du kan se præcis hvad der skete.",
+      },
+      {
+        q: "Virker det med andet end Claude og ChatGPT?",
+        a: "Ja. Serveren taler almindelig MCP over streamable HTTP på https://app.qlim8.com/api/mcp, så enhver MCP-kompatibel klient kan bruge den, blandt andet Claude Code, Cursor og egne agenter. Et uautentificeret katalog over hele overfladen ligger på /api/mcp/schema, hvis du vil læse den programmatisk først.",
+      },
+      {
+        q: "Er mine klimadata så tilgængelige for AI-udbyderen?",
+        a: "Assistenten henter kun det, den bliver bedt om, og kun inden for de scopes du har givet. Der ligger ingen kopi af dit klimaregnskab hos AI-udbyderen: hvert svar hentes live fra qlim8 i det øjeblik, spørgsmålet stilles. Dine data bliver hos os, hostet i EU.",
+      },
+    ],
+  },
+  closingCta: {
+    title: "Spørg din egen AI om VSME-tallene",
+    description:
+      "Opret en konto, forbind Claude eller ChatGPT via OAuth, og bed assistenten om jeres Scope 1-3. Start i /docs/mcp-quickstart og se alle 31 tools i /docs/mcp-tools.",
     primary: PRIMARY_CTA,
     secondary: DEMO_CTA,
   },

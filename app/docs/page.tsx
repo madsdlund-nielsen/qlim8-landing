@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
+import { JsonLd } from "@/components/JsonLd";
+import { buildBreadcrumbSchema, buildTechArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Docs: Vejledninger, integration og API",
@@ -88,8 +90,24 @@ function DocLink({
   );
 }
 
+
+const PAGE_SCHEMA = [
+  buildTechArticleSchema({
+    headline: "Sådan kommer du i gang med qlim8",
+    description:
+      "Vejledninger til opsætning, integrationer, REST API og AI-assistenter via MCP.",
+    path: "/docs",
+  }),
+  buildBreadcrumbSchema([
+    { name: "qlim8", href: "/" },
+    { name: "Docs", href: "/docs" },
+  ]),
+];
+
 export default function Page() {
   return (
+    <>
+      <JsonLd schema={PAGE_SCHEMA} />
     <div className="min-h-screen bg-[#F5F5F0]">
       <SiteHeader />
 
@@ -140,5 +158,6 @@ export default function Page() {
 
       <SiteFooter />
     </div>
+    </>
   );
 }

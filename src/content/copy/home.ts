@@ -94,7 +94,7 @@ export const HOME_COPY: HomeCopy = {
     title: "Vi henter data direkte fra dine systemer",
     systems: ["Dinero", "e-conomic", "Billy", "Eloverblik"],
     note1: "Eloverblik: officiel tredjepart hos Energinet",
-    note2: "Fuldt REST API · MCP-ready",
+    note2: "Fuldt REST API · AI-assistenter via MCP",
     body: "Sæt integrationerne op én gang. qlim8 henter regnskabsdata og elforbrug i baggrunden.",
   },
   features: [
@@ -198,7 +198,7 @@ export const HOME_COPY: HomeCopy = {
           "VSME Comprehensive med wizard",
           "Reduktionsmål + Scenario Builder",
           "Custom PDF-rapport + offentligt Brag Board",
-          "Fuldt REST API + MCP",
+          "Fuldt REST API + AI-assistenter via MCP-server",
         ],
         cta: "Start gratis",
         href: SIGNUP_URL,
