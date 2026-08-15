@@ -3,6 +3,8 @@ import About from "@/page-components/about";
 import { fetchMarketingCopy, cmsImageUrl } from "@/lib/cms";
 import { resolvePageCopy } from "@/lib/pageCopy";
 import { ABOUT_PAGE_KEY, ABOUT_COPY } from "@/content/copy/about";
+// Shared with the homepage so the two blocks cannot drift apart again.
+import { ORGANIZATION } from "@/lib/schema";
 
 // ISR: CMS-published copy/images refresh on this cadence.
 export const revalidate = 300;
@@ -21,26 +23,6 @@ export const metadata: Metadata = {
   },
 };
 
-const ORG_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "qlim8",
-  url: "https://qlim8.com",
-  logo: "https://qlim8.com/favicon.svg",
-  description:
-    "qlim8 er grundlagt af en civilingeniør med speciale i energisystemer. Vi gør professionelt klimaregnskab og ESG tilgængeligt for alle danske SMV'er.",
-  address: { "@type": "PostalAddress", addressCountry: "DK" },
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer support",
-    email: "kontakt@qlim8.com",
-    telephone: "+45 93 90 13 84",
-  },
-  sameAs: ["https://app.qlim8.com"],
-  taxID: "DK46033736",
-  foundingLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressCountry: "DK" } },
-};
-
 export default async function Page() {
   const [copy, imageCopy] = await Promise.all([
     resolvePageCopy(ABOUT_PAGE_KEY, ABOUT_COPY),
@@ -51,7 +33,7 @@ export default async function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION) }}
       />
       <About copy={copy} founderImage={founderImage} />
     </>

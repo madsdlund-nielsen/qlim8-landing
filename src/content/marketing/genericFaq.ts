@@ -24,6 +24,10 @@ export const GENERIC_ESG_FAQ: FaqItem[] = [
     q: "Hvor hurtigt kan jeg komme i gang med qlim8?",
     a: "Når dit regnskabssystem er tilkoblet, har du et grundlæggende klimaregnskab samme dag. Qlim8 henter historiske data ved første tilkobling og opdaterer derefter automatisk. Du kan oprette en gratis konto uden kreditkort og prøve platformen med eksempeldata med det samme. Priserne starter ved 300 kr/md.",
   },
+  {
+    q: "Kan jeg snakke med mit klimaregnskab i Claude eller ChatGPT?",
+    a: "Ja. qlim8 har en indbygget MCP-server (Model Context Protocol), altså den standard AI-assistenter bruger til at hente data fra et system. Du forbinder Claude eller ChatGPT via OAuth uden en API-nøgle at kopiere, og kan derefter spørge til dine tal i naturligt sprog: Scope 1-3, de største poster i Scope 3, fremdrift mod jeres mål, eller bede assistenten sætte VSME-rapporten i gang. Adgangen er read-only som default og kræver Premium.",
+  },
 ];
 
 // A few hub-level questions per section, shown before the generic set on the

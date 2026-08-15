@@ -64,11 +64,27 @@ export function getChildren(
   return NODES_BY_COLLECTION[collection].filter((n) => n.parentSlug === parentSlug);
 }
 
-/** Resolve a node's `related` slugs to nodes (same collection). */
+/**
+ * Resolve a node's `related` entries to nodes.
+ *
+ * A bare `"slug"` resolves inside the node's own collection, which is what
+ * every entry was when this only linked siblings. A qualified
+ * `"collection/slug"` crosses collections, so a Produkt page can point at an
+ * Integrationer page and vice versa. Without that, a cross-collection entry
+ * resolved to undefined and was dropped by the filter below: a silently
+ * missing link rather than an error, which is the failure mode worth avoiding
+ * here.
+ */
 export function getRelated(node: MarketingNode): MarketingNode[] {
   if (!node.related) return [];
   return node.related
-    .map((slug) => getNode(node.collection, slug))
+    .map((entry) => {
+      const slash = entry.indexOf("/");
+      if (slash === -1) return getNode(node.collection, entry);
+      const collection = entry.slice(0, slash) as MarketingCollection;
+      if (!(collection in NODES_BY_COLLECTION)) return undefined;
+      return getNode(collection, entry.slice(slash + 1));
+    })
     .filter((n): n is MarketingNode => Boolean(n));
 }
 

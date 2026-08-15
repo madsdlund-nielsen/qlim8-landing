@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/content/articles";
 import { ALL_MARKETING_NODES, MARKETING_HUBS } from "@/content/marketing";
+import { fetchPublishedArticles } from "@/lib/cms";
 
 const BASE_URL = "https://qlim8.com";
 
@@ -10,11 +11,23 @@ const BASE_URL = "https://qlim8.com";
 // page changed on every deploy, which `new Date()` would otherwise do.
 const SITE_UPDATED = new Date("2026-07-20");
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Blog routes come from the same merge /blog renders: bundled first, then
+  // CMS-published entries overwriting by slug. Reading only the bundled array
+  // (as this did) silently omitted every article authored in /admin that has
+  // no file in this repo, so a live, indexable post was missing from the
+  // sitemap. fetchPublishedArticles returns [] on any CMS failure, which
+  // degrades to exactly the old behaviour rather than an empty sitemap.
+  const published = await fetchPublishedArticles("da");
+  const blogBySlug = new Map<string, { slug: string; publishedAt: string }>();
+  for (const a of articles) blogBySlug.set(a.slug, { slug: a.slug, publishedAt: a.publishedAt });
+  for (const a of published) blogBySlug.set(a.slug, { slug: a.slug, publishedAt: a.publishedAt });
+  const blogArticles = Array.from(blogBySlug.values());
+
   // The blog index is effectively "modified" whenever the newest article ships.
-  const blogUpdated = articles.reduce(
+  const blogUpdated = blogArticles.reduce(
     (latest, a) => (a.publishedAt > latest ? a.publishedAt : latest),
-    articles[0]?.publishedAt ?? "1970-01-01",
+    blogArticles[0]?.publishedAt ?? "1970-01-01",
   );
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -36,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/handelsbetingelser`,  lastModified: SITE_UPDATED,          changeFrequency: "yearly",  priority: 0.3 },
   ];
 
-  const articleRoutes: MetadataRoute.Sitemap = articles.map((a) => ({
+  const articleRoutes: MetadataRoute.Sitemap = blogArticles.map((a) => ({
     url: `${BASE_URL}/blog/${a.slug}`,
     lastModified: new Date(a.publishedAt),
     changeFrequency: "monthly",

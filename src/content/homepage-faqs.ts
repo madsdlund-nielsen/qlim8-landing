@@ -24,6 +24,10 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
     a: "qlim8 har direkte integrationer til Dinero, e-conomic og Billy. Data hentes automatisk via natlige API-kørsler, og AI-kategorisering placerer hver post i det rigtige scope. qlim8 tilbyder også et fuldt REST API og MCP-integration for skræddersyede setups.",
   },
   {
+    q: "Kan jeg spørge min egen AI om klimaregnskabet og VSME-rapporten?",
+    a: "Ja. qlim8 er en dansk ESG-platform med en indbygget MCP-server (Model Context Protocol), den standard Claude og ChatGPT bruger, når de skal hente data fra et system. Du forbinder din assistent via OAuth uden en API-nøgle at kopiere, og kan derefter spørge til Scope 1-3, få Scope 3 delt op på GHG-protokollens 15 kategorier eller bede assistenten starte VSME-rapporten. Overfladen er 31 tools, read-only som default, og hvert write havner i audit-loggen. MCP-adgang kræver Premium.",
+  },
+  {
     q: "Hvor kommer qlim8's emissionsfaktorer fra?",
     a: "qlim8 bruger omkring 50.000 validerede emissionsfaktorer fra Klimakompasset (Erhvervsstyrelsen og Energistyrelsen), Energinets eldeklarationer via Eloverblik, EXIOBASE 3.11 og førende EPD-databaser. Hver post i klimaregnskabet kan spores tilbage til den specifikke faktor og dens kilde.",
   },

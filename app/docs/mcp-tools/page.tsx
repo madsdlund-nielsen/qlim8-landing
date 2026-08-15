@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
+import { JsonLd } from "@/components/JsonLd";
+import { buildBreadcrumbSchema, buildTechArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "MCP Tools Reference",
@@ -34,8 +36,25 @@ const LINKS = [
   },
 ];
 
+
+const PAGE_SCHEMA = [
+  buildTechArticleSchema({
+    headline: "qlim8 MCP tool-reference",
+    description:
+      "qlim8's MCP-server (Model Context Protocol) eksponerer 31 tools, 3 resources og 3 prompts til AI-assistenter som Claude og ChatGPT.",
+    path: "/docs/mcp-tools",
+  }),
+  buildBreadcrumbSchema([
+    { name: "qlim8", href: "/" },
+    { name: "Docs", href: "/docs" },
+    { name: "MCP tools", href: "/docs/mcp-tools" },
+  ]),
+];
+
 export default function Page() {
   return (
+    <>
+      <JsonLd schema={PAGE_SCHEMA} />
     <div className="min-h-screen bg-[#F5F5F0]">
       <SiteHeader />
 
@@ -85,5 +104,6 @@ export default function Page() {
 
       <SiteFooter />
     </div>
+    </>
   );
 }

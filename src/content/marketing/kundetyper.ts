@@ -27,7 +27,7 @@ export const KUNDETYPER_HUB: MarketingHub = {
   route: "/kundetyper",
   pageKey: "page.kundetyper",
   title: "Kundetyper",
-  seoTitle: "Klimaregnskab for din branche | qlim8",
+  seoTitle: "Klimaregnskab for din branche",
   seoDescription:
     "qlim8 bygger klimaregnskabet oven på dit regnskab, tilpasset din branche. Find din type virksomhed og se, hvordan vi løser lige præcis dine ESG-krav.",
   defaults: KUNDETYPER_HUB_COPY,
@@ -41,7 +41,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Tømrer",
     navLabel: "Tømrer",
     blurb: "Klimaregnskab for tømrervirksomheden, fra varevogne til materialeindkøb.",
-    seoTitle: "Klimaregnskab for tømrer | qlim8",
+    seoTitle: "Klimaregnskab for tømrer",
     seoDescription:
       "Tømrervirksomhed? Få klimaregnskab og ESG-rapport bygget på dit regnskab. Vi håndterer diesel, materialer og byggeprojekternes ESG-krav automatisk.",
     navGroup: "Brancher",
@@ -56,7 +56,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Maler",
     navLabel: "Maler",
     blurb: "Klimaregnskab for malerfirmaet: maling, kemi og dokumentation til bygherrer.",
-    seoTitle: "Klimaregnskab for malerfirma | qlim8",
+    seoTitle: "Klimaregnskab for malerfirma",
     seoDescription:
       "Malerfirma? Klimaregnskab og ESG-dokumentation bygget på dit regnskab. Vi håndterer maling, kemi og bygherrernes krav, uden regneark.",
     navGroup: "Brancher",
@@ -71,7 +71,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Elektriker",
     navLabel: "Elektrikere",
     blurb: "Klimaregnskab for el-installatøren: servicevogne, materialer og udbudskrav.",
-    seoTitle: "Klimaregnskab for elektriker | qlim8",
+    seoTitle: "Klimaregnskab for elektriker",
     seoDescription:
       "El-installatør? Få klimaregnskab og ESG-data bygget på dit regnskab. Vi håndterer servicevogne, materialeindkøb og krav fra større byggeprojekter.",
     navGroup: "Brancher",
@@ -86,7 +86,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "VVS'ere",
     navLabel: "VVS'ere",
     blurb: "Klimaregnskab for VVS-firmaet: servicevogne, materialer, kølemidler og udbud.",
-    seoTitle: "Klimaregnskab for VVS-firma | qlim8",
+    seoTitle: "Klimaregnskab for VVS-firma",
     seoDescription:
       "VVS-firma? Få et komplet klimaregnskab bygget på dit regnskab. Vi håndterer servicevogne, materialer, F-gasser og bygherrernes ESG-krav automatisk.",
     navGroup: "Brancher",
@@ -102,7 +102,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Entreprenører",
     navLabel: "Entreprenører",
     blurb: "Klimaregnskab for entreprenøren: maskiner, materialer og offentlige udbud.",
-    seoTitle: "Klimaregnskab for entreprenør | qlim8",
+    seoTitle: "Klimaregnskab for entreprenør",
     seoDescription:
       "Entreprenørvirksomhed? Klimaregnskab og ESG-data til offentlige udbud, bygget på dit regnskab. Vi håndterer maskiner, beton, stål og underleverandører.",
     navGroup: "Brancher",
@@ -117,7 +117,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Revisorer",
     navLabel: "Revisorer",
     blurb: "Lever klimaregnskab til dine kunder, flere ESG-opgaver pr. fakturerbar time.",
-    seoTitle: "Klimaregnskab for revisorer | qlim8",
+    seoTitle: "Klimaregnskab for revisorer",
     seoDescription:
       "Revisor? Lever klimaregnskab og VSME-rapporter til dine kunder på qlim8. Én platform, adgang på tværs af klienter og flere ESG-opgaver pr. time.",
     navGroup: "Rådgivere",
@@ -132,7 +132,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Plastik fabrikanter",
     navLabel: "Plastik fabrikanter",
     blurb: "Klimaregnskab for plastproduktion: energi, råvarer og kunders PCF-krav.",
-    seoTitle: "Klimaregnskab for plastproduktion | qlim8",
+    seoTitle: "Klimaregnskab for plastproduktion",
     seoDescription:
       "Plastfabrikant? Klimaregnskab bygget på dit regnskab og elforbrug. Vi håndterer energi, granulat og kundernes krav om produkt-CO₂e (PCF).",
     navGroup: "Brancher",
@@ -147,7 +147,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Rådgivere",
     navLabel: "Rådgivere",
     blurb: "Rådgiv dine kunder på klima og ESG med data i stedet for regneark.",
-    seoTitle: "Klima- og ESG-rådgivning på data | qlim8",
+    seoTitle: "Klima- og ESG-rådgivning på data",
     seoDescription:
       "Rådgiver? Lever datadrevet klima- og ESG-rådgivning til dine kunder på qlim8. Skalér rådgivningen med adgang på tværs af klienter.",
     navGroup: "Rådgivere",
@@ -162,7 +162,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Konsulenter",
     navLabel: "Konsulenter",
     blurb: "Lever målbare klimaregnskaber og reduktionsplaner til flere kunder.",
-    seoTitle: "Klimaregnskab for konsulenter | qlim8",
+    seoTitle: "Klimaregnskab for konsulenter",
     seoDescription:
       "Bæredygtighedskonsulent? Lever målbare klimaregnskaber, tiltag og scenarier til dine kunder på qlim8, effektivt og med audit-spor.",
     navGroup: "Rådgivere",
@@ -177,7 +177,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Vognmand",
     navLabel: "Vognmand",
     blurb: "Klimaregnskab for transport: brændstof, flåde og kundernes Scope 3-krav.",
-    seoTitle: "Klimaregnskab for vognmand | qlim8",
+    seoTitle: "Klimaregnskab for vognmand",
     seoDescription:
       "Vognmand eller transportvirksomhed? Klimaregnskab bygget på dit regnskab. Vi håndterer brændstof og leverer transport-emissionsdata til dine kunder.",
     navGroup: "Brancher",
@@ -192,7 +192,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Frisør",
     navLabel: "Frisør",
     blurb: "Klimaregnskab for salonen: klaret på en eftermiddag, klar til bank og kæde.",
-    seoTitle: "Klimaregnskab for frisørsalon | qlim8",
+    seoTitle: "Klimaregnskab for frisørsalon",
     seoDescription:
       "Frisørsalon? Få et enkelt klimaregnskab bygget på dit regnskab og elforbrug: klar-til-brug, når bank, leverandør eller kæde spørger.",
     navGroup: "Brancher",
@@ -207,7 +207,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     title: "Store virksomheder",
     navLabel: "Store virksomheder",
     blurb: "CSRD og Scope 3 i værdikæden: aggregér data fra dine leverandører.",
-    seoTitle: "Klimaregnskab og CSRD for store virksomheder | qlim8",
+    seoTitle: "Klimaregnskab og CSRD for store virksomheder",
     seoDescription:
       "Større virksomhed med CSRD-krav? Aggregér Scope 3 fra dine leverandører, send ét link og få audit-spor. Bygget på dit regnskab.",
     navGroup: "Brancher",
