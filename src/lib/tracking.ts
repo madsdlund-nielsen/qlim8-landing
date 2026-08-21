@@ -37,13 +37,36 @@ export function resolveSignupSource(fallback: string): string {
 }
 
 /**
- * Report a completed newsletter signup to GA4, tagged with its source.
+ * Google Ads account, separate from the GA4 property. The same gtag library
+ * powers both: CookieConsent configures both IDs on the one tag load. Exported
+ * so CookieConsent can reference the exact id in its `config` call.
+ */
+export const GOOGLE_ADS_ID = "AW-18008005975";
+
+/**
+ * The Google Ads conversion label for a newsletter signup (the "Abonner"
+ * conversion in the account). A newsletter signup is the only conversion the
+ * marketing site itself can complete, the free account and the paid
+ * subscription both happen in the app.
+ */
+const NEWSLETTER_CONVERSION_LABEL = "EBwqCKrRpeUcENe68YpD";
+
+/**
+ * Report a completed newsletter signup to both GA4 and Google Ads, tagged with
+ * its source.
  *
- * The parameter is `signup_source`, not `source`: GA4 already has a built-in
+ * The GA4 parameter is `signup_source`, not `source`: GA4 already has a built-in
  * traffic-source dimension by that name, and a custom definition would collide
- * with it in reports.
+ * with it in reports. The Google Ads event is the "conversion" the newsletter
+ * campaign optimises toward, keyed by send_to.
+ *
+ * Both are no-ops until the visitor has accepted analytics cookies and gtag
+ * exists, by design (see CookieConsent).
  */
 export function trackNewsletterSignup(source: string) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
   window.gtag("event", "newsletter_signup", { signup_source: source });
+  window.gtag("event", "conversion", {
+    send_to: `${GOOGLE_ADS_ID}/${NEWSLETTER_CONVERSION_LABEL}`,
+  });
 }
