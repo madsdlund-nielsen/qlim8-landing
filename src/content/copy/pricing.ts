@@ -83,7 +83,7 @@ export const PRICING_COPY: PricingCopy = {
     title: "Fra 300 kr/md. Alt inkluderet.",
     subtitle:
       "Ingen onboarding-gebyr, ingen lock-in. Opsig hvornår som helst. Alle priser er ekskl. moms.",
-    yearlySavingsNote: "Spar op til 24%",
+    yearlySavingsNote: "Spar op til 25%",
   },
   trustBar: [
     "✓ Annuller til enhver tid",
@@ -100,7 +100,7 @@ export const PRICING_COPY: PricingCopy = {
       yearlyTotalDkk: 3600,
     },
     premium: {
-      monthlyDkk: 1495,
+      monthlyDkk: 1595,
       yearlyDkk: 1195,
       yearlyTotalDkk: 14340,
     },

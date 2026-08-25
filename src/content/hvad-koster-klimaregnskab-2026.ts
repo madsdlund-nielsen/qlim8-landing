@@ -109,7 +109,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Premium koster 1.495 kroner om måneden ved månedlig betaling, eller 14.340 kroner om året ved årsbetaling. Det svarer til 1.195 kroner om måneden effektivt på årsbetaling. Premium inkluderer alt i Starter plus VSME Comprehensive, reduktionsmål, Scenario Builder, custom PDF-rapporter, offentligt Brag Board og fuldt REST API + MCP-integration.',
+      text: 'qlim8 Premium koster 1.595 kroner om måneden ved månedlig betaling, eller 14.340 kroner om året ved årsbetaling. Det svarer til 1.195 kroner om måneden effektivt på årsbetaling. Premium inkluderer alt i Starter plus VSME Comprehensive, reduktionsmål, Scenario Builder, custom PDF-rapporter, offentligt Brag Board og fuldt REST API + MCP-integration.',
     },
     {
       type: 'paragraph',
