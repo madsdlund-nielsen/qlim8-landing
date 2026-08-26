@@ -21,7 +21,6 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "Blog", href: "/blog" },
       { label: "Nyhedsbrev", href: "/nyhedsbrev" },
       { label: "Docs", href: "/docs" },
-      { label: "Status", href: "https://status.qlim8.com" },
     ],
   },
   {
