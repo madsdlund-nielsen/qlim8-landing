@@ -62,6 +62,9 @@ const DISCOVERY = {
     url: MCP_ENDPOINT,
     transport: "streamable-http",
     stateless: true,
+    // 2026-07-28 (per-request metadata, server/discover) and the 2025-era
+    // initialize handshake are both served from the same endpoint.
+    protocol_versions: ["2026-07-28", "2025-11-25", "2025-06-18", "2025-03-26"],
     authentication: {
       type: "oauth2",
       authorization_server: "https://app.qlim8.com",
@@ -71,7 +74,13 @@ const DISCOVERY = {
       authorization_server_metadata:
         "https://app.qlim8.com/.well-known/oauth-authorization-server",
       bearer_methods_supported: ["header"],
+      // Clients may identify themselves with an HTTPS URL serving their own
+      // metadata (OAuth Client ID Metadata Documents). Dynamic Client
+      // Registration still works but is deprecated by MCP 2026-07-28.
+      client_id_metadata_documents: true,
       dynamic_client_registration: true,
+      dynamic_client_registration_deprecated: true,
+      authorization_response_iss_parameter_supported: true,
       pkce: "S256",
       api_key: {
         description:
