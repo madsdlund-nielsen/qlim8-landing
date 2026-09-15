@@ -25,11 +25,10 @@ export function NewsletterForm({
     setLoading(true)
     setMessage(null)
     try {
-      // The newsletter endpoint lives on the app, not on this landing site, use an
-      // absolute URL (same pattern as the pricing checkout). A relative path would
-      // 404 against the Next server, which has no /api routes.
-      const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://app.qlim8.com'
-      const res = await fetch(`${API_BASE}/api/newsletter/signup`, {
+      // Same-origin proxy (app/api/newsletter/signup/route.ts) forwards to the
+      // app, like the unsubscribe form does: no CORS, and the response is always
+      // JSON even when the app host answers with an nginx or rate-limit page.
+      const res = await fetch('/api/newsletter/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),
@@ -37,7 +36,7 @@ export function NewsletterForm({
       const data = await res.json()
       if (res.ok && data.success) {
         trackNewsletterSignup(resolveSignupSource(source))
-        setMessage({ type: 'success', text: 'Tak for tilmeldingen! Check din email.' })
+        setMessage({ type: 'success', text: 'Tak for tilmeldingen! Tjek din indbakke.' })
         setName('')
         setEmail('')
       } else {

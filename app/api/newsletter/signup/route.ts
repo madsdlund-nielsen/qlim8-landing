@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
-// Same-origin proxy → qlim8-app. Keeps the browser on qlim8.com (no CORS) and
-// guarantees a JSON response even if the backend ever returns HTML (a 429 page,
-// an nginx 502, etc.), which the signup forms require, they always call res.json().
+// Same-origin proxy to qlim8-app, used by NewsletterSignupDialog and
+// NewsletterForm. Keeps the browser on qlim8.com (no CORS) and guarantees a JSON
+// response even if the backend ever returns HTML (a 429 page, an nginx 502,
+// etc.), which the signup forms require, they always call res.json().
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
