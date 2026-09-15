@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { resolveSignupSource, trackNewsletterSignup } from '@/lib/tracking'
+import { useToast } from '@/hooks/use-toast'
 
 // Opening the dialog from a link: /?nyhedsbrev=1 lands on the homepage with the
 // signup already open, so one URL can point at the newsletter without leaving the
@@ -21,6 +22,7 @@ export function NewsletterSignupDialog() {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+  const { toast } = useToast()
 
   // Read the param after mount rather than with useSearchParams: the homepage is
   // prerendered (app/page.tsx sets revalidate = 300), and useSearchParams would
@@ -44,10 +46,10 @@ export function NewsletterSignupDialog() {
     setLoading(true)
     setMessage(null)
     try {
-      // The newsletter endpoint lives on the app, not on this landing site, use an
-      // absolute URL (same pattern as the pricing checkout).
-      const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://app.qlim8.com'
-      const res = await fetch(`${API_BASE}/api/newsletter/signup`, {
+      // Same-origin proxy (app/api/newsletter/signup/route.ts) forwards to the
+      // app, like the unsubscribe form does: no CORS, and the response is always
+      // JSON even when the app host answers with an nginx or rate-limit page.
+      const res = await fetch('/api/newsletter/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),
@@ -55,9 +57,15 @@ export function NewsletterSignupDialog() {
       const data = await res.json()
       if (res.ok && data.success) {
         trackNewsletterSignup(resolveSignupSource('forside-dialog'))
-        setMessage({ type: 'success', text: 'Tak for tilmeldingen! Check din email.' })
         setName('')
         setEmail('')
+        // The dialog closes on success, so the confirmation lives in a toast
+        // rather than inside the dialog the visitor no longer sees.
+        setOpen(false)
+        toast({
+          title: 'Tak for tilmeldingen!',
+          description: 'Tjek din indbakke, vi har sendt dig en velkomstmail.',
+        })
       } else {
         setMessage({ type: 'error', text: data.message || 'Der opstod en fejl. Prøv igen.' })
       }
