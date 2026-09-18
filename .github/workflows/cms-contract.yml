@@ -65,7 +65,14 @@ jobs:
       # The copy itself, not just the API shape: dead internal links and
       # prices that contradict src/content/copy/pricing.ts in what /admin has
       # published. A failure here is fixed in the app's CMS, not in a commit.
+      #
+      # Blocking on the schedule (that is the monitor), informational on a
+      # pull request: the same reasoning as the header of this file. Nothing a
+      # commit here can do changes what /admin has published, so a red PR
+      # would only couple merging to the state of production content. The
+      # step still runs and its findings appear in the job log.
       - name: Check published CMS copy
         run: node --experimental-strip-types scripts/check-cms-copy.mjs
+        continue-on-error: ${{ github.event_name == 'pull_request' }}
         env:
           CMS_API_BASE: https://app.qlim8.com
