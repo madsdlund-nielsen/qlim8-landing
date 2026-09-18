@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "../src/index.css";
 import { CookieConsent } from "@/components/CookieConsent";
 import { Toaster } from "@/components/ui/toaster";
-import { Providers } from "@/components/Providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -63,12 +62,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="da" className={inter.variable}>
+      {/* No app-wide client provider: the site is Danish-only and server-
+          rendered. The I18nProvider that used to wrap this shipped a 300 KB,
+          eight-language dictionary to every visitor and fetched CMS overrides
+          from the browser on every page, and nothing consumed it. */}
       <body>
-        <Providers>
-          {children}
-          <CookieConsent />
-          <Toaster />
-        </Providers>
+        {children}
+        <CookieConsent />
+        <Toaster />
       </body>
     </html>
   );

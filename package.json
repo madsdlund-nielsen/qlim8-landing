@@ -7,14 +7,19 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint . && node scripts/check-dashes.mjs && node scripts/check-workflows.mjs && node --experimental-strip-types scripts/check-seo-titles.mjs",
+    "lint": "eslint . && node scripts/check-dashes.mjs && node scripts/check-workflows.mjs && node --experimental-strip-types scripts/check-seo-titles.mjs && node --experimental-strip-types scripts/check-schema.mjs",
     "lint:fix": "eslint . --fix",
-    "lint:strict": "eslint . --max-warnings=0 && node scripts/check-dashes.mjs && node scripts/check-workflows.mjs && node --experimental-strip-types scripts/check-seo-titles.mjs",
+    "lint:strict": "eslint . --max-warnings=0 && node scripts/check-dashes.mjs && node scripts/check-workflows.mjs && node --experimental-strip-types scripts/check-seo-titles.mjs && node --experimental-strip-types scripts/check-schema.mjs",
     "lint:dashes": "node scripts/check-dashes.mjs",
     "lint:workflows": "node scripts/check-workflows.mjs",
     "lint:seo": "node --experimental-strip-types scripts/check-seo-titles.mjs",
-    "test": "node --experimental-strip-types --test src/lib/copyMerge.test.ts",
-    "test:contract": "node scripts/check-cms-contract.mjs"
+    "lint:schema": "node --experimental-strip-types scripts/check-schema.mjs",
+    "content-dates": "node --experimental-strip-types scripts/content-dates.mjs",
+    "prebuild": "node --experimental-strip-types scripts/content-dates.mjs",
+    "pretest": "node --experimental-strip-types scripts/content-dates.mjs",
+    "test": "node --experimental-strip-types --test src/lib/copyMerge.test.ts src/lib/contentDates.test.ts",
+    "test:contract": "node scripts/check-cms-contract.mjs && node --experimental-strip-types scripts/check-cms-copy.mjs",
+    "test:cms-copy": "node --experimental-strip-types scripts/check-cms-copy.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.4",

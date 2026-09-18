@@ -1,4 +1,3 @@
-"use client";
 import { ArrowRight } from "lucide-react";
 import { MobileStickyCTA } from "@/components/ui/mobile-sticky-cta";
 import { SiteHeader } from "@/components/public/SiteHeader";
@@ -16,10 +15,6 @@ export default function About({
   copy?: AboutCopy;
   founderImage?: string;
 }) {
-  const handleGetAccess = () => {
-    window.location.href = "/priser";
-  };
-
   return (
     <div className="min-h-screen bg-[#F5F5F0]">
       <SiteHeader />
@@ -128,7 +123,7 @@ export default function About({
 
       <MobileStickyCTA
         text={copy.outro.ctaPrimary}
-        onClick={handleGetAccess}
+        href="/priser"
         showAfterScroll={300}
       />
     </div>

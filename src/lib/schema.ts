@@ -99,7 +99,7 @@ export const SOFTWARE_FEATURE_LIST = [
  * Build the SoftwareApplication entity. Offers come from the caller so the
  * prices stay sourced from PRICING_COPY rather than being restated here.
  */
-export function buildSoftwareSchema(offers: object[]) {
+export function buildSoftwareSchema(offers: object | object[]) {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -123,11 +123,15 @@ export function buildSoftwareSchema(offers: object[]) {
   };
 }
 
-/** BreadcrumbList from a { name, href } trail. Mirrors buildBreadcrumbTrail. */
+/** BreadcrumbList from a { name, href } trail. Mirrors buildBreadcrumbTrail.
+ *  Its @id is the current page's URL + #breadcrumb, so the page entity can
+ *  reference it via `breadcrumb: { "@id": ... }`. */
 export function buildBreadcrumbSchema(trail: { name: string; href: string }[]) {
+  const current = trail[trail.length - 1]?.href ?? "/";
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": pageId(current, "breadcrumb"),
     itemListElement: trail.map((c, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -137,23 +141,93 @@ export function buildBreadcrumbSchema(trail: { name: string; href: string }[]) {
   };
 }
 
-/** TechArticle for the /docs pages, which carried no structured data at all. */
+/** A page's own @id: the canonical URL plus a fragment, so entities on the
+ *  page (breadcrumb, main entity) can point at each other without restating. */
+export function pageId(path: string, fragment = "webpage") {
+  return `${BASE_URL}${path === "/" ? "/" : path}#${fragment}`;
+}
+
+/** YYYY-MM-DD from a Date or ISO string, for datePublished / dateModified. */
+export function isoDate(d: Date | string | undefined): string | undefined {
+  if (!d) return undefined;
+  const date = d instanceof Date ? d : new Date(d);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString().slice(0, 10);
+}
+
+/**
+ * TechArticle for the /docs pages and /metodologi. `dateModified` comes from
+ * the route's git content date (src/lib/contentDates.ts) so it moves when the
+ * page's copy does and matches the sitemap <lastmod> for the same URL.
+ */
 export function buildTechArticleSchema(input: {
   headline: string;
   description: string;
   path: string;
+  dateModified?: Date | string;
 }) {
   return {
     "@context": "https://schema.org",
     "@type": "TechArticle",
+    "@id": pageId(input.path, "article"),
     headline: input.headline,
     description: input.description,
     url: `${BASE_URL}${input.path}`,
     inLanguage: "da-DK",
+    ...(isoDate(input.dateModified) ? { dateModified: isoDate(input.dateModified) } : {}),
     isPartOf: { "@id": WEBSITE_ID },
     author: ORG_REF,
     publisher: ORG_REF,
     about: { "@id": SOFTWARE_ID },
+  };
+}
+
+/**
+ * Article for a blog post. Author and publisher are ORG_REF: the post used to
+ * inline its own `Organization` without an @id, which read as a third company
+ * next to the homepage's and the marketing pages'. `dateModified` is the CMS
+ * edit date when there is one, never silently equal to datePublished.
+ */
+export function buildArticleSchema(input: {
+  headline: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified: string;
+  articleSection?: string;
+}) {
+  const url = `${BASE_URL}${input.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": pageId(input.path, "article"),
+    headline: input.headline,
+    description: input.description,
+    image: [`${BASE_URL}/opengraph.jpg`],
+    datePublished: input.datePublished,
+    dateModified: input.dateModified,
+    author: ORG_REF,
+    publisher: ORG_REF,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    isPartOf: { "@id": WEBSITE_ID },
+    ...(input.articleSection ? { articleSection: input.articleSection } : {}),
+    inLanguage: "da-DK",
+  };
+}
+
+/** ContactPage for /kontakt, pointing at the Organization's contactPoint. */
+export function buildContactPageSchema(input: { name: string; description: string; dateModified?: Date | string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": pageId("/kontakt"),
+    name: input.name,
+    description: input.description,
+    url: `${BASE_URL}/kontakt`,
+    inLanguage: "da-DK",
+    ...(isoDate(input.dateModified) ? { dateModified: isoDate(input.dateModified) } : {}),
+    isPartOf: { "@id": WEBSITE_ID },
+    about: ORG_REF,
+    mainEntity: ORG_REF,
   };
 }
 

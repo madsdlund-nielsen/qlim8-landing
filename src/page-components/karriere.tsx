@@ -1,4 +1,3 @@
-"use client";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { CAREERS_COPY, type CareersCopy } from "@/content/copy/careers";

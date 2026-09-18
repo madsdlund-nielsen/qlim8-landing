@@ -10,6 +10,7 @@ export type VidenArticle = {
   description: string
   category: string
   publishedAt: string
+  updatedAt?: string
   readingTime: number
 }
 

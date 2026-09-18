@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
 import { buildBreadcrumbSchema, buildTechArticleSchema } from "@/lib/schema";
+import { contentDate } from "@/lib/contentDates";
 
 export const metadata: Metadata = {
   title: "Docs: Vejledninger, integration og API",
@@ -97,6 +98,7 @@ const PAGE_SCHEMA = [
     description:
       "Vejledninger til opsætning, integrationer, REST API og AI-assistenter via MCP.",
     path: "/docs",
+    dateModified: contentDate("/docs"),
   }),
   buildBreadcrumbSchema([
     { name: "qlim8", href: "/" },

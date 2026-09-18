@@ -40,8 +40,17 @@ function MegaMenu({ item }: { item: NavTop }) {
                 {g.items.map((leaf) => (
                   <li key={leaf.href}>
                     <NavigationMenuLink asChild>
-                      <a href={leaf.href} className="block rounded-lg px-3 py-2 hover:bg-gray-50 transition-colors">
-                        <span className="flex items-center gap-2 text-sm font-medium text-gray-900">
+                      <a
+                        href={leaf.href}
+                        className="block rounded-lg px-3 py-2 hover:bg-gray-50 transition-colors"
+                        style={leaf.depth ? { paddingLeft: `${12 + Math.min(leaf.depth, 3) * 12}px` } : undefined}
+                      >
+                        <span
+                          className={
+                            "flex items-center gap-2 text-sm " +
+                            (leaf.depth ? "font-normal text-gray-700" : "font-medium text-gray-900")
+                          }
+                        >
                           {leaf.label}
                           {leaf.comingSoon && (
                             <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-semibold text-primary">
@@ -178,8 +187,17 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                 )}
               </button>
 
-              {menuOpen && (
-                <div className="absolute right-0 top-full mt-2 w-72 max-h-[80vh] overflow-y-auto bg-white rounded-xl shadow-lg border border-gray-100 z-50">
+              {/* Always in the DOM, hidden by CSS until opened. The desktop
+                  mega-menu is mounted by Radix only while open, so this drawer
+                  is the one place the full site hierarchy (every collection
+                  and every leaf) exists in the server-rendered HTML for a
+                  crawler to follow. Gating it on state made the header
+                  contribute no structural links at all. */}
+              <nav
+                aria-label="Menu"
+                hidden={!menuOpen}
+                className="absolute right-0 top-full mt-2 w-72 max-h-[80vh] overflow-y-auto bg-white rounded-xl shadow-lg border border-gray-100 z-50"
+              >
                   {PRIMARY_NAV.map((item) =>
                     item.groups && item.groups.length > 0 ? (
                       <div key={item.label} className="border-b border-gray-100 last:border-0">
@@ -197,8 +215,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                             }
                           />
                         </button>
-                        {openSection === item.label && (
-                          <div className="pb-2">
+                        <div className="pb-2" hidden={openSection !== item.label}>
                             <a
                               href={item.href}
                               onClick={() => setMenuOpen(false)}
@@ -213,6 +230,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                                   href={leaf.href}
                                   onClick={() => setMenuOpen(false)}
                                   className="flex items-center gap-2 px-6 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+                                  style={leaf.depth ? { paddingLeft: `${24 + Math.min(leaf.depth, 3) * 12}px` } : undefined}
                                 >
                                   {leaf.label}
                                   {leaf.comingSoon && (
@@ -223,8 +241,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                                 </a>
                               )),
                             )}
-                          </div>
-                        )}
+                        </div>
                       </div>
                     ) : (
                       <a
@@ -246,8 +263,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                   >
                     Log ind
                   </a>
-                </div>
-              )}
+              </nav>
             </div>
           </div>
         </div>

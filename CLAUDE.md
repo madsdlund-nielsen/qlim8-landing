@@ -12,11 +12,12 @@ app.qlim8.com and also hosts the CMS this site reads from.
 ```bash
 npm ci --legacy-peer-deps   # matches the Dockerfile, which is the build of record
 npm run dev                 # next dev
-npm run lint                # eslint + the dash guard + the workflow guard
+npm run lint                # eslint + dash guard + workflow guard + SEO titles + schema graph
 npm run typecheck           # tsc --noEmit
-npm test                    # src/lib/copyMerge.test.ts
-npm run build               # next build (standalone output)
-npm run test:contract       # live check against the app's public CMS API
+npm test                    # copyMerge + content-dates (pretest regenerates the dates)
+npm run build               # next build (standalone output; prebuild regenerates the dates)
+npm run test:contract       # live: the app's public CMS API shape + the published copy itself
+npm run content-dates       # rewrite src/generated/content-dates.json from git history
 ```
 
 ## Where the copy lives
@@ -69,6 +70,33 @@ Substituting `: ` for `—` inside an unquoted YAML value produces a file GitHub
 cannot parse, and the symptom is a failing run with no jobs on every push,
 regardless of the workflow's triggers. `scripts/check-workflows.mjs` now parses
 every workflow during `npm run lint` so this fails on the branch instead.
+
+## SEO rules and their guards
+
+Three rules, from the September 2026 audit, each with a script that fails the
+build or the scheduled contract check when broken. Full write-up in
+`docs/{da,en}/seo/structured-data-and-sitemap.md`.
+
+1. **`lastmod` is real, per URL.** `app/sitemap.ts` dates each URL from the
+   git history of its content files (`scripts/content-dates.mjs` →
+   `src/generated/content-dates.json`, regenerated in CI before every build)
+   combined with the CMS `updatedAt`. Never `new Date()`, never one shared
+   constant. The JSON is committed as the Docker fallback; do not hand-edit it.
+2. **One schema graph.** `src/lib/schema.ts` defines `#organization`,
+   `#website` and `#software` once; every other page references them by `@id`
+   (`ORG_REF`, `WEBSITE_ID`) and never restates an `Organization`. New page
+   types get a builder there, not an inline object. `scripts/check-schema.mjs`
+   fails `npm run lint` on an anonymous entity or a dangling reference.
+3. **Content is in the HTML.** FAQs are `<details>`, not state-gated; no
+   `initial={{ opacity: 0 }}` on content (framer-motion serialises it into the
+   SSR markup); `"use client"` only on the component that needs a hook, never
+   on a whole page; menus are rendered and CSS-hidden, not conditionally
+   mounted, so their links exist for crawlers.
+
+CMS-published copy is outside all of that. `scripts/check-cms-copy.mjs`
+(`npm run test:contract`) checks the live overrides for dead internal links and
+entry prices that contradict `src/content/copy/pricing.ts`; the fix is in
+`/admin`.
 
 ## Deployment
 

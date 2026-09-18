@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
 import { buildBreadcrumbSchema, buildTechArticleSchema } from "@/lib/schema";
+import { contentDate } from "@/lib/contentDates";
 
 export const metadata: Metadata = {
   title: "REST API v1 Reference",
@@ -48,6 +49,7 @@ const PAGE_SCHEMA = [
     description:
       "Versioneret REST API med OpenAPI 3.1-spec, Bearer-auth med scopes, cursor-paginering og signerede webhooks. Plus OAuth 2.1 til MCP-connectors.",
     path: "/docs/api-reference",
+    dateModified: contentDate("/docs/api-reference"),
   }),
   buildBreadcrumbSchema([
     { name: "qlim8", href: "/" },

@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
 import { buildBreadcrumbSchema, buildTechArticleSchema, BASE_URL } from "@/lib/schema";
+import { contentDate } from "@/lib/contentDates";
 
 export const metadata: Metadata = {
   title: "MCP Quickstart: forbind din AI-assistent",
@@ -95,6 +96,7 @@ const PAGE_SCHEMA = [
     description:
       "Forbind Claude eller ChatGPT til dine qlim8-klimadata på få minutter via MCP. Log ind med din qlim8-konto: ingen API-nøgle, ingen kode.",
     path: "/docs/mcp-quickstart",
+    dateModified: contentDate("/docs/mcp-quickstart"),
   }),
   HOWTO_SCHEMA,
   buildBreadcrumbSchema([

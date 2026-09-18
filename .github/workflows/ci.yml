@@ -27,7 +27,12 @@ jobs:
     name: Lint, typecheck & test
     runs-on: ubuntu-latest
     steps:
+      # Full history: scripts/content-dates.mjs dates every route from the
+      # last commit that touched its content files, and a shallow clone would
+      # date everything to HEAD (the script refuses to run on one).
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -35,6 +40,7 @@ jobs:
 
       # --legacy-peer-deps mirrors the Dockerfile, which is the build of record.
       - run: npm ci --legacy-peer-deps
+      - run: npm run content-dates
 
       # `lint` fails on errors only; the existing warnings are a tracked
       # backlog. `npm run lint:strict` is the ratchet for later.
