@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Loader2, CheckCircle, ChevronDown } from "lucide-react";
+import { Loader2, CheckCircle, Plus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { SiteFooter } from "@/components/public/SiteFooter";
@@ -41,7 +41,6 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("yearly");
   const [loadingTier, setLoadingTier] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [faqOpen, setFaqOpen] = useState<number | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -122,7 +121,7 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
               <AnimatePresence mode="wait">
                 {billingCycle === "yearly" && (
                   <motion.span
-                    initial={{ opacity: 0, y: -4 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
                     className="text-sm text-primary font-medium"
@@ -154,7 +153,7 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`starter-${billingCycle}`}
-                      initial={{ opacity: 0, y: 6 }}
+                      initial={false}
                       animate={{ opacity: 1, y: 0 }}
                       className="text-4xl font-bold text-gray-900"
                       data-testid="price-starter"
@@ -195,7 +194,7 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
                   <div className="flex items-baseline gap-1 mb-1">
                     <motion.span
                       key={`premium-${billingCycle}`}
-                      initial={{ opacity: 0, y: 6 }}
+                      initial={false}
                       animate={{ opacity: 1, y: 0 }}
                       className="text-4xl font-bold text-white"
                       data-testid="price-premium"
@@ -289,34 +288,23 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
             <h2 className="text-2xl font-bold text-gray-900 mb-6 border-t border-gray-200 pt-10">
               {copy.faq.title}
             </h2>
-            <div className="max-w-2xl divide-y divide-gray-100">
+            {/* Native <details>, as the marketing pages already do: every answer
+                is in the server HTML (it was gated on client state before, so
+                crawlers saw the questions only), and the FAQPage schema that
+                app/priser/page.tsx emits from the same array describes text that
+                is actually on the page. */}
+            <div className="max-w-2xl divide-y divide-gray-100 border-y border-gray-100">
               {copy.faq.items.map((item, i) => (
-                <div key={i} data-testid={`faq-item-${i}`}>
-                  <button
-                    onClick={() => setFaqOpen(faqOpen === i ? null : i)}
-                    className="w-full flex items-center justify-between py-4 text-left text-sm font-medium text-gray-900 hover:text-primary transition-colors"
+                <details key={i} className="group py-4" data-testid={`faq-item-${i}`}>
+                  <summary
+                    className="flex cursor-pointer list-none items-center justify-between text-left text-sm font-medium text-gray-900 hover:text-primary transition-colors"
                     data-testid={`faq-toggle-${i}`}
                   >
                     {item.q}
-                    <ChevronDown
-                      className={`h-4 w-4 text-gray-400 flex-shrink-0 ml-4 transition-transform duration-200 ${faqOpen === i ? "rotate-180" : ""}`}
-                      strokeWidth={2}
-                    />
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {faqOpen === i && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="pb-4 text-sm text-gray-500 leading-relaxed">{item.a}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                    <Plus className="h-4 w-4 text-gray-400 flex-shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45" strokeWidth={2} />
+                  </summary>
+                  <p className="pt-3 text-sm text-gray-500 leading-relaxed">{item.a}</p>
+                </details>
               ))}
             </div>
           </div>

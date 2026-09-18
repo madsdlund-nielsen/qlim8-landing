@@ -4,6 +4,8 @@ import { articles } from '@/content/articles'
 import type { Article, ArticleSection } from '@/content/article'
 import ArticleTemplate from '@/page-components/article'
 import { fetchArticleBySlug, fetchPublishedArticles, type CmsArticle } from '@/lib/cms'
+import { JsonLd } from '@/components/JsonLd'
+import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/schema'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -20,6 +22,7 @@ function fromCms(a: CmsArticle): Article {
     description: a.description,
     category: a.category as Article['category'],
     publishedAt: a.publishedAt,
+    updatedAt: a.updatedAt,
     readingTime: a.readingTime,
     sections: a.sections as ArticleSection[],
   }
@@ -54,6 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://qlim8.com/blog/${article.slug}`,
       type: 'article',
       publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt ?? article.publishedAt,
       images: [{ url: '/opengraph.jpg', width: 1200, height: 630, alt: article.title }],
     },
   }
@@ -64,54 +68,28 @@ export default async function ArticlePage({ params }: Props) {
   const article = await resolveArticle(slug)
   if (!article) notFound()
 
-  const url = `https://qlim8.com/blog/${article.slug}`
-
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: article.title,
-    description: article.description,
-    image: ['https://qlim8.com/opengraph.jpg'],
-    datePublished: article.publishedAt,
-    dateModified: article.publishedAt,
-    author: {
-      '@type': 'Organization',
-      name: 'qlim8',
-      url: 'https://qlim8.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'qlim8',
-      logo: { '@type': 'ImageObject', url: 'https://qlim8.com/favicon.svg' },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': url,
-    },
-    articleSection: article.category,
-    inLanguage: 'da-DK',
-  }
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'qlim8', item: 'https://qlim8.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://qlim8.com/blog' },
-      { '@type': 'ListItem', position: 3, name: article.title, item: url },
-    ],
-  }
+  // Article + BreadcrumbList come from src/lib/schema.ts so the author and
+  // publisher are the site-wide #organization rather than a third, unlinked
+  // copy of the company, and dateModified is the real edit date.
+  const schema = [
+    buildArticleSchema({
+      headline: article.title,
+      description: article.description,
+      path: `/blog/${article.slug}`,
+      datePublished: article.publishedAt,
+      dateModified: article.updatedAt ?? article.publishedAt,
+      articleSection: article.category,
+    }),
+    buildBreadcrumbSchema([
+      { name: 'qlim8', href: '/' },
+      { name: 'Blog', href: '/blog' },
+      { name: article.title, href: `/blog/${article.slug}` },
+    ]),
+  ]
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd schema={schema} />
       <ArticleTemplate article={article} />
     </>
   )

@@ -19,12 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: npm
       # --legacy-peer-deps mirrors the Dockerfile, which is the build of record.
       - run: npm ci --legacy-peer-deps
+      - run: npm run content-dates
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
@@ -38,7 +41,17 @@ jobs:
       packages: write
 
     steps:
+      # The Docker build context has no .git, so the per-route content dates
+      # the sitemap serves as <lastmod> are written here, from the full
+      # history, and travel into the image as src/generated/content-dates.json.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Write per-route content dates from git history
+        run: npm run content-dates
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3

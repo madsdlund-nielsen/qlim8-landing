@@ -39,7 +39,9 @@ export interface CmsArticle {
   title: string;
   description: string;
   category: string;
-  publishedAt: string;
+  publishedAt: string; // YYYY-MM-DD, stable across re-publishes
+  /** YYYY-MM-DD, >= publishedAt. Optional until qlim8-app #271 is deployed. */
+  updatedAt?: string;
   readingTime: number;
   sections: ArticleSection[];
 }
@@ -112,15 +114,36 @@ export async function fetchArticleBySlug(slug: string, language: Language = "da"
   ]);
 }
 
+export interface MarketingCopyEnvelope {
+  copy: Record<string, unknown>;
+  /** YYYY-MM-DD of the published override; null when nothing is published. */
+  updatedAt: string | null;
+}
+
+/**
+ * The published override plus when it last changed. The date is what lets
+ * app/sitemap.ts move a page's <lastmod> for an edit made in /admin, which no
+ * deploy (and therefore no git date) would otherwise reflect.
+ */
+export async function fetchMarketingCopyEnvelope(
+  pageKey: string,
+  language: Language = "da",
+): Promise<MarketingCopyEnvelope> {
+  const data = await cmsFetch<{ copy?: Record<string, unknown>; updatedAt?: string | null }>(
+    `/api/public/cms/marketing/${encodeURIComponent(pageKey)}?language=${language}`,
+    ["cms-marketing", `cms-marketing-${pageKey}`],
+  );
+  return {
+    copy: data?.copy && typeof data.copy === "object" ? data.copy : {},
+    updatedAt: typeof data?.updatedAt === "string" ? data.updatedAt : null,
+  };
+}
+
 export async function fetchMarketingCopy(
   pageKey: string,
   language: Language = "da",
 ): Promise<Record<string, unknown>> {
-  const data = await cmsFetch<{ copy: Record<string, unknown> }>(
-    `/api/public/cms/marketing/${encodeURIComponent(pageKey)}?language=${language}`,
-    ["cms-marketing", `cms-marketing-${pageKey}`],
-  );
-  return data?.copy ?? {};
+  return (await fetchMarketingCopyEnvelope(pageKey, language)).copy;
 }
 
 /**

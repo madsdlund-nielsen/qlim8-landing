@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Kontakt from "@/page-components/kontakt";
 import { resolvePageCopy } from "@/lib/pageCopy";
 import { CONTACT_PAGE_KEY, CONTACT_COPY } from "@/content/copy/contact";
+import { JsonLd } from "@/components/JsonLd";
+import { buildBreadcrumbSchema, buildContactPageSchema } from "@/lib/schema";
+import { contentDate } from "@/lib/contentDates";
 
 // ISR: CMS-published copy refreshes on this cadence.
 export const revalidate = 300;
@@ -20,7 +23,25 @@ export const metadata: Metadata = {
   },
 };
 
+const PAGE_SCHEMA = [
+  buildContactPageSchema({
+    name: "Kontakt qlim8",
+    description:
+      "Spørgsmål om klimaregnskab, ESG eller qlim8? Kontakt os via formularen eller på email og telefon.",
+    dateModified: contentDate("/kontakt"),
+  }),
+  buildBreadcrumbSchema([
+    { name: "qlim8", href: "/" },
+    { name: "Kontakt", href: "/kontakt" },
+  ]),
+];
+
 export default async function Page() {
   const copy = await resolvePageCopy(CONTACT_PAGE_KEY, CONTACT_COPY);
-  return <Kontakt copy={copy} />;
+  return (
+    <>
+      <JsonLd schema={PAGE_SCHEMA} />
+      <Kontakt copy={copy} />
+    </>
+  );
 }

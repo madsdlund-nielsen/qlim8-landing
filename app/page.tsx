@@ -4,7 +4,9 @@ import { HOMEPAGE_FAQS, buildFaqSchema, type HomepageFaq } from "@/content/homep
 import { fetchMarketingCopy, cmsImageUrl } from "@/lib/cms";
 import { resolvePageCopy } from "@/lib/pageCopy";
 import { HOME_PAGE_KEY, HOME_COPY } from "@/content/copy/home";
-import { PRICING_COPY } from "@/content/copy/pricing";
+import { PRICING_PAGE_KEY, PRICING_COPY } from "@/content/copy/pricing";
+import { buildPricingOffers } from "@/lib/pricingSchema";
+import { JsonLd } from "@/components/JsonLd";
 import type { LandingImages } from "@/page-components/landing";
 import { ORGANIZATION, WEBSITE, buildSoftwareSchema } from "@/lib/schema";
 
@@ -28,29 +30,10 @@ export const metadata: Metadata = {
   },
 };
 
-// The price fields come from one argument so they can't drift apart, and the
-// figures come from PRICING_COPY: the same source /priser builds its schema
-// from. Uses the yearly-billed effective prices, matching the "fra 300 kr/md"
-// claim in the page description.
-const softwareOffer = (name: string, monthlyDkk: number) => ({
-  "@type": "Offer",
-  name,
-  price: String(monthlyDkk),
-  priceCurrency: "DKK",
-  priceSpecification: {
-    "@type": "UnitPriceSpecification",
-    price: String(monthlyDkk),
-    priceCurrency: "DKK",
-    unitText: "MONTH",
-  },
-});
-
-// Organization and WebSite now come from src/lib/schema.ts, where they are
-// @id-addressable and shared with /om-os rather than copy-pasted into it.
-const SOFTWARE_SCHEMA = buildSoftwareSchema([
-  softwareOffer("Starter", PRICING_COPY.prices.starter.yearlyDkk),
-  softwareOffer("Premium", PRICING_COPY.prices.premium.yearlyDkk),
-]);
+// Organization and WebSite come from src/lib/schema.ts, where they are
+// @id-addressable and shared with /om-os rather than copy-pasted into it. The
+// SoftwareApplication's offers come from the same resolved pricing copy
+// /priser uses, so the two pages emit one identical #software entity.
 
 // CMS-published homepage FAQ override (pageKey "homepage.faqs"), with a fallback
 // to the bundled list. Validated to the {q,a}[] shape so malformed copy can't
@@ -80,28 +63,21 @@ async function resolveLandingImages(): Promise<LandingImages> {
 }
 
 export default async function Page() {
-  const [copy, faqs, images] = await Promise.all([
+  const [copy, faqs, images, pricingCopy] = await Promise.all([
     resolvePageCopy(HOME_PAGE_KEY, HOME_COPY),
     resolveFaqs(),
     resolveLandingImages(),
+    resolvePageCopy(PRICING_PAGE_KEY, PRICING_COPY),
   ]);
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_SCHEMA) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqSchema(faqs)) }}
+      <JsonLd
+        schema={[
+          ORGANIZATION,
+          WEBSITE,
+          buildSoftwareSchema(buildPricingOffers(pricingCopy)),
+          buildFaqSchema(faqs),
+        ]}
       />
       <Landing copy={copy} faqs={faqs} images={images} />
     </>

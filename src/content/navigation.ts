@@ -3,13 +3,15 @@
 // SiteFooter, and app/sitemap.ts, so the three never drift.
 
 import type { MarketingCollection } from "./marketing/types";
-import { getCollection, getHub, getNode } from "./marketing";
+import { getAncestors, getCollection, getHub, getNode } from "./marketing";
 
 export interface NavLeaf {
   href: string;
   label: string;
   blurb?: string;
   comingSoon?: boolean;
+  /** Levels below the collection hub (0 = top-level area). Menus indent by it. */
+  depth?: number;
 }
 
 export interface NavGroup {
@@ -23,9 +25,13 @@ export interface NavTop {
   groups?: NavGroup[];
 }
 
-// Which leaves appear in each collection's mega-menu, in order. Produkt is
-// curated to the primary areas (deep leaves are reached via in-page sub-nav);
-// the other two show their full set.
+// Which leaves appear in each collection's mega-menu, in order. Every live
+// page is here: the menu is the one place the whole site hierarchy is visible
+// to a visitor and a crawler at once, and it has to agree with the breadcrumb
+// schema on every page. Produkt used to list 12 of its 21 pages, which left
+// nine (the report-recipient and VSME sub-pages) three clicks from the
+// header, reachable only from a parent's in-page grid. The order is the
+// hierarchy: a child follows its parent, and `depth` indents it.
 const MENU_SLUGS: Record<MarketingCollection, string[]> = {
   kundetyper: [
     "tomrer", "maler", "elektriker", "vvs", "entreprenoer", "vognmand", "plastfabrikant", "frisoer", "store-virksomheder",
@@ -33,7 +39,9 @@ const MENU_SLUGS: Record<MarketingCollection, string[]> = {
   ],
   produkt: [
     "dashboard", "udforskning", "data-udtraek",
-    "rapportering", "pdf-rapport", "vsme-rapport", "audit-trail",
+    "rapportering", "excel-rapport", "pdf-rapport", "modtagere",
+    "bestyrelsesrapport", "investorrapport", "bankrapport", "samarbejdspartnere", "temaer",
+    "vsme-rapport", "vsme-basis", "vsme-comprehensive", "audit-trail",
     "tiltag", "scenarier",
     "revisor-adgang", "leverandoerkaede", "brag-board",
   ],
@@ -60,6 +68,7 @@ function buildGroups(collection: MarketingCollection): NavGroup[] {
       label: node.navLabel,
       blurb: node.blurb,
       comingSoon: node.status === "coming-soon",
+      depth: getAncestors(node).length - 1,
     });
   }
   return groups;

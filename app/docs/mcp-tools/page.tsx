@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
 import { buildBreadcrumbSchema, buildTechArticleSchema } from "@/lib/schema";
+import { contentDate } from "@/lib/contentDates";
 
 export const metadata: Metadata = {
   title: "MCP Tools Reference",
@@ -43,6 +44,7 @@ const PAGE_SCHEMA = [
     description:
       "qlim8's MCP-server (Model Context Protocol) eksponerer 31 tools, 3 resources og 3 prompts til AI-assistenter som Claude og ChatGPT.",
     path: "/docs/mcp-tools",
+    dateModified: contentDate("/docs/mcp-tools"),
   }),
   buildBreadcrumbSchema([
     { name: "qlim8", href: "/" },

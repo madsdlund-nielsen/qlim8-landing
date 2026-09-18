@@ -9,6 +9,16 @@ This repository is the **marketing site** (qlim8.com). For the **whole-system ar
 - 📐 [Dansk: systemarkitektur](./da/architecture/system-architecture.md)
 - [Diagram sources & exports](./diagrams/README.md): Mermaid `.mmd`, SVG, PNG, Excalidraw
 
+## SEO
+
+- 🔎 [English: sitemap dates, structured data and what crawlers see](./en/seo/structured-data-and-sitemap.md) ·
+  🇩🇰 [Dansk](./da/seo/structured-data-and-sitemap.md)
+
+  The three rules the site holds itself to (a real `lastmod` per URL, one
+  `@id`-linked schema graph, content in the HTML) and the scripts that enforce
+  each: `scripts/content-dates.mjs`, `scripts/check-schema.mjs`,
+  `scripts/check-cms-copy.mjs`.
+
 ## Operations
 
 - 📋 [English: post-mortem, 2026-07-28](./en/operations/postmortem-2026-07-28.md) ·

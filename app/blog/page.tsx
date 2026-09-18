@@ -35,6 +35,7 @@ export default async function Page() {
       description: a.description,
       category: a.category,
       publishedAt: a.publishedAt,
+      updatedAt: a.updatedAt,
       readingTime: a.readingTime,
     });
   }
@@ -61,6 +62,7 @@ export default async function Page() {
       description: a.description,
       url: `${BASE_URL}/blog/${a.slug}`,
       datePublished: a.publishedAt,
+      dateModified: a.updatedAt ?? a.publishedAt,
       articleSection: a.category,
       author: ORG_REF,
     })),

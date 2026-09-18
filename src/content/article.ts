@@ -26,6 +26,7 @@ export type Article = {
   description: string
   category:    ArticleCategory
   publishedAt: string   // 'YYYY-MM-DD'
+  updatedAt?:  string   // 'YYYY-MM-DD', sat af CMS'et ved redigering; udeladt for bundlede artikler
   readingTime: number   // estimeret minutter
   sections:    ArticleSection[]
 }

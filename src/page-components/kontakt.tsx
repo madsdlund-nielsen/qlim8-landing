@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";

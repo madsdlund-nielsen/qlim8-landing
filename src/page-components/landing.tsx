@@ -1,4 +1,6 @@
-"use client";
+// Server component: the only interactive parts are the FAQ accordion and the
+// newsletter dialog, which are client components of their own. Marking this
+// whole file "use client" put 300 lines of static copy in the client bundle.
 import { ArrowRight } from "lucide-react";
 import { NewsletterSignupDialog } from "@/components/public/NewsletterSignupDialog";
 import { SiteFooter } from "@/components/public/SiteFooter";
