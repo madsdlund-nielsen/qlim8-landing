@@ -110,7 +110,7 @@ export default function Page() {
   return (
     <>
       <JsonLd schema={PAGE_SCHEMA} />
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-14">

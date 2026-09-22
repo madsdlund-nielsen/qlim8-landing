@@ -61,7 +61,7 @@ export default function MarketingHubTemplate({
   cards: NavLeaf[];
 }) {
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       {/* Hero */}

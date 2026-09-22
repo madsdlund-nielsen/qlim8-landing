@@ -40,6 +40,30 @@ Blog articles work the same way: `app/blog/[slug]` prefers a CMS article over
 the bundled one in `src/content/*.ts`, and at least one published article has
 no file in this repo at all.
 
+## The palette comes from the app
+
+`src/index.css` holds the same colours as `qlim8-app/client/src/index.css`, in
+the same HSL-triple form. They are kept in step **by hand**: this repo has no
+import path into that one, and a marketing site showing a green the product
+does not use is worse than a duplicated table. Change one, change the other.
+
+Light only. The `.dark` block and `@custom-variant dark` exist but nothing sets
+the class and there are no `dark:` utilities anywhere. That is deliberate, not
+an oversight: the app has light and dark, this site does not.
+
+The product screenshots in `attached_assets/` are **rendered from the design
+board**, not screen-captured, so they carry the product's own palette and can be
+regenerated when it changes:
+
+```bash
+# in qlim8-app
+CHROMIUM_PATH=/opt/pw-browsers/chromium node docs/design/redesign-2026/render-frames.mjs
+```
+
+They show views that have shipped. The board also holds frames for views that
+have not, and putting one of those on the marketing site would promise
+something the product does not do yet.
+
 ## No em-dashes in copy
 
 The em-dash (`—`) is banned in everything a visitor can read. It is not a

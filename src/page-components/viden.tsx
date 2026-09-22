@@ -26,7 +26,7 @@ function formatDate(iso: string) {
 // merged with CMS-published articles (DB wins by slug).
 export default function Viden({ articles = bundledArticles }: { articles?: VidenArticle[] }) {
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       {/* Hero */}

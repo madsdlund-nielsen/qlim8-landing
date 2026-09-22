@@ -30,7 +30,7 @@ export default function MarketingPageTemplate({
   const comingSoon = node.status === "coming-soon";
 
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       {/* Hero */}
@@ -96,7 +96,7 @@ export default function MarketingPageTemplate({
             </h2>
             <div className="grid gap-6 md:grid-cols-2">
               {copy.painPoints.map((p, i) => (
-                <div key={i} className="rounded-2xl border border-gray-100 bg-[#F5F5F0] p-6">
+                <div key={i} className="rounded-2xl border border-gray-100 bg-background p-6">
                   <p className="text-sm font-semibold text-gray-500 mb-2">Udfordringen</p>
                   <p className="text-gray-800 mb-4 leading-relaxed">{p.pain}</p>
                   <p className="text-sm font-semibold text-primary mb-2">Sådan hjælper qlim8</p>

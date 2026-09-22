@@ -83,7 +83,7 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
   const premiumPrice = pick(copy.prices.premium, billingCycle);
 
   return (
-    <div className="min-h-screen bg-[#F5F5F0] flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       <SiteHeader />
 
       <main className="flex-1">

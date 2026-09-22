@@ -7,7 +7,7 @@ import { CONTACT_COPY, type ContactCopy } from "@/content/copy/contact";
 // app/kontakt/page.tsx passes the CMS-merged result.
 export default function Kontakt({ copy = CONTACT_COPY }: { copy?: ContactCopy }) {
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-20 sm:pb-28">

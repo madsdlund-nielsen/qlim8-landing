@@ -14,7 +14,7 @@ const HIGHLIGHTS = [
 // lives inside another page; this one exists to be linked to directly.
 export default function Nyhedsbrev() {
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-10">

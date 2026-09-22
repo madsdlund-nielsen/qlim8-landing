@@ -15,7 +15,7 @@ function formatDate(iso: string) {
 
 export default function ArticleTemplate({ article }: { article: Article }) {
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       <main className="max-w-3xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-24">

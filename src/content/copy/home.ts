@@ -161,7 +161,7 @@ export const HOME_COPY: HomeCopy = {
       },
       {
         title: "Klik dig rundt",
-        body: "En kort guided tur viser dig dashboard, klimahovedbog, rapporter og reduktionsmål, alt sammen med realistiske data, så du kan se præcis hvad du får.",
+        body: "En kort guided tur viser dig overblikket, dine leverandører, kategorierne bag tallene og rapporterne, alt sammen med realistiske data, så du kan se præcis hvad du får.",
       },
       {
         title: "Forbind dit regnskab",

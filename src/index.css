@@ -67,6 +67,11 @@
 }
 
 /* LIGHT MODE: qlim8 brand theme */
+/* The palette is the app's, from qlim8-app/client/src/index.css. The two are
+   kept in step by hand: this repo has no import path into that one, and a
+   marketing site showing a green the product does not use is worse than a
+   duplicated table. HSL is the stored form, hex in the comments is derived.
+   Light only: this site has no dark mode and does not pretend to. */
 :root {
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
@@ -74,40 +79,41 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  --background: 45 20% 96%;
-  --foreground: 220 15% 12%;
-  --border: 220 10% 88%;
-  --card: 0 0% 100%;
-  --card-foreground: 220 15% 12%;
-  --card-border: 220 10% 90%;
-  --sidebar: 45 20% 95%;
-  --sidebar-foreground: 220 15% 12%;
-  --sidebar-border: 220 10% 88%;
-  --sidebar-primary: 155 40% 28%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 155 25% 90%;
-  --sidebar-accent-foreground: 155 45% 20%;
-  --sidebar-ring: 155 40% 28%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 220 15% 12%;
-  --popover-border: 220 10% 88%;
-  --primary: 155 40% 28%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 45 20% 92%;
-  --secondary-foreground: 220 15% 25%;
-  --muted: 45 15% 92%;
-  --muted-foreground: 220 10% 50%;
-  --accent: 155 25% 90%;
-  --accent-foreground: 155 45% 20%;
-  --destructive: 0 84% 60%;
+  --background: 96 20% 95%;              /* #f2f5f0, the app's content pane */
+  --foreground: 217 18% 14%;             /* #1d222a */
+  --border: 104 13% 83%;                 /* #d2dacf */
+  --card: 90 25% 98%;                    /* #fbfcfa */
+  --card-foreground: 217 18% 14%;
+  --card-border: 104 13% 83%;
+  --sidebar: 90 25% 98%;
+  --sidebar-foreground: 217 18% 14%;
+  --sidebar-border: 104 13% 83%;
+  --sidebar-primary: 111 22% 37%;
+  --sidebar-primary-foreground: 90 25% 98%;
+  --sidebar-accent: 92 28% 90%;
+  --sidebar-accent-foreground: 110 22% 27%;
+  --sidebar-ring: 111 22% 37%;
+  --popover: 90 25% 98%;
+  --popover-foreground: 217 18% 14%;
+  --popover-border: 104 13% 83%;
+  --primary: 111 22% 37%;                /* #50744a, green-600 */
+  --primary-foreground: 90 25% 98%;
+  --secondary: 216 13% 92%;              /* #e9ebee */
+  --secondary-foreground: 217 18% 14%;
+  --muted: 216 13% 92%;
+  --muted-foreground: 219 10% 40%;       /* #5c6370 */
+  --accent: 92 28% 90%;                  /* #e4ecdd */
+  --accent-foreground: 110 22% 27%;      /* #3b5536 */
+  --destructive: 5 80% 38%;
   --destructive-foreground: 0 0% 100%;
-  --input: 220 10% 85%;
-  --ring: 155 40% 28%;
-  --chart-1: 155 40% 28%;
-  --chart-2: 175 60% 40%;
-  --chart-3: 199 75% 45%;
-  --chart-4: 48 95% 50%;
-  --chart-5: 15 85% 55%;
+  --input: 104 13% 83%;
+  --ring: 111 22% 37%;
+  /* The app's green ramp, so a chart here cannot contradict one there. */
+  --chart-1: 111 22% 37%;
+  --chart-2: 112 22% 67%;
+  --chart-3: 110 22% 27%;
+  --chart-4: 215 9% 58%;
+  --chart-5: 11 39% 39%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: Georgia, serif;

@@ -23,7 +23,10 @@ function Section({ section }: { section: ArticleSection }) {
       return (
         <ul className="space-y-2 my-5 text-gray-700 text-[17px]">
           {section.items.map((item, i) => (
-            <li key={i} className="leading-relaxed">, {item}</li>
+            <li key={i} className="leading-relaxed flex gap-2.5">
+              <span className="mt-2 h-1 w-2.5 shrink-0 bg-primary" aria-hidden="true" />
+              <span>{item}</span>
+            </li>
           ))}
         </ul>
       );
