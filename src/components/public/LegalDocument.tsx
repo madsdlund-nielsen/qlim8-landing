@@ -9,7 +9,7 @@ import type { LegalCopy } from "@/content/copy/legal";
 // so the stored HTML renders here without re-sanitizing.
 export function LegalDocument({ copy }: { copy: LegalCopy }) {
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-28">

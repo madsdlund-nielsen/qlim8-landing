@@ -107,7 +107,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
 
   return (
     <header
-      className="sticky top-0 z-50 bg-[#F5F5F0]/95 backdrop-blur-sm border-b border-gray-100"
+      className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-gray-100"
       data-site-header
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">

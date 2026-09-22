@@ -16,7 +16,7 @@ export default function About({
   founderImage?: string;
 }) {
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-24 sm:pb-28">

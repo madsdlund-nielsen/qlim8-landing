@@ -39,7 +39,7 @@ function Callout({ callout }: { callout: MethodologyCallout }) {
 // "page.methodology"); app/metodologi/page.tsx passes the CMS-merged result.
 export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: MethodologyCopy }) {
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
 
       {/* Hero / Lead */}

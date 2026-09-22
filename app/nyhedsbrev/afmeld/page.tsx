@@ -17,7 +17,7 @@ export default async function Page({
 }) {
   const sp = await searchParams;
   return (
-    <div className="min-h-screen bg-[#F5F5F0]">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="max-w-xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-28">
         <div className="bg-white rounded-2xl border border-gray-200 p-8 lg:p-10">

@@ -15,15 +15,18 @@ import { HOMEPAGE_FAQS, type HomepageFaq } from "@/content/homepage-faqs";
 import { HOME_COPY, type HomeCopy } from "@/content/copy/home";
 import { MarketingImage } from "@/components/public/MarketingImage";
 
-import dashboardImg from "@assets/qlim8-Dashboard_(2)_1775843644408.jpg";
-import kontrolcenterImg from "@assets/Feature_1_Kontrolcenter_1769884331461.jpg";
-import klimahovedbogImg from "@assets/Feature_3_Klimahovedbog_1769884331462.jpg";
-import rapporteringImg from "@assets/Feature_2_Rapportering_1769884331462.jpg";
+// Rendered from the design board in qlim8-app, not screen-captured, so they
+// stay in step with the product's own palette. Regenerate with
+// docs/design/redesign-2026/render-frames.mjs over there.
+import overviewImg from "@assets/qlim8-overview.jpg";
+import supplierImg from "@assets/qlim8-supplier.jpg";
+import categoriesImg from "@assets/qlim8-categories.jpg";
+import integrationsImg from "@assets/qlim8-integrations.jpg";
 
 const SIGNUP_URL = "https://app.qlim8.com/auth?tab=register";
 
 // Bundled feature screenshots, by copy.features order.
-const FEATURE_IMAGES = [kontrolcenterImg, klimahovedbogImg, rapporteringImg];
+const FEATURE_IMAGES = [integrationsImg, supplierImg, categoriesImg];
 
 // All copy lives in src/content/copy/home.ts (pageKey "page.home");
 // app/page.tsx passes the CMS-merged result. `faqs` defaults to the bundled
@@ -44,7 +47,7 @@ export default function Landing({
   images?: LandingImages;
 }) {
   return (
-    <div className="min-h-screen bg-[#F5F5F0] overflow-x-hidden">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <SiteHeader isHome />
 
       {/* 1. Hero */}
@@ -72,7 +75,7 @@ export default function Landing({
 
           <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
             <MarketingImage
-              src={images.hero ?? dashboardImg}
+              src={images.hero ?? overviewImg}
               alt="qlim8 dashboard"
               priority
               className="w-full h-auto"
@@ -107,7 +110,7 @@ export default function Landing({
       </section>
 
       {/* 3-5. Features */}
-      <section className="py-20 sm:py-28 bg-[#F5F5F0]">
+      <section className="py-20 sm:py-28 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="space-y-20 sm:space-y-28">
             {copy.features.map((f, i) => (
@@ -124,7 +127,10 @@ export default function Landing({
                   </p>
                   <ul className="space-y-2 text-[15px] text-gray-800">
                     {f.bullets.map((b) => (
-                      <li key={b} className="leading-relaxed">, {b}</li>
+                      <li key={b} className="leading-relaxed flex gap-2.5">
+                        <span className="mt-2 h-1 w-2.5 shrink-0 bg-primary" aria-hidden="true" />
+                        <span>{b}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -202,7 +208,7 @@ export default function Landing({
       </section>
 
       {/* 8. Pricing-teaser */}
-      <section className="py-20 sm:py-28 bg-[#F5F5F0]">
+      <section className="py-20 sm:py-28 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mb-14">
             <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
@@ -228,7 +234,10 @@ export default function Landing({
                 <p className="text-sm text-gray-600 leading-relaxed mb-6 min-h-[4rem]">{p.tag}</p>
                 <ul className="space-y-2 mb-8 text-sm text-gray-700">
                   {p.features.map((feat) => (
-                    <li key={feat} className="leading-relaxed">, {feat}</li>
+                    <li key={feat} className="leading-relaxed flex gap-2.5">
+                      <span className="mt-2 h-1 w-2.5 shrink-0 bg-primary" aria-hidden="true" />
+                      <span>{feat}</span>
+                    </li>
                   ))}
                 </ul>
                 <a
@@ -282,7 +291,7 @@ export default function Landing({
       </section>
 
       {/* 10. Final CTA */}
-      <section className="py-20 sm:py-28 bg-[#F5F5F0] border-t border-gray-100">
+      <section className="py-20 sm:py-28 bg-background border-t border-gray-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-5">
             {copy.finalCta.title}
