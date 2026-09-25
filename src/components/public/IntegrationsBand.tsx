@@ -1,7 +1,6 @@
-// Integrationsbånd: the logos of the systems qlim8 pulls data from, on tiles
-// like the monogram tiles of the app's Integrations › Input view, running left
-// in a loop. Pure CSS (src/index.css), so the logos are in the server-rendered
-// HTML and nothing ships to the client.
+// Integrationsbånd: the logos of the systems qlim8 pulls data from, on
+// uniform tiles running left in a loop. Pure CSS (src/index.css), so the logos
+// are in the server-rendered HTML and nothing ships to the client.
 import type { CSSProperties } from "react";
 import { INTEGRATION_LOGOS, type IntegrationLogo } from "@/content/integration-logos";
 
@@ -48,23 +47,22 @@ const FITS_CSS = `@container integrations-band (min-width: ${FITS_AT}px) {
 
 function Tile({ logo, decorative }: { logo: IntegrationLogo; decorative: boolean }) {
   const { w, h } = logoSize(logo);
-  // The mark is painted in the tile's ink through the SVG as a mask, so every
-  // vendor comes out in the same colour, taken from the palette tokens.
-  const mark: CSSProperties = {
-    width: `calc(var(--logo-scale) * ${w.toFixed(1)}px)`,
-    height: `calc(var(--logo-scale) * ${h.toFixed(1)}px)`,
-    maskImage: `url(${logo.src})`,
-    maskSize: "contain",
-    maskRepeat: "no-repeat",
-    maskPosition: "center",
-  };
+  // The vendor's own file in its own colours: the brand rules we could find
+  // allow a logo as supplied, never recoloured, so the tiles are what make
+  // the band uniform, not the ink.
   return (
-    <li className="flex h-16 w-36 shrink-0 items-center justify-center rounded-xl bg-accent text-accent-foreground sm:h-20 sm:w-44">
-      <span
-        {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": logo.name })}
+    <li className="flex h-16 w-36 shrink-0 items-center justify-center rounded-xl border border-gray-200 bg-white sm:h-20 sm:w-44">
+      {/* eslint-disable-next-line @next/next/no-img-element -- a static SVG gains nothing from next/image */}
+      <img
+        src={logo.src}
+        alt={decorative ? "" : logo.name}
         title={decorative ? undefined : logo.name}
-        className="block bg-current"
-        style={mark}
+        width={Math.round(w)}
+        height={Math.round(h)}
+        loading="lazy"
+        decoding="async"
+        draggable={false}
+        style={{ width: `calc(var(--logo-scale) * ${w.toFixed(1)}px)`, height: `calc(var(--logo-scale) * ${h.toFixed(1)}px)` }}
       />
     </li>
   );
