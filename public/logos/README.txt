@@ -2,8 +2,9 @@ Logoer til integrationsbåndet på forsiden (src/components/public/IntegrationsB
 Listen over hvilke der vises, og hvorfor nogle er udeladt, står i
 src/content/integration-logos.ts.
 
-Filerne er leverandørernes egne SVG'er i deres egne farver (pressekit, sitets
-header eller deres asset-CDN), uændrede bortset fra en tæt beskåret viewBox.
+Filerne er leverandørernes egne logoer i deres egne farver (pressekit, sitets
+header eller deres asset-CDN), som SVG hvor leverandøren har en, og uændrede
+bortset fra en tæt beskåret viewBox. Intega findes kun som PNG.
 Farverne må ikke ændres: de brand-regler vi har fundet tillader et logo som
 leveret, i farve, sort eller hvid, aldrig omfarvet. Båndet gør logoerne
 ensartede med ens fliser og afstande, ikke med farve.
