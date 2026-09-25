@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { PRIMARY_NAV, type NavTop } from "@/content/navigation";
 import { Wordmark } from "@/components/Wordmark";
+import { DEMO_HREF, DEMO_LABEL, LOGIN_URL } from "@/content/cta";
 
 interface SiteHeaderProps {
   isHome?: boolean;
@@ -159,18 +160,18 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <a
-              href="https://app.qlim8.com/auth"
+              href={LOGIN_URL}
               className="hidden sm:inline-flex text-sm font-medium px-3 py-1.5 text-gray-700 hover:text-primary transition-colors"
               data-testid="button-signin"
             >
               Log ind
             </a>
             <a
-              href="https://app.qlim8.com/auth?tab=register"
+              href={DEMO_HREF}
               className="text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
-              data-testid="button-register"
+              data-testid="button-book-demo"
             >
-              Opret gratis konto
+              {DEMO_LABEL}
             </a>
 
             <div className="relative lg:hidden" data-site-header>
@@ -256,7 +257,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                     ),
                   )}
                   <a
-                    href="https://app.qlim8.com/auth"
+                    href={LOGIN_URL}
                     onClick={() => setMenuOpen(false)}
                     className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors border-t border-gray-100 sm:hidden"
                     data-testid="menu-signin"

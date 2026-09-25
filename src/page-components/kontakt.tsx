@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button";
+import { ContactForm } from "@/components/public/ContactForm";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { CONTACT_COPY, type ContactCopy } from "@/content/copy/contact";
 
 // All copy lives in src/content/copy/contact.ts (pageKey "page.contact");
-// app/kontakt/page.tsx passes the CMS-merged result.
+// app/kontakt/page.tsx passes the CMS-merged result. A server component: only
+// the form needs a hook, so only ContactForm is "use client".
 export default function Kontakt({ copy = CONTACT_COPY }: { copy?: ContactCopy }) {
   return (
     <div className="min-h-screen bg-background">
@@ -23,55 +24,19 @@ export default function Kontakt({ copy = CONTACT_COPY }: { copy?: ContactCopy })
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">{copy.form.title}</h2>
-            <form className="space-y-5">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Navn</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base bg-white"
-                  placeholder="Dit fulde navn"
-                  data-testid="input-name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base bg-white"
-                  placeholder="din@email.dk"
-                  data-testid="input-email"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Virksomhed</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base bg-white"
-                  placeholder="Dit virksomhedsnavn"
-                  data-testid="input-company"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Besked</label>
-                <textarea
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-base bg-white"
-                  placeholder="Hvordan kan vi hjælpe dig?"
-                  data-testid="input-message"
-                />
-              </div>
-              <Button
-                type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base rounded-full"
-                data-testid="button-submit"
-              >
-                {copy.form.submitLabel}
-              </Button>
-            </form>
+            <ContactForm submitLabel={copy.form.submitLabel} />
           </div>
 
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">{copy.info.title}</h2>
+            <a
+              href={`tel:${copy.info.phone.replace(/\s+/g, "")}`}
+              className="mb-8 block rounded-2xl border border-gray-200 bg-white p-6 hover:border-primary transition-colors"
+              data-testid="link-call"
+            >
+              <span className="block text-sm text-gray-500 mb-1">Hellere tale sammen? Ring direkte</span>
+              <span className="block text-2xl font-bold text-gray-900">{copy.info.phone}</span>
+            </a>
             <dl className="space-y-6 text-base">
               <div>
                 <dt className="font-semibold text-gray-900 mb-1">Email</dt>
@@ -102,6 +67,12 @@ export default function Kontakt({ copy = CONTACT_COPY }: { copy?: ContactCopy })
                 </dd>
               </div>
             </dl>
+            <p className="mt-10 text-sm text-gray-600">
+              Vil du bare følge med?{" "}
+              <a href="/nyhedsbrev" className="text-primary font-semibold hover:underline">
+                Tilmeld dig nyhedsbrevet
+              </a>
+            </p>
           </div>
         </div>
       </article>

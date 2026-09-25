@@ -1,5 +1,6 @@
 %% qlim8, Deployment & CI/CD topology (Diagram 5). Two INDEPENDENT deployments on
-%% Hetzner, bridged only over public HTTPS + Stripe. Two nginx, two certbot.
+%% Hetzner, bridged only over public HTTPS. Two nginx, two certbot. The landing
+%% has no Stripe path of its own: qlim8 is sold after a demo, so there is no checkout.
 flowchart TB
   subgraph ghapp["GitHub: qlim8-app"]
     appmain["main branch"]
@@ -38,8 +39,7 @@ flowchart TB
   ghcr -->|pull image| lweb
   lnginx --> lweb
 
-  lweb -. "checkout + CTA (HTTPS)" .-> anginx
-  lweb -. checkout .-> stripe
+  lweb -. "contact + newsletter proxy, CMS read (HTTPS)" .-> anginx
   pm2 --> stripe
 
   classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;

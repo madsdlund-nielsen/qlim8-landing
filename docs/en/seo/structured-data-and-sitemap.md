@@ -1,6 +1,6 @@
 # SEO: sitemap dates, structured data and what crawlers see
 
-> Last updated: 2026-09-18 · Owner: qlim8 team · Danish twin: [`docs/da/seo/structured-data-and-sitemap.md`](../../da/seo/structured-data-and-sitemap.md)
+> Last updated: 2026-09-25 · Owner: qlim8 team · Danish twin: [`docs/da/seo/structured-data-and-sitemap.md`](../../da/seo/structured-data-and-sitemap.md)
 
 Three rules, each with the script that enforces it. They came out of an audit
 of qlim8.com in September 2026 against the three failure modes that get
@@ -44,7 +44,7 @@ Every page hangs off three site-wide entities defined once in
 |---|---|
 | `https://qlim8.com/#organization` | the company |
 | `https://qlim8.com/#website` | the site |
-| `https://qlim8.com/#software` | the product, with its offers |
+| `https://qlim8.com/#software` | the product (no `offers`, see below) |
 
 Other pages reference them (`publisher: ORG_REF`, `isPartOf: { "@id": WEBSITE_ID }`)
 and never restate them. A crawler merges entities by `@id`, not by name; an
@@ -61,14 +61,20 @@ Breadcrumbs follow the content hierarchy (`parentSlug` in
 the mega-menu show. URLs stay flat; that is allowed, as long as the three
 agree. The mega-menu lists every live page, children indented under parents.
 
-The product's offers are built once (`src/lib/pricingSchema.ts`) from the
-resolved pricing copy and emitted identically on `/` and `/priser`.
+`#software` carries no `offers` and no price. qlim8 is sold after a demo and
+publishes no package prices, so there is nothing for structured data to state.
+`buildSoftwareSchema()` takes no arguments, `/` and `/priser` emit the same
+entity, and `src/lib/pricingSchema.ts` (which built offers from the pricing
+copy) is gone. Structured data is where a stale price would outlive the copy:
+a crawler can keep showing it after the page has stopped saying it.
 
 **Guard:** `scripts/check-schema.mjs` (in `npm run lint`) builds the JSON-LD
 for every route with the same builders the pages use and fails on an
 `Organization`, `WebSite`, page or `Service` without an `@id`, a reference to
 an `@id` nothing defines, two differing definitions of one `@id`, a breadcrumb
-naming a non-route, or an `offerCount` that does not match.
+naming a non-route, an empty FAQ answer, or any entity carrying `offers`,
+`price` or `lowPrice`. (It used to check that `offerCount` matched the offers;
+now there may be none.)
 
 ## 3. Content is in the HTML
 
@@ -79,11 +85,14 @@ to be in the HTML response, not produced after hydration:
   the `FAQPage` schema describes text that is on the page.
 - No `initial={{ opacity: 0 }}` on content. framer-motion serialises `initial`
   into the SSR markup, which is how the two headline prices on `/priser`
-  shipped as `opacity:0`. Use `initial={false}`.
+  shipped as `opacity:0` back when the page showed prices. Use
+  `initial={false}`.
 - `"use client"` only where a hook or handler needs it. A page component with
   no state is a server component; put the interactive piece in its own client
-  component. The homepage, `/karriere`, `/kontakt` and `/om-os` are server
-  components for that reason.
+  component. The homepage, `/karriere`, `/kontakt`, `/om-os` and `/priser` are
+  server components for that reason; on `/kontakt` only `ContactForm` is a
+  client component, and `/priser` lost its `"use client"` along with the
+  billing toggle and the checkout.
 - No app-wide client providers. The former `I18nProvider` shipped a 300 KB
   eight-language dictionary to every visitor and nothing consumed it.
 
@@ -92,10 +101,15 @@ to be in the HTML response, not produced after hydration:
 CMS-published copy overrides the bundled defaults at render time, so none of
 the file-based guards can see it. `scripts/check-cms-copy.mjs` (in
 `npm run test:contract`, scheduled by `cms-contract.yml`) fetches every page
-key the site reads and fails on an internal link to a non-route or an
-advertised entry price ("fra N kr/md") that is not a plan price in
-`src/content/copy/pricing.ts`. A failure there is fixed in the app's `/admin`
-editor, not with a commit.
+key the site reads, plus every CMS article, and fails on an internal link to
+a non-route or on anything the sales-led rules in `scripts/lib/salesLed.mjs`
+forbid: a package price or entry-price phrasing ("fra N kr"), a signup link,
+a free-account, free-trial or credit-card claim. `scripts/check-sales-led.mjs`
+applies the same rules to the bundled copy in `npm run lint`, and both exempt
+the legal documents. This replaces the earlier check that an advertised entry
+price matched a plan price in `src/content/copy/pricing.ts`; there are no plan
+prices left to match. A failure there is fixed in the app's `/admin` editor,
+not with a commit.
 
 ## Checking a deployed page
 

@@ -14,6 +14,7 @@ import {
 import { HOMEPAGE_FAQS, type HomepageFaq } from "@/content/homepage-faqs";
 import { HOME_COPY, type HomeCopy } from "@/content/copy/home";
 import { MarketingImage } from "@/components/public/MarketingImage";
+import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
 
 // Rendered from the design board in qlim8-app, not screen-captured, so they
 // stay in step with the product's own palette. Regenerate with
@@ -22,8 +23,6 @@ import overviewImg from "@assets/qlim8-overview.jpg";
 import supplierImg from "@assets/qlim8-supplier.jpg";
 import categoriesImg from "@assets/qlim8-categories.jpg";
 import integrationsImg from "@assets/qlim8-integrations.jpg";
-
-const SIGNUP_URL = "https://app.qlim8.com/auth?tab=register";
 
 // Bundled feature screenshots, by copy.features order.
 const FEATURE_IMAGES = [integrationsImg, supplierImg, categoriesImg];
@@ -61,10 +60,11 @@ export default function Landing({
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-5">
             <a
-              href={SIGNUP_URL}
+              href={DEMO_HREF}
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
+              data-testid="button-hero-demo"
             >
-              {copy.hero.ctaPrimary}
+              {DEMO_LABEL}
               <ArrowRight className="h-4 w-4" />
             </a>
             <NewsletterSignupDialog />
@@ -194,10 +194,10 @@ export default function Landing({
           </ol>
           <div>
             <a
-              href={SIGNUP_URL}
+              href={DEMO_HREF}
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
             >
-              {copy.steps.ctaLabel}
+              {DEMO_LABEL}
               <ArrowRight className="h-4 w-4" />
             </a>
             <p className="text-sm text-gray-500 mt-4">
@@ -207,7 +207,7 @@ export default function Landing({
         </div>
       </section>
 
-      {/* 8. Pricing-teaser */}
+      {/* 8. Pakker, without prices: every card books a demo */}
       <section className="py-20 sm:py-28 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mb-14">
@@ -229,8 +229,7 @@ export default function Landing({
                     {p.badge}
                   </p>
                 )}
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{p.name}</h3>
-                <p className="text-3xl font-bold text-gray-900 mb-4">{p.price}</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{p.name}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed mb-6 min-h-[4rem]">{p.tag}</p>
                 <ul className="space-y-2 mb-8 text-sm text-gray-700">
                   {p.features.map((feat) => (
@@ -241,14 +240,14 @@ export default function Landing({
                   ))}
                 </ul>
                 <a
-                  href={p.href}
+                  href={DEMO_HREF}
                   className={`block text-center px-5 py-2.5 rounded-full text-sm font-semibold transition-colors ${
                     p.highlighted
                       ? "bg-primary text-primary-foreground hover:bg-primary/90"
                       : "bg-gray-100 text-gray-900 hover:bg-gray-200"
                   }`}
                 >
-                  {p.cta}
+                  {DEMO_LABEL}
                 </a>
               </div>
             ))}
@@ -299,13 +298,29 @@ export default function Landing({
           <p className="text-gray-600 text-lg leading-relaxed mb-9 max-w-xl">
             {copy.finalCta.body}
           </p>
-          <a
-            href={SIGNUP_URL}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
-          >
-            {copy.finalCta.ctaLabel}
-            <ArrowRight className="h-4 w-4" />
-          </a>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            <a
+              href={DEMO_HREF}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
+            >
+              {DEMO_LABEL}
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href={PHONE_HREF}
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-gray-300 text-gray-800 font-semibold text-base hover:border-primary hover:text-primary transition-colors"
+            >
+              Ring {PHONE_DISPLAY}
+            </a>
+            {/* A link, not a second NewsletterSignupDialog: the hero already
+                mounts one, and each instance opens itself on ?nyhedsbrev=1. */}
+            <a
+              href="/nyhedsbrev"
+              className="inline-flex items-center justify-center px-8 py-4 text-gray-700 font-semibold text-base hover:text-primary transition-colors"
+            >
+              Tilmeld nyhedsbrev
+            </a>
+          </div>
         </div>
       </section>
 

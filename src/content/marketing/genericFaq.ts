@@ -22,7 +22,7 @@ export const GENERIC_ESG_FAQ: FaqItem[] = [
   },
   {
     q: "Hvor hurtigt kan jeg komme i gang med qlim8?",
-    a: "Når dit regnskabssystem er tilkoblet, har du et grundlæggende klimaregnskab samme dag. Qlim8 henter historiske data ved første tilkobling og opdaterer derefter automatisk. Du kan oprette en gratis konto uden kreditkort og prøve platformen med eksempeldata med det samme. Priserne starter ved 300 kr/md.",
+    a: "Book en demo, så viser vi platformen med udgangspunkt i din virksomhed. Passer qlim8 til dig, opretter vi din konto og hjælper med at forbinde dit regnskabssystem. Når det er tilkoblet, henter qlim8 tre måneders historiske data med det samme, og du har et grundlæggende klimaregnskab samme dag. Derefter opdateres det automatisk.",
   },
   {
     q: "Kan jeg snakke med mit klimaregnskab i Claude eller ChatGPT?",
@@ -49,8 +49,8 @@ export const HUB_FAQ_SEED: Record<MarketingCollection, FaqItem[]> = {
       a: "qlim8 samler klimaregnskabet ét sted: et dashboard med overblik, udforskning af data bag tallene, rapportering (Excel, PDF, VSME) klar til revisor og bank, samt tiltag, scenarier, revisor-adgang og leverandørkæde, så klimaregnskabet bliver et arbejdsredskab hele året, ikke kun en årlig rapport.",
     },
     {
-      q: "Kan jeg prøve produktet gratis?",
-      a: "Ja. Du kan oprette en gratis konto uden kreditkort og afprøve platformen med eksempeldata. Når du tilkobler dit regnskabssystem, overtager dine egne data dashboardet med det samme.",
+      q: "Kan jeg se platformen, før vi beslutter os?",
+      a: "Ja. Book en demo, så viser vi platformen med udgangspunkt i jeres virksomhed. Passer qlim8 til jer, opretter vi jeres konto og hjælper med at forbinde regnskabssystemet, og så overtager jeres egne data dashboardet med det samme.",
     },
   ],
   integrationer: [

@@ -94,7 +94,7 @@ export const artikel: Article = {
     {
       type: 'ordered-list',
       items: [
-        'Opret eller log ind på din qlim8-konto. MCP-adgang kræver Premium.',
+        'Log ind på din qlim8-konto. Er du ikke kunde endnu, så book en demo. Vælger du qlim8, opretter vi din konto og hjælper med at forbinde dit regnskabssystem. MCP-adgang kræver Premium.',
         'I Claude: Indstillinger, Connectors, Tilføj custom connector, og indsæt https://app.qlim8.com/api/mcp. Der er ingen nøgle at kopiere: OAuth klarer resten.',
         'I ChatGPT: aktivér udviklertilstand under Apps og tilføj samme adresse.',
         'Bruger du Claude Code eller Cursor, peger du klienten på samme adresse med en Bearer-nøgle fra Collectors, API Keys.',
@@ -117,10 +117,10 @@ export const artikel: Article = {
     },
     {
       type: 'cta',
-      heading: 'Prøv det med dine egne tal',
-      text: 'Opret en gratis konto, forbind dit regnskabssystem, og spørg din assistent om dit Scope 3.',
-      buttonText: 'Opret gratis konto',
-      buttonHref: 'https://app.qlim8.com/auth?tab=register',
+      heading: 'Se det i praksis',
+      text: 'Book en demo, så viser vi dig, hvordan du spørger din assistent om dit Scope 3. Du kan også ringe til mig på +45 93 90 13 84.',
+      buttonText: 'Book demo',
+      buttonHref: '/kontakt?emne=demo',
     },
   ],
 }

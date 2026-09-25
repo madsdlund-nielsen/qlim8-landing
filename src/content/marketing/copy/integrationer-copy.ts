@@ -1,23 +1,17 @@
 import type { MarketingPageCopy, MarketingHubCopy } from "@/content/marketing/types";
+import { DEMO_CTA, PHONE_CTA } from "@/content/cta";
 
 // Marketing copy for the "Integrationer" collection.
 // Ground truth: docs/da/integrations/{dinero,e-conomic,billy,eloverblik,mcp-overview}.md
 // + docs/da/marketing/features/integrations.md. Voice per _shared/brand-voice.md.
 // Numbers without a cited source carry an [antagelse] tag.
-
-const PRIMARY_CTA = {
-  label: "Opret gratis konto",
-  href: "https://app.qlim8.com/auth?tab=register",
-} as const;
+//
+// qlim8 is sold after a demo (src/content/cta.ts): every primary CTA books one,
+// closing CTAs offer the phone as the alternative, and no package price appears.
 
 const HERO_SECONDARY_CTA = {
-  label: "Se priser",
+  label: "Se pakker",
   href: "/priser",
-} as const;
-
-const DEMO_CTA = {
-  label: "Book demo",
-  href: "/kontakt",
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -30,7 +24,7 @@ export const INTEGRATIONER_HUB_COPY: MarketingHubCopy = {
     title: "Vi henter data direkte fra dine systemer.",
     subtitle:
       "Du har allerede dataene i dit regnskab og din elmåler. qlim8 forbinder til dem og laver et klimaregnskab ud af tallene, uden CSV-eksport og uden dobbelt indtastning.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -72,9 +66,9 @@ export const INTEGRATIONER_HUB_COPY: MarketingHubCopy = {
   closingCta: {
     title: "Tilslut dit første system på under et kvarter",
     description:
-      "Opret en gratis konto, forbind dit regnskab eller din elmåler, og se dine posteringer blive til et klimaregnskab. Ingen CSV-eksport, ingen konsulent.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+      "Book en demo, så viser vi, hvordan dine posteringer bliver til et klimaregnskab. Passer qlim8 til jer, opretter vi jeres konto og hjælper med at forbinde regnskabet eller elmåleren. Ingen CSV-eksport, ingen konsulent.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -88,7 +82,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
     title: "Forbind e-conomic: dine posteringer bliver til klimaregnskab",
     subtitle:
       "Tilslut e-conomic med to tokens, og qlim8 henter dine bookede fakturaer og din kontoplan. Hver postering kategoriseres automatisk til en emissions-kategori, så du ikke sidder og mapper konti i hånden.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -218,16 +212,16 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Regnskabsintegrationerne er med fra Starter, der starter fra 300 kr/md. Premium (1.195 kr/md) tilføjer flere integrationer og funktioner. Se /priser for detaljer.",
+        a: "Regnskabsintegrationerne er med fra Starter, og Premium tilføjer flere integrationer og funktioner. Prisen afhænger af pakke og behov. Book en demo, så får I et konkret tilbud, og se pakkerne på /priser.",
       },
     ],
   },
   closingCta: {
     title: "Lad e-conomic føre klimaregnskabet med",
     description:
-      "Opret en gratis konto, tilslut e-conomic, og se dine bookede fakturaer blive til CO₂e-emissioner automatisk.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+      "Book en demo, så viser vi, hvordan dine bookede fakturaer bliver til CO₂e-emissioner automatisk. Passer qlim8 til jer, hjælper vi med at tilslutte e-conomic.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -241,7 +235,7 @@ export const IN_DINERO: MarketingPageCopy = {
     title: "Forbind Dinero med ét login: klimaregnskabet henter sig selv",
     subtitle:
       "Tilslut Dinero via Visma Connect (OAuth), og qlim8 læser 12 måneders historik ved første forbindelse. Derefter holder en daglig sync dit klimaregnskab opdateret. Du gør ingenting.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -371,16 +365,16 @@ export const IN_DINERO: MarketingPageCopy = {
       },
       {
         q: "Hvad koster Dinero-integrationen?",
-        a: "Den er inkluderet fra Starter, der starter fra 300 kr/md. Premium koster 1.195 kr/md og tilføjer flere integrationer og funktioner. Se /priser.",
+        a: "Den er inkluderet fra Starter, og Premium tilføjer flere integrationer og funktioner. Prisen afhænger af pakke og behov. Book en demo, så får I et konkret tilbud, og se pakkerne på /priser.",
       },
     ],
   },
   closingCta: {
-    title: "Tilslut Dinero og få 12 måneders klimaregnskab i dag",
+    title: "Tilslut Dinero, og lad klimaregnskabet hente sig selv",
     description:
-      "Opret en gratis konto, log ind med Visma Connect, og se din bogføring blive til et klimaregnskab. Daglig sync derefter: du gør ingenting.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+      "Book en demo, så viser vi, hvordan din bogføring bliver til et klimaregnskab. Passer qlim8 til jer, hjælper vi med at forbinde Dinero via Visma Connect. Daglig sync derefter: du gør ingenting.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -394,7 +388,7 @@ export const IN_BILLY: MarketingPageCopy = {
     title: "Forbind Billy: regnskabsdata bliver til klimaregnskab",
     subtitle:
       "Tilslut Billy med en adgangsnøgle, du selv opretter, og qlim8 henter dine leverandørfakturaer ind som grundlag for spend-baserede emissioner. Hvert bilagsnummer følger med, så tallene kan spores tilbage.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -524,16 +518,16 @@ export const IN_BILLY: MarketingPageCopy = {
       },
       {
         q: "Hvad koster Billy-integrationen?",
-        a: "Den er med fra Starter, der starter fra 300 kr/md. Premium (1.195 kr/md) tilføjer flere integrationer og funktioner. Se /priser for detaljer.",
+        a: "Den er med fra Starter, og Premium tilføjer flere integrationer og funktioner. Prisen afhænger af pakke og behov. Book en demo, så får I et konkret tilbud, og se pakkerne på /priser.",
       },
     ],
   },
   closingCta: {
     title: "Lad Billy fylde dit klimaregnskab",
     description:
-      "Opret en gratis konto, tilslut Billy med din egen adgangsnøgle, og se dine leverandørfakturaer blive til CO₂e-emissioner, sporbare helt tilbage til bilaget.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+      "Book en demo, så viser vi, hvordan dine leverandørfakturaer bliver til CO₂e-emissioner, sporbare helt tilbage til bilaget. Passer qlim8 til jer, hjælper vi med at tilslutte Billy med din egen adgangsnøgle.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -547,13 +541,13 @@ export const IN_APPELSIN: MarketingPageCopy = {
     title: "Appelsin-integration er på vej til qlim8",
     subtitle:
       "Vi arbejder på at forbinde Appelsin, så dit regnskab derfra kan blive til et klimaregnskab automatisk, med samme flow som Dinero, e-conomic og Billy. Den er endnu ikke live.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
     heading: "Bruger du Appelsin? Så er du snart dækket",
     body:
-      "Appelsin-integrationen er under udvikling og endnu ikke tilgængelig i qlim8. Planen er den samme som for vores øvrige regnskabsintegrationer: du forbinder dit Appelsin-regnskab, vi henter dine bogførte udgifter, og posteringerne kategoriseres automatisk til CO₂e-emissioner, uden CSV-eksport og uden manuel indtastning. Vi melder detaljerne ud, når integrationen er klar. Har du allerede Dinero, e-conomic eller Billy, kan du komme i gang i dag; er Appelsin dit eneste system, kan du bruge Excel-upload som midlertidig løsning, indtil den native integration er live.",
+      "Appelsin-integrationen er under udvikling og endnu ikke tilgængelig i qlim8. Planen er den samme som for vores øvrige regnskabsintegrationer: du forbinder dit Appelsin-regnskab, vi henter dine bogførte udgifter, og posteringerne kategoriseres automatisk til CO₂e-emissioner, uden CSV-eksport og uden manuel indtastning. Vi melder detaljerne ud, når integrationen er klar. Har du allerede Dinero, e-conomic eller Billy, kan vi forbinde det nu; er Appelsin dit eneste system, kan du bruge Excel-upload som midlertidig løsning, indtil den native integration er live.",
     bullets: [
       "Status: under udvikling, ikke live endnu [antagelse: roadmap, ingen fast lanceringsdato meldt].",
       "Samme flow som vores øvrige regnskabsintegrationer er planlagt.",
@@ -573,7 +567,7 @@ export const IN_APPELSIN: MarketingPageCopy = {
       pain:
         "Du vil ikke vente med at komme i gang, bare fordi netop dit system endnu ikke er koblet på.",
       solution:
-        "Du kan starte i dag med Excel-upload og skifte til den native Appelsin-integration, så snart den er klar, uden at miste dine data.",
+        "Du kan starte nu med Excel-upload og skifte til den native Appelsin-integration, så snart den er klar, uden at miste dine data.",
       outcome:
         "Ingen ventetid for at komme i gang med dit klimaregnskab.",
     },
@@ -642,20 +636,20 @@ export const IN_APPELSIN: MarketingPageCopy = {
       },
       {
         q: "Hvordan kommer jeg i gang, mens jeg venter?",
-        a: "Du kan oprette en gratis konto og bruge Excel-upload til at få et klimaregnskab allerede nu. Når Appelsin-integrationen er live, kan du skifte til den uden at miste dine data.",
+        a: "Book en demo. Passer qlim8 til jer, opretter vi jeres konto, og du kan bruge Excel-upload til at få et klimaregnskab allerede nu. Når Appelsin-integrationen er live, kan du skifte til den uden at miste dine data.",
       },
       {
         q: "Hvad koster det, når integrationen kommer?",
-        a: "Regnskabsintegrationer er en del af abonnementet fra Starter (fra 300 kr/md); Premium koster 1.195 kr/md. Den endelige placering for Appelsin meldes ud ved lancering. Se /priser.",
+        a: "Regnskabsintegrationer er en del af pakkerne fra Starter. Den endelige placering for Appelsin meldes ud ved lancering. Prisen afhænger af pakke og behov, og I får et konkret tilbud ved en demo. Se pakkerne på /priser.",
       },
     ],
   },
   closingCta: {
     title: "Kom i gang nu: skift til Appelsin-integrationen, når den lander",
     description:
-      "Opret en gratis konto og start med Excel-upload eller en af vores live regnskabsintegrationer. Vi giver besked, når Appelsin er klar.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+      "Book en demo, så viser vi, hvordan du kan starte med Excel-upload eller en af vores live regnskabsintegrationer. Vi giver besked, når Appelsin er klar.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -669,7 +663,7 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
     title: "Hent dit faktiske elforbrug automatisk: præcise Scope 2-tal",
     subtitle:
       "qlim8 henter time-baseret elforbrug fra Eloverblik (Energinet) og ganger det med Energinets CO₂-faktor. Dine Scope 2-tal bliver målte i stedet for gættede, uden at fotografere en eneste elregning.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -814,9 +808,9 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
   closingCta: {
     title: "Få målte Scope 2-tal i stedet for skøn",
     description:
-      "Opret en gratis konto, giv qlim8 fuldmagt på eloverblik.dk, og se dit faktiske elforbrug blive til præcise Scope 2-emissioner.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+      "Book en demo, så viser vi, hvordan dit faktiske elforbrug bliver til præcise Scope 2-emissioner. Passer qlim8 til jer, hjælper vi med fuldmagten på eloverblik.dk.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -830,7 +824,7 @@ export const IN_REST_API: MarketingPageCopy = {
     title: "Byg oven på qlim8: hent emissioner og rapporter via REST",
     subtitle:
       "Et versioneret REST API under /api/v1 giver dig programmatisk adgang til posteringer, emissionsdata og rapportstatus. JSON over HTTPS, Bearer-token, cursor-paginering og webhooks til dine egne flows.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -972,9 +966,9 @@ export const IN_REST_API: MarketingPageCopy = {
   closingCta: {
     title: "Byg dine klimadata ind i dine egne systemer",
     description:
-      "Opret en konto, generér en scope-begrænset API-nøgle, og hent scope 1-3-data programmatisk. Se den fulde reference på /docs/api-reference og oversigten på /api.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+      "Book en demo, så gennemgår vi API-adgang og scopes med jer. Med en konto genererer I en scope-begrænset API-nøgle og henter scope 1-3-data programmatisk. Se den fulde reference på /docs/api-reference og oversigten på /api.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -988,7 +982,7 @@ export const IN_MCP: MarketingPageCopy = {
     title: "Snak med din egen AI om dit klimaregnskab",
     subtitle:
       "qlim8 AI-integration med vores egen MCP-server. Spørg Claude eller ChatGPT om dine tal i naturligt sprog, og få svar hentet direkte fra dit klimaregnskab. 31 tools lader assistenten hente emissioner, generere rapporter og planlægge reduktioner, uden at en udvikler skal bygge en integration.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -1139,9 +1133,9 @@ export const IN_MCP: MarketingPageCopy = {
   closingCta: {
     title: "Lad din assistent svare på dine klimaspørgsmål",
     description:
-      "Opret en konto og forbind Claude eller ChatGPT via OAuth, eller tilføj qlim8 i Claude Code med en Bearer-nøgle. Start med /docs/mcp-quickstart og se alle tools i /docs/mcp-tools.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+      "Book en demo, så viser vi, hvordan assistenten henter tallene. Med en konto forbinder I Claude eller ChatGPT via OAuth eller tilføjer qlim8 i Claude Code med en Bearer-nøgle. Start med /docs/mcp-quickstart og se alle tools i /docs/mcp-tools.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -1170,7 +1164,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
     title: "Lad din AI hente tallene til VSME-rapporten",
     subtitle:
       "qlim8 AI-integration med vores egen MCP-server. Spørg Claude eller ChatGPT om dine VSME-tal, bed assistenten sætte rapporten i gang, og få den tilbage som PDF eller som EFRAG's eget Excel-ark.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -1316,8 +1310,8 @@ export const IN_VSME_MCP: MarketingPageCopy = {
   closingCta: {
     title: "Spørg din egen AI om VSME-tallene",
     description:
-      "Opret en konto, forbind Claude eller ChatGPT via OAuth, og bed assistenten om jeres Scope 1-3. Start i /docs/mcp-quickstart og se alle 31 tools i /docs/mcp-tools.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+      "Book en demo, så viser vi, hvordan assistenten henter VSME-tallene. Med en konto forbinder I Claude eller ChatGPT via OAuth og beder assistenten om jeres Scope 1-3. Start i /docs/mcp-quickstart og se alle 31 tools i /docs/mcp-tools.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };

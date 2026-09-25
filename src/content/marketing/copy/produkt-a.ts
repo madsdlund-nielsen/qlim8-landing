@@ -1,21 +1,13 @@
 import type { MarketingPageCopy, MarketingHubCopy } from "@/content/marketing/types";
+import { DEMO_CTA, PHONE_CTA } from "@/content/cta";
 
 // ---------------------------------------------------------------------------
-// Shared CTA conventions (from authoring spec)
+// Shared CTA conventions: qlim8 is sold after a demo (see src/content/cta.ts).
+// Primary CTA is DEMO_CTA, the closing secondary is PHONE_CTA.
 // ---------------------------------------------------------------------------
-const PRIMARY_CTA = {
-  label: "Opret gratis konto",
-  href: "https://app.qlim8.com/auth?tab=register",
-} as const;
-
 const HERO_SECONDARY_CTA = {
-  label: "Se priser",
+  label: "Se pakker",
   href: "/priser",
-} as const;
-
-const CLOSING_SECONDARY_CTA = {
-  label: "Book demo",
-  href: "/kontakt",
 } as const;
 
 // ===========================================================================
@@ -27,7 +19,7 @@ export const PRODUKT_HUB_COPY: MarketingHubCopy = {
     title: "Én platform fra faktura til revisor-klar rapport",
     subtitle:
       "qlim8 samler dit klimaregnskab, din dataudforskning, din rapportering og dine reduktioner ét sted, bygget oven på det regnskab du allerede har.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -63,9 +55,9 @@ export const PRODUKT_HUB_COPY: MarketingHubCopy = {
   closingCta: {
     title: "Se hele platformen med dit eget regnskab",
     description:
-      "Opret en gratis konto og tilslut dit bogføringssystem, eller book en demo hvor vi viser platformen med din egen kontoplan som eksempel.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi viser platformen med din egen kontoplan som eksempel.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -78,7 +70,7 @@ export const PR_DASHBOARD: MarketingPageCopy = {
     title: "Hele dit klimaregnskab på én skærm",
     subtitle:
       "Scope 1, 2 og 3, fordelt på kategorier, med udviklingen over tid og status mod dine mål, samlet på ét dashboard i stedet for tolv regneark.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -198,9 +190,9 @@ export const PR_DASHBOARD: MarketingPageCopy = {
   closingCta: {
     title: "Få dit klimaregnskab på én skærm",
     description:
-      "Opret en gratis konto, tilslut din bogføring, og se dit samlede aftryk fordelt på scopes, kategorier og tid. Eller book en demo med din egen kontoplan.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi viser dashboardet med din egen kontoplan som eksempel: aftrykket fordelt på scopes, kategorier og tid.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -213,7 +205,7 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
     title: "Find ud af hvor emissionerne kommer fra",
     subtitle:
       "Dyk ned i data bag tallene: filtrér på scope, kategori, afdeling, leverandør og periode, og se præcis hvilke aktiviteter der driver dit aftryk.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -337,9 +329,9 @@ export const PR_UDFORSKNING: MarketingPageCopy = {
   closingCta: {
     title: "Grav ned i tallene bag dit klimaregnskab",
     description:
-      "Opret en gratis konto og udforsk dine emissioner på tværs af scope, kategori, afdeling, leverandør og periode, helt ned til det enkelte bilag.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi viser, hvordan du udforsker emissionerne på tværs af scope, kategori, afdeling, leverandør og periode, helt ned til det enkelte bilag.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -352,7 +344,7 @@ export const PR_DATA_UDTRAEK: MarketingPageCopy = {
     title: "Træk dine tal ud: til analyse, regneark eller revisor",
     subtitle:
       "Eksportér rå- og aggregerede data i strukturerede formater, og behold sporbarheden hele vejen tilbage til det oprindelige bilag.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -467,9 +459,9 @@ export const PR_DATA_UDTRAEK: MarketingPageCopy = {
   closingCta: {
     title: "Tag dine tal med: med kilden i behold",
     description:
-      "Opret en gratis konto og træk rå- eller aggregerede emissionsdata ud til egne analyser, regneark eller revisor, uden at miste sporet tilbage til bilaget.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi viser, hvordan du trækker rå- eller aggregerede emissionsdata ud til egne analyser, regneark eller revisor, uden at miste sporet tilbage til bilaget.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -482,7 +474,7 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
     title: "Fra data til færdig rapport: klar til revisor, bank og bestyrelse",
     subtitle:
       "Generér VSME-rapporter som Excel eller PDF direkte fra dit regnskab, med kildehenvisning pr. tal og et audit-trail der holder ved revision.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -507,7 +499,7 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
     },
     {
       pain: "En førstegangs-VSME hos en konsulent koster typisk et femcifret til sekscifret beløb, og du skal betale igen næste år.",
-      solution: "Rapporterne genereres fra platformen som en del af abonnementet, Starter fra 300 kr/md, Premium 1.195 kr/md.",
+      solution: "Rapporterne genereres fra platformen som en del af abonnementet.",
       outcome: "Du erstatter en konsulent-regning på 75.000-200.000 kr. [antagelse: markeds-research, ikke kundevalideret] med et abonnement.",
     },
     {
@@ -606,9 +598,9 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
   closingCta: {
     title: "Generér din første rapport fra dit eget regnskab",
     description:
-      "Opret en gratis konto, tilslut din bogføring, og generér en VSME-rapport med kildehenvisning pr. tal. Eller book en demo, hvor vi viser rapport-flowet.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi viser rapport-flowet fra bogføring til VSME-rapport med kildehenvisning pr. tal.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -621,7 +613,7 @@ export const PR_EXCEL: MarketingPageCopy = {
     title: "Struktureret Excel-rapport: med kilden på hvert tal",
     subtitle:
       "Eksportér dit klimaregnskab som en struktureret Excel-fil til revisor eller videre bearbejdning, hvor hvert tal bærer sin kildehenvisning.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -728,9 +720,9 @@ export const PR_EXCEL: MarketingPageCopy = {
   closingCta: {
     title: "Giv revisoren tallene i et regneark",
     description:
-      "Opret en gratis konto og generér en struktureret VSME-rapport i Excel, hvor hvert tal er sporbart tilbage til bilaget. Eller book en demo.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi den strukturerede VSME-rapport i Excel, hvor hvert tal er sporbart tilbage til bilaget.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -743,7 +735,7 @@ export const PR_PDF: MarketingPageCopy = {
     title: "Underskrifts-klar PDF: tilpasset den der skal læse den",
     subtitle:
       "Generér en færdig, underskrifts-klar PDF af dit klimaregnskab, med valg af tema og et layout tilpasset modtageren: bestyrelse, investor, bank eller samarbejdspartner.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -859,9 +851,9 @@ export const PR_PDF: MarketingPageCopy = {
   closingCta: {
     title: "Send en rapport, du tør stå inde for",
     description:
-      "Opret en gratis konto og generér en underskrifts-klar PDF af dit klimaregnskab, med tema og layout tilpasset modtageren. Eller book en demo.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi, hvordan du genererer en underskrifts-klar PDF af dit klimaregnskab, med tema og layout tilpasset modtageren.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -874,7 +866,7 @@ export const PR_AUDIT: MarketingPageCopy = {
     title: "Et revisor-klart spor over hvem der ændrede hvad hvornår",
     subtitle:
       "Hver kategori-ændring, faktor og datakilde logges automatisk, så du kan dokumentere hele datakæden bag dit klimaregnskab, uden at føre log i hånden.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -994,8 +986,8 @@ export const PR_AUDIT: MarketingPageCopy = {
   closingCta: {
     title: "Gør revisionen til et opslag, ikke en jagt",
     description:
-      "Opret en gratis konto og få et audit-trail, der automatisk dokumenterer hver ændring, faktor og datakilde bag dit klimaregnskab. Eller book en demo.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi audit-trailet, der automatisk dokumenterer hver ændring, faktor og datakilde bag dit klimaregnskab.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };

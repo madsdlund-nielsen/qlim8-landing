@@ -1,19 +1,13 @@
 import type { MarketingPageCopy } from "@/content/marketing/types";
+import { DEMO_CTA, PHONE_CTA } from "@/content/cta";
 
 // Report-detail marketing copy: recipient variants (Modtagere) + themes + VSME modules.
 // Voice per docs/da/marketing/_shared/brand-voice.md + positioning.md.
 // Grounded in docs/da/marketing/features/csrd-vsme-reporting.md and compliance/{vsme,csrd}.md.
-// Fixed CTA conventions applied throughout. Pricing = live landing numbers
-// (Starter fra 300 kr/md, Premium 1.195 kr/md).
+// qlim8 is sold after a demo (see src/content/cta.ts): primary CTA is DEMO_CTA,
+// closing secondary is PHONE_CTA, and no package prices appear in the copy.
 
-const primaryCta = {
-  label: "Opret gratis konto",
-  href: "https://app.qlim8.com/auth?tab=register",
-} as const;
-
-const heroSecondaryCta = { label: "Se priser", href: "/priser" } as const;
-
-const bookDemo = { label: "Book demo", href: "/kontakt" } as const;
+const heroSecondaryCta = { label: "Se pakker", href: "/priser" } as const;
 
 // ---------------------------------------------------------------------------
 // PR_MODTAGERE: overblik-side der samler de fire modtager-varianter
@@ -25,7 +19,7 @@ export const PR_MODTAGERE: MarketingPageCopy = {
     title: "Ét klimaregnskab: fire rapporter til dem der spørger",
     subtitle:
       "Bestyrelsen, investorerne, banken og dine samarbejdspartnere vil have det samme klimaregnskab, men de vil se det forskelligt. qlim8 tilpasser samme datagrundlag til hver modtager, så du ikke bygger fire versioner i hånden.",
-    primaryCta,
+    primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
@@ -108,8 +102,8 @@ export const PR_MODTAGERE: MarketingPageCopy = {
         a: "En signeret rapport låses og bevarer dataen som den var ved underskrift. Du kan stadig rette regnskabet fremadrettet, men den afsendte rapport viser tilstanden på afsendelsestidspunktet. Så du kan altid dokumentere hvad hver modtager fik.",
       },
       {
-        q: "Skal jeg have en dyr plan for at få flere modtager-varianter?",
-        a: "Rapporteringen er en del af platformen. Starter fra 300 kr/md dækker VSME Basic; Premium på 1.195 kr/md tilføjer VSME Comprehensive og revisor-adgang. Se priser for hvad hver plan indeholder.",
+        q: "Kræver flere modtager-varianter en bestemt pakke?",
+        a: "Rapporteringen er en del af platformen. Starter dækker VSME Basic; Premium tilføjer VSME Comprehensive og revisor-adgang. Se pakkerne for hvad hver plan indeholder.",
       },
       {
         q: "Kan revisoren bekræfte tallene i rapporten?",
@@ -120,9 +114,9 @@ export const PR_MODTAGERE: MarketingPageCopy = {
   closingCta: {
     title: "Byg ét klimaregnskab: send det til alle der spørger",
     description:
-      "Opret en gratis konto, kobl dit regnskab på, og se hvordan samme datagrundlag bliver til en bestyrelses-, investor-, bank- og partner-rapport.",
-    primary: primaryCta,
-    secondary: bookDemo,
+      "Book en demo, så viser vi, hvordan samme datagrundlag bliver til en bestyrelses-, investor-, bank- og partner-rapport.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -136,7 +130,7 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
     title: "Klimaregnskab til bestyrelsen: beslutningsklart",
     subtitle:
       "Bestyrelsen skal ikke læse en revisionsrapport på 40 sider. De skal se status mod mål, afvigelsen fra sidste år og de risici der kræver en beslutning. qlim8 genererer den rapport direkte fra dit regnskab.",
-    primaryCta,
+    primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
@@ -223,16 +217,16 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det at lave bestyrelsesrapporter?",
-        a: "Rapporteringen er en del af platformen. Starter fra 300 kr/md; Premium på 1.195 kr/md tilføjer bl.a. VSME Comprehensive og revisor-adgang. Se priser for detaljerne.",
+        a: "Rapporteringen er en del af platformen fra Starter; Premium tilføjer bl.a. VSME Comprehensive og revisor-adgang. Prisen afhænger af pakke og behov. Book en demo, så får I et konkret tilbud.",
       },
     ],
   },
   closingCta: {
     title: "Giv bestyrelsen et klimaregnskab de kan beslutte ud fra",
     description:
-      "Opret en gratis konto, kobl dit regnskab på, og generér en beslutningsklar bestyrelsesrapport med mål, afvigelse og risiko.",
-    primary: primaryCta,
-    secondary: bookDemo,
+      "Book en demo, hvor vi viser en beslutningsklar bestyrelsesrapport med mål, afvigelse og risiko.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -246,7 +240,7 @@ export const PR_INVESTOR: MarketingPageCopy = {
     title: "ESG-data til investorer: sammenligneligt og konsistent",
     subtitle:
       "Investorer og ejere skal kunne holde jeres klimatal op mod resten af porteføljen. qlim8 leverer GHG Protocol-konsistente tal med trend over år, så jeres rapportering står mål med det investoren ser fra andre selskaber.",
-    primaryCta,
+    primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
@@ -333,16 +327,16 @@ export const PR_INVESTOR: MarketingPageCopy = {
       },
       {
         q: "Hvilken plan skal jeg have for investor-rapportering?",
-        a: "Rapporteringen er en del af platformen. For fuld Scope 3 og de udvidede datapunkter er Premium (1.195 kr/md) typisk det rette; Starter fra 300 kr/md dækker grundopgørelsen og VSME Basic. Se priser.",
+        a: "Rapporteringen er en del af platformen. For fuld Scope 3 og de udvidede datapunkter er Premium typisk det rette; Starter dækker grundopgørelsen og VSME Basic. Se pakkerne.",
       },
     ],
   },
   closingCta: {
     title: "Giv investoren tal de kan sammenligne",
     description:
-      "Opret en gratis konto, kobl dit regnskab på, og generér en GHG Protocol-konsistent investorrapport med trend og kildecitation.",
-    primary: primaryCta,
-    secondary: bookDemo,
+      "Book en demo, hvor vi viser en GHG Protocol-konsistent investorrapport med trend og kildecitation.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -356,7 +350,7 @@ export const PR_BANK: MarketingPageCopy = {
     title: "ESG-rapport til banken: klar til upload",
     subtitle:
       "Banken beder om ESG-data før de godkender finansieringen, ofte med reference til L193-datakravene. qlim8 leverer præcis de datapunkter i et klar-til-upload dokument, så finansieringen ikke venter på et regneark.",
-    primaryCta,
+    primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
@@ -443,16 +437,16 @@ export const PR_BANK: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det at lave en bankrapport?",
-        a: "Rapporteringen er en del af platformen. Starter fra 300 kr/md dækker grundopgørelsen; skal du levere fuld Scope 3 eller de udvidede datapunkter banken beder om, er Premium (1.195 kr/md) typisk det rette. Se priser.",
+        a: "Rapporteringen er en del af platformen. Starter dækker grundopgørelsen; skal du levere fuld Scope 3 eller de udvidede datapunkter banken beder om, er Premium typisk det rette. Prisen afhænger af pakke og behov. Book en demo, så får I et konkret tilbud.",
       },
     ],
   },
   closingCta: {
     title: "Lever bankens ESG-krav uden at forsinke finansieringen",
     description:
-      "Opret en gratis konto, kobl dit regnskab på, og generér en klar-til-upload bankrapport med de datapunkter finansieringen kræver.",
-    primary: primaryCta,
-    secondary: bookDemo,
+      "Book en demo, hvor vi viser en klar-til-upload bankrapport med de datapunkter finansieringen kræver.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -466,7 +460,7 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
     title: "Dél dine klimadata: ét link, ikke et regneark",
     subtitle:
       "Dine store kunder og leverandører beder om din del af deres Scope 3. I stedet for at udfylde deres regneark hver gang, deler du ét link med de tal de skal bruge, trukket direkte fra dit klimaregnskab.",
-    primaryCta,
+    primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
@@ -553,16 +547,16 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
       },
       {
         q: "Hvilken plan skal jeg have for at dele Scope 3-data?",
-        a: "Rapporteringen er en del af platformen. Starter fra 300 kr/md dækker grundopgørelsen; for fuld Scope 3-detaljering er Premium (1.195 kr/md) typisk det rette. Se priser.",
+        a: "Rapporteringen er en del af platformen. Starter dækker grundopgørelsen; for fuld Scope 3-detaljering er Premium typisk det rette. Se pakkerne.",
       },
     ],
   },
   closingCta: {
     title: "Dél dine klimadata som ét link",
     description:
-      "Opret en gratis konto, kobl dit regnskab på, og dél din del af partnerens Scope 3 uden at udfylde endnu et regneark.",
-    primary: primaryCta,
-    secondary: bookDemo,
+      "Book en demo, så viser vi, hvordan du deler din del af partnerens Scope 3 uden at udfylde endnu et regneark.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -576,7 +570,7 @@ export const PR_TEMAER: MarketingPageCopy = {
     title: "Vælg rapportens tema: Light Nordic eller McKinsey",
     subtitle:
       "Samme klimaregnskab, to visuelle udtryk. Vælg 'Light Nordic' for et rent, nordisk look eller 'McKinsey' for et stringent konsulent-udtryk. Tallene er de samme: indpakningen matcher modtageren.",
-    primaryCta,
+    primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
@@ -684,16 +678,16 @@ export const PR_TEMAER: MarketingPageCopy = {
       },
       {
         q: "Kan jeg få rapporten uden qlim8's brand?",
-        a: "White-label-PDF, hvor rapporten bærer dit eget brand i stedet for qlim8's, findes på de større planer. Se priser for hvad hver plan indeholder.",
+        a: "White-label-PDF, hvor rapporten bærer dit eget brand i stedet for qlim8's, findes på de større planer. Se pakkerne for hvad hver plan indeholder.",
       },
     ],
   },
   closingCta: {
     title: "Giv rapporten det udtryk modtageren forventer",
     description:
-      "Opret en gratis konto, generér dit klimaregnskab, og se samme rapport i både Light Nordic og McKinsey.",
-    primary: primaryCta,
-    secondary: bookDemo,
+      "Book en demo, så viser vi samme rapport i både Light Nordic og McKinsey.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -707,7 +701,7 @@ export const PR_VSME: MarketingPageCopy = {
     title: "VSME-rapport direkte fra dit regnskab: Basic og Comprehensive",
     subtitle:
       "VSME er EFRAG's frivillige rapporteringsstandard for SMV'er. qlim8 genererer både VSME Basic og VSME Comprehensive fra dit klimaregnskab, med kildecitation pr. tal og revisor-sign-off.",
-    primaryCta,
+    primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
@@ -790,7 +784,7 @@ export const PR_VSME: MarketingPageCopy = {
       },
       {
         q: "Laver qlim8 begge moduler?",
-        a: "Ja. Starter fra 300 kr/md dækker VSME Basic; Premium på 1.195 kr/md tilføjer VSME Comprehensive og revisor-adgang. Du kan skifte modul når kravet ændrer sig. Samme klimaregnskab ligger bag begge.",
+        a: "Ja. Starter dækker VSME Basic; Premium tilføjer VSME Comprehensive og revisor-adgang. Du kan skifte modul når kravet ændrer sig. Samme klimaregnskab ligger bag begge.",
       },
       {
         q: "Er en VSME-rapport fra qlim8 revisor-klar?",
@@ -809,9 +803,9 @@ export const PR_VSME: MarketingPageCopy = {
   closingCta: {
     title: "Generér din VSME-rapport fra dit eget regnskab",
     description:
-      "Opret en gratis konto, kobl dit regnskab på, og se hvad VSME Basic og Comprehensive lander på med dine egne tal.",
-    primary: primaryCta,
-    secondary: bookDemo,
+      "Book en demo, hvor vi viser, hvad VSME Basic og Comprehensive dækker, og hvordan rapporten genereres fra dit regnskab.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -825,7 +819,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
     title: "VSME Basic-rapport på 4-8 timer",
     subtitle:
       "VSME Basic er det korte modul: 40+ datapunkter, primært klima og governance. qlim8 genererer det direkte fra dit klimaregnskab, så udfyldningen bliver kvalitetsreview i stedet for manuel indtastning.",
-    primaryCta,
+    primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
@@ -859,7 +853,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
     {
       pain: "Konsulent-tilbuddet på din første VSME-rapport er uforholdsmæssigt dyrt.",
       solution:
-        "VSME Basic er inkluderet fra Starter (fra 300 kr/md); du betaler et abonnement, ikke et engangs-projekt.",
+        "VSME Basic er inkluderet fra Starter; du betaler et abonnement, ikke et engangs-projekt.",
       outcome: "Erstat et førstegangs-konsulenthonorar på 75.000-200.000 kr. [antagelse, markeds-research] med en inkluderet feature.",
     },
   ],
@@ -892,7 +886,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
   valueStats: [
     { value: "4-8 timer", label: "til en Basic-rapport", note: "[antagelse: pilot-tal, 2 brugere]" },
     { value: "40+", label: "datapunkter (EFRAG B1-B11)" },
-    { value: "Fra 300 kr/md", label: "Basic inkluderet i Starter" },
+    { value: "PDF + Excel", label: "i EFRAG-arkets format" },
     { value: "Grøn valideringsfane", label: "for krævede Basic-rækker" },
   ],
   faq: {
@@ -912,20 +906,20 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
       },
       {
         q: "Er VSME Basic inkluderet i abonnementet?",
-        a: "Ja. VSME Basic er inkluderet fra Starter (fra 300 kr/md). Du betaler et abonnement frem for et førstegangs-konsulenthonorar på typisk 75.000-200.000 kr. [antagelse, markeds-research]. Se priser.",
+        a: "Ja. VSME Basic er inkluderet fra Starter. Du betaler et abonnement frem for et førstegangs-konsulenthonorar på typisk 75.000-200.000 kr. [antagelse, markeds-research]. Se pakkerne.",
       },
       {
         q: "Kan jeg opgradere til Comprehensive senere?",
-        a: "Ja. Comprehensive ligger på Premium (1.195 kr/md) og bruger samme klimaregnskab. Kommer der et krav om det udvidede modul fra en bank eller stor kunde, skifter du modul uden at indsamle data forfra.",
+        a: "Ja. Comprehensive ligger på Premium og bruger samme klimaregnskab. Kommer der et krav om det udvidede modul fra en bank eller stor kunde, skifter du modul uden at indsamle data forfra.",
       },
     ],
   },
   closingCta: {
     title: "Lav din VSME Basic-rapport på en eftermiddag",
     description:
-      "Opret en gratis konto, kobl dit regnskab på, og se dine egne tal lande i EFRAG's Basic-celler med kildecitation.",
-    primary: primaryCta,
-    secondary: bookDemo,
+      "Book en demo, hvor vi viser, hvordan tallene lander i EFRAG's Basic-celler med kildecitation.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -939,7 +933,7 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
     title: "VSME Comprehensive: det udvidede modul, fra dit regnskab",
     subtitle:
       "Comprehensive er det store VSME-modul: 100+ datapunkter, fuld Scope 3 og bredere politik, mål og governance. qlim8 genererer det fra dit klimaregnskab, når en bank eller stor kunde beder om mere end grundtallene.",
-    primaryCta,
+    primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
@@ -1007,7 +1001,7 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
     { value: "100+", label: "datapunkter (EFRAG C1-C9)" },
     { value: "1-2 dage", label: "vs. 2-4 ugers konsulent", note: "[antagelse: pilot-tal]" },
     { value: "Fuld Scope 3", label: "med værdikæde-rollup" },
-    { value: "1.195 kr/md", label: "Comprehensive på Premium" },
+    { value: "Grøn valideringsfane", label: "i EFRAG-arket for krævede rækker" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål",
@@ -1030,15 +1024,15 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
       },
       {
         q: "Hvad koster VSME Comprehensive?",
-        a: "Comprehensive ligger på Premium (1.195 kr/md) og bruger samme klimaregnskab som Basic. Se priser. Rammer CSRD dig senere, genbruges datagrundlaget via en ESRS E1-mapping, ingen ny indsamling.",
+        a: "Comprehensive er en del af Premium og bruger samme klimaregnskab som Basic. Rammer CSRD dig senere, genbruges datagrundlaget via en ESRS E1-mapping, ingen ny indsamling. Prisen afhænger af pakke og behov. Book en demo, så får I et konkret tilbud.",
       },
     ],
   },
   closingCta: {
     title: "Lever det udvidede VSME-modul uden konsulent-engagement",
     description:
-      "Opret en gratis konto, kobl dit regnskab på, og se VSME Comprehensive lande i EFRAG's C1-C9-celler med fuld Scope 3.",
-    primary: primaryCta,
-    secondary: bookDemo,
+      "Book en demo, hvor vi viser, hvordan VSME Comprehensive lander i EFRAG's C1-C9-celler med fuld Scope 3.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };

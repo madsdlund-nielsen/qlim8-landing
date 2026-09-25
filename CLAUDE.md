@@ -12,7 +12,7 @@ app.qlim8.com and also hosts the CMS this site reads from.
 ```bash
 npm ci --legacy-peer-deps   # matches the Dockerfile, which is the build of record
 npm run dev                 # next dev
-npm run lint                # eslint + dash guard + workflow guard + SEO titles + schema graph
+npm run lint                # eslint + dash guard + sales-led guard + workflow guard + SEO titles + schema graph
 npm run typecheck           # tsc --noEmit
 npm test                    # copyMerge + content-dates (pretest regenerates the dates)
 npm run build               # next build (standalone output; prebuild regenerates the dates)
@@ -95,6 +95,44 @@ cannot parse, and the symptom is a failing run with no jobs on every push,
 regardless of the workflow's triggers. `scripts/check-workflows.mjs` now parses
 every workflow during `npm run lint` so this fails on the branch instead.
 
+## Sales-led: no signup, no prices
+
+qlim8 is sold after a demo. A visitor cannot sign up, start a trial or pay on
+this site, and no package price is published anywhere. There are four ways in:
+
+1. **Book demo**: `DEMO_HREF` (`/kontakt?emne=demo`), the contact form with
+   "Book en demo" preselected. It is the header button and every main CTA.
+2. **The contact form** on `/kontakt` (`src/components/public/ContactForm.tsx`),
+   posted to the same-origin proxy `app/api/contact/route.ts`, which forwards
+   to qlim8-app's `POST /api/public/contact`. The app stores the request and
+   emails the owner. A sent form fires GA4 `generate_lead`.
+3. **The phone number**, +45 93 90 13 84.
+4. **The newsletter.**
+
+`src/content/cta.ts` is the single source for their links (`DEMO_CTA`,
+`PHONE_CTA`, `CONTACT_HREF`, `LOGIN_URL`). A CTA imports its target from there
+rather than spelling out an href, so moving the demo booking (to a calendar
+tool, say) stays a one-line change. "Log ind" stays in the header for existing
+customers (`app.qlim8.com/auth`, never `?tab=register`). `/priser` keeps its
+URL but is a package page without prices ("Pakker" in the nav), and its "Book
+demo" buttons are fixed in the component, not CMS-editable.
+
+`scripts/check-sales-led.mjs` (rules in `scripts/lib/salesLed.mjs`) fails
+`npm run lint` on a signup link, a checkout call, a figure a qlim8 package has
+been sold at, entry-price phrasing ("fra N kr"), or a free-account, free-trial
+or credit-card claim, across `src/content`, `src/page-components`,
+`src/components`, `src/lib` and `app`. The rules are deliberately narrow:
+money that is not a qlim8 package (a consultant's fee, an example invoice) is
+fine. The legal documents are exempt, since contract wording is changed with
+whoever drafted it. Structured data is guarded separately: `check-schema.mjs`
+fails on any entity carrying `offers`, `price` or `lowPrice`.
+
+CMS-published copy is held to the same rules by `npm run test:contract`
+(`scripts/check-cms-copy.mjs`, legal page keys exempt), because the lint cannot
+see it. The copy that was already published when the site went sales-led is
+rewritten by a backfill in qlim8-app (`scripts/backfill-sales-led-cms-copy.ts`,
+run by its `deploy.sh`). A new failure is fixed in `/admin`.
+
 ## SEO rules and their guards
 
 Three rules, from the September 2026 audit, each with a script that fails the
@@ -110,7 +148,8 @@ build or the scheduled contract check when broken. Full write-up in
    `#website` and `#software` once; every other page references them by `@id`
    (`ORG_REF`, `WEBSITE_ID`) and never restates an `Organization`. New page
    types get a builder there, not an inline object. `scripts/check-schema.mjs`
-   fails `npm run lint` on an anonymous entity or a dangling reference.
+   fails `npm run lint` on an anonymous entity, a dangling reference, or any
+   entity carrying `offers` or a price (`#software` has none; see Sales-led).
 3. **Content is in the HTML.** FAQs are `<details>`, not state-gated; no
    `initial={{ opacity: 0 }}` on content (framer-motion serialises it into the
    SSR markup); `"use client"` only on the component that needs a hook, never
@@ -118,9 +157,9 @@ build or the scheduled contract check when broken. Full write-up in
    mounted, so their links exist for crawlers.
 
 CMS-published copy is outside all of that. `scripts/check-cms-copy.mjs`
-(`npm run test:contract`) checks the live overrides for dead internal links and
-entry prices that contradict `src/content/copy/pricing.ts`; the fix is in
-`/admin`.
+(`npm run test:contract`) checks the live overrides and CMS articles for dead
+internal links and for anything the sales-led rules forbid (a package price, a
+signup link, a free-account or free-trial claim); the fix is in `/admin`.
 
 ## Deployment
 
@@ -132,5 +171,7 @@ nothing with the app host.
 `docs/da/` and `docs/en/` are internal engineering documentation, never served
 to visitors. Keep the two language trees in step.
 
-`docs/diagrams/svg/*.svg` are generated from `docs/diagrams/mmd/*.mmd` via
-`docs/diagrams/excalidraw.mjs`. Edit the `.mmd` source, then regenerate.
+`docs/diagrams/svg/*.svg` (and `png/`) are generated from
+`docs/diagrams/mmd/*.mmd` by `docs/diagrams/render.mjs` (mermaid-cli), and
+`docs/diagrams/excalidraw.mjs` then builds `excalidraw/` from the SVGs. Edit
+the `.mmd` source, then regenerate; `docs/diagrams/README.md` has the steps.

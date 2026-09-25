@@ -4,33 +4,31 @@ import { resolvePageCopy } from "@/lib/pageCopy";
 import { PRICING_PAGE_KEY, PRICING_COPY } from "@/content/copy/pricing";
 import { JsonLd } from "@/components/JsonLd";
 import { buildFaqPageSchema, buildSoftwareSchema } from "@/lib/schema";
-import { buildPricingOffers } from "@/lib/pricingSchema";
 
-// ISR: CMS-published pricing copy refreshes on this cadence (busted instantly
+// ISR: CMS-published package copy refreshes on this cadence (busted instantly
 // by the app's revalidate webhook on publish).
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Priser: Starter, Premium & Enterprise",
+  title: "Pakker: Starter, Premium & Enterprise",
   description:
-    "Vælg den plan der passer til din virksomhed. Starter fra 300 kr/md, Premium fra 1.195 kr/md (ved årlig betaling). Alle priser er ekskl. moms.",
+    "Se hvad der er i qlim8's pakker, Starter, Premium og Enterprise, og sammenlign dem. Book en demo, så finder vi den pakke der passer til jer.",
   alternates: { canonical: "https://qlim8.com/priser" },
   openGraph: {
-    title: "Priser: Starter, Premium & Enterprise | qlim8",
+    title: "Pakker: Starter, Premium & Enterprise | qlim8",
     description:
-      "Vælg den plan der passer til din virksomhed. Starter fra 300 kr/md, Premium fra 1.195 kr/md.",
+      "Se hvad der er i qlim8's pakker, og book en demo, så finder vi den pakke der passer til jer.",
     url: "https://qlim8.com/priser",
-    images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8 priser" }],
+    images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8 pakker" }],
   },
 };
 
 export default async function Page() {
   const copy = await resolvePageCopy(PRICING_PAGE_KEY, PRICING_COPY);
-  // The same #software entity the homepage emits, with offers built from the
-  // resolved (CMS-merged) copy so structured data and the rendered prices agree.
+  // The same #software entity the homepage emits.
   return (
     <>
-      <JsonLd schema={[buildSoftwareSchema(buildPricingOffers(copy)), buildFaqPageSchema(copy.faq.items)]} />
+      <JsonLd schema={[buildSoftwareSchema(), buildFaqPageSchema(copy.faq.items)]} />
       <Pricing copy={copy} />
     </>
   );

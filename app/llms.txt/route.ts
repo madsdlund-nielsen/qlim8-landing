@@ -14,6 +14,7 @@ import { ALL_MARKETING_NODES, MARKETING_HUBS } from "@/content/marketing";
 import { fetchPublishedArticles } from "@/lib/cms";
 import { articles as bundledArticles } from "@/content/articles";
 import { BASE_URL } from "@/lib/schema";
+import { DEMO_HREF, CONTACT_HREF, PHONE_DISPLAY } from "@/content/cta";
 
 export const revalidate = 300;
 
@@ -46,6 +47,18 @@ export async function GET() {
 
 Every page on this site has a markdown twin: append \`.md\` to any URL, or send
 \`Accept: text/markdown\`, to get the source instead of HTML.
+
+## Buying qlim8
+
+qlim8 is sold after a demo. There is no self-service signup, free account or
+free trial, and package prices are not published: the price depends on the
+package and the company's needs, and is quoted after a demo or a call. After the demo,
+qlim8 creates the customer's account and helps connect the accounting system.
+
+- [Book a demo](${BASE_URL}${DEMO_HREF})
+- [Contact form](${BASE_URL}${CONTACT_HREF})
+- Phone: ${PHONE_DISPLAY}
+- [Packages: Starter, Premium, Enterprise](${BASE_URL}/priser.md)
 
 ## MCP server (AI agents)
 
@@ -93,7 +106,7 @@ one with \`generate_report\`.
 ## Core pages
 
 - [Home](${BASE_URL}/index.md)
-- [Pricing](${BASE_URL}/priser.md)
+- [Packages](${BASE_URL}/priser.md)
 - [Methodology](${BASE_URL}/metodologi)
 - [About](${BASE_URL}/om-os)
 ${MARKETING_HUBS.map((h) => `- [${h.title}](${BASE_URL}${h.route}.md): ${h.seoDescription}`).join("\n")}

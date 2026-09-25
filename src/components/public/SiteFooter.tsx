@@ -1,6 +1,7 @@
 import { Linkedin } from "lucide-react";
 import { FOOTER_SOLUTIONS } from "@/content/navigation";
 import { Wordmark } from "@/components/Wordmark";
+import { CONTACT_HREF, DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
@@ -10,7 +11,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
   {
     heading: "Produkt",
     links: [
-      { label: "Priser", href: "/priser" },
+      { label: "Pakker", href: "/priser" },
       { label: "Metodologi", href: "/metodologi" },
       { label: "API", href: "/api" },
     ],
@@ -28,7 +29,8 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
     links: [
       { label: "Om os", href: "/om-os" },
       { label: "Karriere", href: "/karriere" },
-      { label: "Kontakt", href: "/kontakt" },
+      { label: DEMO_LABEL, href: DEMO_HREF },
+      { label: "Kontakt", href: CONTACT_HREF },
     ],
   },
 ];
@@ -50,6 +52,15 @@ export function SiteFooter() {
             </a>
             <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
               ESG er nemt. Klimaregnskab, scope-3 og rapportering bygget til danske SMV'er.
+            </p>
+            <p className="text-sm leading-relaxed">
+              <a href={PHONE_HREF} className="text-gray-300 hover:text-white transition-colors">
+                {PHONE_DISPLAY}
+              </a>
+              <br />
+              <a href="mailto:kontakt@qlim8.com" className="text-gray-300 hover:text-white transition-colors">
+                kontakt@qlim8.com
+              </a>
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a

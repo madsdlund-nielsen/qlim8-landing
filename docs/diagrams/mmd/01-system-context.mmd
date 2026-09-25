@@ -34,7 +34,7 @@ flowchart LR
   dev -->|"REST /api/v1 (Bearer)"| app
   agent -->|"MCP + OAuth 2.1"| app
 
-  landing -->|"signup / login CTA, checkout (HTTPS)"| app
+  landing -->|"contact + newsletter proxy, CMS copy, login link (HTTPS)"| app
   landing -.-> ga
 
   app --> stripe

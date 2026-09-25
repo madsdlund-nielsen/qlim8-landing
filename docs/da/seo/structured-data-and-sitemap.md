@@ -1,6 +1,6 @@
 # SEO: sitemap-datoer, struktureret data og hvad crawlere ser
 
-> Sidst opdateret: 2026-09-18 · Ejer: qlim8-team · Engelsk udgave: [`docs/en/seo/structured-data-and-sitemap.md`](../../en/seo/structured-data-and-sitemap.md)
+> Sidst opdateret: 2026-09-25 · Ejer: qlim8-team · Engelsk udgave: [`docs/en/seo/structured-data-and-sitemap.md`](../../en/seo/structured-data-and-sitemap.md)
 
 Tre regler, hver med det script der håndhæver den. De kommer fra en
 gennemgang af qlim8.com i september 2026 mod de tre fejl der får AI-byggede
@@ -45,7 +45,7 @@ Hver side hænger på tre site-dækkende entiteter, defineret ét sted i
 |---|---|
 | `https://qlim8.com/#organization` | virksomheden |
 | `https://qlim8.com/#website` | sitet |
-| `https://qlim8.com/#software` | produktet, med dets offers |
+| `https://qlim8.com/#software` | produktet (uden `offers`, se nedenfor) |
 
 Andre sider refererer til dem (`publisher: ORG_REF`, `isPartOf: { "@id": WEBSITE_ID }`)
 og gentager dem aldrig. En crawler fletter entiteter på `@id`, ikke på navn; en
@@ -62,14 +62,21 @@ Brødkrummer følger indholdshierarkiet (`parentSlug` i
 megamenuen viser. URL'erne er flade; det er tilladt, så længe de tre er enige.
 Megamenuen viser alle live sider, børn indrykket under forældre.
 
-Produktets offers bygges ét sted (`src/lib/pricingSchema.ts`) fra den
-resolvede pris-copy og udgives identisk på `/` og `/priser`.
+`#software` har hverken `offers` eller pris. qlim8 sælges efter en demo og
+offentliggør ingen pakkepriser, så der er intet for struktureret data at
+angive. `buildSoftwareSchema()` tager ingen argumenter, `/` og `/priser`
+udgiver samme entitet, og `src/lib/pricingSchema.ts` (som byggede offers fra
+pris-copyen) er slettet. Struktureret data er dér, hvor en forældet pris ville
+overleve copyen: en crawler kan blive ved med at vise den, efter siden er holdt
+op med at sige den.
 
 **Guard:** `scripts/check-schema.mjs` (i `npm run lint`) bygger JSON-LD for
 alle ruter med de samme builders som siderne og fejler på en `Organization`,
 `WebSite`, side eller `Service` uden `@id`, en reference til et `@id` ingen
 definerer, to forskellige definitioner af samme `@id`, en brødkrumme der
-nævner en ikke-rute, eller et `offerCount` der ikke passer.
+nævner en ikke-rute, et tomt FAQ-svar, eller en entitet med `offers`, `price`
+eller `lowPrice`. (Tidligere tjekkede den at `offerCount` passede med
+offers; nu må der ingen være.)
 
 ## 3. Indholdet er i HTML'en
 
@@ -80,11 +87,13 @@ HTML-svaret, ikke opstå efter hydrering:
   `FAQPage`-schemaet beskriver tekst der faktisk står på siden.
 - Ingen `initial={{ opacity: 0 }}` på indhold. framer-motion serialiserer
   `initial` ind i SSR-markup'en; sådan endte de to prisbeløb på `/priser` med
-  `opacity:0`. Brug `initial={false}`.
+  `opacity:0`, dengang siden viste priser. Brug `initial={false}`.
 - `"use client"` kun hvor en hook eller handler kræver det. En page-component
   uden state er en server component; læg det interaktive i sin egen client
-  component. Forsiden, `/karriere`, `/kontakt` og `/om-os` er server
-  components af den grund.
+  component. Forsiden, `/karriere`, `/kontakt`, `/om-os` og `/priser` er
+  server components af den grund. På `/kontakt` er kun `ContactForm` en client
+  component, og `/priser` mistede sit `"use client"` sammen med
+  skifteren mellem månedlig og årlig betaling og checkout'en.
 - Ingen site-dækkende client providers. Den tidligere `I18nProvider` sendte
   en 300 KB ordbog på otte sprog til hver besøgende, og intet brugte den.
 
@@ -93,10 +102,15 @@ HTML-svaret, ikke opstå efter hydrering:
 CMS-publiceret copy overskriver de bundlede defaults ved rendering, så ingen
 af de filbaserede guards kan se den. `scripts/check-cms-copy.mjs` (i
 `npm run test:contract`, planlagt af `cms-contract.yml`) henter hver page-key
-sitet læser og fejler på et internt link til en ikke-rute eller en annonceret
-startpris ("fra N kr/md") der ikke er en planpris i
-`src/content/copy/pricing.ts`. En fejl dér rettes i app'ens `/admin`-editor,
-ikke med et commit.
+sitet læser, plus alle CMS-artikler, og fejler på et internt link til en
+ikke-rute eller på alt hvad sales-led-reglerne i `scripts/lib/salesLed.mjs`
+forbyder: en pakkepris eller en startpris-formulering ("fra N kr"), et
+signup-link, en påstand om gratis konto, prøveperiode eller kreditkort.
+`scripts/check-sales-led.mjs` anvender de samme regler på den bundlede copy i
+`npm run lint`, og begge undtager de juridiske dokumenter. Det erstatter det
+tidligere tjek af at en annonceret startpris var en planpris i
+`src/content/copy/pricing.ts`; der er ingen planpriser tilbage at sammenligne
+med. En fejl dér rettes i app'ens `/admin`-editor, ikke med et commit.
 
 ## Tjek af en deployet side
 

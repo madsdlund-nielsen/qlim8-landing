@@ -45,9 +45,9 @@ export const GOOGLE_ADS_ID = "AW-18008005975";
 
 /**
  * The Google Ads conversion label for a newsletter signup (the "Abonner"
- * conversion in the account). A newsletter signup is the only conversion the
- * marketing site itself can complete, the free account and the paid
- * subscription both happen in the app.
+ * conversion in the account). There is no signup or checkout any more (qlim8
+ * is sold after a demo), so the site's two conversions are this one and a sent
+ * contact-form request (trackContactRequest below).
  */
 const NEWSLETTER_CONVERSION_LABEL = "EBwqCKrRpeUcENe68YpD";
 
@@ -69,4 +69,17 @@ export function trackNewsletterSignup(source: string) {
   window.gtag("event", "conversion", {
     send_to: `${GOOGLE_ADS_ID}/${NEWSLETTER_CONVERSION_LABEL}`,
   });
+}
+
+/**
+ * Report a sent contact-form request to GA4, as the standard `generate_lead`
+ * event with the topic ("demo" or "question"). Now that qlim8 is sold after a
+ * demo, a booked demo is the conversion that matters on this site; there is no
+ * Google Ads conversion label for it yet, so only GA4 is told.
+ *
+ * A no-op until the visitor has accepted analytics cookies, like the above.
+ */
+export function trackContactRequest(topic: "demo" | "question", source: string) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  window.gtag("event", "generate_lead", { lead_topic: topic, signup_source: source });
 }

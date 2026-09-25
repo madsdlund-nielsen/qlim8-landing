@@ -1,11 +1,12 @@
 # System architecture: qlim8 app + landing, end to end
 
-> Status: stable · Last updated: 2026-06-29 · Owner: qlim8 team
+> Status: stable · Last updated: 2026-09-25 · Owner: qlim8 team
 
 > ℹ️ **Synced copy.** This architecture reference is maintained in the **qlim8-app** repository
 > ([`docs/en/architecture/system-architecture.md`](https://github.com/madsdlund-nielsen/qlim8-app/blob/main/docs/en/architecture/system-architecture.md)),
 > which is the system of record. It is copied here so the landing repo also documents the whole
-> system. Last synced: 2026-06-29.
+> system. Last synced: 2026-06-29. Updated here on 2026-09-25, ahead of the qlim8-app copy, for
+> the sales-led change (no signup, no checkout): §1, §5, §6, §7.2 and §8.
 
 ## Overview
 
@@ -91,7 +92,7 @@ flowchart LR
   dev -->|"REST /api/v1 (Bearer)"| app
   agent -->|"MCP + OAuth 2.1"| app
 
-  landing -->|"signup / login CTA, checkout (HTTPS)"| app
+  landing -->|"contact + newsletter proxy, CMS copy, login link (HTTPS)"| app
   landing -.-> ga
 
   app --> stripe
@@ -114,8 +115,10 @@ flowchart LR
 
 _Exports: [SVG](../../diagrams/svg/01-system-context.svg) · [PNG](../../diagrams/png/01-system-context.png) · [Mermaid](../../diagrams/mmd/01-system-context.mmd) · [Excalidraw](../../diagrams/excalidraw/01-system-context.excalidraw)_
 
-The two products are **separate deployments** that bridge only over public HTTPS (signup/login
-CTAs and Stripe checkout). All product data lives in the EU (Hetzner Germany).
+The two products are **separate deployments** that bridge only over public HTTPS: the landing
+server's contact and newsletter proxies, its CMS reads, and the login link for existing customers.
+There is no signup or checkout bridge, because qlim8 is sold after a demo (§5, §7.2). All product
+data lives in the EU (Hetzner Germany).
 
 ---
 
@@ -446,47 +449,68 @@ flowchart LR
   visitor["Marketing visitor"]
 
   subgraph landing["qlim8 Landing, Next.js 15 (standalone)"]
-    pages["Pages: / · /priser · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
-    i18n["client-side i18n (8 langs)"]
-    content["hardcoded TS articles (no CMS)"]
+    pages["Pages: / · /priser (packages, no prices) · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
+    content["Bundled copy (src/content)<br/>merged with CMS overrides"]
     ga["Google Analytics 4 (cookie consent)"]
+    cta["Book demo CTAs<br/>(/kontakt?emne=demo)"]
+    contactform["Contact form on /kontakt<br/>(demo or question)"]
+    contactproxy["/api/contact<br/>(same-origin proxy)"]
     nlform["Newsletter form<br/>(/nyhedsbrev · /blog · hero modal)"]
-    checkout["Pricing checkout"]
-    cta["Signup / login CTAs"]
+    nlproxy["/api/newsletter/signup<br/>(same-origin proxy)"]
+    login["Log ind (existing customers)"]
   end
 
   subgraph app["qlim8 App, app.qlim8.com"]
-    appauth["/auth"]
-    appcheckout["/api/stripe/checkout-public"]
+    appauth["/auth (login)"]
+    appcontact["/api/public/contact<br/>stores request, emails owner"]
     appnews["/api/newsletter/signup (handler)"]
+    appcms["/api/public/cms/*"]
   end
-  stripe["Stripe Checkout"]
 
   visitor --> pages
-  pages --- i18n
   pages --- content
+  content -->|"server-side fetch, ISR 300 s"| appcms
   pages -.-> ga
-  cta -->|"HTTPS anchor"| appauth
-  checkout -->|"absolute NEXT_PUBLIC_API_URL"| appcheckout --> stripe
-  nlform -->|"absolute NEXT_PUBLIC_API_URL (name + email)"| appnews
+  cta --> contactform
+  contactform -->|"POST (topic, name, email, ...)"| contactproxy
+  contactproxy -->|"server-side, NEXT_PUBLIC_API_URL"| appcontact
+  contactform -.->|"generate_lead event"| ga
+  nlform -->|"POST (name + email)"| nlproxy
+  nlproxy -->|"server-side, NEXT_PUBLIC_API_URL"| appnews
   nlform -.->|"newsletter_signup event (?ref / ?utm_source)"| ga
+  login -->|"HTTPS anchor"| appauth
 
   classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
   classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
   class visitor persona;
-  class pages,i18n,content,checkout,cta,nlform,appauth,appcheckout,appnews internal;
-  class ga,stripe external;
+  class pages,content,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appcontact,appnews,appcms internal;
+  class ga external;
 ```
 
 _Exports: [SVG](../../diagrams/svg/06-landing-bridges.svg) · [PNG](../../diagrams/png/06-landing-bridges.png) · [Mermaid](../../diagrams/mmd/06-landing-bridges.mmd) · [Excalidraw](../../diagrams/excalidraw/06-landing-bridges.excalidraw)_
 
-> ✅ **Fixed.** `NewsletterForm.tsx` and `NewsletterSignupDialog.tsx` now POST to the
-> **absolute** app URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`), the same pattern as the
-> pricing checkout, so the request reaches the app's `/api/newsletter/signup` handler (CORS
-> already allows the `qlim8.com` origin). Both surfaces collect a real name and email, the hero
-> dialog no longer derives a display name from the email's local part.
-> Previously it POSTed to a relative path that dead-ended at the Next server. See note 1 in §8.
+**Sales-led: no signup, no checkout.** qlim8 is sold after a demo. The ways in are Book demo
+(`/kontakt?emne=demo`), the contact form on `/kontakt`, the phone number and the newsletter, all
+taken from `src/content/cta.ts`; `/priser` lists the packages without prices. The site no longer
+calls the app's `/api/stripe/checkout-public` (the app has removed it too), and "Log ind" only
+links existing customers to `app.qlim8.com/auth`. A new customer's account is created by a
+super-admin after the demo, see §7.2.
+
+**Both forms go through same-origin proxies.** `ContactForm.tsx` POSTs to `/api/contact`, and
+`NewsletterForm.tsx` and `NewsletterSignupDialog.tsx` POST to `/api/newsletter/signup`. Those are
+Next route handlers on the landing server (`app/api/contact/route.ts`,
+`app/api/newsletter/signup/route.ts`) that forward server-side to
+`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`, to `/api/public/contact` and
+`/api/newsletter/signup` respectively. The browser never calls app.qlim8.com, so there is no CORS,
+and the handler always answers JSON, even when the app host returns an nginx or rate-limit page.
+Since every request reaches the app from the marketing host's IP, the app rate-limits contact
+requests per submitted email rather than per IP. A sent contact form fires GA4 `generate_lead`
+with its topic (`demo` or `question`); it has no Google Ads conversion yet.
+
+Pages render the bundled copy in `src/content` merged with CMS overrides fetched from the app's
+`/api/public/cms/*` (ISR, 300 s; the app's revalidate webhook clears the cache on publish). The
+former client-side i18n layer is gone: the site is Danish only.
 
 The `legacy/` directory in the landing repo is a pre-rewrite backup and is intentionally omitted.
 
@@ -495,7 +519,8 @@ The `legacy/` directory in the landing repo is a pre-rewrite backup and is inten
 ## 6. Deployment & CI/CD topology
 
 Two **independent** deployments on Hetzner (Germany), each with its own nginx, certbot, and
-release pipeline. They share no database and no internal network, only public HTTPS + Stripe.
+release pipeline. They share no database and no internal network, only public HTTPS. The landing
+has no Stripe path of its own.
 
 ```mermaid
 flowchart TB
@@ -536,8 +561,7 @@ flowchart TB
   ghcr -->|pull image| lweb
   lnginx --> lweb
 
-  lweb -. "checkout + CTA (HTTPS)" .-> anginx
-  lweb -. checkout .-> stripe
+  lweb -. "contact + newsletter proxy, CMS read (HTTPS)" .-> anginx
   pm2 --> stripe
 
   classDef internal fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
@@ -596,32 +620,48 @@ sequenceDiagram
 
 _Exports: [SVG](../../diagrams/svg/07-seq-invoice.svg) · [PNG](../../diagrams/png/07-seq-invoice.png) · [Mermaid](../../diagrams/mmd/07-seq-invoice.mmd) · [Excalidraw](../../diagrams/excalidraw/07-seq-invoice.excalidraw)_
 
-### 7.2 Pricing checkout bridge (landing → app → Stripe)
+### 7.2 Demo request → customer account (landing → app → owner)
+
+This replaces the former pricing checkout bridge (landing → app `/api/stripe/checkout-public` →
+Stripe), which no longer exists on either side.
 
 ```mermaid
 sequenceDiagram
   autonumber
-  actor V as Visitor (qlim8.com /priser)
-  participant L as Landing (Next.js)
-  participant A as App /api/stripe/checkout-public
-  participant S as Stripe
-  participant WH as App /api/stripe/webhook
+  actor V as Visitor / new customer
+  participant L as Landing (qlim8.com)
+  participant A as App (app.qlim8.com)
   participant DB as PostgreSQL
+  participant R as Resend
+  actor O as Owner (super-admin)
 
-  V->>L: choose plan, click subscribe
-  L->>A: POST checkout-public (absolute app URL, no auth)
-  A->>S: create Checkout Session
-  S-->>A: session URL
-  A-->>L: session URL
-  L->>S: redirect browser to Stripe hosted page
-  V->>S: complete payment
-  S->>WH: webhook event (raw body, pre-json)
-  Note over WH: signature verified with STRIPE_WEBHOOK_SECRET<br/>(mounted before express.json)
-  WH->>DB: update tenant / subscription
-  S-->>V: redirect to app.qlim8.com/auth
+  V->>L: Book demo: /kontakt?emne=demo, submit the form
+  L->>L: POST /api/contact (same-origin route handler)
+  L->>A: POST /api/public/contact (server-side proxy)
+  Note over A: honeypot, validation, rate limit per email
+  A->>DB: insert contact_requests row
+  A-)R: owner notification (best-effort, Reply-To = visitor)
+  A-->>L: 200 { success, message }
+  L-->>V: confirmation, GA4 generate_lead
+  R-)O: email to CONTACT_NOTIFY_EMAIL
+  Note over V,O: demo held by phone or meeting, outside the system
+  O->>A: /admin: create customer with the agreed package<br/>POST /api/admin/customers (re-auth)
+  A->>DB: user (random password, provisionedTier)<br/>+ single-use set-password token (7 days)
+  A-)R: welcome email
+  R-)V: "Vælg adgangskode" link to /reset-password
+  V->>A: choose password, log in
+  V->>A: /onboarding: company details
+  A->>DB: create tenant, subscriptionTier = provisioned package
+  Note over A: invoiced outside the app, no Stripe checkout
 ```
 
-_Exports: [SVG](../../diagrams/svg/08-seq-checkout.svg) · [PNG](../../diagrams/png/08-seq-checkout.png) · [Mermaid](../../diagrams/mmd/08-seq-checkout.mmd) · [Excalidraw](../../diagrams/excalidraw/08-seq-checkout.excalidraw)_
+_Exports: [SVG](../../diagrams/svg/08-seq-demo-request.svg) · [PNG](../../diagrams/png/08-seq-demo-request.png) · [Mermaid](../../diagrams/mmd/08-seq-demo-request.mmd) · [Excalidraw](../../diagrams/excalidraw/08-seq-demo-request.excalidraw)_
+
+A visitor who calls instead skips steps 1 to 8; the account steps are the same. The contact
+request is stored before the owner is emailed, and a failed email never fails the response; the
+requests are also listed in the app under /admin → Users & Leads → Contact requests. Existing
+Stripe subscriptions and add-on purchases still run through the app's Stripe integration and
+webhook (§2), but nothing on qlim8.com starts a payment.
 
 ### 7.3 OAuth 2.1 / MCP connector auth
 
@@ -686,10 +726,12 @@ _Exports: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagram
 
 ## 8. Architectural notes & known gaps
 
-1. **Newsletter bridge: fixed.** The landing forms now POST to the **absolute** app URL
-   (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) and reach the app's `/api/newsletter/signup`
-   handler; both surfaces collect a real name and email. (Previously a relative
-   `/api/newsletter/signup` dead-ended at the Next server, no handler, no `/api` proxy.)
+1. **Form bridges are same-origin proxies.** The contact form (`/api/contact` → app
+   `/api/public/contact`) and the newsletter forms (`/api/newsletter/signup` → app
+   `/api/newsletter/signup`) POST to route handlers on the landing server, which forward
+   server-side to `NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`. (The newsletter forms first
+   POSTed to a relative path with no handler, which dead-ended at the Next server, and then to the
+   absolute app URL.) Both newsletter surfaces collect a real name and email.
    Signup lives on the standalone `/nyhedsbrev` page, in an embedded block on `/blog` and
    article pages, and in the homepage hero dialog, the last of which also opens from
    `/?nyhedsbrev=1`, so a single link can point at signup without leaving the homepage.
@@ -703,7 +745,7 @@ _Exports: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagram
    Auth0/Google; all tokens and consent live in EU Postgres (GDPR).
 5. **First-party PostHog proxy** via app nginx `/ingest/` (events) + `/ingest/static/` (assets).
 6. **Stripe webhook bypasses the JSON body parser** (raw body, registered first).
-7. **Two deployments, bridged only by public HTTPS + Stripe.** No shared DB or internal network.
+7. **Two deployments, bridged only by public HTTPS.** No shared DB or internal network.
    Two nginx instances and two certbots (bare-metal vs dockerized). Landing analytics is GA4;
    app analytics is PostHog.
 8. **Multi-tenancy + consultant context.** Tenant isolation via `resolveTenantContext`;

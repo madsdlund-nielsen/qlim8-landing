@@ -25,14 +25,14 @@ export interface HomeStep {
   body: string;
 }
 
+// No price, CTA label or link: every package card books a demo, and the button
+// is fixed in the component so a stale CMS value cannot put a price or a free
+// signup back on it (src/content/cta.ts).
 export interface HomePlan {
   name: string;
-  price: string;
   badge?: string;
   tag: string;
   features: string[];
-  cta: string;
-  href: string;
   highlighted: boolean;
 }
 
@@ -40,7 +40,6 @@ export interface HomeCopy {
   hero: {
     title: string;
     subtitle: string;
-    ctaPrimary: string;
     ctaNote: string;
   };
   integrations: {
@@ -61,7 +60,6 @@ export interface HomeCopy {
     title: string;
     intro: string;
     items: HomeStep[];
-    ctaLabel: string;
     ctaNote: string;
   };
   pricingTeaser: {
@@ -76,19 +74,15 @@ export interface HomeCopy {
   finalCta: {
     title: string;
     body: string;
-    ctaLabel: string;
   };
 }
-
-const SIGNUP_URL = "https://app.qlim8.com/auth?tab=register";
 
 export const HOME_COPY: HomeCopy = {
   hero: {
     title: "ESG er nemt",
     subtitle:
       "Automatisk klimaregnskab og VSME-rapport for danske SMV'er, hentet direkte fra dit regnskabssystem og elforbrug. 10 minutter om måneden, ikke 10 dage.",
-    ctaPrimary: "Prøv platformen gratis",
-    ctaNote: "Eksempeldata · Ingen kreditkort · Forpligt dig først ved tilkobling",
+    ctaNote: "En demo tager udgangspunkt i din virksomhed. Du kan også ringe på +45 93 90 13 84.",
   },
   integrations: {
     title: "Vi henter data direkte fra dine systemer",
@@ -123,7 +117,6 @@ export const HOME_COPY: HomeCopy = {
         "Reduktionsmål baseret på dine egne tal",
         "Scenario Builder: test tiltag før du beslutter",
         "Deling via custom PDF eller offentligt Brag Board",
-        "Premium-features fra 1.195 kr/md",
       ],
     },
   ],
@@ -145,38 +138,36 @@ export const HOME_COPY: HomeCopy = {
         body: "Vi har ca. 50.000 validerede emissionsfaktorer fra Klimakompasset, Energinet, EXIOBASE og førende EPD-databaser. Vi multiplicerer dem ikke kreativt med regioner og år for at få større tal. Vi vælger den rigtige faktor til den rigtige post.",
       },
       {
-        title: "4. Vi behøver ikke en salgssamtale.",
-        body: "Du behøver ikke booke en demo eller tale med en sælger. Opret en konto, klik rundt med eksempeldata, og forbind dit regnskab når du er klar. Det er det.",
+        title: "4. Du taler med den, der har bygget det.",
+        body: "Når du booker en demo, er der ingen sælger mellem dig og personen, der har bygget platformen. Vi viser qlim8 med udgangspunkt i jeres virksomhed og siger ærligt, om det passer til jer.",
       },
     ],
     sourcesNote: "Datakilder: Klimakompasset · Energinet · EXIOBASE · EPD International",
   },
   steps: {
     title: "Sådan kommer du i gang",
-    intro: "Du behøver ikke vide noget om ESG før du opretter dig. Det viser sig selv.",
+    intro: "Du behøver ikke vide noget om ESG på forhånd. Vi tager det derfra.",
     items: [
       {
-        title: "Opret en gratis konto",
-        body: "Du lander i platformen med eksempeldata. Ingen kreditkort, intet salgsmøde.",
+        title: "Book en demo",
+        body: "Vi viser dig platformen og gennemgår, hvad din bank, dine kunder eller din revisor efterspørger. Du kan også ringe direkte.",
       },
       {
-        title: "Klik dig rundt",
-        body: "En kort guided tur viser dig overblikket, dine leverandører, kategorierne bag tallene og rapporterne, alt sammen med realistiske data, så du kan se præcis hvad du får.",
+        title: "Vi sætter jer op",
+        body: "Passer qlim8 til jer, opretter vi jeres konto og hjælper med at forbinde regnskabssystemet og Eloverblik.",
       },
       {
-        title: "Forbind dit regnskab",
-        body: "Når du er klar, henter qlim8 tre måneders historisk data fra dit regnskabssystem. Din egen data overtager dashboardet, og din 14-dages prøveperiode starter her.",
+        title: "Jeres egne tal overtager",
+        body: "qlim8 henter tre måneders historiske data fra regnskabssystemet med det samme og holder derefter klimaregnskabet opdateret af sig selv.",
       },
     ],
-    ctaLabel: "Opret gratis konto",
-    ctaNote: "Ingen kreditkort · Eksempeldata · Forpligt dig først ved tilkobling",
+    ctaNote: "Eller ring på +45 93 90 13 84",
   },
   pricingTeaser: {
-    title: "Tre planer. Find den der passer.",
+    title: "Tre pakker. Find den der passer.",
     plans: [
       {
         name: "Starter",
-        price: "300 kr/md",
         tag: "Til SMV'er der skal levere VSME-rapport til banken og vil have det overstået ordentligt.",
         features: [
           "Komplet Scope 1-3 klimaregnskab",
@@ -184,13 +175,10 @@ export const HOME_COPY: HomeCopy = {
           "Fuld audit trail på hver beregning",
           "Alle danske integrationer",
         ],
-        cta: "Start gratis",
-        href: SIGNUP_URL,
         highlighted: false,
       },
       {
         name: "Premium",
-        price: "1.195 kr/md",
         badge: "Anbefalet til de fleste",
         tag: "Til virksomheder der vil bruge ESG aktivt, reducere udledninger og dele resultater.",
         features: [
@@ -200,21 +188,16 @@ export const HOME_COPY: HomeCopy = {
           "Custom PDF-rapport + offentligt Brag Board",
           "Fuldt REST API + AI-assistenter via MCP-server",
         ],
-        cta: "Start gratis",
-        href: SIGNUP_URL,
         highlighted: true,
       },
       {
         name: "Enterprise",
-        price: "Kontakt",
         tag: "Til organisationer der skal indsamle VSME-rapporter fra deres supply chain.",
         features: [
           "Alt i Premium",
           "Dedikeret supply chain portal",
           "Rollebaseret adgang og rettighedsstyring",
         ],
-        cta: "Kontakt os",
-        href: "/kontakt?subject=Enterprise",
         highlighted: false,
       },
     ],
@@ -225,8 +208,7 @@ export const HOME_COPY: HomeCopy = {
     linkLabel: "Flere spørgsmål? Kontakt os →",
   },
   finalCta: {
-    title: "ESG er nemt: kom selv og se",
-    body: "Du behøver hverken kreditkort eller salgsmøde. Opret en konto, klik dig rundt med eksempeldata, og tilkobl dit regnskab når du er klar.",
-    ctaLabel: "Opret gratis konto",
+    title: "ESG er nemt: lad os vise dig det",
+    body: "Book en demo, så viser vi qlim8 med udgangspunkt i din virksomhed. Du kan også ringe eller skrive til os, og vil du bare følge med, kan du tilmelde dig nyhedsbrevet.",
   },
 };

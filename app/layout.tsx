@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | qlim8",
   },
   description:
-    "Dansk ESG-platform: automatisk scope 1-3, VSME-rapport på 10 minutter, hosting i EU. Spørg dine tal i Claude eller ChatGPT via vores MCP-server. Fra 300 kr/md.",
+    "Dansk ESG-platform: automatisk scope 1-3, VSME-rapport på 10 minutter, hosting i EU. Spørg dine tal i Claude eller ChatGPT via vores MCP-server. Book en demo.",
   keywords: [
     "klimaregnskab",
     "ESG",

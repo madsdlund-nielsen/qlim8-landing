@@ -28,7 +28,7 @@ The `.md` docs embed the Mermaid **inline** (so GitHub renders them live) and li
 | 5 | `05-deployment` | Deployment & CI/CD topology |
 | 6 | `06-landing-bridges` | Landing architecture & app bridges |
 | 7 | `07-seq-invoice` | Sequence, invoice ingest → AI → 3-tier calc |
-| 8 | `08-seq-checkout` | Sequence, pricing checkout bridge |
+| 8 | `08-seq-demo-request` | Sequence, demo request → customer account (replaced the pricing checkout bridge, 2026-09) |
 | 9 | `09-seq-oauth-mcp` | Sequence, OAuth 2.1 / MCP connector auth |
 | 10 | `10-seq-report-job` | Sequence, async v1 report job (pg-boss) |
 
@@ -37,10 +37,15 @@ The `.md` docs embed the Mermaid **inline** (so GitHub renders them live) and li
 ```bash
 # from the repo root, in a scratch workspace (the renderer is intentionally NOT a
 # dependency of the app: it pulls puppeteer, which we keep out of the app build):
-npm i -D @mermaid-js/mermaid-cli
+npm i -D @mermaid-js/mermaid-cli@11
 node docs/diagrams/render.mjs        # → svg/ and png/
 node docs/diagrams/excalidraw.mjs    # → excalidraw/ (pure Node, no extra deps)
 ```
+
+Pin mermaid-cli **11**: 11.17.0 reproduced an unchanged committed SVG byte for byte, while
+12.0.0 renders with a different default theme, so every diagram would change look.
+`npm i -D` writes the dependency into `package.json`; do not commit that. `excalidraw.mjs`
+embeds each SVG, so run it after every render, or the `.excalidraw` scenes drift from `svg/`.
 
 `render.mjs` uses [`puppeteer-config.json`](./puppeteer-config.json) (`--no-sandbox`).
 Chromium resolution:

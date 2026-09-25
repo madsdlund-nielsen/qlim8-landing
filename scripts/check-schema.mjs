@@ -21,7 +21,9 @@
  *   - two definitions of the same @id disagree (copy-paste drift);
  *   - a BreadcrumbList names a URL that is not a route on this site, or does
  *     not end with the page it is on;
- *   - a FAQPage answer is empty.
+ *   - a FAQPage answer is empty;
+ *   - any entity carries `offers` or a price (qlim8 is sold after a demo and
+ *     publishes no package prices, see src/content/cta.ts).
  *
  * Runs in `npm run lint`. Usage:
  *   node --experimental-strip-types scripts/check-schema.mjs
@@ -55,7 +57,6 @@ const isRef = (o) => Object.keys(o).length === 1 && typeof o["@id"] === "string"
 async function main() {
   const schema = await import("../src/lib/schema.ts");
   const marketing = await import("../src/lib/marketingPage.ts");
-  const pricing = await import("../src/lib/pricingSchema.ts");
   const { ALL_MARKETING_NODES, MARKETING_HUBS } = await import("../src/content/marketing/index.ts");
   const { hubCards } = await import("../src/content/navigation.ts");
   const { articles } = await import("../src/content/articles.ts");
@@ -78,12 +79,12 @@ async function main() {
   pages.set("/", [
     schema.ORGANIZATION,
     schema.WEBSITE,
-    schema.buildSoftwareSchema(pricing.buildPricingOffers(PRICING_COPY)),
+    schema.buildSoftwareSchema(),
     buildFaqSchema(HOMEPAGE_FAQS),
   ]);
   pages.set("/om-os", [schema.ORGANIZATION]);
   pages.set("/priser", [
-    schema.buildSoftwareSchema(pricing.buildPricingOffers(PRICING_COPY)),
+    schema.buildSoftwareSchema(),
     schema.buildFaqPageSchema(PRICING_COPY.faq.items),
   ]);
   pages.set("/metodologi", [
@@ -169,9 +170,10 @@ async function main() {
           if (!q?.name?.trim() || !q?.acceptedAnswer?.text?.trim()) fail(`${route}: FAQPage has an empty question or answer`);
         }
       }
-      if (type === "SoftwareApplication" && o.offers?.offerCount !== undefined) {
-        const n = o.offers.offers?.length;
-        if (n !== o.offers.offerCount) fail(`${route}: offerCount ${o.offers.offerCount} but ${n} offers`);
+      // qlim8 publishes no package prices (src/content/cta.ts), and structured
+      // data is where a stale one would outlive the copy: a crawler shows it.
+      if ("offers" in o || "price" in o || "lowPrice" in o) {
+        fail(`${route} ${where}: ${type} states an offer or a price, and qlim8 publishes none`);
       }
     }
   }
