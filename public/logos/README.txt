@@ -1,16 +1,21 @@
-Drop officielle partner-logo SVG'er her for at erstatte de aktuelle tekst-pills i
-src/page-components/landing.tsx (sektion "Integrations-bånd").
+Logoer til integrationsbåndet på forsiden (src/components/public/IntegrationsBand.tsx).
+Listen over hvilke der vises, og hvorfor nogle er udeladt, står i
+src/content/integration-logos.ts.
 
-Filnavne forventet (lowercase, monokrom version anbefales):
-- dinero.svg
-- economic.svg
-- billy.svg
-- eloverblik.svg
+Filerne er leverandørernes egne logoer i deres egne farver (pressekit, sitets
+header eller deres asset-CDN), som SVG hvor leverandøren har en, og uændrede
+bortset fra en tæt beskåret viewBox. Intega findes kun som PNG.
+Farverne må ikke ændres: de brand-regler vi har fundet tillader et logo som
+leveret, i farve, sort eller hvid, aldrig omfarvet. Båndet gør logoerne
+ensartede med ens fliser og afstande, ikke med farve.
 
-For at aktivere logoer, opdater landing.tsx-sektionen til at rendere
-<Image src="/logos/dinero.svg" /> istedet for tekst.
+Nyt logo: tjek først leverandørens vilkår for brug af deres logo (varemærke-,
+presse- og partnersider). Kræver de licens eller godkendelse, hører logoet ikke
+hjemme her, men systemet kan stadig nævnes i tekst. Brug derefter
+leverandørens officielle fil, og tilføj en linje i integration-logos.ts med
+viewBox-bredde og -højde.
 
-Vigtigt: brug officielle brand-kit-versioner. Logoer er beskyttet af
-varemærkeret. Vi rapporterer det blot som integration ("Integrerer med")
-, ikke som partnerskab, certificering eller endorsement. Footer-disclaimer
-"Logoer tilhører respektive ejere" findes allerede i SiteFooter.tsx.
+Logoer er beskyttet af varemærkeret. Vi viser dem blot som integration
+("henter data fra"), ikke som partnerskab, certificering eller endorsement.
+Footer-disclaimeren "Logoer for tredjepartsintegrationer tilhører deres
+respektive ejere" står i SiteFooter.tsx.

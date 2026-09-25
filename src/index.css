@@ -277,3 +277,45 @@
     inset: -1px;
   }
 }
+
+/* Integrationsbånd on the homepage (src/components/public/IntegrationsBand.tsx).
+   The strip holds the logo list twice and slides left by exactly one copy, so
+   the loop has no seam. Each copy carries the gap as trailing padding, which is
+   what keeps the two halves the same width. Where the list fits on screen, the
+   component switches the loop off with a container query of its own.
+   Layout lives here rather than in utilities: the states below override it,
+   and a utility would outrank anything in this layer. */
+@keyframes integrations-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@layer components {
+  .integrations-band-viewport {
+    overflow: hidden;
+    padding-inline: 1rem;
+    mask-image: linear-gradient(to right, transparent, #000 var(--band-fade), #000 calc(100% - var(--band-fade)), transparent);
+  }
+  .integrations-band-track {
+    display: flex;
+    width: max-content;
+    animation: integrations-marquee var(--band-duration, 48s) linear infinite;
+  }
+  .integrations-band-track:hover {
+    animation-play-state: paused;
+  }
+  .integrations-band-list {
+    display: flex;
+    flex-shrink: 0;
+    gap: var(--band-gap);
+    padding-right: var(--band-gap);
+  }
+
+  /* No motion wanted: every logo still shows, wrapped and centred. */
+  @media (prefers-reduced-motion: reduce) {
+    .integrations-band-viewport { mask-image: none; }
+    .integrations-band-track { animation: none; width: 100%; }
+    .integrations-band-list { flex-wrap: wrap; justify-content: center; width: 100%; padding-right: 0; }
+    .integrations-band-list + .integrations-band-list { display: none; }
+  }
+}

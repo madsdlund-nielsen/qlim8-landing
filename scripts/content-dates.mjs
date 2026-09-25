@@ -40,7 +40,7 @@ const rootDir = fileURLToPath(ROOT);
 
 /** Static routes and the files whose history dates them. */
 const STATIC_ROUTES = {
-  "/": ["app/page.tsx", "src/page-components/landing.tsx", "src/content/copy/home.ts", "src/content/homepage-faqs.ts"],
+  "/": ["app/page.tsx", "src/page-components/landing.tsx", "src/content/copy/home.ts", "src/content/homepage-faqs.ts", "src/content/integration-logos.ts"],
   "/priser": ["app/priser/page.tsx", "src/page-components/pricing.tsx", "src/content/copy/pricing.ts"],
   "/metodologi": ["app/metodologi/page.tsx", "src/page-components/metodologi.tsx", "src/content/copy/methodology.ts"],
   "/blog": ["app/blog/page.tsx", "src/page-components/viden.tsx"],

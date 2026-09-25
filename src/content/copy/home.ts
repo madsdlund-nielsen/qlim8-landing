@@ -42,12 +42,10 @@ export interface HomeCopy {
     subtitle: string;
     ctaNote: string;
   };
+  // Only the heading is copy. The logos under it are the connectors qlim8
+  // ships (src/content/integration-logos.ts), not something to edit in /admin.
   integrations: {
     title: string;
-    systems: string[];
-    note1: string;
-    note2: string;
-    body: string;
   };
   features: HomeFeature[];
   builtDifferent: {
@@ -86,10 +84,6 @@ export const HOME_COPY: HomeCopy = {
   },
   integrations: {
     title: "Vi henter data direkte fra dine systemer",
-    systems: ["Dinero", "e-conomic", "Billy", "Eloverblik"],
-    note1: "Eloverblik: officiel tredjepart hos Energinet",
-    note2: "Fuldt REST API · AI-assistenter via MCP",
-    body: "Sæt integrationerne op én gang. qlim8 henter regnskabsdata og elforbrug i baggrunden.",
   },
   features: [
     {
