@@ -20,6 +20,7 @@ import { resolvePageCopy } from "@/lib/pageCopy";
 import { fetchPublishedArticles, fetchArticleBySlug } from "@/lib/cms";
 import { articles as bundledArticles } from "@/content/articles";
 import { HOME_PAGE_KEY, HOME_COPY, type HomeCopy } from "@/content/copy/home";
+import { INTEGRATION_LOGOS } from "@/content/integration-logos";
 import { PRICING_PAGE_KEY, PRICING_COPY, type PricingCopy } from "@/content/copy/pricing";
 import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
 import { BASE_URL } from "@/lib/schema";
@@ -189,8 +190,7 @@ function renderHome(copy: HomeCopy): string {
     copy.hero.subtitle,
     copy.hero.ctaNote,
     `## ${copy.integrations.title}`,
-    copy.integrations.body,
-    `Systemer: ${copy.integrations.systems.join(", ")}. ${copy.integrations.note1}. ${copy.integrations.note2}.`,
+    `Systemer: ${INTEGRATION_LOGOS.map((l) => l.name).join(", ")}.`,
     ...copy.features.map((f) =>
       [`## ${f.title}`, f.body, bullets(f.bullets)].filter(Boolean).join("\n\n"),
     ),

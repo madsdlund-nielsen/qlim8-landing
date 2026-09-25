@@ -14,6 +14,7 @@ import {
 import { HOMEPAGE_FAQS, type HomepageFaq } from "@/content/homepage-faqs";
 import { HOME_COPY, type HomeCopy } from "@/content/copy/home";
 import { MarketingImage } from "@/components/public/MarketingImage";
+import { IntegrationsBand } from "@/components/public/IntegrationsBand";
 import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
 
 // Rendered from the design board in qlim8-app, not screen-captured, so they
@@ -87,26 +88,11 @@ export default function Landing({
       {/* 2. Integrationsbånd */}
       <section className="py-16 sm:py-24 bg-white border-y border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="text-center text-2xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-12">
+          <h2 className="text-center text-2xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-10 sm:mb-12">
             {copy.integrations.title}
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 mb-10">
-            {copy.integrations.systems.map((name) => (
-              <div key={name} className="text-center">
-                <p className="text-xl sm:text-2xl font-semibold text-gray-900">{name}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-sm text-gray-600 mb-2">
-            {copy.integrations.note1}
-          </p>
-          <p className="text-center text-sm text-gray-600">
-            {copy.integrations.note2}
-          </p>
-          <p className="text-center text-base text-gray-700 mt-10 max-w-2xl mx-auto leading-relaxed">
-            {copy.integrations.body}
-          </p>
         </div>
+        <IntegrationsBand />
       </section>
 
       {/* 3-5. Features */}

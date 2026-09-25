@@ -1,16 +1,16 @@
-Drop officielle partner-logo SVG'er her for at erstatte de aktuelle tekst-pills i
-src/page-components/landing.tsx (sektion "Integrations-bånd").
+Logoer til integrationsbåndet på forsiden (src/components/public/IntegrationsBand.tsx).
+Listen over hvilke der vises, og hvorfor, står i src/content/integration-logos.ts.
 
-Filnavne forventet (lowercase, monokrom version anbefales):
-- dinero.svg
-- economic.svg
-- billy.svg
-- eloverblik.svg
+Filerne er leverandørernes egne SVG'er (pressekit, sitets header eller deres
+asset-CDN), uændrede bortset fra quickbooks.svg, hvor det hvide "qb" er gjort
+til et hul med et filter. Båndet maler hver fil gennem en CSS-mask i én farve
+fra paletten, så kun formen i filen tæller, ikke dens farver.
 
-For at aktivere logoer, opdater landing.tsx-sektionen til at rendere
-<Image src="/logos/dinero.svg" /> istedet for tekst.
+Nyt logo: brug leverandørens officielle fil, og tjek at intet i den er en hvid
+flade tegnet oven på en farvet (den ville blive fyldt ud af masken). Tilføj
+filen her og en linje i integration-logos.ts med viewBox-bredde og -højde.
 
-Vigtigt: brug officielle brand-kit-versioner. Logoer er beskyttet af
-varemærkeret. Vi rapporterer det blot som integration ("Integrerer med")
-, ikke som partnerskab, certificering eller endorsement. Footer-disclaimer
-"Logoer tilhører respektive ejere" findes allerede i SiteFooter.tsx.
+Logoer er beskyttet af varemærkeret. Vi viser dem blot som integration
+("henter data fra"), ikke som partnerskab, certificering eller endorsement.
+Footer-disclaimeren "Logoer for tredjepartsintegrationer tilhører deres
+respektive ejere" står i SiteFooter.tsx.
