@@ -1,20 +1,12 @@
 // Bundled default copy for /priser. CMS pageKey: "page.pricing".
-// Prices are numbers so the CMS can edit them and the JSON-LD product schema
-// in app/priser/page.tsx stays in sync with what the page renders.
+//
+// The page describes the packages and what is in them, never what they cost:
+// qlim8 is sold after a demo, and no package price appears anywhere on the
+// site (src/content/cta.ts). Every card's button books a demo; the label and
+// link are fixed in the component, not copy, so a stale CMS value cannot put
+// a checkout or a free-signup button back on the page.
 
 export const PRICING_PAGE_KEY = "page.pricing";
-
-/**
- * DKK only: the Stripe Starter and Premium products carry no EUR prices, so
- * there is nothing for the page to offer in EUR. `monthlyDkk` and `yearlyDkk`
- * are both per-month figures; `yearlyTotalDkk` is what is actually charged
- * once up front on the yearly cycle.
- */
-export interface PriceSet {
-  monthlyDkk: number;
-  yearlyDkk: number;
-  yearlyTotalDkk: number;
-}
 
 export interface PricingFeatureRow {
   label: string;
@@ -37,33 +29,23 @@ export interface PricingCopy {
   header: {
     title: string;
     subtitle: string;
-    yearlySavingsNote: string;
   };
   trustBar: string[];
-  prices: {
-    starter: PriceSet;
-    premium: PriceSet;
-  };
   starter: {
     name: string;
     tagline: string;
-    cta: string;
     includedLabel: string;
     features: string[];
   };
   premium: {
     name: string;
     tagline: string;
-    cta: string;
     includedLabel: string;
     features: string[];
   };
   enterprise: {
     name: string;
     tagline: string;
-    priceLabel: string;
-    priceNote: string;
-    cta: string;
     includedLabel: string;
     features: EnterpriseFeature[];
   };
@@ -75,40 +57,26 @@ export interface PricingCopy {
     title: string;
     items: PricingFaqItem[];
   };
-  footerNote: string;
+  closing: {
+    title: string;
+    body: string;
+  };
 }
 
 export const PRICING_COPY: PricingCopy = {
   header: {
-    title: "Fra 300 kr/md. Alt inkluderet.",
+    title: "Tre pakker. Én platform.",
     subtitle:
-      "Ingen onboarding-gebyr, ingen lock-in. Opsig hvornår som helst. Alle priser er ekskl. moms.",
-    yearlySavingsNote: "Spar op til 25%",
+      "Starter, Premium og Enterprise bygger på den samme platform. Book en demo, så finder vi sammen den pakke der passer til jeres behov, og I får et konkret tilbud.",
   },
   trustBar: [
-    "✓ Annuller til enhver tid",
-    "✓ Ingen opsætningsgebyr",
-    "✓ Alle priser ekskl. moms",
+    "✓ Dinero, e-conomic og Billy",
+    "✓ Officiel tredjepart til Eloverblik",
+    "✓ Hosting i EU",
   ],
-  // Mirrors the live Stripe prices on prod_Uy1uuoULKPwZGG (Starter) and
-  // prod_Uy1yQOC4sUWFAB (Premium). Keep in step with `PRICES` in the app's
-  // client/src/features/account/pages/pricing.tsx.
-  prices: {
-    starter: {
-      monthlyDkk: 395,
-      yearlyDkk: 300,
-      yearlyTotalDkk: 3600,
-    },
-    premium: {
-      monthlyDkk: 1595,
-      yearlyDkk: 1195,
-      yearlyTotalDkk: 14340,
-    },
-  },
   starter: {
     name: "Starter",
     tagline: "Til SMV'er der starter ESG-arbejdet: banken har spurgt, og I skal have et tal.",
-    cta: "Vælg Starter",
     includedLabel: "Inkluderet",
     features: [
       "Scope 1/2/3 beregning",
@@ -123,7 +91,6 @@ export const PRICING_COPY: PricingCopy = {
     name: "Premium",
     tagline:
       "Til SMV'er med kunde- og bankrapportering: VSME Comprehensive, leverandørdata, offentlig profil.",
-    cta: "Vælg Premium",
     includedLabel: "Alt i Starter, plus",
     features: [
       "PDF-eksport",
@@ -138,14 +105,11 @@ export const PRICING_COPY: PricingCopy = {
   enterprise: {
     name: "Enterprise",
     tagline: "Til større organisationer med flere CVR, komplet værdikæde og API-integration.",
-    priceLabel: "Kontakt salg",
-    priceNote: "Tilpasset pris for din organisation",
-    cta: "Kontakt os",
     includedLabel: "Alt i Premium, plus",
     features: [
       {
         label: "Komplet værdikæde via CVR",
-        note: "kræver premium abonnement fra værdikæden, dog får I som Enterprise kunde en rabatkode til jeres leverandører",
+        note: "kræver at leverandørerne i værdikæden har Premium; vilkårene for jeres leverandører aftaler vi med jer",
       },
       { label: "Fuld API-adgang" },
       { label: "SAML/SSO adgangskontrol" },
@@ -181,16 +145,16 @@ export const PRICING_COPY: PricingCopy = {
     title: "Ofte stillede spørgsmål",
     items: [
       {
-        q: "Binder jeg mig til en aftale?",
-        a: "Nej. Du kan annullere dit abonnement til enhver tid: månedlige planer stopper ved slutningen af den betalte periode, årlige planer refunderes ikke, men du bevarer adgangen til udløb. Ingen opsigelsesgebyr.",
+        q: "Hvad koster qlim8?",
+        a: "Det afhænger af pakken og af jeres behov. Book en demo eller ring på +45 93 90 13 84, så gennemgår vi pakkerne med jer og giver jer et konkret tilbud.",
       },
       {
-        q: "Hvad sker der lige efter tilmelding?",
-        a: "Straks efter betaling oprettes din konto og du guides igennem en kort onboarding. Du kan begynde at registrere data og oprette dit første klimaregnskab samme dag.",
+        q: "Hvad sker der efter demoen?",
+        a: "Passer qlim8 til jer, opretter vi jeres konto og hjælper jer med at forbinde regnskabssystemet. qlim8 henter tre måneders historiske data med det samme, så I har et reelt billede fra første dag.",
       },
       {
-        q: "Kan jeg skifte plan senere?",
-        a: "Ja. Du kan opgradere fra Starter til Premium når som helst. Adgangen er øjeblikkelig. Prisen justeres forholdsmæssigt for resten af perioden.",
+        q: "Kan vi skifte pakke senere?",
+        a: "Ja. I kan skifte fra Starter til Premium eller Enterprise, når behovet vokser. Kontakt os, så sørger vi for det.",
       },
       {
         q: "Hvad er VSME, og er det obligatorisk?",
@@ -198,13 +162,16 @@ export const PRICING_COPY: PricingCopy = {
       },
       {
         q: "Har jeg brug for en revisor?",
-        a: "Ikke for at komme i gang. qlim8 genererer revisionsklare beregninger med kildehenvisninger, som din revisor nemt kan efterprøve. Premium-planen giver desuden direkte revisoradgang til platformen.",
+        a: "Ikke for at komme i gang. qlim8 genererer revisionsklare beregninger med kildehenvisninger, som din revisor nemt kan efterprøve. Premium-pakken giver desuden direkte revisoradgang til platformen.",
       },
       {
-        q: "Hvad koster Historisk Import?",
-        a: "Historisk Import er et éngangsprodukt til Premium-kunder på 9.000 kr. Det giver dig mulighed for at importere op til ét år historiske regnskabsdata fra Dinero med automatisk AI-klassificering, så du hurtigt etablerer en baseline.",
+        q: "Kan vi få mere historik med?",
+        a: "Ja. Historisk Import er et tilkøb til Premium, der henter op til ét års historiske regnskabsdata fra Dinero med automatisk AI-klassificering, så I hurtigt har en baseline. Vi gennemgår det gerne på demoen.",
       },
     ],
   },
-  footerNote: "Alle priser er ekskl. moms  ·  Annuller når som helst",
+  closing: {
+    title: "Se qlim8 på jeres egne tal",
+    body: "Book en demo, så viser vi platformen og finder den pakke der passer. Du kan også ringe direkte eller skrive til os.",
+  },
 };

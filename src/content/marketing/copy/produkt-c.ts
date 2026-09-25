@@ -1,4 +1,5 @@
 import type { MarketingPageCopy } from "@/content/marketing/types";
+import { DEMO_CTA, PHONE_CTA } from "@/content/cta";
 
 // Produkt-copy (batch C): features:
 //   PR_TILTAG           reduktions-tiltag / -tracking   (kilde: reduction-tracking.md)
@@ -9,14 +10,11 @@ import type { MarketingPageCopy } from "@/content/marketing/types";
 //
 // Voice per docs/da/marketing/_shared/{brand-voice,positioning}.md.
 // Tal uden citeret kilde bærer [antagelse]-tag.
+//
+// qlim8 is sold after a demo (see src/content/cta.ts): primary CTA is DEMO_CTA,
+// closing secondary is PHONE_CTA, and no package prices appear in the copy.
 
-const PRIMARY_CTA = {
-  label: "Opret gratis konto",
-  href: "https://app.qlim8.com/auth?tab=register",
-} as const;
-
-const HERO_SECONDARY_CTA = { label: "Se priser", href: "/priser" } as const;
-const DEMO_CTA = { label: "Book demo", href: "/kontakt" } as const;
+const HERO_SECONDARY_CTA = { label: "Se pakker", href: "/priser" } as const;
 
 // ---------------------------------------------------------------------------
 // PR_TILTAG: Reduktions-tiltag og fremdrift
@@ -28,7 +26,7 @@ export const PR_TILTAG: MarketingPageCopy = {
     title: "Sæt et reduktions-mål: og se hver måned om I er på vej",
     subtitle:
       "Opret konkrete reduktionstiltag, knyt dem til dit klimaregnskab, og følg fremdriften mod målet måned for måned. Ikke en hensigt i en strategi-fil: målbar bevægelse.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -81,7 +79,7 @@ export const PR_TILTAG: MarketingPageCopy = {
       solution:
         "Reduktions-modulet er inkluderet i Premium og opdaterer løbende, ikke en engangs-review, men et levende dashboard.",
       outcome:
-        "Løbende tracking til Premium-pris (1.195 kr/md) i stedet for en årlig konsulent-review til 25.000-50.000 kr.",
+        "Løbende tracking i Premium i stedet for en årlig konsulent-review til 25.000-50.000 kr.",
     },
   ],
   features: [
@@ -158,8 +156,8 @@ export const PR_TILTAG: MarketingPageCopy = {
       note: "fra ~1 dags forberedelse [antagelse]",
     },
     {
-      value: "0 kr.",
-      label: "seat-cost for bestyrelses-link",
+      value: "Read-only",
+      label: "bestyrelses-link med live status",
     },
   ],
   faq: {
@@ -183,7 +181,7 @@ export const PR_TILTAG: MarketingPageCopy = {
       },
       {
         q: "Er reduktions-modulet med i alle abonnementer?",
-        a: "Starter (fra 300 kr/md) har basis reduktions-tracking med ét mål. Det fulde modul (ubegrænsede mål, SBTi-skabeloner og scenario-til-target-konvertering) er inkluderet i Premium (1.195 kr/md). Enterprise tilføjer mål pr. afdeling.",
+        a: "Starter har basis reduktions-tracking med ét mål. Det fulde modul (ubegrænsede mål, SBTi-skabeloner og scenario-til-target-konvertering) er inkluderet i Premium. Enterprise tilføjer mål pr. afdeling.",
       },
       {
         q: "Kan vi sætte mål pr. afdeling?",
@@ -195,8 +193,8 @@ export const PR_TILTAG: MarketingPageCopy = {
     title: "Gør 2030-målet til noget I kan måle hver måned",
     description:
       "Opret dit første reduktions-mål, knyt tiltagene, og se fremdriften mod baseline løbende. Fuldt modul i Premium; del med bestyrelsen uden ekstra seat.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -210,7 +208,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
     title: "Test reduktionen på dit eget regnskab: før du investerer",
     subtitle:
       "Simulér fremtidige reduktionsstier direkte på dit faktiske klimaregnskab, sammenlign scenarier mod målet, og beslut på data i stedet for mavefornemmelse.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -237,7 +235,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       pain:
         "Konsulent-kortlægning koster 50.000-150.000 kr. pr. beslutning [antagelse], og det er et engangs-svar der forældes så snart forudsætningerne ændrer sig.",
       solution:
-        "Scenario Planner er inkluderet i Premium (1.195 kr/md) og kører løbende, så I kan modellere igen hver gang tallene skifter.",
+        "Scenario Planner er inkluderet i Premium og kører løbende, så I kan modellere igen hver gang tallene skifter.",
       outcome:
         "Erstat konsulent-kortlægning på 50.000-150.000 kr. pr. beslutning [antagelse] med en inkluderet feature.",
     },
@@ -364,7 +362,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       },
       {
         q: "Hvilket abonnement kræver Scenario Planner?",
-        a: "Scenario Planner er en Premium-feature (1.195 kr/md) og er ikke inkluderet i Starter. Enterprise tilføjer leverandør-allokering i scenarier, fx effekten af at flytte en leverandør fra Tyskland til Sverige, som påvirker Scope 3.",
+        a: "Scenario Planner er en Premium-feature og er ikke inkluderet i Starter. Enterprise tilføjer leverandør-allokering i scenarier, fx effekten af at flytte en leverandør fra Tyskland til Sverige, som påvirker Scope 3.",
       },
       {
         q: "Kan en konsulent bruge det til klient-rådgivning?",
@@ -376,8 +374,8 @@ export const PR_SCENARIER: MarketingPageCopy = {
     title: "Beslut din næste reduktion på data: ikke på et gæt",
     description:
       "Modellér tiltag på dit eget klimaregnskab, sammenlign scenarier mod målet, og konvertér det godkendte til et reduktions-mål. Inkluderet i Premium.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -391,7 +389,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     title: "Giv din revisor direkte adgang: slut med frem-og-tilbage-mails",
     subtitle:
       "Lad din revisor eller rådgiver arbejde direkte i klimaregnskabet med read-only audit-adgang. De validerer data og følger audit-sporet selv, uden at I sender filer frem og tilbage.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -516,9 +514,8 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
       note: "[antagelse: pilot-revisor-interviews]",
     },
     {
-      value: "0 kr.",
-      label: "seat-fee pr. klient",
-      note: "klient-tenant betaler",
+      value: "Ubegrænset",
+      label: "klienter pr. konsulent-login",
     },
     {
       value: "Read-only",
@@ -530,7 +527,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     items: [
       {
         q: "Koster det ekstra at give min revisor adgang?",
-        a: "Nej. Med tredjeparts-adgang får revisoren et audit-pack-scope uden egen betalt seat. Det er klient-tenant der betaler abonnementet (Starter fra 300 kr/md eller Premium 1.195 kr/md), og revisorens adgang lægger ikke licens-omkostning oveni.",
+        a: "Nej. Med tredjeparts-adgang får revisoren et audit-pack-scope uden egen betalt seat. Det er klient-tenant der betaler abonnementet, og revisorens adgang lægger ikke licens-omkostning oveni.",
       },
       {
         q: "Kan revisoren ændre i vores regnskab?",
@@ -558,8 +555,8 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     title: "Lad din revisor validere regnskabet: uden en eneste bilags-mail",
     description:
       "Giv din revisor eller rådgiver read-only audit-adgang med fuld lineage og kryptografisk sign-off. Ét login dækker ubegrænset klienter, uden seat-fee.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -573,7 +570,7 @@ export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
     title: "Saml Scope 3 fra leverandørerne: send ét link, ikke 50 mails",
     subtitle:
       "Kortlæg dine leverandører via CVR-opslag, inviter dem til at dele deres Scope 3-data direkte, og se dækningsgrad og eksponering i ét regnskab. Slut med at jagte leverandører i mailtråde.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -739,8 +736,8 @@ export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
     title: "Saml din Scope 3 ét sted: og send aldrig en opfølgnings-mail igen",
     description:
       "Kortlæg leverandører via CVR, send ét link, og se deres Scope 3-data flyde ind i dit regnskab med audit-trail. Ubegrænsede supplier-connections i Enterprise.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -754,7 +751,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
     title: "Vis dine klima-tal til markedet: og lad kunderne tjekke",
     subtitle:
       "En delbar, offentlig ESG-profil med dit klimaregnskab: opt-in, audit-bakket og leverandør-klar. Gør ESG til et salgsargument i udbud og kundedialog i stedet for en PDF du sender manuelt.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -912,7 +909,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       },
       {
         q: "Kan profilen ligge på vores eget domæne?",
-        a: "På Enterprise-tier kan du white-labele profilen på eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand. Premium (1.195 kr/md) giver den delbare qlim8-URL og badge i standard-format.",
+        a: "På Enterprise-tier kan du white-labele profilen på eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand. Premium giver den delbare qlim8-URL og badge i standard-format.",
       },
     ],
   },
@@ -920,7 +917,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
     title: "Gør dit klimaregnskab til et salgsargument",
     description:
       "Aktivér en delbar, audit-bakket ESG-profil du kan sende i udbud og kundedialog. Opt-in og granulær, opdateres automatisk. Inkluderet i Premium.",
-    primary: PRIMARY_CTA,
-    secondary: DEMO_CTA,
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };

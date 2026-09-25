@@ -10,14 +10,14 @@ import { contentDate } from "@/lib/contentDates";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Kontakt qlim8: Vi er her for at hjælpe",
+  title: "Book en demo eller kontakt qlim8",
   description:
-    "Har du spørgsmål om klimaregnskab, ESG eller qlim8? Kontakt os via formularen eller send en email. Vi svarer altid hurtigt.",
+    "Book en demo af qlim8, eller stil et spørgsmål om klimaregnskab og ESG. Skriv via formularen, send en email eller ring på +45 93 90 13 84.",
   alternates: { canonical: "https://qlim8.com/kontakt" },
   openGraph: {
-    title: "Kontakt qlim8: Vi er her for at hjælpe",
+    title: "Book en demo eller kontakt qlim8",
     description:
-      "Har du spørgsmål om klimaregnskab, ESG eller qlim8? Vi svarer altid hurtigt.",
+      "Book en demo af qlim8, eller stil et spørgsmål om klimaregnskab og ESG. Ring på +45 93 90 13 84.",
     url: "https://qlim8.com/kontakt",
     images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "Kontakt qlim8" }],
   },
@@ -27,7 +27,7 @@ const PAGE_SCHEMA = [
   buildContactPageSchema({
     name: "Kontakt qlim8",
     description:
-      "Spørgsmål om klimaregnskab, ESG eller qlim8? Kontakt os via formularen eller på email og telefon.",
+      "Book en demo af qlim8, eller stil et spørgsmål om klimaregnskab og ESG via formularen, på email eller telefon.",
     dateModified: contentDate("/kontakt"),
   }),
   buildBreadcrumbSchema([

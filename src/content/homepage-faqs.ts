@@ -1,7 +1,7 @@
 export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   {
     q: "Hvad er qlim8?",
-    a: "qlim8 er en dansk SaaS-platform der laver automatisk klimaregnskab og VSME-rapportering for små og mellemstore virksomheder. Platformen henter data direkte fra danske regnskabssystemer (Dinero, e-conomic, Billy) og fra Eloverblik som officiel tredjepart hos Energinet, og leverer revisionsklare Scope 1-3 beregninger. Priserne starter ved 300 kr/md.",
+    a: "qlim8 er en dansk SaaS-platform der laver automatisk klimaregnskab og VSME-rapportering for små og mellemstore virksomheder. Platformen henter data direkte fra danske regnskabssystemer (Dinero, e-conomic, Billy) og fra Eloverblik som officiel tredjepart hos Energinet, og leverer revisionsklare Scope 1-3 beregninger. qlim8 sælges efter en demo, hvor vi viser platformen og finder den pakke, der passer.",
   },
   {
     q: "Hvem er qlim8 til?",
@@ -13,7 +13,7 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Hvad koster qlim8?",
-    a: "qlim8 koster fra 300 kr/md (Starter), 1.195 kr/md (Premium), eller skræddersyet pris for større organisationer (Enterprise). Alle planer faktureres årligt og kan opsiges når som helst. Du kan oprette en gratis konto og prøve hele platformen med eksempeldata uden kreditkort.",
+    a: "Prisen afhænger af pakke og behov. qlim8 findes i tre pakker: Starter, Premium og Enterprise. Book en demo eller ring på +45 93 90 13 84, så gennemgår vi pakkerne med jer, og I får et konkret tilbud.",
   },
   {
     q: "Hvor lang tid tager det at lave et klimaregnskab i qlim8?",
@@ -40,8 +40,8 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
     a: "Scope 1 er direkte udledninger fra kilder din virksomhed ejer eller kontrollerer, eksempelvis egne køretøjer og gasfyr. Scope 2 er indirekte udledninger fra købt energi som elektricitet og fjernvarme. Scope 3 dækker alle øvrige indirekte udledninger i værdikæden (indkøb, transport, affald, forretningsrejser) og udgør typisk 70-90% af en SMV's samlede klimaaftryk. qlim8 beregner alle tre scopes automatisk.",
   },
   {
-    q: "Kan jeg prøve qlim8 gratis?",
-    a: "Ja. Du kan oprette en gratis konto uden kreditkort og afprøve hele Premium-versionen af platformen med eksempeldata. Når du tilkobler dit regnskabssystem starter en 14-dages prøveperiode, og dine egne data overtager dashboardet med det samme.",
+    q: "Kan jeg se qlim8, før vi beslutter os?",
+    a: "Ja. Book en demo, så viser vi platformen og gennemgår, hvad din bank, dine kunder eller din revisor efterspørger. Passer qlim8 til jer, opretter vi jeres konto og hjælper med at forbinde regnskabssystemet. qlim8 henter tre måneders historiske data med det samme, så jeres egne tal overtager dashboardet fra første dag.",
   },
 ];
 

@@ -96,10 +96,12 @@ export const SOFTWARE_FEATURE_LIST = [
 ];
 
 /**
- * Build the SoftwareApplication entity. Offers come from the caller so the
- * prices stay sourced from PRICING_COPY rather than being restated here.
+ * Build the SoftwareApplication entity. It carries no `offers`: qlim8 is sold
+ * after a demo and publishes no package prices (src/content/cta.ts), so there
+ * is no price for structured data to state. The homepage and /priser emit this
+ * same #software entity.
  */
-export function buildSoftwareSchema(offers: object | object[]) {
+export function buildSoftwareSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -117,7 +119,6 @@ export function buildSoftwareSchema(offers: object | object[]) {
     countriesSupported: "DK",
     featureList: SOFTWARE_FEATURE_LIST,
     softwareHelp: { "@type": "CreativeWork", url: `${BASE_URL}/docs` },
-    offers,
     provider: ORG_REF,
     isPartOf: { "@id": WEBSITE_ID },
   };

@@ -13,13 +13,18 @@
  *   2. A contradicting price: the homepage FAQ said "starter ved 250 kr/md"
  *      and a feature bullet said "fra 625 kr/md", while the hero, the meta
  *      description and the structured data all said 300 (and Premium 1195).
- *      Two prices for one product on one page is exactly the conflicting
- *      signal search engines punish.
+ *
+ * The second is now stricter. qlim8 is sold after a demo, and the site names
+ * no package price and offers no way to sign up or pay (src/content/cta.ts),
+ * so a published price or "Opret gratis konto" is wrong whatever the figure.
  *
  * So, for every CMS page key this site reads:
  *   - every internal path in the copy must be a route this site serves, and
- *   - every advertised entry price ("fra N kr/md", "starter ved N kr") must be
- *     one of the plan prices in src/content/copy/pricing.ts.
+ *   - no string may break the sales-led rules in scripts/lib/salesLed.mjs
+ *     (a package price, a signup link, a free-account or free-trial claim).
+ *     The same rules hold the bundled copy in `npm run lint`. The legal
+ *     documents are exempt there and here: contract wording is changed with
+ *     whoever drafted it.
  *
  * Runs with `npm run test:contract` (live, scheduled in cms-contract.yml),
  * not in `npm run lint`: the failure can appear with no commit in this repo.
@@ -32,6 +37,7 @@
  * fix is in /admin, not in this repo.
  */
 import "./lib/register-ts.mjs";
+import { salesLedViolations } from "./lib/salesLed.mjs";
 
 const BASE = process.env.CMS_API_BASE || process.env.NEXT_PUBLIC_API_URL || "https://app.qlim8.com";
 const TIMEOUT_MS = Number(process.env.CMS_CONTRACT_TIMEOUT_MS || 20000);
@@ -70,21 +76,13 @@ function internalPaths(text) {
   return out;
 }
 
-/** "fra 625 kr/md", "starter ved 250 kr", "priser fra 300 kr" → [625, 250, 300] */
-function advertisedEntryPrices(text) {
-  const out = [];
-  for (const m of text.matchAll(/(?:fra|starter ved|starter fra|allerede fra)\s+(\d{1,3}(?:[.\s]\d{3})*)\s*kr\b/gi)) {
-    out.push({ phrase: m[0], price: Number(m[1].replace(/[.\s]/g, "")) });
-  }
-  return out;
-}
 
 async function main() {
   console.log(`CMS copy check against ${BASE}\n`);
 
   const { ALL_MARKETING_NODES, MARKETING_HUBS } = await import("../src/content/marketing/index.ts");
   const { articles } = await import("../src/content/articles.ts");
-  const { PRICING_COPY, PRICING_PAGE_KEY } = await import("../src/content/copy/pricing.ts");
+  const { PRICING_PAGE_KEY } = await import("../src/content/copy/pricing.ts");
   const { HOME_PAGE_KEY } = await import("../src/content/copy/home.ts");
   const { ABOUT_PAGE_KEY } = await import("../src/content/copy/about.ts");
   const { CONTACT_PAGE_KEY } = await import("../src/content/copy/contact.ts");
@@ -113,9 +111,7 @@ async function main() {
   }
   const isRoute = (p) => routes.has(p) || routes.has(p.replace(/\.md$/, ""));
 
-  // ── Plan prices the copy may advertise as an entry price ──────────────────
-  const { starter, premium } = PRICING_COPY.prices;
-  const planPrices = new Set([starter.yearlyDkk, starter.monthlyDkk, premium.yearlyDkk, premium.monthlyDkk]);
+  const LEGAL_KEYS = new Set([LEGAL_COOKIES_PAGE_KEY, LEGAL_PRIVACY_PAGE_KEY, LEGAL_TERMS_PAGE_KEY]);
 
   // ── Page keys the site reads (see app/**/page.tsx and app/sitemap.ts) ─────
   const pageKeys = [
@@ -156,14 +152,9 @@ async function main() {
       for (const p of internalPaths(text)) {
         if (!isRoute(p)) report(`links to ${p}, which is not a route on qlim8.com`, key, where);
       }
-      for (const { phrase, price } of advertisedEntryPrices(text)) {
-        if (!planPrices.has(price)) {
-          report(
-            `says "${phrase}" but the plans cost ${[...planPrices].join("/")} kr/md (src/content/copy/pricing.ts)`,
-            key,
-            where,
-          );
-        }
+      if (LEGAL_KEYS.has(key)) continue;
+      for (const { kind, match } of salesLedViolations(text)) {
+        report(`${kind}: "${match}" (qlim8 is sold after a demo and names no package price)`, key, where);
       }
     }
   }
@@ -176,6 +167,9 @@ async function main() {
         checkedStrings++;
         for (const p of internalPaths(text)) {
           if (!isRoute(p)) report(`links to ${p}, which is not a route on qlim8.com`, `article ${a.slug}`, where);
+        }
+        for (const { kind, match } of salesLedViolations(text)) {
+          report(`${kind}: "${match}" (qlim8 is sold after a demo and names no package price)`, `article ${a.slug}`, where);
         }
       }
     } catch (err) {

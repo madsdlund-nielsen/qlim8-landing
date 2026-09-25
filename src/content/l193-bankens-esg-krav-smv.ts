@@ -218,7 +218,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Og hvis du vælger software-vejen og overvejer qlim8, er det altid muligt at logge ind i vores eksempelmiljø og prøve hele platformen uden at tilkoble dit regnskab eller bruge et kreditkort. Det er bygget netop til den situation, hvor du gerne vil se hvad du går ind i, før du beslutter dig.',
+      text: 'Og hvis du vælger software-vejen og overvejer qlim8, så book en demo, eller ring til mig på +45 93 90 13 84. Så viser jeg dig platformen, og du kan se hvad du går ind i, før du beslutter dig.',
     },
 
     { type: 'h2', text: 'Det her er ikke en krise. Men det forsvinder ikke.' },

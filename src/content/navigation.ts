@@ -83,7 +83,7 @@ export const PRIMARY_NAV: NavTop[] = [
   topFor("kundetyper"),
   topFor("produkt"),
   topFor("integrationer"),
-  { label: "Priser", href: "/priser" },
+  { label: "Pakker", href: "/priser" },
   { label: "Metodologi", href: "/metodologi" },
   { label: "Blog", href: "/blog" },
 ];

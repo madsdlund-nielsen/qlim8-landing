@@ -1,0 +1,31 @@
+%% qlim8, Demo request to customer account (Diagram 8). qlim8 is sold after a demo:
+%% no self-service signup, no checkout. Replaces the former pricing checkout sequence
+%% (landing -> app /api/stripe/checkout-public -> Stripe), which no longer exists.
+%% A visitor can also call +45 93 90 13 84; the account step is the same.
+sequenceDiagram
+  autonumber
+  actor V as Visitor / new customer
+  participant L as Landing (qlim8.com)
+  participant A as App (app.qlim8.com)
+  participant DB as PostgreSQL
+  participant R as Resend
+  actor O as Owner (super-admin)
+
+  V->>L: Book demo: /kontakt?emne=demo, submit the form
+  L->>L: POST /api/contact (same-origin route handler)
+  L->>A: POST /api/public/contact (server-side proxy)
+  Note over A: honeypot, validation, rate limit per email
+  A->>DB: insert contact_requests row
+  A-)R: owner notification (best-effort, Reply-To = visitor)
+  A-->>L: 200 { success, message }
+  L-->>V: confirmation, GA4 generate_lead
+  R-)O: email to CONTACT_NOTIFY_EMAIL
+  Note over V,O: demo held by phone or meeting, outside the system
+  O->>A: /admin: create customer with the agreed package<br/>POST /api/admin/customers (re-auth)
+  A->>DB: user (random password, provisionedTier)<br/>+ single-use set-password token (7 days)
+  A-)R: welcome email
+  R-)V: "Vælg adgangskode" link to /reset-password
+  V->>A: choose password, log in
+  V->>A: /onboarding: company details
+  A->>DB: create tenant, subscriptionTier = provisioned package
+  Note over A: invoiced outside the app, no Stripe checkout

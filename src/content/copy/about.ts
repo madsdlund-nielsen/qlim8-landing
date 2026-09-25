@@ -89,7 +89,7 @@ export const ABOUT_COPY: AboutCopy = {
   outro: {
     title: "Vil du høre mere?",
     body: "Skriv direkte. Ingen sales-team mellem dig og personen der har bygget platformen.",
-    ctaPrimary: "Se priser",
+    ctaPrimary: "Se pakker",
     ctaSecondary: "kontakt@qlim8.com",
   },
 };

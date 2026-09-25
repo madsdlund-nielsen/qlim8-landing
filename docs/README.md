@@ -1,6 +1,6 @@
 # qlim8-landing: documentation
 
-> Last updated: 2026-06-29 · Owner: qlim8 team
+> Last updated: 2026-09-25 · Owner: qlim8 team
 
 This repository is the **marketing site** (qlim8.com). For the **whole-system architecture**
 (the app at app.qlim8.com **and** this landing site) see the diagram suite:
@@ -15,9 +15,9 @@ This repository is the **marketing site** (qlim8.com). For the **whole-system ar
   🇩🇰 [Dansk](./da/seo/structured-data-and-sitemap.md)
 
   The three rules the site holds itself to (a real `lastmod` per URL, one
-  `@id`-linked schema graph, content in the HTML) and the scripts that enforce
-  each: `scripts/content-dates.mjs`, `scripts/check-schema.mjs`,
-  `scripts/check-cms-copy.mjs`.
+  `@id`-linked schema graph with no `offers` or prices, content in the HTML)
+  and the scripts that enforce each: `scripts/content-dates.mjs`,
+  `scripts/check-schema.mjs`, `scripts/check-cms-copy.mjs`.
 
 ## Operations
 
@@ -37,8 +37,12 @@ This repository is the **marketing site** (qlim8.com). For the **whole-system ar
 
 These are **synced copies**. The canonical, always-current architecture docs live in the
 [**qlim8-app**](https://github.com/madsdlund-nielsen/qlim8-app/tree/main/docs) repository
-(`docs/{en,da}/architecture/`). Last synced: 2026-06-29.
+(`docs/{en,da}/architecture/`). Last synced: 2026-06-29; the sales-led sections (§1, §5, §6,
+§7.2, §8) were updated here on 2026-09-25, ahead of the qlim8-app copy.
 
-> Note: the newsletter signup bridge was fixed in this change, the landing forms now POST to the
-> absolute app URL (`NEXT_PUBLIC_API_URL ?? https://app.qlim8.com`) and reach the app's
-> `/api/newsletter/signup` handler. See §5 and §8 of the architecture doc.
+> Note (2026-09-25): qlim8 is sold after a demo, with no self-service signup and no published
+> package prices. The landing site no longer calls the app's `/api/stripe/checkout-public`. Its
+> bridges to the app are now the same-origin proxies `/api/contact` → `/api/public/contact` and
+> `/api/newsletter/signup` → `/api/newsletter/signup`, the CMS reads, and the "Log ind" link for
+> existing customers. Diagram 8 now shows the demo request → customer account sequence in place
+> of the checkout. See §5, §7.2 and §8 of the architecture doc, and "Sales-led" in `CLAUDE.md`.

@@ -2,9 +2,10 @@
 //
 // The pattern is Resend's: every page has a `.md` twin, reachable either by
 // appending `.md` to the URL or by sending `Accept: text/markdown`, and
-// `/llms.txt` indexes the lot. An assistant that wants the pricing table should
+// `/llms.txt` indexes the lot. An assistant that wants the package table should
 // not have to run a Tailwind-class-heavy HTML document through a parser to find
-// it.
+// it. Like the rendered site, the twins carry no package prices and no signup
+// link: qlim8 is sold after a demo (src/content/cta.ts).
 //
 // The one rule that matters here: **everything goes through resolvePageCopy**,
 // so a page published from the app's /admin CMS serialises its published text,
@@ -20,6 +21,7 @@ import { fetchPublishedArticles, fetchArticleBySlug } from "@/lib/cms";
 import { articles as bundledArticles } from "@/content/articles";
 import { HOME_PAGE_KEY, HOME_COPY, type HomeCopy } from "@/content/copy/home";
 import { PRICING_PAGE_KEY, PRICING_COPY, type PricingCopy } from "@/content/copy/pricing";
+import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
 import { BASE_URL } from "@/lib/schema";
 
 export const MARKDOWN_CONTENT_TYPE = "text/markdown; charset=utf-8";
@@ -45,6 +47,11 @@ function frontMatter(fields: Record<string, string | undefined>): string {
     .filter(([, v]) => v)
     .map(([k, v]) => `${k}: ${JSON.stringify(v)}`);
   return `---\n${lines.join("\n")}\n---`;
+}
+
+/** The ways in, as one line: a demo or a phone call. No signup link exists. */
+function demoLine(): string {
+  return `[${DEMO_LABEL}](${BASE_URL}${DEMO_HREF}) eller ring [${PHONE_DISPLAY}](${PHONE_HREF}).`;
 }
 
 function faqSection(faq: { title: string; items: { q: string; a: string }[] } | undefined): string | undefined {
@@ -180,6 +187,7 @@ function renderHome(copy: HomeCopy): string {
     }),
     `# ${copy.hero.title}`,
     copy.hero.subtitle,
+    copy.hero.ctaNote,
     `## ${copy.integrations.title}`,
     copy.integrations.body,
     `Systemer: ${copy.integrations.systems.join(", ")}. ${copy.integrations.note1}. ${copy.integrations.note2}.`,
@@ -194,33 +202,64 @@ function renderHome(copy: HomeCopy): string {
     ...copy.steps.items.map((s) => `### ${s.title}\n\n${s.body}`),
     `## ${copy.pricingTeaser.title}`,
     ...copy.pricingTeaser.plans.map((p) =>
-      [`### ${p.name}: ${p.price}`, p.tag, bullets(p.features)].filter(Boolean).join("\n\n"),
+      [`### ${p.name}`, p.badge && `_${p.badge}_`, p.tag, bullets(p.features)].filter(Boolean).join("\n\n"),
     ),
+    `Prisen afhænger af pakke og behov, og I får et konkret tilbud ved en demo. Se hvad hver pakke indeholder på [${BASE_URL}/priser](${BASE_URL}/priser.md).`,
     `## ${copy.finalCta.title}`,
     copy.finalCta.body,
+    demoLine(),
   ]);
 }
 
+type PackageCopy = { name: string; tagline: string; includedLabel: string; features: string[] };
+
+function renderPackage(p: PackageCopy): string {
+  return [`## ${p.name}`, p.tagline, `${p.includedLabel}:`, bullets(p.features)].filter(Boolean).join("\n\n");
+}
+
+function comparisonCell(v: boolean | string): string {
+  if (v === true) return "Ja";
+  if (v === false) return "-";
+  return v;
+}
+
 function renderPricing(copy: PricingCopy): string {
-  const p = copy.prices;
   return join([
     frontMatter({
-      title: "qlim8 priser",
-      description: "Starter, Premium og Enterprise. Priser i DKK pr. måned.",
+      title: "Pakker: Starter, Premium & Enterprise",
+      description:
+        "Starter, Premium og Enterprise, og hvad hver pakke indeholder. Prisen afhænger af pakke og behov og gives ved en demo.",
       url: `${BASE_URL}/priser`,
     }),
-    "# Priser",
-    // One string, not one per row: `join` puts a blank line between parts,
-    // which would break the table into unrelated paragraphs.
-    [
-      "| Plan | Pr. måned (årlig betaling) | Pr. måned (månedlig betaling) |",
-      "| --- | --- | --- |",
-      `| Starter | ${p.starter.yearlyDkk} kr | ${p.starter.monthlyDkk} kr |`,
-      `| Premium | ${p.premium.yearlyDkk} kr | ${p.premium.monthlyDkk} kr |`,
-      "| Enterprise | Kontakt os | Kontakt os |",
-    ].join("\n"),
+    `# ${copy.header.title}`,
+    copy.header.subtitle,
+    bullets(copy.trustBar?.map((t) => t.replace(/^✓\s*/, ""))),
+    renderPackage(copy.starter),
+    renderPackage(copy.premium),
+    renderPackage({
+      ...copy.enterprise,
+      features: copy.enterprise.features.map((f) => (f.note ? `${f.label} (${f.note})` : f.label)),
+    }),
     "VSME Basis er med fra Starter. VSME Comprehensive og MCP-adgang kræver Premium. CSRD kræver Enterprise.",
+    copy.comparison?.rows?.length &&
+      [
+        `## ${copy.comparison.title}`,
+        // One string, not one per row: `join` puts a blank line between parts,
+        // which would break the table into unrelated paragraphs.
+        [
+          "| Funktion | Starter | Premium | Enterprise |",
+          "| --- | --- | --- | --- |",
+          ...copy.comparison.rows.map(
+            (r) =>
+              `| ${r.label} | ${comparisonCell(r.starter)} | ${comparisonCell(r.premium)} | ${comparisonCell(r.enterprise)} |`,
+          ),
+        ].join("\n"),
+      ].join("\n\n"),
+    "## Pris",
+    `Prisen afhænger af pakke og behov, og I får et konkret tilbud ved en demo. ${demoLine()}`,
     faqSection(copy.faq),
+    copy.closing && `## ${copy.closing.title}`,
+    copy.closing?.body,
   ]);
 }
 

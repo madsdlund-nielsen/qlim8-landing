@@ -1,5 +1,10 @@
 // Bundled default copy for /kontakt. CMS pageKey: "page.contact".
-// Form field labels/placeholders are UI chrome and stay in the JSX.
+// Form field labels/placeholders are UI chrome and stay in the JSX
+// (src/components/public/ContactForm.tsx).
+//
+// This page is where a visitor becomes a customer: qlim8 is sold after a demo,
+// and every "Book demo" on the site lands here with the demo preselected
+// (src/content/cta.ts). The phone number is the other way in.
 
 export const CONTACT_PAGE_KEY = "page.contact";
 
@@ -24,12 +29,12 @@ export interface ContactCopy {
 
 export const CONTACT_COPY: ContactCopy = {
   hero: {
-    title: "Lad os tale sammen",
+    title: "Book en demo, eller skriv til os",
     subtitle:
-      "Har du spørgsmål om qlim8, klimaregnskab eller hvordan vi kan hjælpe din virksomhed? Vi er her for at hjælpe.",
+      "På en demo viser vi qlim8 med udgangspunkt i din virksomhed, og så finder vi sammen den pakke, der passer. Har du bare et spørgsmål, så skriv eller ring.",
   },
   form: {
-    title: "Send os en besked",
+    title: "Book demo eller send en besked",
     submitLabel: "Send besked",
   },
   info: {

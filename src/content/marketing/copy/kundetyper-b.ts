@@ -1,15 +1,13 @@
 import type { MarketingPageCopy } from "@/content/marketing/types";
+import { DEMO_CTA, PHONE_CTA } from "@/content/cta";
 
 // Kundetyper: batch B: Revisorer, Plastfabrikanter, Rådgivere, Konsulenter,
 // Frisører, Store virksomheder. Danish long-form marketing copy, typed as data.
-// Brand-voice + positioning per docs/da/marketing/_shared/*. Fixed CTA conventions.
+// Brand-voice + positioning per docs/da/marketing/_shared/*. Fixed CTA conventions:
+// qlim8 is sold after a demo (see src/content/cta.ts), so the primary CTA is
+// DEMO_CTA and the closing secondary is PHONE_CTA.
 
-const PRIMARY_CTA = {
-  label: "Opret gratis konto",
-  href: "https://app.qlim8.com/auth?tab=register",
-};
-const HERO_SECONDARY_CTA = { label: "Se priser", href: "/priser" };
-const CLOSING_SECONDARY_CTA = { label: "Book demo", href: "/kontakt" };
+const HERO_SECONDARY_CTA = { label: "Se pakker", href: "/priser" };
 
 // ---------------------------------------------------------------------------
 // Revisorer: 3rd-party / partner audience
@@ -21,7 +19,7 @@ export const KT_REVISOR: MarketingPageCopy = {
     title: "Tilbyd klimaregnskab som ydelse: uden licens-omkostning pr. klient",
     subtitle:
       "Dine kunder spørger allerede om CO₂e-tal. Med qlim8 håndterer du alle dine klienters klimaregnskab fra ét konsulent-login, mens klienten selv betaler abonnementet.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -42,7 +40,7 @@ export const KT_REVISOR: MarketingPageCopy = {
       solution:
         "qlim8 lægger abonnementet hos klient-tenanten. Din tredjeparts-adgang koster ikke seat-fee, du tilføjer klienter uden at din egen omkostning stiger.",
       outcome:
-        "0 kr. i licens-omkostning på din side; hele fakturaen er dækningsbidrag på arbejdet.",
+        "Ingen licens-omkostning på din side; hele fakturaen er dækningsbidrag på arbejdet.",
     },
     {
       pain:
@@ -116,7 +114,7 @@ export const KT_REVISOR: MarketingPageCopy = {
       note: "vs. Excel-baseret tilgang [antagelse: 3 pilot-revisor-interviews]",
     },
     {
-      value: "0 kr.",
+      value: "Ingen",
       label: "licens-omkostning på din side",
       note: "klient-tenant betaler abonnementet",
     },
@@ -136,7 +134,7 @@ export const KT_REVISOR: MarketingPageCopy = {
     items: [
       {
         q: "Skal jeg betale en licens pr. klient?",
-        a: "Nej. Klient-tenanten betaler selv sit abonnement (Starter fra 300 kr/md, Premium 1.195 kr/md). Din tredjeparts-adgang koster ikke seat-fee, så du kan tilføje ubegrænset klienter uden at din egen omkostning stiger.",
+        a: "Nej. Klient-tenanten betaler selv sit abonnement. Din tredjeparts-adgang koster ikke seat-fee, så du kan tilføje ubegrænset klienter uden at din egen omkostning stiger.",
       },
       {
         q: "Kan jeg komme til at ændre en klients data ved en fejl?",
@@ -163,9 +161,9 @@ export const KT_REVISOR: MarketingPageCopy = {
   closingCta: {
     title: "Byg en fakturerbar klimaregnskab-ydelse oven på din praksis",
     description:
-      "Opret en gratis konto og se konsulent-flowet med audit-pack-scope og sign-off, eller book en demo, hvor vi går det igennem med revisorbriller.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi går konsulent-flowet med audit-pack-scope og sign-off igennem med revisorbriller.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -179,7 +177,7 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
     title: "Fra energitung produktion til dokumenteret CO₂e-regnskab",
     subtitle:
       "Din produktion er el-tung, dine råvarer vejer i Scope 3, og dine kunder begynder at spørge om CO₂e pr. produkt. qlim8 samler det i ét klimaregnskab, du kan stå inde for.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -314,16 +312,16 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "qlim8 starter fra 300 kr/md på Starter-planen, og Premium er 1.195 kr/md. For en produktionsvirksomhed med Scope 3-behov og PCF er det typisk Premium eller derover, der passer. Se prissiden for detaljerne.",
+        a: "Prisen afhænger af pakke og behov. For en produktionsvirksomhed med Scope 3-behov og PCF er det typisk Premium eller derover, der passer. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
       },
     ],
   },
   closingCta: {
     title: "Få styr på Scope 1, 2 og 3 for din produktion",
     description:
-      "Opret en gratis konto, kobl Eloverblik på, og se dit energi- og råvareaftryk samlet i ét regnskab, eller book en demo, hvor vi gennemgår PCF og værdikæde-svar.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi viser, hvordan dit energi- og råvareaftryk samles i ét regnskab, og gennemgår PCF og værdikæde-svar.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -337,7 +335,7 @@ export const KT_RAADGIVER: MarketingPageCopy = {
     title: "Rådgiv på klima og ESG med data i stedet for regneark",
     subtitle:
       "Dine kunder beder om ESG-rådgivning, men dit grundlag ligger i skrøbelige Excel-ark. Med qlim8 rådgiver du på et levende klimaregnskab med sporbarhed og adgang på tværs af kunder.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -432,7 +430,7 @@ export const KT_RAADGIVER: MarketingPageCopy = {
       note: "tredjeparts-adgang, ingen seat-fee",
     },
     {
-      value: "0 kr.",
+      value: "Ingen",
       label: "licens-omkostning hos dig",
       note: "kunde-tenant betaler abonnementet",
     },
@@ -456,7 +454,7 @@ export const KT_RAADGIVER: MarketingPageCopy = {
       },
       {
         q: "Betaler jeg for hver kunde, jeg rådgiver?",
-        a: "Nej. Kunde-tenanten betaler selv sit abonnement (Starter fra 300 kr/md, Premium 1.195 kr/md). Din adgang som rådgiver koster ikke ekstra, så du lægger ikke licens-omkostning til din egen drift.",
+        a: "Nej. Kunde-tenanten betaler selv sit abonnement. Din adgang som rådgiver koster ikke ekstra, så du lægger ikke licens-omkostning til din egen drift.",
       },
       {
         q: "Kan jeg bruge qlim8 til reduktionsrådgivning, ikke kun rapportering?",
@@ -479,9 +477,9 @@ export const KT_RAADGIVER: MarketingPageCopy = {
   closingCta: {
     title: "Skalér din ESG-rådgivning på et sporbart grundlag",
     description:
-      "Opret en gratis konto og prøv rådgiver-flowet med tredjeparts-adgang, eller book en demo, hvor vi viser Scenario Planner og lineage på rigtige data.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi viser rådgiver-flowet med tredjeparts-adgang, Scenario Planner og lineage på rigtige data.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -495,7 +493,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
     title: "Lever målbare klimaregnskaber og reduktionsplaner til flere kunder",
     subtitle:
       "Du vil levere klimaregnskab og reduktionsplaner, der kan måles og følges, ikke en engangs-rapport. qlim8 giver dig værktøjerne til at gøre det effektivt på tværs af hele din kundeportefølje.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -622,7 +620,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
       },
       {
         q: "Betaler jeg licens pr. kunde?",
-        a: "Nej. Kunde-tenanten betaler selv abonnementet (Starter fra 300 kr/md, Premium 1.195 kr/md). Din adgang som konsulent koster ikke ekstra, så du kan tage også mindre opgaver rentabelt.",
+        a: "Nej. Kunde-tenanten betaler selv abonnementet. Din adgang som konsulent koster ikke ekstra, så du kan tage også mindre opgaver rentabelt.",
       },
       {
         q: "Kan mine kunder rapportere compliant efter VSME og CSRD?",
@@ -637,9 +635,9 @@ export const KT_KONSULENT: MarketingPageCopy = {
   closingCta: {
     title: "Lever målbar klimafremdrift til flere kunder",
     description:
-      "Opret en gratis konto og prøv Scenario Planner og reduktion-tracking, eller book en demo, hvor vi går konsulent-flowet igennem på tværs af en portefølje.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi viser Scenario Planner og reduktion-tracking og går konsulent-flowet igennem på tværs af en portefølje.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -653,7 +651,7 @@ export const KT_FRISOER: MarketingPageCopy = {
     title: "Dit klimaregnskab klaret på en eftermiddag",
     subtitle:
       "Din bank, din leverandør eller din kæde beder om ESG-tal, men du har ikke en bæredygtighedsafdeling. qlim8 laver et ærligt klimaregnskab for salonen ud fra det, du allerede har: el, vand og produkter.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -680,9 +678,9 @@ export const KT_FRISOER: MarketingPageCopy = {
       pain:
         "Du har ikke tid til et langt konsulent-forløb, og et konsulenthonorar giver ikke mening for en salon af din størrelse.",
       solution:
-        "qlim8 koster fra 300 kr/md på Starter-planen, en brøkdel af et konsulent-engagement. Du laver regnskabet selv med platformens hjælp og ejer dine egne data.",
+        "qlim8 er bygget til små virksomheder uden ESG-specialist. Du laver regnskabet selv med platformens hjælp og ejer dine egne data.",
       outcome:
-        "Compliance uden konsulent, til en pris der passer en lille virksomhed.",
+        "Compliance uden konsulent, i en løsning bygget til en lille virksomhed.",
     },
     {
       pain:
@@ -743,9 +741,9 @@ export const KT_FRISOER: MarketingPageCopy = {
       note: "[antagelse: interne onboarding-estimater]",
     },
     {
-      value: "Fra 300 kr/md",
-      label: "Starter-plan",
-      note: "en brøkdel af et konsulenthonorar",
+      value: "GHG Protocol",
+      label: "konsistent regnskab",
+      note: "hvert tal har en kilde",
     },
     {
       value: "Auto",
@@ -771,7 +769,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "qlim8 starter fra 300 kr/md på Starter-planen. For de fleste saloner er det rigeligt til at lave og vedligeholde et klimaregnskab. Premium er 1.195 kr/md, hvis du får brug for mere. Se prissiden for detaljerne.",
+        a: "Prisen afhænger af pakke og behov. For de fleste saloner er Starter rigeligt til at lave og vedligeholde et klimaregnskab, og Premium er der, hvis du får brug for mere. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
       },
       {
         q: "Hvad indgår i regnskabet for en frisør?",
@@ -788,11 +786,11 @@ export const KT_FRISOER: MarketingPageCopy = {
     ],
   },
   closingCta: {
-    title: "Få salonens klimaregnskab klaret i eftermiddag",
+    title: "Få salonens klimaregnskab klaret på en eftermiddag",
     description:
-      "Opret en gratis konto, kobl Eloverblik på, og se, hvor hurtigt et ærligt klimaregnskab er klar til at sende videre. Book en demo, hvis du vil se det først.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi, hvor hurtigt et ærligt klimaregnskab er klar til at sende videre. Passer qlim8 til din salon, opretter vi din konto og hjælper med at forbinde regnskabssystemet og Eloverblik.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -806,7 +804,7 @@ export const KT_STORE: MarketingPageCopy = {
     title: "Saml Scope 3 fra hele din værdikæde og lever CSRD",
     subtitle:
       "Du er CSRD-pligtig og skal aggregere Scope 3 fra 50+ leverandører år efter år. qlim8 gør indsamlingen til self-service: send ét link til leverandørerne, og deres data lander direkte i dit regnskab med audit-spor.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
@@ -948,8 +946,8 @@ export const KT_STORE: MarketingPageCopy = {
   closingCta: {
     title: "Gør Scope 3-indsamlingen til self-service og lever CSRD",
     description:
-      "Opret en gratis konto og se værdikæde-portalen, eller book en demo, hvor vi gennemgår ESRS E1-mapping og audit-spor med jeres egen leverandør-struktur som eksempel.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, hvor vi viser værdikæde-portalen og gennemgår ESRS E1-mapping og audit-spor med jeres egen leverandør-struktur som eksempel.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };

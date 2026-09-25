@@ -100,28 +100,28 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'SMV-specifikke platforme: det segment hvor qlim8 lever, sammen med en håndfuld andre danske og europæiske aktører. Her er priserne offentlige og typisk i 3-cifret kroneklasse pr. måned. Det er bevidst designet til den SMV-virkelighed, hvor budgettet for bæredygtighedsarbejde er reelt begrænset, og hvor man ikke har en dedikeret bæredygtighedschef til at lære et komplekst system at kende.',
+      text: 'SMV-specifikke platforme: det segment hvor qlim8 lever, sammen med en håndfuld andre danske og europæiske aktører. Her ligger priserne typisk i 3-cifret kroneklasse pr. måned. Det er bevidst designet til den SMV-virkelighed, hvor budgettet for bæredygtighedsarbejde er reelt begrænset, og hvor man ikke har en dedikeret bæredygtighedschef til at lære et komplekst system at kende.',
     },
-    { type: 'paragraph', text: 'Lad mig være konkret om qlim8\'s egne priser, for det er den eneste platform, jeg kan udtale mig fagligt præcist om.' },
+    { type: 'paragraph', text: 'Lad mig være konkret om qlim8\'s egne pakker, for det er den eneste platform, jeg kan udtale mig fagligt præcist om. Og ja, jeg ved godt, at det er lidt ironisk i en artikel om priser, men et tal får du ikke her. qlim8 sælges efter en demo, fordi prisen afhænger af pakken og af jeres behov, og jeg vil hellere give dig et konkret tilbud end et tal, der ikke passer.' },
     {
       type: 'paragraph',
-      text: 'qlim8 Starter koster 395 kroner om måneden ved månedlig betaling, eller 3.600 kroner om året ved årsbetaling. Det svarer til 300 kroner om måneden effektivt, hvis du vælger årsbetaling. Den dækker komplet Scope 1, 2 og 3 klimaregnskab med AI-kategorisering, fuld audit trail på hver beregning, VSME Basis-rapport med wizard, Excel-eksport og adgang til alle danske integrationer (Dinero, e-conomic, Billy og Eloverblik).',
-    },
-    {
-      type: 'paragraph',
-      text: 'qlim8 Premium koster 1.595 kroner om måneden ved månedlig betaling, eller 14.340 kroner om året ved årsbetaling. Det svarer til 1.195 kroner om måneden effektivt på årsbetaling. Premium inkluderer alt i Starter plus VSME Comprehensive, reduktionsmål, Scenario Builder, custom PDF-rapporter, offentligt Brag Board og fuldt REST API + MCP-integration.',
+      text: 'qlim8 Starter dækker komplet Scope 1, 2 og 3 klimaregnskab med AI-kategorisering, fuld audit trail på hver beregning, VSME Basis-rapport med wizard, Excel-eksport og adgang til alle danske integrationer (Dinero, e-conomic, Billy og Eloverblik).',
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Enterprise er den tredje tier: den er prissat individuelt fordi den indeholder funktioner som dedikeret supply chain-portal og rollebaseret adgangsstyring, og fordi behovet varierer markant. Hvis I er en større organisation der skal indsamle VSME-data fra mange underleverandører, er det den vej, vi typisk taler med jer om.',
+      text: 'qlim8 Premium inkluderer alt i Starter plus VSME Comprehensive, reduktionsmål, Scenario Builder, custom PDF-rapporter, offentligt Brag Board og fuldt REST API + MCP-integration.',
     },
     {
       type: 'paragraph',
-      text: 'Derudover findes en enkelt vigtig add-on: I kan tilkøbe yderligere historisk data, hvis I vil have en baseline længere tilbage i tiden end de tre måneder, der hentes automatisk ved tilkobling. Det er et engangsbeløb på 3.600 kroner på Starter og 9.000 kroner på Premium.',
+      text: 'qlim8 Enterprise er den tredje tier. Den indeholder funktioner som dedikeret supply chain-portal og rollebaseret adgangsstyring, og her varierer behovet markant. Hvis I er en større organisation der skal indsamle VSME-data fra mange underleverandører, er det den vej, vi typisk taler med jer om.',
     },
     {
       type: 'paragraph',
-      text: 'Det er det. Ingen opsætningsgebyrer, ingen forpligtelser ud over abonnementet, ingen skjulte konsulenttimer indregnet i prisen. Du kan oprette en gratis konto, prøve hele platformen i et eksempelmiljø med fyldt eksempeldata, og vælge plan først, når du beslutter dig for at tilkoble dit eget regnskab.',
+      text: 'Derudover findes en enkelt vigtig add-on: I kan tilkøbe yderligere historisk data, hvis I vil have en baseline længere tilbage i tiden end de tre måneder, der hentes automatisk ved tilkobling. Det er et engangsbeløb, som vi gennemgår på demoen.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Det er det. Ingen opsætningsgebyrer, ingen forpligtelser ud over abonnementet, ingen skjulte konsulenttimer indregnet i prisen. Vejen ind er en demo: jeg viser jer platformen, vi finder den pakke, der passer, og I får et konkret tilbud. Vælger I qlim8, opretter jeg jeres konto og hjælper med at forbinde regnskabssystemet, og qlim8 henter tre måneders historik med det samme.',
     },
     {
       type: 'paragraph',
@@ -135,7 +135,7 @@ export const artikel: Article = {
       items: [
         'DIY i Excel: opstart 0 kr, år 1 typisk 40-80.000 kr (intern tid), år 2 og 3 typisk 20-40.000 kr, 3-års TCO 80-160.000 kr. Intet automatisk audit trail eller opdatering.',
         'Konsulent: opstart 0 kr, år 1 typisk 36-90.000 kr, år 2 og 3 typisk 24-72.000 kr, 3-års TCO 84-234.000 kr. Delvist audit trail, ingen automatisk opdatering.',
-        'SMV-software (qlim8 Starter): opstart 0 kr (sandbox er gratis), årlige omkostninger 3-3.600 kr, 3-års TCO 9-10.800 kr. Fuld audit trail, automatisk opdatering, samme dag.',
+        'SMV-software: opstart typisk 0 kr, årligt typisk under 10.000 kr, 3-års TCO typisk under 30.000 kr. Fuld audit trail og automatisk opdatering fra den dag, regnskabssystemet er tilkoblet.',
         'Enterprise-platform: opstart 0 kr (men salgsmøde-tid), årligt typisk 120-360.000 kr, 3-års TCO 360.000-1.080.000 kr. Fuld audit trail og automatisk opdatering, men implementation tager 1-3 måneder.',
       ],
     },
@@ -227,7 +227,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det er det, vi har bygget qlim8 til. Hvis du vil se hvordan, er der en gratis konto med eksempeldata, du kan klikke rundt i, før du beslutter dig. Ingen kreditkort, ingen salgsmøde, og prøveperioden starter først, når du tilkobler dit eget regnskab.',
+      text: 'Det er det, vi har bygget qlim8 til. Hvis du vil se hvordan, så book en demo, eller ring til mig på +45 93 90 13 84. Jeg viser dig gerne platformen, før du beslutter dig.',
     },
     {
       type: 'paragraph',

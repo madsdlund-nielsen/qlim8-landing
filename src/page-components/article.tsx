@@ -4,6 +4,7 @@ import { SiteFooter } from '@/components/public/SiteFooter'
 import { NewsletterForm } from '@/components/public/NewsletterForm'
 import { ArticleSections } from '@/components/public/ArticleSections'
 import type { Article } from '@/content/article'
+import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from '@/content/cta'
 
 function formatDate(iso: string) {
   return new Intl.DateTimeFormat('da-DK', {
@@ -49,14 +50,24 @@ export default function ArticleTemplate({ article }: { article: Article }) {
         <div className="mt-14 p-7 bg-gray-900 rounded-2xl">
           <p className="text-white font-bold text-lg mb-2">Klar til at komme i gang?</p>
           <p className="text-gray-300 text-sm mb-5 max-w-xl">
-            qlim8 gør klimaregnskabet automatisk. Fra 300 kr/md.
+            qlim8 gør klimaregnskabet automatisk. Book en demo, så viser vi platformen med udgangspunkt i din virksomhed.
           </p>
-          <a
-            href="https://app.qlim8.com/auth?tab=register"
-            className="inline-block px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full text-sm transition-colors"
-          >
-            Prøv gratis
-          </a>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+            {/* A full page load, like every other demo CTA: ContactForm reads
+                ?emne=demo from the URL once, when it mounts. */}
+            <a
+              href={DEMO_HREF}
+              className="inline-block px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full text-sm transition-colors"
+            >
+              {DEMO_LABEL}
+            </a>
+            <a
+              href={PHONE_HREF}
+              className="text-sm text-gray-300 hover:text-white transition-colors"
+            >
+              Eller ring {PHONE_DISPLAY}
+            </a>
+          </div>
         </div>
 
         <div className="mt-10">

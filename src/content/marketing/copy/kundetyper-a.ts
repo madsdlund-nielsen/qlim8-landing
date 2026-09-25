@@ -1,10 +1,11 @@
 import type { MarketingPageCopy, MarketingHubCopy } from "@/content/marketing/types";
 import type { ArticleSection } from "@/content/article";
+import { DEMO_CTA, PHONE_CTA } from "@/content/cta";
 
-// Fixed CTAs (per authoring spec): reused across every page below.
-const PRIMARY_CTA = { label: "Opret gratis konto", href: "https://app.qlim8.com/auth?tab=register" };
-const SECONDARY_HERO_CTA = { label: "Se priser", href: "/priser" };
-const CLOSING_SECONDARY_CTA = { label: "Book demo", href: "/kontakt" };
+// Fixed CTAs, reused across every page below. qlim8 is sold after a demo (see
+// src/content/cta.ts): the primary CTA is DEMO_CTA, the closing secondary is
+// PHONE_CTA.
+const SECONDARY_HERO_CTA = { label: "Se pakker", href: "/priser" };
 
 // ---------------------------------------------------------------------------
 // Hub: Kundetyper: "hvorfor vi findes" + markeds-differentiering
@@ -16,7 +17,7 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
     title: "Dit klimaregnskab: bygget oven på dit regnskab",
     subtitle:
       "qlim8 er bygget til danske SMV'er og deres revisorer. Vi forvandler den bogføring, du allerede laver, til et audit-bakket klimaregnskab, uden regneark og uden ekstern konsulent.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: SECONDARY_HERO_CTA,
   },
   intro: {
@@ -27,7 +28,7 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
       "Native dansk regnskabsdata: Dinero, e-conomic, Billy og Eloverblik, intet mapping-projekt.",
       "1.159 danske emissions-kategorier og DK-specifikke el-faktorer (Energinet, 5-minutters granularitet).",
       "VSME Basic / VSME Comprehensive-rapport i underskrifts-klar PDF med audit-spor bag hvert tal.",
-      "Fast pris fra 300 kr./md., ingen konsulent-fee på 75.000+ kr. [antagelse: 2 konsulent-firma-interviews, sample size 4].",
+      "Ingen konsulent-fee på 75.000+ kr. [antagelse: 2 konsulent-firma-interviews, sample size 4].",
     ],
   },
   cardsHeading: "Find din branche",
@@ -45,9 +46,9 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
         "Excel er stadig fint under ca. 50 fakturaer/md. Derover koster kopiér-indsæt både tid og troværdighed. qlim8 leverer VSME Basic og Comprehensive i underskrifts-klar PDF med kilde-citation bag hvert kg CO₂e, så revisor kan spore tallet uden en eneste opfølgnings-mail.",
     },
     {
-      title: "1/10 af en konsulent, opdateret hele året",
+      title: "Opdateret hele året, ikke et øjebliksbillede",
       body:
-        "Et førstegangs-VSME-engagement hos et konsulenthus løber typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4], og rapporten er et øjebliksbillede. qlim8 koster fra 300 kr./md., holder tallene løbende opdateret, og du ejer selv dine data.",
+        "Et førstegangs-VSME-engagement hos et konsulenthus løber typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4], og rapporten er et øjebliksbillede. qlim8 holder tallene løbende opdateret, og du ejer selv dine data.",
     },
     {
       title: "Klar på 1 dag, ikke efter 6 måneders implementering",
@@ -58,9 +59,9 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
   closingCta: {
     title: "Se dit klimaregnskab før frokost",
     description:
-      "Opret en gratis konto, tilslut Dinero, e-conomic eller Billy, og se dine første scope-summer samme dag. Ingen konsulent, ingen binding.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi platformen med udgangspunkt i din virksomhed. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte Dinero, e-conomic eller Billy, og du ser dine første scope-summer samme dag. Ingen konsulent.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -74,7 +75,7 @@ export const KT_TOMRER: MarketingPageCopy = {
     title: "Klimaregnskab for tømrer- og snedkerfirmaer",
     subtitle:
       "Din diesel, dit trælast-indkøb og dit byggeaffald er allerede bogført. qlim8 forvandler det til et klimaregnskab, du kan lægge på bordet, når banken eller bygherren spørger.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: SECONDARY_HERO_CTA,
   },
   intro: {
@@ -173,16 +174,16 @@ export const KT_TOMRER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det for et lille tømrerfirma?",
-        a: "Starter koster fra 300 kr./md. og dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (1.195 kr./md.) tilføjer Scenario Planner, Klimaagent og VSME Comprehensive.",
+        a: "Prisen afhænger af pakke og behov. Starter dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium tilføjer Scenario Planner, Klimaagent og VSME Comprehensive. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
       },
     ],
   },
   closingCta: {
     title: "Få tømrerfirmaets klimaregnskab ud af regnearket",
     description:
-      "Opret en gratis konto, tilslut dit regnskab, og se din diesel og dine materialer omsat til CO₂e samme dag. Klar til næste bygherre-spørgeskema.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab, og du ser din diesel og dine materialer omsat til CO₂e samme dag. Klar til næste bygherre-spørgeskema.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -196,7 +197,7 @@ export const KT_MALER: MarketingPageCopy = {
     title: "Klimaregnskab for malerfirmaer",
     subtitle:
       "Maling, opløsningsmidler, kemi, affald og varevogns-diesel er allerede bogført. qlim8 gør det til dokumentation, du kan aflevere til bygherren, uden regneark.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: SECONDARY_HERO_CTA,
   },
   intro: {
@@ -271,7 +272,7 @@ export const KT_MALER: MarketingPageCopy = {
   valueStats: [
     { value: "1.159", label: "danske kategorier din maling og kemi mappes mod" },
     { value: "70-80 %", label: "af fakturalinjer kategoriseres automatisk", note: "[antagelse: confidence ≥ 0,85]" },
-    { value: "fra 300 kr./md.", label: "for basis-flow og VSME Basic" },
+    { value: "1-3 timer/md.", label: "sparet på manuel opsummering", note: "[antagelse: pilotbrugere]" },
     { value: "7 år", label: "audit-spor til revisor" },
   ],
   faq: {
@@ -295,16 +296,16 @@ export const KT_MALER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Starter koster fra 300 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (1.195 kr./md.) tilføjer VSME Comprehensive, Scenario Planner og Klimaagent.",
+        a: "Prisen afhænger af pakke og behov. Starter giver VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium tilføjer VSME Comprehensive, Scenario Planner og Klimaagent. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
       },
     ],
   },
   closingCta: {
     title: "Gør malerfirmaets kemi og diesel til dokumentation",
     description:
-      "Opret en gratis konto, tilslut dit regnskab, og se dit klimaregnskab samme dag. Klar til næste bygherre-krav.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab, og du ser dit klimaregnskab samme dag. Klar til næste bygherre-krav.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -318,7 +319,7 @@ export const KT_ELEKTRIKER: MarketingPageCopy = {
     title: "Klimaregnskab for el-installatører",
     subtitle:
       "Servicevogne, kabel- og komponentindkøb og dit eget elforbrug er allerede data. qlim8 samler det til et klimaregnskab, du kan aflevere som underleverandør på større byggeprojekter.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: SECONDARY_HERO_CTA,
   },
   intro: {
@@ -417,16 +418,16 @@ export const KT_ELEKTRIKER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Starter koster fra 300 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (1.195 kr./md.) tilføjer VSME Comprehensive, Scenario Planner og Klimaagent.",
+        a: "Prisen afhænger af pakke og behov. Starter giver VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium tilføjer VSME Comprehensive, Scenario Planner og Klimaagent. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
       },
     ],
   },
   closingCta: {
     title: "Vær klar, når hovedentreprenøren spørger om ESG-data",
     description:
-      "Opret en gratis konto, tilslut dit regnskab og Eloverblik, og få et audit-bakket klimaregnskab, du kan sende videre samme dag.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab og Eloverblik, så du får et audit-bakket klimaregnskab, du kan sende videre samme dag.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -440,7 +441,7 @@ export const KT_VVS: MarketingPageCopy = {
     title: "Klimaregnskab for VVS-firmaer: bygget på dit regnskab",
     subtitle:
       "Servicevogne, rør og kedler, kølemidler og servicebesøg er allerede data i din bogføring. qlim8 samler det til et audit-bakket klimaregnskab, du kan aflevere til bygherrer og kommuner i udbud.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: SECONDARY_HERO_CTA,
   },
   intro: {
@@ -525,12 +526,17 @@ export const KT_VVS: MarketingPageCopy = {
     },
   ],
   howItWorks: {
-    title: "Fra regnskab til udbuds-klar rapport i fire trin",
+    title: "Fra demo til udbuds-klar rapport i fem trin",
     steps: [
       {
-        title: "Tilslut dit regnskab",
+        title: "Book en demo",
         body:
-          "Log ind med Visma Connect og forbind Dinero, e-conomic eller Billy. Tilslut Eloverblik for dit elforbrug. Det tager minutter, ikke et implementeringsprojekt.",
+          "Vi viser platformen med udgangspunkt i dit VVS-firma. Du kan også ringe på +45 93 90 13 84 eller skrive til os.",
+      },
+      {
+        title: "Vi sætter dig op",
+        body:
+          "Passer qlim8 til dig, opretter vi din konto og hjælper dig med at logge ind med Visma Connect, forbinde Dinero, e-conomic eller Billy og tilslutte Eloverblik for dit elforbrug. Det tager minutter, ikke et implementeringsprojekt, og qlim8 henter tre måneders historiske data med det samme.",
       },
       {
         title: "Lad qlim8 læse dine fakturaer",
@@ -576,7 +582,7 @@ export const KT_VVS: MarketingPageCopy = {
       },
       {
         q: "Hvad er forskellen på VSME Basic og Comprehensive for et VVS-firma?",
-        a: "VSME Basic dækker de grundlæggende scope-summer og nøgletal og følger med Starter (fra 300 kr./md.). VSME Comprehensive udvider modellen og følger med Premium (1.195 kr./md.) sammen med Scenario Planner, Klimaagent og reduktions-tracking.",
+        a: "VSME Basic dækker de grundlæggende scope-summer og nøgletal og følger med Starter. VSME Comprehensive udvider modellen og følger med Premium sammen med Scenario Planner, Klimaagent og reduktions-tracking.",
       },
       {
         q: "Skal jeg have en ESG-medarbejder eller en konsulent?",
@@ -587,9 +593,9 @@ export const KT_VVS: MarketingPageCopy = {
   closingCta: {
     title: "Gør VVS-firmaets aftryk udbuds-klart",
     description:
-      "Opret en gratis konto, tilslut dit regnskab og Eloverblik, registrér dine kølemidler, og få et audit-bakket klimaregnskab, der holder til bygherrer og offentlige udbud.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab og Eloverblik. Derefter registrerer du dine kølemidler og får et audit-bakket klimaregnskab, der holder til bygherrer og offentlige udbud.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -687,11 +693,11 @@ export const KT_VVS_BODY: ArticleSection[] = [
   },
   {
     type: "h2",
-    text: "Hvad det koster, og hvornår det betaler sig",
+    text: "Pakkerne, og hvornår det betaler sig",
   },
   {
     type: "paragraph",
-    text: "qlim8 Starter koster fra 300 kr./md. og dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium (1.195 kr./md.) tilføjer VSME Comprehensive, Scenario Planner, Klimaagent og reduktions-tracking med op til 7.500 aktiviteter og 5 seats. Til sammenligning løber et førstegangs-VSME-engagement hos et konsulenthus typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4], og giver dig et øjebliksbillede i stedet for et tal, du ejer og kan opdatere hele året.",
+    text: "qlim8 Starter dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium tilføjer VSME Comprehensive, Scenario Planner, Klimaagent og reduktions-tracking med op til 7.500 aktiviteter og 5 seats. Prisen afhænger af pakke og behov, og efter en demo giver vi dig et konkret tilbud. Til sammenligning løber et førstegangs-VSME-engagement hos et konsulenthus typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4], og giver dig et øjebliksbillede i stedet for et tal, du ejer og kan opdatere hele året.",
   },
 ];
 
@@ -705,7 +711,7 @@ export const KT_ENTREPRENOER: MarketingPageCopy = {
     title: "Klimaregnskab for entreprenører og bygningsentreprenører",
     subtitle:
       "Maskiner og diesel, beton, stål og asfalt, og en flok underleverandører. Dit aftryk er stort og sammensat. qlim8 gør det til et audit-bakket regnskab, der holder i offentlige udbud.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: SECONDARY_HERO_CTA,
   },
   intro: {
@@ -805,16 +811,16 @@ export const KT_ENTREPRENOER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det for et entreprenørfirma?",
-        a: "Starter koster fra 300 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Har du mange fakturaer og brug for underleverandør-koordinering og VSME Comprehensive, giver Premium (1.195 kr./md.) op til 7.500 aktiviteter og 5 seats.",
+        a: "Prisen afhænger af pakke og behov. Starter giver VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Har du mange fakturaer og brug for underleverandør-koordinering og VSME Comprehensive, giver Premium op til 7.500 aktiviteter og 5 seats. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
       },
     ],
   },
   closingCta: {
     title: "Gør entreprenørens klimaregnskab udbuds-klart",
     description:
-      "Opret en gratis konto, tilslut dit regnskab, og få et audit-bakket klimaregnskab, der holder, når ESG er tildelingskriterium i næste udbud.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab, så du får et audit-bakket klimaregnskab, der holder, når ESG er tildelingskriterium i næste udbud.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
 
@@ -828,7 +834,7 @@ export const KT_VOGNMAND: MarketingPageCopy = {
     title: "Klimaregnskab for vognmænd og transportfirmaer",
     subtitle:
       "Brændstof dominerer dit aftryk, og dine kunder skal bruge transport-emissionsdata til deres eget Scope 3. qlim8 gør din bogføring til et audit-bakket tal, du kan sende videre.",
-    primaryCta: PRIMARY_CTA,
+    primaryCta: DEMO_CTA,
     secondaryCta: SECONDARY_HERO_CTA,
   },
   intro: {
@@ -928,15 +934,15 @@ export const KT_VOGNMAND: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det for et vognmandsfirma?",
-        a: "Starter koster fra 300 kr./md. med VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Kører du meget og vil bruge Scenario Planner til at teste optimeringer, giver Premium (1.195 kr./md.) op til 7.500 aktiviteter og 5 seats.",
+        a: "Prisen afhænger af pakke og behov. Starter giver VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Kører du meget og vil bruge Scenario Planner til at teste optimeringer, giver Premium op til 7.500 aktiviteter og 5 seats. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
       },
     ],
   },
   closingCta: {
     title: "Vær vognmanden, der har transport-data klar",
     description:
-      "Opret en gratis konto, tilslut dit regnskab, og få et audit-bakket brændstof-regnskab, dine kunder kan bruge i deres Scope 3.",
-    primary: PRIMARY_CTA,
-    secondary: CLOSING_SECONDARY_CTA,
+      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab, så du får et audit-bakket brændstof-regnskab, dine kunder kan bruge i deres Scope 3.",
+    primary: DEMO_CTA,
+    secondary: PHONE_CTA,
   },
 };
