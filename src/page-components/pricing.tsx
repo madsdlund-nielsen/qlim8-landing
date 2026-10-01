@@ -1,11 +1,19 @@
 // Server component. The page used to be "use client" for its billing-cycle
 // toggle and the Stripe checkout it started; with no prices and no checkout
 // there is nothing left that needs a hook.
+//
+// Two layouts, chosen by the app's package catalog (src/lib/packageView.ts):
+// while it sells nothing by itself (catalog version 1, or the API cannot be
+// reached) this is the sales-led page it has been since 25.09: three cards
+// behind "Book demo", no price. Once it does, the packages API decides the
+// cards, prices and buttons (src/components/public/PackageGroups.tsx).
 import { Plus } from "lucide-react";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { SiteHeader } from "@/components/public/SiteHeader";
+import { PackageGroups } from "@/components/public/PackageGroups";
 import { PRICING_COPY, type PricingCopy } from "@/content/copy/pricing";
 import { CONTACT_HREF, DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
+import { isSelfServe, type PublicPackages } from "@/lib/packageView";
 
 function FeatureCell({ value }: { value: boolean | string }) {
   if (value === false) {
@@ -40,7 +48,25 @@ function DemoButton({ dark = false, plan }: { dark?: boolean; plan: string }) {
 
 // All copy lives in src/content/copy/pricing.ts (pageKey "page.pricing");
 // app/priser/page.tsx passes the CMS-merged result.
-export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy }) {
+export default function Pricing({
+  copy = PRICING_COPY,
+  packages = null,
+}: {
+  copy?: PricingCopy;
+  packages?: PublicPackages | null;
+}) {
+  const selfServe = isSelfServe(packages);
+  // The curated cards keep their CMS-editable names, taglines and lists.
+  const cardCopy = {
+    starter: { name: copy.starter.name, tagline: copy.starter.tagline, includedLabel: copy.starter.includedLabel, features: copy.starter.features },
+    premium: { name: copy.premium.name, tagline: copy.premium.tagline, includedLabel: copy.premium.includedLabel, features: copy.premium.features },
+    enterprise: {
+      name: copy.enterprise.name,
+      tagline: copy.enterprise.tagline,
+      includedLabel: copy.enterprise.includedLabel,
+      features: copy.enterprise.features.map((f) => (f.note ? `${f.label} (${f.note})` : f.label)),
+    },
+  };
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SiteHeader />
@@ -81,6 +107,10 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
             ))}
           </div>
 
+          {selfServe ? (
+            <PackageGroups data={packages!} cardCopy={cardCopy} comparisonTitle={copy.comparison.title} />
+          ) : (
+          <>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-0">
 
             {/* ── Starter ── */}
@@ -167,6 +197,8 @@ export default function Pricing({ copy = PRICING_COPY }: { copy?: PricingCopy })
               </tbody>
             </table>
           </div>
+          </>
+          )}
 
           <div className="mt-20" data-testid="faq-section">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 border-t border-gray-200 pt-10">

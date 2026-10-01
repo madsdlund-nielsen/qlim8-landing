@@ -7,6 +7,8 @@ import { HOME_PAGE_KEY, HOME_COPY } from "@/content/copy/home";
 import { JsonLd } from "@/components/JsonLd";
 import type { LandingImages } from "@/page-components/landing";
 import { ORGANIZATION, WEBSITE, buildSoftwareSchema } from "@/lib/schema";
+import { fetchPublicPackages } from "@/lib/packages";
+import { offersFromPackages } from "@/lib/packageView";
 
 // ISR: CMS-published homepage copy refreshes on this cadence (busted instantly
 // by the app's revalidate webhook on publish).
@@ -60,10 +62,11 @@ async function resolveLandingImages(): Promise<LandingImages> {
 }
 
 export default async function Page() {
-  const [copy, faqs, images] = await Promise.all([
+  const [copy, faqs, images, packages] = await Promise.all([
     resolvePageCopy(HOME_PAGE_KEY, HOME_COPY),
     resolveFaqs(),
     resolveLandingImages(),
+    fetchPublicPackages(),
   ]);
   return (
     <>
@@ -71,7 +74,8 @@ export default async function Page() {
         schema={[
           ORGANIZATION,
           WEBSITE,
-          buildSoftwareSchema(),
+          // The same offers /priser emits, from the same packages API.
+          buildSoftwareSchema(offersFromPackages(packages)),
           buildFaqSchema(faqs),
         ]}
       />

@@ -101,8 +101,15 @@ export const SOFTWARE_FEATURE_LIST = [
  * is no price for structured data to state. The homepage and /priser emit this
  * same #software entity.
  */
-export function buildSoftwareSchema() {
+/**
+ * The product. `offers` are the public yearly package prices from the app's
+ * packages API (src/lib/packageView.ts: offersFromPackages), passed by the
+ * homepage and /priser from the same fetch so both define #software alike;
+ * none while the catalog sells nothing by itself.
+ */
+export function buildSoftwareSchema(offers: Record<string, unknown>[] = []) {
   return {
+    ...(offers.length > 0 ? { offers } : {}),
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "@id": SOFTWARE_ID,

@@ -12,8 +12,17 @@
  * sold at, and the phrasing an entry price is written in.
  */
 
-/** Every figure a qlim8 package or add-on has been advertised at, in kr. */
-const PLAN_FIGURES = ["250", "300", "395", "625", "750", "1195", "1595", "3000", "3600", "7500", "9000", "14340"];
+/**
+ * Every figure a qlim8 package or add-on has been advertised at, in kr, and
+ * the ones the self-serve catalog sells at (per month and per year, ex. VAT).
+ * A package price on this site comes only from the app's packages API
+ * (src/lib/packageView.ts), never from copy, so a price changed in the app's
+ * Admin → Packages cannot leave a stale one behind here.
+ */
+const PLAN_FIGURES = [
+  "250", "300", "395", "625", "750", "1195", "1595", "3000", "3600", "7500", "9000", "14340",
+  "695", "1995", "3495", "6500", "8340", "23940", "41940", "78000",
+];
 
 const figure = `(?:${PLAN_FIGURES.map((f) => (f.length > 3 ? `${f.slice(0, -3)}[.\\s]?${f.slice(-3)}` : f)).join("|")})`;
 

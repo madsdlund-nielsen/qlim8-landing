@@ -4,6 +4,8 @@ import { resolvePageCopy } from "@/lib/pageCopy";
 import { PRICING_PAGE_KEY, PRICING_COPY } from "@/content/copy/pricing";
 import { JsonLd } from "@/components/JsonLd";
 import { buildFaqPageSchema, buildSoftwareSchema } from "@/lib/schema";
+import { fetchPublicPackages } from "@/lib/packages";
+import { offersFromPackages } from "@/lib/packageView";
 
 // ISR: CMS-published package copy refreshes on this cadence (busted instantly
 // by the app's revalidate webhook on publish).
@@ -24,12 +26,16 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const copy = await resolvePageCopy(PRICING_PAGE_KEY, PRICING_COPY);
-  // The same #software entity the homepage emits.
+  const [copy, packages] = await Promise.all([
+    resolvePageCopy(PRICING_PAGE_KEY, PRICING_COPY),
+    fetchPublicPackages(),
+  ]);
+  // The same #software entity the homepage emits, with the same offers: one
+  // per public yearly price, none while the catalog sells nothing by itself.
   return (
     <>
-      <JsonLd schema={[buildSoftwareSchema(), buildFaqPageSchema(copy.faq.items)]} />
-      <Pricing copy={copy} />
+      <JsonLd schema={[buildSoftwareSchema(offersFromPackages(packages)), buildFaqPageSchema(copy.faq.items)]} />
+      <Pricing copy={copy} packages={packages} />
     </>
   );
 }
