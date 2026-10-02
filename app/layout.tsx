@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "../src/index.css";
 import { CookieConsent } from "@/components/CookieConsent";
 import { Toaster } from "@/components/ui/toaster";
+import { SelfServeProvider } from "@/components/public/SelfServeContext";
+import { fetchPublicPackages } from "@/lib/packages";
+import { isSelfServe } from "@/lib/packageView";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,19 +58,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // One boolean for the header: does the catalog sell anything by itself?
+  // Cached and revalidated with the package page (tag "packages").
+  const selfServe = isSelfServe(await fetchPublicPackages());
   return (
     <html lang="da" className={inter.variable}>
-      {/* No app-wide client provider: the site is Danish-only and server-
-          rendered. The I18nProvider that used to wrap this shipped a 300 KB,
-          eight-language dictionary to every visitor and fetched CMS overrides
-          from the browser on every page, and nothing consumed it. */}
+      {/* No app-wide client provider beyond that boolean: the site is Danish-
+          only and server-rendered. The I18nProvider that used to wrap this
+          shipped a 300 KB, eight-language dictionary to every visitor and
+          fetched CMS overrides from the browser on every page, and nothing
+          consumed it. */}
       <body>
-        {children}
+        <SelfServeProvider value={selfServe}>{children}</SelfServeProvider>
         <CookieConsent />
         <Toaster />
       </body>

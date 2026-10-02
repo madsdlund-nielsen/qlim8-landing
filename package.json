@@ -17,7 +17,7 @@
     "content-dates": "node --experimental-strip-types scripts/content-dates.mjs",
     "prebuild": "node --experimental-strip-types scripts/content-dates.mjs",
     "pretest": "node --experimental-strip-types scripts/content-dates.mjs",
-    "test": "node --experimental-strip-types --test src/lib/copyMerge.test.ts src/lib/contentDates.test.ts",
+    "test": "node --experimental-strip-types --test src/lib/copyMerge.test.ts src/lib/contentDates.test.ts src/lib/packageView.test.ts",
     "test:contract": "node scripts/check-cms-contract.mjs && node --experimental-strip-types scripts/check-cms-copy.mjs",
     "test:cms-copy": "node --experimental-strip-types scripts/check-cms-copy.mjs"
   },

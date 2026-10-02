@@ -125,7 +125,34 @@ or credit-card claim, across `src/content`, `src/page-components`,
 money that is not a qlim8 package (a consultant's fee, an example invoice) is
 fine. The legal documents are exempt, since contract wording is changed with
 whoever drafted it. Structured data is guarded separately: `check-schema.mjs`
-fails on any entity carrying `offers`, `price` or `lowPrice`.
+fails on any entity carrying `offers`, `price` or `lowPrice` in the bundled
+pages (offers come only from the packages API, see below).
+
+### When the app's catalog sells something by itself
+
+The packages are data in qlim8-app (Admin → Packages). `src/lib/packages.ts`
+reads its `GET /api/public/packages` (ISR, tag `packages`; a publish in the
+app revalidates `/priser` and `/`), and `src/lib/packageView.ts` decides
+everything shown from it. While the catalog sells nothing by itself (every
+package "demo", or the API cannot be reached) the site is exactly the
+sales-led site above. Once it does (`isSelfServe`):
+
+- `/priser` groups the packages (`src/components/public/PackageGroups.tsx`):
+  start for free, buy it yourself, talk to us. Prices are quoted per month,
+  billed yearly, ex. VAT, and only where the catalog shows them; the buttons
+  go to the app's `/signup?package=` URL the API names, or to Book demo.
+- The header (a client component) gets "Kom gratis i gang" (to `/priser`)
+  from a boolean the root layout reads on the server
+  (`src/components/public/SelfServeContext.tsx`).
+- `#software` carries one `Offer` per public yearly price, on the homepage and
+  `/priser` alike (`offersFromPackages`).
+
+A package price never comes from copy: the self-serve figures are in
+`salesLed.mjs` too, so a price changed in the app cannot leave a stale one
+here. `check-schema.mjs` holds the offers to `scripts/fixtures/public-packages.*.json`,
+which are the app's own API answers for catalog v1 and the proposed lineup
+(regenerate them from qlim8-app's `buildPublicPackages` when its shape
+changes). The self-serve wording rules are loosened at go-live, not before.
 
 CMS-published copy is held to the same rules by `npm run test:contract`
 (`scripts/check-cms-copy.mjs`, legal page keys exempt), because the lint cannot

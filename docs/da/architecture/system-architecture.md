@@ -498,6 +498,15 @@ app'ens `/api/stripe/checkout-public` (app'en har også fjernet den), og "Log in
 eksisterende kunder til `app.qlim8.com/auth`. En ny kundes konto oprettes af en super-admin efter
 demoen, se §7.2.
 
+**Medmindre app'ens katalog sælger noget selvbetjent.** Pakkerne er data i qlim8-app (Admin → Pakker),
+og sitet læser dem fra `GET /api/public/packages` (`src/lib/packages.ts`, ISR med tagget `packages`,
+revalideret ved udgivelse). Så længe alle pakker dér er "demo", eller API'et ikke kan nås, er sitet
+det salgsledede site beskrevet ovenfor. Når kataloget har en selvbetjent pakke, viser `/priser`
+pakkerne i tre grupper (kom gratis i gang, køb selv, kontakt os) med de priser, kataloget viser
+(pr. måned, faktureret årligt, ekskl. moms), knapperne går til app'ens `/signup?package=`-URL,
+headeren får "Kom gratis i gang", og `#software` får et `Offer` pr. offentlig årspris. Ingen pris
+står nogensinde i sitets copy (`src/lib/packageView.ts`).
+
 **Begge formularer går gennem same-origin-proxies.** `ContactForm.tsx` POST'er til `/api/contact`,
 og `NewsletterForm.tsx` og `NewsletterSignupDialog.tsx` POST'er til `/api/newsletter/signup`. Det
 er Next-route-handlers på landing-serveren (`app/api/contact/route.ts`,

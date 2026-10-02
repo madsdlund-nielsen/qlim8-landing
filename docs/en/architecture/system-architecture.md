@@ -497,6 +497,15 @@ calls the app's `/api/stripe/checkout-public` (the app has removed it too), and 
 links existing customers to `app.qlim8.com/auth`. A new customer's account is created by a
 super-admin after the demo, see §7.2.
 
+**Unless the app's catalog sells something by itself.** The packages are data in qlim8-app
+(Admin → Packages), and the site reads them from `GET /api/public/packages` (`src/lib/packages.ts`,
+ISR with tag `packages`, revalidated by a publish). While every package there is "demo", or the API
+cannot be reached, the site is the sales-led site described above. Once the catalog has a self-serve
+package, `/priser` shows the packages in three groups (start for free, buy, contact) with the prices
+the catalog shows (per month, billed yearly, ex. VAT), its buttons go to the app's `/signup?package=`
+URL, the header gets "Kom gratis i gang", and `#software` carries an `Offer` per public yearly
+price. No price is ever in this site's copy (`src/lib/packageView.ts`).
+
 **Both forms go through same-origin proxies.** `ContactForm.tsx` POSTs to `/api/contact`, and
 `NewsletterForm.tsx` and `NewsletterSignupDialog.tsx` POST to `/api/newsletter/signup`. Those are
 Next route handlers on the landing server (`app/api/contact/route.ts`,

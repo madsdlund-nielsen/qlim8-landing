@@ -66,7 +66,7 @@ type Language = "da" | "en";
  * explicitly rather than by way of a parse exception. These logs are what
  * scripts/check-cms-contract.mjs and the cms-contract workflow assert against.
  */
-async function cmsFetch<T>(path: string, tags: string[]): Promise<T | null> {
+export async function cmsFetch<T>(path: string, tags: string[]): Promise<T | null> {
   try {
     const res = await fetch(`${CMS_API_BASE}${path}`, {
       next: { revalidate: REVALIDATE_SECONDS, tags },

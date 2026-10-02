@@ -22,12 +22,17 @@
  *   - a BreadcrumbList names a URL that is not a route on this site, or does
  *     not end with the page it is on;
  *   - a FAQPage answer is empty;
- *   - any entity carries `offers` or a price (qlim8 is sold after a demo and
- *     publishes no package prices, see src/content/cta.ts).
+ *   - any entity carries `offers` or a price in the pages as bundled (qlim8
+ *     publishes no package price in its copy, see src/content/cta.ts);
+ *   - the offers the packages API would give #software (src/lib/packageView.ts,
+ *     against committed answers of the app's API in scripts/fixtures/) are
+ *     anything but one Offer per public yearly company price, ex. VAT, or are
+ *     not empty while the catalog sells nothing by itself.
  *
  * Runs in `npm run lint`. Usage:
  *   node --experimental-strip-types scripts/check-schema.mjs
  */
+import { readFileSync } from "node:fs";
 import "./lib/register-ts.mjs";
 
 const BASE_URL = "https://qlim8.com";
@@ -178,7 +183,40 @@ async function main() {
     }
   }
 
-  const summary = `${pages.size} routes, ${entities} typed entities, ${siteWide.size} site-wide @ids`;
+  // Offers come only from the app's packages API, only on #software.
+  const { offersFromPackages } = await import("../src/lib/packageView.ts");
+  const fixture = (name) => JSON.parse(readFileSync(new URL(`./fixtures/${name}`, import.meta.url), "utf8"));
+  const salesLed = fixture("public-packages.v1.json");
+  const selfServe = fixture("public-packages.v2.json");
+  if (offersFromPackages(salesLed).length !== 0) {
+    fail("catalog v1 (every package behind a demo) must give #software no offers");
+  }
+  const expected = selfServe.packages.filter((p) => p.accountType === "company" && p.price?.visibility === "public");
+  const offers = offersFromPackages(selfServe);
+  const software = schema.buildSoftwareSchema(offers);
+  if (software["@id"] !== `${BASE_URL}/#software`) fail("offers must sit on #software");
+  if (offers.length !== expected.length || expected.length === 0) {
+    fail(`#software has ${offers.length} offers, the API shows ${expected.length} public prices`);
+  }
+  for (const pkg of expected) {
+    const offer = offers.find((o) => o.name === pkg.name);
+    const price = (pkg.price.yearlyMinor / 100).toFixed(2);
+    if (!offer) {
+      fail(`no offer for ${pkg.name}`);
+    } else if (
+      offer.price !== price ||
+      offer.priceCurrency !== "DKK" ||
+      offer.priceSpecification?.billingDuration !== "P1Y" ||
+      offer.priceSpecification?.valueAddedTaxIncluded !== false
+    ) {
+      fail(`offer for ${pkg.name} is not its yearly price ex. VAT (${price} DKK)`);
+    }
+  }
+  for (const hidden of selfServe.packages.filter((p) => p.price === null || p.price.visibility !== "public")) {
+    if (offers.some((o) => o.name === hidden.name)) fail(`${hidden.name} has no public price but got an offer`);
+  }
+
+  const summary = `${pages.size} routes, ${entities} typed entities, ${siteWide.size} site-wide @ids, ${offers.length} offers from the API fixture`;
   if (failures > 0) {
     console.error(`✗ check-schema: ${failures} problem(s) (${summary})`);
     process.exit(1);

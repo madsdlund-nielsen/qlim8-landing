@@ -1,0 +1,302 @@
+{
+  "language": "da",
+  "catalogVersion": 1,
+  "currency": "DKK",
+  "vat": "exclusive",
+  "packages": [
+    {
+      "key": "starter",
+      "name": "Starter",
+      "tagline": null,
+      "audience": "SMV'er der starter ESG-arbejdet",
+      "accountType": "company",
+      "displayRank": 10,
+      "salesMotion": "slg",
+      "price": null,
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "demo",
+        "url": null
+      },
+      "highlights": [
+        "Dashboard",
+        "Manuel dataregistrering",
+        "Automatisk kategorisering (AI-faktura)",
+        "Excel/CSV-upload",
+        "API-integrationer",
+        "Carbon Ledger (auditbar oversigt)",
+        "Excel-eksport",
+        "VSME Basis-rapport",
+        "Scope 1, 2 & 3 udledningsberegning",
+        "Email-support"
+      ]
+    },
+    {
+      "key": "premium",
+      "name": "Premium",
+      "tagline": null,
+      "audience": "SMV'er med kunde- og bankrapportering",
+      "accountType": "company",
+      "displayRank": 20,
+      "salesMotion": "slg",
+      "price": null,
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "demo",
+        "url": null
+      },
+      "highlights": [
+        "Analyse: kategorier, leverandører og udvikling",
+        "PDF-eksport",
+        "Offentlig profil & Brag Board badge",
+        "Reduction Hub & Scenario Builder",
+        "Avancerede reduktionsmål",
+        "Scenario Builder",
+        "VSME Comprehensive-rapport",
+        "Direkte revisor-adgang",
+        "MCP-adgang",
+        "Team-administration",
+        "PCF/EPD-upload",
+        "Eksport til Drive/OneDrive",
+        "Slack/Teams-notifikationer",
+        "Zapier-integration",
+        "Lønsystem-integrationer",
+        "Synk til Notion og Airtable",
+        "Chat & telefon-support"
+      ]
+    },
+    {
+      "key": "enterprise",
+      "name": "Enterprise",
+      "tagline": null,
+      "audience": "Større organisationer med en værdikæde",
+      "accountType": "company",
+      "displayRank": 30,
+      "salesMotion": "slg",
+      "price": null,
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "demo",
+        "url": null
+      },
+      "highlights": [
+        "CSRD-rapport",
+        "Komplet værdikæde via CVR",
+        "Fuld API-adgang",
+        "PCF/EPD dedikeret oversigt",
+        "Dedikeret Customer Success Manager"
+      ]
+    }
+  ],
+  "comparison": {
+    "packages": [
+      {
+        "key": "starter",
+        "name": "Starter"
+      },
+      {
+        "key": "premium",
+        "name": "Premium"
+      },
+      {
+        "key": "enterprise",
+        "name": "Enterprise"
+      }
+    ],
+    "rows": [
+      {
+        "key": "core.emissionsCalculation",
+        "label": "Scope 1, 2 & 3 udledningsberegning",
+        "status": "live",
+        "cells": {
+          "starter": true,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "dataCollector.aiInvoice",
+        "label": "Automatisk kategorisering (AI-faktura)",
+        "status": "live",
+        "cells": {
+          "starter": true,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "dataCollector.manual",
+        "label": "Manuel dataregistrering",
+        "status": "live",
+        "cells": {
+          "starter": true,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "dataCollector.excelUpload",
+        "label": "Excel/CSV-upload",
+        "status": "live",
+        "cells": {
+          "starter": true,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "carbonLedger",
+        "label": "Carbon Ledger (auditbar oversigt)",
+        "status": "live",
+        "cells": {
+          "starter": true,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "vsmeBasic",
+        "label": "VSME Basis-rapport",
+        "status": "live",
+        "cells": {
+          "starter": true,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.excel",
+        "label": "Excel-eksport",
+        "status": "live",
+        "cells": {
+          "starter": true,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "dataCollector.apiIntegrations",
+        "label": "API-integrationer",
+        "status": "live",
+        "cells": {
+          "starter": "1 integration",
+          "premium": "Ubegrænsede",
+          "enterprise": "Ubegrænsede"
+        }
+      },
+      {
+        "key": "support.email",
+        "label": "Email-support",
+        "status": "live",
+        "cells": {
+          "starter": true,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.pdf",
+        "label": "PDF-eksport",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "analytics",
+        "label": "Analyse: kategorier, leverandører og udvikling",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "vsmeComprehensive",
+        "label": "VSME Comprehensive-rapport",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionHub",
+        "label": "Reduction Hub & Scenario Builder",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.publicBadge",
+        "label": "Offentlig profil & Brag Board badge",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "auditAccess",
+        "label": "Direkte revisor-adgang",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "support.chatPhone",
+        "label": "Chat & telefon-support",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "supplyChain",
+        "label": "Komplet værdikæde via CVR",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": false,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "fullApiAccess",
+        "label": "Fuld API-adgang",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": false,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "support.dedicatedCsm",
+        "label": "Dedikeret Customer Success Manager",
+        "status": "live",
+        "cells": {
+          "starter": false,
+          "premium": false,
+          "enterprise": true
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,436 @@
+{
+  "language": "da",
+  "catalogVersion": 2,
+  "currency": "DKK",
+  "vat": "exclusive",
+  "packages": [
+    {
+      "key": "free",
+      "name": "Free",
+      "tagline": "Gratis for evigt",
+      "audience": "Freelancere og enkeltmandsvirksomheder",
+      "accountType": "company",
+      "displayRank": 5,
+      "salesMotion": "plg",
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 0,
+        "monthlyMinor": 0
+      },
+      "advisorPrice": null,
+      "free": true,
+      "cta": {
+        "kind": "signup",
+        "url": "https://app.qlim8.com/signup?package=free"
+      },
+      "highlights": [
+        "Dashboard",
+        "Manuel dataregistrering",
+        "Automatisk kategorisering (AI-faktura)",
+        "Excel/CSV-upload",
+        "API-integrationer",
+        "Carbon Ledger (auditbar oversigt)",
+        "Excel-eksport",
+        "PDF-eksport",
+        "Scope 1, 2 & 3 udledningsberegning"
+      ]
+    },
+    {
+      "key": "starter",
+      "name": "Starter",
+      "tagline": null,
+      "audience": "Små SMV'er, 1-20 ansatte",
+      "accountType": "company",
+      "displayRank": 10,
+      "salesMotion": "plg",
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 834000,
+        "monthlyMinor": 69500
+      },
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "buy",
+        "url": "https://app.qlim8.com/signup?package=starter"
+      },
+      "highlights": [
+        "VSME Basis-rapport",
+        "Direkte revisor-adgang",
+        "Team-administration",
+        "PCF/EPD-upload",
+        "Eksport til Drive/OneDrive",
+        "Lønsystem-integrationer",
+        "Email-support"
+      ]
+    },
+    {
+      "key": "premium",
+      "name": "Premium",
+      "tagline": null,
+      "audience": "Etablerede SMV'er, 20-50 ansatte",
+      "accountType": "company",
+      "displayRank": 20,
+      "salesMotion": "plg",
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 2394000,
+        "monthlyMinor": 199500
+      },
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "buy",
+        "url": "https://app.qlim8.com/signup?package=premium"
+      },
+      "highlights": [
+        "Analyse: kategorier, leverandører og udvikling",
+        "Offentlig profil & Brag Board badge",
+        "Reduction Hub & Scenario Builder",
+        "Avancerede reduktionsmål",
+        "VSME Comprehensive-rapport",
+        "MCP-adgang",
+        "Slack/Teams-notifikationer",
+        "Zapier-integration"
+      ]
+    },
+    {
+      "key": "business",
+      "name": "Business",
+      "tagline": null,
+      "audience": "Mid-market og produktion, 40-120 ansatte",
+      "accountType": "company",
+      "displayRank": 25,
+      "salesMotion": "slg",
+      "price": null,
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "demo",
+        "url": null
+      },
+      "highlights": [
+        "Scenario Builder",
+        "Synk til Notion og Airtable",
+        "Chat & telefon-support"
+      ]
+    },
+    {
+      "key": "enterprise",
+      "name": "Enterprise",
+      "tagline": null,
+      "audience": "Værdikæder og koncerner, 100+ ansatte",
+      "accountType": "company",
+      "displayRank": 30,
+      "salesMotion": "slg",
+      "price": {
+        "visibility": "from",
+        "currency": "DKK",
+        "yearlyMinor": 7800000,
+        "monthlyMinor": 650000
+      },
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "demo",
+        "url": null
+      },
+      "highlights": [
+        "CSRD-rapport",
+        "Komplet værdikæde via CVR",
+        "Fuld API-adgang",
+        "PCF/EPD dedikeret oversigt",
+        "Dedikeret Customer Success Manager"
+      ]
+    },
+    {
+      "key": "revisor",
+      "name": "Revisor",
+      "tagline": "Gratis for revisorer",
+      "audience": "Revisorer, der attesterer klienters klimaregnskab",
+      "accountType": "advisor",
+      "displayRank": 100,
+      "salesMotion": "plg",
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 0,
+        "monthlyMinor": 0
+      },
+      "advisorPrice": null,
+      "free": true,
+      "cta": {
+        "kind": "signup",
+        "url": "https://app.qlim8.com/signup?package=revisor&type=advisor"
+      },
+      "highlights": []
+    },
+    {
+      "key": "konsulent",
+      "name": "Konsulent",
+      "tagline": "Gratis indtil første klient",
+      "audience": "Konsulenter, der arbejder i klienters klimaregnskab",
+      "accountType": "advisor",
+      "displayRank": 110,
+      "salesMotion": "plg",
+      "price": null,
+      "advisorPrice": {
+        "baseMinor": 100000,
+        "discountPerClientMinor": 10000,
+        "maxDiscountedClients": 10,
+        "freeWithoutClients": true
+      },
+      "free": false,
+      "cta": {
+        "kind": "signup",
+        "url": "https://app.qlim8.com/signup?package=konsulent&type=advisor"
+      },
+      "highlights": []
+    }
+  ],
+  "comparison": {
+    "packages": [
+      {
+        "key": "free",
+        "name": "Free"
+      },
+      {
+        "key": "starter",
+        "name": "Starter"
+      },
+      {
+        "key": "premium",
+        "name": "Premium"
+      },
+      {
+        "key": "business",
+        "name": "Business"
+      },
+      {
+        "key": "enterprise",
+        "name": "Enterprise"
+      }
+    ],
+    "rows": [
+      {
+        "key": "activitiesPerPeriod",
+        "label": "Posteringer pr. år",
+        "status": "live",
+        "cells": {
+          "free": "Ubegrænset",
+          "starter": "Ubegrænset",
+          "premium": "Ubegrænset",
+          "business": "Ubegrænset",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "seats",
+        "label": "Brugere",
+        "status": "live",
+        "cells": {
+          "free": "1 brugere",
+          "starter": "Ubegrænset",
+          "premium": "Ubegrænset",
+          "business": "Ubegrænset",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "integrations.total",
+        "label": "Integrationer i alt",
+        "status": "live",
+        "cells": {
+          "free": "2 forbindelser",
+          "starter": "5 forbindelser",
+          "premium": "Ubegrænset",
+          "business": "Ubegrænset",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "workforce.payroll",
+        "label": "Lønsystem-integrationer",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "vsmeBasic",
+        "label": "VSME Basis-rapport",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "vsmeComprehensive",
+        "label": "VSME Comprehensive-rapport",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.csrd",
+        "label": "CSRD-rapport",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": false,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionHub",
+        "label": "Reduction Hub & Scenario Builder",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "scenarioBuilder",
+        "label": "Scenario Builder",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "pcfSlots",
+        "label": "PCF/EPD-dokumenter",
+        "status": "live",
+        "cells": {
+          "free": "0 dokumenter",
+          "starter": "3 dokumenter",
+          "premium": "5 dokumenter",
+          "business": "20 dokumenter",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "supplyChain",
+        "label": "Komplet værdikæde via CVR",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": false,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "auditAccess",
+        "label": "Direkte revisor-adgang",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "externalAdvisors",
+        "label": "Eksterne rådgivere",
+        "status": "live",
+        "cells": {
+          "free": "0 rådgivere",
+          "starter": "1 rådgivere",
+          "premium": "Ubegrænset",
+          "business": "Ubegrænset",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "exportStudio.destinations",
+        "label": "Eksport til Drive/OneDrive",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "notifications.channels",
+        "label": "Slack/Teams-notifikationer",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "integrations.automation",
+        "label": "Zapier-integration",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.recordSync",
+        "label": "Synk til Notion og Airtable",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "fullApiAccess",
+        "label": "Fuld API-adgang",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": false,
+          "enterprise": true
+        }
+      }
+    ]
+  }
+}

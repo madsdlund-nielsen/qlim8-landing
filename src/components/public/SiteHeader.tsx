@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { PRIMARY_NAV, type NavTop } from "@/content/navigation";
 import { Wordmark } from "@/components/Wordmark";
-import { DEMO_HREF, DEMO_LABEL, LOGIN_URL } from "@/content/cta";
+import { DEMO_HREF, DEMO_LABEL, FREE_START_CTA, LOGIN_URL } from "@/content/cta";
+import { useSelfServe } from "@/components/public/SelfServeContext";
 
 interface SiteHeaderProps {
   isHome?: boolean;
@@ -83,6 +84,7 @@ function MegaMenu({ item }: { item: NavTop }) {
 
 export function SiteHeader({ isHome = false }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const selfServe = useSelfServe();
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   useEffect(() => {
@@ -166,13 +168,32 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
             >
               Log ind
             </a>
-            <a
-              href={DEMO_HREF}
-              className="text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
-              data-testid="button-book-demo"
-            >
-              {DEMO_LABEL}
-            </a>
+            {selfServe ? (
+              <>
+                <a
+                  href={DEMO_HREF}
+                  className="hidden md:inline-flex text-sm font-semibold px-4 py-2 rounded-full border border-gray-300 text-gray-800 hover:border-primary hover:text-primary transition-all"
+                  data-testid="button-book-demo"
+                >
+                  {DEMO_LABEL}
+                </a>
+                <a
+                  href={FREE_START_CTA.href}
+                  className="text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                  data-testid="button-free-start"
+                >
+                  {FREE_START_CTA.label}
+                </a>
+              </>
+            ) : (
+              <a
+                href={DEMO_HREF}
+                className="text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                data-testid="button-book-demo"
+              >
+                {DEMO_LABEL}
+              </a>
+            )}
 
             <div className="relative lg:hidden" data-site-header>
               <button
