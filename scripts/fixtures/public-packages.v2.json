@@ -89,7 +89,7 @@
       "highlights": [
         "Analyse: kategorier, leverandører og udvikling",
         "Offentlig profil & Brag Board badge",
-        "Reduction Hub & Scenario Builder",
+        "Reduction Hub (reduktionsmål)",
         "Avancerede reduktionsmål",
         "VSME Comprehensive-rapport",
         "MCP-adgang",
@@ -171,19 +171,19 @@
     {
       "key": "konsulent",
       "name": "Konsulent",
-      "tagline": "Gratis indtil første klient",
+      "tagline": "Gratis for konsulenter",
       "audience": "Konsulenter, der arbejder i klienters klimaregnskab",
       "accountType": "advisor",
       "displayRank": 110,
       "salesMotion": "plg",
-      "price": null,
-      "advisorPrice": {
-        "baseMinor": 100000,
-        "discountPerClientMinor": 10000,
-        "maxDiscountedClients": 10,
-        "freeWithoutClients": true
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 0,
+        "monthlyMinor": 0
       },
-      "free": false,
+      "advisorPrice": null,
+      "free": true,
       "cta": {
         "kind": "signup",
         "url": "https://app.qlim8.com/signup?package=konsulent&type=advisor"
@@ -232,7 +232,7 @@
         "label": "Brugere",
         "status": "live",
         "cells": {
-          "free": "1 brugere",
+          "free": "1 bruger",
           "starter": "Ubegrænset",
           "premium": "Ubegrænset",
           "business": "Ubegrænset",
@@ -301,7 +301,7 @@
       },
       {
         "key": "reductionHub",
-        "label": "Reduction Hub & Scenario Builder",
+        "label": "Reduction Hub (reduktionsmål)",
         "status": "live",
         "cells": {
           "free": false,
@@ -365,7 +365,7 @@
         "status": "live",
         "cells": {
           "free": "0 rådgivere",
-          "starter": "1 rådgivere",
+          "starter": "1 rådgiver",
           "premium": "Ubegrænset",
           "business": "Ubegrænset",
           "enterprise": "Ubegrænset"

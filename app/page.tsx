@@ -8,27 +8,30 @@ import { JsonLd } from "@/components/JsonLd";
 import type { LandingImages } from "@/page-components/landing";
 import { ORGANIZATION, WEBSITE, buildSoftwareSchema } from "@/lib/schema";
 import { fetchPublicPackages } from "@/lib/packages";
-import { offersFromPackages } from "@/lib/packageView";
+import { isSelfServe, offersFromPackages } from "@/lib/packageView";
 
 // ISR: CMS-published homepage copy refreshes on this cadence (busted instantly
 // by the app's revalidate webhook on publish).
 export const revalidate = 300;
 
-export const metadata: Metadata = {
-  // `absolute` opts out of the root layout's "%s | qlim8" title template so the
-  // homepage title isn't suffixed with a second copy of the brand name.
-  title: { absolute: "qlim8 - ESG er nemt" },
-  description:
-    "Klimaregnskab og ESG rapporter til små og mellemstore virksomheder, hentet direkte fra dit regnskabssystem. Book en demo.",
-  alternates: { canonical: "https://qlim8.com/" },
-  openGraph: {
-    title: "qlim8 - ESG er nemt",
-    description:
-      "Klimaregnskab og ESG rapporter til små og mellemstore virksomheder, hentet direkte fra dit regnskabssystem. Book en demo.",
-    url: "https://qlim8.com/",
-    images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8" }],
-  },
-};
+// The call to action follows the app's catalog, like the buttons on the page.
+export async function generateMetadata(): Promise<Metadata> {
+  const cta = isSelfServe(await fetchPublicPackages()) ? "Kom gratis i gang, eller book en demo." : "Book en demo.";
+  const description = `Klimaregnskab og ESG rapporter til små og mellemstore virksomheder, hentet direkte fra dit regnskabssystem. ${cta}`;
+  return {
+    // `absolute` opts out of the root layout's "%s | qlim8" title template so the
+    // homepage title isn't suffixed with a second copy of the brand name.
+    title: { absolute: "qlim8 - ESG er nemt" },
+    description,
+    alternates: { canonical: "https://qlim8.com/" },
+    openGraph: {
+      title: "qlim8 - ESG er nemt",
+      description,
+      url: "https://qlim8.com/",
+      images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8" }],
+    },
+  };
+}
 
 // Organization and WebSite come from src/lib/schema.ts, where they are
 // @id-addressable and shared with /om-os rather than copy-pasted into it. The
@@ -79,7 +82,7 @@ export default async function Page() {
           buildFaqSchema(faqs),
         ]}
       />
-      <Landing copy={copy} faqs={faqs} images={images} />
+      <Landing copy={copy} faqs={faqs} images={images} packages={packages} />
     </>
   );
 }

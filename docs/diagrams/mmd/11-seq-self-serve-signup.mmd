@@ -1,0 +1,37 @@
+%% qlim8, Self-serve signup and purchase (Diagram 11). Once the app's catalog
+%% sells something by itself: the visitor starts on Free from the package page and
+%% may buy Starter or Premium later. The landing only links; the account, the
+%% company lookup and the payment are the app's. Business and Enterprise stay on
+%% the demo path (Diagram 8) and are invoiced.
+sequenceDiagram
+  autonumber
+  actor V as Visitor / new customer
+  participant L as Landing (qlim8.com)
+  participant A as App (app.qlim8.com)
+  participant DB as PostgreSQL
+  participant R as Resend
+  participant S as Stripe
+
+  L->>A: GET /api/public/packages (ISR, tag packages)
+  A-->>L: packages, prices (yearly, ex. VAT), CTA URLs
+  V->>L: /priser: "Kom gratis i gang"
+  L-->>V: link to /signup?package=free (URL from the API)
+  V->>A: POST /api/register (email, password, terms)
+  Note over A: rate limit, honeypot, same answer for a new or known email
+  A-)R: confirmation code
+  R-)V: code by email
+  V->>A: POST /api/register/verify (code)
+  A-->>V: session
+  V->>A: GET /api/onboarding/company-lookup (CVR, or EU VAT number)
+  A-->>V: name, address, industry (user confirms or corrects)
+  V->>A: POST /api/onboarding
+  A->>DB: tenant live on Free, legal entity facts, one claim per registration number
+  A->>DB: organization.created, legal_entity.facts_recorded (same transaction), tenant.created audit
+  Note over V,A: later, from the app or the package page
+  V->>A: POST /api/billing/checkout { packageKey: starter }
+  A->>S: Checkout session (subscription, catalog's yearly price, automatic tax)
+  S-->>V: card payment
+  S-->>V: redirect to /billing/success
+  V->>A: GET /api/billing/checkout/session/:id
+  A->>DB: package = Starter (audited)
+  S-)A: webhook customer.subscription.created / checkout.session.completed

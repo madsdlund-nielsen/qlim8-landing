@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
- * Fails the build if the bundled copy lets a visitor sign up or pay by
- * themselves, or names a package price.
+ * Fails the build if the bundled copy names a package price, spells out a
+ * signup or checkout link, or promises a trial.
  *
- * qlim8 is sold after a demo. The ways in are the demo booking, the contact
- * form, the phone number and the newsletter (src/content/cta.ts), and no
- * package price is published anywhere. The change touched some fifty files of
- * copy, so a stray "Opret gratis konto" or "fra 300 kr/md" is the likely way
- * it comes undone; this is the guard against that. The rules themselves live
- * in scripts/lib/salesLed.mjs, shared with the live CMS check.
+ * Package prices come only from the app's packages API (src/lib/packages.ts),
+ * and so do the signup URLs; Free is free for good, so there is no trial to
+ * offer. A stray "fra 695 kr/md" or "14 dages prøveperiode" in copy is the
+ * likely way that comes undone; this is the guard against it. The rules
+ * themselves live in scripts/lib/salesLed.mjs, shared with the live CMS check
+ * and tested in scripts/lib/salesLed.test.mjs.
  *
  * Existing customers still log in (app.qlim8.com/auth without ?tab=register),
  * and that is not flagged.
@@ -28,9 +28,9 @@ const COVERED = ["src/content", "src/page-components", "src/components", "src/li
 /**
  * Tests exercise the merge with made-up copy. The legal documents are exempt
  * on purpose: the terms still provide for a trial the supplier *may* offer
- * (§3.3), which gives a visitor no way in by themselves, and wording in a
- * contract is changed deliberately, with whoever drafted it, not to satisfy a
- * lint rule. The CMS check skips the same page keys.
+ * (§3.3), and wording in a contract is changed deliberately, with whoever
+ * drafted it, not to satisfy a lint rule. The CMS check skips the same page
+ * keys.
  */
 const EXCLUDED = [/\.test\.tsx?$/, /^src\/generated\//, /^src\/content\/copy\/legal\.ts$/];
 
@@ -55,7 +55,7 @@ for (const dir of COVERED) {
     scanned++;
     const lines = readFileSync(file, "utf8").split("\n");
     lines.forEach((line, i) => {
-      for (const { kind, match } of salesLedViolations(line)) {
+      for (const { kind, match } of salesLedViolations(line, { file: rel })) {
         console.error(`  ✗ ${rel}:${i + 1}: ${kind}: "${match}"`);
         failures++;
       }
@@ -65,9 +65,9 @@ for (const dir of COVERED) {
 
 if (failures > 0) {
   console.error(
-    `✗ check-sales-led: ${failures} sted(er) lader en besøgende oprette sig/betale selv eller nævner en pakkepris. ` +
-      `qlim8 sælges efter en demo; brug DEMO_CTA/PHONE_CTA fra src/content/cta.ts og skriv uden pris.`,
+    `✗ check-sales-led: ${failures} sted(er) nævner en pakkepris, et signup- eller checkout-link eller en prøveperiode. ` +
+      `Priser og signup-links kommer kun fra pakke-API'et (src/lib/packages.ts); CTA'er fra src/content/cta.ts.`,
   );
   process.exit(1);
 }
-console.log(`✓ check-sales-led: ingen selvbetjening eller pakkepriser i ${scanned} filer`);
+console.log(`✓ check-sales-led: ingen pakkepriser, signup-links eller prøveperioder i ${scanned} filer`);

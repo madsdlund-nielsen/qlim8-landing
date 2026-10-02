@@ -14,14 +14,14 @@
  *      and a feature bullet said "fra 625 kr/md", while the hero, the meta
  *      description and the structured data all said 300 (and Premium 1195).
  *
- * The second is now stricter. qlim8 is sold after a demo, and the site names
- * no package price and offers no way to sign up or pay (src/content/cta.ts),
- * so a published price or "Opret gratis konto" is wrong whatever the figure.
+ * The second is now stricter. A package price on this site comes only from
+ * the app's packages API, so a price written into published copy is wrong
+ * whatever the figure: it goes stale the day the catalog changes.
  *
  * So, for every CMS page key this site reads:
  *   - every internal path in the copy must be a route this site serves, and
  *   - no string may break the sales-led rules in scripts/lib/salesLed.mjs
- *     (a package price, a signup link, a free-account or free-trial claim).
+ *     (a package price, a hard-coded signup or checkout link, a trial).
  *     The same rules hold the bundled copy in `npm run lint`. The legal
  *     documents are exempt there and here: contract wording is changed with
  *     whoever drafted it.

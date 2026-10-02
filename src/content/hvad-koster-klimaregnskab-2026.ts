@@ -102,26 +102,26 @@ export const artikel: Article = {
       type: 'paragraph',
       text: 'SMV-specifikke platforme: det segment hvor qlim8 lever, sammen med en håndfuld andre danske og europæiske aktører. Her ligger priserne typisk i 3-cifret kroneklasse pr. måned. Det er bevidst designet til den SMV-virkelighed, hvor budgettet for bæredygtighedsarbejde er reelt begrænset, og hvor man ikke har en dedikeret bæredygtighedschef til at lære et komplekst system at kende.',
     },
-    { type: 'paragraph', text: 'Lad mig være konkret om qlim8\'s egne pakker, for det er den eneste platform, jeg kan udtale mig fagligt præcist om. Og ja, jeg ved godt, at det er lidt ironisk i en artikel om priser, men et tal får du ikke her. qlim8 sælges efter en demo, fordi prisen afhænger af pakken og af jeres behov, og jeg vil hellere give dig et konkret tilbud end et tal, der ikke passer.' },
+    { type: 'paragraph', text: 'Lad mig være konkret om qlim8\'s egne pakker, for det er den eneste platform, jeg kan udtale mig fagligt præcist om. Priserne står på /priser, så du kan se dem uden at tale med os: Free er gratis for altid, Starter og Premium har faste priser pr. måned, faktureret årligt og ekskl. moms, og Business og Enterprise tilpasser vi jeres behov.' },
     {
       type: 'paragraph',
-      text: 'qlim8 Starter dækker komplet Scope 1, 2 og 3 klimaregnskab med AI-kategorisering, fuld audit trail på hver beregning, VSME Basis-rapport med wizard, Excel-eksport og adgang til alle danske integrationer (Dinero, e-conomic, Billy og Eloverblik).',
+      text: 'qlim8 Free dækker komplet Scope 1, 2 og 3 klimaregnskab med AI-kategorisering, fuld audit trail på hver beregning, Excel- og PDF-eksport og én regnskabs- og én forsyningsforbindelse, fx Dinero, e-conomic eller Billy og Eloverblik. qlim8 Starter lægger VSME Basis-rapport med wizard, ubegrænsede brugere, revisoradgang og op til 5 forbindelser oveni.',
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Premium inkluderer alt i Starter plus VSME Comprehensive, reduktionsmål, Scenario Builder, custom PDF-rapporter, offentligt Brag Board og fuldt REST API + MCP-integration.',
+      text: 'qlim8 Premium inkluderer alt i Starter plus VSME Comprehensive, analyse, Reduction Hub med avancerede reduktionsmål, offentlig profil og badge, ubegrænsede forbindelser og MCP-integration. Business lægger Scenario Builder og chat- og telefonsupport oveni.',
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Enterprise er den tredje tier. Den indeholder funktioner som dedikeret supply chain-portal og rollebaseret adgangsstyring, og her varierer behovet markant. Hvis I er en større organisation der skal indsamle VSME-data fra mange underleverandører, er det den vej, vi typisk taler med jer om.',
+      text: 'qlim8 Business og Enterprise er til større organisationer, og her varierer behovet markant. Enterprise indeholder funktioner som dedikeret supply chain-portal og fuld API-adgang. Hvis I skal indsamle VSME-data fra mange underleverandører, er det den vej, vi typisk taler med jer om.',
     },
     {
       type: 'paragraph',
-      text: 'Derudover findes en enkelt vigtig add-on: I kan tilkøbe yderligere historisk data, hvis I vil have en baseline længere tilbage i tiden end de tre måneder, der hentes automatisk ved tilkobling. Det er et engangsbeløb, som vi gennemgår på demoen.',
+      text: 'Derudover findes en enkelt vigtig add-on: I kan tilkøbe yderligere historisk data, hvis I vil have en baseline længere tilbage i tiden end de tre måneder, der hentes automatisk ved tilkobling. Det er et engangsbeløb, som I køber direkte i appen.',
     },
     {
       type: 'paragraph',
-      text: 'Det er det. Ingen opsætningsgebyrer, ingen forpligtelser ud over abonnementet, ingen skjulte konsulenttimer indregnet i prisen. Vejen ind er en demo: jeg viser jer platformen, vi finder den pakke, der passer, og I får et konkret tilbud. Vælger I qlim8, opretter jeg jeres konto og hjælper med at forbinde regnskabssystemet, og qlim8 henter tre måneders historik med det samme.',
+      text: 'Det er det. Ingen opsætningsgebyrer, ingen forpligtelser ud over abonnementet, ingen skjulte konsulenttimer indregnet i prisen. Vejen ind er en gratis konto: I forbinder regnskabssystemet, og qlim8 henter tre måneders historik med det samme. Vil I hellere have en gennemgang først, viser jeg jer gerne platformen på en demo.',
     },
     {
       type: 'paragraph',
@@ -227,7 +227,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det er det, vi har bygget qlim8 til. Hvis du vil se hvordan, så book en demo, eller ring til mig på +45 93 90 13 84. Jeg viser dig gerne platformen, før du beslutter dig.',
+      text: 'Det er det, vi har bygget qlim8 til. Hvis du vil se hvordan, så opret en gratis konto, book en demo, eller ring til mig på +45 93 90 13 84. Jeg viser dig gerne platformen, før du beslutter dig.',
     },
     {
       type: 'paragraph',

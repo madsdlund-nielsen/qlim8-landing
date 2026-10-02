@@ -44,7 +44,7 @@ Every page hangs off three site-wide entities defined once in
 |---|---|
 | `https://qlim8.com/#organization` | the company |
 | `https://qlim8.com/#website` | the site |
-| `https://qlim8.com/#software` | the product (no `offers`, see below) |
+| `https://qlim8.com/#software` | the product (offers only from the packages API, see below) |
 
 Other pages reference them (`publisher: ORG_REF`, `isPartOf: { "@id": WEBSITE_ID }`)
 and never restate them. A crawler merges entities by `@id`, not by name; an
@@ -61,20 +61,26 @@ Breadcrumbs follow the content hierarchy (`parentSlug` in
 the mega-menu show. URLs stay flat; that is allowed, as long as the three
 agree. The mega-menu lists every live page, children indented under parents.
 
-`#software` carries no `offers` and no price. qlim8 is sold after a demo and
-publishes no package prices, so there is nothing for structured data to state.
-`buildSoftwareSchema()` takes no arguments, `/` and `/priser` emit the same
-entity, and `src/lib/pricingSchema.ts` (which built offers from the pricing
-copy) is gone. Structured data is where a stale price would outlive the copy:
-a crawler can keep showing it after the page has stopped saying it.
+`#software`'s offers come only from the app's packages API, never from copy.
+`buildSoftwareSchema(offers)` takes them from `offersFromPackages()`
+(`src/lib/packageView.ts`): one `Offer` per public yearly price of a company
+package, `billingDuration: P1Y`, `valueAddedTaxIncluded: false`. A hidden
+price (Business) and a "fra" price (Enterprise) get none. While the catalog
+sells nothing by itself (catalog version 1, or the API cannot be reached)
+there are no offers at all. `/` and `/priser` emit the same entity with the
+same offers. `src/lib/pricingSchema.ts` (which built offers from the pricing
+copy) is gone: structured data is where a stale price would outlive the copy,
+since a crawler can keep showing it after the page has stopped saying it.
 
 **Guard:** `scripts/check-schema.mjs` (in `npm run lint`) builds the JSON-LD
 for every route with the same builders the pages use and fails on an
 `Organization`, `WebSite`, page or `Service` without an `@id`, a reference to
 an `@id` nothing defines, two differing definitions of one `@id`, a breadcrumb
 naming a non-route, an empty FAQ answer, or any entity carrying `offers`,
-`price` or `lowPrice`. (It used to check that `offerCount` matched the offers;
-now there may be none.)
+`price` or `lowPrice` in the pages as bundled. It then holds the offers the
+API would give `#software` to the app's own answers, committed in
+`scripts/fixtures/public-packages.v1.json` (no offers) and `.v2.json` (one per
+public yearly company price, ex. VAT, and none for a hidden or "fra" price).
 
 ## 3. Content is in the HTML
 
@@ -102,11 +108,12 @@ CMS-published copy overrides the bundled defaults at render time, so none of
 the file-based guards can see it. `scripts/check-cms-copy.mjs` (in
 `npm run test:contract`, scheduled by `cms-contract.yml`) fetches every page
 key the site reads, plus every CMS article, and fails on an internal link to
-a non-route or on anything the sales-led rules in `scripts/lib/salesLed.mjs`
-forbid: a package price or entry-price phrasing ("fra N kr"), a signup link,
-a free-account, free-trial or credit-card claim. `scripts/check-sales-led.mjs`
-applies the same rules to the bundled copy in `npm run lint`, and both exempt
-the legal documents. This replaces the earlier check that an advertised entry
+a non-route or on anything the copy rules in `scripts/lib/salesLed.mjs`
+forbid: a package price or entry-price phrasing ("fra N kr"), a hard-coded
+signup or checkout link, a trial. `scripts/check-sales-led.mjs` applies the
+same rules to the bundled copy in `npm run lint`, both exempt the legal
+documents, and `scripts/lib/salesLed.test.mjs` holds the rules to known
+strings in `npm test`. This replaces the earlier check that an advertised entry
 price matched a plan price in `src/content/copy/pricing.ts`; there are no plan
 prices left to match. A failure there is fixed in the app's `/admin` editor,
 not with a commit.

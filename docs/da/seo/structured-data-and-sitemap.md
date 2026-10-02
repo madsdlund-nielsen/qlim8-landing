@@ -45,7 +45,7 @@ Hver side hænger på tre site-dækkende entiteter, defineret ét sted i
 |---|---|
 | `https://qlim8.com/#organization` | virksomheden |
 | `https://qlim8.com/#website` | sitet |
-| `https://qlim8.com/#software` | produktet (uden `offers`, se nedenfor) |
+| `https://qlim8.com/#software` | produktet (offers kun fra pakke-API'et, se nedenfor) |
 
 Andre sider refererer til dem (`publisher: ORG_REF`, `isPartOf: { "@id": WEBSITE_ID }`)
 og gentager dem aldrig. En crawler fletter entiteter på `@id`, ikke på navn; en
@@ -62,21 +62,28 @@ Brødkrummer følger indholdshierarkiet (`parentSlug` i
 megamenuen viser. URL'erne er flade; det er tilladt, så længe de tre er enige.
 Megamenuen viser alle live sider, børn indrykket under forældre.
 
-`#software` har hverken `offers` eller pris. qlim8 sælges efter en demo og
-offentliggør ingen pakkepriser, så der er intet for struktureret data at
-angive. `buildSoftwareSchema()` tager ingen argumenter, `/` og `/priser`
-udgiver samme entitet, og `src/lib/pricingSchema.ts` (som byggede offers fra
-pris-copyen) er slettet. Struktureret data er dér, hvor en forældet pris ville
-overleve copyen: en crawler kan blive ved med at vise den, efter siden er holdt
-op med at sige den.
+`#software`'s offers kommer kun fra app'ens pakke-API, aldrig fra copy.
+`buildSoftwareSchema(offers)` får dem fra `offersFromPackages()`
+(`src/lib/packageView.ts`): ét `Offer` pr. offentlig årspris for en
+virksomhedspakke, `billingDuration: P1Y`, `valueAddedTaxIncluded: false`. En
+skjult pris (Business) og en "fra"-pris (Enterprise) får intet. Så længe
+kataloget ikke sælger noget af sig selv (katalog version 1, eller API'et kan
+ikke nås), er der slet ingen offers. `/` og `/priser` udgiver samme entitet
+med samme offers. `src/lib/pricingSchema.ts` (som byggede offers fra
+pris-copyen) er slettet: struktureret data er dér, hvor en forældet pris ville
+overleve copyen, fordi en crawler kan blive ved med at vise den, efter siden er
+holdt op med at sige den.
 
 **Guard:** `scripts/check-schema.mjs` (i `npm run lint`) bygger JSON-LD for
 alle ruter med de samme builders som siderne og fejler på en `Organization`,
 `WebSite`, side eller `Service` uden `@id`, en reference til et `@id` ingen
 definerer, to forskellige definitioner af samme `@id`, en brødkrumme der
 nævner en ikke-rute, et tomt FAQ-svar, eller en entitet med `offers`, `price`
-eller `lowPrice`. (Tidligere tjekkede den at `offerCount` passede med
-offers; nu må der ingen være.)
+eller `lowPrice` i siderne, som de er bundlet. Derefter holder den de offers,
+API'et ville give `#software`, op mod app'ens egne svar, committet i
+`scripts/fixtures/public-packages.v1.json` (ingen offers) og `.v2.json` (ét pr.
+offentlig årspris for en virksomhedspakke, ekskl. moms, og intet for en skjult
+eller "fra"-pris).
 
 ## 3. Indholdet er i HTML'en
 
@@ -103,11 +110,13 @@ CMS-publiceret copy overskriver de bundlede defaults ved rendering, så ingen
 af de filbaserede guards kan se den. `scripts/check-cms-copy.mjs` (i
 `npm run test:contract`, planlagt af `cms-contract.yml`) henter hver page-key
 sitet læser, plus alle CMS-artikler, og fejler på et internt link til en
-ikke-rute eller på alt hvad sales-led-reglerne i `scripts/lib/salesLed.mjs`
+ikke-rute eller på alt hvad copy-reglerne i `scripts/lib/salesLed.mjs`
 forbyder: en pakkepris eller en startpris-formulering ("fra N kr"), et
-signup-link, en påstand om gratis konto, prøveperiode eller kreditkort.
+hardkodet signup- eller checkout-link, en prøveperiode.
 `scripts/check-sales-led.mjs` anvender de samme regler på den bundlede copy i
-`npm run lint`, og begge undtager de juridiske dokumenter. Det erstatter det
+`npm run lint`, begge undtager de juridiske dokumenter, og
+`scripts/lib/salesLed.test.mjs` holder reglerne op mod kendte strenge i
+`npm test`. Det erstatter det
 tidligere tjek af at en annonceret startpris var en planpris i
 `src/content/copy/pricing.ts`; der er ingen planpriser tilbage at sammenligne
 med. En fejl dér rettes i app'ens `/admin`-editor, ikke med et commit.

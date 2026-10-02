@@ -20,7 +20,10 @@ export const metadata: Metadata = {
     template: "%s | qlim8",
   },
   description:
-    "Dansk ESG-platform: automatisk scope 1-3, VSME-rapport på 10 minutter, hosting i EU. Spørg dine tal i Claude eller ChatGPT via vores MCP-server. Book en demo.",
+    // No call to action: this is the fallback for every page without its own
+    // description, and whether that is "Book en demo" or "Kom gratis i gang"
+    // depends on the app's catalog (src/lib/packageView.ts: isSelfServe).
+    "Dansk ESG-platform: automatisk scope 1-3, VSME-rapport på 10 minutter, hosting i EU. Spørg dine tal i Claude eller ChatGPT via vores MCP-server.",
   keywords: [
     "klimaregnskab",
     "ESG",

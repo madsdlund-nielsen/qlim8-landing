@@ -103,7 +103,7 @@ export const PR_MODTAGERE: MarketingPageCopy = {
       },
       {
         q: "Kræver flere modtager-varianter en bestemt pakke?",
-        a: "Rapporteringen er en del af platformen. Starter dækker VSME Basic; Premium tilføjer VSME Comprehensive og revisor-adgang. Se pakkerne for hvad hver plan indeholder.",
+        a: "Rapporteringen er en del af platformen. Starter dækker VSME Basic og revisor-adgang; Premium tilføjer VSME Comprehensive. Se pakkerne for hvad hver plan indeholder.",
       },
       {
         q: "Kan revisoren bekræfte tallene i rapporten?",
@@ -217,7 +217,7 @@ export const PR_BESTYRELSE: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det at lave bestyrelsesrapporter?",
-        a: "Rapporteringen er en del af platformen fra Starter; Premium tilføjer bl.a. VSME Comprehensive og revisor-adgang. Prisen afhænger af pakke og behov. Book en demo, så får I et konkret tilbud.",
+        a: "Rapporteringen er en del af platformen fra Starter, der også giver revisor-adgang; Premium tilføjer bl.a. VSME Comprehensive og analyse. Starter og Premium køber I direkte i appen, og priserne står på /priser.",
       },
     ],
   },
@@ -437,7 +437,7 @@ export const PR_BANK: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det at lave en bankrapport?",
-        a: "Rapporteringen er en del af platformen. Starter dækker grundopgørelsen; skal du levere fuld Scope 3 eller de udvidede datapunkter banken beder om, er Premium typisk det rette. Prisen afhænger af pakke og behov. Book en demo, så får I et konkret tilbud.",
+        a: "Rapporteringen er en del af platformen. Starter dækker grundopgørelsen; skal du levere fuld Scope 3 eller de udvidede datapunkter banken beder om, er Premium typisk det rette. Starter og Premium køber I direkte i appen, og priserne står på /priser.",
       },
     ],
   },
@@ -784,7 +784,7 @@ export const PR_VSME: MarketingPageCopy = {
       },
       {
         q: "Laver qlim8 begge moduler?",
-        a: "Ja. Starter dækker VSME Basic; Premium tilføjer VSME Comprehensive og revisor-adgang. Du kan skifte modul når kravet ændrer sig. Samme klimaregnskab ligger bag begge.",
+        a: "Ja. Starter dækker VSME Basic og revisor-adgang; Premium tilføjer VSME Comprehensive. Du kan skifte modul når kravet ændrer sig. Samme klimaregnskab ligger bag begge.",
       },
       {
         q: "Er en VSME-rapport fra qlim8 revisor-klar?",
@@ -1024,7 +1024,7 @@ export const PR_VSME_COMPREHENSIVE: MarketingPageCopy = {
       },
       {
         q: "Hvad koster VSME Comprehensive?",
-        a: "Comprehensive er en del af Premium og bruger samme klimaregnskab som Basic. Rammer CSRD dig senere, genbruges datagrundlaget via en ESRS E1-mapping, ingen ny indsamling. Prisen afhænger af pakke og behov. Book en demo, så får I et konkret tilbud.",
+        a: "Comprehensive er en del af Premium og bruger samme klimaregnskab som Basic. Rammer CSRD dig senere, genbruges datagrundlaget via en ESRS E1-mapping, ingen ny indsamling. Premium køber I direkte i appen, og prisen står på /priser.",
       },
     ],
   },

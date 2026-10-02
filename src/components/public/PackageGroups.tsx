@@ -2,13 +2,15 @@
 // groups (start for free, buy it yourself, talk to us) and the comparison of
 // the company packages, all from GET /api/public/packages. Server component.
 //
-// A package's curated copy (name, tagline, feature list) still comes from the
-// CMS-editable page copy when it has an entry for the package key; otherwise
-// the API's own name, tagline and highlights are shown.
+// A package's curated name and tagline still come from the CMS-editable page
+// copy when it has an entry for the package key. Its list is what the API
+// says it adds over the package before it (packageFeatures): a curated list
+// is shown only for a package the API lists nothing for.
 import { DEMO_HREF, DEMO_LABEL } from "@/content/cta";
 import {
   ctaLabel,
   groupPackages,
+  packageFeatures,
   priceLines,
   type ComparisonCell,
   type PackageGroup,
@@ -19,7 +21,7 @@ import {
 export interface PackageCardCopy {
   name?: string;
   tagline?: string;
-  includedLabel?: string;
+  /** Shown only for a package the API lists no capabilities for. */
   features?: string[];
 }
 
@@ -35,9 +37,9 @@ function Cell({ value }: { value: ComparisonCell | undefined }) {
   return <span className="block text-center text-[12px] font-medium text-gray-700 leading-tight">{value}</span>;
 }
 
-function PackageCard({ pkg, copy }: { pkg: PublicPackage; copy?: PackageCardCopy }) {
+function PackageCard({ data, pkg, copy }: { data: PublicPackages; pkg: PublicPackage; copy?: PackageCardCopy }) {
   const price = priceLines(pkg);
-  const features = copy?.features && copy.features.length > 0 ? copy.features : pkg.highlights;
+  const { label: includedLabel, items: features } = packageFeatures(data, pkg, copy?.features);
   const href = pkg.cta.kind === "demo" || !pkg.cta.url ? DEMO_HREF : pkg.cta.url;
   const label = pkg.cta.kind === "demo" ? DEMO_LABEL : ctaLabel(pkg);
   const primary = pkg.cta.kind !== "demo";
@@ -69,7 +71,7 @@ function PackageCard({ pkg, copy }: { pkg: PublicPackage; copy?: PackageCardCopy
       </a>
       {features.length > 0 && (
         <>
-          {copy?.includedLabel && <p className="font-semibold text-gray-900 text-sm mb-3">{copy.includedLabel}</p>}
+          {includedLabel && <p className="font-semibold text-gray-900 text-sm mb-3">{includedLabel}:</p>}
           <ul className="space-y-1.5 flex-1 text-sm text-gray-700">
             {features.map((f) => (
               <li key={f} className="flex gap-2.5">
@@ -106,7 +108,7 @@ export function PackageGroups({
             <p className="text-sm text-gray-600 mb-5">{GROUP_TITLES[g].body}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {groups[g].map((pkg) => (
-                <PackageCard key={pkg.key} pkg={pkg} copy={cardCopy[pkg.key]} />
+                <PackageCard key={pkg.key} data={data} pkg={pkg} copy={cardCopy[pkg.key]} />
               ))}
             </div>
           </section>

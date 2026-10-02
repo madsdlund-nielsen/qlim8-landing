@@ -6,7 +6,9 @@
 > ([`docs/da/architecture/system-architecture.md`](https://github.com/madsdlund-nielsen/qlim8-app/blob/main/docs/da/architecture/system-architecture.md)),
 > som er kilden (system of record). Kopieret hertil så landing-repoet også dokumenterer hele
 > systemet. Sidst synkroniseret: 2026-06-29. Opdateret her 2026-09-25, før qlim8-app-kopien, for
-> sales-led-ændringen (ingen signup, ingen checkout): §1, §5, §6, §7.2 og §8.
+> sales-led-ændringen (ingen signup, ingen checkout): §1, §5, §6, §7.2 og §8. Opdateret igen
+> 2026-10-02 for selvbetjening (signup og priser fra app'ens pakke-API): §1, §5, §7.2, §7.5 (ny)
+> og §8.
 
 ## Overblik
 
@@ -117,8 +119,10 @@ _Eksporter: [SVG](../../diagrams/svg/01-system-context.svg) · [PNG](../../diagr
 
 De to produkter er **separate deployments**, der kun forbindes over offentlig HTTPS:
 landing-serverens proxies for kontakt og nyhedsbrev, dens CMS-opslag og login-linket til
-eksisterende kunder. Der er ingen signup- eller checkout-bro, fordi qlim8 sælges efter en demo
-(§5, §7.2). Alle produktdata ligger i EU (Hetzner Tyskland).
+eksisterende kunder. Signup er et link, ikke en bro: når app'ens katalog sælger noget af sig selv,
+linker pakkesiden til den signup-URL, app'ens pakke-API navngiver, og kontoen, firmaopslaget og
+betalingen sker alle i app'en (§5, §7.5). Indtil da sælges qlim8 efter en demo (§7.2). Alle
+produktdata ligger i EU (Hetzner Tyskland).
 
 ---
 
@@ -450,9 +454,11 @@ flowchart LR
   visitor["Marketing visitor"]
 
   subgraph landing["qlim8 Landing, Next.js 15 (standalone)"]
-    pages["Pages: / · /priser (packages, no prices) · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
+    pages["Pages: / · /priser (packages; prices once self-serve) · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
     content["Bundled copy (src/content)<br/>merged with CMS overrides"]
+    packages["Packages view (src/lib/packageView.ts)<br/>groups, prices, buttons, #software offers"]
     ga["Google Analytics 4 (cookie consent)"]
+    freecta["Kom gratis i gang · Køb<br/>(signup URL from the packages API)"]
     cta["Book demo CTAs<br/>(/kontakt?emne=demo)"]
     contactform["Contact form on /kontakt<br/>(demo or question)"]
     contactproxy["/api/contact<br/>(same-origin proxy)"]
@@ -463,15 +469,21 @@ flowchart LR
 
   subgraph app["qlim8 App, app.qlim8.com"]
     appauth["/auth (login)"]
+    appsignup["/signup?package=<br/>account, then Stripe Checkout"]
     appcontact["/api/public/contact<br/>stores request, emails owner"]
     appnews["/api/newsletter/signup (handler)"]
     appcms["/api/public/cms/*"]
+    apppackages["/api/public/packages<br/>(live package catalog)"]
   end
 
   visitor --> pages
   pages --- content
+  pages --- packages
   content -->|"server-side fetch, ISR 300 s"| appcms
+  packages -->|"server-side fetch, ISR 300 s, tag packages"| apppackages
   pages -.-> ga
+  packages --> freecta
+  freecta -->|"HTTPS anchor"| appsignup
   cta --> contactform
   contactform -->|"POST (topic, name, email, ...)"| contactproxy
   contactproxy -->|"server-side, NEXT_PUBLIC_API_URL"| appcontact
@@ -485,27 +497,30 @@ flowchart LR
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
   classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
   class visitor persona;
-  class pages,content,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appcontact,appnews,appcms internal;
+  class pages,content,packages,freecta,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appsignup,appcontact,appnews,appcms,apppackages internal;
   class ga external;
 ```
 
 _Eksporter: [SVG](../../diagrams/svg/06-landing-bridges.svg) · [PNG](../../diagrams/png/06-landing-bridges.png) · [Mermaid](../../diagrams/mmd/06-landing-bridges.mmd) · [Excalidraw](../../diagrams/excalidraw/06-landing-bridges.excalidraw)_
 
-**Sales-led: ingen signup, ingen checkout.** qlim8 sælges efter en demo. Vejene ind er Book demo
-(`/kontakt?emne=demo`), kontaktformularen på `/kontakt`, telefonnummeret og nyhedsbrevet, alle
-hentet fra `src/content/cta.ts`; `/priser` viser pakkerne uden priser. Sitet kalder ikke længere
-app'ens `/api/stripe/checkout-public` (app'en har også fjernet den), og "Log ind" linker kun
-eksisterende kunder til `app.qlim8.com/auth`. En ny kundes konto oprettes af en super-admin efter
-demoen, se §7.2.
+**Selvbetjening, afgjort af app'ens katalog.** Pakkerne er data i qlim8-app (Admin → Pakker), og
+sitet læser dem fra `GET /api/public/packages` (`src/lib/packages.ts`, ISR med tagget `packages`,
+revalideret ved udgivelse). Når kataloget sælger noget af sig selv, viser `/priser` pakkerne i tre
+grupper (kom gratis i gang, køb selv, kontakt os) med de priser, kataloget viser (pr. måned,
+faktureret årligt, ekskl. moms); pakkeknapperne, "Kom gratis i gang" over og under dem
+(`freeStartHref`) og forsidens pakketeaser går til app'ens `/signup?package=`-URL, som API'et
+navngiver; headeren og forsidens hero, trin og afslutning fører med "Kom gratis i gang";
+`#software` får et `Offer` pr. offentlig årspris; og `/llms.txt` og `.md`-tvillingerne af `/` og
+`/priser` viser priserne. Ingen pris og ingen signup-URL står nogensinde i sitets copy
+(`src/lib/packageView.ts`, `scripts/check-sales-led.mjs`). Betalingen er app'ens Stripe Checkout;
+sitet kalder aldrig en checkout (§7.5).
 
-**Medmindre app'ens katalog sælger noget selvbetjent.** Pakkerne er data i qlim8-app (Admin → Pakker),
-og sitet læser dem fra `GET /api/public/packages` (`src/lib/packages.ts`, ISR med tagget `packages`,
-revalideret ved udgivelse). Så længe alle pakker dér er "demo", eller API'et ikke kan nås, er sitet
-det salgsledede site beskrevet ovenfor. Når kataloget har en selvbetjent pakke, viser `/priser`
-pakkerne i tre grupper (kom gratis i gang, køb selv, kontakt os) med de priser, kataloget viser
-(pr. måned, faktureret årligt, ekskl. moms), knapperne går til app'ens `/signup?package=`-URL,
-headeren får "Kom gratis i gang", og `#software` får et `Offer` pr. offentlig årspris. Ingen pris
-står nogensinde i sitets copy (`src/lib/packageView.ts`).
+**Salgsledet som fallback.** Så længe alle pakker er "demo" (katalog version 1), eller API'et ikke
+kan nås, er sitet salgsledet: ingen pris, og alle hovedknapper booker en demo. De andre veje ind
+gælder i begge tilstande: Book demo (`/kontakt?emne=demo`), kontaktformularen på `/kontakt`,
+telefonnummeret og nyhedsbrevet, alle hentet fra `src/content/cta.ts`. "Log ind" linker
+eksisterende kunder til `app.qlim8.com/auth`. Business og Enterprise sælges altid efter en samtale
+og faktureres, se §7.2.
 
 **Begge formularer går gennem same-origin-proxies.** `ContactForm.tsx` POST'er til `/api/contact`,
 og `NewsletterForm.tsx` og `NewsletterSignupDialog.tsx` POST'er til `/api/newsletter/signup`. Det
@@ -632,8 +647,10 @@ _Eksporter: [SVG](../../diagrams/svg/07-seq-invoice.svg) · [PNG](../../diagrams
 
 ### 7.2 Demo-anmodning → kundekonto (landing → app → ejer)
 
-Erstatter den tidligere pricing-checkout-bro (landing → app `/api/stripe/checkout-public` →
-Stripe), som ikke længere findes i nogen af de to repos.
+Erstattede den tidligere pricing-checkout-bro (landing → app `/api/stripe/checkout-public` →
+Stripe), som ikke længere findes i nogen af de to repos. Siden selvbetjeningen er det vejen for
+Business og Enterprise og for alle, der vil have en demo først; en virksomhed, der starter selv,
+følger §7.5.
 
 ```mermaid
 sequenceDiagram
@@ -662,7 +679,7 @@ sequenceDiagram
   V->>A: choose password, log in
   V->>A: /onboarding: company details
   A->>DB: create tenant, subscriptionTier = provisioned package
-  Note over A: invoiced outside the app, no Stripe checkout
+  Note over A: Business / Enterprise: invoiced yearly (Stripe send_invoice, created in /admin)
 ```
 
 _Eksporter: [SVG](../../diagrams/svg/08-seq-demo-request.svg) · [PNG](../../diagrams/png/08-seq-demo-request.png) · [Mermaid](../../diagrams/mmd/08-seq-demo-request.mmd) · [Excalidraw](../../diagrams/excalidraw/08-seq-demo-request.excalidraw)_
@@ -734,6 +751,56 @@ _Eksporter: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagr
 
 ---
 
+### 7.5 Selvbetjent signup og køb (landing → app → Stripe)
+
+Når app'ens katalog sælger noget af sig selv. Landing linker kun; kontoen, firmaopslaget og
+betalingen er app'ens.
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor V as Visitor / new customer
+  participant L as Landing (qlim8.com)
+  participant A as App (app.qlim8.com)
+  participant DB as PostgreSQL
+  participant R as Resend
+  participant S as Stripe
+
+  L->>A: GET /api/public/packages (ISR, tag packages)
+  A-->>L: packages, prices (yearly, ex. VAT), CTA URLs
+  V->>L: /priser: "Kom gratis i gang"
+  L-->>V: link to /signup?package=free (URL from the API)
+  V->>A: POST /api/register (email, password, terms)
+  Note over A: rate limit, honeypot, same answer for a new or known email
+  A-)R: confirmation code
+  R-)V: code by email
+  V->>A: POST /api/register/verify (code)
+  A-->>V: session
+  V->>A: GET /api/onboarding/company-lookup (CVR, or EU VAT number)
+  A-->>V: name, address, industry (user confirms or corrects)
+  V->>A: POST /api/onboarding
+  A->>DB: tenant live on Free, legal entity facts, one claim per registration number
+  A->>DB: organization.created, legal_entity.facts_recorded (same transaction), tenant.created audit
+  Note over V,A: later, from the app or the package page
+  V->>A: POST /api/billing/checkout { packageKey: starter }
+  A->>S: Checkout session (subscription, catalog's yearly price, automatic tax)
+  S-->>V: card payment
+  S-->>V: redirect to /billing/success
+  V->>A: GET /api/billing/checkout/session/:id
+  A->>DB: package = Starter (audited)
+  S-)A: webhook customer.subscription.created / checkout.session.completed
+```
+
+_Eksporter: [SVG](../../diagrams/svg/11-seq-self-serve-signup.svg) · [PNG](../../diagrams/png/11-seq-self-serve-signup.png) · [Mermaid](../../diagrams/mmd/11-seq-self-serve-signup.mmd) · [Excalidraw](../../diagrams/excalidraw/11-seq-self-serve-signup.excalidraw)_
+
+Signup-URL'en kommer fra pakke-API'et, så landing har ingen. Kontoen starter live på Free med
+virksomhedens egne data (ingen eksempeldata), og et registreringsnummer kan have én Free-organisation.
+En virksomhed, der vil have Starter eller Premium, opretter sig på samme måde (`package` i URL'en er
+en hensigt, aldrig en tildeling) og køber pakken fra app'ens pakkeside (`/pricing`); en logget ind
+besøgende, der følger et købslink fra qlim8.com, lander dér med den pakke først. Revisorer og
+konsulenter opretter sig med `type=advisor` og lander på deres portefølje (`/portefolje`); en klient
+kan stadig invitere dem (§2).
+
 ## 8. Arkitektur-noter & kendte huller
 
 1. **Formular-broerne er same-origin-proxies.** Kontaktformularen (`/api/contact` → app
@@ -767,6 +834,10 @@ _Eksporter: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagr
     Playwright + React-sektionsrenderer (via browser-poolen).
 11. **3-tier-beregningens fallback:** PCF/EPD (leverandørspecifik) → aktivitetsfaktor →
     spend-baseret EXIOBASE, med country→DK-faktor-fallback og inflationskorrektion (HICP/CPI).
+12. **Priser og signup-URL'er bor ét sted.** App'ens pakkekatalog afgør, hvad der sælges, til
+    hvilken pris og på hvilken URL; landing viser `GET /api/public/packages` og falder tilbage til
+    det salgsledede site, når det ikke kan. Udgivelsen af en katalogversion i app'en er også
+    nødstoppet.
 
 ## Relaterede dokumenter
 

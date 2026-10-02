@@ -134,7 +134,7 @@ export const KT_REVISOR: MarketingPageCopy = {
     items: [
       {
         q: "Skal jeg betale en licens pr. klient?",
-        a: "Nej. Klient-tenanten betaler selv sit abonnement. Din tredjeparts-adgang koster ikke seat-fee, så du kan tilføje ubegrænset klienter uden at din egen omkostning stiger.",
+        a: "Nej. Din revisorkonto er gratis, og klient-tenanten betaler selv sit abonnement. Din tredjeparts-adgang koster ikke seat-fee, så du kan tilføje ubegrænset klienter uden at din egen omkostning stiger.",
       },
       {
         q: "Kan jeg komme til at ændre en klients data ved en fejl?",
@@ -161,7 +161,7 @@ export const KT_REVISOR: MarketingPageCopy = {
   closingCta: {
     title: "Byg en fakturerbar klimaregnskab-ydelse oven på din praksis",
     description:
-      "Book en demo, hvor vi går konsulent-flowet med audit-pack-scope og sign-off igennem med revisorbriller.",
+      "Opret en gratis revisorkonto, eller book en demo, hvor vi går konsulent-flowet med audit-pack-scope og sign-off igennem med revisorbriller.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -312,7 +312,7 @@ export const KT_PLASTFABRIKANT: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Prisen afhænger af pakke og behov. For en produktionsvirksomhed med Scope 3-behov og PCF er det typisk Premium eller derover, der passer. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
+        a: "Du kan starte gratis: Free er gratis for altid og beregner scope 1, 2 og 3. For en produktionsvirksomhed med Scope 3-behov og PCF er det typisk Premium eller derover, der passer. Premium køber du direkte i appen, og priserne står på /priser. Business og Enterprise finder vi sammen med dig, så book en demo.",
       },
     ],
   },
@@ -450,11 +450,11 @@ export const KT_RAADGIVER: MarketingPageCopy = {
     items: [
       {
         q: "Hvordan får jeg adgang til mine kunders klimaregnskab?",
-        a: "Via qlim8's tredjeparts-adgang. Kunden inviterer dig ind, og du får adgang fra dit eget rådgiver-login. Du kan have ubegrænset kunder under det ene login uden at betale seat-fee pr. relation.",
+        a: "Via qlim8's tredjeparts-adgang. Du opretter selv en gratis rådgiverkonto, eller kunden inviterer dig ind, og du får adgang fra dit eget rådgiver-login. Du kan have ubegrænset kunder under det ene login uden at betale seat-fee pr. relation.",
       },
       {
         q: "Betaler jeg for hver kunde, jeg rådgiver?",
-        a: "Nej. Kunde-tenanten betaler selv sit abonnement. Din adgang som rådgiver koster ikke ekstra, så du lægger ikke licens-omkostning til din egen drift.",
+        a: "Nej. Kunde-tenanten betaler selv sit abonnement, og din rådgiverkonto er gratis, så du lægger ikke licens-omkostning til din egen drift.",
       },
       {
         q: "Kan jeg bruge qlim8 til reduktionsrådgivning, ikke kun rapportering?",
@@ -477,7 +477,7 @@ export const KT_RAADGIVER: MarketingPageCopy = {
   closingCta: {
     title: "Skalér din ESG-rådgivning på et sporbart grundlag",
     description:
-      "Book en demo, hvor vi viser rådgiver-flowet med tredjeparts-adgang, Scenario Planner og lineage på rigtige data.",
+      "Opret en gratis rådgiverkonto, eller book en demo, hvor vi viser rådgiver-flowet med tredjeparts-adgang, Scenario Planner og lineage på rigtige data.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -608,7 +608,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
     items: [
       {
         q: "Kan jeg håndtere flere kunder fra ét login?",
-        a: "Ja. Med tredjeparts-adgang har du ét konsulent-login med adgang til alle dine kunders klimaregnskab. Kunden inviterer dig ind, og du kan have ubegrænset kunder uden at betale seat-fee pr. relation.",
+        a: "Ja. Med tredjeparts-adgang har du ét konsulent-login med adgang til alle dine kunders klimaregnskab. Du opretter selv en gratis konsulentkonto, eller kunden inviterer dig ind, og du kan have ubegrænset kunder uden at betale seat-fee pr. relation.",
       },
       {
         q: "Hvordan bygger jeg en reduktionsplan, kunden faktisk følger?",
@@ -620,7 +620,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
       },
       {
         q: "Betaler jeg licens pr. kunde?",
-        a: "Nej. Kunde-tenanten betaler selv abonnementet. Din adgang som konsulent koster ikke ekstra, så du kan tage også mindre opgaver rentabelt.",
+        a: "Nej. Kunde-tenanten betaler selv abonnementet, og din konsulentkonto er gratis, så du kan tage også mindre opgaver rentabelt.",
       },
       {
         q: "Kan mine kunder rapportere compliant efter VSME og CSRD?",
@@ -635,7 +635,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
   closingCta: {
     title: "Lever målbar klimafremdrift til flere kunder",
     description:
-      "Book en demo, hvor vi viser Scenario Planner og reduktion-tracking og går konsulent-flowet igennem på tværs af en portefølje.",
+      "Opret en gratis konsulentkonto, eller book en demo, hvor vi viser Scenario Planner og reduktion-tracking og går konsulent-flowet igennem på tværs af en portefølje.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -769,7 +769,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Prisen afhænger af pakke og behov. For de fleste saloner er Starter rigeligt til at lave og vedligeholde et klimaregnskab, og Premium er der, hvis du får brug for mere. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
+        a: "Du kan starte gratis: Free er gratis for altid og giver dig klimaregnskabet med PDF-eksport. Skal du sende en VSME Basic-rapport videre, er Starter rigeligt for de fleste saloner, og Premium er der, hvis du får brug for mere. Priserne står på /priser, og du køber direkte i appen.",
       },
       {
         q: "Hvad indgår i regnskabet for en frisør?",
@@ -788,7 +788,7 @@ export const KT_FRISOER: MarketingPageCopy = {
   closingCta: {
     title: "Få salonens klimaregnskab klaret på en eftermiddag",
     description:
-      "Book en demo, så viser vi, hvor hurtigt et ærligt klimaregnskab er klar til at sende videre. Passer qlim8 til din salon, opretter vi din konto og hjælper med at forbinde regnskabssystemet og Eloverblik.",
+      "Opret en gratis konto og forbind regnskabssystemet og Eloverblik, så ser du, hvor hurtigt et ærligt klimaregnskab er klar til at sende videre. Vil du hellere se det først, så book en demo.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },

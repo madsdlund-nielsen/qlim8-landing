@@ -218,7 +218,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Og hvis du vælger software-vejen og overvejer qlim8, så book en demo, eller ring til mig på +45 93 90 13 84. Så viser jeg dig platformen, og du kan se hvad du går ind i, før du beslutter dig.',
+      text: 'Og hvis du vælger software-vejen og overvejer qlim8, så opret en gratis konto og se dine egne tal. Vil du hellere have en gennemgang, så book en demo eller ring til mig på +45 93 90 13 84, så viser jeg dig platformen, før du beslutter dig.',
     },
 
     { type: 'h2', text: 'Det her er ikke en krise. Men det forsvinder ikke.' },

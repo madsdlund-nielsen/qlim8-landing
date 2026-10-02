@@ -1,7 +1,7 @@
 export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   {
     q: "Hvad er qlim8?",
-    a: "qlim8 er en dansk SaaS-platform der laver automatisk klimaregnskab og VSME-rapportering for små og mellemstore virksomheder. Platformen henter data direkte fra danske regnskabssystemer (Dinero, e-conomic, Billy) og fra Eloverblik som officiel tredjepart hos Energinet, og leverer revisionsklare Scope 1-3 beregninger. qlim8 sælges efter en demo, hvor vi viser platformen og finder den pakke, der passer.",
+    a: "qlim8 er en dansk SaaS-platform der laver automatisk klimaregnskab og VSME-rapportering for små og mellemstore virksomheder. Platformen henter data direkte fra danske regnskabssystemer (Dinero, e-conomic, Billy) og fra Eloverblik som officiel tredjepart hos Energinet, og leverer revisionsklare Scope 1-3 beregninger. Du kan oprette en gratis konto og komme i gang med det samme, eller booke en demo, hvis du vil se platformen først.",
   },
   {
     q: "Hvem er qlim8 til?",
@@ -13,7 +13,7 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Hvad koster qlim8?",
-    a: "Prisen afhænger af pakke og behov. qlim8 findes i tre pakker: Starter, Premium og Enterprise. Book en demo eller ring på +45 93 90 13 84, så gennemgår vi pakkerne med jer, og I får et konkret tilbud.",
+    a: "qlim8 findes i fem pakker: Free, Starter, Premium, Business og Enterprise. Free er gratis for altid. Starter og Premium har faste priser, som står på /priser, og som I køber direkte i appen: pr. måned, faktureret årligt, ekskl. moms. Business og Enterprise tilpasser vi jeres behov, så book en demo eller ring på +45 93 90 13 84.",
   },
   {
     q: "Hvor lang tid tager det at lave et klimaregnskab i qlim8?",
@@ -33,7 +33,7 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Er qlim8's beregninger revisionsklare?",
-    a: "Ja. Hver beregning får et unikt ID, og du kan klikke fra dashboardet ned til den faktura eller måling den stammer fra: input, emissionsfaktor og kilde er sporbart fra dag ét. På Premium kan din revisor få direkte adgang til platformen med rettigheder til at kommentere og signere beregninger.",
+    a: "Ja. Hver beregning får et unikt ID, og du kan klikke fra dashboardet ned til den faktura eller måling den stammer fra: input, emissionsfaktor og kilde er sporbart fra dag ét. Fra Starter kan din revisor få direkte adgang til platformen med rettigheder til at kommentere og signere beregninger.",
   },
   {
     q: "Hvad er forskellen på Scope 1, 2 og 3?",
@@ -41,7 +41,7 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Kan jeg se qlim8, før vi beslutter os?",
-    a: "Ja. Book en demo, så viser vi platformen og gennemgår, hvad din bank, dine kunder eller din revisor efterspørger. Passer qlim8 til jer, opretter vi jeres konto og hjælper med at forbinde regnskabssystemet. qlim8 henter tre måneders historiske data med det samme, så jeres egne tal overtager dashboardet fra første dag.",
+    a: "Ja. Opret en gratis konto og forbind jeres regnskabssystem, så henter qlim8 tre måneders historiske data med det samme, og I ser jeres egne tal fra første dag. Vil I hellere have en gennemgang først, så book en demo, så viser vi platformen og gennemgår, hvad din bank, dine kunder eller din revisor efterspørger.",
   },
 ];
 
