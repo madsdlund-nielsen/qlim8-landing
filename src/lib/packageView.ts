@@ -167,18 +167,21 @@ export function trialDaysOf(pkg: PublicPackage): number {
  * The one line on qlim8.com that names the trial. It comes from the catalog,
  * never from copy: scripts/lib/salesLed.mjs allows trial wording in this file
  * only, so a trial the app does not give cannot be promised anywhere else.
+ *
+ * The trial is unlocked by an intro call booked in the first week (qlim8-app,
+ * shared/entitlements/trialBooking.ts), so the line says so, and the button
+ * does not promise it.
  */
 export function trialLine(pkg: PublicPackage): string | null {
   const days = trialDaysOf(pkg);
-  return days > 0 ? `${days} dages gratis prøveperiode. Kortet trækkes først bagefter, og du kan opsige før.` : null;
+  return days > 0
+    ? `${days} dages gratis prøveperiode, når du har booket en kort introsamtale med os i den første uge. Kortet trækkes først bagefter, og du kan opsige før.`
+    : null;
 }
 
 /** The label on a package's button. Demo uses the site's own "Book demo". */
 export function ctaLabel(pkg: PublicPackage): string {
-  if (pkg.cta.kind === "buy") {
-    const days = trialDaysOf(pkg);
-    return days > 0 ? `Prøv ${pkg.name} i ${days} dage` : `Køb ${pkg.name}`;
-  }
+  if (pkg.cta.kind === "buy") return `Køb ${pkg.name}`;
   if (pkg.cta.kind === "signup") return pkg.accountType === "advisor" ? `Kom i gang som ${pkg.name.toLowerCase()}` : "Kom gratis i gang";
   return "Book demo";
 }

@@ -132,9 +132,11 @@ export const LEGAL_TERMS_COPY: LegalCopy = {
 <p>4.5 Kunden kan til enhver tid opgradere fra Starter til Premium i Tjenesten. Opgraderingen gælder straks, og forskellen i pris for resten af Abonnementsperioden opkræves med det samme. En nedgradering gælder fra udløbet af den igangværende Abonnementsperiode.</p>
 <p>4.6 Overskrider Kunden grænserne i sin Pakke, fx efter en nedgradering, låses organisationen ("pakkelås"), indtil forholdet er bragt i orden. Under en pakkelås kan Kunden se og eksportere sine data, fjerne brugere og forbindelser og købe en større Pakke, men ikke tilføje nye data eller danne nye rapporter.</p>
 <h2>5. Prøveperiode</h2>
-<p>5.1 Ved første køb af Starter eller Premium får Kunden en gratis Prøveperiode på 7 dage, medmindre Kundens organisation tidligere har haft et abonnement på Starter eller Premium, herunder en Prøveperiode. Free, Business, Enterprise, Revisor og Konsulent har ingen Prøveperiode. Prøveperiodens længde vises ved købet.</p>
-<p>5.2 Kunden angiver sit betalingskort, når Prøveperioden starter. Opsiger Kunden ikke inden Prøveperiodens udløb, overgår Pakken automatisk til et betalt abonnement med en Abonnementsperiode på 12 måneder, og årsprisen trækkes på kortet ved Prøveperiodens udløb.</p>
-<p>5.3 Kunden kan opsige i Prøveperioden i Tjenesten under Konto (Administrer abonnement). Der trækkes da intet beløb, og når Prøveperioden udløber, fortsætter organisationen på Free.</p>
+<p>5.1 Ved første køb af Starter eller Premium kan Kunden få en gratis Prøveperiode på 7 dage, medmindre Kundens organisation tidligere har haft et abonnement på Starter eller Premium, herunder en Prøveperiode. Free, Business, Enterprise, Revisor og Konsulent har ingen Prøveperiode. Prøveperiodens længde vises ved købet.</p>
+<p>5.2 Prøveperioden forudsætter en introsamtale med Leverandøren. Samtalen skal bookes via Leverandørens bookingside senest 7 dage efter, at Kundens organisation er oprettet i Tjenesten, og skal finde sted senest 21 dage efter oprettelsen. Prøveperioden kan startes, så snart samtalen er booket med en e-mailadresse, der tilhører en bruger i organisationen. Uden en sådan booking kan Starter og Premium købes uden Prøveperiode.</p>
+<p>5.3 Kunden angiver sit betalingskort, når Prøveperioden starter. Opsiger Kunden ikke inden Prøveperiodens udløb, overgår Pakken automatisk til et betalt abonnement med en Abonnementsperiode på 12 måneder, og årsprisen trækkes på kortet ved Prøveperiodens udløb.</p>
+<p>5.4 Udebliver Kunden fra introsamtalen uden at aflyse eller flytte den, kan Leverandøren afslutte Prøveperioden før tid. Abonnementsperioden begynder da, og årsprisen trækkes på kortet samme dag.</p>
+<p>5.5 Kunden kan opsige i Prøveperioden i Tjenesten under Konto (Administrer abonnement). Der trækkes da intet beløb, og når Prøveperioden udløber, fortsætter organisationen på Free.</p>
 <h2>6. Tjenesten</h2>
 <p>6.1 Tjenesten leveres som standardiseret SaaS via internettet og omfatter de funktioner, der hører til Kundens Pakke.</p>
 <p>6.2 Leverandøren udvikler løbende Tjenesten og kan tilføje, ændre eller fjerne funktionalitet, så længe den samlede funktionalitet i Kundens Pakke i al væsentlighed bevares i Abonnementsperioden.</p>
@@ -255,6 +257,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <li>Stripe får virksomhedens navn, adresse og momsnummer samt e-mailen på den, der køber.</li>
 <li>Vi gemmer, hvilken pakke organisationen har, abonnementets status, prøveperiodens udløb og fakturaerne.</li>
 <li>Ved Business og Enterprise: fakturamodtagerens e-mail og et eventuelt indkøbsordrenummer.</li>
+<li>Introsamtale før prøveperioden: når du booker en samtale på vores bookingside, får vi dit navn, din e-mail og tidspunktet i vores kalender hos Google. Platformen læser kalenderen for at se, om en bruger i din organisation har booket, og gemmer kun, at prøveperioden er låst op, og hvornår samtalen er.</li>
 </ul>
 <h3>3.7 Produktanalyse og fejl</h3>
 <ul>
@@ -272,7 +275,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <h2>4. Formål og retsgrundlag</h2>
 <ul>
 <li><strong>Konto, platform og kundeforhold</strong> (oprettelse, bekræftelse, firmaopslag, drift, support, fornyelsesvarsler): opfyldelse af aftale, GDPR art. 6, stk. 1, litra b, for kundens kontaktpersoner, og legitim interesse, litra f, for øvrige brugere, fordi det er nødvendigt for at levere platformen til kunden.</li>
-<li><strong>Køb, prøveperiode og betaling</strong>: opfyldelse af aftale, litra b.</li>
+<li><strong>Køb, prøveperiode, introsamtale og betaling</strong>: opfyldelse af aftale, litra b, herunder skridt før aftalen, som du selv beder om.</li>
 <li><strong>Sikkerhed og logning</strong>: legitim interesse, litra f, i at beskytte platformen og kundernes data.</li>
 <li><strong>Produktanalyse og fejlretning uden cookies</strong>: legitim interesse, litra f, i at rette fejl og forbedre platformen.</li>
 <li><strong>Statistik, sessionsoptagelse og annoncemåling</strong>: samtykke, litra a, jf. cookiebekendtgørelsen.</li>
@@ -293,7 +296,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <li><strong>Resend, Inc.</strong> (USA): udsendelse af e-mails og nyhedsbrev.</li>
 <li><strong>Stripe Payments Europe Ltd.</strong> (Irland), en del af Stripe-koncernen: betaling, abonnementer, moms og fakturaer. Stripe er selvstændigt dataansvarlig for de oplysninger, Stripe selv skal bruge til betalingen og til at forebygge svindel.</li>
 <li><strong>PostHog, Inc.</strong> (USA, data opbevares i EU): produktanalyse og fejlregistrering, jf. afsnit 3.7.</li>
-<li><strong>Google Ireland Ltd.</strong>: Google Analytics og Google Ads, kun med samtykke.</li>
+<li><strong>Google Ireland Ltd.</strong>: Google Analytics og Google Ads, kun med samtykke, og Google Kalender, hvor introsamtaler bookes.</li>
 <li>Rådgivere (revisor, advokat) under deres tavshedspligt, og offentlige myndigheder, når loven kræver det.</li>
 </ul>
 <p>Vi henter oplysninger fra CVR-registeret (Erhvervsstyrelsen og cvrapi.dk), EU's momsregister (VIES), Energinet DataHub (Eloverblik) og de regnskabs- og lønsystemer, en kunde forbinder. Integrationer, som en kunde selv opretter for at sende data ud (fx Google Drive, Microsoft 365, Slack, Teams, Zapier, Notion, Airtable, HubSpot og Salesforce), sender data på kundens vegne og ansvar.</p>
@@ -308,6 +311,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <li><strong>Fakturaer og bogføringsmateriale</strong>: 5 år fra udgangen af det regnskabsår, de vedrører, jf. bogføringsloven.</li>
 <li><strong>Nyhedsbrev</strong>: indtil du afmelder dig, og dokumentation for samtykket i op til 2 år derefter.</li>
 <li><strong>Kontaktformular</strong>: op til 2 år efter din seneste henvendelse.</li>
+<li><strong>Booking af introsamtale</strong>: i vores kalender op til 2 år efter samtalen.</li>
 <li><strong>Cookies</strong>: som angivet i <a href="/cookies">cookieerklæringen</a>.</li>
 </ul>
 <h2>11. Dine rettigheder</h2>

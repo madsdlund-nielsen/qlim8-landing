@@ -87,8 +87,12 @@ test("a trial is shown only where the catalog gives one, on a package bought by 
   // The API before trialDays, and a catalog without a trial: no trial anywhere.
   for (const p of v2.packages) assert.equal(trialLine(p), null, p.key);
   const withTrial = (key: string, trialDays: number) => ({ ...pkg(v2, key), trialDays });
-  assert.equal(trialLine(withTrial("starter", 7)), "7 dages gratis prøveperiode. Kortet trækkes først bagefter, og du kan opsige før.");
-  assert.equal(ctaLabel(withTrial("premium", 7)), "Prøv Premium i 7 dage");
+  assert.equal(
+    trialLine(withTrial("starter", 7)),
+    "7 dages gratis prøveperiode, når du har booket en kort introsamtale med os i den første uge. Kortet trækkes først bagefter, og du kan opsige før.",
+  );
+  // The call unlocks the trial, so the button does not promise it.
+  assert.equal(ctaLabel(withTrial("premium", 7)), "Køb Premium");
   // Never on a free or a demo package, whatever the field says.
   assert.equal(trialLine(withTrial("free", 7)), null);
   assert.equal(trialLine(withTrial("enterprise", 7)), null);
