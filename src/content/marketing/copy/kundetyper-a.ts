@@ -59,7 +59,7 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
   closingCta: {
     title: "Se dit klimaregnskab før frokost",
     description:
-      "Book en demo, så viser vi platformen med udgangspunkt i din virksomhed. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte Dinero, e-conomic eller Billy, og du ser dine første scope-summer samme dag. Ingen konsulent.",
+      "Opret en gratis konto og tilslut Dinero, e-conomic eller Billy, så ser du dine første scope-summer samme dag. Ingen konsulent. Vil du hellere se platformen først, så book en demo.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -174,14 +174,14 @@ export const KT_TOMRER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det for et lille tømrerfirma?",
-        a: "Prisen afhænger af pakke og behov. Starter dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium tilføjer Scenario Planner, Klimaagent og VSME Comprehensive. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
+        a: "Du kan starte gratis: Free er gratis for altid og dækker basis-flowet med ubegrænsede posteringer. Starter tilføjer VSME Basic og ubegrænsede brugere, og Premium tilføjer VSME Comprehensive og Reduction Hub. Priserne står på /priser, pr. måned faktureret årligt og ekskl. moms, og du køber direkte i appen.",
       },
     ],
   },
   closingCta: {
     title: "Få tømrerfirmaets klimaregnskab ud af regnearket",
     description:
-      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab, og du ser din diesel og dine materialer omsat til CO₂e samme dag. Klar til næste bygherre-spørgeskema.",
+      "Opret en gratis konto og tilslut dit regnskab, så ser du din diesel og dine materialer omsat til CO₂e samme dag. Klar til næste bygherre-spørgeskema. Vil du hellere se platformen først, så book en demo.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -296,14 +296,14 @@ export const KT_MALER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Prisen afhænger af pakke og behov. Starter giver VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium tilføjer VSME Comprehensive, Scenario Planner og Klimaagent. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
+        a: "Du kan starte gratis: Free er gratis for altid og giver dig et klimaregnskab for scope 1, 2 og 3. Starter giver VSME Basic, og Premium tilføjer VSME Comprehensive og Reduction Hub med avancerede reduktionsmål. Priserne står på /priser, pr. måned faktureret årligt og ekskl. moms, og du køber direkte i appen.",
       },
     ],
   },
   closingCta: {
     title: "Gør malerfirmaets kemi og diesel til dokumentation",
     description:
-      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab, og du ser dit klimaregnskab samme dag. Klar til næste bygherre-krav.",
+      "Opret en gratis konto og tilslut dit regnskab, så ser du dit klimaregnskab samme dag. Klar til næste bygherre-krav. Vil du hellere se platformen først, så book en demo.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -418,14 +418,14 @@ export const KT_ELEKTRIKER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Prisen afhænger af pakke og behov. Starter giver VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium tilføjer VSME Comprehensive, Scenario Planner og Klimaagent. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
+        a: "Du kan starte gratis: Free er gratis for altid og giver dig et klimaregnskab for scope 1, 2 og 3. Starter giver VSME Basic, og Premium tilføjer VSME Comprehensive og Reduction Hub med avancerede reduktionsmål. Priserne står på /priser, pr. måned faktureret årligt og ekskl. moms, og du køber direkte i appen.",
       },
     ],
   },
   closingCta: {
     title: "Vær klar, når hovedentreprenøren spørger om ESG-data",
     description:
-      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab og Eloverblik, så du får et audit-bakket klimaregnskab, du kan sende videre samme dag.",
+      "Opret en gratis konto og tilslut dit regnskab og Eloverblik, så får du et audit-bakket klimaregnskab, du kan sende videre samme dag. Vil du hellere se platformen først, så book en demo.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -526,17 +526,17 @@ export const KT_VVS: MarketingPageCopy = {
     },
   ],
   howItWorks: {
-    title: "Fra demo til udbuds-klar rapport i fem trin",
+    title: "Fra gratis konto til udbuds-klar rapport i fem trin",
     steps: [
       {
-        title: "Book en demo",
+        title: "Opret en gratis konto",
         body:
-          "Vi viser platformen med udgangspunkt i dit VVS-firma. Du kan også ringe på +45 93 90 13 84 eller skrive til os.",
+          "Det tager et par minutter, og Free er gratis for altid. Vil du hellere se platformen med udgangspunkt i dit VVS-firma først, så book en demo, ring på +45 93 90 13 84 eller skriv til os.",
       },
       {
-        title: "Vi sætter dig op",
+        title: "Forbind dit regnskab",
         body:
-          "Passer qlim8 til dig, opretter vi din konto og hjælper dig med at logge ind med Visma Connect, forbinde Dinero, e-conomic eller Billy og tilslutte Eloverblik for dit elforbrug. Det tager minutter, ikke et implementeringsprojekt, og qlim8 henter tre måneders historiske data med det samme.",
+          "Du bekræfter din e-mail med en kode og slår firmaet op på CVR. Derefter logger du ind med Visma Connect, forbinder Dinero, e-conomic eller Billy og tilslutter Eloverblik for dit elforbrug. Det tager minutter, ikke et implementeringsprojekt, og qlim8 henter tre måneders historiske data med det samme.",
       },
       {
         title: "Lad qlim8 læse dine fakturaer",
@@ -582,7 +582,7 @@ export const KT_VVS: MarketingPageCopy = {
       },
       {
         q: "Hvad er forskellen på VSME Basic og Comprehensive for et VVS-firma?",
-        a: "VSME Basic dækker de grundlæggende scope-summer og nøgletal og følger med Starter. VSME Comprehensive udvider modellen og følger med Premium sammen med Scenario Planner, Klimaagent og reduktions-tracking.",
+        a: "VSME Basic dækker de grundlæggende scope-summer og nøgletal og følger med Starter. VSME Comprehensive udvider modellen og følger med Premium sammen med analyse og Reduction Hub med avancerede reduktionsmål.",
       },
       {
         q: "Skal jeg have en ESG-medarbejder eller en konsulent?",
@@ -593,7 +593,7 @@ export const KT_VVS: MarketingPageCopy = {
   closingCta: {
     title: "Gør VVS-firmaets aftryk udbuds-klart",
     description:
-      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab og Eloverblik. Derefter registrerer du dine kølemidler og får et audit-bakket klimaregnskab, der holder til bygherrer og offentlige udbud.",
+      "Opret en gratis konto og tilslut dit regnskab og Eloverblik. Derefter registrerer du dine kølemidler og får et audit-bakket klimaregnskab, der holder til bygherrer og offentlige udbud. Vil du se platformen først, så book en demo.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -697,7 +697,7 @@ export const KT_VVS_BODY: ArticleSection[] = [
   },
   {
     type: "paragraph",
-    text: "qlim8 Starter dækker basis-flowet plus VSME Basic med op til 3.000 aktiviteter pr. billing-periode og 2 seats. Premium tilføjer VSME Comprehensive, Scenario Planner, Klimaagent og reduktions-tracking med op til 7.500 aktiviteter og 5 seats. Prisen afhænger af pakke og behov, og efter en demo giver vi dig et konkret tilbud. Til sammenligning løber et førstegangs-VSME-engagement hos et konsulenthus typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4], og giver dig et øjebliksbillede i stedet for et tal, du ejer og kan opdatere hele året.",
+    text: "qlim8 Free er gratis for altid og dækker basis-flowet med ubegrænsede posteringer. Starter tilføjer VSME Basic, ubegrænsede brugere og revisoradgang, og Premium tilføjer VSME Comprehensive, analyse og Reduction Hub med avancerede reduktionsmål. Priserne står på /priser, og Starter og Premium køber du direkte i appen. Til sammenligning løber et førstegangs-VSME-engagement hos et konsulenthus typisk op i 75.000-200.000 kr. [antagelse: markeds-research, sample size 4], og giver dig et øjebliksbillede i stedet for et tal, du ejer og kan opdatere hele året.",
   },
 ];
 
@@ -811,14 +811,14 @@ export const KT_ENTREPRENOER: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det for et entreprenørfirma?",
-        a: "Prisen afhænger af pakke og behov. Starter giver VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Har du mange fakturaer og brug for underleverandør-koordinering og VSME Comprehensive, giver Premium op til 7.500 aktiviteter og 5 seats. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
+        a: "Du kan starte gratis: Free er gratis for altid, og alle pakker har ubegrænsede posteringer, så mange fakturaer er ikke et problem. Starter giver VSME Basic og ubegrænsede brugere, og har du brug for VSME Comprehensive og analyse af dine leverandører, er det Premium. Priserne står på /priser, og du køber direkte i appen.",
       },
     ],
   },
   closingCta: {
     title: "Gør entreprenørens klimaregnskab udbuds-klart",
     description:
-      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab, så du får et audit-bakket klimaregnskab, der holder, når ESG er tildelingskriterium i næste udbud.",
+      "Opret en gratis konto og tilslut dit regnskab, så får du et audit-bakket klimaregnskab, der holder, når ESG er tildelingskriterium i næste udbud. Vil du hellere se platformen først, så book en demo.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -934,14 +934,14 @@ export const KT_VOGNMAND: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det for et vognmandsfirma?",
-        a: "Prisen afhænger af pakke og behov. Starter giver VSME Basic, op til 3.000 aktiviteter pr. billing-periode og 2 seats. Kører du meget og vil bruge Scenario Planner til at teste optimeringer, giver Premium op til 7.500 aktiviteter og 5 seats. Book en demo, så gennemgår vi pakkerne og giver dig et konkret tilbud.",
+        a: "Du kan starte gratis: Free er gratis for altid, med ubegrænsede posteringer uanset hvor meget du kører. Starter giver VSME Basic og ubegrænsede brugere, og Premium tilføjer VSME Comprehensive og analyse. Vil du teste optimeringer i Scenario Builder, er det Business, som vi tilpasser sammen med dig. Priserne står på /priser.",
       },
     ],
   },
   closingCta: {
     title: "Vær vognmanden, der har transport-data klar",
     description:
-      "Book en demo, så viser vi platformen med udgangspunkt i dit firma. Passer qlim8 til dig, opretter vi din konto og hjælper med at tilslutte dit regnskab, så du får et audit-bakket brændstof-regnskab, dine kunder kan bruge i deres Scope 3.",
+      "Opret en gratis konto og tilslut dit regnskab, så får du et audit-bakket brændstof-regnskab, dine kunder kan bruge i deres Scope 3. Vil du hellere se platformen først, så book en demo.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },

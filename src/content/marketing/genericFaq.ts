@@ -22,7 +22,7 @@ export const GENERIC_ESG_FAQ: FaqItem[] = [
   },
   {
     q: "Hvor hurtigt kan jeg komme i gang med qlim8?",
-    a: "Book en demo, så viser vi platformen med udgangspunkt i din virksomhed. Passer qlim8 til dig, opretter vi din konto og hjælper med at forbinde dit regnskabssystem. Når det er tilkoblet, henter qlim8 tre måneders historiske data med det samme, og du har et grundlæggende klimaregnskab samme dag. Derefter opdateres det automatisk.",
+    a: "Du opretter en gratis konto på et par minutter og forbinder dit regnskabssystem. Når det er tilkoblet, henter qlim8 tre måneders historiske data med det samme, og du har et grundlæggende klimaregnskab samme dag. Derefter opdateres det automatisk. Vil du se platformen først, så book en demo.",
   },
   {
     q: "Kan jeg snakke med mit klimaregnskab i Claude eller ChatGPT?",
@@ -50,7 +50,7 @@ export const HUB_FAQ_SEED: Record<MarketingCollection, FaqItem[]> = {
     },
     {
       q: "Kan jeg se platformen, før vi beslutter os?",
-      a: "Ja. Book en demo, så viser vi platformen med udgangspunkt i jeres virksomhed. Passer qlim8 til jer, opretter vi jeres konto og hjælper med at forbinde regnskabssystemet, og så overtager jeres egne data dashboardet med det samme.",
+      a: "Ja. Opret en gratis konto og forbind regnskabssystemet, så fylder jeres egne data dashboardet med det samme. Vil I hellere have en gennemgang først, så book en demo, så viser vi platformen med udgangspunkt i jeres virksomhed.",
     },
   ],
   integrationer: [

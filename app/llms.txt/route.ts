@@ -15,13 +15,73 @@ import { fetchPublishedArticles } from "@/lib/cms";
 import { articles as bundledArticles } from "@/content/articles";
 import { BASE_URL } from "@/lib/schema";
 import { DEMO_HREF, CONTACT_HREF, PHONE_DISPLAY } from "@/content/cta";
+import { fetchPublicPackages } from "@/lib/packages";
+import { freeStartHref, isSelfServe, type PublicPackage, type PublicPackages } from "@/lib/packageView";
 
 export const revalidate = 300;
 
 const MCP_ENDPOINT = "https://app.qlim8.com/api/mcp";
 
+const dkk = (minor: number) => `DKK ${(minor / 100).toLocaleString("en-GB")}`;
+
+/** One package's price in English, from the API; null when it is not shown. */
+function priceText(pkg: PublicPackage): string | null {
+  if (pkg.free) return "free, no end date";
+  if (!pkg.price) return null;
+  const monthly = `${dkk(pkg.price.monthlyMinor)}/month`;
+  return pkg.price.visibility === "from"
+    ? `from ${monthly}, billed yearly, ex. VAT`
+    : `${monthly}, billed yearly (${dkk(pkg.price.yearlyMinor)}), ex. VAT`;
+}
+
+/**
+ * How qlim8 is bought, from the app's packages API: sales-led while the
+ * catalog sells nothing by itself (or the API cannot be reached), self-serve
+ * once it does. Prices are never written here, only read.
+ */
+function buyingSection(packages: PublicPackages | null): string {
+  const contact = [
+    `- [Book a demo](${BASE_URL}${DEMO_HREF})`,
+    `- [Contact form](${BASE_URL}${CONTACT_HREF})`,
+    `- Phone: ${PHONE_DISPLAY}`,
+  ];
+  if (!isSelfServe(packages)) {
+    return `## Buying qlim8
+
+qlim8 is sold after a demo. There is no self-service signup, free account or
+free trial, and package prices are not published: the price depends on the
+package and the company's needs, and is quoted after a demo or a call. After the demo,
+qlim8 creates the customer's account and helps connect the accounting system.
+
+${contact.join("\n")}
+- [Packages: Starter, Premium, Enterprise](${BASE_URL}/priser.md)`;
+  }
+  const lines = [...packages!.packages]
+    .sort((a, b) => a.displayRank - b.displayRank)
+    .map((p) => {
+      const how = p.cta.kind === "signup" ? "sign up yourself" : p.cta.kind === "buy" ? "buy it yourself" : "after a conversation";
+      const price = priceText(p) ?? "price on request";
+      return `- ${p.name}${p.accountType === "advisor" ? " (advisor package)" : ""}: ${price}; ${how}`;
+    });
+  const freeStart = freeStartHref(packages);
+  return `## Buying qlim8
+
+A company can start on its own: sign up with a work email, confirm it with a
+code, and look the company up by CVR number (other EU countries: VAT number).
+The account starts live on the free package, which has no end date. Paid
+self-serve packages are bought by card in the app, billed yearly; the larger
+packages are sold after a conversation and invoiced yearly. Auditors and
+consultants have free packages of their own, and a client can still invite
+them. Prices are per month, billed yearly, excluding VAT.
+
+${lines.join("\n")}
+
+${freeStart ? `- [Get started for free](${freeStart})\n` : ""}${contact.join("\n")}
+- [Packages and prices](${BASE_URL}/priser.md)`;
+}
+
 export async function GET() {
-  const published = await fetchPublishedArticles("da");
+  const [published, packages] = await Promise.all([fetchPublishedArticles("da"), fetchPublicPackages()]);
   const bySlug = new Map<string, { slug: string; title: string; publishedAt: string }>();
   for (const a of bundledArticles) bySlug.set(a.slug, a);
   for (const a of published) bySlug.set(a.slug, a);
@@ -48,17 +108,7 @@ export async function GET() {
 Every page on this site has a markdown twin: append \`.md\` to any URL, or send
 \`Accept: text/markdown\`, to get the source instead of HTML.
 
-## Buying qlim8
-
-qlim8 is sold after a demo. There is no self-service signup, free account or
-free trial, and package prices are not published: the price depends on the
-package and the company's needs, and is quoted after a demo or a call. After the demo,
-qlim8 creates the customer's account and helps connect the accounting system.
-
-- [Book a demo](${BASE_URL}${DEMO_HREF})
-- [Contact form](${BASE_URL}${CONTACT_HREF})
-- Phone: ${PHONE_DISPLAY}
-- [Packages: Starter, Premium, Enterprise](${BASE_URL}/priser.md)
+${buyingSection(packages)}
 
 ## MCP server (AI agents)
 

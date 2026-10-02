@@ -1,6 +1,6 @@
 %% qlim8, Deployment & CI/CD topology (Diagram 5). Two INDEPENDENT deployments on
 %% Hetzner, bridged only over public HTTPS. Two nginx, two certbot. The landing
-%% has no Stripe path of its own: qlim8 is sold after a demo, so there is no checkout.
+%% has no Stripe path of its own: a payment is the app's Stripe Checkout, never this site's.
 flowchart TB
   subgraph ghapp["GitHub: qlim8-app"]
     appmain["main branch"]

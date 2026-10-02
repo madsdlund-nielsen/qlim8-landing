@@ -181,18 +181,18 @@ export const PR_TILTAG: MarketingPageCopy = {
       },
       {
         q: "Er reduktions-modulet med i alle abonnementer?",
-        a: "Starter har basis reduktions-tracking med ét mål. Det fulde modul (ubegrænsede mål, SBTi-skabeloner og scenario-til-target-konvertering) er inkluderet i Premium. Enterprise tilføjer mål pr. afdeling.",
+        a: "Nej. Reduktions-modulet (Reduction Hub med avancerede reduktionsmål) er inkluderet fra Premium. Scenario Builder, hvor et godkendt scenarie konverteres til et mål, kommer med Business.",
       },
       {
         q: "Kan vi sætte mål pr. afdeling?",
-        a: "På Enterprise-tier kan I sætte mål på afdelings-niveau og allokere reduktion pr. forretningsenhed. På Premium sætter I mål på virksomheds-niveau.",
+        a: "I Reduction Hub, der er med fra Premium, sætter I mål på virksomheds-niveau. Har I brug for mål pr. afdeling eller forretningsenhed, så tal med os.",
       },
     ],
   },
   closingCta: {
     title: "Gør 2030-målet til noget I kan måle hver måned",
     description:
-      "Opret dit første reduktions-mål, knyt tiltagene, og se fremdriften mod baseline løbende. Fuldt modul i Premium; del med bestyrelsen uden ekstra seat.",
+      "Opret dit første reduktions-mål, knyt tiltagene, og se fremdriften mod baseline løbende. Inkluderet fra Premium; del med bestyrelsen uden ekstra seat.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -235,7 +235,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       pain:
         "Konsulent-kortlægning koster 50.000-150.000 kr. pr. beslutning [antagelse], og det er et engangs-svar der forældes så snart forudsætningerne ændrer sig.",
       solution:
-        "Scenario Planner er inkluderet i Premium og kører løbende, så I kan modellere igen hver gang tallene skifter.",
+        "Scenario Planner er inkluderet fra Business og kører løbende, så I kan modellere igen hver gang tallene skifter.",
       outcome:
         "Erstat konsulent-kortlægning på 50.000-150.000 kr. pr. beslutning [antagelse] med en inkluderet feature.",
     },
@@ -362,7 +362,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       },
       {
         q: "Hvilket abonnement kræver Scenario Planner?",
-        a: "Scenario Planner er en Premium-feature og er ikke inkluderet i Starter. Enterprise tilføjer leverandør-allokering i scenarier, fx effekten af at flytte en leverandør fra Tyskland til Sverige, som påvirker Scope 3.",
+        a: "Scenario Planner er en del af Business og Enterprise og er ikke inkluderet i Free, Starter eller Premium. Business og Enterprise aftaler vi med jer efter en snak, og de faktureres årligt.",
       },
       {
         q: "Kan en konsulent bruge det til klient-rådgivning?",
@@ -373,7 +373,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
   closingCta: {
     title: "Beslut din næste reduktion på data: ikke på et gæt",
     description:
-      "Modellér tiltag på dit eget klimaregnskab, sammenlign scenarier mod målet, og konvertér det godkendte til et reduktions-mål. Inkluderet i Premium.",
+      "Modellér tiltag på dit eget klimaregnskab, sammenlign scenarier mod målet, og konvertér det godkendte til et reduktions-mål. Inkluderet fra Business.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -527,7 +527,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     items: [
       {
         q: "Koster det ekstra at give min revisor adgang?",
-        a: "Nej. Med tredjeparts-adgang får revisoren et audit-pack-scope uden egen betalt seat. Det er klient-tenant der betaler abonnementet, og revisorens adgang lægger ikke licens-omkostning oveni.",
+        a: "Nej, ikke ud over jeres pakke. Revisoradgang er med fra Starter (én ekstern rådgiver, ubegrænset fra Premium), og revisorens egen konto er gratis. Med tredjeparts-adgang får revisoren et audit-pack-scope, og adgangen lægger ikke licens-omkostning oveni.",
       },
       {
         q: "Kan revisoren ændre i vores regnskab?",
@@ -554,7 +554,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
   closingCta: {
     title: "Lad din revisor validere regnskabet: uden en eneste bilags-mail",
     description:
-      "Giv din revisor eller rådgiver read-only audit-adgang med fuld lineage og kryptografisk sign-off. Ét login dækker ubegrænset klienter, uden seat-fee.",
+      "Fra Starter giver du din revisor eller rådgiver read-only audit-adgang med fuld lineage og kryptografisk sign-off. Ét login dækker ubegrænset klienter, uden seat-fee.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -728,7 +728,7 @@ export const PR_LEVERANDOERKAEDE: MarketingPageCopy = {
       },
       {
         q: "Hvilket abonnement kræver værdikæde-modulet?",
-        a: "At sende leverandør-invitationer og modtage struktureret data er en Enterprise-feature. Starter og Premium kan modtage invitationer som leverandør, altså dele deres egne tal med en større kunde, men ikke selv sende dem.",
+        a: "At sende leverandør-invitationer og modtage struktureret data er en Enterprise-feature. Starter, Premium og Business kan modtage invitationer som leverandør, altså dele deres egne tal med en større kunde, men ikke selv sende dem.",
       },
     ],
   },
@@ -836,7 +836,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
     {
       title: "White-label på eget domæne",
       body:
-        "På Enterprise-tier kan profilen ligge på jeres eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand og ikke qlim8's. Kunden ser jeres identitet, ikke en tredjeparts.",
+        "Efter aftale kan profilen ligge på jeres eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand og ikke qlim8's. Kunden ser jeres identitet, ikke en tredjeparts.",
     },
   ],
   howItWorks: {
@@ -909,7 +909,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       },
       {
         q: "Kan profilen ligge på vores eget domæne?",
-        a: "På Enterprise-tier kan du white-labele profilen på eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand. Premium giver den delbare qlim8-URL og badge i standard-format.",
+        a: "Premium giver den delbare qlim8-URL og badge i standard-format. Skal profilen white-labeles på eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand, så tal med os.",
       },
     ],
   },

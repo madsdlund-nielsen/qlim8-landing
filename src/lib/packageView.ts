@@ -64,6 +64,41 @@ export function isSelfServe(data: PublicPackages | null | undefined): boolean {
   return Boolean(data?.packages.some((p) => p.cta.kind !== "demo" && p.cta.url));
 }
 
+/**
+ * Where "Kom gratis i gang" goes on the package page: the signup URL the API
+ * names for the free company package, or null while nothing is self-serve.
+ * Never a URL written here: the app decides it.
+ */
+export function freeStartHref(data: PublicPackages | null | undefined): string | null {
+  if (!isSelfServe(data)) return null;
+  const free = [...data!.packages]
+    .sort((a, b) => a.displayRank - b.displayRank)
+    .find((p) => p.accountType === "company" && p.cta.kind === "signup" && p.cta.url);
+  return free?.cta.url ?? null;
+}
+
+/**
+ * What a package card lists, once the catalog sells something by itself: the
+ * capabilities the API says the package adds over the one before it (built
+ * ones only), headed "Alt i <previous>, plus". That keeps every list on the
+ * site in step with what the app actually sells; a curated list in the CMS
+ * once promised Premium a scenario builder that only Business has. Curated
+ * copy is used only for a package the API lists nothing for (the advisor
+ * packages, which carry no capabilities of their own).
+ */
+export function packageFeatures(
+  data: PublicPackages,
+  pkg: PublicPackage,
+  curated: string[] = [],
+): { label: string | null; items: string[] } {
+  if (pkg.highlights.length === 0) return { label: null, items: curated.filter((f) => f.trim()) };
+  const sameKind = [...data.packages]
+    .filter((p) => p.accountType === pkg.accountType)
+    .sort((a, b) => a.displayRank - b.displayRank);
+  const previous = sameKind[sameKind.findIndex((p) => p.key === pkg.key) - 1];
+  return { label: previous ? `Alt i ${previous.name}, plus` : null, items: pkg.highlights };
+}
+
 /** Danish kroner: thousands with ".", whole kroner without decimals. */
 export function formatKr(minor: number): string {
   const kroner = minor / 100;

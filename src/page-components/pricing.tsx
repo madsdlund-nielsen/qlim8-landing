@@ -6,14 +6,16 @@
 // while it sells nothing by itself (catalog version 1, or the API cannot be
 // reached) this is the sales-led page it has been since 25.09: three cards
 // behind "Book demo", no price. Once it does, the packages API decides the
-// cards, prices and buttons (src/components/public/PackageGroups.tsx).
+// cards, prices and buttons (src/components/public/PackageGroups.tsx), and
+// the buttons above and below them lead with "Kom gratis i gang" to the free
+// package's signup URL, which the API names (freeStartHref).
 import { Plus } from "lucide-react";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { PackageGroups } from "@/components/public/PackageGroups";
 import { PRICING_COPY, type PricingCopy } from "@/content/copy/pricing";
-import { CONTACT_HREF, DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
-import { isSelfServe, type PublicPackages } from "@/lib/packageView";
+import { CONTACT_HREF, DEMO_HREF, DEMO_LABEL, FREE_START_CTA, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
+import { freeStartHref, isSelfServe, type PublicPackages } from "@/lib/packageView";
 
 function FeatureCell({ value }: { value: boolean | string }) {
   if (value === false) {
@@ -26,6 +28,36 @@ function FeatureCell({ value }: { value: boolean | string }) {
     <span className="block text-center text-[12px] font-medium text-gray-700 leading-tight">
       {value}
     </span>
+  );
+}
+
+const PRIMARY_BUTTON =
+  "inline-flex items-center justify-center px-7 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors";
+const SECONDARY_BUTTON =
+  "inline-flex items-center justify-center px-7 py-3 rounded-full border border-gray-300 text-gray-800 font-semibold hover:border-primary hover:text-primary transition-colors";
+
+/**
+ * The lead buttons at the top and bottom of the page. Sales-led: "Book demo"
+ * first. Self-serve: "Kom gratis i gang" first, then "Book demo". Fixed here,
+ * not CMS-editable, so no published copy can point them elsewhere.
+ */
+function LeadButtons({ freeStart, place }: { freeStart: string | null; place: "header" | "closing" }) {
+  if (!freeStart) {
+    return (
+      <a href={DEMO_HREF} className={PRIMARY_BUTTON} data-testid={`button-demo-${place}`}>
+        {DEMO_LABEL}
+      </a>
+    );
+  }
+  return (
+    <>
+      <a href={freeStart} className={PRIMARY_BUTTON} data-testid={`button-free-start-${place}`}>
+        {FREE_START_CTA.label}
+      </a>
+      <a href={DEMO_HREF} className={SECONDARY_BUTTON} data-testid={`button-demo-${place}`}>
+        {DEMO_LABEL}
+      </a>
+    </>
   );
 }
 
@@ -56,16 +88,13 @@ export default function Pricing({
   packages?: PublicPackages | null;
 }) {
   const selfServe = isSelfServe(packages);
-  // The curated cards keep their CMS-editable names, taglines and lists.
+  const freeStart = freeStartHref(packages);
+  // Self-serve cards keep their CMS-editable names and taglines; their lists
+  // come from the packages API (PackageGroups, packageFeatures).
   const cardCopy = {
-    starter: { name: copy.starter.name, tagline: copy.starter.tagline, includedLabel: copy.starter.includedLabel, features: copy.starter.features },
-    premium: { name: copy.premium.name, tagline: copy.premium.tagline, includedLabel: copy.premium.includedLabel, features: copy.premium.features },
-    enterprise: {
-      name: copy.enterprise.name,
-      tagline: copy.enterprise.tagline,
-      includedLabel: copy.enterprise.includedLabel,
-      features: copy.enterprise.features.map((f) => (f.note ? `${f.label} (${f.note})` : f.label)),
-    },
+    starter: { name: copy.starter.name, tagline: copy.starter.tagline },
+    premium: { name: copy.premium.name, tagline: copy.premium.tagline },
+    enterprise: { name: copy.enterprise.name, tagline: copy.enterprise.tagline },
   };
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -82,17 +111,8 @@ export default function Pricing({
               {copy.header.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href={DEMO_HREF}
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
-                data-testid="button-demo-header"
-              >
-                {DEMO_LABEL}
-              </a>
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full border border-gray-300 text-gray-800 font-semibold hover:border-primary hover:text-primary transition-colors"
-              >
+              <LeadButtons freeStart={freeStart} place="header" />
+              <a href={PHONE_HREF} className={SECONDARY_BUTTON}>
                 Ring {PHONE_DISPLAY}
               </a>
             </div>
@@ -229,16 +249,8 @@ export default function Pricing({
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">{copy.closing.title}</h2>
             <p className="text-gray-600 leading-relaxed max-w-2xl mb-6">{copy.closing.body}</p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href={DEMO_HREF}
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
-              >
-                {DEMO_LABEL}
-              </a>
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full border border-gray-300 text-gray-800 font-semibold hover:border-primary hover:text-primary transition-colors"
-              >
+              <LeadButtons freeStart={freeStart} place="closing" />
+              <a href={PHONE_HREF} className={SECONDARY_BUTTON}>
                 Ring {PHONE_DISPLAY}
               </a>
               <a

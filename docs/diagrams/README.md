@@ -26,11 +26,12 @@ The `.md` docs embed the Mermaid **inline** (so GitHub renders them live) and li
 | 4b | `04b-data-model-carbon-core` | Carbon core (detailed ER) |
 | 4c | `04c-data-model-public-api` | Public API & OAuth storage (detailed ER) |
 | 5 | `05-deployment` | Deployment & CI/CD topology |
-| 6 | `06-landing-bridges` | Landing architecture & app bridges |
+| 6 | `06-landing-bridges` | Landing architecture & app bridges (packages API and signup link since 2026-10) |
 | 7 | `07-seq-invoice` | Sequence, invoice ingest → AI → 3-tier calc |
 | 8 | `08-seq-demo-request` | Sequence, demo request → customer account (replaced the pricing checkout bridge, 2026-09) |
 | 9 | `09-seq-oauth-mcp` | Sequence, OAuth 2.1 / MCP connector auth |
 | 10 | `10-seq-report-job` | Sequence, async v1 report job (pg-boss) |
+| 11 | `11-seq-self-serve-signup` | Sequence, self-serve signup and purchase (landing → app → Stripe), 2026-10 |
 
 ## Regenerating the exports
 

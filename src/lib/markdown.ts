@@ -24,6 +24,17 @@ import { INTEGRATION_LOGOS } from "@/content/integration-logos";
 import { PRICING_PAGE_KEY, PRICING_COPY, type PricingCopy } from "@/content/copy/pricing";
 import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
 import { BASE_URL } from "@/lib/schema";
+import { fetchPublicPackages } from "@/lib/packages";
+import {
+  ctaLabel,
+  freeStartHref,
+  groupPackages,
+  isSelfServe,
+  packageFeatures,
+  priceLines,
+  type PublicPackage,
+  type PublicPackages,
+} from "@/lib/packageView";
 
 export const MARKDOWN_CONTENT_TYPE = "text/markdown; charset=utf-8";
 
@@ -50,9 +61,56 @@ function frontMatter(fields: Record<string, string | undefined>): string {
   return `---\n${lines.join("\n")}\n---`;
 }
 
-/** The ways in, as one line: a demo or a phone call. No signup link exists. */
+/** The ways in, as one line: a demo or a phone call. */
 function demoLine(): string {
   return `[${DEMO_LABEL}](${BASE_URL}${DEMO_HREF}) eller ring [${PHONE_DISPLAY}](${PHONE_HREF}).`;
+}
+
+/**
+ * The ways in once the catalog sells something by itself: the free package's
+ * signup URL, which the packages API names, then a demo or a call. The
+ * sales-led line otherwise.
+ */
+function startLine(packages: PublicPackages | null): string {
+  const freeStart = freeStartHref(packages);
+  return freeStart ? `[Kom gratis i gang](${freeStart}), [${DEMO_LABEL.toLowerCase()}](${BASE_URL}${DEMO_HREF}) eller ring [${PHONE_DISPLAY}](${PHONE_HREF}).` : demoLine();
+}
+
+/** A package from the API: its price, its button and its list (packageFeatures). */
+function renderApiPackage(
+  data: PublicPackages,
+  pkg: PublicPackage,
+  curated?: { tagline?: string; features?: string[] },
+  level = "##",
+): string {
+  const price = priceLines(pkg);
+  const { label, items: features } = packageFeatures(data, pkg, curated?.features);
+  const button =
+    pkg.cta.kind === "demo" || !pkg.cta.url ? `[${DEMO_LABEL}](${BASE_URL}${DEMO_HREF})` : `[${ctaLabel(pkg)}](${pkg.cta.url})`;
+  return [
+    `${level} ${pkg.name}`,
+    price ? `**${price.main}**${price.note ? `, ${price.note}` : ""}` : "Pris efter en samtale.",
+    curated?.tagline ?? pkg.tagline ?? pkg.audience ?? undefined,
+    label && `${label}:`,
+    bullets(features),
+    button,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+}
+
+/** The API's comparison as one markdown table (any number of packages). */
+function apiComparisonTable(data: PublicPackages, title: string): string | undefined {
+  const cols = data.comparison.packages;
+  if (!cols.length || !data.comparison.rows.length) return undefined;
+  return [
+    `## ${title}`,
+    [
+      `| Funktion | ${cols.map((c) => c.name).join(" | ")} |`,
+      `| --- | ${cols.map(() => "---").join(" | ")} |`,
+      ...data.comparison.rows.map((r) => `| ${r.label} | ${cols.map((c) => comparisonCell(r.cells[c.key] ?? false)).join(" | ")} |`),
+    ].join("\n"),
+  ].join("\n\n");
 }
 
 function faqSection(faq: { title: string; items: { q: string; a: string }[] } | undefined): string | undefined {
@@ -178,7 +236,9 @@ export function renderArticle(a: Article): string {
 // Home and pricing
 // ---------------------------------------------------------------------------
 
-function renderHome(copy: HomeCopy): string {
+function renderHome(copy: HomeCopy, packages: PublicPackages | null = null): string {
+  const selfServe = isSelfServe(packages);
+  const curatedByName = new Map(copy.pricingTeaser.plans.map((p) => [p.name.trim().toLowerCase(), p]));
   return join([
     frontMatter({
       title: "qlim8: automatisk klimaregnskab og VSME-rapportering",
@@ -201,13 +261,23 @@ function renderHome(copy: HomeCopy): string {
     copy.steps.intro,
     ...copy.steps.items.map((s) => `### ${s.title}\n\n${s.body}`),
     `## ${copy.pricingTeaser.title}`,
-    ...copy.pricingTeaser.plans.map((p) =>
-      [`### ${p.name}`, p.badge && `_${p.badge}_`, p.tag, bullets(p.features)].filter(Boolean).join("\n\n"),
-    ),
-    `Prisen afhænger af pakke og behov, og I får et konkret tilbud ved en demo. Se hvad hver pakke indeholder på [${BASE_URL}/priser](${BASE_URL}/priser.md).`,
+    ...(selfServe
+      ? packages!.packages
+          .filter((p) => p.accountType === "company")
+          .sort((a, b) => a.displayRank - b.displayRank)
+          .map((p) => {
+            const plan = curatedByName.get(p.key) ?? curatedByName.get(p.name.trim().toLowerCase());
+            return renderApiPackage(packages!, p, plan && { tagline: plan.tag, features: plan.features }, "###");
+          })
+      : copy.pricingTeaser.plans.map((p) =>
+          [`### ${p.name}`, p.badge && `_${p.badge}_`, p.tag, bullets(p.features)].filter(Boolean).join("\n\n"),
+        )),
+    selfServe
+      ? `Priserne er pr. måned, faktureret årligt, ekskl. moms. Alle pakker på [${BASE_URL}/priser](${BASE_URL}/priser.md).`
+      : `Prisen afhænger af pakke og behov, og I får et konkret tilbud ved en demo. Se hvad hver pakke indeholder på [${BASE_URL}/priser](${BASE_URL}/priser.md).`,
     `## ${copy.finalCta.title}`,
     copy.finalCta.body,
-    demoLine(),
+    startLine(packages),
   ]);
 }
 
@@ -223,7 +293,8 @@ function comparisonCell(v: boolean | string): string {
   return v;
 }
 
-function renderPricing(copy: PricingCopy): string {
+function renderPricing(copy: PricingCopy, packages: PublicPackages | null = null): string {
+  if (isSelfServe(packages)) return renderSelfServePricing(copy, packages!);
   return join([
     frontMatter({
       title: "Pakker: Starter, Premium & Enterprise",
@@ -260,6 +331,41 @@ function renderPricing(copy: PricingCopy): string {
     faqSection(copy.faq),
     copy.closing && `## ${copy.closing.title}`,
     copy.closing?.body,
+  ]);
+}
+
+const GROUP_HEADINGS = { free: "Kom gratis i gang", selfServe: "Køb selv", contact: "Kontakt os" } as const;
+
+/** /priser.md once the catalog sells something by itself: everything priced comes from the API. */
+function renderSelfServePricing(copy: PricingCopy, packages: PublicPackages): string {
+  const curated: Record<string, { tagline?: string; features?: string[] }> = {
+    starter: copy.starter,
+    premium: copy.premium,
+    enterprise: { ...copy.enterprise, features: copy.enterprise.features.map((f) => (f.note ? `${f.label} (${f.note})` : f.label)) },
+  };
+  const groups = groupPackages(packages);
+  return join([
+    frontMatter({
+      title: "Pakker og priser: Free, Starter og Premium",
+      description:
+        "Free er gratis for altid. Starter og Premium købes direkte, Business og Enterprise efter en samtale. Priser pr. måned, faktureret årligt, ekskl. moms.",
+      url: `${BASE_URL}/priser`,
+    }),
+    `# ${copy.header.title}`,
+    copy.header.subtitle,
+    bullets(copy.trustBar?.map((t) => t.replace(/^✓\s*/, ""))),
+    startLine(packages),
+    ...(["free", "selfServe", "contact"] as const)
+      .filter((g) => groups[g].length > 0)
+      .flatMap((g) => [`## ${GROUP_HEADINGS[g]}`, ...groups[g].map((p) => renderApiPackage(packages, p, curated[p.key], "###"))]),
+    "VSME Basis er med fra Starter. VSME Comprehensive og MCP-adgang kræver Premium. CSRD kræver Enterprise.",
+    apiComparisonTable(packages, copy.comparison?.title ?? "Sammenlign pakkerne"),
+    "## Pris",
+    "Priserne er pr. måned, faktureret årligt, ekskl. moms. Starter og Premium betales med kort i appen; Business og Enterprise faktureres årligt.",
+    faqSection(copy.faq),
+    copy.closing && `## ${copy.closing.title}`,
+    copy.closing?.body,
+    startLine(packages),
   ]);
 }
 
@@ -326,13 +432,15 @@ async function renderBlogIndex(): Promise<string> {
  */
 export async function renderMarkdownFor(segments: string[]): Promise<string | null> {
   if (segments.length === 0) {
-    return renderHome(await resolvePageCopy(HOME_PAGE_KEY, HOME_COPY));
+    const [copy, packages] = await Promise.all([resolvePageCopy(HOME_PAGE_KEY, HOME_COPY), fetchPublicPackages()]);
+    return renderHome(copy, packages);
   }
 
   if (segments.length === 1) {
     const [first] = segments;
     if (first === "priser") {
-      return renderPricing(await resolvePageCopy(PRICING_PAGE_KEY, PRICING_COPY));
+      const [copy, packages] = await Promise.all([resolvePageCopy(PRICING_PAGE_KEY, PRICING_COPY), fetchPublicPackages()]);
+      return renderPricing(copy, packages);
     }
     if (first === "blog") return renderBlogIndex();
 

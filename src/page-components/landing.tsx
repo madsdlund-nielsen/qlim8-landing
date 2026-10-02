@@ -15,7 +15,9 @@ import { HOMEPAGE_FAQS, type HomepageFaq } from "@/content/homepage-faqs";
 import { HOME_COPY, type HomeCopy } from "@/content/copy/home";
 import { MarketingImage } from "@/components/public/MarketingImage";
 import { IntegrationsBand } from "@/components/public/IntegrationsBand";
-import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
+import { DEMO_CTA, DEMO_HREF, DEMO_LABEL, FREE_START_CTA, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
+import { ctaLabel, isSelfServe, packageFeatures, priceLines, type PublicPackage, type PublicPackages } from "@/lib/packageView";
+import type { HomePlan } from "@/content/copy/home";
 
 // Rendered from the design board in qlim8-app, not screen-captured, so they
 // stay in step with the product's own palette. Regenerate with
@@ -37,15 +39,35 @@ export interface LandingImages {
   features?: (string | undefined)[]; // by copy.features order
 }
 
+/**
+ * The company packages for the teaser once the catalog sells something by
+ * itself, in the catalog's order. A curated plan in the page copy with the
+ * same name keeps its badge and tagline (CMS-editable, as on /priser); the
+ * price, the button and the list come from the packages API (packageFeatures).
+ */
+function teaserPackages(data: PublicPackages, plans: HomePlan[]): { pkg: PublicPackage; plan?: HomePlan }[] {
+  const byName = new Map(plans.map((p) => [p.name.trim().toLowerCase(), p]));
+  return data.packages
+    .filter((p) => p.accountType === "company")
+    .sort((a, b) => a.displayRank - b.displayRank)
+    .map((pkg) => ({ pkg, plan: byName.get(pkg.key) ?? byName.get(pkg.name.trim().toLowerCase()) }));
+}
+
 export default function Landing({
   copy = HOME_COPY,
   faqs = HOMEPAGE_FAQS,
   images = {},
+  packages = null,
 }: {
   copy?: HomeCopy;
   faqs?: HomepageFaq[];
   images?: LandingImages;
+  packages?: PublicPackages | null;
 }) {
+  // Sales-led (catalog version 1, or the API cannot be reached): every main
+  // button books a demo. Self-serve: they lead with "Kom gratis i gang".
+  const selfServe = isSelfServe(packages);
+  const lead = selfServe ? FREE_START_CTA : DEMO_CTA;
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <SiteHeader isHome />
@@ -61,11 +83,11 @@ export default function Landing({
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-5">
             <a
-              href={DEMO_HREF}
+              href={lead.href}
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
-              data-testid="button-hero-demo"
+              data-testid={selfServe ? "button-hero-free-start" : "button-hero-demo"}
             >
-              {DEMO_LABEL}
+              {lead.label}
               <ArrowRight className="h-4 w-4" />
             </a>
             <NewsletterSignupDialog />
@@ -180,10 +202,10 @@ export default function Landing({
           </ol>
           <div>
             <a
-              href={DEMO_HREF}
+              href={lead.href}
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
             >
-              {DEMO_LABEL}
+              {lead.label}
               <ArrowRight className="h-4 w-4" />
             </a>
             <p className="text-sm text-gray-500 mt-4">
@@ -193,7 +215,8 @@ export default function Landing({
         </div>
       </section>
 
-      {/* 8. Pakker, without prices: every card books a demo */}
+      {/* 8. Pakker. Sales-led: no prices, every card books a demo. Self-serve:
+          the company packages from the API, with their prices and buttons. */}
       <section className="py-20 sm:py-28 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mb-14">
@@ -202,6 +225,57 @@ export default function Landing({
             </h2>
           </div>
 
+          {selfServe ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" data-testid="pricing-teaser-packages">
+            {teaserPackages(packages!, copy.pricingTeaser.plans).map(({ pkg, plan }) => {
+              const price = priceLines(pkg);
+              const { label: includedLabel, items: features } = packageFeatures(packages!, pkg, plan?.features);
+              const demo = pkg.cta.kind === "demo" || !pkg.cta.url;
+              const highlighted = plan?.highlighted ?? false;
+              return (
+                <div
+                  key={pkg.key}
+                  className={`relative rounded-2xl p-7 sm:p-8 border bg-white flex flex-col ${
+                    highlighted ? "border-primary shadow-lg" : "border-gray-200"
+                  }`}
+                  data-testid={`teaser-${pkg.key}`}
+                >
+                  {plan?.badge && <p className="text-xs font-semibold text-gray-500 mb-3">{plan.badge}</p>}
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
+                  {price ? (
+                    <div className="mb-4">
+                      <p className="text-xl font-bold text-gray-900">{price.main}</p>
+                      {price.note && <p className="text-xs text-gray-500 mt-1">{price.note}</p>}
+                    </div>
+                  ) : (
+                    <p className="text-sm font-semibold text-gray-500 mb-4">Pris efter en samtale</p>
+                  )}
+                  <p className="text-sm text-gray-600 leading-relaxed mb-6 whitespace-pre-line">
+                    {plan?.tag ?? pkg.tagline ?? pkg.audience}
+                  </p>
+                  {includedLabel && <p className="text-sm font-semibold text-gray-900 mb-2">{includedLabel}:</p>}
+                  <ul className="space-y-2 mb-8 text-sm text-gray-700 flex-1">
+                    {features.map((feat) => (
+                      <li key={feat} className="leading-relaxed flex gap-2.5">
+                        <span className="mt-2 h-1 w-2.5 shrink-0 bg-primary" aria-hidden="true" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={demo ? DEMO_HREF : pkg.cta.url!}
+                    className={`block text-center px-5 py-2.5 rounded-full text-sm font-semibold transition-colors ${
+                      demo ? "bg-gray-100 text-gray-900 hover:bg-gray-200" : "bg-primary text-primary-foreground hover:bg-primary/90"
+                    }`}
+                    data-testid={`button-${pkg.cta.kind}-teaser-${pkg.key}`}
+                  >
+                    {demo ? DEMO_LABEL : ctaLabel(pkg)}
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {copy.pricingTeaser.plans.map((p) => (
               <div
@@ -238,6 +312,7 @@ export default function Landing({
               </div>
             ))}
           </div>
+          )}
 
           <p className="mt-10 text-sm text-gray-600">
             <a href="/priser" className="text-primary font-semibold hover:underline">
@@ -286,12 +361,20 @@ export default function Landing({
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-3">
             <a
-              href={DEMO_HREF}
+              href={lead.href}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
             >
-              {DEMO_LABEL}
+              {lead.label}
               <ArrowRight className="h-4 w-4" />
             </a>
+            {selfServe && (
+              <a
+                href={DEMO_HREF}
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-gray-300 text-gray-800 font-semibold text-base hover:border-primary hover:text-primary transition-colors"
+              >
+                {DEMO_LABEL}
+              </a>
+            )}
             <a
               href={PHONE_HREF}
               className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-gray-300 text-gray-800 font-semibold text-base hover:border-primary hover:text-primary transition-colors"

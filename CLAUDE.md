@@ -12,9 +12,9 @@ app.qlim8.com and also hosts the CMS this site reads from.
 ```bash
 npm ci --legacy-peer-deps   # matches the Dockerfile, which is the build of record
 npm run dev                 # next dev
-npm run lint                # eslint + dash guard + sales-led guard + workflow guard + SEO titles + schema graph
+npm run lint                # eslint + dash guard + copy guard + workflow guard + SEO titles + schema graph
 npm run typecheck           # tsc --noEmit
-npm test                    # copyMerge + content-dates (pretest regenerates the dates)
+npm test                    # copyMerge + content-dates + packageView + copy rules (pretest regenerates the dates)
 npm run build               # next build (standalone output; prebuild regenerates the dates)
 npm run test:contract       # live: the app's public CMS API shape + the published copy itself
 npm run content-dates       # rewrite src/generated/content-dates.json from git history
@@ -95,70 +95,88 @@ cannot parse, and the symptom is a failing run with no jobs on every push,
 regardless of the workflow's triggers. `scripts/check-workflows.mjs` now parses
 every workflow during `npm run lint` so this fails on the branch instead.
 
-## Sales-led: no signup, no prices
+## Self-serve: prices and signup come from the app
 
-qlim8 is sold after a demo. A visitor cannot sign up, start a trial or pay on
-this site, and no package price is published anywhere. There are four ways in:
+A company can start on Free (free for good), buy Starter or Premium by
+itself, and talk to us about Business and Enterprise; auditors and
+consultants have free packages of their own. All of that is data in
+qlim8-app (Admin → Pakker), and this site only shows it.
 
-1. **Book demo**: `DEMO_HREF` (`/kontakt?emne=demo`), the contact form with
-   "Book en demo" preselected. It is the header button and every main CTA.
-2. **The contact form** on `/kontakt` (`src/components/public/ContactForm.tsx`),
-   posted to the same-origin proxy `app/api/contact/route.ts`, which forwards
-   to qlim8-app's `POST /api/public/contact`. The app stores the request and
-   emails the owner. A sent form fires GA4 `generate_lead`.
-3. **The phone number**, +45 93 90 13 84.
-4. **The newsletter.**
-
-`src/content/cta.ts` is the single source for their links (`DEMO_CTA`,
-`PHONE_CTA`, `CONTACT_HREF`, `LOGIN_URL`). A CTA imports its target from there
-rather than spelling out an href, so moving the demo booking (to a calendar
-tool, say) stays a one-line change. "Log ind" stays in the header for existing
-customers (`app.qlim8.com/auth`, never `?tab=register`). `/priser` keeps its
-URL but is a package page without prices ("Pakker" in the nav), and its "Book
-demo" buttons are fixed in the component, not CMS-editable.
-
-`scripts/check-sales-led.mjs` (rules in `scripts/lib/salesLed.mjs`) fails
-`npm run lint` on a signup link, a checkout call, a figure a qlim8 package has
-been sold at, entry-price phrasing ("fra N kr"), or a free-account, free-trial
-or credit-card claim, across `src/content`, `src/page-components`,
-`src/components`, `src/lib` and `app`. The rules are deliberately narrow:
-money that is not a qlim8 package (a consultant's fee, an example invoice) is
-fine. The legal documents are exempt, since contract wording is changed with
-whoever drafted it. Structured data is guarded separately: `check-schema.mjs`
-fails on any entity carrying `offers`, `price` or `lowPrice` in the bundled
-pages (offers come only from the packages API, see below).
-
-### When the app's catalog sells something by itself
-
-The packages are data in qlim8-app (Admin → Packages). `src/lib/packages.ts`
-reads its `GET /api/public/packages` (ISR, tag `packages`; a publish in the
-app revalidates `/priser` and `/`), and `src/lib/packageView.ts` decides
-everything shown from it. While the catalog sells nothing by itself (every
-package "demo", or the API cannot be reached) the site is exactly the
-sales-led site above. Once it does (`isSelfServe`):
+`src/lib/packages.ts` reads the app's `GET /api/public/packages` (ISR, tag
+`packages`; a publish in the app revalidates `/priser` and `/`), and
+`src/lib/packageView.ts` decides everything shown from it:
 
 - `/priser` groups the packages (`src/components/public/PackageGroups.tsx`):
   start for free, buy it yourself, talk to us. Prices are quoted per month,
   billed yearly, ex. VAT, and only where the catalog shows them; the buttons
-  go to the app's `/signup?package=` URL the API names, or to Book demo.
-- The header (a client component) gets "Kom gratis i gang" (to `/priser`)
-  from a boolean the root layout reads on the server
-  (`src/components/public/SelfServeContext.tsx`).
+  go to the app's `/signup?package=` URL the API names, or to Book demo. The
+  buttons above and below the groups lead with "Kom gratis i gang" to the
+  free package's signup URL (`freeStartHref`), fixed in the component, not
+  CMS-editable.
+- The homepage teaser shows the company packages with their prices and
+  buttons from the API; a curated plan in the page copy with the same name
+  keeps its badge, tagline and list. The hero, steps and closing buttons lead
+  with "Kom gratis i gang" (to `/priser`).
+- The header (a client component) gets "Kom gratis i gang" from a boolean the
+  root layout reads on the server (`src/components/public/SelfServeContext.tsx`).
 - `#software` carries one `Offer` per public yearly price, on the homepage and
   `/priser` alike (`offersFromPackages`).
+- The page metadata of `/` and `/priser`, `/llms.txt` and the `.md` twins of
+  both pages follow the same switch.
 
-A package price never comes from copy: the self-serve figures are in
-`salesLed.mjs` too, so a price changed in the app cannot leave a stale one
-here. `check-schema.mjs` holds the offers to `scripts/fixtures/public-packages.*.json`,
-which are the app's own API answers for catalog v1 and the proposed lineup
-(regenerate them from qlim8-app's `buildPublicPackages` when its shape
-changes). The self-serve wording rules are loosened at go-live, not before.
+**The switch is the app's catalog.** While it sells nothing by itself (catalog
+version 1, or the API cannot be reached) every one of those falls back to the
+sales-led site: no price, every main button books a demo. That is also the
+emergency stop: publishing a version with Free, Starter and Premium as
+sales-led in the app turns this site back within the ISR window. Bundled copy
+in `src/content/**` speaks of starting for free and is not switched; after an
+emergency stop that lasts, change it here and in `/admin`.
+
+The other ways in stay: **Book demo** (`DEMO_HREF`, `/kontakt?emne=demo`, the
+contact form with "Book en demo" preselected), **the contact form** on
+`/kontakt` (`src/components/public/ContactForm.tsx`, posted to the
+same-origin proxy `app/api/contact/route.ts`, which forwards to qlim8-app's
+`POST /api/public/contact`; a sent form fires GA4 `generate_lead`), **the
+phone number** +45 93 90 13 84, and **the newsletter**. `src/content/cta.ts`
+is the single source for their links (`DEMO_CTA`, `PHONE_CTA`,
+`CONTACT_HREF`, `LOGIN_URL`, `FREE_START_CTA`). A CTA imports its target from
+there rather than spelling out an href. "Log ind" stays in the header for
+existing customers (`app.qlim8.com/auth`).
+
+### What copy may not say
+
+A package price never comes from copy: it goes stale the day the catalog
+changes. `scripts/check-sales-led.mjs` (rules in `scripts/lib/salesLed.mjs`,
+tested in `scripts/lib/salesLed.test.mjs` under `npm test`) fails
+`npm run lint` on:
+
+- a figure a qlim8 package has been sold or is sold at, and entry-price
+  phrasing ("fra N kr", "% rabat");
+- a hard-coded signup link (`?tab=register`, or `app.qlim8.com/signup`
+  anywhere but `cta.ts`; the API names the signup URLs) or a checkout call;
+- a trial ("prøveperiode", "prøv gratis"): Free does not run out.
+
+It covers `src/content`, `src/page-components`, `src/components`, `src/lib`
+and `app`. The rules are deliberately narrow: money that is not a qlim8
+package (a consultant's fee, an example invoice) is fine, and so are "Opret
+en gratis konto", "Kom gratis i gang" and "kreditkort", which the sales-led
+rules used to forbid. The legal documents are exempt, since contract wording
+is changed with whoever drafted it; `src/content/copy/legal.ts` §3.3 still
+provides for a 14-day trial, which is the owner's to change.
+
+Structured data is guarded separately: `check-schema.mjs` fails on any
+`offers` or price in the pages as bundled, and holds the offers the API would
+give `#software` (one per public yearly company price, ex. VAT, none under
+catalog v1) to `scripts/fixtures/public-packages.*.json`, which are the app's
+own API answers for catalog v1 and v2 (regenerate them
+from qlim8-app's `buildPublicPackages(buildLineupV2(...))` when its shape or
+the lineup changes; Stripe ids never appear in them).
 
 CMS-published copy is held to the same rules by `npm run test:contract`
 (`scripts/check-cms-copy.mjs`, legal page keys exempt), because the lint cannot
-see it. The copy that was already published when the site went sales-led is
-rewritten by a backfill in qlim8-app (`scripts/backfill-sales-led-cms-copy.ts`,
-run by its `deploy.sh`). A new failure is fixed in `/admin`.
+see it. Publishing catalog v2 in the app rewrites the copy that was published
+while qlim8 was sales-led (`server/services/selfServeCmsEdits.ts` in
+qlim8-app, also run by its `deploy.sh`); a new failure is fixed in `/admin`.
 
 ## SEO rules and their guards
 
@@ -175,8 +193,9 @@ build or the scheduled contract check when broken. Full write-up in
    `#website` and `#software` once; every other page references them by `@id`
    (`ORG_REF`, `WEBSITE_ID`) and never restates an `Organization`. New page
    types get a builder there, not an inline object. `scripts/check-schema.mjs`
-   fails `npm run lint` on an anonymous entity, a dangling reference, or any
-   entity carrying `offers` or a price (`#software` has none; see Sales-led).
+   fails `npm run lint` on an anonymous entity, a dangling reference, or an
+   offer or price in the bundled pages; `#software`'s offers come only from
+   the packages API and are held to the fixtures (see Self-serve).
 3. **Content is in the HTML.** FAQs are `<details>`, not state-gated; no
    `initial={{ opacity: 0 }}` on content (framer-motion serialises it into the
    SSR markup); `"use client"` only on the component that needs a hook, never
@@ -185,8 +204,8 @@ build or the scheduled contract check when broken. Full write-up in
 
 CMS-published copy is outside all of that. `scripts/check-cms-copy.mjs`
 (`npm run test:contract`) checks the live overrides and CMS articles for dead
-internal links and for anything the sales-led rules forbid (a package price, a
-signup link, a free-account or free-trial claim); the fix is in `/admin`.
+internal links and for anything the copy rules forbid (a package price, a
+hard-coded signup or checkout link, a trial); the fix is in `/admin`.
 
 ## Deployment
 

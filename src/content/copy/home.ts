@@ -80,7 +80,7 @@ export const HOME_COPY: HomeCopy = {
     title: "ESG er nemt",
     subtitle:
       "Automatisk klimaregnskab og VSME-rapport for danske SMV'er, hentet direkte fra dit regnskabssystem og elforbrug. 10 minutter om måneden, ikke 10 dage.",
-    ctaNote: "En demo tager udgangspunkt i din virksomhed. Du kan også ringe på +45 93 90 13 84.",
+    ctaNote: "Free er gratis for altid. Vil du hellere se platformen først, så book en demo eller ring på +45 93 90 13 84.",
   },
   integrations: {
     title: "Vi henter data direkte fra dine systemer",
@@ -101,7 +101,7 @@ export const HOME_COPY: HomeCopy = {
       bullets: [
         "Validerede emissionsfaktorer fra Klimakompasset, Energinet, EXIOBASE og EPD-databaser",
         "Unikt beregnings-ID på hver post, eksporterbart til Excel",
-        "Direkte revisor-portal med kommentering og signering (fra Premium)",
+        "Direkte revisor-portal med kommentering og signering (fra Starter)",
       ],
     },
     {
@@ -140,34 +140,46 @@ export const HOME_COPY: HomeCopy = {
   },
   steps: {
     title: "Sådan kommer du i gang",
-    intro: "Du behøver ikke vide noget om ESG på forhånd. Vi tager det derfra.",
+    intro: "Du behøver ikke vide noget om ESG på forhånd. Platformen guider dig derfra.",
     items: [
       {
-        title: "Book en demo",
-        body: "Vi viser dig platformen og gennemgår, hvad din bank, dine kunder eller din revisor efterspørger. Du kan også ringe direkte.",
+        title: "Opret en gratis konto",
+        body: "Det tager et par minutter, og Free er gratis for altid. Vil I hellere have en gennemgang først, så book en demo eller giv et kald.",
       },
       {
-        title: "Vi sætter jer op",
-        body: "Passer qlim8 til jer, opretter vi jeres konto og hjælper med at forbinde regnskabssystemet og Eloverblik.",
+        title: "Vælg den pakke, der passer",
+        body: "Free rækker langt. Har I brug for mere, køber I Starter eller Premium direkte i appen, og Business og Enterprise finder vi sammen med jer.",
       },
       {
-        title: "Jeres egne tal overtager",
-        body: "qlim8 henter tre måneders historiske data fra regnskabssystemet med det samme og holder derefter klimaregnskabet opdateret af sig selv.",
+        title: "Forbind jeres systemer",
+        body: "Forbind regnskabssystemet og Eloverblik, så henter qlim8 tre måneders historiske data med det samme og holder derefter klimaregnskabet opdateret af sig selv.",
       },
     ],
     ctaNote: "Eller ring på +45 93 90 13 84",
   },
   pricingTeaser: {
-    title: "Tre pakker. Find den der passer.",
+    title: "Fem pakker. Find den der passer.",
     plans: [
+      {
+        name: "Free",
+        tag: "Gratis for altid. Til virksomheder der vil have styr på deres klimaregnskab og et overblik over deres udledning.",
+        features: [
+          "Komplet Scope 1-3 klimaregnskab",
+          "Ubegrænsede posteringer",
+          "Én regnskabs- og én forsyningsforbindelse",
+          "AI-kategorisering og fuld audit trail",
+          "Excel- og PDF-eksport",
+        ],
+        highlighted: false,
+      },
       {
         name: "Starter",
         tag: "Til SMV'er der skal levere VSME-rapport til banken og vil have det overstået ordentligt.",
         features: [
-          "Komplet Scope 1-3 klimaregnskab",
+          "Alt i Free",
           "VSME Basis-rapport med wizard",
-          "Fuld audit trail på hver beregning",
-          "Alle danske integrationer",
+          "Ubegrænsede brugere og revisoradgang",
+          "Op til 5 forbindelser, også lønsystemer",
         ],
         highlighted: false,
       },
@@ -178,19 +190,33 @@ export const HOME_COPY: HomeCopy = {
         features: [
           "Alt i Starter",
           "VSME Comprehensive med wizard",
-          "Reduktionsmål + Scenario Builder",
-          "Custom PDF-rapport + offentligt Brag Board",
-          "Fuldt REST API + AI-assistenter via MCP-server",
+          "Reduction Hub med avancerede reduktionsmål",
+          "Analyse af kategorier, leverandører og udvikling",
+          "Offentlig profil og badge",
+          "AI-assistenter via MCP-server",
         ],
         highlighted: true,
+      },
+      {
+        name: "Business",
+        tag: "Til virksomheder der vil planlægge reduktioner strategisk og have support tæt på.",
+        features: [
+          "Alt i Premium",
+          "Scenario Builder: test tiltag før du beslutter",
+          "Synk til Notion og Airtable",
+          "Chat- og telefonsupport",
+        ],
+        highlighted: false,
       },
       {
         name: "Enterprise",
         tag: "Til organisationer der skal indsamle VSME-rapporter fra deres supply chain.",
         features: [
-          "Alt i Premium",
-          "Dedikeret supply chain portal",
-          "Rollebaseret adgang og rettighedsstyring",
+          "Alt i Business",
+          "Komplet værdikæde via CVR",
+          "CSRD-rapport",
+          "Fuld API-adgang",
+          "Dedikeret Customer Success Manager",
         ],
         highlighted: false,
       },
@@ -203,6 +229,6 @@ export const HOME_COPY: HomeCopy = {
   },
   finalCta: {
     title: "ESG er nemt: lad os vise dig det",
-    body: "Book en demo, så viser vi qlim8 med udgangspunkt i din virksomhed. Du kan også ringe eller skrive til os, og vil du bare følge med, kan du tilmelde dig nyhedsbrevet.",
+    body: "Opret en gratis konto og se dit eget klimaregnskab tage form, eller book en demo, så viser vi dig qlim8 med udgangspunkt i din virksomhed. Du kan også ringe eller skrive til os, og vil du bare følge med, kan du tilmelde dig nyhedsbrevet.",
   },
 };

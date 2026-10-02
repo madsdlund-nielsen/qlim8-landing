@@ -6,7 +6,9 @@
 > ([`docs/en/architecture/system-architecture.md`](https://github.com/madsdlund-nielsen/qlim8-app/blob/main/docs/en/architecture/system-architecture.md)),
 > which is the system of record. It is copied here so the landing repo also documents the whole
 > system. Last synced: 2026-06-29. Updated here on 2026-09-25, ahead of the qlim8-app copy, for
-> the sales-led change (no signup, no checkout): §1, §5, §6, §7.2 and §8.
+> the sales-led change (no signup, no checkout): §1, §5, §6, §7.2 and §8. Updated again on
+> 2026-10-02 for self-serve (signup and prices from the app's packages API): §1, §5, §7.2, §7.5
+> (new) and §8.
 
 ## Overview
 
@@ -117,7 +119,9 @@ _Exports: [SVG](../../diagrams/svg/01-system-context.svg) · [PNG](../../diagram
 
 The two products are **separate deployments** that bridge only over public HTTPS: the landing
 server's contact and newsletter proxies, its CMS reads, and the login link for existing customers.
-There is no signup or checkout bridge, because qlim8 is sold after a demo (§5, §7.2). All product
+Signup is a link, not a bridge: once the app's catalog sells something by itself, the package page
+links to the signup URL the app's packages API names, and the account, the company lookup and the
+payment all happen in the app (§5, §7.5). Until then qlim8 is sold after a demo (§7.2). All product
 data lives in the EU (Hetzner Germany).
 
 ---
@@ -449,9 +453,11 @@ flowchart LR
   visitor["Marketing visitor"]
 
   subgraph landing["qlim8 Landing, Next.js 15 (standalone)"]
-    pages["Pages: / · /priser (packages, no prices) · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
+    pages["Pages: / · /priser (packages; prices once self-serve) · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
     content["Bundled copy (src/content)<br/>merged with CMS overrides"]
+    packages["Packages view (src/lib/packageView.ts)<br/>groups, prices, buttons, #software offers"]
     ga["Google Analytics 4 (cookie consent)"]
+    freecta["Kom gratis i gang · Køb<br/>(signup URL from the packages API)"]
     cta["Book demo CTAs<br/>(/kontakt?emne=demo)"]
     contactform["Contact form on /kontakt<br/>(demo or question)"]
     contactproxy["/api/contact<br/>(same-origin proxy)"]
@@ -462,15 +468,21 @@ flowchart LR
 
   subgraph app["qlim8 App, app.qlim8.com"]
     appauth["/auth (login)"]
+    appsignup["/signup?package=<br/>account, then Stripe Checkout"]
     appcontact["/api/public/contact<br/>stores request, emails owner"]
     appnews["/api/newsletter/signup (handler)"]
     appcms["/api/public/cms/*"]
+    apppackages["/api/public/packages<br/>(live package catalog)"]
   end
 
   visitor --> pages
   pages --- content
+  pages --- packages
   content -->|"server-side fetch, ISR 300 s"| appcms
+  packages -->|"server-side fetch, ISR 300 s, tag packages"| apppackages
   pages -.-> ga
+  packages --> freecta
+  freecta -->|"HTTPS anchor"| appsignup
   cta --> contactform
   contactform -->|"POST (topic, name, email, ...)"| contactproxy
   contactproxy -->|"server-side, NEXT_PUBLIC_API_URL"| appcontact
@@ -484,27 +496,30 @@ flowchart LR
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
   classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
   class visitor persona;
-  class pages,content,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appcontact,appnews,appcms internal;
+  class pages,content,packages,freecta,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appsignup,appcontact,appnews,appcms,apppackages internal;
   class ga external;
 ```
 
 _Exports: [SVG](../../diagrams/svg/06-landing-bridges.svg) · [PNG](../../diagrams/png/06-landing-bridges.png) · [Mermaid](../../diagrams/mmd/06-landing-bridges.mmd) · [Excalidraw](../../diagrams/excalidraw/06-landing-bridges.excalidraw)_
 
-**Sales-led: no signup, no checkout.** qlim8 is sold after a demo. The ways in are Book demo
-(`/kontakt?emne=demo`), the contact form on `/kontakt`, the phone number and the newsletter, all
-taken from `src/content/cta.ts`; `/priser` lists the packages without prices. The site no longer
-calls the app's `/api/stripe/checkout-public` (the app has removed it too), and "Log ind" only
-links existing customers to `app.qlim8.com/auth`. A new customer's account is created by a
-super-admin after the demo, see §7.2.
+**Self-serve, decided by the app's catalog.** The packages are data in qlim8-app (Admin →
+Packages), and the site reads them from `GET /api/public/packages` (`src/lib/packages.ts`, ISR with
+tag `packages`, revalidated by a publish). Once the catalog sells something by itself, `/priser`
+shows the packages in three groups (start for free, buy, contact) with the prices the catalog shows
+(per month, billed yearly, ex. VAT); the package buttons, "Kom gratis i gang" above and below them
+(`freeStartHref`) and the homepage teaser go to the app's `/signup?package=` URL the API names; the
+header, the homepage hero, steps and closing lead with "Kom gratis i gang"; `#software` carries an
+`Offer` per public yearly price; and `/llms.txt` and the `.md` twins of `/` and `/priser` list the
+prices. No price and no signup URL is ever in this site's copy (`src/lib/packageView.ts`,
+`scripts/check-sales-led.mjs`). The payment is the app's Stripe Checkout; this site never calls a
+checkout (§7.5).
 
-**Unless the app's catalog sells something by itself.** The packages are data in qlim8-app
-(Admin → Packages), and the site reads them from `GET /api/public/packages` (`src/lib/packages.ts`,
-ISR with tag `packages`, revalidated by a publish). While every package there is "demo", or the API
-cannot be reached, the site is the sales-led site described above. Once the catalog has a self-serve
-package, `/priser` shows the packages in three groups (start for free, buy, contact) with the prices
-the catalog shows (per month, billed yearly, ex. VAT), its buttons go to the app's `/signup?package=`
-URL, the header gets "Kom gratis i gang", and `#software` carries an `Offer` per public yearly
-price. No price is ever in this site's copy (`src/lib/packageView.ts`).
+**Sales-led as the fallback.** While every package is "demo" (catalog version 1), or the API cannot
+be reached, the site is sales-led: no price, and every main button books a demo. The other ways in
+stay in both modes: Book demo (`/kontakt?emne=demo`), the contact form on `/kontakt`, the phone
+number and the newsletter, all taken from `src/content/cta.ts`. "Log ind" links existing customers
+to `app.qlim8.com/auth`. Business and Enterprise are always sold after a conversation and invoiced,
+see §7.2.
 
 **Both forms go through same-origin proxies.** `ContactForm.tsx` POSTs to `/api/contact`, and
 `NewsletterForm.tsx` and `NewsletterSignupDialog.tsx` POST to `/api/newsletter/signup`. Those are
@@ -631,8 +646,9 @@ _Exports: [SVG](../../diagrams/svg/07-seq-invoice.svg) · [PNG](../../diagrams/p
 
 ### 7.2 Demo request → customer account (landing → app → owner)
 
-This replaces the former pricing checkout bridge (landing → app `/api/stripe/checkout-public` →
-Stripe), which no longer exists on either side.
+This replaced the former pricing checkout bridge (landing → app `/api/stripe/checkout-public` →
+Stripe), which no longer exists on either side. Since self-serve it is the path for Business and
+Enterprise and for anyone who wants a demo first; a company that starts on its own follows §7.5.
 
 ```mermaid
 sequenceDiagram
@@ -661,7 +677,7 @@ sequenceDiagram
   V->>A: choose password, log in
   V->>A: /onboarding: company details
   A->>DB: create tenant, subscriptionTier = provisioned package
-  Note over A: invoiced outside the app, no Stripe checkout
+  Note over A: Business / Enterprise: invoiced yearly (Stripe send_invoice, created in /admin)
 ```
 
 _Exports: [SVG](../../diagrams/svg/08-seq-demo-request.svg) · [PNG](../../diagrams/png/08-seq-demo-request.png) · [Mermaid](../../diagrams/mmd/08-seq-demo-request.mmd) · [Excalidraw](../../diagrams/excalidraw/08-seq-demo-request.excalidraw)_
@@ -733,6 +749,56 @@ _Exports: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagram
 
 ---
 
+### 7.5 Self-serve signup and purchase (landing → app → Stripe)
+
+Once the app's catalog sells something by itself. The landing only links; the account, the
+company lookup and the payment are the app's.
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor V as Visitor / new customer
+  participant L as Landing (qlim8.com)
+  participant A as App (app.qlim8.com)
+  participant DB as PostgreSQL
+  participant R as Resend
+  participant S as Stripe
+
+  L->>A: GET /api/public/packages (ISR, tag packages)
+  A-->>L: packages, prices (yearly, ex. VAT), CTA URLs
+  V->>L: /priser: "Kom gratis i gang"
+  L-->>V: link to /signup?package=free (URL from the API)
+  V->>A: POST /api/register (email, password, terms)
+  Note over A: rate limit, honeypot, same answer for a new or known email
+  A-)R: confirmation code
+  R-)V: code by email
+  V->>A: POST /api/register/verify (code)
+  A-->>V: session
+  V->>A: GET /api/onboarding/company-lookup (CVR, or EU VAT number)
+  A-->>V: name, address, industry (user confirms or corrects)
+  V->>A: POST /api/onboarding
+  A->>DB: tenant live on Free, legal entity facts, one claim per registration number
+  A->>DB: organization.created, legal_entity.facts_recorded (same transaction), tenant.created audit
+  Note over V,A: later, from the app or the package page
+  V->>A: POST /api/billing/checkout { packageKey: starter }
+  A->>S: Checkout session (subscription, catalog's yearly price, automatic tax)
+  S-->>V: card payment
+  S-->>V: redirect to /billing/success
+  V->>A: GET /api/billing/checkout/session/:id
+  A->>DB: package = Starter (audited)
+  S-)A: webhook customer.subscription.created / checkout.session.completed
+```
+
+_Exports: [SVG](../../diagrams/svg/11-seq-self-serve-signup.svg) · [PNG](../../diagrams/png/11-seq-self-serve-signup.png) · [Mermaid](../../diagrams/mmd/11-seq-self-serve-signup.mmd) · [Excalidraw](../../diagrams/excalidraw/11-seq-self-serve-signup.excalidraw)_
+
+The signup URL comes from the packages API, so the landing holds none. The account starts live
+on Free with the company's own data (no sample data), and a registration number can hold one Free
+organization. A company that wants Starter or Premium signs up the same way (the `package` in the
+URL is an intention, never a grant) and buys it from the app's package page (`/pricing`); a
+signed-in visitor who follows a buy link from qlim8.com lands there with that package first.
+Auditors and consultants sign up with `type=advisor` and land on their portfolio (`/portefolje`);
+a client can still invite them (§2).
+
 ## 8. Architectural notes & known gaps
 
 1. **Form bridges are same-origin proxies.** The contact form (`/api/contact` → app
@@ -766,6 +832,10 @@ _Exports: [SVG](../../diagrams/svg/10-seq-report-job.svg) · [PNG](../../diagram
     newer Playwright + React section renderer (via the browser pool).
 11. **3-tier calculation fallback:** PCF/EPD (supplier-specific) → activity factor → spend-based
     EXIOBASE, with country→DK factor fallback and currency deflation (HICP/CPI).
+12. **Prices and signup URLs live in one place.** The app's package catalog decides what is sold,
+    at what price and at which URL; the landing renders `GET /api/public/packages` and falls back
+    to the sales-led site when it cannot. Publishing a catalog version in the app is also the
+    emergency stop.
 
 ## Related documents
 
