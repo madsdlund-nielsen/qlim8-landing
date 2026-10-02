@@ -9,7 +9,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Privatlivspolitik",
   description:
-    "Sådan behandler qlim8 ApS personoplysninger om besøgende, brugere og kunder: dataansvar, retsgrundlag, opbevaring og dine rettigheder under GDPR.",
+    "Sådan behandler qlim8 personoplysninger om besøgende, brugere og kunder: dataansvar, retsgrundlag, opbevaring og dine rettigheder under GDPR.",
   alternates: { canonical: "https://qlim8.com/privatlivspolitik" },
   openGraph: {
     title: "Privatlivspolitik | qlim8",

@@ -16,7 +16,7 @@ import { HOME_COPY, type HomeCopy } from "@/content/copy/home";
 import { MarketingImage } from "@/components/public/MarketingImage";
 import { IntegrationsBand } from "@/components/public/IntegrationsBand";
 import { DEMO_CTA, DEMO_HREF, DEMO_LABEL, FREE_START_CTA, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
-import { ctaLabel, isSelfServe, packageFeatures, priceLines, type PublicPackage, type PublicPackages } from "@/lib/packageView";
+import { ctaLabel, isSelfServe, packageFeatures, priceLines, trialLine, type PublicPackage, type PublicPackages } from "@/lib/packageView";
 import type { HomePlan } from "@/content/copy/home";
 
 // Rendered from the design board in qlim8-app, not screen-captured, so they
@@ -246,6 +246,7 @@ export default function Landing({
                     <div className="mb-4">
                       <p className="text-xl font-bold text-gray-900">{price.main}</p>
                       {price.note && <p className="text-xs text-gray-500 mt-1">{price.note}</p>}
+                      {trialLine(pkg) && <p className="text-xs font-medium text-primary mt-2">{trialLine(pkg)}</p>}
                     </div>
                   ) : (
                     <p className="text-sm font-semibold text-gray-500 mb-4">Pris efter en samtale</p>

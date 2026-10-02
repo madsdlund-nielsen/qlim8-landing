@@ -6,8 +6,11 @@
 // LinkedIn profile button, for example); `utm_source` is the fallback for links
 // that already carry standard campaign parameters.
 //
-// gtag only exists once the visitor has accepted analytics cookies (see
-// CookieConsent), so every call here is a no-op until then, by design.
+// gtag only exists once the visitor has accepted statistics or marketing
+// cookies (see CookieConsent), and each event goes only where the visitor
+// said yes: GA4 events need statistics, Google Ads conversions need marketing.
+
+import { currentConsent } from "./consent";
 
 const MAX_TOKEN_LENGTH = 64;
 
@@ -60,15 +63,18 @@ const NEWSLETTER_CONVERSION_LABEL = "EBwqCKrRpeUcENe68YpD";
  * with it in reports. The Google Ads event is the "conversion" the newsletter
  * campaign optimises toward, keyed by send_to.
  *
- * Both are no-ops until the visitor has accepted analytics cookies and gtag
- * exists, by design (see CookieConsent).
+ * The GA4 event needs statistics consent, the Google Ads conversion
+ * marketing consent (see CookieConsent).
  */
 export function trackNewsletterSignup(source: string) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("event", "newsletter_signup", { signup_source: source });
-  window.gtag("event", "conversion", {
-    send_to: `${GOOGLE_ADS_ID}/${NEWSLETTER_CONVERSION_LABEL}`,
-  });
+  const consent = currentConsent();
+  if (consent?.statistics) window.gtag("event", "newsletter_signup", { signup_source: source });
+  if (consent?.marketing) {
+    window.gtag("event", "conversion", {
+      send_to: `${GOOGLE_ADS_ID}/${NEWSLETTER_CONVERSION_LABEL}`,
+    });
+  }
 }
 
 /**
@@ -77,9 +83,10 @@ export function trackNewsletterSignup(source: string) {
  * demo, a booked demo is the conversion that matters on this site; there is no
  * Google Ads conversion label for it yet, so only GA4 is told.
  *
- * A no-op until the visitor has accepted analytics cookies, like the above.
+ * A no-op without statistics consent, like the above.
  */
 export function trackContactRequest(topic: "demo" | "question", source: string) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  if (!currentConsent()?.statistics) return;
   window.gtag("event", "generate_lead", { lead_topic: topic, signup_source: source });
 }

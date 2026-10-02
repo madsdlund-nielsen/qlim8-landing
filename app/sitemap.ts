@@ -13,6 +13,7 @@ import {
   LEGAL_COOKIES_PAGE_KEY,
   LEGAL_PRIVACY_PAGE_KEY,
   LEGAL_TERMS_PAGE_KEY,
+  LEGAL_DPA_PAGE_KEY,
 } from "@/content/copy/legal";
 
 const BASE_URL = "https://qlim8.com";
@@ -53,6 +54,7 @@ const STATIC_ROUTES: Entry[] = [
   { route: "/cookies",             pageKeys: [LEGAL_COOKIES_PAGE_KEY], changeFrequency: "yearly", priority: 0.3 },
   { route: "/privatlivspolitik",   pageKeys: [LEGAL_PRIVACY_PAGE_KEY], changeFrequency: "yearly", priority: 0.3 },
   { route: "/handelsbetingelser",  pageKeys: [LEGAL_TERMS_PAGE_KEY], changeFrequency: "yearly",  priority: 0.3 },
+  { route: "/databehandleraftale", pageKeys: [LEGAL_DPA_PAGE_KEY],   changeFrequency: "yearly",  priority: 0.3 },
 ];
 
 async function cmsDate(pageKeys: string[] | undefined): Promise<Date | undefined> {
