@@ -25,7 +25,7 @@ test("covers every indexable static route, hub and marketing leaf", async () => 
   const expected = new Set<string>([
     "/", "/priser", "/metodologi", "/blog", "/api", "/om-os",
     "/docs", "/docs/mcp-quickstart", "/docs/mcp-tools", "/docs/api-reference",
-    "/kontakt", "/nyhedsbrev", "/karriere", "/cookies", "/privatlivspolitik", "/handelsbetingelser",
+    "/kontakt", "/nyhedsbrev", "/karriere", "/cookies", "/privatlivspolitik", "/handelsbetingelser", "/databehandleraftale",
     ...articles.map((a: { slug: string }) => `/blog/${a.slug}`),
     ...MARKETING_HUBS.map((h: { route: string }) => h.route),
     ...ALL_MARKETING_NODES.map((n: { collection: string; slug: string }) => `/${n.collection}/${n.slug}`),

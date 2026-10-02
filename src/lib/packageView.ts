@@ -39,6 +39,11 @@ export interface PublicPackage {
   free: boolean;
   cta: { kind: CtaKind; url: string | null };
   highlights: string[];
+  /**
+   * Days of free trial on a package bought by card (Starter and Premium), as
+   * the catalog in qlim8-app sets it. Absent from an API that predates it.
+   */
+  trialDays?: number;
 }
 
 export type ComparisonCell = boolean | string;
@@ -146,6 +151,32 @@ export function groupPackages(data: PublicPackages): Record<PackageGroup, Public
   const out: Record<PackageGroup, PublicPackage[]> = { free: [], selfServe: [], contact: [] };
   for (const pkg of [...data.packages].sort((a, b) => a.displayRank - b.displayRank)) out[packageGroup(pkg)].push(pkg);
   return out;
+}
+
+/**
+ * Days of free trial a package bought by card starts with, or 0. Only a "buy"
+ * package has one: the catalog gives none to Free, Business or Enterprise.
+ */
+export function trialDaysOf(pkg: PublicPackage): number {
+  if (pkg.cta.kind !== "buy") return 0;
+  const days = pkg.trialDays ?? 0;
+  return Number.isInteger(days) && days > 0 ? days : 0;
+}
+
+/**
+ * The one line on qlim8.com that names the trial. It comes from the catalog,
+ * never from copy: scripts/lib/salesLed.mjs allows trial wording in this file
+ * only, so a trial the app does not give cannot be promised anywhere else.
+ *
+ * The trial is unlocked by an intro call booked in the first week (qlim8-app,
+ * shared/entitlements/trialBooking.ts), so the line says so, and the button
+ * does not promise it.
+ */
+export function trialLine(pkg: PublicPackage): string | null {
+  const days = trialDaysOf(pkg);
+  return days > 0
+    ? `${days} dages gratis prøveperiode, når du har booket en kort introsamtale med os i den første uge. Kortet trækkes først bagefter, og du kan opsige før.`
+    : null;
 }
 
 /** The label on a package's button. Demo uses the site's own "Book demo". */

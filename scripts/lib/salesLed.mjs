@@ -2,8 +2,10 @@
  * What may not be said on qlim8.com, now that a company can start on Free and
  * buy Starter or Premium by itself: no package price in copy (prices come
  * only from the app's packages API), no hard-coded signup or checkout link
- * (the API names the signup URL), and no trial, because Free does not run
- * out. Shared by scripts/check-sales-led.mjs (the bundled copy, in
+ * (the API names the signup URL), and no trial in copy. Starter and Premium
+ * start with a trial since 2026-10-03, but its length is catalog data
+ * (`trialDays` in the packages API), so the one sentence that names it is
+ * built from the API in src/lib/packageView.ts and nowhere else. Shared by scripts/check-sales-led.mjs (the bundled copy, in
  * `npm run lint`) and scripts/check-cms-copy.mjs (the CMS-published copy that
  * overrides it, in `npm run test:contract`), so both hold the same line. The
  * rules are tested against known strings in salesLed.test.mjs (`npm test`).
@@ -33,6 +35,9 @@ const PLAN_FIGURES = [
 
 const figure = `(?:${PLAN_FIGURES.map((f) => (f.length > 3 ? `${f.slice(0, -3)}[.\\s]?${f.slice(-3)}` : f)).join("|")})`;
 
+/** The file that builds the trial sentence from the packages API. */
+const TRIAL_FROM_DATA = ["src/lib/packageView.ts"];
+
 /**
  * `allowedIn` exempts a file of the bundled copy from one rule: the CTA
  * module is where a signup URL would live if the site ever spelled one out.
@@ -46,8 +51,8 @@ export const SALES_LED_RULES = [
   { kind: "package price", re: /\b(?:fra|starter ved|starter fra|allerede fra|priserne starter)\s+\d{1,3}(?:[.\s]\d{3})*\s*(?:kr|kroner)\b/i },
   { kind: "package price", re: /premium-pris/i },
   { kind: "package price", re: /\d+\s*%\s*rabat\b/i },
-  { kind: "trial claim", re: /\bprøveperiode\b/i },
-  { kind: "trial claim", re: /\bprøv\s+(?:platformen\s+|qlim8\s+)?gratis\b/i },
+  { kind: "trial claim", re: /\bprøveperiode\b/i, allowedIn: TRIAL_FROM_DATA },
+  { kind: "trial claim", re: /\bprøv\s+(?:platformen\s+|qlim8\s+)?gratis\b/i, allowedIn: TRIAL_FROM_DATA },
   { kind: "trial claim", re: /\bgratis\s+demo-konto\b/i },
 ];
 

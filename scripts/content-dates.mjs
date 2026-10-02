@@ -56,6 +56,7 @@ const STATIC_ROUTES = {
   "/cookies": ["app/cookies/page.tsx", "src/page-components/cookies.tsx", "src/content/copy/legal.ts"],
   "/privatlivspolitik": ["app/privatlivspolitik/page.tsx", "src/page-components/privatlivspolitik.tsx", "src/content/copy/legal.ts"],
   "/handelsbetingelser": ["app/handelsbetingelser/page.tsx", "src/page-components/handelsbetingelser.tsx", "src/content/copy/legal.ts"],
+  "/databehandleraftale": ["app/databehandleraftale/page.tsx", "src/page-components/databehandleraftale.tsx", "src/content/copy/legal.ts"],
 };
 
 function gitAvailable() {

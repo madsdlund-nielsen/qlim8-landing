@@ -62,6 +62,13 @@ test("every rule catches at least one known breach", () => {
   }
 });
 
+test("trial wording is allowed where the catalog's trial is turned into a sentence, and never in copy or CMS", () => {
+  const text = "7 dages gratis prøveperiode. Kortet trækkes først bagefter.";
+  assert.deepEqual(salesLedViolations(text, { file: "src/lib/packageView.ts" }), []);
+  assert.equal(salesLedViolations(text, { file: "src/content/copy/pricing.ts" })[0]?.kind, "trial claim");
+  assert.equal(salesLedViolations(text)[0]?.kind, "trial claim");
+});
+
 test("a signup URL is allowed in the CTA module only, and never in CMS copy", () => {
   const url = "https://app.qlim8.com/signup?package=free";
   assert.deepEqual(salesLedViolations(url, { file: "src/content/cta.ts" }), []);

@@ -1,6 +1,7 @@
 import { Linkedin } from "lucide-react";
 import { FOOTER_SOLUTIONS } from "@/content/navigation";
 import { Wordmark } from "@/components/Wordmark";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { CONTACT_HREF, DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
@@ -38,6 +39,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
 const LEGAL_LINKS = [
   { label: "Privatlivspolitik", href: "/privatlivspolitik" },
   { label: "Handelsbetingelser", href: "/handelsbetingelser" },
+  { label: "Databehandleraftale", href: "/databehandleraftale" },
   { label: "Cookies", href: "/cookies" },
 ];
 
@@ -109,6 +111,7 @@ export function SiteFooter() {
                 {link.label}
               </a>
             ))}
+            <CookieSettingsButton className="hover:text-white transition-colors" />
           </nav>
         </div>
 

@@ -12,6 +12,7 @@ import {
   groupPackages,
   packageFeatures,
   priceLines,
+  trialLine,
   type ComparisonCell,
   type PackageGroup,
   type PublicPackage,
@@ -55,6 +56,11 @@ function PackageCard({ data, pkg, copy }: { data: PublicPackages; pkg: PublicPac
         <div className="mb-4" data-testid={`price-${pkg.key}`}>
           <p className="text-2xl font-bold text-gray-900">{price.main}</p>
           {price.note && <p className="text-xs text-gray-500 mt-1">{price.note}</p>}
+          {trialLine(pkg) && (
+            <p className="text-xs font-medium text-primary mt-2" data-testid={`trial-${pkg.key}`}>
+              {trialLine(pkg)}
+            </p>
+          )}
         </div>
       )}
       <a

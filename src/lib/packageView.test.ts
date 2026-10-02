@@ -14,6 +14,7 @@ import {
   isSelfServe,
   offersFromPackages,
   priceLines,
+  trialLine,
   type PublicPackages,
 } from "./packageView.ts";
 
@@ -80,6 +81,23 @@ test("buttons say what they do", () => {
   assert.equal(ctaLabel(pkg(v2, "free")), "Kom gratis i gang");
   assert.equal(ctaLabel(pkg(v2, "revisor")), "Kom i gang som revisor");
   assert.equal(ctaLabel(pkg(v2, "enterprise")), "Book demo");
+});
+
+test("a trial is shown only where the catalog gives one, on a package bought by card", () => {
+  // The API before trialDays, and a catalog without a trial: no trial anywhere.
+  for (const p of v2.packages) assert.equal(trialLine(p), null, p.key);
+  const withTrial = (key: string, trialDays: number) => ({ ...pkg(v2, key), trialDays });
+  assert.equal(
+    trialLine(withTrial("starter", 7)),
+    "7 dages gratis prøveperiode, når du har booket en kort introsamtale med os i den første uge. Kortet trækkes først bagefter, og du kan opsige før.",
+  );
+  // The call unlocks the trial, so the button does not promise it.
+  assert.equal(ctaLabel(withTrial("premium", 7)), "Køb Premium");
+  // Never on a free or a demo package, whatever the field says.
+  assert.equal(trialLine(withTrial("free", 7)), null);
+  assert.equal(trialLine(withTrial("enterprise", 7)), null);
+  assert.equal(ctaLabel(withTrial("enterprise", 7)), "Book demo");
+  assert.equal(trialLine(withTrial("starter", 0)), null);
 });
 
 test("structured data offers only the public yearly company prices", () => {

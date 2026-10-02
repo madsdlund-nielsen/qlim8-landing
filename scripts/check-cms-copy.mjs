@@ -88,7 +88,7 @@ async function main() {
   const { CONTACT_PAGE_KEY } = await import("../src/content/copy/contact.ts");
   const { CAREERS_PAGE_KEY } = await import("../src/content/copy/careers.ts");
   const { METHODOLOGY_PAGE_KEY } = await import("../src/content/copy/methodology.ts");
-  const { LEGAL_COOKIES_PAGE_KEY, LEGAL_PRIVACY_PAGE_KEY, LEGAL_TERMS_PAGE_KEY } = await import("../src/content/copy/legal.ts");
+  const { LEGAL_COOKIES_PAGE_KEY, LEGAL_PRIVACY_PAGE_KEY, LEGAL_TERMS_PAGE_KEY, LEGAL_DPA_PAGE_KEY } = await import("../src/content/copy/legal.ts");
 
   // ── Routes this site serves ────────────────────────────────────────────────
   const routes = new Set([
@@ -111,14 +111,14 @@ async function main() {
   }
   const isRoute = (p) => routes.has(p) || routes.has(p.replace(/\.md$/, ""));
 
-  const LEGAL_KEYS = new Set([LEGAL_COOKIES_PAGE_KEY, LEGAL_PRIVACY_PAGE_KEY, LEGAL_TERMS_PAGE_KEY]);
+  const LEGAL_KEYS = new Set([LEGAL_COOKIES_PAGE_KEY, LEGAL_PRIVACY_PAGE_KEY, LEGAL_TERMS_PAGE_KEY, LEGAL_DPA_PAGE_KEY]);
 
   // ── Page keys the site reads (see app/**/page.tsx and app/sitemap.ts) ─────
   const pageKeys = [
     HOME_PAGE_KEY, "homepage.faqs", "landing.images",
     PRICING_PAGE_KEY, METHODOLOGY_PAGE_KEY, ABOUT_PAGE_KEY, "about.images",
     CONTACT_PAGE_KEY, CAREERS_PAGE_KEY,
-    LEGAL_COOKIES_PAGE_KEY, LEGAL_PRIVACY_PAGE_KEY, LEGAL_TERMS_PAGE_KEY,
+    LEGAL_COOKIES_PAGE_KEY, LEGAL_PRIVACY_PAGE_KEY, LEGAL_TERMS_PAGE_KEY, LEGAL_DPA_PAGE_KEY,
     ...MARKETING_HUBS.map((h) => h.pageKey),
     ...ALL_MARKETING_NODES.map((n) => n.pageKey),
   ];
