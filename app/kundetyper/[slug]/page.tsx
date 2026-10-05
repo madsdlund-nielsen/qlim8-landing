@@ -5,6 +5,7 @@ import { getCollection, getNode } from "@/content/marketing";
 import { resolvePageCopy } from "@/lib/pageCopy";
 import { buildMarketingMetadata, buildMarketingJsonLd } from "@/lib/marketingPage";
 import type { MarketingPageCopy } from "@/content/marketing/types";
+import { JsonLd } from "@/components/JsonLd";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -26,13 +27,7 @@ export default async function Page({ params }: Props) {
   const jsonLd = buildMarketingJsonLd(node, copy);
   return (
     <>
-      {jsonLd.map((s, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
-        />
-      ))}
+      <JsonLd schema={jsonLd} />
       <MarketingPageTemplate node={node} copy={copy} />
     </>
   );
