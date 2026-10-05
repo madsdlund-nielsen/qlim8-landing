@@ -5,6 +5,7 @@ import { resolvePageCopy } from "@/lib/pageCopy";
 import { buildHubMetadata, buildHubJsonLd } from "@/lib/marketingPage";
 import { hubCards } from "@/content/navigation";
 import type { MarketingHubCopy } from "@/content/marketing/types";
+import { JsonLd } from "@/components/JsonLd";
 
 export const revalidate = 300;
 
@@ -19,13 +20,7 @@ export default async function Page() {
   const jsonLd = buildHubJsonLd(PRODUKT_HUB, cards, copy.faq?.items);
   return (
     <>
-      {jsonLd.map((s, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
-        />
-      ))}
+      <JsonLd schema={jsonLd} />
       <MarketingHubTemplate copy={copy} cards={cards} />
     </>
   );

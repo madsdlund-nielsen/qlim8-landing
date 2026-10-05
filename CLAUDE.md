@@ -192,7 +192,11 @@ build or the scheduled contract check when broken. Full write-up in
 2. **One schema graph.** `src/lib/schema.ts` defines `#organization`,
    `#website` and `#software` once; every other page references them by `@id`
    (`ORG_REF`, `WEBSITE_ID`) and never restates an `Organization`. New page
-   types get a builder there, not an inline object. `scripts/check-schema.mjs`
+   types get a builder there, not an inline object. Pages emit it through
+   `<JsonLd>` (`src/components/JsonLd.tsx`), never a bare `JSON.stringify` in
+   `dangerouslySetInnerHTML`: the entities carry CMS text, and only
+   `serializeJsonLd` stops a `</script>` in it from closing the tag
+   (`src/lib/jsonLd.test.ts` fails on an inline one). `scripts/check-schema.mjs`
    fails `npm run lint` on an anonymous entity, a dangling reference, or an
    offer or price in the bundled pages; `#software`'s offers come only from
    the packages API and are held to the fixtures (see Self-serve).

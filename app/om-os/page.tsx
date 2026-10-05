@@ -5,6 +5,7 @@ import { resolvePageCopy } from "@/lib/pageCopy";
 import { ABOUT_PAGE_KEY, ABOUT_COPY } from "@/content/copy/about";
 // Shared with the homepage so the two blocks cannot drift apart again.
 import { ORGANIZATION } from "@/lib/schema";
+import { JsonLd } from "@/components/JsonLd";
 
 // ISR: CMS-published copy/images refresh on this cadence.
 export const revalidate = 300;
@@ -31,10 +32,7 @@ export default async function Page() {
   const founderImage = cmsImageUrl(imageCopy, "founder");
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION) }}
-      />
+      <JsonLd schema={ORGANIZATION} />
       <About copy={copy} founderImage={founderImage} />
     </>
   );

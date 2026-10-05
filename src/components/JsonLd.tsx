@@ -1,10 +1,14 @@
+import { serializeJsonLd } from "@/lib/jsonLd";
+
 /**
  * Emit one or more schema.org entities as JSON-LD.
  *
  * Pages used to inline `<script type="application/ld+json" dangerouslySetInnerHTML>`
  * by hand, which is why several pages (all of /docs, /api and the blog index)
  * simply had none: adding structured data meant repeating four lines of
- * boilerplate, so it kept getting skipped.
+ * boilerplate, so it kept getting skipped. It is also the one place that
+ * escapes them for HTML (src/lib/jsonLd.ts): CMS text inside a bare
+ * `JSON.stringify` can close the script tag.
  */
 export function JsonLd({ schema }: { schema: object | object[] }) {
   const blocks = Array.isArray(schema) ? schema : [schema];
@@ -14,7 +18,7 @@ export function JsonLd({ schema }: { schema: object | object[] }) {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(block) }}
         />
       ))}
     </>
