@@ -1,120 +1,123 @@
 import type { MarketingPageCopy } from "@/content/marketing/types";
 import { DEMO_CTA, PHONE_CTA } from "@/content/cta";
 
-// Report-detail marketing copy: recipient variants (Modtagere) + themes + VSME modules.
+// Report-detail marketing copy: readers (Modtagere) + the report's visual look + VSME modules.
 // Voice per docs/da/marketing/_shared/brand-voice.md + positioning.md.
 // Grounded in docs/da/marketing/features/csrd-vsme-reporting.md and compliance/{vsme,csrd}.md.
 // qlim8 is sold after a demo (see src/content/cta.ts): primary CTA is DEMO_CTA,
 // closing secondary is PHONE_CTA, and no package prices appear in the copy.
+// The PDF report is one report per whole reporting year, the same for every reader:
+// no recipient variants, no named looks, no per-number citation inside the PDF
+// (traceability lives in the platform and in the VSME ZIP's audit CSV).
 
 const heroSecondaryCta = { label: "Se pakker", href: "/priser" } as const;
 
 // ---------------------------------------------------------------------------
-// PR_MODTAGERE: overblik-side der samler de fire modtager-varianter
+// PR_MODTAGERE: overblik-side: én rapport, sendt til forskellige læsere
 // ---------------------------------------------------------------------------
 
 export const PR_MODTAGERE: MarketingPageCopy = {
   hero: {
     eyebrow: "Modtagere",
-    title: "Ét klimaregnskab: fire rapporter til dem der spørger",
+    title: "Ét klimaregnskab til alle der spørger",
     subtitle:
-      "Bestyrelsen, investorerne, banken og dine samarbejdspartnere vil have det samme klimaregnskab, men de vil se det forskelligt. qlim8 tilpasser samme datagrundlag til hver modtager, så du ikke bygger fire versioner i hånden.",
+      "Bestyrelsen, investorerne, banken og dine samarbejdspartnere spørger efter det samme klimaregnskab. Med qlim8 sender du dem den samme rapport, bygget på ét regnskab, og giver hver læser det de typisk har brug for: PDF-rapporten, VSME-arket eller revisorens attestering.",
     primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
-    heading: "Samme tal, forskellige læsere",
-    body: "Dit klimaregnskab er ét sæt tal med kildecitation tilbage til hver faktura. Men bestyrelsen vil have mål og afvigelse, investoren vil have sammenlignelighed år-til-år, banken vil have præcis de datapunkter deres kreditmodel kræver, og din store kunde vil have din del af deres Scope 3. Fire modtagere, fire forventninger, og indtil nu fire gange manuelt arbejde. qlim8 genererer hver variant fra det samme underliggende regnskab, så tallene altid stemmer på tværs, og du ikke risikerer at bestyrelsen og banken ser to forskellige CO₂e-tal for samme år.",
+    heading: "Én rapport, forskellige læsere",
+    body: "Dit klimaregnskab er ét sæt tal, og i platformen kan hvert tal følges tilbage til linjen og bilaget det kommer fra. Men læserne spørger forskelligt. Bestyrelsen vil have overblikket over året og jeres reduktionsmål. Investoren vil vide, at Scope 1, 2 og 3 er opgjort efter GHG Protocol. Banken beder ofte om VSME-datapunkter. Din store kunde vil bruge dine tal i sin egen Scope 3. qlim8 laver ikke en særskilt rapport til hver af dem. Du genererer én designet PDF-rapport for regnskabsåret og sender den til dem alle, og hvor en læser vil have mere, henter du det fra samme regnskab: EFRAG's VSME-arbejdsbog i Excel til banken, revisorens attestering til den der vil have tallene bekræftet, og et delbart link til dem der vil følge med.",
     bullets: [
-      "Bestyrelsesrapport: beslutningsklar med mål, afvigelse og risiko.",
-      "Investorrapport: sammenlignelig, GHG Protocol-konsistent, med trend.",
-      "Bankrapport: klar-til-upload dokumentation til finansiering.",
-      "Samarbejdspartnere: dél ét link i stedet for et regneark.",
+      "Bestyrelse og ejere: PDF-rapporten med årets overblik, Scope 1-3 og reduktionsmål.",
+      "Investorer: GHG Protocol-konsistente tal og, hvis de ønsker det, revisorens attestering.",
+      "Bank: VSME-arbejdsbogen i EFRAG's Excel-format, med bilagsreference pr. linje.",
+      "Samarbejdspartnere: din offentlige ESG-profil som ét link.",
     ],
   },
   painPoints: [
     {
-      pain: "Du bygger den samme rapport om og om igen, fordi bestyrelsen, banken og kunden hver især beder om deres eget format.",
+      pain: "Du bygger den samme rapport om og om igen, fordi bestyrelsen, banken og kunden hver især beder om tallene.",
       solution:
-        "qlim8 trækker alle fire varianter fra det samme klimaregnskab. Du vælger modtager, ikke datasæt.",
+        "Med qlim8 genererer du én PDF-rapport fra klimaregnskabet og sender den samme rapport til alle der spørger. Du klipper ikke tal sammen i hånden.",
       outcome: "2-3 dage sparet pr. rapporteringsrunde [antagelse: interne tidsestimater, ikke kundevalideret].",
     },
     {
-      pain: "Tallene stemmer ikke på tværs af versioner, fordi de er kopieret manuelt mellem regneark på forskellige tidspunkter.",
+      pain: "Tallene stemmer ikke på tværs, fordi de er kopieret manuelt mellem regneark på forskellige tidspunkter.",
       solution:
-        "Alle varianter deler ét datagrundlag med kildecitation pr. post. Retter du en faktura, opdateres grundlaget ét sted.",
-      outcome: "Nul risiko for at bank og bestyrelse ser forskellige CO₂e-tal for samme år.",
+        "PDF-rapporten og VSME-arket bygger på det samme klimaregnskab. Retter du en faktura, retter du den ét sted, og næste rapport bygger på det rettede regnskab.",
+      outcome: "Du sender ikke længere tal fra tre forskellige regneark til tre læsere.",
     },
     {
-      pain: "Du ved ikke hvilke datapunkter den konkrete modtager faktisk har brug for, så du sender enten for lidt eller alt for meget.",
+      pain: "Du ved ikke hvad den konkrete læser faktisk har brug for, så du sender enten for lidt eller alt for meget.",
       solution:
-        "Hver variant er skåret til sin modtager: bestyrelsen får overblik og afvigelse, banken får de rå datakrav.",
-      outcome: "Færre frem-og-tilbage-mails; modtageren kan bruge rapporten første gang.",
+        "Start med PDF-rapporten, som alle kan læse. Beder banken om VSME, henter du EFRAG's Excel-arbejdsbog. Vil nogen have tallene bekræftet, kan din revisor attestere rapporten.",
+      outcome: "Færre frem-og-tilbage-mails; du ved hvad du sender til hvem.",
     },
     {
       pain: "Når regnskabet rettes efter en rapport er sendt, ved du ikke længere hvad modtageren faktisk fik.",
       solution:
-        "Signerede rapporter låses: dataen bevares som den var ved underskrift, også når regnskabet ændres bagefter.",
-      outcome: "Du kan altid dokumentere præcis hvad hver modtager modtog og hvornår.",
+        "Hver genereret rapport får et versionsnummer og gemmes med det datagrundlag den blev lavet på. Den ændres ikke bagefter; retter du regnskabet, genererer du en ny version.",
+      outcome: "Du kan altid finde præcis den version du sendte, med det datagrundlag den bygger på.",
     },
   ],
   features: [
     {
-      title: "Bestyrelsesrapport",
-      body: "Beslutningsklart klimaregnskab til bestyrelsen: status mod mål, afvigelse fra sidste år og de risici der kræver en beslutning. Skåret til et møde, ikke til en revision.",
+      title: "PDF-rapport til alle læsere",
+      body: "Én designet rapport for regnskabsåret med overblik over året, Scope 1, 2 og 3 og jeres reduktionsmål. Den samme rapport kan gå til bestyrelsen, investorerne, banken og jeres partnere. PDF-rapporten er med i alle pakker.",
     },
     {
-      title: "Investorrapport",
-      body: "ESG-data til investorer og ejere med fokus på sammenlignelighed. GHG Protocol-konsistente tal, trend over år og et grundlag investoren kan holde op mod andre selskaber i porteføljen.",
+      title: "VSME-arket til banken",
+      body: "Beder banken eller en stor kunde om VSME, henter du EFRAG's officielle Excel-arbejdsbog (Basic eller Comprehensive) i en ZIP sammen med en revisions-CSV, der for hver linje angiver bilaget bag tallet.",
     },
     {
-      title: "Bankrapport",
-      body: "Klar-til-upload dokumentation til bankens ESG- og L193-datakrav ved finansiering. Præcis de datapunkter kreditmodellen efterspørger, med kildecitation der besvarer bankens spørgsmål på forhånd.",
+      title: "Revisorens attestering",
+      body: "Inviterer du din revisor ind i platformen, kan revisoren attestere en gemt rapport ved at uploade sin underskrevne erklæring. Platformen forsegler en kvittering, der binder erklæringen til præcis den version af rapporten og dens datagrundlag.",
     },
     {
-      title: "Rapport til samarbejdspartnere",
-      body: "Dine kunder og leverandører beder om din del af deres Scope 3. Del ét link med de tal de skal bruge, i stedet for at fylde deres regneark ud manuelt.",
+      title: "Dél med samarbejdspartnere",
+      body: "Din offentlige ESG-profil (Brag Board) er ét link, du kan give til kunder og leverandører i stedet for at udfylde deres regneark. Bruger kunden qlim8 Enterprise, kan du også dele data gennem deres værdikæde-modul.",
     },
     {
       title: "Fælles datagrundlag",
-      body: "Alle fire varianter bygger på det samme klimaregnskab med kildecitation pr. kg CO₂e tilbage til den oprindelige faktura. Ét sted at rette, fire steder det slår igennem.",
+      body: "Alt bygger på det samme klimaregnskab, og i platformen kan hvert tal følges tilbage til linjen og bilaget det kommer fra. Ét sted at rette, og den næste rapport bygger på det rettede.",
     },
   ],
   valueStats: [
-    { value: "4", label: "modtager-varianter fra ét regnskab" },
-    { value: "1", label: "datagrundlag: tallene stemmer altid" },
+    { value: "1", label: "rapport til alle læsere" },
+    { value: "Versioneret", label: "hver rapport gemmes med sit datagrundlag" },
     { value: "2-3 dage", label: "sparet pr. rapporteringsrunde", note: "[antagelse: interne tidsestimater]" },
-    { value: "7 år", label: "audit-trail bag hver rapport" },
+    { value: "Alle pakker", label: "har PDF-rapporten med" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål",
     items: [
       {
-        q: "Er det de samme tal i alle fire rapporter?",
-        a: "Ja. Alle varianter trækkes fra det samme klimaregnskab med samme kildecitation. Forskellen er hvad der fremhæves og hvordan det præsenteres, ikke selve tallene. Det er hele pointen: bestyrelsen og banken ser konsistente CO₂e-tal.",
+        q: "Får bestyrelsen, banken og investoren hver sin rapport?",
+        a: "Nej. qlim8 laver ikke særskilte versioner til hver læser. Du genererer én PDF-rapport for regnskabsåret og sender den samme rapport til dem der spørger. Beder banken eller en kunde om VSME, henter du EFRAG's Excel-arbejdsbog fra samme klimaregnskab.",
       },
       {
         q: "Kan jeg tilpasse hvilke datapunkter en bestemt modtager får?",
-        a: "Hver variant er forudskåret til sin typiske modtager. Bestyrelsesrapporten fokuserer på mål og afvigelse, bankrapporten på de rå datakrav. Du vælger variant og genererer: grundlaget er det samme underliggende regnskab.",
+        a: "Ikke i PDF-rapporten; den har samme indhold uanset hvem den sendes til. Du kan vælge rapportens visuelle udtryk, og du vælger selv, om læseren skal have PDF-rapporten, VSME-arket eller begge.",
       },
       {
         q: "Hvad sker der med en rapport hvis jeg retter regnskabet bagefter?",
-        a: "En signeret rapport låses og bevarer dataen som den var ved underskrift. Du kan stadig rette regnskabet fremadrettet, men den afsendte rapport viser tilstanden på afsendelsestidspunktet. Så du kan altid dokumentere hvad hver modtager fik.",
+        a: "Ingenting. En rapport gemmes med versionsnummer og det datagrundlag den blev lavet på, og den ændres ikke bagefter. Retter du regnskabet, genererer du en ny version. Så du kan altid finde præcis den version du sendte.",
       },
       {
-        q: "Kræver flere modtager-varianter en bestemt pakke?",
-        a: "Rapporteringen er en del af platformen. Starter dækker VSME Basic og revisor-adgang; Premium tilføjer VSME Comprehensive. Se pakkerne for hvad hver plan indeholder.",
+        q: "Kræver PDF-rapporten en bestemt pakke?",
+        a: "Nej. PDF-rapporten er med i alle pakker, også den gratis. Hvad hver pakke ellers indeholder, står på pakkesiden.",
       },
       {
         q: "Kan revisoren bekræfte tallene i rapporten?",
-        a: "Ja. Hver post har kildecitation tilbage til den oprindelige faktura, og revisor kan inviteres til at signere rapporten kryptografisk i platformen. Det gælder på tværs af modtager-varianterne.",
+        a: "Ja. Du inviterer din revisor ind i platformen, hvor hvert tal kan følges tilbage til bilaget. Revisoren kan attestere en gemt rapport ved at uploade sin underskrevne erklæring, og platformen forsegler en kvittering, der binder erklæringen til præcis den version af rapporten og dens datagrundlag.",
       },
     ],
   },
   closingCta: {
     title: "Byg ét klimaregnskab: send det til alle der spørger",
     description:
-      "Book en demo, så viser vi, hvordan samme datagrundlag bliver til en bestyrelses-, investor-, bank- og partner-rapport.",
+      "Book en demo, så viser vi PDF-rapporten, VSME-arket og revisorens attestering, alle bygget på samme klimaregnskab.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -127,104 +130,104 @@ export const PR_MODTAGERE: MarketingPageCopy = {
 export const PR_BESTYRELSE: MarketingPageCopy = {
   hero: {
     eyebrow: "Modtagere",
-    title: "Klimaregnskab til bestyrelsen: beslutningsklart",
+    title: "Klimaregnskab til bestyrelsen: overblik til mødet",
     subtitle:
-      "Bestyrelsen skal ikke læse en revisionsrapport på 40 sider. De skal se status mod mål, afvigelsen fra sidste år og de risici der kræver en beslutning. qlim8 genererer den rapport direkte fra dit regnskab.",
+      "Bestyrelsen skal ikke læse en revisionsrapport på 40 sider. De skal se årets overblik og hvor I står i forhold til jeres reduktionsmål. qlim8 genererer PDF-rapporten direkte fra dit regnskab, og udviklingen over tid kan I følge i platformen.",
     primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
     heading: "Et bestyrelsesmøde er ikke en revision",
-    body: "Når klimaregnskabet skal på dagsordenen, har bestyrelsen ét spørgsmål: hvordan går det, og hvad skal vi beslutte? Et 100-siders EFRAG-ark svarer ikke på det. Et klimaregnskab til bestyrelsen skal vise, om I når jeres mål, hvor I afviger, og hvilke risici der er materielle nok til en beslutning. qlim8 tager det samme datagrundlag som din compliance-rapport og skærer det til et møde: overblik, trend og afvigelse på de sider bestyrelsen faktisk læser. Tallene er GHG Protocol-konsistente og har kildecitation tilbage til fakturaen, så et spørgsmål fra et bestyrelsesmedlem kan besvares på stedet.",
+    body: "Når klimaregnskabet skal på dagsordenen, har bestyrelsen ét spørgsmål: hvordan går det, og hvad skal vi beslutte? Et 100-siders EFRAG-ark svarer ikke på det. qlim8 giver dig to ting at tage med til mødet. PDF-rapporten for regnskabsåret viser overblikket over året, Scope 1, 2 og 3 og jeres reduktionsmål, og den kan sendes ud med mødematerialet. I platformen kan I følge udviklingen over tid og status mod jeres mål, så I kan gå i dybden på mødet. Tallene er opgjort GHG Protocol-konsistent, og i platformen kan hvert tal følges tilbage til linjen og bilaget det kommer fra, så et spørgsmål fra et bestyrelsesmedlem kan besvares på stedet.",
     bullets: [
-      "Status mod jeres reduktionsmål: grønt/rødt, ikke rådata.",
-      "Afvigelse fra sidste år, forklaret.",
-      "De risici der kræver en beslutning, ikke alle 100 datapunkter.",
+      "PDF-rapport med årets overblik, Scope 1-3 og jeres reduktionsmål.",
+      "Udvikling over tid og status mod mål i platformen.",
+      "Hvert tal kan følges til bilaget i platformen, hvis nogen spørger.",
     ],
   },
   painPoints: [
     {
       pain: "Bestyrelsen får et compliance-ark de ikke kan bruge til at træffe beslutninger, så klimapunktet bliver skøjtet over.",
       solution:
-        "qlim8 genererer en bestyrelsesrapport skåret til beslutning: mål, afvigelse og risiko på få sider.",
+        "qlim8 genererer en PDF-rapport med årets overblik, Scope 1, 2 og 3 og jeres reduktionsmål, som kan ligge i mødematerialet.",
       outcome: "Klimapunktet bliver et reelt dagsordenspunkt i stedet for et bilag ingen læser.",
     },
     {
       pain: "Du bruger en aften på at klippe grafer og tal sammen til bestyrelsen manuelt, hver gang.",
       solution:
-        "Rapporten trækkes automatisk fra dit klimaregnskab. Du vælger 'bestyrelse' og genererer.",
+        "Rapporten trækkes direkte fra dit klimaregnskab for hele regnskabsåret. Du vælger rapportens udtryk og genererer.",
       outcome: "Aftenens klip-og-klister falder bort; typisk 3-5 timer sparet pr. møde [antagelse: interne tidsestimater, ikke kundevalideret].",
     },
     {
       pain: "Et bestyrelsesmedlem spørger 'hvor kommer det tal fra?', og du kan ikke svare i mødet.",
       solution:
-        "Hver post har kildecitation tilbage til den oprindelige faktura. Svaret er ét klik væk.",
+        "I platformen kan hvert tal følges tilbage til linjen og bilaget det kommer fra. Har du platformen åben på mødet, kan du vise det.",
       outcome: "Bestyrelsens tillid til tallene bygges i mødet, ikke i en opfølgnings-mail en uge efter.",
     },
     {
-      pain: "Sidste års tal og i år er lavet forskelligt, så trenden er ikke til at stole på.",
+      pain: "Bestyrelsen spørger, om I er på vej mod målet, og svaret ligger spredt i regneark.",
       solution:
-        "Samme metodegrundlag og faktorer år efter år gør afvigelsen reel, ikke en artefakt af metoden.",
-      outcome: "Bestyrelsen kan diskutere den faktiske udvikling, ikke om tallene overhovedet kan sammenlignes.",
+        "Jeres reduktionsmål står i rapporten, og i platformen kan I følge udviklingen over tid og status mod målene.",
+      outcome: "Bestyrelsen kan diskutere udviklingen ud fra ét sted, ikke ud fra tre regneark.",
     },
   ],
   features: [
     {
-      title: "Mål og afvigelse øverst",
-      body: "Rapporten åbner med status mod jeres reduktionsmål og afvigelsen fra sidste år. Bestyrelsen ser med det samme, om I er på sporet, uden at lede i tabeller.",
+      title: "Årets overblik og reduktionsmål",
+      body: "PDF-rapporten samler regnskabsåret: overblik over året, Scope 1, 2 og 3 og de reduktionsmål I har sat. Den kan sendes ud med mødematerialet og læses uden adgang til platformen.",
     },
     {
-      title: "Risiko fremhævet",
-      body: "De poster der ændrer sig mest, eller hvor datagrundlaget er svagest, løftes frem. Bestyrelsen bruger tiden på det der kræver en beslutning, ikke på de 90 % der er stabile.",
+      title: "Udvikling og status i platformen",
+      body: "Vil bestyrelsen se, hvordan udledningen har udviklet sig, og hvor I står i forhold til målene, viser platformen det. Rapporten er et billede af året; platformen viser bevægelsen.",
     },
     {
-      title: "Kildecitation på hvert tal",
-      body: "Hvert tal kan spores tilbage til den oprindelige faktura. Når et bestyrelsesmedlem stiller det svære spørgsmål, er dokumentationen allerede i rapporten.",
+      title: "Sporbart i platformen",
+      body: "I platformen kan hvert tal følges tilbage til linjen og bilaget det kommer fra. Når et bestyrelsesmedlem stiller det svære spørgsmål, er dokumentationen et par klik væk.",
     },
     {
-      title: "Beslutningsklart format",
-      body: "Få sider, klart sprog, ingen EFRAG-jargon. Rapporten er skrevet til at blive læst på 10 minutter før et møde, ikke til at blive arkiveret ulæst.",
+      title: "Til et møde, ikke en revision",
+      body: "Rapporten bygger på det samme klimaregnskab som en eventuel VSME-rapport, men den er et læsbart overblik, ikke et EFRAG-ark med 100 datapunkter. Du vælger rapportens visuelle udtryk, før du genererer.",
     },
     {
-      title: "Låst efter godkendelse",
-      body: "Når bestyrelsen har set en version, kan den låses. Retter du regnskabet bagefter, bevarer den godkendte rapport tilstanden ved godkendelsen, så referatet altid matcher det materiale bestyrelsen faktisk fik.",
+      title: "Den version bestyrelsen fik",
+      body: "Hver genereret rapport får et versionsnummer og gemmes med det datagrundlag den blev lavet på. Retter du regnskabet bagefter, ændres den sendte rapport ikke, så referatet kan henvise til præcis den version bestyrelsen fik.",
     },
   ],
   valueStats: [
     { value: "3-5 timer", label: "sparet pr. bestyrelsesmøde", note: "[antagelse: interne tidsestimater]" },
-    { value: "1 klik", label: "fra tal til kildefaktura" },
-    { value: "GHG Protocol", label: "konsistente tal år-til-år" },
-    { value: "Få sider", label: "i stedet for 100-siders ark" },
+    { value: "Scope 1-3", label: "og reduktionsmål i rapporten" },
+    { value: "GHG Protocol", label: "konsistent opgørelse" },
+    { value: "Alle pakker", label: "har PDF-rapporten med" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål",
     items: [
       {
         q: "Hvad indeholder et klimaregnskab til bestyrelsen?",
-        a: "Status mod jeres reduktionsmål, afvigelse fra sidste år og de risici der kræver en beslutning. Det er skåret til et møde, ikke den fulde compliance-rapport, men bygget på præcis samme datagrundlag med kildecitation pr. tal.",
+        a: "PDF-rapporten viser overblikket over regnskabsåret, Scope 1, 2 og 3 og jeres reduktionsmål. Udviklingen over tid og status mod målene ser I i platformen. Rapporten bygger på det samme klimaregnskab som resten af jeres rapportering.",
       },
       {
-        q: "Kan bestyrelsen stole på at tallene kan sammenlignes med sidste år?",
-        a: "Ja. qlim8 bruger samme metode og emissionsfaktorer år efter år, så afvigelsen afspejler en reel udvikling og ikke et metodeskift. Tallene er GHG Protocol-konsistente.",
+        q: "Kan vi se udviklingen fra år til år?",
+        a: "Ja, i platformen. Dashboardet viser udviklingen over tid. PDF-rapporten dækker ét regnskabsår ad gangen.",
       },
       {
-        q: "Skal jeg bygge bestyrelsesrapporten oven på compliance-rapporten?",
-        a: "Nej. Begge trækkes fra det samme klimaregnskab. Du vælger bestyrelses-varianten og genererer, der er ikke to datasæt at holde synkroniseret.",
+        q: "Findes der en særlig bestyrelsesudgave af rapporten?",
+        a: "Nej. Der er én PDF-rapport, og den samme rapport kan gå til bestyrelsen, ejerne eller banken. Du vælger dens visuelle udtryk og genererer, og der er ikke to datasæt at holde synkroniseret.",
       },
       {
-        q: "Hvad hvis vi retter regnskabet efter bestyrelsen har godkendt rapporten?",
-        a: "En godkendt rapport kan låses og bevarer dataen som den var ved godkendelsen. Du kan rette regnskabet fremadrettet, men referatet matcher altid det materiale bestyrelsen faktisk så.",
+        q: "Hvad hvis vi retter regnskabet efter bestyrelsen har fået rapporten?",
+        a: "Rapporten bestyrelsen fik, ændres ikke. Den blev gemt med versionsnummer og datagrundlag, da den blev genereret. Retter I regnskabet, genererer I en ny version, og referatet kan stadig henvise til den version bestyrelsen faktisk så.",
       },
       {
         q: "Hvad koster det at lave bestyrelsesrapporter?",
-        a: "Rapporteringen er en del af platformen fra Starter, der også giver revisor-adgang; Premium tilføjer bl.a. VSME Comprehensive og analyse. Starter og Premium køber I direkte i appen, og priserne står på /priser.",
+        a: "PDF-rapporten er med i alle pakker, også den gratis. Hvad hver pakke ellers indeholder, og priserne, står på /priser.",
       },
     ],
   },
   closingCta: {
     title: "Giv bestyrelsen et klimaregnskab de kan beslutte ud fra",
     description:
-      "Book en demo, hvor vi viser en beslutningsklar bestyrelsesrapport med mål, afvigelse og risiko.",
+      "Book en demo, hvor vi viser PDF-rapporten med årets overblik og reduktionsmål, og hvordan I følger udviklingen i platformen.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -239,17 +242,17 @@ export const PR_INVESTOR: MarketingPageCopy = {
     eyebrow: "Modtagere",
     title: "ESG-data til investorer: sammenligneligt og konsistent",
     subtitle:
-      "Investorer og ejere skal kunne holde jeres klimatal op mod resten af porteføljen. qlim8 leverer GHG Protocol-konsistente tal med trend over år, så jeres rapportering står mål med det investoren ser fra andre selskaber.",
+      "Investorer og ejere skal kunne holde jeres klimatal op mod resten af porteføljen. qlim8 opgør Scope 1, 2 og 3 GHG Protocol-konsistent og samler året i en PDF-rapport, og udviklingen over tid kan følges i platformen.",
     primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
     heading: "Investoren sammenligner: sørg for at det kan lade sig gøre",
-    body: "En investor læser aldrig kun jeres klimaregnskab. De læser det ved siden af ti andre selskabers. Det, der gør jeres tal brugbare for dem, er ikke detaljeringsgraden: det er sammenligneligheden: at Scope 1, 2 og 3 er opgjort GHG Protocol-konsistent, at metoden er den samme fra år til år, og at trenden er reel. qlim8 opgør jeres klimaregnskab efter en fast metode og genererer en investorrapport der viser udviklingen over tid med kildecitation bag hvert tal. Investoren kan tage tallene direkte ind i deres egen porteføljerapportering uden at skulle spørge hvordan I har regnet.",
+    body: "En investor læser aldrig kun jeres klimaregnskab. De læser det ved siden af ti andre selskabers. Det der gør jeres tal brugbare for dem, er ikke detaljeringsgraden, men at de kan sammenlignes: at Scope 1, 2 og 3 er opgjort GHG Protocol-konsistent, og at det er tydeligt hvad tallene bygger på. qlim8 opgør jeres klimaregnskab efter GHG Protocol og genererer en PDF-rapport for regnskabsåret, som I kan sende til ejerkredsen. Vil investoren gå tallene efter, kan hvert tal i platformen følges tilbage til linjen og bilaget, og jeres revisor kan attestere rapporten.",
     bullets: [
       "GHG Protocol-konsistent Scope 1, 2 og 3.",
-      "Trend over år på samme metodegrundlag.",
-      "Kildecitation bag hvert tal, klar til investorens due diligence.",
+      "PDF-rapport for regnskabsåret; udviklingen over tid i platformen.",
+      "Revisoren kan attestere præcis den version I sender.",
     ],
   },
   painPoints: [
@@ -257,25 +260,25 @@ export const PR_INVESTOR: MarketingPageCopy = {
       pain: "Investoren kan ikke sammenligne jeres tal med resten af porteføljen, fordi metoden er uklar.",
       solution:
         "qlim8 opgør Scope 1, 2 og 3 GHG Protocol-konsistent, så tallene er sammenlignelige på tværs af selskaber.",
-      outcome: "Investoren tager tallene direkte ind i sin porteføljerapportering uden at spørge om metode.",
+      outcome: "Investoren ved, hvilken standard tallene er opgjort efter.",
     },
     {
-      pain: "Trenden ser rodet ud, fordi hvert år er opgjort en smule forskelligt.",
+      pain: "Investoren vil se udviklingen, men du har kun et øjebliksbillede i et regneark.",
       solution:
-        "Fast metode og faste faktorer år efter år gør trenden reel og læsbar.",
-      outcome: "Udviklingen fortæller en historie investoren kan stole på, ikke en metode-artefakt.",
+        "Dashboardet i platformen viser udviklingen i jeres udledning over tid. PDF-rapporten samler det enkelte regnskabsår.",
+      outcome: "Udviklingen ligger ét sted, ikke spredt over flere års regneark.",
     },
     {
       pain: "Due diligence-spørgsmål om et enkelt tal koster dig dage med at grave i regneark.",
       solution:
-        "Hvert tal har kildecitation tilbage til fakturaen. Svaret ligger i rapporten.",
+        "I platformen kan hvert tal følges tilbage til linjen og bilaget det kommer fra, og jeres revisor kan arbejde med i platformen.",
       outcome: "Due diligence-runden bliver kortere; typisk 4-8 timer sparet pr. runde [antagelse: interne tidsestimater, ikke kundevalideret].",
     },
     {
-      pain: "Du sender investoren et statisk PDF, og næste kvartal skal alt laves om fra bunden.",
+      pain: "Du sender investoren et statisk PDF, og næste år skal alt laves om fra bunden.",
       solution:
-        "Rapporten genereres fra det levende klimaregnskab. Nyt kvartal, samme knap.",
-      outcome: "Løbende investor-rapportering bliver en generering, ikke et projekt.",
+        "Rapporten genereres fra det løbende klimaregnskab. Når næste regnskabsår er komplet, genererer du en ny rapport.",
+      outcome: "Den årlige investor-rapportering bliver en generering, ikke et projekt.",
     },
   ],
   features: [
@@ -284,122 +287,122 @@ export const PR_INVESTOR: MarketingPageCopy = {
       body: "Scope 1, 2 og 3 opgøres efter GHG Protocol, så jeres tal er sammenlignelige med andre selskaber i investorens portefølje. Bemærk: konsistent, ikke akkrediteret, vi opgør efter standarden, vi udsteder ikke certifikater.",
     },
     {
-      title: "Trend over år",
-      body: "Rapporten viser udviklingen i jeres CO₂e-aftryk over tid på samme metodegrundlag. Investoren ser en reel kurve, ikke et øjebliksbillede der ikke kan sammenlignes med sidste år.",
+      title: "Udvikling over tid i platformen",
+      body: "Dashboardet i platformen viser udviklingen i jeres CO₂e-aftryk over tid. PDF-rapporten dækker ét regnskabsår ad gangen med overblik, Scope 1, 2 og 3 og jeres reduktionsmål.",
     },
     {
-      title: "Scope 3 med kildecitation",
-      body: "Scope 3-posterne, inkl. indkøb (kat. 1): har kildecitation tilbage til fakturaen. Investorens spørgsmål om det største og mest usikre scope besvares på forhånd.",
+      title: "Scope 3 sporbart i platformen",
+      body: "Scope 3-posterne, inkl. indkøb (kat. 1), kan i platformen følges tilbage til linjen og bilaget de bygger på. Investorens spørgsmål til det største og mest usikre scope kan besvares med dokumentationen.",
     },
     {
       title: "Klar til due diligence",
-      body: "Kildecitation og audit-trail på 7 år betyder at investorens due diligence-team kan verificere tallene selv. Færre spørgsmål tilbage til dig, hurtigere runde.",
+      body: "Investoren kan få tallene bekræftet af jeres revisor. Revisoren attesterer en gemt rapport ved at uploade sin underskrevne erklæring, og platformen forsegler en kvittering, der binder erklæringen til præcis den version af rapporten og dens datagrundlag.",
     },
     {
-      title: "Genereres kvartal efter kvartal",
-      body: "Investor-rapporten trækkes fra det levende klimaregnskab. Løbende rapportering til ejerkredsen bliver en knap, ikke et nyt regneark hvert kvartal.",
+      title: "Ny rapport hvert regnskabsår",
+      body: "Rapporten trækkes fra det løbende klimaregnskab for et helt regnskabsår. Hver generering gemmes som en ny version med sit datagrundlag, så I altid kan se, hvad ejerkredsen fik hvilket år.",
     },
   ],
   valueStats: [
     { value: "Scope 1-3", label: "GHG Protocol-konsistent" },
-    { value: "Trend", label: "på fast metode år-til-år" },
+    { value: "Udvikling", label: "over tid i platformens dashboard" },
     { value: "4-8 timer", label: "sparet pr. due diligence-runde", note: "[antagelse: interne tidsestimater]" },
-    { value: "7 år", label: "audit-trail bag tallene" },
+    { value: "Attestering", label: "fra revisoren, bundet til rapportens version" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål",
     items: [
       {
         q: "Hvad gør vores klimatal sammenlignelige for en investor?",
-        a: "At de er opgjort GHG Protocol-konsistent og efter samme metode år efter år. Så kan investoren holde jeres Scope 1, 2 og 3 op mod andre selskaber i porteføljen uden at skulle korrigere for metodeforskelle.",
+        a: "At de er opgjort GHG Protocol-konsistent, så investoren kan holde jeres Scope 1, 2 og 3 op mod andre selskaber, der opgør efter samme standard. Det hjælper også, at det er tydeligt hvad tallene bygger på; i platformen kan hvert tal følges tilbage til bilaget.",
       },
       {
         q: "Betyder GHG Protocol-konsistent at tallene er certificerede?",
-        a: "Nej. Vi opgør efter GHG Protocol-metoden, men vi er ikke et akkrediteringsorgan og udsteder ikke certifikater. Det revisoren kan gøre er at signere rapporten i platformen; hver post er sporbar tilbage til kilden.",
+        a: "Nej. Vi opgør efter GHG Protocol-metoden, men vi er ikke et akkrediteringsorgan og udsteder ikke certifikater. Det jeres revisor kan gøre, er at attestere en rapport: revisoren uploader sin underskrevne erklæring i platformen, og den bindes til præcis den version af rapporten.",
       },
       {
         q: "Kan investoren verificere tallene selv?",
-        a: "Ja. Hvert tal har kildecitation tilbage til den oprindelige faktura, og der er 7-årig audit-trail. Due diligence-teamet kan følge sporet uden at skulle bede jer om rådata.",
+        a: "Tallene verificeres bedst gennem jeres revisor, som I inviterer ind i platformen, hvor hvert tal kan følges tilbage til linjen og bilaget. Revisoren kan derefter attestere rapporten. PDF-rapporten er et overblik; dokumentationen bag tallene ligger i platformen.",
       },
       {
-        q: "Kan jeg lave investor-rapporten hvert kvartal uden at starte forfra?",
-        a: "Ja. Rapporten genereres fra det levende klimaregnskab, så en ny periode er en ny generering, ikke et nyt regneark. Metoden holdes konstant, så trenden forbliver læsbar.",
+        q: "Kan jeg lave investor-rapporten oftere end én gang om året?",
+        a: "PDF-rapporten dækker et helt regnskabsår, og alle 12 måneder skal have data. Vil ejerkredsen følge med i løbet af året, viser dashboardet i platformen udviklingen.",
       },
       {
         q: "Hvilken plan skal jeg have for investor-rapportering?",
-        a: "Rapporteringen er en del af platformen. For fuld Scope 3 og de udvidede datapunkter er Premium typisk det rette; Starter dækker grundopgørelsen og VSME Basic. Se pakkerne.",
+        a: "PDF-rapporten er med i alle pakker, også den gratis. Hvad hver pakke ellers indeholder, står på pakkesiden.",
       },
     ],
   },
   closingCta: {
     title: "Giv investoren tal de kan sammenligne",
     description:
-      "Book en demo, hvor vi viser en GHG Protocol-konsistent investorrapport med trend og kildecitation.",
+      "Book en demo, hvor vi viser en GHG Protocol-konsistent rapport, udviklingen i platformen og revisorens attestering.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
 };
 
 // ---------------------------------------------------------------------------
-// PR_BANK: ESG-rapport til banken (L193 / finansiering)
+// PR_BANK: ESG-data til banken (VSME-arket + PDF-rapporten)
 // ---------------------------------------------------------------------------
 
 export const PR_BANK: MarketingPageCopy = {
   hero: {
     eyebrow: "Modtagere",
-    title: "ESG-rapport til banken: klar til upload",
+    title: "ESG-data til banken: VSME-arket og rapporten",
     subtitle:
-      "Banken beder om ESG-data før de godkender finansieringen, ofte med reference til L193-datakravene. qlim8 leverer præcis de datapunkter i et klar-til-upload dokument, så finansieringen ikke venter på et regneark.",
+      "Banken beder om ESG-data før de godkender finansieringen, ofte i form af VSME. qlim8 udfylder EFRAG's VSME-arbejdsbog i Excel fra dit klimaregnskab, og PDF-rapporten giver rådgiveren et læsbart overblik.",
     primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
     heading: "Bankens ESG-krav skal ikke forsinke lånet",
-    body: "Flere og flere banker beder om ESG- og klimadata før de godkender et lån eller en kreditramme, ofte med henvisning til L193 og deres egne bæredygtighedskrav til udlån. Problemet er sjældent tallene; det er formatet. Banken vil have bestemte datapunkter, opgjort på en måde deres kreditmodel kan læse, med dokumentation bag. qlim8 tager dit klimaregnskab og genererer en bankrapport med præcis de datapunkter banken efterspørger, hver med kildecitation tilbage til fakturaen. Du uploader ét dokument i stedet for at oversætte dit regnskab til bankens skema i hånden. Så ESG-kravet bliver et vedhæftet bilag, ikke en flaskehals i finansieringen.",
+    body: "Flere og flere banker beder om ESG- og klimadata før de godkender et lån eller en kreditramme, ofte med henvisning til L193 og deres egne bæredygtighedskrav til udlån. Mange beder om VSME, EFRAG's frivillige standard for SMV'er. Problemet er sjældent tallene; det er formatet og dokumentationen. qlim8 laver ikke en særlig bankrapport. I stedet genererer du EFRAG's officielle VSME-arbejdsbog i Excel (Basic eller Comprehensive) direkte fra dit klimaregnskab. Den leveres i en ZIP sammen med en revisions-CSV, der for hver linje angiver bilaget bag tallet, og et revisionsspor. Til rådgiveren, der vil have et overblik, sender du PDF-rapporten for regnskabsåret. Tjek altid bankens konkrete skema med din rådgiver, da kravene varierer.",
     bullets: [
-      "De datapunkter bankens ESG-/L193-krav beder om.",
-      "Klar-til-upload dokumentation med kildecitation.",
-      "GHG Protocol-konsistente tal banken kan læse ind i kreditmodellen.",
+      "EFRAG's VSME-arbejdsbog i Excel, Basic eller Comprehensive.",
+      "Revisions-CSV og revisionsspor i samme ZIP: hver linje kan føres til bilaget.",
+      "PDF-rapport for regnskabsåret som læsbart overblik.",
     ],
   },
   painPoints: [
     {
       pain: "Banken sender et ESG-skema du ikke ved hvordan du udfylder, og finansieringen står stille imens.",
       solution:
-        "qlim8 genererer en bankrapport med de datapunkter bankens krav efterspørger, færdigt udfyldt fra dit regnskab.",
-      outcome: "ESG-kravet bliver et vedhæftet bilag, ikke en uges forsinkelse på lånet.",
+        "Beder banken om VSME, udfylder qlim8 EFRAG's officielle arbejdsbog med dine tal i cellerne, direkte fra dit klimaregnskab.",
+      outcome: "ESG-kravet bliver et vedhæftet bilag frem for et skema du udfylder i hånden.",
     },
     {
       pain: "Du opgør tallene selv, men banken afviser formatet, og du starter forfra.",
       solution:
-        "Rapporten leveres klar-til-upload i standardformater (PDF, Excel) med GHG Protocol-konsistente tal.",
+        "VSME-arket kommer i EFRAG's eget Excel-format, så banken får standarden som den er udgivet. Bruger banken sit eget skema, har du tallene samlet ét sted at hente dem fra.",
       outcome: "Færre afvisningsrunder med bankens kreditafdeling.",
     },
     {
       pain: "Bankens rådgiver stiller spørgsmål til et enkelt tal, og du kan ikke dokumentere hvor det kommer fra.",
       solution:
-        "Hver post har kildecitation tilbage til fakturaen; audit-trail på 7 år ligger bag.",
-      outcome: "Bankens spørgsmål besvares før de stilles; sagsbehandlingen glider hurtigere.",
+        "Revisions-CSV'en i VSME-ZIP'en angiver for hver linje bilagsnummer og filens hash, og i platformen kan tallet følges til bilaget.",
+      outcome: "Bankens spørgsmål besvares med dokumentationen, ikke med en eftermiddags gravearbejde.",
     },
     {
       pain: "Du skal levere opdaterede tal hvert år for at beholde den grønne rente, og det bliver et projekt hver gang.",
       solution:
-        "Rapporten genereres fra det levende klimaregnskab. Årlig opdatering er en generering, ikke et nyt dataindsamlings-projekt.",
+        "Arket og rapporten genereres fra det løbende klimaregnskab. Årlig opdatering er en generering, ikke et nyt dataindsamlings-projekt.",
       outcome: "Den løbende bank-rapportering koster timer, ikke uger.",
     },
   ],
   features: [
     {
-      title: "Bankens datapunkter, forudfyldt",
-      body: "Rapporten indeholder de klima- og ESG-datapunkter bankens krav, herunder L193-relaterede, efterspørger, trukket direkte fra dit klimaregnskab. Du oversætter ikke dit regnskab til bankens skema i hånden.",
+      title: "VSME-arbejdsbogen, udfyldt",
+      body: "qlim8 udfylder EFRAG's officielle VSME-arbejdsbog i Excel, Basic eller Comprehensive, med tallene fra dit klimaregnskab. Du oversætter ikke dit regnskab til et tomt ark i hånden.",
     },
     {
-      title: "Klar-til-upload dokumentation",
-      body: "Output i PDF og Excel, formateret så det kan lægges direkte i bankens portal eller sendes til rådgiveren. Ingen manuel reformatering før upload.",
+      title: "Dokumentation i samme ZIP",
+      body: "Arbejdsbogen leveres i en ZIP sammen med en revisions-CSV (bilagsnummer, ekstern reference og filens hash for hver linje), et revisionsspor og et kontrolscript. Kreditafdelingen kan se, hvad hvert tal bygger på.",
     },
     {
-      title: "Kildecitation bag hvert tal",
-      body: "Hvert tal er sporbart tilbage til den oprindelige faktura. Når bankens kreditafdeling verificerer, ligger dokumentationen allerede i rapporten.",
+      title: "PDF-rapport som overblik",
+      body: "Til rådgiveren, der vil læse frem for at regne, sender du PDF-rapporten for regnskabsåret med overblik over året, Scope 1, 2 og 3 og jeres reduktionsmål. Den bygger på samme klimaregnskab som VSME-arket.",
     },
     {
       title: "GHG Protocol-konsistent opgørelse",
@@ -407,13 +410,13 @@ export const PR_BANK: MarketingPageCopy = {
     },
     {
       title: "Årlig opdatering uden nyt projekt",
-      body: "Skal du dokumentere klimatal årligt for at beholde en grøn finansiering, genereres den nye rapport fra det levende regnskab. En knap, ikke en ny runde manuelt arbejde.",
+      body: "Skal du dokumentere klimatal årligt for at beholde en grøn finansiering, genererer du arket og rapporten igen fra det løbende regnskab, når året er komplet. Hver generering gemmes som en ny version.",
     },
   ],
   valueStats: [
-    { value: "Klar-til-upload", label: "PDF + Excel til bankens portal" },
-    { value: "L193", label: "-relaterede datapunkter dækket" },
-    { value: "1 klik", label: "fra tal til kildefaktura" },
+    { value: "VSME i Excel", label: "EFRAG's officielle arbejdsbog" },
+    { value: "Basic + Comprehensive", label: "de to VSME-moduler" },
+    { value: "Pr. linje", label: "bilagsreference i revisions-CSV'en" },
     { value: "Timer", label: "til årlig opdatering, ikke uger", note: "[antagelse: interne tidsestimater]" },
   ],
   faq: {
@@ -421,30 +424,30 @@ export const PR_BANK: MarketingPageCopy = {
     items: [
       {
         q: "Hvad skal en ESG-rapport til banken indeholde?",
-        a: "Typisk jeres klimatal (Scope 1, 2 og ofte 3) opgjort konsistent, plus den dokumentation bankens kreditmodel og L193-relaterede krav efterspørger. qlim8 genererer præcis de datapunkter fra dit klimaregnskab med kildecitation bag.",
+        a: "Det varierer, men typisk jeres klimatal (Scope 1, 2 og ofte 3) opgjort konsistent, og mange banker beder om VSME. qlim8 udfylder EFRAG's VSME-arbejdsbog fra dit klimaregnskab, og PDF-rapporten giver et læsbart overblik. Tjek bankens konkrete skema med din rådgiver.",
       },
       {
         q: "Hvad er L193 i denne sammenhæng?",
-        a: "Bankernes øgede krav om at indhente og vurdere bæredygtighedsdata fra erhvervskunder afspejler sig i konkrete datakrav ved finansiering. qlim8 leverer de klimadatapunkter i et format banken kan bruge. Tjek det konkrete skema med din bankrådgiver, da kravene varierer mellem banker.",
+        a: "Bankernes øgede krav om at indhente og vurdere bæredygtighedsdata fra erhvervskunder afspejler sig i konkrete datakrav ved finansiering, og VSME er et format mange banker accepterer. qlim8 laver ikke en bank-specifik rapport, men leverer VSME-arket og PDF-rapporten. Tjek det konkrete skema med din bankrådgiver, da kravene varierer mellem banker.",
       },
       {
-        q: "Kan jeg uploade rapporten direkte i bankens system?",
-        a: "Rapporten leveres klar-til-upload i PDF og Excel. De fleste banker beder om ét af de to formater; du henter filen og lægger den i bankens portal eller sender den til rådgiveren uden reformatering.",
+        q: "Kan jeg sende filerne direkte til banken?",
+        a: "Ja. Du henter ZIP'en med VSME-arbejdsbogen og PDF-rapporten i platformen og lægger dem i bankens portal eller sender dem til rådgiveren. Bruger banken sit eget skema, skal tallene stadig overføres dertil.",
       },
       {
         q: "Hvordan besvarer jeg bankens spørgsmål til et enkelt tal?",
-        a: "Hver post har kildecitation tilbage til den oprindelige faktura, og der er 7-årig audit-trail. Bankens kreditafdeling kan følge sporet, så de fleste spørgsmål er besvaret allerede i rapporten.",
+        a: "I platformen kan hvert tal følges tilbage til linjen og bilaget, og revisions-CSV'en i VSME-ZIP'en angiver bilaget for hver linje. Vil banken have tallene bekræftet, kan din revisor attestere rapporten i platformen.",
       },
       {
-        q: "Hvad koster det at lave en bankrapport?",
-        a: "Rapporteringen er en del af platformen. Starter dækker grundopgørelsen; skal du levere fuld Scope 3 eller de udvidede datapunkter banken beder om, er Premium typisk det rette. Starter og Premium køber I direkte i appen, og priserne står på /priser.",
+        q: "Hvad koster det at lave ESG-dokumentation til banken?",
+        a: "PDF-rapporten er med i alle pakker, også den gratis. Hvilke VSME-moduler hver pakke indeholder, og priserne, står på /priser.",
       },
     ],
   },
   closingCta: {
     title: "Lever bankens ESG-krav uden at forsinke finansieringen",
     description:
-      "Book en demo, hvor vi viser en klar-til-upload bankrapport med de datapunkter finansieringen kræver.",
+      "Book en demo, hvor vi viser VSME-arket, revisions-CSV'en og PDF-rapporten, som du kan sende til banken.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -459,233 +462,233 @@ export const PR_SAMARBEJDSPARTNERE: MarketingPageCopy = {
     eyebrow: "Modtagere",
     title: "Dél dine klimadata: ét link, ikke et regneark",
     subtitle:
-      "Dine store kunder og leverandører beder om din del af deres Scope 3. I stedet for at udfylde deres regneark hver gang, deler du ét link med de tal de skal bruge, trukket direkte fra dit klimaregnskab.",
+      "Dine store kunder og leverandører beder om dine klimatal til deres Scope 3. I stedet for at udfylde deres regneark hver gang kan du give dem ét link til din offentlige ESG-profil, og bruger kunden selv qlim8 Enterprise, kan du dele dine tal gennem deres værdikæde-modul.",
     primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
     heading: "Når din kunde beder om dine tal til deres Scope 3",
-    body: "Store kunder og leverandører har deres egen CSRD- eller VSME-forpligtelse, og du er en del af deres Scope 3. Derfor lander der et regneark i din indbakke: 'udfyld venligst jeres CO₂-tal'. Det regneark er lidt forskelligt hver gang, og du bruger en formiddag på at oversætte dit klimaregnskab til deres kolonner. qlim8 vender det om: du deler ét link med de tal partneren beder om, trukket direkte fra dit klimaregnskab og med kildecitation bag. Partneren henter det de skal bruge til deres Scope 3, og du udfylder ikke det samme i femten forskellige skabeloner. Beder de om et bestemt format, kan tallene også hentes som Excel eller JSON.",
+    body: "Store kunder og leverandører har deres egen CSRD- eller VSME-forpligtelse, og du er en del af deres Scope 3. Derfor lander der et regneark i din indbakke: 'udfyld venligst jeres CO₂-tal'. Det regneark er lidt forskelligt hver gang, og du bruger en formiddag på at oversætte dit klimaregnskab til deres kolonner. qlim8 giver dig to veje. Din offentlige ESG-profil (Brag Board) viser de klimatal du vælger at gøre offentlige, direkte fra regnskabet, og du kan give linket til alle der spørger. Bruger kunden qlim8 Enterprise, kan du dele data med dem gennem værdikæde-modulet: kunden får en fastfrosset VSME Comprehensive-version af dine tal og den andel af din udledning, der fordeles til dem. Vil en partner have noget at læse, kan du sende PDF-rapporten for regnskabsåret.",
     bullets: [
-      "Dél ét link i stedet for at udfylde deres regneark.",
-      "Tallene er din del af partnerens Scope 3, klar til brug.",
-      "Kildecitation bag hvert tal, hvis partneren spørger.",
+      "Ét offentligt profil-link i stedet for at udfylde deres regneark.",
+      "Værdikæde-deling med kunder på Enterprise: en fastfrosset version med din andel.",
+      "PDF-rapporten som læsbart overblik, hvis partneren beder om det.",
     ],
   },
   painPoints: [
     {
       pain: "Hver stor kunde sender sit eget regneark, og du oversætter dit klimaregnskab til deres kolonner igen og igen.",
       solution:
-        "qlim8 samler dine tal ét sted, og du deler dem som ét link i stedet for at udfylde hver skabelon.",
+        "Din offentlige ESG-profil samler dine tal ét sted, og du giver alle der spørger det samme link i stedet for at udfylde hver skabelon.",
       outcome: "En formiddag pr. kunde-forespørgsel falder bort [antagelse: interne tidsestimater, ikke kundevalideret].",
     },
     {
       pain: "Du er ikke sikker på hvilke af dine tal der hører til netop den kundes Scope 3.",
       solution:
-        "Rapporten er skåret til partnerens behov: din del af deres værdikæde, opgjort GHG Protocol-konsistent.",
-      outcome: "Partneren kan lægge tallene direkte ind uden at spørge hvad de dækker.",
+        "Bruger kunden qlim8 Enterprise, får de gennem værdikæde-modulet den andel af din udledning, der fordeles til dem, sammen med en fastfrosset VSME Comprehensive-version af dine tal.",
+      outcome: "Kunden kan bruge tallene uden at spørge, hvad de dækker.",
     },
     {
       pain: "Partneren stiller spørgsmål til et tal, og du kan ikke dokumentere det uden at grave i bilag.",
       solution:
-        "Hvert tal har kildecitation tilbage til fakturaen, så dokumentationen følger med linket.",
-      outcome: "Partnerens spørgsmål besvares på forhånd; ingen ekstra mail-runde.",
+        "I platformen kan hvert tal følges tilbage til linjen og bilaget det kommer fra, så du kan svare med dokumentationen.",
+      outcome: "Partnerens spørgsmål besvares hurtigt, uden en eftermiddag i bilagsmappen.",
     },
     {
-      pain: "Kunden vil have tallene i et bestemt filformat til deres eget system.",
+      pain: "Du sender rettede tal rundt, og ingen ved, hvilken udgave der er den gældende.",
       solution:
-        "Tallene kan hentes som PDF, Excel eller JSON, det format partnerens system kan læse.",
-      outcome: "Partnerens system-integration kører uden manuel indtastning i begge ender.",
+        "Din offentlige profil viser altid de aktuelle tal fra regnskabet. Det du deler gennem værdikæde-modulet, er derimod en fastfrosset version, så kunden ved præcis hvad de har fået.",
+      outcome: "Klare udgaver: profilen følger regnskabet, den delte version står fast.",
     },
   ],
   features: [
     {
-      title: "Ét delbart link",
-      body: "Del dine relevante klimatal som ét link i stedet for at udfylde partnerens regneark. Beder tre kunder om det samme, deler du samme grundlag tre gange uden nyt arbejde.",
+      title: "Ét offentligt link",
+      body: "Din offentlige ESG-profil (Brag Board) er ét link, du kan give til alle der spørger. Beder tre kunder om det samme, giver du dem samme link uden nyt arbejde. Linket er det samme for alle; det er ikke tilpasset den enkelte partner.",
     },
     {
-      title: "Skåret til partnerens Scope 3",
-      body: "Rapporten viser din del af partnerens værdikæde, din Scope 3-relevante udledning, opgjort GHG Protocol-konsistent, så tallene kan lægges direkte ind hos dem.",
+      title: "Værdikæde-deling på Enterprise",
+      body: "Bruger din kunde qlim8 Enterprise, kan du dele data med dem gennem værdikæde-modulet. Kunden får en fastfrosset VSME Comprehensive-version af dine tal og den andel af din udledning, der fordeles til dem, til brug i deres Scope 3.",
     },
     {
-      title: "Kildecitation følger med",
-      body: "Hvert tal er sporbart tilbage til den oprindelige faktura. Hvis partneren eller deres revisor spørger, er dokumentationen der allerede.",
+      title: "Dokumentationen ligger i platformen",
+      body: "I platformen kan hvert tal følges tilbage til linjen og bilaget det kommer fra. Spørger partneren eller deres revisor, kan du finde dokumentationen frem.",
     },
     {
-      title: "Flere formater",
-      body: "Ud over det delte link kan tallene hentes som PDF, Excel eller JSON. Skal partnerens system have en fil i et bestemt format, er det ét valg, ikke en genindtastning.",
+      title: "PDF-rapport som overblik",
+      body: "Vil en partner have noget at læse frem for et link, sender du PDF-rapporten for regnskabsåret med overblik over året, Scope 1, 2 og 3 og jeres reduktionsmål. Det er den samme rapport, du sender til alle andre.",
     },
     {
-      title: "Opdateres når dit regnskab gør",
-      body: "Grundlaget er dit levende klimaregnskab. Retter du en faktura, er de delte tal opdaterede næste gang partneren henter dem. Du sender ikke en rettet version rundt manuelt.",
+      title: "Levende profil, fastfrosne delinger",
+      body: "Den offentlige profil følger dit klimaregnskab. Det du deler gennem værdikæde-modulet, og hver PDF-rapport du genererer, står fast som den version modtageren fik. Retter du regnskabet, bliver det en ny version, ikke en stille ændring af den gamle.",
     },
   ],
   valueStats: [
     { value: "1 link", label: "i stedet for N regneark" },
-    { value: "PDF / Excel / JSON", label: "de formater partneren beder om" },
-    { value: "Din Scope 3-del", label: "opgjort GHG Protocol-konsistent" },
-    { value: "1 klik", label: "fra tal til kildefaktura" },
+    { value: "Fastfrosset", label: "version ved værdikæde-deling" },
+    { value: "Din andel", label: "af kundens Scope 3 via Enterprise-værdikæden" },
+    { value: "Pr. bilag", label: "sporbart i platformen" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål",
     items: [
       {
         q: "Min store kunde beder om vores CO₂-tal til deres Scope 3. Hvad deler jeg?",
-        a: "Din del af deres værdikæde: dine relevante udledninger opgjort GHG Protocol-konsistent. qlim8 samler det i en rapport du deler som ét link, i stedet for at udfylde kundens eget regneark.",
+        a: "Du kan give dem linket til din offentlige ESG-profil eller sende PDF-rapporten for regnskabsåret. Bruger kunden qlim8 Enterprise, kan du dele gennem deres værdikæde-modul, så de får en fastfrosset VSME Comprehensive-version af dine tal og den andel, der fordeles til dem.",
       },
       {
         q: "Skal jeg udfylde et nyt regneark for hver kunde der spørger?",
-        a: "Nej. Du deler samme grundlag som ét link, uanset hvor mange partnere der beder om det. Har de brug for en fil, kan tallene hentes som PDF, Excel eller JSON.",
+        a: "Ikke nødvendigvis. Du kan give alle det samme link til din offentlige profil. Insisterer en kunde på sit eget skema, har du tallene samlet i qlim8 at hente dem fra.",
       },
       {
         q: "Kan partneren stole på tallene?",
-        a: "Hvert tal har kildecitation tilbage til den oprindelige faktura, og der er 7-årig audit-trail bag. Partneren, eller deres revisor, kan følge sporet, så tallene kan bruges direkte i deres egen rapportering.",
+        a: "I platformen kan hvert tal følges tilbage til linjen og bilaget det kommer fra. Vil partneren have tallene bekræftet, kan din revisor attestere en rapport: revisoren uploader sin underskrevne erklæring, og den bindes til præcis den version af rapporten og dens datagrundlag.",
       },
       {
         q: "Hvad hvis vi retter regnskabet efter vi har delt tallene?",
-        a: "Grundlaget er dit levende klimaregnskab, så delte tal afspejler det opdaterede regnskab næste gang partneren henter dem. Skal en bestemt version bevares, kan en rapport låses ved deling.",
+        a: "Din offentlige profil følger regnskabet og viser de rettede tal. En værdikæde-deling og en genereret PDF-rapport er derimod fastfrosne versioner; de ændres ikke, og en rettelse bliver en ny version.",
       },
       {
-        q: "Hvilken plan skal jeg have for at dele Scope 3-data?",
-        a: "Rapporteringen er en del af platformen. Starter dækker grundopgørelsen; for fuld Scope 3-detaljering er Premium typisk det rette. Se pakkerne.",
+        q: "Hvilken plan skal jeg have for at dele data med partnere?",
+        a: "PDF-rapporten er med i alle pakker. Værdikæde-delingen, hvor kunden får din andel af deres Scope 3, kræver at kunden bruger qlim8 Enterprise. Hvad hver pakke ellers indeholder, står på pakkesiden.",
       },
     ],
   },
   closingCta: {
     title: "Dél dine klimadata som ét link",
     description:
-      "Book en demo, så viser vi, hvordan du deler din del af partnerens Scope 3 uden at udfylde endnu et regneark.",
+      "Book en demo, så viser vi den offentlige profil, PDF-rapporten og værdikæde-delingen på Enterprise.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
 };
 
 // ---------------------------------------------------------------------------
-// PR_TEMAER: vælg rapportens visuelle tema (Light Nordic vs. McKinsey)
+// PR_TEMAER: vælg rapportens visuelle udtryk
 // ---------------------------------------------------------------------------
 
 export const PR_TEMAER: MarketingPageCopy = {
   hero: {
     eyebrow: "Rapport",
-    title: "Vælg rapportens tema: Light Nordic eller McKinsey",
+    title: "Vælg rapportens visuelle udtryk",
     subtitle:
-      "Samme klimaregnskab, to visuelle udtryk. Vælg 'Light Nordic' for et rent, nordisk look eller 'McKinsey' for et stringent konsulent-udtryk. Tallene er de samme: indpakningen matcher modtageren.",
+      "PDF-rapporten findes i flere visuelle udtryk. Du vælger det, der passer til jeres virksomhed og læsere, før du genererer. Tallene er de samme uanset udtryk.",
     primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
     heading: "Indpakningen betyder noget, når rapporten skal læses",
-    body: "En rapport til bestyrelsen og en rapport til en investor kan indeholde de samme tal og stadig fungere bedst i hvert sit udtryk. qlim8 lader dig vælge rapportens visuelle tema uden at røre ved indholdet. 'Light Nordic' er rent, luftigt og nordisk. Velegnet når rapporten skal signalere åbenhed og enkelhed. 'McKinsey' er stringent, tæt og konsulent-agtigt, velegnet når modtageren forventer et analytisk, beslutnings-tungt udtryk. Du skifter tema med ét valg og genererer rapporten igen; tallene, kildecitationen og strukturen er uændrede. Så du bruger ikke tid i et layoutprogram, du vælger det udtryk der passer til hvem der læser.",
+    body: "En klimarapport skal læses, ikke bare arkiveres, og udtrykket er med til at afgøre, om den bliver det. qlim8 lader dig vælge mellem flere visuelle udtryk til PDF-rapporten uden at røre ved indholdet. Udtrykket bestemmer typografi, farver og layout; tallene kommer fra det samme klimaregnskab, uanset hvad du vælger. Du vælger udtryk, før du genererer, og rapporten kommer ud færdig-designet. Vil du se et andet udtryk, genererer du igen, og det bliver en ny version af rapporten med sit eget versionsnummer. Så du bruger ikke tid i et layoutprogram.",
     bullets: [
-      "To temaer: Light Nordic (rent, nordisk) og McKinsey (stringent, konsulent).",
-      "Samme tal og kildecitation, kun det visuelle skifter.",
-      "Skift tema med ét valg, generér igen.",
+      "Flere visuelle udtryk til PDF-rapporten.",
+      "Samme tal; kun typografi, farver og layout skifter.",
+      "Vælg før du genererer; en ny generering er en ny version.",
     ],
   },
   painPoints: [
     {
-      pain: "Standard-rapporten passer ikke til modtageren. Den er enten for pyntet eller for tør.",
+      pain: "Standard-rapporten passer ikke til jer. Den er enten for pyntet eller for tør.",
       solution:
-        "Vælg mellem to temaer der rammer hver sin forventning: nordisk enkelhed eller konsulent-stringens.",
-      outcome: "Rapporten møder modtagerens forventning uden at du rører ved tallene.",
+        "Vælg det udtryk, der passer til jeres virksomhed og læsere, blandt flere designs.",
+      outcome: "Rapporten får et udtryk, der passer til læseren, uden at du rører ved tallene.",
     },
     {
       pain: "Du eksporterer til PDF og bruger derefter en aften i et layoutprogram på at få den til at se præsentabel ud.",
       solution:
-        "Temaet anvendes ved genereringen. Rapporten kommer ud færdig-designet.",
+        "Udtrykket anvendes ved genereringen. Rapporten kommer ud færdig-designet.",
       outcome: "Layout-aftenen falder bort; typisk 2-4 timer sparet pr. rapport [antagelse: interne tidsestimater, ikke kundevalideret].",
     },
     {
-      pain: "Skifter du udtryk, er du bange for at tallene flytter sig eller kildecitationen falder ud.",
+      pain: "Skifter du udtryk, er du bange for at tallene flytter sig.",
       solution:
-        "Temaet er kun visuelt. Tal, struktur og kildecitation er identiske på tværs af de to temaer.",
-      outcome: "Du kan trygt vælge udtryk efter modtager uden at genkontrollere indholdet.",
+        "Udtrykket er kun visuelt. Tallene kommer fra det samme klimaregnskab, uanset hvilket udtryk du vælger.",
+      outcome: "Udtrykket ændrer ikke beregningen, så du kan vælge efter læseren.",
     },
     {
-      pain: "Forskellige modtagere vil have forskelligt udtryk, og du ender med at vedligeholde to versioner.",
+      pain: "Når du har prøvet flere udtryk, er du i tvivl om, hvilken udgave af rapporten der blev sendt.",
       solution:
-        "Samme rapport, to temaer, ét klik imellem. Der er ikke to dokumenter at holde synkroniseret.",
-      outcome: "Bestyrelsen og investoren kan få hvert sit udtryk fra samme kilde.",
+        "Hver generering gemmes som en ny version med versionsnummer og det datagrundlag den bygger på. Den ændres ikke bagefter.",
+      outcome: "Du kan altid finde præcis den version, du sendte.",
     },
   ],
   features: [
     {
-      title: "Light Nordic",
-      body: "Et rent, luftigt og nordisk udtryk med god luft omkring tallene, dæmpet farvebrug og enkel typografi. Velegnet når rapporten skal signalere åbenhed og gennemsigtighed, fx til samarbejdspartnere eller en offentlig-orienteret læser.",
+      title: "Flere udtryk at vælge imellem",
+      body: "PDF-rapporten findes i flere visuelle udtryk med hver sin typografi, farvebrug og layout. Du vælger det, der passer til jeres virksomhed og til dem, der skal læse rapporten.",
     },
     {
-      title: "McKinsey",
-      body: "Et stringent, tæt og analytisk udtryk i konsulent-stil: kompakte tabeller, tydelig informationshierarki og et beslutnings-tungt look. Velegnet når modtageren, fx en investor eller en professionel bestyrelse, forventer et konsulent-agtigt oplæg.",
+      title: "Samme indhold i alle udtryk",
+      body: "Uanset udtryk bygger rapporten på det samme klimaregnskab og har det samme indhold: overblik over året, Scope 1, 2 og 3 og jeres reduktionsmål. Udtrykket ændrer typografi, farver og layout, ikke hvad rapporten siger.",
     },
     {
-      title: "Samme indhold i begge",
-      body: "Uanset tema er tallene, strukturen og kildecitationen den samme. Temaet ændrer typografi, farver og layout, ikke hvad rapporten siger eller hvor tallene kommer fra.",
+      title: "Færdig-designet PDF",
+      body: "Vælg udtryk før du genererer, og rapporten kommer ud færdig-designet i PDF. Ingen manuel opsætning i et layoutprogram.",
     },
     {
-      title: "Skift uden reformatering",
-      body: "Vælg tema før du genererer, og rapporten kommer ud færdig-designet i PDF. Vil du se den anden version, skifter du tema og genererer igen, ingen manuel opsætning i et layoutprogram.",
+      title: "Ny generering, ny version",
+      body: "Vil du se rapporten i et andet udtryk, genererer du igen. Det bliver en ny version med eget versionsnummer, og den tidligere version gemmes uændret. Du kan altid se, hvilken version der blev sendt.",
     },
     {
-      title: "Konsistent på tværs af modtager-varianter",
-      body: "Temaet lægger sig oven på bestyrelses-, investor-, bank- og partner-rapporterne. Du kan give hver modtager sit udtryk uden at bygge separate skabeloner.",
+      title: "Én rapport til alle læsere",
+      body: "Den samme rapport kan gå til bestyrelsen, investorerne, banken og jeres partnere. Udtrykket vælger du ud fra, hvem der primært skal læse den.",
     },
   ],
   howItWorks: {
-    title: "Sådan vælger og anvender du et tema",
+    title: "Sådan vælger du rapportens udtryk",
     steps: [
       {
-        title: "1. Generér dit klimaregnskab",
-        body: "Kobl dit regnskab på, og lad qlim8 opgøre klimaregnskabet. Temavalget ændrer ikke tallene: grundlaget er det samme uanset udtryk.",
+        title: "1. Opgør dit klimaregnskab",
+        body: "Kobl dit regnskab på, og lad qlim8 opgøre klimaregnskabet. Rapporten dækker et helt regnskabsår, så alle 12 måneder skal have data.",
       },
       {
-        title: "2. Vælg tema",
-        body: "Vælg 'Light Nordic' eller 'McKinsey' før du genererer rapporten. Valget bestemmer typografi, farver og layout.",
+        title: "2. Vælg udtryk",
+        body: "Vælg rapportens visuelle udtryk, før du genererer. Valget bestemmer typografi, farver og layout.",
       },
       {
         title: "3. Generér rapporten",
-        body: "Rapporten kommer ud som færdig-designet PDF i det valgte tema, med tal og kildecitation uændret.",
+        body: "Rapporten kommer ud som færdig-designet PDF i det valgte udtryk og gemmes som en version med sit datagrundlag.",
       },
       {
-        title: "4. Skift hvis modtageren kræver det",
-        body: "Vil en anden modtager have det andet udtryk, skifter du tema og genererer igen. Samme kilde, nyt look, ingen ny opsætning.",
+        title: "4. Generér igen, hvis du vil se et andet",
+        body: "Vil du have et andet udtryk, vælger du det og genererer igen. Det giver en ny version; den første gemmes uændret.",
       },
     ],
   },
   valueStats: [
-    { value: "2", label: "temaer: Light Nordic + McKinsey" },
-    { value: "1 valg", label: "skifter hele udtrykket" },
-    { value: "0", label: "ændringer i tal og kildecitation" },
+    { value: "Flere", label: "visuelle udtryk at vælge imellem" },
+    { value: "1 valg", label: "før du genererer" },
+    { value: "Samme tal", label: "uanset udtryk" },
     { value: "2-4 timer", label: "sparet pr. rapport i layout", note: "[antagelse: interne tidsestimater]" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål",
     items: [
       {
-        q: "Hvad er forskellen på Light Nordic og McKinsey?",
-        a: "Light Nordic er et rent, luftigt og nordisk udtryk med dæmpede farver og god luft. McKinsey er stringent, tæt og analytisk i konsulent-stil med kompakte tabeller. Vælg det der matcher modtagerens forventning. Indholdet er det samme i begge.",
+        q: "Hvilke udtryk kan jeg vælge imellem?",
+        a: "PDF-rapporten findes i flere visuelle udtryk med hver sin typografi, farvebrug og layout. Vi viser dem gerne i en demo, så du kan se, hvilket der passer til jer. Indholdet er det samme i dem alle.",
       },
       {
-        q: "Ændrer temaet på tallene i rapporten?",
-        a: "Nej. Temaet er rent visuelt: typografi, farver og layout. Tallene, strukturen og kildecitationen er identiske uanset om du vælger Light Nordic eller McKinsey.",
+        q: "Ændrer udtrykket på tallene i rapporten?",
+        a: "Nej. Udtrykket er rent visuelt: typografi, farver og layout. Tallene kommer fra det samme klimaregnskab, uanset hvilket udtryk du vælger.",
       },
       {
-        q: "Kan jeg skifte tema efter jeg har genereret en rapport?",
-        a: "Ja. Du vælger det andet tema og genererer rapporten igen fra samme datagrundlag. Der er ikke to versioner at vedligeholde. Det er ét klik imellem udtrykkene.",
+        q: "Kan jeg skifte udtryk efter jeg har genereret en rapport?",
+        a: "Du kan generere rapporten igen i et andet udtryk. Det bliver en ny version med eget versionsnummer, og den første version gemmes uændret, så du altid kan se, hvilken du sendte.",
       },
       {
-        q: "Virker temaet sammen med modtager-varianterne?",
-        a: "Ja. Temaet lægger sig oven på bestyrelses-, investor-, bank- og partner-rapporterne, så du kan give hver modtager både den rette variant og det rette udtryk.",
+        q: "Kan jeg give hver modtager sit eget udtryk?",
+        a: "Du kan generere rapporten i det udtryk, der passer bedst til en given læser. Indholdet er det samme: der findes ikke særskilte udgaver til bestyrelse, investor eller bank.",
       },
       {
-        q: "Kan jeg få rapporten uden qlim8's brand?",
-        a: "White-label-PDF, hvor rapporten bærer dit eget brand i stedet for qlim8's, findes på de større planer. Se pakkerne for hvad hver plan indeholder.",
+        q: "Kan rapporten bære vores eget brand i stedet for qlim8's?",
+        a: "Nej. Du vælger blandt rapportens udtryk, men rapporten kan ikke udgives under jeres eget brand i stedet for qlim8's.",
       },
     ],
   },
   closingCta: {
-    title: "Giv rapporten det udtryk modtageren forventer",
+    title: "Giv rapporten et udtryk, der passer til læseren",
     description:
-      "Book en demo, så viser vi samme rapport i både Light Nordic og McKinsey.",
+      "Book en demo, så viser vi PDF-rapporten i de udtryk, du kan vælge imellem.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -700,7 +703,7 @@ export const PR_VSME: MarketingPageCopy = {
     eyebrow: "VSME",
     title: "VSME-rapport direkte fra dit regnskab: Basic og Comprehensive",
     subtitle:
-      "VSME er EFRAG's frivillige rapporteringsstandard for SMV'er. qlim8 genererer både VSME Basic og VSME Comprehensive fra dit klimaregnskab, med kildecitation pr. tal og revisor-sign-off.",
+      "VSME er EFRAG's frivillige rapporteringsstandard for SMV'er. qlim8 genererer både VSME Basic og VSME Comprehensive fra dit klimaregnskab som EFRAG's officielle Excel-arbejdsbog. Hver linje kan føres til bilaget via revisions-CSV'en i samme ZIP, og din revisor kan attestere rapporten i platformen.",
     primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
@@ -710,20 +713,20 @@ export const PR_VSME: MarketingPageCopy = {
     bullets: [
       "VSME Basic: 40+ datapunkter (EFRAG-spec), primært klima og governance.",
       "VSME Comprehensive: 100+ datapunkter, bredere social og governance.",
-      "Begge genereres fra dit klimaregnskab med kildecitation pr. tal.",
+      "Begge genereres som EFRAG's Excel-arbejdsbog; hver linje kan føres til bilaget via revisions-CSV'en.",
     ],
   },
   painPoints: [
     {
       pain: "En kunde eller bank beder om en VSME-rapport, og du ved ikke hvor du skal starte.",
       solution:
-        "qlim8 mapper EFRAG's VSME-felter mod dit klimaregnskab og genererer rapporten som PDF eller Excel.",
+        "qlim8 mapper EFRAG's VSME-felter mod dit klimaregnskab og udfylder EFRAG's officielle Excel-arbejdsbog.",
       outcome: "Førstegangs-VSME bliver dage-arbejde frem for et konsulent-engagement til 75.000-200.000 kr. [antagelse, markeds-research].",
     },
     {
       pain: "EFRAG-Excel-arket er tomt, og du skal udfylde 40+ datapunkter manuelt med dokumentation bag hvert tal.",
       solution:
-        "Tallene lander i arkets officielle celler direkte fra dit regnskab, hver med kildecitation.",
+        "Tallene lander i arkets officielle celler direkte fra dit regnskab, og revisions-CSV'en i samme ZIP angiver bilaget bag hver linje.",
       outcome: "40-80 timers manuel udfyldning falder bort [antagelse, pilot-tal].",
     },
     {
@@ -735,8 +738,8 @@ export const PR_VSME: MarketingPageCopy = {
     {
       pain: "Revisorens spørgsmål forsinker rapporten med uger.",
       solution:
-        "Hver post er sporbar til fakturaen, og revisor kan signere rapporten kryptografisk i platformen.",
-      outcome: "Revisorens spørgsmål besvares før de stilles; sign-off sker i platformen.",
+        "Hver linje kan føres til bilaget via revisions-CSV'en, og din revisor kan attestere rapporten i platformen ved at uploade sin underskrevne erklæring.",
+      outcome: "Revisoren har dokumentationen fra start, og attesteringen bindes til præcis den version af rapporten.",
     },
   ],
   features: [
@@ -753,8 +756,8 @@ export const PR_VSME: MarketingPageCopy = {
       body: "qlim8 mapper felterne mod EFRAG's officielle template-version, så tallene lander i de rigtige celler og arkets egen valideringsfane viser grønt/OK for de krævede rækker. Du afleverer ikke et ark med røde 'MISSING VALUE'-markeringer.",
     },
     {
-      title: "Kildecitation pr. tal",
-      body: "Hver post har en klikbar kildecitation tilbage til den oprindelige aktivitet. Når revisoren spørger hvor et tal kommer fra, er svaret ét klik væk. Fakturaerne bag ligger i sporet.",
+      title: "Hver linje sporbar til bilaget",
+      body: "Arbejdsbogen leveres i en ZIP med en revisions-CSV, der for hver linje angiver bilagsnummer, ekstern reference og filens hash, plus et revisionsspor. Når revisoren spørger hvor et tal kommer fra, kan det føres tilbage til bilaget, og i platformen kan du følge det til linjen og fakturaen.",
     },
     {
       title: "Skalerer til CSRD",
@@ -769,7 +772,7 @@ export const PR_VSME: MarketingPageCopy = {
     { value: "Basic + Comprehensive", label: "begge moduler i platformen" },
     { value: "4-8 timer", label: "til VSME Basic", note: "[antagelse: pilot-tal, 2 brugere]" },
     { value: "Grøn valideringsfane", label: "i EFRAG-arket for krævede rækker" },
-    { value: "7 år", label: "audit-trail (CSRD-krav)" },
+    { value: "Excel + revisions-CSV", label: "EFRAG-arbejdsbog med bilagsreference pr. linje" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål",
@@ -788,7 +791,7 @@ export const PR_VSME: MarketingPageCopy = {
       },
       {
         q: "Er en VSME-rapport fra qlim8 revisor-klar?",
-        a: "Hver post har kildecitation tilbage til fakturaen, der er 7-årig audit-trail, og revisor kan signere rapporten kryptografisk i platformen. Bemærk: qlim8 opgør efter standarden: vi er ikke et akkrediteringsorgan, og revisionen udføres af din revisor.",
+        a: "Hver linje kan føres til bilaget via revisions-CSV'en i ZIP'en, og din revisor kan attestere rapporten i platformen ved at uploade sin underskrevne erklæring. Platformen forsegler en kvittering, der binder erklæringen til præcis den version af rapporten og dens datagrundlag. Bemærk: qlim8 opgør efter standarden. Vi er ikke et akkrediteringsorgan, og revisionen udføres af din revisor.",
       },
       {
         q: "Kan jeg spørge Claude eller ChatGPT om mine VSME-tal?",
@@ -824,7 +827,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
   },
   intro: {
     heading: "Hvad VSME Basic dækker: og hvem det passer til",
-    body: "VSME Basic er EFRAG's korte modul: 40+ datapunkter der primært dækker klima (Scope 1 og 2, ofte indkøb i Scope 3) og governance. Det passer til den typiske danske SMV der har fået en 'send os jeres CO₂-tal'-anmodning fra en stor kunde, en bank eller frivilligt før CSRD. Manuel udfyldning af EFRAG's Basic-ark tager typisk 40-80 timer, fordi hver post skal kilde-dokumenteres i hånden. qlim8 mapper Basic-felterne (B1-B11) mod dit klimaregnskab og genererer rapporten som PDF eller Excel med dine tal indsat i de officielle celler. Pilotbrugere når rapporten på 4-8 timer: primært brugt på at kvalitetsreviewe, ikke på at taste ind [antagelse: pilot-tal, 2 brugere].",
+    body: "VSME Basic er EFRAG's korte modul: 40+ datapunkter der primært dækker klima (Scope 1 og 2, ofte indkøb i Scope 3) og governance. Det passer til den typiske danske SMV der har fået en 'send os jeres CO₂-tal'-anmodning fra en stor kunde, en bank eller frivilligt før CSRD. Manuel udfyldning af EFRAG's Basic-ark tager typisk 40-80 timer, fordi hver post skal kilde-dokumenteres i hånden. qlim8 mapper Basic-felterne (B1-B11) mod dit klimaregnskab og udfylder EFRAG's officielle Excel-arbejdsbog med dine tal i de officielle celler. Pilotbrugere når rapporten på 4-8 timer: primært brugt på at kvalitetsreviewe, ikke på at taste ind [antagelse: pilot-tal, 2 brugere].",
     bullets: [
       "40+ datapunkter, primært klima og governance (EFRAG B1-B11).",
       "Til SMV'er med en kunde-, bank- eller frivillig VSME-anmodning.",
@@ -871,12 +874,12 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
       body: "Tallene lander i EFRAG's officielle celler, så arkets egen valideringsfane viser OK for de krævede Basic-rækker når wizarden er udfyldt. Du afleverer ikke et ark med røde 'MISSING VALUE'-markeringer.",
     },
     {
-      title: "Kildecitation pr. post",
-      body: "Hvert tal er sporbart tilbage til den oprindelige faktura. Spørger banken eller revisoren til en post, er dokumentationen ét klik væk i stedet for en eftermiddags gravearbejde.",
+      title: "Sporbar pr. linje",
+      body: "Arbejdsbogen leveres i en ZIP med en revisions-CSV, der angiver bilaget bag hver linje, og i platformen kan tallet følges til fakturaen. Spørger banken eller revisoren til en post, finder du dokumentationen der i stedet for at bruge en eftermiddag på gravearbejde.",
     },
     {
-      title: "PDF og Excel ud",
-      body: "Rapporten kan hentes som PDF eller Excel i EFRAG-arkets format. Du leverer det format modtageren beder om uden at reformatere.",
+      title: "EFRAG's Excel-arbejdsbog",
+      body: "Rapporten leveres som EFRAG's officielle Excel-arbejdsbog i en ZIP sammen med revisions-CSV, revisionsspor og et kontrolscript. Det er standardens eget format, så du ikke skal reformatere før aflevering.",
     },
     {
       title: "Start rapporten fra din AI-assistent",
@@ -886,7 +889,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
   valueStats: [
     { value: "4-8 timer", label: "til en Basic-rapport", note: "[antagelse: pilot-tal, 2 brugere]" },
     { value: "40+", label: "datapunkter (EFRAG B1-B11)" },
-    { value: "PDF + Excel", label: "i EFRAG-arkets format" },
+    { value: "EFRAG Excel", label: "officiel arbejdsbog i en ZIP med revisions-CSV" },
     { value: "Grøn valideringsfane", label: "for krævede Basic-rækker" },
   ],
   faq: {
@@ -917,7 +920,7 @@ export const PR_VSME_BASIS: MarketingPageCopy = {
   closingCta: {
     title: "Lav din VSME Basic-rapport på en eftermiddag",
     description:
-      "Book en demo, hvor vi viser, hvordan tallene lander i EFRAG's Basic-celler med kildecitation.",
+      "Book en demo, hvor vi viser, hvordan tallene lander i EFRAG's Basic-celler, og hvordan hver linje kan føres til bilaget.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },

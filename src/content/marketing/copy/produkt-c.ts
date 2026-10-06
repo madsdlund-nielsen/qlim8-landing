@@ -757,11 +757,11 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
   intro: {
     heading: "Fra \"vi er ved at lave en strategi\" til verificerbare tal",
     body:
-      "Når en kunde, bank eller udbudsgiver spørger om dit CO₂e-aftryk, har du tre valg: sende en PDF (manuelt arbejde hver gang), sige \"vi er ved at lave noget\" (og miste troværdighed), eller dele en profil med dine faktiske tal og lade dem tjekke. qlim8s offentlige ESG-profil er det tredje. Du aktiverer en delbar URL: fx qlim8.com/p/dinvirksomhed, der viser dit klimaregnskab i det format du vælger. Du bestemmer hvilke felter der er offentlige, og profilen opdateres automatisk når regnskabet ændres, så du undgår versions-mareridt. Det vigtige er at hver påstand er audit-bakket: profilen viser ikke \"vi er klimavenlige\", men \"Scope 1: 12 tons, Scope 2: 5 tons, Scope 3: 145 tons (kilde: VSME-rapport 2025)\".",
+      "Når en kunde, bank eller udbudsgiver spørger om dit CO₂e-aftryk, har du tre valg: sende en PDF (manuelt arbejde hver gang), sige \"vi er ved at lave noget\" (og miste troværdighed), eller dele en profil med dine faktiske tal og lade dem tjekke. qlim8s offentlige ESG-profil er det tredje. Du aktiverer en delbar URL: fx qlim8.com/p/dinvirksomhed, der viser dit klimaregnskab i det format du vælger. Du bestemmer hvilke felter der er offentlige, og profilen opdateres automatisk når regnskabet ændres, så du undgår versions-mareridt. Det vigtige er at tallene kommer fra dit klimaregnskab: profilen viser ikke \"vi er klimavenlige\", men \"Scope 1: 12 tons, Scope 2: 5 tons, Scope 3: 145 tons\".",
     bullets: [
       "Delbar URL: ingen PDF at vedhæfte i 47 mails",
       "Opt-in og granulær: du vælger præcis hvad der vises",
-      "Audit-bakket: hver påstand har kilde-citation",
+      "Audit-bakket: tallene kommer fra dit klimaregnskab",
       "Badge til hjemmeside og e-mail-signatur",
     ],
   },
@@ -778,7 +778,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       pain:
         "\"Har de tal vi kan stole på?\" er en blocker der trækker grønne tilbud i langdrag, mens I dokumenterer i hånden.",
       solution:
-        "Profilen er audit-bakket med kilde-citation pr. påstand, så indkøberen kan verificere tallene selv og blocker'en fjernes tidligt.",
+        "Profilen viser konkrete tal fra jeres klimaregnskab, hvor hvert tal kan spores til bilaget, så blocker'en fjernes tidligt.",
       outcome:
         "Sales-cyklus på grønne tilbud reduceret med 1-3 uger [antagelse: pilot-feedback].",
     },
@@ -786,7 +786,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       pain:
         "I er nervøse for greenwashing-anklager, fordi generelle grønne udsagn ikke kan bakkes op.",
       solution:
-        "Profilen viser konkrete tal med kilde og underskrift, ikke løse påstande. Alt er bakket af et audit-trail, og du vælger opt-in hvad der vises.",
+        "Profilen viser konkrete tal fra klimaregnskabet, ikke løse påstande. Alt er bakket af et audit-trail, og du vælger opt-in hvad der vises.",
       outcome:
         "Verificerbar dokumentation frem for markedsføring, lavere eksponering mod greenwashing-kritik.",
     },
@@ -821,7 +821,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
     {
       title: "Audit-bakket data",
       body:
-        "Hver påstand har kilde-citation og er bakket af et audit-trail. Profilen viser konkrete tal med kilde og underskrift, så forskellen mellem markedsføring og verificerbar dokumentation er tydelig.",
+        "Tallene på profilen kommer fra dit klimaregnskab, hvor hvert tal kan spores til linjen og bilaget. Profilen viser konkrete tal, ikke løse påstande, så forskellen mellem markedsføring og verificerbar dokumentation er tydelig.",
     },
     {
       title: "Opdateres automatisk",
@@ -888,7 +888,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       },
       {
         q: "Hvordan undgår jeg at det ligner greenwashing?",
-        a: "Profilen viser konkrete tal med kilde-citation, ikke løse udsagn som \"vi er klimavenlige\". Hver påstand er bakket af et audit-trail, fx \"Scope 1: 12 tons (kilde: VSME-rapport 2025)\". Det er verificerbar dokumentation, ikke markedsføring.",
+        a: "Profilen viser konkrete tal, fx \"Scope 1: 12 tons\", ikke løse udsagn som \"vi er klimavenlige\". Bag tallene ligger klimaregnskabets audit-trail, hvor hvert tal kan spores til bilaget. Det er verificerbar dokumentation, ikke markedsføring.",
       },
       {
         q: "Skal jeg opdatere profilen manuelt?",
