@@ -69,9 +69,18 @@ const BRAND_SUFFIX = /\|\s*qlim8\s*$/i;
 const errors = [];
 const warnings = [];
 
-/** Both hubs and nodes carry seoTitle/seoDescription; only nodes carry copy. */
+// The content tree is imported, not scanned: an empty one (a renamed export,
+// a broken index) would otherwise pass every rule below.
+if (!MARKETING_HUBS?.length || !ALL_MARKETING_NODES?.length) {
+  console.error(
+    `✗ check-seo-titles: ${MARKETING_HUBS?.length ?? 0} hubs og ${ALL_MARKETING_NODES?.length ?? 0} sider fundet, intet at tjekke`,
+  );
+  process.exit(1);
+}
+
+/** Hubs and nodes both carry seoTitle/seoDescription and a hero in their defaults. */
 const entries = [
-  ...MARKETING_HUBS.map((h) => ({ id: h.route, seo: h, copy: undefined })),
+  ...MARKETING_HUBS.map((h) => ({ id: h.route, seo: h, copy: h.defaults })),
   ...ALL_MARKETING_NODES.map((n) => ({
     id: `/${n.collection}/${n.slug}`,
     seo: n,

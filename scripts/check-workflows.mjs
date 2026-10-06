@@ -23,11 +23,12 @@
  * Run directly (`node scripts/check-workflows.mjs`) or via `npm run lint`.
  */
 import { readFileSync, readdirSync, existsSync } from "fs";
-import { join, extname, relative } from "path";
+import { join, extname, relative, resolve } from "path";
 import { fileURLToPath } from "url";
 import yaml from "js-yaml";
 
-const ROOT = fileURLToPath(new URL("..", import.meta.url));
+/** CHECK_ROOT points the check at another tree; scripts/lib/guards.test.mjs uses it. */
+const ROOT = process.env.CHECK_ROOT ? resolve(process.env.CHECK_ROOT) : fileURLToPath(new URL("..", import.meta.url));
 const WORKFLOW_DIR = join(ROOT, ".github", "workflows");
 const EXTENSIONS = new Set([".yml", ".yaml"]);
 
@@ -38,15 +39,22 @@ const EXTENSIONS = new Set([".yml", ".yaml"]);
  */
 const TRIGGER_KEYS = ["on", "true"];
 
+// No directory, or no workflow in it, is the one state in which CI and the
+// deploy run nothing at all, so it fails rather than passing as "nothing to check".
 if (!existsSync(WORKFLOW_DIR)) {
-  console.log("✓ check-workflows: ingen .github/workflows, intet at tjekke");
-  process.exit(0);
+  console.error(`✗ check-workflows: ${relative(ROOT, WORKFLOW_DIR)} findes ikke, så der er ingen CI at tjekke`);
+  process.exit(1);
 }
 
 const files = readdirSync(WORKFLOW_DIR)
   .sort()
   .filter((entry) => EXTENSIONS.has(extname(entry)))
   .map((entry) => join(WORKFLOW_DIR, entry));
+
+if (files.length === 0) {
+  console.error(`✗ check-workflows: ingen .yml- eller .yaml-filer i ${relative(ROOT, WORKFLOW_DIR)}`);
+  process.exit(1);
+}
 
 const findings = [];
 
@@ -84,8 +92,9 @@ for (const file of files) {
   if (!TRIGGER_KEYS.some((k) => keys.includes(k))) {
     findings.push({ rel, where: "", problem: "mangler `on:`, workflowet vil aldrig blive udløst", text: "" });
   }
-  if (!keys.includes("jobs")) {
-    findings.push({ rel, where: "", problem: "mangler `jobs:`, der er intet at køre", text: "" });
+  const jobs = doc.jobs;
+  if (!jobs || typeof jobs !== "object" || Object.keys(jobs).length === 0) {
+    findings.push({ rel, where: "", problem: "mangler `jobs:` med mindst ét job, der er intet at køre", text: "" });
   }
   if ("name" in doc && typeof doc.name !== "string") {
     // The exact shape of the bug this script was written for: `name:` parsed
