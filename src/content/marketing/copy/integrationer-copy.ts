@@ -60,7 +60,7 @@ export const INTEGRATIONER_HUB_COPY: MarketingHubCopy = {
     {
       title: "Åben via API og MCP",
       body:
-        "Ud over de færdige integrationer kan du bygge oven på qlim8 med et versioneret REST API og en live MCP-server med 31 tools, så BI-værktøjer, egne agenter og AI-assistenter som Claude kan hente emissioner og rapporter programmatisk.",
+        "Ud over de færdige integrationer kan du bygge oven på qlim8 med et versioneret REST API og en live MCP-server med 32 tools, så BI-værktøjer, egne agenter og AI-assistenter som Claude kan hente emissioner og rapporter programmatisk.",
     },
   ],
   closingCta: {
@@ -981,16 +981,16 @@ export const IN_MCP: MarketingPageCopy = {
     eyebrow: "For AI-assistenter",
     title: "Snak med din egen AI om dit klimaregnskab",
     subtitle:
-      "qlim8 AI-integration med vores egen MCP-server. Spørg Claude eller ChatGPT om dine tal i naturligt sprog, og få svar hentet direkte fra dit klimaregnskab. 31 tools lader assistenten hente emissioner, generere rapporter og planlægge reduktioner, uden at en udvikler skal bygge en integration.",
+      "qlim8 AI-integration med vores egen MCP-server. Spørg Claude eller ChatGPT om dine tal i naturligt sprog, og få svar hentet direkte fra dit klimaregnskab. 32 tools lader assistenten hente emissioner, generere rapporter og planlægge reduktioner, uden at en udvikler skal bygge en integration.",
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
     heading: "Din assistent henter tallene, så du ikke skal åbne dashboardet",
     body:
-      "MCP (Model Context Protocol) er en standard, der lader LLM-klienter kalde eksterne funktioner. qlim8 eksponerer en live MCP-server, så din assistent kan svare på \"Hvor stor del af vores Scope 3 kommer fra de fem største leverandører?\" direkte, uden at du åbner qlim8. Overfladen er 31 tools, 3 resources og 3 prompts. Almindelige brugere forbinder Claude eller ChatGPT via OAuth helt uden en API-nøgle at kopiere, mens udviklere tilføjer qlim8 i fx Claude Code eller Cursor med samme Bearer-nøgle som REST-API'et. Hvert tool har et påkrævet scope og en adfærds-annotering, så en klient kan se, hvad der er sikkert at køre automatisk, kontra hvad der ændrer data. Se den fulde oversigt på /api.",
+      "MCP (Model Context Protocol) er en standard, der lader LLM-klienter kalde eksterne funktioner. qlim8 eksponerer en live MCP-server, så din assistent kan svare på \"Hvor stor del af vores Scope 3 kommer fra de fem største leverandører?\" direkte, uden at du åbner qlim8. Overfladen er 32 tools, 3 resources og 3 prompts. Almindelige brugere forbinder Claude eller ChatGPT via OAuth helt uden en API-nøgle at kopiere, mens udviklere tilføjer qlim8 i fx Claude Code eller Cursor med samme Bearer-nøgle som REST-API'et. Hvert tool har et påkrævet scope og en adfærds-annotering, så en klient kan se, hvad der er sikkert at køre automatisk, kontra hvad der ændrer data. Se den fulde oversigt på /api.",
     bullets: [
-      "31 tools, 3 resources og 3 prompts, den fulde overflade.",
+      "32 tools, 3 resources og 3 prompts, den fulde overflade.",
       "OAuth for Claude og ChatGPT (ingen nøgle at kopiere); Bearer-nøgle for Claude Code og Cursor.",
       "Scope- og tier-gate pr. tool, read-only som default og fuld audit-log på writes.",
     ],
@@ -1031,7 +1031,7 @@ export const IN_MCP: MarketingPageCopy = {
   ],
   features: [
     {
-      title: "31 tools på tværs af dit klimaregnskab",
+      title: "32 tools på tværs af dit klimaregnskab",
       body:
         "Assistenten kan hente emissioner (fx get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), generere rapporter, oprette mål, liste leverandører og planlægge reduktioner via scenarier og tiltag.",
     },
@@ -1077,7 +1077,7 @@ export const IN_MCP: MarketingPageCopy = {
       {
         title: "2. Hent data i naturligt sprog",
         body:
-          "Stil et spørgsmål: assistenten vælger det rette af de 31 tools og henter live tal fra dit klimaregnskab.",
+          "Stil et spørgsmål: assistenten vælger det rette af de 32 tools og henter live tal fra dit klimaregnskab.",
       },
       {
         title: "3. Generér og handl",
@@ -1092,7 +1092,7 @@ export const IN_MCP: MarketingPageCopy = {
     ],
   },
   valueStats: [
-    { value: "31 tools", label: "MCP-overflade" },
+    { value: "32 tools", label: "MCP-overflade" },
     { value: "OAuth", label: "ingen nøgle at kopiere" },
     { value: "Read-only", label: "som default" },
     { value: "Audit", label: "på hvert write" },
@@ -1102,7 +1102,7 @@ export const IN_MCP: MarketingPageCopy = {
     items: [
       {
         q: "Hvad er qlim8's MCP-server?",
-        a: "Det er en live server, der taler Model Context Protocol, så LLM-klienter som Claude, ChatGPT og egne agenter kan kalde qlim8-funktioner programmatisk: hente emissioner, generere rapporter, oprette mål, liste leverandører og planlægge reduktioner. Overfladen er 31 tools, 3 resources og 3 prompts. Se /api.",
+        a: "Det er en live server, der taler Model Context Protocol, så LLM-klienter som Claude, ChatGPT og egne agenter kan kalde qlim8-funktioner programmatisk: hente emissioner, generere rapporter, oprette mål, liste leverandører og planlægge reduktioner. Overfladen er 32 tools, 3 resources og 3 prompts. Se /api.",
       },
       {
         q: "Hvordan forbinder jeg Claude eller ChatGPT?",
@@ -1114,7 +1114,7 @@ export const IN_MCP: MarketingPageCopy = {
       },
       {
         q: "Hvilke tools findes der?",
-        a: "De 31 tools spænder fra emissions-opslag (get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), aktiviteter og rapporter til leverandører, mål, emissionsfaktorer, scenarier og tiltag, PCF-records, afdelinger og webhooks. Den fulde liste med scopes står i /docs/mcp-tools.",
+        a: "De 32 tools spænder fra emissions-opslag (get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), aktiviteter og rapporter til leverandører, mål, emissionsfaktorer, scenarier og tiltag, PCF-records, afdelinger og webhooks. Den fulde liste med scopes står i /docs/mcp-tools.",
       },
       {
         q: "Kan assistenten hjælpe med VSME-rapporten?",
@@ -1149,7 +1149,7 @@ export const IN_MCP: MarketingPageCopy = {
 // document to anchor on.
 //
 // Ground truth for every claim below:
-//   docs/da/integrations/mcp-overview.md          (transport, auth, 31 tools)
+//   docs/da/integrations/mcp-overview.md          (transport, auth, 32 tools)
 //   qlim8-app server/mcp/lib/catalog.ts           (tool names and scopes)
 //   qlim8-app server/reports/vsme.ts              (what a VSME report contains)
 //   qlim8-app shared/subscriptionFeatures.ts      (VSME Basis: starter,
@@ -1170,7 +1170,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
   intro: {
     heading: "VSME-rapportering, spurgt i naturligt sprog",
     body:
-      "qlim8 er en dansk ESG-platform til klimaregnskab og VSME-rapportering, og den udstiller dine tal direkte til AI-assistenter gennem en indbygget MCP-server. MCP (Model Context Protocol) er den standard, Claude og ChatGPT bruger, når de skal hente data fra et system i stedet for at gætte. I praksis betyder det, at du kan skrive \"hvad er vores Scope 3 fordelt på de 15 GHG-kategorier?\" eller \"start VSME Basis-rapporten for 2025\" i din assistent, og få svaret hentet live fra dit eget klimaregnskab. Overfladen er 31 tools, 3 resources og 3 prompts. Claude og ChatGPT forbinder via OAuth 2.1 uden en API-nøgle at kopiere, mens Claude Code og Cursor bruger samme Bearer-nøgle som REST-API'et.",
+      "qlim8 er en dansk ESG-platform til klimaregnskab og VSME-rapportering, og den udstiller dine tal direkte til AI-assistenter gennem en indbygget MCP-server. MCP (Model Context Protocol) er den standard, Claude og ChatGPT bruger, når de skal hente data fra et system i stedet for at gætte. I praksis betyder det, at du kan skrive \"hvad er vores Scope 3 fordelt på de 15 GHG-kategorier?\" eller \"start VSME Basis-rapporten for 2025\" i din assistent, og få svaret hentet live fra dit eget klimaregnskab. Overfladen er 32 tools, 3 resources og 3 prompts. Claude og ChatGPT forbinder via OAuth 2.1 uden en API-nøgle at kopiere, mens Claude Code og Cursor bruger samme Bearer-nøgle som REST-API'et.",
     bullets: [
       "VSME Basis og Comprehensive, genereret gennem generate_report og hentet igen med get_report_status.",
       "Scope 1-3 med Scope 3 fordelt på GHG-protokollens 15 kategorier, det samme opslag rapporten selv bruger.",
@@ -1269,7 +1269,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
     ],
   },
   valueStats: [
-    { value: "31 tools", label: "til hele klimaregnskabet" },
+    { value: "32 tools", label: "til hele klimaregnskabet" },
     { value: "B1-B11", label: "VSME-afsnit dækket" },
     { value: "15", label: "Scope 3-kategorier" },
     { value: "OAuth", label: "ingen nøgle at kopiere" },
@@ -1310,7 +1310,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
   closingCta: {
     title: "Spørg din egen AI om VSME-tallene",
     description:
-      "Book en demo, så viser vi, hvordan assistenten henter VSME-tallene. Med en konto forbinder I Claude eller ChatGPT via OAuth og beder assistenten om jeres Scope 1-3. Start i /docs/mcp-quickstart og se alle 31 tools i /docs/mcp-tools.",
+      "Book en demo, så viser vi, hvordan assistenten henter VSME-tallene. Med en konto forbinder I Claude eller ChatGPT via OAuth og beder assistenten om jeres Scope 1-3. Start i /docs/mcp-quickstart og se alle 32 tools i /docs/mcp-tools.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },

@@ -30,7 +30,7 @@ const CAPABILITIES = [
   },
   {
     title: "MCP-server (live)",
-    body: "31 kuraterede tools til AI-agenter via Anthropic's Model Context Protocol. Claude og ChatGPT forbinder med OAuth, helt uden API-nøgle, og Claude Code, Cursor, Replit, Lovable og custom JSON-RPC-klienter bruger samme Bearer-nøgler som REST-API'en.",
+    body: "32 kuraterede tools til AI-agenter via Anthropic's Model Context Protocol. Claude og ChatGPT forbinder med OAuth, helt uden API-nøgle, og Claude Code, Cursor, Replit, Lovable og custom JSON-RPC-klienter bruger samme Bearer-nøgler som REST-API'en.",
   },
   {
     title: "Granulær adgang",
@@ -44,7 +44,7 @@ const CAPABILITIES = [
 const API_FAQ = [
   {
     q: "Hvad er qlim8's MCP-server?",
-    a: "Det er en live server, der taler Model Context Protocol, den standard AI-assistenter bruger til at hente data fra et system. Claude, ChatGPT, Claude Code, Cursor og egne agenter kan kalde 31 kuraterede tools og hente emissioner, generere rapporter, oprette mål og planlægge reduktioner. Endpointet er https://app.qlim8.com/api/mcp.",
+    a: "Det er en live server, der taler Model Context Protocol, den standard AI-assistenter bruger til at hente data fra et system. Claude, ChatGPT, Claude Code, Cursor og egne agenter kan kalde 32 kuraterede tools og hente emissioner, generere rapporter, oprette mål og planlægge reduktioner. Endpointet er https://app.qlim8.com/api/mcp.",
   },
   {
     q: "Hvordan forbinder jeg uden en API-nøgle?",
@@ -52,7 +52,7 @@ const API_FAQ = [
   },
   {
     q: "Kan jeg læse tool-kataloget programmatisk?",
-    a: "Ja. https://app.qlim8.com/api/mcp/schema er et uautentificeret discovery-dokument med alle 31 tools, deres scopes, annotationer og konventioner for paginering, datoer og fejl.",
+    a: "Ja. https://app.qlim8.com/api/mcp/schema er et uautentificeret discovery-dokument med alle 32 tools, deres scopes, annotationer og konventioner for paginering, datoer og fejl.",
   },
   {
     q: "Kan en AI-agent lave en VSME-rapport?",
@@ -143,7 +143,7 @@ export default function Page() {
         <div className="bg-gray-900 text-gray-100 rounded-2xl p-7 sm:p-10">
           <h2 className="text-xl sm:text-2xl font-bold mb-3">MCP: forbind en agent</h2>
           <p className="text-gray-300 text-[15px] leading-relaxed mb-5">
-            Almindelige brugere forbinder Claude eller ChatGPT via OAuth, uden API-nøgle (se MCP Quickstart). Udviklere tilføjer qlim8 i fx Claude Code eller Cursor med samme Bearer-token som REST-API'en. Agenten har derefter adgang til alle 31 tools direkte.
+            Almindelige brugere forbinder Claude eller ChatGPT via OAuth, uden API-nøgle (se MCP Quickstart). Udviklere tilføjer qlim8 i fx Claude Code eller Cursor med samme Bearer-token som REST-API'en. Agenten har derefter adgang til alle 32 tools direkte.
           </p>
           <pre className="bg-black/40 text-gray-100 text-xs sm:text-sm rounded-xl p-5 overflow-x-auto">
             <code>{`{

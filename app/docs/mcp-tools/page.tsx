@@ -9,11 +9,11 @@ import { contentDate } from "@/lib/contentDates";
 export const metadata: Metadata = {
   title: "MCP Tools Reference",
   description:
-    "qlim8's MCP-server eksponerer 31 tools, 3 resources og 3 prompts. Den komplette, altid opdaterede reference bor på developers.qlim8.com.",
+    "qlim8's MCP-server eksponerer 32 tools, 3 resources og 3 prompts. Den komplette, altid opdaterede reference bor på developers.qlim8.com.",
   alternates: { canonical: "https://qlim8.com/docs/mcp-tools" },
   openGraph: {
     title: "qlim8 MCP Tools Reference",
-    description: "31 MCP-tools: komplet reference på developers.qlim8.com.",
+    description: "32 MCP-tools: komplet reference på developers.qlim8.com.",
     url: "https://qlim8.com/docs/mcp-tools",
     images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8 MCP tools" }],
   },
@@ -23,7 +23,7 @@ const LINKS = [
   {
     href: "https://developers.qlim8.com/mcp/",
     title: "Tool-oversigt (developers.qlim8.com)",
-    body: "Alle 31 tools grupperet i tre lag med scope, læse/skrive-adgang og tier-gates, plus opsætning for Claude, ChatGPT, Claude Code, Cursor og curl.",
+    body: "Alle 32 tools grupperet i tre lag med scope, læse/skrive-adgang og tier-gates, plus opsætning for Claude, ChatGPT, Claude Code, Cursor og curl.",
   },
   {
     href: "https://developers.qlim8.com/mcp-tools-reference.md",
@@ -42,7 +42,7 @@ const PAGE_SCHEMA = [
   buildTechArticleSchema({
     headline: "qlim8 MCP tool-reference",
     description:
-      "qlim8's MCP-server (Model Context Protocol) eksponerer 31 tools, 3 resources og 3 prompts til AI-assistenter som Claude og ChatGPT.",
+      "qlim8's MCP-server (Model Context Protocol) eksponerer 32 tools, 3 resources og 3 prompts til AI-assistenter som Claude og ChatGPT.",
     path: "/docs/mcp-tools",
     dateModified: contentDate("/docs/mcp-tools"),
   }),
@@ -69,7 +69,7 @@ export default function Page() {
             MCP tool-reference
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
-            qlim8's MCP-server eksponerer <strong>31 kuraterede tools</strong>, 3 resources og 3
+            qlim8's MCP-server eksponerer <strong>32 kuraterede tools</strong>, 3 resources og 3
             prompts, fra emissions-opsummeringer og rapportgenerering til værdikæde, mål,
             scenarier og webhooks. Hvert tool kræver et specifikt scope, og læse-tools er markeret
             som sikre at auto-køre.

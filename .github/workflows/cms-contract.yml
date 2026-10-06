@@ -37,6 +37,8 @@ on:
     paths:
       - "src/lib/cms.ts"
       - "scripts/check-cms-contract.mjs"
+      - "scripts/check-mcp-surface.mjs"
+      - "app/well-known/mcp.json/route.ts"
       - ".github/workflows/cms-contract.yml"
   workflow_dispatch:
 
@@ -59,6 +61,14 @@ jobs:
       # reads this repo's content via node's type stripping, no packages).
       - name: Check CMS contract
         run: node scripts/check-cms-contract.mjs
+        env:
+          CMS_API_BASE: https://app.qlim8.com
+
+      # The tool count in the copy and the tool list in /.well-known/mcp.json
+      # against the app's live MCP catalog, which changes with no commit here.
+      # Unlike published CMS copy, both are fixed by a commit in this repo.
+      - name: Check the MCP surface the site describes
+        run: node scripts/check-mcp-surface.mjs
         env:
           CMS_API_BASE: https://app.qlim8.com
 

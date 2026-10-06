@@ -86,7 +86,7 @@ export const INTEGRATIONER_NODES: MarketingNode[] = [
     title: "AI-integration (MCP)", navLabel: "AI-assistenter",
     blurb: "Snak med dit klimaregnskab i Claude eller ChatGPT.",
     seoTitle: "AI-integration til klimaregnskab via MCP-server",
-    seoDescription: "Forbind qlim8 til Claude og ChatGPT via vores MCP-server, og spørg dit klimaregnskab i naturligt sprog. 31 tools, OAuth uden API-nøgle.",
+    seoDescription: "Forbind qlim8 til Claude og ChatGPT via vores MCP-server, og spørg dit klimaregnskab i naturligt sprog. 32 tools, OAuth uden API-nøgle.",
     navGroup: "Data & API", featured: true, related: ["vsme-rapport-med-ai-agent", "rest-api", "eloverblik"],
     defaults: IN_MCP,
   },
