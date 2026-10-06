@@ -30,7 +30,7 @@ export const KT_REVISOR: MarketingPageCopy = {
       "Ét konsulent-login dækker ubegrænset klienter, ingen seat-fee pr. kunde.",
       "Klient-tenant betaler abonnementet; du lægger ikke licens til dit eget regnskab.",
       "Audit-pack-scope: fuld lineage, read-only, bygget til revisorarbejde.",
-      "Kryptografisk sign-off på rapporter, der låses efter din underskrift.",
+      "Kryptografisk forseglet sign-off, bundet til den præcise rapport-version, du attesterer.",
     ],
   },
   painPoints: [
@@ -62,7 +62,7 @@ export const KT_REVISOR: MarketingPageCopy = {
       pain:
         "Du er ansvarlig for det, du underskriver. En rapport, klienten kan ændre bagefter, er en risiko for din underskrift.",
       solution:
-        "Sign-off-flowet er bygget til revisorpraksis. Din underskrift på en rapport er kryptografisk verificeret og låst, ændrer klienten regnskabet senere, forbliver den underskrevne version uændret.",
+        "Sign-off-flowet er bygget til revisorpraksis. Hver rapport fryses som en version, når den genereres, og din attestering bindes kryptografisk til netop den version. Ændrer klienten regnskabet senere, forbliver den attesterede version uændret.",
       outcome:
         "Den audit-integritet, som CSRD og VSME kræver, uden manuel versionsstyring.",
     },
@@ -79,7 +79,7 @@ export const KT_REVISOR: MarketingPageCopy = {
     {
       title: "Ét login, ubegrænset klienter",
       body:
-        "Tredjeparts-adgangs-flowet giver dig ét konsulent-login med en liste over alle dine klient-tenants og rød/gul/grøn-status pr. rapport. Du klikker en klient og er inde: ingen skift mellem 20 separate konti, ingen ny licens pr. relation.",
+        "Tredjeparts-adgangs-flowet giver dig ét konsulent-login med en liste over alle dine klient-tenants og status på hver adgang. Du klikker en klient og er inde: ingen skift mellem 20 separate konti, ingen ny licens pr. relation.",
     },
     {
       title: "Audit-pack-scope: read-only med fuld lineage",
@@ -89,12 +89,12 @@ export const KT_REVISOR: MarketingPageCopy = {
     {
       title: "Kryptografisk sign-off",
       body:
-        "Når rapporten er klar, anmoder du om underskrift. Din sign-off er kryptografisk verificeret og låst til den version, du godkendte. Selv hvis regnskabet ændres bagefter, står den underskrevne rapport uændret, audit-sikker efter CSRD- og VSME-standard.",
+        "Du attesterer en genereret rapport-version ved at uploade din underskrevne erklæring. Platformen forsegler en kvittering kryptografisk, der binder erklæringen, rapportfilen og datagrundlaget sammen. Selv hvis regnskabet ændres bagefter, står den attesterede rapport uændret, audit-sikker efter CSRD- og VSME-standard.",
     },
     {
-      title: "Hvid-mærket rapport",
+      title: "Frosne, versionerede rapporter",
       body:
-        "Klimaregnskabet leveres i underskrifts-klar PDF, du kan sende videre i din egen praksis' kontekst. Klienten får et professionelt dokument, du kan stå inde for, uden manuel reformatering.",
+        "Hver rapport fryses, når den genereres: den får et versionsnummer, datagrundlaget gemmes, og den bliver aldrig ændret eller slettet. Genereres den igen, bliver det en ny version, så du altid ved præcis hvilken udgave du har gennemgået.",
     },
     {
       title: "VSME- og CSRD-skabeloner",
@@ -142,7 +142,7 @@ export const KT_REVISOR: MarketingPageCopy = {
       },
       {
         q: "Hvordan fungerer sign-off, og holder den ved revision?",
-        a: "Når rapporten er klar, anmoder du om underskrift. Din sign-off er kryptografisk verificeret og låst til den godkendte version. Ændrer klienten regnskabet bagefter, forbliver den underskrevne rapport uændret. Det giver den audit-integritet, CSRD og VSME kræver.",
+        a: "Hver rapport fryses som en version, når den genereres. Du attesterer den version ved at uploade din underskrevne erklæring, og platformen forsegler en kvittering kryptografisk, der binder erklæringen, rapportfilen og datagrundlaget sammen. Ændrer klienten regnskabet bagefter, forbliver den attesterede rapport uændret. Det giver den audit-integritet, CSRD og VSME kræver.",
       },
       {
         q: "Hvilke regnskabssystemer kan jeg trække data fra?",
@@ -395,7 +395,7 @@ export const KT_RAADGIVER: MarketingPageCopy = {
     {
       title: "Rådgiver-login på tværs af kunder",
       body:
-        "Tredjeparts-adgang giver dig ét login med en oversigt over alle dine kunders klimaregnskab og deres rapport-status. Du skifter mellem kunder uden at logge ud, og du betaler ikke licens pr. relation.",
+        "Tredjeparts-adgang giver dig ét login med en oversigt over alle dine kunders klimaregnskab og status på hver adgang. Du skifter mellem kunder uden at logge ud, og du betaler ikke licens pr. relation.",
     },
     {
       title: "Automatisk datagrundlag",
@@ -553,7 +553,7 @@ export const KT_KONSULENT: MarketingPageCopy = {
     {
       title: "Konsulent-login til hele porteføljen",
       body:
-        "Tredjeparts-adgang giver dig ét login med oversigt over alle dine kunders klimaregnskab og rapport-status. Du håndterer porteføljen fra ét sted uden at betale licens pr. kunde.",
+        "Tredjeparts-adgang giver dig ét login med oversigt over alle dine kunders klimaregnskab og status på hver adgang. Du håndterer porteføljen fra ét sted uden at betale licens pr. kunde.",
     },
     {
       title: "Scenario Planner",
@@ -702,7 +702,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       pain:
         "Når svaret skal afsted, skal det se professionelt ud, uden at du selv skal formatere en rapport.",
       solution:
-        "qlim8 leverer regnskabet i en klar-til-brug PDF efter VSME Basic. Du henter dokumentet og sender det videre, som det er.",
+        "qlim8 leverer regnskabet som en færdig PDF-rapport, og VSME Basic kommer ud i EFRAG's officielle Excel-skabelon. Du henter filen og sender den videre, som den er.",
       outcome:
         "En færdig rapport at sende til bank, leverandør eller kæde, uden reformatering.",
     },
@@ -721,7 +721,7 @@ export const KT_FRISOER: MarketingPageCopy = {
     {
       title: "Klar-til-brug rapport",
       body:
-        "Regnskabet kommer ud i en færdig PDF efter VSME Basic, klar til at sende til bank, leverandør eller kæde. Ingen reformatering, ingen 'vi mangler lige en tabel': bare et dokument, du henter og sender.",
+        "Regnskabet kommer ud som en færdig PDF-rapport, klar til at sende til bank, leverandør eller kæde. Beder de om VSME Basic, får du EFRAG's officielle Excel-skabelon udfyldt, med en audit-CSV der viser bilaget bag hver linje. Ingen reformatering, ingen 'vi mangler lige en tabel'.",
     },
     {
       title: "Almindeligt sprog hele vejen",
@@ -753,7 +753,7 @@ export const KT_FRISOER: MarketingPageCopy = {
     {
       value: "Klar PDF",
       label: "til bank og leverandør",
-      note: "VSME Basic, klar til brug",
+      note: "PDF-eksport i alle pakker",
     },
   ],
   faq: {
@@ -777,7 +777,7 @@ export const KT_FRISOER: MarketingPageCopy = {
       },
       {
         q: "Kan jeg sende rapporten direkte til min bank?",
-        a: "Ja. Regnskabet kommer ud i en klar-til-brug PDF efter VSME Basic. Du henter dokumentet og sender det, som det er, til bank, leverandør eller kæde, uden at skulle formatere noget selv.",
+        a: "Ja. Regnskabet kommer ud som en færdig PDF-rapport, du henter og sender, som den er, til bank, leverandør eller kæde, uden at skulle formatere noget selv. Beder banken om VSME Basic, får du EFRAG's officielle Excel-skabelon udfyldt.",
       },
       {
         q: "Skal jeg forstå CSRD for at bruge det?",
@@ -882,9 +882,9 @@ export const KT_STORE: MarketingPageCopy = {
         "Dit BI-team trækker klimadata via REST API, og AI-assistenter kan kalde via MCP-serveren. ESG-data lever samme sted som jeres øvrige rapportering i stedet for i et isoleret værktøj. Se /api og /docs.",
     },
     {
-      title: "White-label ESG-profil",
+      title: "Offentlig ESG-profil",
       body:
-        "Publicér en offentlig ESG-profil på eget domæne med jeres egen branding. I viser fremdriften udadtil uden at eksponere det underliggende regnskab, og brand-risikoen ved offentliggørelse holdes nede.",
+        "Publicér en offentlig ESG-profil, I deler med ét link. I viser fremdriften udadtil uden at eksponere det underliggende regnskab, og brand-risikoen ved offentliggørelse holdes nede.",
     },
     {
       title: "Native dansk regnskabsdata",

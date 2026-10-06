@@ -1163,7 +1163,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
     eyebrow: "VSME og AI-assistenter",
     title: "Lad din AI hente tallene til VSME-rapporten",
     subtitle:
-      "qlim8 AI-integration med vores egen MCP-server. Spørg Claude eller ChatGPT om dine VSME-tal, bed assistenten sætte rapporten i gang, og få den tilbage som PDF eller som EFRAG's eget Excel-ark.",
+      "qlim8 AI-integration med vores egen MCP-server. Spørg Claude eller ChatGPT om dine VSME-tal, bed assistenten sætte rapporten i gang, og få den tilbage i det format, standarden giver: PDF for VSME Basis og BP, EFRAG's eget Excel-ark for Comprehensive.",
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
@@ -1215,7 +1215,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
     {
       title: "Start VSME-rapporten fra din assistent",
       body:
-        "generate_report sætter et render-job i gang for et rapportår og en standard (vsme_basic, vsme_bp eller vsme_comprehensive) i PDF eller Excel. Kaldet er idempotent pr. år, standard og format, så et gentaget forsøg henter det eksisterende job i stedet for at lave et nyt. get_report_status følger det til dørs.",
+        "generate_report sætter et render-job i gang for et rapportår og en standard (vsme_basic, vsme_bp eller vsme_comprehensive), og standarden afgør formatet. Kaldet er idempotent pr. år og standard, så et gentaget forsøg henter det igangværende job i stedet for at lave et nyt. get_report_status følger det til dørs.",
     },
     {
       title: "Scope 3 i GHG-protokollens 15 kategorier",
@@ -1259,7 +1259,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
       {
         title: "3. Bed om rapporten",
         body:
-          "\"Start VSME Basis for 2025 som PDF.\" Assistenten kalder generate_report og følger jobbet med get_report_status, til den er klar.",
+          "\"Start VSME Basis for 2025.\" Assistenten kalder generate_report og følger jobbet med get_report_status, til den er klar.",
       },
       {
         title: "4. Send den videre",
@@ -1279,7 +1279,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
     items: [
       {
         q: "Kan min AI-assistent lave hele VSME-rapporten for mig?",
-        a: "Den kan hente alle tallene og sætte rapporten i gang. Assistenten kalder generate_report med rapportår, standard (VSME Basis, VSME BP eller VSME Comprehensive) og format, og følger jobbet med get_report_status, til filen er klar i qlim8. De narrative afsnit, altså politikker, risici og governance, udfylder I stadig selv i rapport-guiden: det er jeres virksomheds egne oplysninger, ikke noget der kan udledes af regnskabet.",
+        a: "Den kan hente alle tallene og sætte rapporten i gang. Assistenten kalder generate_report med rapportår og standard (VSME Basis, VSME BP eller VSME Comprehensive), og følger jobbet med get_report_status, til filen er klar i qlim8. De narrative afsnit, altså politikker, risici og governance, udfylder I stadig selv i rapport-guiden: det er jeres virksomheds egne oplysninger, ikke noget der kan udledes af regnskabet.",
       },
       {
         q: "Hvad er en MCP-server, sagt uden fagsprog?",

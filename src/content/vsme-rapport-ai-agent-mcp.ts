@@ -62,7 +62,7 @@ export const artikel: Article = {
         'get_emissions_by_scope3_category: Scope 3 delt op på GHG-protokollens 15 kategorier, den samme opdeling EFRAG-arket udfyldes med.',
         'get_emission_lineage: hele sporet for en enkelt postering, fra kildeaktivitet over emissionsfaktor til audit-hashes.',
         'get_factor_citations: hvilke posteringer der har brugt en bestemt faktor, så revisoren kan tjekke efter uden at bede om et udtræk.',
-        'generate_report: starter en VSME Basis, VSME BP eller VSME Comprehensive-rapport for et rapportår, som PDF eller Excel.',
+        'generate_report: starter en VSME Basis, VSME BP eller VSME Comprehensive-rapport for et rapportår. Standarden afgør formatet: PDF for Basis og BP, EFRAG\'s Excel-ark for Comprehensive.',
         'get_report_status: følger render-jobbet, til filen er klar.',
         'get_report_attestations: tredjeparts-underskrifter, låst til den præcise version revisoren skrev under på.',
       ],

@@ -151,7 +151,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'For det tredje: Datakvaliteten skal være ærlig. Vi har bygget et datakvalitetspoint-system ind i qlim8, hvor hver emissionspost får point baseret på datakildens kvalitet: LCA og produkt-PCF får 5 point, EPD\'er får 4, fysiske enheder med konkret faktor får 3, spend-baserede estimater får 1, og manuelt valgt kategori med lav konfidens trækker fra. Den samlede datakvalitetsscore er et vægtet gennemsnit baseret på virksomhedens samlede udledning, og den står på forsiden af hver custom PDF-rapport.',
+      text: 'For det tredje: Datakvaliteten skal være ærlig. Vi har bygget et datakvalitetspoint-system ind i qlim8, hvor hver emissionspost får point baseret på datakildens kvalitet: LCA og produkt-PCF får 5 point, EPD\'er får 4, fysiske enheder med konkret faktor får 3, spend-baserede estimater får 1, og manuelt valgt kategori med lav konfidens trækker fra. Den samlede datakvalitetsscore er et vægtet gennemsnit baseret på virksomhedens samlede udledning, og den står på forsiden af PDF-rapporten.',
     },
     {
       type: 'paragraph',

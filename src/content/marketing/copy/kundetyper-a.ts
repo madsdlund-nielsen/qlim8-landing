@@ -27,7 +27,7 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
     bullets: [
       "Native dansk regnskabsdata: Dinero, e-conomic, Billy og Eloverblik, intet mapping-projekt.",
       "1.159 danske emissions-kategorier og DK-specifikke el-faktorer (Energinet, 5-minutters granularitet).",
-      "VSME Basic / VSME Comprehensive-rapport i underskrifts-klar PDF med audit-spor bag hvert tal.",
+      "VSME Basic / VSME Comprehensive i EFRAG's officielle Excel-skabelon, med en audit-CSV der fører hver linje tilbage til bilaget.",
       "Ingen konsulent-fee på 75.000+ kr. [antagelse: 2 konsulent-firma-interviews, sample size 4].",
     ],
   },
@@ -41,9 +41,9 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
         "Generiske EU-platforme (Plan A, Sweep) kræver at du eksporterer og mapper dine data manuelt. qlim8 tilslutter Dinero, e-conomic og Billy native og kategoriserer 70-80 % af dine fakturaer automatisk [antagelse: Ordbogen.ai-confidence ≥ 0,85]. Du starter med data, ikke med et opsætningsprojekt.",
     },
     {
-      title: "En rapport du kan aflevere: ikke et regneark",
+      title: "En rapport du kan aflevere: ikke et hjemmelavet regneark",
       body:
-        "Excel er stadig fint under ca. 50 fakturaer/md. Derover koster kopiér-indsæt både tid og troværdighed. qlim8 leverer VSME Basic og Comprehensive i underskrifts-klar PDF med kilde-citation bag hvert kg CO₂e, så revisor kan spore tallet uden en eneste opfølgnings-mail.",
+        "Excel er stadig fint under ca. 50 fakturaer/md. Derover koster kopiér-indsæt både tid og troværdighed. qlim8 leverer VSME Basic og Comprehensive i EFRAG's officielle Excel-skabelon med en audit-CSV, der fører hver linje tilbage til bilaget, så revisor kan spore tallet uden en eneste opfølgnings-mail.",
     },
     {
       title: "Opdateret hele året, ikke et øjebliksbillede",
@@ -110,7 +110,7 @@ export const KT_TOMRER: MarketingPageCopy = {
     {
       pain: "Banken kobler grøn finansiering og gunstige vilkår til, at du kan dokumentere dit CO₂e-aftryk.",
       solution:
-        "qlim8 leverer en audit-bakket rapport med kilde-citation bag hvert tal, som din bankrådgiver kan læse direkte.",
+        "qlim8 leverer en PDF-rapport over dit klimaregnskab, som din bankrådgiver kan læse direkte, og hvert tal kan spores til bilaget i platformen.",
       outcome: "Du undgår at udsætte en finansieringssamtale, fordi tallet ikke er klart.",
     },
     {
@@ -132,9 +132,9 @@ export const KT_TOMRER: MarketingPageCopy = {
         "Træ, plader, isolering, beton og beslag foreslås automatisk mod 1.159 danske emissions-kategorier. Retter du en kategori, husker systemet det til næste faktura fra samme leverandør.",
     },
     {
-      title: "VSME-rapport i underskrifts-klar PDF",
+      title: "VSME-rapport i EFRAG's Excel-skabelon",
       body:
-        "Du henter en VSME Basic-rapport, når en bygherre eller bank beder om den. Den kommer i færdig PDF med scope-summer og kilde-citation, så du ikke skal reformatere noget.",
+        "Du henter en VSME Basic-rapport, når en bygherre eller bank beder om den. Den kommer udfyldt i EFRAG's officielle Excel-skabelon med scope-summer og en audit-CSV, der fører hver linje tilbage til bilaget, så du ikke skal reformatere noget.",
     },
     {
       title: "Audit-spor bag hvert tal",
@@ -170,7 +170,7 @@ export const KT_TOMRER: MarketingPageCopy = {
       },
       {
         q: "Kan min revisor bruge det direkte?",
-        a: "Ja. Rapporten er audit-bakket med kilde-citation bag hvert kg CO₂e og et 7-årigt spor. Det er typisk det, der gør revisor-gennemgangen hurtigere og billigere [antagelse: 8.000-15.000 kr./år, 3 pilot-revisor-interviews].",
+        a: "Ja. Hvert kg CO₂e kan spores til linjen og bilaget i platformen, og VSME-udtrækket har en audit-CSV med bilagsreference pr. linje. Det er typisk det, der gør revisor-gennemgangen hurtigere og billigere [antagelse: 8.000-15.000 kr./år, 3 pilot-revisor-interviews].",
       },
       {
         q: "Hvad koster det for et lille tømrerfirma?",
@@ -232,7 +232,7 @@ export const KT_MALER: MarketingPageCopy = {
     {
       pain: "Totalentreprenører kræver ESG-dokumentation som betingelse for at være på deres leverandørliste.",
       solution:
-        "Du henter en VSME Basic-rapport med scope-summer og kilde-citation, når kravet lander, ikke uger senere.",
+        "Du henter en VSME Basic-rapport med scope-summer og bilagsspor pr. linje, når kravet lander, ikke uger senere.",
       outcome: "Du bliver på leverandørlisten uden at bruge en weekend på det.",
     },
     {
@@ -261,7 +261,7 @@ export const KT_MALER: MarketingPageCopy = {
     {
       title: "Dokumentation bygherren kan læse",
       body:
-        "VSME Basic-rapporten kommer i underskrifts-klar PDF med kilde-citation. Bygherren eller totalentreprenøren får et tal, de kan stole på, uden at du reformaterer noget.",
+        "VSME Basic-rapporten kommer i EFRAG's officielle Excel-skabelon med en audit-CSV, der fører hver linje tilbage til bilaget. Bygherren eller totalentreprenøren får et tal, de kan stole på, uden at du reformaterer noget.",
     },
     {
       title: "Audit-spor i 7 år",
@@ -336,7 +336,7 @@ export const KT_ELEKTRIKER: MarketingPageCopy = {
     {
       pain: "Hovedentreprenøren beder om jeres Scope 3-data til sit eget klimaregnskab, og du har ikke et tal at give.",
       solution:
-        "qlim8 leverer dit samlede aftryk med kilde-citation, så du sender et audit-bakket tal videre i stedet for et skøn.",
+        "qlim8 leverer dit samlede aftryk, sporbart til bilaget pr. linje, så du sender et audit-bakket tal videre i stedet for et skøn.",
       outcome: "Du bliver en leverandør, hovedentreprenøren kan bruge, ikke et hul i deres regnskab.",
     },
     {
@@ -383,7 +383,7 @@ export const KT_ELEKTRIKER: MarketingPageCopy = {
     {
       title: "Et tal hovedentreprenøren kan bruge",
       body:
-        "VSME Basic-rapporten kommer i underskrifts-klar PDF med kilde-citation bag hvert kg CO₂e. Hovedentreprenøren kan lægge dit tal direkte ind i sit eget Scope 3-regnskab.",
+        "VSME Basic-rapporten kommer i EFRAG's officielle Excel-skabelon med en audit-CSV, der fører hver linje tilbage til bilaget. Hovedentreprenøren kan lægge dit tal direkte ind i sit eget Scope 3-regnskab.",
     },
     {
       title: "Audit-spor i 7 år",
@@ -406,7 +406,7 @@ export const KT_ELEKTRIKER: MarketingPageCopy = {
       },
       {
         q: "En hovedentreprenør beder om vores CO₂e-data, hvad afleverer jeg?",
-        a: "En VSME Basic-rapport med scope-summer og kilde-citation. Fordi den er audit-bakket, kan hovedentreprenøren lægge dit tal direkte ind i sit eget Scope 3-regnskab uden at bede om mere.",
+        a: "En VSME Basic-rapport med scope-summer og en audit-CSV med bilagsreference pr. linje. Fordi den er audit-bakket, kan hovedentreprenøren lægge dit tal direkte ind i sit eget Scope 3-regnskab uden at bede om mere.",
       },
       {
         q: "Bliver mine kabler og komponenter kategoriseret rigtigt?",
@@ -483,7 +483,7 @@ export const KT_VVS: MarketingPageCopy = {
     {
       pain: "Bygherrer og kommuner kræver i stigende grad ESG-data som en del af udbud, og uden et tal ryger du ud af feltet.",
       solution:
-        "Du henter en VSME Basic- eller Comprehensive-rapport med scope-summer og kilde-citation, når udbuddet kræver det.",
+        "Du henter en VSME Basic- eller Comprehensive-rapport med scope-summer og bilagsspor pr. linje, når udbuddet kræver det.",
       outcome: "Du kan byde på opgaver, hvor ESG er tildelingskriterium, uden ekstern hjælp.",
     },
     {
@@ -517,7 +517,7 @@ export const KT_VVS: MarketingPageCopy = {
     {
       title: "Udbuds-klar VSME-rapport",
       body:
-        "VSME Basic og Comprehensive kommer i underskrifts-klar PDF med scope-summer og kilde-citation. Du afleverer et tal, bygherre og kommune kan stole på, uden reformatering.",
+        "VSME Basic og Comprehensive kommer i EFRAG's officielle Excel-skabelon med scope-summer og en audit-CSV, der fører hver linje tilbage til bilaget. Du afleverer et tal, bygherre og kommune kan stole på, uden reformatering.",
     },
     {
       title: "Audit-spor bag hvert kg CO₂e",
@@ -551,7 +551,7 @@ export const KT_VVS: MarketingPageCopy = {
       {
         title: "Hent din rapport",
         body:
-          "Træk en VSME Basic- eller Comprehensive-rapport i underskrifts-klar PDF med audit-spor. Klar til bygherre, kommune eller offentligt udbud.",
+          "Træk en VSME Basic- eller Comprehensive-rapport i EFRAG's officielle Excel-skabelon med audit-CSV. Klar til bygherre, kommune eller offentligt udbud.",
       },
     ],
   },
@@ -574,7 +574,7 @@ export const KT_VVS: MarketingPageCopy = {
       },
       {
         q: "Kan jeg bruge rapporten til et offentligt udbud, hvor ESG er tildelingskriterium?",
-        a: "Ja. VSME Basic dækker de scope-summer og nøgletal, de fleste udbud beder om, og Comprehensive giver den udvidede model. Begge kommer i underskrifts-klar PDF med kilde-citation, så udbudsgiveren kan verificere tallene.",
+        a: "Ja. VSME Basic dækker de scope-summer og nøgletal, de fleste udbud beder om, og Comprehensive giver den udvidede model. Begge kommer i EFRAG's officielle Excel-skabelon med en audit-CSV, der fører hver linje tilbage til bilaget, så udbudsgiveren kan verificere tallene.",
       },
       {
         q: "Hvor stor en del af mit materialeindkøb kan kategoriseres automatisk?",
@@ -666,7 +666,7 @@ export const KT_VVS_BODY: ArticleSection[] = [
     type: "ordered-list",
     items: [
       "Læs, hvad der faktisk spørges om. De fleste bygherrer og totalentreprenører vil have scope-summer og et samlet CO₂e-tal, ikke en fuld CSRD-pakke.",
-      "Træk en VSME Basic-rapport i qlim8. Den kommer i underskrifts-klar PDF med scope-summer og kilde-citation bag hvert tal.",
+      "Træk en VSME Basic-rapport i qlim8. Den kommer i EFRAG's officielle Excel-skabelon med scope-summer og en audit-CSV, der fører hver linje tilbage til bilaget.",
       "Hvis udbuddet kræver mere dybde, brug VSME Comprehensive (Premium), der udvider modellen.",
       "Send rapporten. Fordi den er audit-bakket, kan modtageren verificere tallene selv og lægge dit Scope 3-bidrag direkte ind i deres eget regnskab.",
     ],
@@ -685,7 +685,7 @@ export const KT_VVS_BODY: ArticleSection[] = [
   },
   {
     type: "paragraph",
-    text: "qlim8's VSME-output er GHG Protocol-konsistent, og VSME-skabelonerne mapper til ESRS E1, så du står stærkt, den dag et krav bevæger sig fra frivilligt til obligatorisk. Vi garanterer ikke compliance, vi understøtter den, men du får et audit-spor på 7 år og kilde-citation bag hvert kg CO₂e, så en revisor eller udbudsgiver kan efterprøve tallet.",
+    text: "qlim8's VSME-output er GHG Protocol-konsistent, og VSME-skabelonerne mapper til ESRS E1, så du står stærkt, den dag et krav bevæger sig fra frivilligt til obligatorisk. Vi garanterer ikke compliance, vi understøtter den, men du får et audit-spor, der fører hvert kg CO₂e tilbage til linjen og bilaget, så en revisor eller udbudsgiver kan efterprøve tallet.",
   },
   {
     type: "callout",
@@ -729,7 +729,7 @@ export const KT_ENTREPRENOER: MarketingPageCopy = {
     {
       pain: "Offentlige udbud sætter ESG ind som tildelingskriterium, og uden et dokumenteret tal taber du point fra start.",
       solution:
-        "qlim8 leverer en VSME Basic- eller Comprehensive-rapport med scope-summer og kilde-citation, klar til udbudsmaterialet.",
+        "qlim8 leverer en VSME Basic- eller Comprehensive-rapport med scope-summer og bilagsspor pr. linje, klar til udbudsmaterialet.",
       outcome: "Du kan konkurrere på opgaver, hvor ESG vægter, uden ekstern konsulent.",
     },
     {
@@ -753,7 +753,7 @@ export const KT_ENTREPRENOER: MarketingPageCopy = {
     {
       pain: "Et manuelt regneark holder ikke til en udbudsgivers efterprøvning af tallene.",
       solution:
-        "qlim8 giver et 7-årigt audit-spor med kilde-citation bag hvert kg CO₂e, som en udbudsgiver kan verificere.",
+        "qlim8 giver et 7-årigt audit-spor, hvor hvert kg CO₂e kan spores tilbage til linjen og bilaget, som en udbudsgiver kan verificere.",
       outcome: "Du undgår at få en byd afvist, fordi dokumentationen ikke kan spores.",
     },
   ],
@@ -776,7 +776,7 @@ export const KT_ENTREPRENOER: MarketingPageCopy = {
     {
       title: "Udbuds-klar VSME-rapport",
       body:
-        "VSME Basic og Comprehensive kommer i underskrifts-klar PDF med scope-summer og kilde-citation. Den kan lægges direkte i udbudsmaterialet, hvor ESG er tildelingskriterium.",
+        "VSME Basic og Comprehensive kommer i EFRAG's officielle Excel-skabelon med scope-summer og en audit-CSV, der fører hver linje tilbage til bilaget. Den kan lægges direkte i udbudsmaterialet, hvor ESG er tildelingskriterium.",
     },
     {
       title: "Audit-spor i 7 år",
@@ -795,7 +795,7 @@ export const KT_ENTREPRENOER: MarketingPageCopy = {
     items: [
       {
         q: "Kan jeg bruge rapporten i et offentligt udbud, hvor ESG er tildelingskriterium?",
-        a: "Ja. VSME Basic dækker de scope-summer og nøgletal, de fleste udbud beder om, og Comprehensive giver den udvidede model. Begge kommer i underskrifts-klar PDF med kilde-citation, så udbudsgiveren kan efterprøve tallene.",
+        a: "Ja. VSME Basic dækker de scope-summer og nøgletal, de fleste udbud beder om, og Comprehensive giver den udvidede model. Begge kommer i EFRAG's officielle Excel-skabelon med en audit-CSV, der fører hver linje tilbage til bilaget, så udbudsgiveren kan efterprøve tallene.",
       },
       {
         q: "Hvordan håndteres beton, stål og asfalt?",
@@ -807,7 +807,7 @@ export const KT_ENTREPRENOER: MarketingPageCopy = {
       },
       {
         q: "Holder qlim8's tal til en udbudsgivers efterprøvning?",
-        a: "Ja. Hvert kg CO₂e har kilde-citation, og alle ændringer logges i et 7-årigt audit-spor. En udbudsgiver eller revisor kan spore tallet tilbage til den underliggende faktura.",
+        a: "Ja. Hvert kg CO₂e kan spores til linjen og bilaget, og alle ændringer logges i et 7-årigt audit-spor. En udbudsgiver eller revisor kan spore tallet tilbage til den underliggende faktura.",
       },
       {
         q: "Hvad koster det for et entreprenørfirma?",
@@ -852,7 +852,7 @@ export const KT_VOGNMAND: MarketingPageCopy = {
     {
       pain: "Dine kunder er blevet CSRD-pligtige og kræver transport-emissionsdata til deres Scope 3, og et løst skøn er ikke nok.",
       solution:
-        "qlim8 leverer dit brændstof-aftryk med kilde-citation, så du sender et audit-bakket tal, kunden kan bruge direkte.",
+        "qlim8 leverer dit brændstof-aftryk, sporbart til bilaget pr. linje, så du sender et audit-bakket tal, kunden kan bruge direkte.",
       outcome: "Du bliver den transportør, kunden beholder, ikke et databehov, de skal løse et andet sted.",
     },
     {
@@ -889,7 +889,7 @@ export const KT_VOGNMAND: MarketingPageCopy = {
     {
       title: "Et tal dine kunder kan bruge",
       body:
-        "VSME Basic-rapporten kommer i underskrifts-klar PDF med kilde-citation. En CSRD-pligtig kunde kan lægge dit transport-tal direkte ind i sit eget Scope 3-regnskab.",
+        "VSME Basic-rapporten kommer i EFRAG's officielle Excel-skabelon med en audit-CSV, der fører hver linje tilbage til bilaget. En CSRD-pligtig kunde kan lægge dit transport-tal direkte ind i sit eget Scope 3-regnskab.",
     },
     {
       title: "Overblik til flådeoptimering",
@@ -918,7 +918,7 @@ export const KT_VOGNMAND: MarketingPageCopy = {
     items: [
       {
         q: "En kunde beder om transport-emissionsdata til deres Scope 3, hvad afleverer jeg?",
-        a: "En VSME Basic-rapport eller dit dokumenterede brændstof-aftryk med kilde-citation. Fordi det er audit-bakket, kan kunden lægge dit tal direkte ind i sit eget Scope 3 uden at bede om mere.",
+        a: "En VSME Basic-rapport eller dit dokumenterede brændstof-aftryk, sporbart til bilaget pr. linje. Fordi det er audit-bakket, kan kunden lægge dit tal direkte ind i sit eget Scope 3 uden at bede om mere.",
       },
       {
         q: "Er brændstof det eneste, der tæller for en vognmand?",

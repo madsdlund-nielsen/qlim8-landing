@@ -101,16 +101,16 @@ export const HOME_COPY: HomeCopy = {
       bullets: [
         "Validerede emissionsfaktorer fra Klimakompasset, Energinet, EXIOBASE og EPD-databaser",
         "Unikt beregnings-ID på hver post, eksporterbart til Excel",
-        "Direkte revisor-portal med kommentering og signering (fra Starter)",
+        "Direkte revisor-portal med kommentering og attestering af rapporter (fra Starter)",
       ],
     },
     {
       title: "Ikke bare et tal: en plan",
-      body: "Når du har målt, vil du have en plan. qlim8 sætter reduktionsmål baseret på dine egne tal og lader dig teste konkrete tiltag i Scenario Builder: se effekten af en elbil-flåde, ny leverandør eller halverede forretningsrejser før du beslutter dig. Når du er klar, deler du via en custom PDF-rapport eller dit offentlige Brag Board, så bank, kunder og samarbejdspartnere kan se hvor I er på vej hen.",
+      body: "Når du har målt, vil du have en plan. qlim8 sætter reduktionsmål baseret på dine egne tal og lader dig teste konkrete tiltag i Scenario Builder: se effekten af en elbil-flåde, ny leverandør eller halverede forretningsrejser før du beslutter dig. Når du er klar, deler du via en PDF-rapport eller dit offentlige Brag Board, så bank, kunder og samarbejdspartnere kan se hvor I er på vej hen.",
       bullets: [
         "Reduktionsmål baseret på dine egne tal",
         "Scenario Builder: test tiltag før du beslutter",
-        "Deling via custom PDF eller offentligt Brag Board",
+        "Deling via PDF-rapport eller offentligt Brag Board",
       ],
     },
   ],
