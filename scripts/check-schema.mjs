@@ -61,12 +61,21 @@ const isRef = (o) => Object.keys(o).length === 1 && typeof o["@id"] === "string"
 
 async function main() {
   const schema = await import("../src/lib/schema.ts");
+  const pageSchemas = await import("../src/lib/pageSchemas.ts");
   const marketing = await import("../src/lib/marketingPage.ts");
   const { ALL_MARKETING_NODES, MARKETING_HUBS } = await import("../src/content/marketing/index.ts");
   const { hubCards } = await import("../src/content/navigation.ts");
   const { articles } = await import("../src/content/articles.ts");
   const { PRICING_COPY } = await import("../src/content/copy/pricing.ts");
   const { HOMEPAGE_FAQS, buildFaqSchema } = await import("../src/content/homepage-faqs.ts");
+
+  // Every rule below passes on an empty graph.
+  if (!ALL_MARKETING_NODES.length || !MARKETING_HUBS.length || !articles.length) {
+    console.error(
+      `✗ check-schema: ${MARKETING_HUBS.length} hubs, ${ALL_MARKETING_NODES.length} sider og ${articles.length} artikler fundet, intet at tjekke`,
+    );
+    process.exit(1);
+  }
 
   const routes = new Set([
     "/", "/priser", "/metodologi", "/blog", "/api", "/om-os", "/docs", "/docs/mcp-quickstart",
@@ -77,9 +86,8 @@ async function main() {
     ...articles.map((a) => `/blog/${a.slug}`),
   ]);
 
-  // Route → JSON-LD blocks, built with the builders the pages use. Pages that
-  // hand-roll a small block (e.g. /api's WebPage) are not modelled here; the
-  // shared builders are where drift would recur.
+  // Route → JSON-LD blocks. Pages whose schema lives in src/lib/pageSchemas.ts
+  // are read from there; the rest are built with the builders they use.
   const pages = new Map();
   pages.set("/", [
     schema.ORGANIZATION,
@@ -92,22 +100,15 @@ async function main() {
     schema.buildSoftwareSchema(),
     schema.buildFaqPageSchema(PRICING_COPY.faq.items),
   ]);
-  pages.set("/metodologi", [
-    schema.buildTechArticleSchema({ headline: "Metodologi", description: "x", path: "/metodologi" }),
-    schema.buildBreadcrumbSchema([{ name: "qlim8", href: "/" }, { name: "Metodologi", href: "/metodologi" }]),
-  ]);
-  pages.set("/kontakt", [
-    schema.buildContactPageSchema({ name: "Kontakt", description: "x" }),
-    schema.buildBreadcrumbSchema([{ name: "qlim8", href: "/" }, { name: "Kontakt", href: "/kontakt" }]),
-  ]);
-  for (const path of ["/docs", "/docs/mcp-quickstart", "/docs/mcp-tools", "/docs/api-reference"]) {
-    const trail = [{ name: "qlim8", href: "/" }, { name: "Docs", href: "/docs" }];
-    if (path !== "/docs") trail.push({ name: path, href: path });
-    pages.set(path, [
-      schema.buildTechArticleSchema({ headline: path, description: "x", path }),
-      schema.buildBreadcrumbSchema(trail),
-    ]);
-  }
+  // The pages that keep their JSON-LD in src/lib/pageSchemas.ts are checked
+  // as they ship, not rebuilt here from the builders.
+  pages.set("/metodologi", pageSchemas.METHODOLOGY_PAGE_SCHEMA);
+  pages.set("/kontakt", pageSchemas.CONTACT_PAGE_SCHEMA);
+  pages.set("/api", pageSchemas.API_PAGE_SCHEMA);
+  pages.set("/docs", pageSchemas.DOCS_PAGE_SCHEMA);
+  pages.set("/docs/mcp-quickstart", pageSchemas.MCP_QUICKSTART_PAGE_SCHEMA);
+  pages.set("/docs/mcp-tools", pageSchemas.MCP_TOOLS_PAGE_SCHEMA);
+  pages.set("/docs/api-reference", pageSchemas.API_REFERENCE_PAGE_SCHEMA);
   for (const a of articles) {
     const path = `/blog/${a.slug}`;
     pages.set(path, [

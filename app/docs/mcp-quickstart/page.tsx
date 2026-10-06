@@ -3,8 +3,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
-import { buildBreadcrumbSchema, buildTechArticleSchema, BASE_URL } from "@/lib/schema";
-import { contentDate } from "@/lib/contentDates";
+import { MCP_QUICKSTART_PAGE_SCHEMA } from "@/lib/pageSchemas";
 
 export const metadata: Metadata = {
   title: "MCP Quickstart: forbind din AI-assistent",
@@ -40,8 +39,9 @@ function CodeBlock({ children }: { children: string }) {
 function Section({ number, title, children }: { number: string; title: string; children: React.ReactNode }) {
   return (
     // The id makes each step individually addressable, which the HowTo step
-    // URLs in PAGE_SCHEMA point at. Without it those anchors resolve to the
-    // top of the page and the structured data claims more than it delivers.
+    // URLs in MCP_QUICKSTART_PAGE_SCHEMA (src/lib/pageSchemas.ts) point at.
+    // Without it those anchors resolve to the top of the page and the
+    // structured data claims more than it delivers.
     <section id={number} className="border-t border-gray-200 pt-10 sm:pt-12 scroll-mt-24">
       <p className="text-sm font-semibold text-gray-500 mb-2">{number}</p>
       <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
@@ -67,49 +67,10 @@ function Steps({ items }: { items: React.ReactNode[] }) {
   );
 }
 
-
-// The page is already written as six numbered steps, so a HowTo describes it
-// accurately rather than being retro-fitted onto prose. Step names mirror the
-// <Section number title> headings below; keep them in step if those change.
-const HOWTO_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Forbind din AI-assistent til dine qlim8-klimadata",
-  description:
-    "Forbind Claude eller ChatGPT til qlim8 via MCP (Model Context Protocol) og spørg til dit klimaregnskab i naturligt sprog. Ingen API-nøgle og ingen kode.",
-  inLanguage: "da-DK",
-  totalTime: "PT5M",
-  tool: [{ "@type": "HowToTool", name: "En qlim8-konto med Premium" }],
-  step: [
-    { "@type": "HowToStep", position: 1, name: "Før du starter", url: `${BASE_URL}/docs/mcp-quickstart#1` },
-    { "@type": "HowToStep", position: 2, name: "Claude (claude.ai, desktop og mobil)", url: `${BASE_URL}/docs/mcp-quickstart#2` },
-    { "@type": "HowToStep", position: 3, name: "ChatGPT", url: `${BASE_URL}/docs/mcp-quickstart#3` },
-    { "@type": "HowToStep", position: 4, name: "Gemini", url: `${BASE_URL}/docs/mcp-quickstart#4` },
-    { "@type": "HowToStep", position: 5, name: "Hvad kan du spørge om?", url: `${BASE_URL}/docs/mcp-quickstart#5` },
-    { "@type": "HowToStep", position: 6, name: "Sikkerhed og adgang", url: `${BASE_URL}/docs/mcp-quickstart#6` },
-  ],
-};
-
-const PAGE_SCHEMA = [
-  buildTechArticleSchema({
-    headline: "Forbind din AI-assistent til dine klimadata",
-    description:
-      "Forbind Claude eller ChatGPT til dine qlim8-klimadata på få minutter via MCP. Log ind med din qlim8-konto: ingen API-nøgle, ingen kode.",
-    path: "/docs/mcp-quickstart",
-    dateModified: contentDate("/docs/mcp-quickstart"),
-  }),
-  HOWTO_SCHEMA,
-  buildBreadcrumbSchema([
-    { name: "qlim8", href: "/" },
-    { name: "Docs", href: "/docs" },
-    { name: "MCP quickstart", href: "/docs/mcp-quickstart" },
-  ]),
-];
-
 export default function Page() {
   return (
     <>
-      <JsonLd schema={PAGE_SCHEMA} />
+      <JsonLd schema={MCP_QUICKSTART_PAGE_SCHEMA} />
     <div className="min-h-screen bg-background">
       <SiteHeader />
 

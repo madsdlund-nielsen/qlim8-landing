@@ -3,8 +3,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
-import { buildBreadcrumbSchema, buildTechArticleSchema } from "@/lib/schema";
-import { contentDate } from "@/lib/contentDates";
+import { API_REFERENCE_PAGE_SCHEMA } from "@/lib/pageSchemas";
 
 export const metadata: Metadata = {
   title: "REST API v1 Reference",
@@ -42,26 +41,10 @@ const LINKS = [
   },
 ];
 
-
-const PAGE_SCHEMA = [
-  buildTechArticleSchema({
-    headline: "qlim8 REST API v1 reference",
-    description:
-      "Versioneret REST API med OpenAPI 3.1-spec, Bearer-auth med scopes, cursor-paginering og signerede webhooks. Plus OAuth 2.1 til MCP-connectors.",
-    path: "/docs/api-reference",
-    dateModified: contentDate("/docs/api-reference"),
-  }),
-  buildBreadcrumbSchema([
-    { name: "qlim8", href: "/" },
-    { name: "Docs", href: "/docs" },
-    { name: "API reference", href: "/docs/api-reference" },
-  ]),
-];
-
 export default function Page() {
   return (
     <>
-      <JsonLd schema={PAGE_SCHEMA} />
+      <JsonLd schema={API_REFERENCE_PAGE_SCHEMA} />
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
