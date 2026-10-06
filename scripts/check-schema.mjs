@@ -34,6 +34,7 @@
  */
 import { readFileSync } from "node:fs";
 import "./lib/register-ts.mjs";
+import { pageRoutes } from "./lib/routes.mjs";
 
 const BASE_URL = "https://qlim8.com";
 const NEEDS_ID = new Set([
@@ -78,9 +79,7 @@ async function main() {
   }
 
   const routes = new Set([
-    "/", "/priser", "/metodologi", "/blog", "/api", "/om-os", "/docs", "/docs/mcp-quickstart",
-    "/docs/mcp-tools", "/docs/api-reference", "/kontakt", "/nyhedsbrev", "/karriere",
-    "/cookies", "/privatlivspolitik", "/handelsbetingelser",
+    ...pageRoutes(),
     ...MARKETING_HUBS.map((h) => h.route),
     ...ALL_MARKETING_NODES.map((n) => `/${n.collection}/${n.slug}`),
     ...articles.map((a) => `/blog/${a.slug}`),

@@ -38,6 +38,8 @@
  */
 import "./lib/register-ts.mjs";
 import { salesLedViolations } from "./lib/salesLed.mjs";
+import { pageRoutes } from "./lib/routes.mjs";
+import { dashFindings } from "./lib/dashes.mjs";
 
 const BASE = process.env.CMS_API_BASE || process.env.NEXT_PUBLIC_API_URL || "https://app.qlim8.com";
 const TIMEOUT_MS = Number(process.env.CMS_CONTRACT_TIMEOUT_MS || 20000);
@@ -92,9 +94,7 @@ async function main() {
 
   // ── Routes this site serves ────────────────────────────────────────────────
   const routes = new Set([
-    "/", "/priser", "/metodologi", "/blog", "/api", "/om-os", "/docs", "/docs/mcp-quickstart",
-    "/docs/mcp-tools", "/docs/api-reference", "/kontakt", "/nyhedsbrev", "/nyhedsbrev/afmeld",
-    "/karriere", "/cookies", "/privatlivspolitik", "/handelsbetingelser",
+    ...pageRoutes(),
     "/llms.txt", "/llms-full.txt", "/sitemap.xml", "/robots.txt",
     // permanent redirects in next.config.ts still resolve
     "/pricing", "/about", "/viden",
@@ -152,6 +152,7 @@ async function main() {
       for (const p of internalPaths(text)) {
         if (!isRoute(p)) report(`links to ${p}, which is not a route on qlim8.com`, key, where);
       }
+      for (const { char } of dashFindings(text)) report(`${char} in published copy`, key, where);
       if (LEGAL_KEYS.has(key)) continue;
       for (const { kind, match } of salesLedViolations(text)) {
         report(`${kind}: "${match}" (qlim8 is sold after a demo and names no package price)`, key, where);
@@ -168,6 +169,7 @@ async function main() {
         for (const p of internalPaths(text)) {
           if (!isRoute(p)) report(`links to ${p}, which is not a route on qlim8.com`, `article ${a.slug}`, where);
         }
+        for (const { char } of dashFindings(text)) report(`${char} in published copy`, `article ${a.slug}`, where);
         for (const { kind, match } of salesLedViolations(text)) {
           report(`${kind}: "${match}" (qlim8 is sold after a demo and names no package price)`, `article ${a.slug}`, where);
         }
@@ -177,7 +179,13 @@ async function main() {
     }
   }
 
-  pass(`${publishedKeys} published page key(s), ${published.length} article(s), ${checkedStrings} strings checked`);
+  // Reading nothing passes every rule above: an API answering {copy:{}} for
+  // every key, or a listing that comes back empty, would look like clean copy.
+  if (publishedKeys === 0 || checkedStrings === 0) {
+    fail(`read ${publishedKeys} published page key(s) and ${checkedStrings} strings: nothing was checked`);
+  } else {
+    pass(`${publishedKeys} published page key(s), ${published.length} article(s), ${checkedStrings} strings checked`);
+  }
 
   console.log("");
   if (failures > 0) {

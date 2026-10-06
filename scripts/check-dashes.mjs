@@ -19,6 +19,7 @@
 import { readFileSync, statSync, readdirSync, existsSync } from "fs";
 import { join, extname, relative, resolve } from "path";
 import { fileURLToPath } from "url";
+import { dashFindings } from "./lib/dashes.mjs";
 
 /** CHECK_ROOT points the check at another tree; scripts/lib/guards.test.mjs uses it. */
 const ROOT = process.env.CHECK_ROOT ? resolve(process.env.CHECK_ROOT) : fileURLToPath(new URL("..", import.meta.url));
@@ -40,12 +41,6 @@ const COVERED = [
 const EXCLUDED = [];
 
 const EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".md", ".mdx", ".css", ".html"]);
-
-const EM_DASH = "—";
-const EN_DASH = "–";
-
-/** `9:00–17:00`, `2024–2026`, `Mandag–fredag`: a range, and correct Danish. */
-const RANGE_OK = /(?:\d|\p{L})–(?:\d|\p{L})/u;
 
 function walk(path, out = []) {
   if (!existsSync(path)) return out;
@@ -79,18 +74,8 @@ for (const file of files) {
   readFileSync(file, "utf8")
     .split("\n")
     .forEach((line, i) => {
-      for (let col = 0; col < line.length; col++) {
-        const ch = line[col];
-        if (ch !== EM_DASH && ch !== EN_DASH) continue;
-        // An en-dash sitting between two word/number characters is a range.
-        if (ch === EN_DASH && RANGE_OK.test(line.slice(Math.max(0, col - 1), col + 2))) continue;
-        findings.push({
-          rel,
-          line: i + 1,
-          col: col + 1,
-          char: ch === EM_DASH ? "em-dash" : "en-dash",
-          text: line.trim().slice(0, 120),
-        });
+      for (const { col, char } of dashFindings(line)) {
+        findings.push({ rel, line: i + 1, col: col + 1, char, text: line.trim().slice(0, 120) });
       }
     });
 }
