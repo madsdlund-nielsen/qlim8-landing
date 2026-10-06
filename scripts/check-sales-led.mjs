@@ -16,11 +16,12 @@
  * Run directly (`node scripts/check-sales-led.mjs`) or via `npm run lint`.
  */
 import { readFileSync, statSync, readdirSync, existsSync } from "fs";
-import { join, extname, relative } from "path";
+import { join, extname, relative, resolve } from "path";
 import { fileURLToPath } from "url";
 import { salesLedViolations } from "./lib/salesLed.mjs";
 
-const ROOT = fileURLToPath(new URL("..", import.meta.url));
+/** CHECK_ROOT points the check at another tree; scripts/lib/guards.test.mjs uses it. */
+const ROOT = process.env.CHECK_ROOT ? resolve(process.env.CHECK_ROOT) : fileURLToPath(new URL("..", import.meta.url));
 
 /** Paths whose text a visitor, a crawler or an AI agent can end up reading. */
 const COVERED = ["src/content", "src/page-components", "src/components", "src/lib", "app"];
@@ -61,6 +62,12 @@ for (const dir of COVERED) {
       }
     });
   }
+}
+
+// A check that reads nothing passes anything.
+if (scanned === 0) {
+  console.error(`✗ check-sales-led: 0 filer fundet under ${COVERED.join(", ")} i ${ROOT}`);
+  process.exit(1);
 }
 
 if (failures > 0) {

@@ -17,26 +17,26 @@
  * Run directly (`node scripts/check-dashes.mjs`) or via `npm run lint`.
  */
 import { readFileSync, statSync, readdirSync, existsSync } from "fs";
-import { join, extname, relative } from "path";
+import { join, extname, relative, resolve } from "path";
 import { fileURLToPath } from "url";
 
-const ROOT = fileURLToPath(new URL("..", import.meta.url));
+/** CHECK_ROOT points the check at another tree; scripts/lib/guards.test.mjs uses it. */
+const ROOT = process.env.CHECK_ROOT ? resolve(process.env.CHECK_ROOT) : fileURLToPath(new URL("..", import.meta.url));
 
 /** Paths whose text a site visitor can end up reading. */
 const COVERED = [
   "src/content",
   "src/page-components",
   "src/components",
+  // markdown.ts writes the .md twins and llms.txt, packageView.ts the price
+  // lines and button labels, schema.ts the structured data: all read by a
+  // visitor, a crawler or an AI agent.
+  "src/lib",
   "src/index.css",
   "app",
 ];
 
-/**
- * Nothing is exempt. src/lib/i18n.tsx is a dead 8-language translation table
- * (I18nProvider is mounted, but nothing calls t() or useI18n()); it was cleaned
- * along with the rest rather than skipped, so that deleting it later is a
- * separate decision this check does not lean on either way.
- */
+/** Nothing is exempt. */
 const EXCLUDED = [];
 
 const EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".md", ".mdx", ".css", ".html"]);
@@ -64,6 +64,13 @@ const files = COVERED.flatMap((p) => walk(join(ROOT, p))).filter((f) => {
   const rel = relative(ROOT, f);
   return !EXCLUDED.includes(rel);
 });
+
+// A check that reads nothing passes anything: a moved directory or a wrong
+// ROOT would otherwise turn it green.
+if (files.length === 0) {
+  console.error(`✗ check-dashes: 0 filer fundet under ${COVERED.join(", ")} i ${ROOT}`);
+  process.exit(1);
+}
 
 const findings = [];
 
