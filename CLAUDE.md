@@ -16,7 +16,7 @@ npm run lint                # eslint + dash guard + copy guard + workflow guard 
 npm run typecheck           # tsc --noEmit
 npm test                    # copyMerge + content-dates + packageView + copy rules (pretest regenerates the dates)
 npm run build               # next build (standalone output; prebuild regenerates the dates)
-npm run test:contract       # live: the app's public CMS API shape + the published copy itself
+npm run test:contract       # live: the app's public CMS API shape + its MCP catalog + the published copy itself
 npm run content-dates       # rewrite src/generated/content-dates.json from git history
 ```
 
@@ -39,6 +39,13 @@ curl -s "https://app.qlim8.com/api/public/cms/articles?language=da"
 Blog articles work the same way: `app/blog/[slug]` prefers a CMS article over
 the bundled one in `src/content/*.ts`, and at least one published article has
 no file in this repo at all.
+
+The MCP tool count ("32 tools", written in about thirty places) and the tool
+list in `/.well-known/mcp.json` are hand-kept summaries of the app's catalog.
+`scripts/check-mcp-surface.mjs` (in `npm run test:contract`, scheduled) holds
+both to the live `app.qlim8.com/api/mcp/schema`. When the app adds or removes a
+tool, change them here, and in `/admin` for any page that has published its own
+count (`page.integrationer.mcp-server` has).
 
 ## The palette comes from the app
 

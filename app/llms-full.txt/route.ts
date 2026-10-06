@@ -25,7 +25,7 @@ export async function GET() {
 
 > Danish ESG platform for carbon accounting (Scope 1-3) and VSME sustainability
 > reporting, with a built-in Model Context Protocol (MCP) server at
-> https://app.qlim8.com/api/mcp exposing 31 tools to AI agents.
+> https://app.qlim8.com/api/mcp exposing 32 tools to AI agents.
 >
 > This file concatenates every page on qlim8.com as markdown. The per-page
 > sources are at the same URLs with a .md suffix. Index: ${BASE_URL}/llms.txt

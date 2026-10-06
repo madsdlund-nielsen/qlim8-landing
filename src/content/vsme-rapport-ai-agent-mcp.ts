@@ -53,7 +53,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'Hvad serveren faktisk kan' },
     {
       type: 'paragraph',
-      text: 'Overfladen er 31 tools, 3 resources og 3 prompts. De vigtigste for VSME-arbejdet er:',
+      text: 'Overfladen er 32 tools, 3 resources og 3 prompts. De vigtigste for VSME-arbejdet er:',
     },
     {
       type: 'list',

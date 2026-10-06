@@ -116,7 +116,7 @@ qlim8 runs a remote MCP server, so Claude, ChatGPT, Claude Code, Cursor and any
 other MCP-compatible client can query a company's carbon ledger directly.
 
 - Endpoint: ${MCP_ENDPOINT} (streamable HTTP, stateless)
-- Surface: 31 tools, 3 resources, 3 prompts
+- Surface: 32 tools, 3 resources, 3 prompts
 - Auth: OAuth 2.1 with Dynamic Client Registration and PKCE (no API key to copy),
   or a Bearer API key (\`qk_live_*\` / \`qk_sandbox_*\`) shared with the REST API
 - Access tier: Premium. Read-only by default; every write is recorded in a

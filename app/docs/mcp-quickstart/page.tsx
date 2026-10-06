@@ -274,7 +274,7 @@ export default function Page() {
             <h2 className="text-xl sm:text-2xl font-bold mb-3">Til udviklere</h2>
             <p className="text-gray-300 text-[15px] leading-relaxed mb-5">
               API-nøgle-baseret opsætning (Claude Code, Cursor, curl), den fulde reference for alle
-              31 MCP-tools og REST API v1-dokumentationen bor på udviklerportalen.
+              32 MCP-tools og REST API v1-dokumentationen bor på udviklerportalen.
             </p>
             <div className="flex flex-wrap gap-3 text-sm">
               <a

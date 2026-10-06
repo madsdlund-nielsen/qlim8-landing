@@ -25,7 +25,7 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Kan jeg spørge min egen AI om klimaregnskabet og VSME-rapporten?",
-    a: "Ja. qlim8 er en dansk ESG-platform med en indbygget MCP-server (Model Context Protocol), den standard Claude og ChatGPT bruger, når de skal hente data fra et system. Du forbinder din assistent via OAuth uden en API-nøgle at kopiere, og kan derefter spørge til Scope 1-3, få Scope 3 delt op på GHG-protokollens 15 kategorier eller bede assistenten starte VSME-rapporten. Overfladen er 31 tools, read-only som default, og hvert write havner i audit-loggen. MCP-adgang kræver Premium.",
+    a: "Ja. qlim8 er en dansk ESG-platform med en indbygget MCP-server (Model Context Protocol), den standard Claude og ChatGPT bruger, når de skal hente data fra et system. Du forbinder din assistent via OAuth uden en API-nøgle at kopiere, og kan derefter spørge til Scope 1-3, få Scope 3 delt op på GHG-protokollens 15 kategorier eller bede assistenten starte VSME-rapporten. Overfladen er 32 tools, read-only som default, og hvert write havner i audit-loggen. MCP-adgang kræver Premium.",
   },
   {
     q: "Hvor kommer qlim8's emissionsfaktorer fra?",

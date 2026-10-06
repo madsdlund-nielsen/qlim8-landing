@@ -82,7 +82,7 @@ export const WEBSITE = {
  * tiers to `shared/subscriptionFeatures.ts`.
  */
 export const SOFTWARE_FEATURE_LIST = [
-  "Model Context Protocol (MCP) server with 31 tools for AI agents",
+  "Model Context Protocol (MCP) server with 32 tools for AI agents",
   "VSME Basic and VSME Comprehensive sustainability reporting (EFRAG)",
   "Scope 1, 2 and 3 greenhouse gas accounting",
   "Scope 3 split across the 15 GHG Protocol categories",

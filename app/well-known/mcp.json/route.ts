@@ -45,11 +45,12 @@ const TOOLS = [
   { name: "list_tiltag", description: "Reduction initiatives in a scenario" },
   { name: "create_scenario_draft", description: "Draft a reduction scenario" },
   { name: "add_tiltag", description: "Add a reduction initiative with cost annotation" },
-  { name: "submit_scenario_for_review", description: "Submit a consultant-drafted scenario for review" },
   { name: "list_departments", description: "Tenant departments" },
   { name: "list_webhooks", description: "Registered webhooks" },
   { name: "create_webhook", description: "Register a webhook, returns a one-time signing secret" },
   { name: "get_webhook_deliveries", description: "Recent webhook delivery attempts" },
+  { name: "reactivate_webhook", description: "Switch a webhook back on after its deliveries were dead-lettered" },
+  { name: "redeliver_webhook_delivery", description: "Send one delivery again with its original payload" },
 ];
 
 const DISCOVERY = {
