@@ -19,8 +19,3 @@ export function contentDate(route: string): Date | undefined {
   const iso = CONTENT_DATES[route];
   return iso ? new Date(iso) : undefined;
 }
-
-/** Every route the generated file covers. */
-export function contentDateRoutes(): string[] {
-  return Object.keys(CONTENT_DATES);
-}

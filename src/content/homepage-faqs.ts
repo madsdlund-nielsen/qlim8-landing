@@ -61,5 +61,3 @@ export function buildFaqSchema(faqs: HomepageFaq[]) {
     })),
   };
 }
-
-export const HOMEPAGE_FAQ_SCHEMA = buildFaqSchema(HOMEPAGE_FAQS);
