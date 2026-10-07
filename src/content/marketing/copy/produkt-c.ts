@@ -288,7 +288,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
     {
       title: "Del med et read-only-link",
       body:
-        "Send scenariet til ledelse eller bestyrelse via et read-only-link, eller eksportér som PDF til en præsentation. Modtageren ser sammenligningen uden at kunne ændre forudsætningerne.",
+        "Send scenariet til ledelse eller bestyrelse via et read-only-link. Modtageren ser sammenligningen uden at kunne ændre forudsætningerne.",
     },
     {
       title: "Konvertér til mål",
@@ -366,7 +366,7 @@ export const PR_SCENARIER: MarketingPageCopy = {
       },
       {
         q: "Kan en konsulent bruge det til klient-rådgivning?",
-        a: "Ja. Bæredygtigheds-konsulenter bruger scenarier som leverance til klienten og kan eksportere dem som PDF til præsentation. Det erstatter en manuel hvad-hvis-analyse i regneark.",
+        a: "Ja. Bæredygtigheds-konsulenter bruger scenarier som leverance til klienten og gennemgår dem sammen med klienten. Det erstatter en manuel hvad-hvis-analyse i regneark.",
       },
     ],
   },
@@ -395,10 +395,10 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
   intro: {
     heading: "Én adgang i stedet for tolv fil-versioner",
     body:
-      "Rapporterings-sæsonen ender ofte i en mail-kæde: revisoren beder om et bilag, du sender en Excel-fil, de spørger hvor et tal kommer fra, du graver i regnskabet, og sådan fortsætter det. qlim8 vender det om. Med tredjeparts-adgang får din revisor eller rådgiver et audit-pack-scope: fuld lineage på hver kg CO₂e tilbage til kilde-fakturaen, read-only, så de kan validere data uden at kunne ændre noget ved et uheld. De ser det samme regnskab som dig, i realtid. Når rapporten er klar, sender du en sign-off-anmodning, og revisorens underskrift låses kryptografisk, selv hvis regnskabet senere ændres, forbliver den underskrevne version uændret.",
+      "Rapporterings-sæsonen ender ofte i en mail-kæde: revisoren beder om et bilag, du sender en Excel-fil, de spørger hvor et tal kommer fra, du graver i regnskabet, og sådan fortsætter det. qlim8 vender det om. Med tredjeparts-adgang får din revisor eller rådgiver et audit-pack-scope: fuld lineage på hver kg CO₂e tilbage til kilde-fakturaen, read-only, så de kan validere data uden at kunne ændre noget ved et uheld. De ser det samme regnskab som dig, i realtid. Hver rapport fryses som en version, når den genereres. Revisoren attesterer den version ved at uploade sin underskrevne erklæring, og platformen forsegler en kvittering kryptografisk, der binder erklæringen til netop den rapportfil og det datagrundlag. Ændres regnskabet senere, forbliver den attesterede version uændret.",
     bullets: [
       "Audit-pack-scope: fuld lineage, read-only, designet til revisor-arbejde",
-      "Kryptografisk sign-off, så den underskrevne rapport-version låses",
+      "Kryptografisk forseglet attestering, bundet til den præcise rapport-version",
       "Privat kommentar-tråd pr. klient og pr. emission-post",
       "Ét konsulent-login dækker ubegrænset klienter, ingen seat-fee pr. klient",
     ],
@@ -440,7 +440,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
       pain:
         "En underskrevet rapport skal kunne stå fast, men i regneark kan tallene ændre sig efter din underskrift.",
       solution:
-        "Sign-off-flowet giver en kryptografisk underskrift der låses til rapport-versionen. Ændrer klienten regnskabet senere, forbliver den underskrevne version uændret.",
+        "Rapporten fryses som en version, når den genereres, og din attestering bindes kryptografisk til netop den version. Ændrer klienten regnskabet senere, forbliver den attesterede version uændret.",
       outcome:
         "Audit-integritet som CSRD og VSME kræver. Din underskrift kan ikke rykkes bagudrettet.",
     },
@@ -459,7 +459,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     {
       title: "Kryptografisk sign-off",
       body:
-        "Når rapporten er klar, anmoder du om underskrift, og din signatur låses kryptografisk til versionen. Selv om klienten senere ændrer regnskabet, står den underskrevne rapport uændret, den audit-integritet CSRD og VSME kræver.",
+        "Du attesterer en genereret rapport-version ved at uploade din underskrevne erklæring. Platformen forsegler en kvittering kryptografisk, der binder erklæringen, rapportfilen og datagrundlaget sammen. Selv om klienten senere ændrer regnskabet, står den attesterede rapport uændret, den audit-integritet CSRD og VSME kræver.",
     },
     {
       title: "Private kommentar-tråde",
@@ -469,7 +469,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
     {
       title: "Portefølje-overblik",
       body:
-        "Log ind én gang og se alle dine klienter med rød-gul-grøn-status pr. rapport. Du prioriterer de klienter der halter, i stedet for at åbne 23 separate filer for at finde ud af hvor du står.",
+        "Log ind én gang og se alle de klienter, der har givet dig adgang, med status på hver adgang. Du skifter mellem klienterne ét sted i stedet for at åbne 23 separate filer for at finde ud af hvor du står.",
     },
     {
       title: "Skaler ydelsen",
@@ -496,9 +496,9 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
           "Revisoren validerer data og efterlader noter i den private kommentar-tråd pr. post, uden at kunne ændre tallene.",
       },
       {
-        title: "4. Sign-off og lås",
+        title: "4. Attestering",
         body:
-          "Når rapporten er klar, anmoder du om underskrift. Revisorens signatur låses kryptografisk til versionen som audit-spor.",
+          "Revisoren attesterer den genererede rapport-version ved at uploade sin underskrevne erklæring. Platformen forsegler erklæringen, rapportfilen og datagrundlaget kryptografisk sammen som audit-spor.",
       },
     ],
   },
@@ -535,11 +535,11 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
       },
       {
         q: "Hvad betyder kryptografisk sign-off?",
-        a: "Når revisoren underskriver en rapport, låses signaturen til den præcise version. Ændrer I regnskabet bagefter, forbliver den underskrevne version uændret og kan stadig fremvises. Det er den audit-integritet CSRD og VSME kræver.",
+        a: "Rapporten fryses som en version, når den genereres. Revisoren attesterer den ved at uploade sin underskrevne erklæring, og platformen forsegler en kvittering kryptografisk, der binder erklæringen til netop den rapportfil og det datagrundlag. Ændrer I regnskabet bagefter, forbliver den attesterede version uændret og kan stadig fremvises. Det er den audit-integritet CSRD og VSME kræver.",
       },
       {
         q: "Kan én revisor håndtere flere klienter i samme login?",
-        a: "Ja. Ét konsulent-login dækker ubegrænset klienter. Du logger ind ét sted og ser alle klienter med status pr. rapport, i stedet for at skifte mellem separate systemer eller filer.",
+        a: "Ja. Ét konsulent-login dækker ubegrænset klienter. Du logger ind ét sted og ser alle de klienter, der har givet dig adgang, i stedet for at skifte mellem separate systemer eller filer.",
       },
       {
         q: "Hvordan holder vi interne noter adskilt fra klienten?",
@@ -547,7 +547,7 @@ export const PR_REVISOR_ADGANG: MarketingPageCopy = {
       },
       {
         q: "Understøtter det VSME- og CSRD-rapportering?",
-        a: "Ja. qlim8 har skabeloner til VSME Basic, VSME Comprehensive og CSRD, og sign-off-flowet med kryptografisk underskrift er bygget til at leve op til de audit-krav de standarder stiller.",
+        a: "Ja. qlim8 har skabeloner til VSME Basic, VSME Comprehensive og CSRD, og sign-off-flowet med kryptografisk forseglet attestering er bygget til at leve op til de audit-krav de standarder stiller.",
       },
     ],
   },
@@ -757,11 +757,11 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
   intro: {
     heading: "Fra \"vi er ved at lave en strategi\" til verificerbare tal",
     body:
-      "Når en kunde, bank eller udbudsgiver spørger om dit CO₂e-aftryk, har du tre valg: sende en PDF (manuelt arbejde hver gang), sige \"vi er ved at lave noget\" (og miste troværdighed), eller dele en profil med dine faktiske tal og lade dem tjekke. qlim8s offentlige ESG-profil er det tredje. Du aktiverer en delbar URL: fx qlim8.com/p/dinvirksomhed, der viser dit klimaregnskab i det format du vælger. Du bestemmer hvilke felter der er offentlige, og profilen opdateres automatisk når regnskabet ændres, så du undgår versions-mareridt. Det vigtige er at hver påstand er audit-bakket: profilen viser ikke \"vi er klimavenlige\", men \"Scope 1: 12 tons, Scope 2: 5 tons, Scope 3: 145 tons (kilde: VSME-rapport 2025)\".",
+      "Når en kunde, bank eller udbudsgiver spørger om dit CO₂e-aftryk, har du tre valg: sende en PDF (manuelt arbejde hver gang), sige \"vi er ved at lave noget\" (og miste troværdighed), eller dele en profil med dine faktiske tal og lade dem tjekke. qlim8s offentlige ESG-profil er det tredje. Du aktiverer en delbar URL: fx qlim8.com/p/dinvirksomhed, der viser dit klimaregnskab i det format du vælger. Du bestemmer hvilke felter der er offentlige, og profilen opdateres automatisk når regnskabet ændres, så du undgår versions-mareridt. Det vigtige er at tallene kommer fra dit klimaregnskab: profilen viser ikke \"vi er klimavenlige\", men \"Scope 1: 12 tons, Scope 2: 5 tons, Scope 3: 145 tons\".",
     bullets: [
       "Delbar URL: ingen PDF at vedhæfte i 47 mails",
       "Opt-in og granulær: du vælger præcis hvad der vises",
-      "Audit-bakket: hver påstand har kilde-citation",
+      "Audit-bakket: tallene kommer fra dit klimaregnskab",
       "Badge til hjemmeside og e-mail-signatur",
     ],
   },
@@ -778,7 +778,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       pain:
         "\"Har de tal vi kan stole på?\" er en blocker der trækker grønne tilbud i langdrag, mens I dokumenterer i hånden.",
       solution:
-        "Profilen er audit-bakket med kilde-citation pr. påstand, så indkøberen kan verificere tallene selv og blocker'en fjernes tidligt.",
+        "Profilen viser konkrete tal fra jeres klimaregnskab, hvor hvert tal kan spores til bilaget, så blocker'en fjernes tidligt.",
       outcome:
         "Sales-cyklus på grønne tilbud reduceret med 1-3 uger [antagelse: pilot-feedback].",
     },
@@ -786,7 +786,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       pain:
         "I er nervøse for greenwashing-anklager, fordi generelle grønne udsagn ikke kan bakkes op.",
       solution:
-        "Profilen viser konkrete tal med kilde og underskrift, ikke løse påstande. Alt er bakket af et audit-trail, og du vælger opt-in hvad der vises.",
+        "Profilen viser konkrete tal fra klimaregnskabet, ikke løse påstande. Alt er bakket af et audit-trail, og du vælger opt-in hvad der vises.",
       outcome:
         "Verificerbar dokumentation frem for markedsføring, lavere eksponering mod greenwashing-kritik.",
     },
@@ -821,7 +821,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
     {
       title: "Audit-bakket data",
       body:
-        "Hver påstand har kilde-citation og er bakket af et audit-trail. Profilen viser konkrete tal med kilde og underskrift, så forskellen mellem markedsføring og verificerbar dokumentation er tydelig.",
+        "Tallene på profilen kommer fra dit klimaregnskab, hvor hvert tal kan spores til linjen og bilaget. Profilen viser konkrete tal, ikke løse påstande, så forskellen mellem markedsføring og verificerbar dokumentation er tydelig.",
     },
     {
       title: "Opdateres automatisk",
@@ -832,11 +832,6 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       title: "Badge og SEO-markup",
       body:
         "Sæt et ESG-badge på hjemmeside og e-mail-signatur, og lad schema.org/Organization-markup gøre at Google forstår dataen. Konkrete tal kan fremhæves i søge-snippets, så profilen også virker som lead-magnet.",
-    },
-    {
-      title: "White-label på eget domæne",
-      body:
-        "Efter aftale kan profilen ligge på jeres eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand og ikke qlim8's. Kunden ser jeres identitet, ikke en tredjeparts.",
     },
   ],
   howItWorks: {
@@ -893,7 +888,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       },
       {
         q: "Hvordan undgår jeg at det ligner greenwashing?",
-        a: "Profilen viser konkrete tal med kilde-citation, ikke løse udsagn som \"vi er klimavenlige\". Hver påstand er bakket af et audit-trail, fx \"Scope 1: 12 tons (kilde: VSME-rapport 2025)\". Det er verificerbar dokumentation, ikke markedsføring.",
+        a: "Profilen viser konkrete tal, fx \"Scope 1: 12 tons\", ikke løse udsagn som \"vi er klimavenlige\". Bag tallene ligger klimaregnskabets audit-trail, hvor hvert tal kan spores til bilaget. Det er verificerbar dokumentation, ikke markedsføring.",
       },
       {
         q: "Skal jeg opdatere profilen manuelt?",
@@ -909,7 +904,7 @@ export const PR_BRAGBOARD: MarketingPageCopy = {
       },
       {
         q: "Kan profilen ligge på vores eget domæne?",
-        a: "Premium giver den delbare qlim8-URL og badge i standard-format. Skal profilen white-labeles på eget domæne, fx esg.dinvirksomhed.dk, så den er en del af jeres brand, så tal med os.",
+        a: "Nej, ikke i dag. Premium giver den delbare qlim8-URL og badge i standard-format, som I kan linke til fra jeres egen hjemmeside.",
       },
     ],
   },

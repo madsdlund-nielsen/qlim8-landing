@@ -33,7 +33,7 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Er qlim8's beregninger revisionsklare?",
-    a: "Ja. Hver beregning får et unikt ID, og du kan klikke fra dashboardet ned til den faktura eller måling den stammer fra: input, emissionsfaktor og kilde er sporbart fra dag ét. Fra Starter kan din revisor få direkte adgang til platformen med rettigheder til at kommentere og signere beregninger.",
+    a: "Ja. Hver beregning får et unikt ID, og du kan klikke fra dashboardet ned til den faktura eller måling den stammer fra: input, emissionsfaktor og kilde er sporbart fra dag ét. Fra Starter kan din revisor få direkte adgang til platformen med rettigheder til at kommentere og attestere rapporter.",
   },
   {
     q: "Hvad er forskellen på Scope 1, 2 og 3?",

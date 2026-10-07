@@ -182,7 +182,7 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
     paragraphs: [
       'Vores audit trail kan ikke slettes eller forkortes. Det er en designbeslutning, ikke en bivirkning. Når en kategorisering ændres, en faktor opdateres, eller en bruger retter et input, tilføjes ændringen til audit trail, den oprindelige post forbliver. Du kan altid se hvem der lavede hvad, hvornår, og med hvilken begrundelse. Ved kategoriændringer efter en beregning er lavet, beder qlim8 brugeren om at indtaste en begrundelse, så ændringen ikke bare står som "rettet".',
       "Hver audit trail får en unik hash: det er den, du ser i beregningsdetaljer-popup'en. Hashen er navnet på audit trail, ikke beregningen i sig selv. Det betyder at to identiske beregninger ikke deler hash, fordi de stammer fra forskellige posteringer med forskellig historik.",
-      "Rapporter er også immutable. Når du genererer en VSME-rapport eller en PDF, fryser qlim8 et komplet snapshot af alt der indgår (input, faktorer, audit trail, datakvalitetsberegning), så du om fem år kan trække rapporten frem og reproducere den 1:1. Det er det grundlæggende krav fra en revisor: kan du vise mig hvordan du nåede frem til det her tal, præcis som det stod på rapporten?",
+      "Rapporter er også immutable. Når du genererer en VSME-rapport eller en PDF, fryser qlim8 den: den får et versionsnummer, dens datagrundlag og hashes gemmes, og den bliver aldrig ændret eller slettet. Genererer du igen, bliver det en ny version, så du om fem år kan trække præcis den rapport frem, du sendte. Det er det grundlæggende krav fra en revisor: kan du vise mig hvordan du nåede frem til det her tal, præcis som det stod på rapporten?",
     ],
     containsLabel: "Hvad audit trail indeholder:",
     contains: [
@@ -197,13 +197,13 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
     ],
     callout: {
       title: "To formater til revisor",
-      body: "Audit trail kan eksporteres som komplet CSV-oversigt over alle posteringer. Når du genererer en PDF-rapport (ikke VSME, der er Excel-formatet det officielle), ligger audit trail som et pænere bilag bagest i rapporten, inklusive nøgletal på bilagets integritet og en oversigt over poster der stikker ud fra normalen. Det letter revisorens opgave markant.",
+      body: "Audit trail kan eksporteres som komplet CSV-oversigt over alle posteringer. VSME-rapporten kommer i EFRAG's officielle Excel-format, i en ZIP sammen med en audit-CSV med bilagsreference pr. linje, en audit trail i JSON og et verifikationsscript. Det letter revisorens opgave markant.",
     },
   },
   dataQuality: {
     title: "Hvordan vi måler datakvalitet",
     intro:
-      "Vi viser en datakvalitetsscore øverst på dit dashboard og på forsiden af hver PDF-rapport. Den er ikke marketing: den er en konkret, vægtet beregning af hvor god din underliggende data er.",
+      "Vi viser en datakvalitetsscore øverst på dit dashboard. Den er ikke marketing: den er en konkret, vægtet beregning af hvor god din underliggende data er.",
     pointsIntro: "Hver emissionspost får point baseret på hvilken type data der ligger bag:",
     points: [
       { points: "5 point", text: "LCA eller produkt-PCF (mest specifik)" },
@@ -214,7 +214,7 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
     ],
     paragraphsAfter: [
       "Den samlede datakvalitetsscore er et vægtet gennemsnit baseret på din virksomheds samlede udledning. En post på 100 ton CO2e med 3 point vejer mere end en post på 1 ton CO2e med 5 point. Det betyder, at scoren afspejler dataens kvalitet der hvor det betyder noget.",
-      "Du ser scoren direkte på dashboardet, og du ser den på forsiden af enhver custom PDF-rapport. Vi skjuler den ikke. Den er en del af det at være ærlig, og over tid er det den der peger din virksomhed mod bedre datapraksis, fordi du kan se hvor du kan blive bedre.",
+      "Du ser scoren direkte på dashboardet. Vi skjuler den ikke. Den er en del af det at være ærlig, og over tid er det den der peger din virksomhed mod bedre datapraksis, fordi du kan se hvor du kan blive bedre.",
     ],
   },
   standards: {
@@ -270,7 +270,7 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
       },
       {
         title: "Vi skjuler ikke dårlig datakvalitet.",
-        body: "Datakvalitetsscoren står på dit dashboard og på forsiden af hver PDF-rapport. Ærligheden er virksomhedens skjold.",
+        body: "Datakvalitetsscoren står øverst på dit dashboard. Ærligheden er virksomhedens skjold.",
       },
     ],
   },

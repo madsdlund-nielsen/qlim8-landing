@@ -151,7 +151,7 @@ const API_FAQ = [
   },
   {
     q: "Kan en AI-agent lave en VSME-rapport?",
-    a: "Ja. generate_report sætter en VSME Basis eller Comprehensive-rapport i gang for et rapportår, og get_report_status følger jobbet. Kaldet er idempotent pr. år, standard og format. MCP-adgang kræver Premium.",
+    a: "Ja. generate_report sætter en VSME Basis eller Comprehensive-rapport i gang for et rapportår, og get_report_status følger jobbet. Kaldet er idempotent pr. år og standard. MCP-adgang kræver Premium.",
   },
 ];
 export const API_PAGE_SCHEMA = [

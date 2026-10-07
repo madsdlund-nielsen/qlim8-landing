@@ -444,7 +444,7 @@ export const PR_DATA_UDTRAEK: MarketingPageCopy = {
       },
       {
         q: "Kan revisoren få datagrundlaget ved siden af rapporten?",
-        a: "Ja. Data udtræk giver revisoren det underliggende datasæt, så stikprøver kan tages direkte i dataen. Det supplerer den færdige rapport og dens indbyggede kildehenvisninger.",
+        a: "Ja. Data udtræk giver revisoren det underliggende datasæt, så stikprøver kan tages direkte i dataen. Det supplerer den færdige rapport og sporet i platformen.",
       },
       {
         q: "Hvordan afgrænser jeg, hvad der kommer med i udtrækket?",
@@ -473,17 +473,17 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
     eyebrow: "Produkt",
     title: "Fra data til færdig rapport: klar til revisor, bank og bestyrelse",
     subtitle:
-      "Generér VSME-rapporter som Excel eller PDF direkte fra dit regnskab, med kildehenvisning pr. tal og et audit-trail der holder ved revision.",
+      "Generér VSME-rapporten i EFRAG's officielle Excel og en designet PDF-rapport over året direkte fra dit regnskab, med et spor fra hver linje tilbage til bilaget.",
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
     heading: "Rapporten er ikke et projekt: den er et klik",
-    body: "VSME og CSRD er ikke valgfri længere: banker kræver tallene før grønne lån, store kunder kræver dem fra deres leverandører. Problemet er ikke ambitionen, men omfanget: EFRAG-skabelonen dækker 40+ datapunkter for VSME Basic og over 100 for Comprehensive, og hver påstand skal kunne dokumenteres i op til 7 år. qlim8 tager skabelonen som software, ikke som dokument. Vi læser dit klimaregnskab, indsætter dine tal i de rigtige felter, og genererer rapporten som Excel eller PDF med en klikbar kildehenvisning pr. post. Herunder finder du de enkelte rapport-typer: struktureret Excel til revisor, underskrifts-klar PDF til modtageren, og det audit-trail der gør, at revisorens spørgsmål besvares, før de bliver stillet.",
+    body: "VSME og CSRD er ikke valgfri længere: banker kræver tallene før grønne lån, store kunder kræver dem fra deres leverandører. Problemet er ikke ambitionen, men omfanget: EFRAG-skabelonen dækker 40+ datapunkter for VSME Basic og over 100 for Comprehensive, og hver påstand skal kunne dokumenteres. qlim8 tager skabelonen som software, ikke som dokument. Vi læser dit klimaregnskab, indsætter dine tal i EFRAG's officielle Excel-projektmappe og leverer den sammen med en audit-CSV, hvor hver linje har sin bilagsreference. Ved siden af kan du generere en designet PDF-rapport over hele regnskabsåret, som du kan sende til bestyrelse, bank eller kunde. Herunder finder du de enkelte dele: struktureret Excel til revisor, PDF-rapporten til dem der skal læse den, og det audit-trail der gør, at revisorens spørgsmål besvares, før de bliver stillet.",
     bullets: [
       "VSME Basic og Comprehensive genereret direkte fra dit regnskab",
-      "Excel og PDF med kildehenvisning pr. kg CO₂e",
-      "Audit-trail i 7 år og lås af underskrevne rapporter",
+      "EFRAG's Excel-projektmappe med en audit-CSV, der sporer hver linje til bilaget",
+      "Hver rapport gemmes som en fast version, som revisoren kan attestere",
     ],
   },
   painPoints: [
@@ -494,8 +494,8 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
     },
     {
       pain: "Revisoren spørger, hvor et bestemt tal kommer fra, og du bruger dage på at grave posteringer frem manuelt.",
-      solution: "Hver post i rapporten har en klikbar kildehenvisning tilbage til de fakturaer, den bygger på.",
-      outcome: "Revisorens spørgsmål besvares på ét klik, ingen manuel bilagsjagt.",
+      solution: "Hver linje i VSME-leverancen har sin bilagsreference i audit-CSV'en, og i platformen kan hvert tal følges ned til posteringen og bilaget.",
+      outcome: "Revisorens spørgsmål besvares fra sporet, ingen manuel bilagsjagt.",
     },
     {
       pain: "En førstegangs-VSME hos en konsulent koster typisk et femcifret til sekscifret beløb, og du skal betale igen næste år.",
@@ -503,14 +503,14 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
       outcome: "Du erstatter en konsulent-regning på 75.000-200.000 kr. [antagelse: markeds-research, ikke kundevalideret] med et abonnement.",
     },
     {
-      pain: "Du retter regnskabet efter, at rapporten er afleveret, og er nu i tvivl om, hvad der egentlig stod i den underskrevne version.",
-      solution: "Når en rapport er underskrevet, låses dataen. Den signerede rapport viser tilstanden ved underskrift, selv om regnskabet ændres bagefter.",
+      pain: "Du retter regnskabet efter, at rapporten er afleveret, og er nu i tvivl om, hvad der egentlig stod i den version, du sendte.",
+      solution: "Hver rapport fryses, når den genereres: den får et versionsnummer, og dens datagrundlag gemmes med en hash. Den ændres og slettes aldrig. Retter du regnskabet, genererer du en ny version.",
       outcome: "Den afleverede rapport står fast: du kan rette regnskabet uden at rykke ved historikken.",
     },
     {
-      pain: "Forskellige modtagere (bank, bestyrelse, kunde) vil have rapporten i forskellig form, og du reformaterer i hånden hver gang.",
-      solution: "Samme datagrundlag kommer ud som struktureret Excel til videre bearbejdning eller som modtager-tilpasset PDF.",
-      outcome: "Én rapport, flere formater, uden manuel reformatering pr. modtager.",
+      pain: "Forskellige modtagere (bank, bestyrelse, kunde) vil have tallene i forskellig form, og du reformaterer i hånden hver gang.",
+      solution: "Samme regnskab kommer ud som EFRAG's Excel til revisor og videre bearbejdning, og som en designet PDF-rapport, du kan sende til bank, bestyrelse eller kunde.",
+      outcome: "Ét regnskab, to formater, uden manuel reformatering pr. modtager.",
     },
   ],
   features: [
@@ -520,70 +520,70 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
     },
     {
       title: "Excel-rapport",
-      body: "Struktureret Excel-eksport til revisor eller videre bearbejdning, med alle tal forsynet med kildehenvisning. Se undersiden Excel rapport for detaljer.",
+      body: "EFRAG's officielle Excel-projektmappe med fast struktur, til revisor eller videre bearbejdning. Den leveres i en ZIP med en audit-CSV, der sporer hver linje til bilaget. Se undersiden Excel rapport for detaljer.",
     },
     {
       title: "PDF-rapport",
-      body: "Underskrifts-klar PDF, tilpasset modtageren og med valg af tema. Se undersiden PDF rapport, hvor temaer og modtager-typer har deres egne detaljesider.",
+      body: "En designet rapport over hele regnskabsåret: Scope 1, 2 og 3, et overblik over året og dine reduktionsmål, i det visuelle udtryk du vælger. Se undersiden PDF rapport for detaljer.",
     },
     {
       title: "Audit Trail",
-      body: "Hver kategori-ændring, faktor og datakilde logges automatisk i et 7-årigt spor (CSRD-krav). Se undersiden Audit Trail for, hvordan sporet dokumenterer hvem der ændrede hvad hvornår.",
+      body: "Hver kategori-ændring, faktor og datakilde logges automatisk. Se undersiden Audit Trail for, hvordan sporet dokumenterer hvem der ændrede hvad hvornår.",
     },
     {
       title: "CSRD / ESRS E1-mapping",
       body: "For større tenants mappes det samme datagrundlag mod ESRS E1, så pipelinen kan levere CSRD-rapportering, når kravet rammer. Supplier-rollup fra værdikæden inkluderes i Scope 3-tabellerne.",
     },
     {
-      title: "Lås af underskrevne rapporter",
-      body: "Når en rapport er signeret, bevares dataens tilstand på underskriftstidspunktet. Du kan rette regnskabet fremadrettet, uden at den afleverede rapport ændrer sig.",
+      title: "Faste versioner og revisor-attestering",
+      body: "Hver genereret rapport får et versionsnummer, og dens datagrundlag og hashes gemmes. Revisoren attesterer en bestemt version ved at uploade sin underskrevne erklæring, og platformen forsegler en kvittering, der binder rapportfil, datagrundlag og erklæring sammen.",
     },
   ],
   howItWorks: {
     title: "Sådan laver du en rapport",
     steps: [
       {
-        title: "Vælg skabelon",
-        body: "Vælg fx VSME Basic eller Comprehensive. qlim8 ved, hvilke felter standarden kræver, og hvilke af dine data der hører hjemme hvor.",
+        title: "Vælg rapport",
+        body: "Vælg VSME Basic eller Comprehensive, eller PDF-rapporten over et helt regnskabsår. qlim8 ved, hvilke felter standarden kræver, og hvilke af dine data der hører hjemme hvor.",
       },
       {
         title: "Generér",
-        body: "Klik generér. Dine tal indsættes i skabelonens felter, hver med en kildehenvisning tilbage til de fakturaer, de bygger på.",
+        body: "Klik generér. Dine tal hentes fra klimaregnskabet, og rapporten gemmes som en fast version sammen med sit datagrundlag.",
       },
       {
-        title: "Vælg format og modtager",
-        body: "Træk rapporten ud som struktureret Excel til revisor eller som modtager-tilpasset PDF til bank, bestyrelse eller samarbejdspartner.",
+        title: "Send den til modtageren",
+        body: "Giv revisoren VSME-projektmappen og audit-CSV'en, eller send PDF-rapporten til bank, bestyrelse eller samarbejdspartner. Det er den samme rapport, uanset hvem der læser den.",
       },
       {
-        title: "Få den underskrevet",
-        body: "Inviter revisoren til at gennemgå og signere. Ved underskrift låses dataen, og et audit-trail dokumenterer hele forløbet.",
+        title: "Få den attesteret",
+        body: "Inviter revisoren ind i platformen. Revisoren attesterer rapporten ved at uploade sin underskrevne erklæring, og attesteringen bindes til præcis den version.",
       },
     ],
   },
   valueStats: [
     { value: "4-8 timer", label: "til en VSME Basic-rapport", note: "[antagelse: pilot-interview, ikke bredt valideret]" },
     { value: "40+ / 100+", label: "datapunkter i Basic / Comprehensive udfyldt automatisk" },
-    { value: "7 år", label: "audit-trail bag rapporten", note: "CSRD-krav" },
-    { value: "Excel · PDF", label: "samme data, flere formater" },
+    { value: "Pr. linje", label: "bilagsreference i VSME-leverancens audit-CSV" },
+    { value: "Excel · PDF", label: "samme klimaregnskab, to formater" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål om rapportering",
     items: [
       {
         q: "Hvilke rapporter kan qlim8 generere?",
-        a: "qlim8 genererer EFRAG's VSME Basic og Comprehensive direkte fra dit regnskab, som Excel eller PDF. For større tenants understøttes desuden ESRS E1-mapping til CSRD-rapportering.",
+        a: "qlim8 genererer EFRAG's VSME Basic og Comprehensive direkte fra dit regnskab som EFRAG's officielle Excel-projektmappe, og en designet PDF-rapport over hele regnskabsåret. For større tenants understøttes desuden ESRS E1-mapping til CSRD-rapportering.",
       },
       {
         q: "Er rapporterne klar til revisor?",
-        a: "Ja. Hver post har en kildehenvisning tilbage til de bagvedliggende fakturaer, og et 7-årigt audit-trail dokumenterer datakæden. Revisoren kan følge et tal helt tilbage til bilaget uden at sende en forespørgsel.",
+        a: "Ja. VSME-projektmappen leveres i en ZIP med en audit-CSV, hvor hver linje har sin bilagsreference (bilagsnummer, eksternt id og fil-hash), og i platformen kan revisoren følge et tal helt tilbage til bilaget. Selve PDF-rapporten har ingen kildehenvisninger: sporet ligger i platformen.",
       },
       {
         q: "Hvad er forskellen på Excel- og PDF-rapporten?",
-        a: "Excel-rapporten er struktureret til revisor og videre bearbejdning, med alle tal kildehenvist. PDF-rapporten er underskrifts-klar og tilpasset modtageren med valg af tema. De to formater har hver sin detaljeside under Rapportering.",
+        a: "Excel-rapporten er EFRAG's VSME-projektmappe med fast struktur, til revisor og videre bearbejdning, og sporbar pr. linje via audit-CSV'en. PDF-rapporten er en designet præsentation af årets klimaregnskab til bestyrelse, bank eller kunde, i det visuelle udtryk du vælger. Begge bygger på det samme klimaregnskab.",
       },
       {
         q: "Hvad sker der med en rapport, hvis jeg retter regnskabet bagefter?",
-        a: "Når en rapport er underskrevet, låses dataen. Den signerede rapport viser tilstanden på underskriftstidspunktet, så du kan rette regnskabet fremadrettet, uden at den afleverede rapport ændrer sig.",
+        a: "Ingenting. En rapport fryses, når den genereres: den får et versionsnummer, og dens datagrundlag gemmes med en hash. Den ændres og slettes aldrig. Retter du regnskabet, genererer du en ny version, og den gamle står uændret ved siden af. Har revisoren attesteret en version, er attesteringen bundet til netop den.",
       },
       {
         q: "Kan jeg bruge qlim8 til CSRD og ikke kun VSME?",
@@ -598,7 +598,7 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
   closingCta: {
     title: "Generér din første rapport fra dit eget regnskab",
     description:
-      "Book en demo, hvor vi viser rapport-flowet fra bogføring til VSME-rapport med kildehenvisning pr. tal.",
+      "Book en demo, hvor vi viser rapport-flowet fra bogføring til VSME-rapport, med sporet fra hver linje tilbage til bilaget.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -610,51 +610,51 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
 export const PR_EXCEL: MarketingPageCopy = {
   hero: {
     eyebrow: "Produkt · Rapportering",
-    title: "Struktureret Excel-rapport: med kilden på hvert tal",
+    title: "Struktureret Excel-rapport: med sporet til bilaget",
     subtitle:
-      "Eksportér dit klimaregnskab som en struktureret Excel-fil til revisor eller videre bearbejdning, hvor hvert tal bærer sin kildehenvisning.",
+      "Få VSME-rapporten som EFRAG's officielle Excel-projektmappe til revisor eller videre bearbejdning, med en audit-CSV, der sporer hver linje tilbage til bilaget.",
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
     heading: "Til revisoren der vil regne videre",
-    body: "Nogle modtagere vil ikke have en pæn PDF. De vil have tallene i et regneark, de kan arbejde i. Revisoren skal tage stikprøver, controlleren skal krydstjekke, og bæredygtighedsansvarlige skal bygge deres egen opstilling oven på tallene. Excel-rapporten giver dem en struktureret fil, hvor VSME-tallene ligger i faste, genkendelige felter, og hvor hvert tal bærer en kildehenvisning tilbage til de fakturaer, det bygger på. Det betyder, at modtageren ikke får et løsrevet tal, men et tal med spor: klik ind, se hvilke posteringer der ligger bag, og krydstjek mod bogføringen. Det gør revisionen hurtigere, fordi spørgsmålet \"hvor kommer det tal fra?\" allerede er besvaret i selve arket.",
+    body: "Nogle modtagere vil ikke have en pæn PDF. De vil have tallene i et regneark, de kan arbejde i. Revisoren skal tage stikprøver, controlleren skal krydstjekke, og bæredygtighedsansvarlige skal bygge deres egen opstilling oven på tallene. Excel-rapporten giver dem filer med fast struktur: VSME-tallene ligger i EFRAG's officielle projektmappe, i de samme celler hver gang, og bogføringsudtrækket har samme opbygning hver gang. VSME-projektmappen leveres i en ZIP sammen med en audit-CSV, hvor hver linje har sin bilagsreference (bilagsnummer, eksternt id og fil-hash), et audit-trail som JSON og et verifikations-script. Det betyder, at modtageren ikke får et løsrevet tal, men et tal med spor: revisoren kan tage en linje, finde bilaget og krydstjekke mod bogføringen. Det gør revisionen hurtigere, fordi spørgsmålet \"hvor kommer det tal fra?\" allerede er besvaret i leverancen.",
     bullets: [
-      "Struktureret Excel med VSME-tallene i faste felter",
-      "Kildehenvisning på hvert tal, sporbart tilbage til fakturaen",
+      "EFRAG's officielle VSME-projektmappe med fast struktur",
+      "Audit-CSV med bilagsreference på hver linje",
       "Til revisor, controller og videre bearbejdning i regnearket",
     ],
   },
   painPoints: [
     {
       pain: "Revisoren beder om tallene i Excel, og du sidder med en PDF, du skal taste af eller kopiere manuelt.",
-      solution: "Excel-rapporten leverer VSME-tallene i en struktureret fil, revisoren kan arbejde direkte i.",
+      solution: "Excel-rapporten leverer VSME-tallene i EFRAG's projektmappe, som revisoren kan arbejde direkte i.",
       outcome: "Revisoren får et regneark, ikke en PDF at taste af, færre fejl, hurtigere revision.",
     },
     {
       pain: "Når du krydstjekker et tal mod bogføringen, kan du ikke se, hvilke fakturaer det dækker.",
-      solution: "Hvert tal i arket bærer en kildehenvisning tilbage til de posteringer, der ligger bag.",
-      outcome: "Krydstjek tager minutter, fordi kilden står ved siden af tallet.",
+      solution: "Audit-CSV'en i samme ZIP giver hver linje sin bilagsreference: bilagsnummer, eksternt id og fil-hash.",
+      outcome: "Krydstjek tager minutter, fordi bilaget kan findes ud fra linjen.",
     },
     {
       pain: "Du vil bygge din egen opstilling oven på VSME-tallene, men de ligger låst i et rapportformat.",
-      solution: "Den strukturerede Excel-fil åbner direkte i regnearket, klar til dine egne formler og pivottabeller.",
+      solution: "Projektmappen åbner direkte i regnearket, klar til dine egne formler og pivottabeller.",
       outcome: "Du bygger videre på tallene med det samme, uden en manuel udtræks-runde først.",
     },
     {
       pain: "Hver gang tallene opdateres, skal du reformatere Excel-arket, så det passer til revisorens forventning.",
-      solution: "Arket genereres med samme faste struktur hver gang, direkte fra det aktuelle regnskab.",
-      outcome: "Du genererer en ny, konsistent version på sekunder, ingen manuel reformatering.",
+      solution: "Projektmappen genereres med samme faste struktur hver gang, direkte fra det aktuelle regnskab.",
+      outcome: "Du genererer en ny, konsistent version uden manuel reformatering.",
     },
   ],
   features: [
     {
       title: "Struktureret regneark",
-      body: "VSME-tallene lander i faste, genkendelige felter, så filen ser ens ud fra gang til gang. Revisor og controller ved præcis, hvor de skal kigge.",
+      body: "VSME-tallene lander i EFRAG's officielle projektmappe, i de samme celler fra gang til gang. Revisor og controller ved præcis, hvor de skal kigge.",
     },
     {
-      title: "Kildehenvisning pr. tal",
-      body: "Hvert tal er forsynet med sin kilde, sporet tilbage til de fakturaer, det bygger på. Modtageren kan verificere hvert tal uden at spørge dig.",
+      title: "Sporbar pr. linje",
+      body: "Audit-CSV'en følger med i ZIP-filen og angiver for hver linje bilagsnummer, eksternt id og fil-hash. I platformen kan hvert tal desuden følges ned til posteringen og bilaget.",
     },
     {
       title: "Klar til videre bearbejdning",
@@ -662,11 +662,11 @@ export const PR_EXCEL: MarketingPageCopy = {
     },
     {
       title: "Konsistent gengenerering",
-      body: "Er tallene opdateret, genererer du en ny version med samme struktur på sekunder. Du undgår at reformatere i hånden hver gang regnskabet ændrer sig.",
+      body: "Er tallene opdateret, genererer du en ny version med samme struktur. Du undgår at reformatere i hånden hver gang regnskabet ændrer sig.",
     },
     {
-      title: "Samme grundlag som PDF'en",
-      body: "Excel- og PDF-rapporten bygger på præcis det samme datagrundlag, så tallene stemmer på tværs af formater. Du vælger format efter modtageren, ikke efter dataen.",
+      title: "Samme regnskab som PDF'en",
+      body: "Excel- og PDF-rapporten bygger på det samme klimaregnskab. Du vælger rapport efter modtageren: Excel, når der skal regnes videre, PDF, når regnskabet skal præsenteres.",
     },
   ],
   howItWorks: {
@@ -677,31 +677,31 @@ export const PR_EXCEL: MarketingPageCopy = {
         body: "Vælg Basic eller Comprehensive. qlim8 kender de felter, standarden kræver, og fylder dem fra dit regnskab.",
       },
       {
-        title: "Generér som Excel",
-        body: "Vælg Excel som format. Tallene indsættes i faste felter, hver med sin kildehenvisning.",
+        title: "Generér",
+        body: "Klik generér. Tallene indsættes i projektmappens faste celler, og du henter en ZIP med projektmappen, audit-CSV'en, audit-trailet og verifikations-scriptet.",
       },
       {
         title: "Send eller bearbejd",
-        body: "Del filen med revisoren, eller åbn den selv i regnearket og byg din egen opstilling oven på tallene.",
+        body: "Del filerne med revisoren, eller åbn projektmappen selv i regnearket og byg din egen opstilling oven på tallene.",
       },
     ],
   },
   valueStats: [
     { value: "Struktureret", label: "faste felter, genkendeligt fra gang til gang" },
-    { value: "Pr. tal", label: "kildehenvisning tilbage til fakturaen" },
-    { value: "Sekunder", label: "til en opdateret, konsistent version" },
-    { value: "Excel = PDF", label: "samme datagrundlag på tværs af formater" },
+    { value: "Pr. linje", label: "bilagsreference i audit-CSV'en" },
+    { value: "EFRAG", label: "officiel VSME-projektmappe, ikke en egen skabelon" },
+    { value: "Ét regnskab", label: "samme grundlag for Excel- og PDF-rapporten" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål om Excel-rapporten",
     items: [
       {
         q: "Hvad indeholder Excel-rapporten?",
-        a: "Den indeholder dine VSME-tal i en struktureret fil med faste felter, hvor hvert tal bærer en kildehenvisning tilbage til de fakturaer, det bygger på. Den er tænkt til revisor og til videre bearbejdning i regnearket.",
+        a: "VSME-rapporten leveres som en ZIP med EFRAG's officielle Excel-projektmappe, en audit-CSV med bilagsreference pr. linje, et audit-trail som JSON og et verifikations-script. Projektmappen har fast struktur og er tænkt til revisor og videre bearbejdning. Cellerne har ikke hver sin kildehenvisning: sporet ligger i audit-CSV'en og i platformen.",
       },
       {
         q: "Kan revisoren se, hvor tallene kommer fra?",
-        a: "Ja. Hvert tal er kildehenvist, så revisoren kan følge sporet tilbage til de konkrete posteringer og tage stikprøver direkte, uden at sende dig en forespørgsel.",
+        a: "Ja. Audit-CSV'en angiver for hver linje bilagsnummer, eksternt id og fil-hash, så revisoren kan finde de konkrete bilag og tage stikprøver uden at sende dig en forespørgsel. Med adgang til platformen kan revisoren også følge tallene dér.",
       },
       {
         q: "Kan jeg bygge mine egne beregninger oven på filen?",
@@ -709,18 +709,18 @@ export const PR_EXCEL: MarketingPageCopy = {
       },
       {
         q: "Hvad hvis tallene ændrer sig, efter jeg har eksporteret?",
-        a: "Så genererer du blot en ny version. Arket bygges med samme faste struktur hver gang direkte fra det aktuelle regnskab, så du undgår manuel reformatering.",
+        a: "Så genererer du blot en ny version. Projektmappen bygges med samme faste struktur hver gang direkte fra det aktuelle regnskab, så du undgår manuel reformatering.",
       },
       {
         q: "Stemmer Excel-rapporten med PDF-rapporten?",
-        a: "Ja. Begge formater bygger på præcis samme datagrundlag, så tallene er ens. Du vælger Excel, når modtageren skal regne videre, og PDF, når rapporten skal underskrives og præsenteres.",
+        a: "Begge bygger på det samme klimaregnskab, men de stiller tallene forskelligt op: VSME-projektmappen viser fx Scope 2 både markeds- og lokationsbaseret, som EFRAG kræver. Du vælger Excel, når modtageren skal regne videre, og PDF, når regnskabet skal præsenteres.",
       },
     ],
   },
   closingCta: {
     title: "Giv revisoren tallene i et regneark",
     description:
-      "Book en demo, så viser vi den strukturerede VSME-rapport i Excel, hvor hvert tal er sporbart tilbage til bilaget.",
+      "Book en demo, så viser vi VSME-rapporten i Excel og audit-CSV'en, der sporer hver linje tilbage til bilaget.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -732,126 +732,130 @@ export const PR_EXCEL: MarketingPageCopy = {
 export const PR_PDF: MarketingPageCopy = {
   hero: {
     eyebrow: "Produkt · Rapportering",
-    title: "Underskrifts-klar PDF: tilpasset den der skal læse den",
+    title: "PDF-rapport: årets klimaregnskab, klar til at dele",
     subtitle:
-      "Generér en færdig, underskrifts-klar PDF af dit klimaregnskab, med valg af tema og et layout tilpasset modtageren: bestyrelse, investor, bank eller samarbejdspartner.",
+      "Generér en designet PDF-rapport over et helt regnskabsår direkte fra dit klimaregnskab. Hver rapport gemmes som en fast version, som din revisor kan attestere.",
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
   intro: {
-    heading: "Rapporten der er klar til at blive delt og underskrevet",
-    body: "Når klimaregnskabet skal ud af huset, til bestyrelsesmødet, til banken før et grønt lån, til en kunde der beder om jeres tal, skal det se færdigt ud og kunne underskrives. PDF-rapporten giver dig præcis det: en underskrifts-klar rapport, hvor tallene fra dit regnskab er sat op i et gennemført layout, hver med kildehenvisning. Du vælger et tema, der passer til afsenderen, og et layout der er tilpasset modtageren, så en bestyrelse får det, en bestyrelse skal bruge, og banken det, banken efterspørger. Både temaerne og modtager-typerne har deres egne detaljesider, så du kan gå i dybden med, hvordan hver variant ser ud. Resultatet er en rapport, du tør sende videre, uden manuel opsætning i tekstbehandling.",
+    heading: "Rapporten du kan sende ud af huset",
+    body: "Når klimaregnskabet skal ud af huset, til bestyrelsesmødet, til banken før et grønt lån eller til en kunde der beder om jeres tal, skal det se færdigt ud. PDF-rapporten genereres i platformen fra dit klimaregnskab for et helt regnskabsår: Scope 1, 2 og 3, et overblik over året og dine reduktionsmål, sat op i et gennemført layout. Du vælger mellem flere visuelle udtryk, og den samme rapport kan sendes til bestyrelse, investorer, bank eller samarbejdspartner. Hver rapport fryses, når den genereres: den får et versionsnummer, dens datagrundlag gemmes med en hash, og den ændres eller slettes aldrig. Skal et tal dokumenteres, ligger sporet i platformen, hvor hvert tal kan følges ned til posteringen og bilaget. Resultatet er en rapport, du tør sende videre, uden manuel opsætning i tekstbehandling.",
     bullets: [
-      "Underskrifts-klar PDF direkte fra dit regnskab",
-      "Temaer: bl.a. Light Nordic og McKinsey: se hver temas egen side",
-      "Tilpasset modtageren: bestyrelse, investor, bank, samarbejdspartner",
+      "Designet PDF over et helt regnskabsår, direkte fra dit klimaregnskab",
+      "Flere visuelle udtryk at vælge imellem",
+      "Fast version med datagrundlag og hash, klar til revisorens attestering",
     ],
   },
   painPoints: [
     {
       pain: "Rapporten skal se professionel ud til bestyrelsen, og du bruger timer på at sætte tal og grafer op i tekstbehandling.",
-      solution: "PDF-rapporten genereres med et gennemført layout direkte fra dit regnskab. Opsætningen er lavet for dig.",
+      solution: "PDF-rapporten genereres med et gennemført layout direkte fra dit klimaregnskab. Opsætningen er lavet for dig.",
       outcome: "Du sender en færdig rapport uden manuel opsætning i Word.",
     },
     {
-      pain: "Banken, bestyrelsen og en kunde vil hver især have rapporten i en form, der passer dem, og du laver den om hver gang.",
-      solution: "Layoutet tilpasses modtageren, så samme datagrundlag præsenteres, som netop den modtager forventer.",
-      outcome: "Én rapport dækker flere modtagere, uden at bygge den om fra bunden.",
+      pain: "Banken, bestyrelsen og en kunde vil alle se jeres klimatal, og du laver en ny opstilling til hver af dem.",
+      solution: "Den samme rapport kan sendes til dem alle: Scope 1, 2 og 3, årets overblik og reduktionsmålene, sat op én gang.",
+      outcome: "Én rapport dækker flere modtagere, uden at du bygger den om fra bunden.",
     },
     {
-      pain: "Rapporten skal underskrives, men din PDF er bare et eksport uden et sign-off-flow.",
-      solution: "PDF'en er underskrifts-klar og indgår i revisorens gennemgangs- og signeringsflow.",
-      outcome: "Underskriften sker i et defineret flow, ikke som en løs mail-tråd.",
+      pain: "Revisoren skal stå inde for rapporten, men erklæringen ender i en mail-tråd, løsrevet fra den fil, den handler om.",
+      solution: "Revisoren attesterer i platformen ved at uploade sin underskrevne erklæring. Platformen forsegler en kvittering, der binder rapportfilen, dens datagrundlag og erklæringen sammen.",
+      outcome: "Det er dokumenteret, præcis hvilken version revisoren har attesteret.",
     },
     {
-      pain: "Du vil have rapportens udtryk til at matche afsenderen, men har kun ét fast format at vælge imellem.",
-      solution: "Vælg mellem temaer, fx Light Nordic eller McKinsey, der giver rapporten forskellige visuelle udtryk.",
-      outcome: "Rapportens udtryk matcher afsenderen, uden en designer involveret.",
+      pain: "Du vil have rapportens udtryk til at passe til anledningen, men har kun ét fast format at vælge imellem.",
+      solution: "Vælg mellem flere visuelle udtryk, når du genererer rapporten.",
+      outcome: "Rapporten ser gennemført ud, uden en designer involveret.",
     },
     {
-      pain: "En modtager sætter spørgsmålstegn ved et tal, og du kan ikke pege på, hvad det bygger på, direkte i rapporten.",
-      solution: "Hvert tal i PDF'en bærer sin kildehenvisning tilbage til det underliggende datagrundlag.",
-      outcome: "Tallene i den delte rapport er dokumenterede, ikke bare påstande.",
+      pain: "Du retter regnskabet, efter rapporten er sendt, og er i tvivl om, hvad der stod i den version, modtageren fik.",
+      solution: "Hver rapport fryses, når den genereres, med versionsnummer, datagrundlag og hash. Genererer du igen, får du en ny version ved siden af.",
+      outcome: "Den afsendte rapport står fast, og du kan altid finde præcis den version frem.",
     },
   ],
   features: [
     {
-      title: "Underskrifts-klar PDF",
-      body: "Rapporten genereres færdig og klar til underskrift, ikke som et råt eksport. Den indgår i revisorens gennemgangs- og signeringsflow, så sign-off sker et defineret sted.",
+      title: "Et helt regnskabsår",
+      body: "Rapporten genereres fra klimaregnskabet for et helt regnskabsår, med data for alle 12 måneder. Den viser Scope 1, 2 og 3, et overblik over året og dine reduktionsmål.",
     },
     {
-      title: "Temaer",
-      body: "Vælg et tema, fx Light Nordic eller McKinsey, der giver rapporten det udtryk, der passer til afsenderen. Hvert tema har sin egen detaljeside, hvor du kan se udtrykket.",
+      title: "Flere visuelle udtryk",
+      body: "Vælg det udtryk, rapporten skal have, når du genererer den. Tallene er de samme, det er opsætningen, der skifter. Se undersiden Temaer.",
     },
     {
-      title: "Tilpasset modtageren",
-      body: "Layoutet tilpasses den, der skal læse rapporten: bestyrelse, investor, bank eller samarbejdspartner. Hver modtager-type har sin egen detaljeside med, hvad varianten fremhæver.",
+      title: "Fast version",
+      body: "Hver genereret rapport får et versionsnummer, og dens datagrundlag og hashes gemmes. Den ændres og slettes aldrig. Genererer du igen, opstår en ny version.",
     },
     {
-      title: "Kildehenvisning bevaret",
-      body: "Også i PDF-form bærer hvert tal sin kildehenvisning tilbage til datagrundlaget. Den delte rapport indeholder dokumenterede tal, ikke løsrevne påstande.",
+      title: "Revisor-attestering",
+      body: "Inviter revisoren ind i platformen. Revisoren attesterer en gemt rapport ved at uploade sin underskrevne erklæring, og platformen forsegler kryptografisk en kvittering, der binder rapportfil, datagrundlag og erklæring sammen.",
     },
     {
-      title: "Samme grundlag som Excel-rapporten",
-      body: "PDF- og Excel-rapporten bygger på præcis samme data, så tallene stemmer på tværs af formater. Du vælger PDF, når rapporten skal præsenteres og underskrives.",
+      title: "Sporet ligger i platformen",
+      body: "PDF'en er lavet til at blive læst og præsenteret, og den har ingen kildehenvisninger eller links. Sporet ligger i platformen, hvor hvert tal kan følges ned til posteringen og bilaget, og i audit-CSV'en, der følger med VSME-rapporten.",
     },
   ],
   howItWorks: {
     title: "Sådan laver du en PDF-rapport",
     steps: [
       {
-        title: "Vælg skabelon og modtager",
-        body: "Vælg VSME Basic eller Comprehensive, og hvem rapporten er til: bestyrelse, investor, bank eller samarbejdspartner.",
+        title: "Hav et helt år i regnskabet",
+        body: "PDF-rapporten dækker et regnskabsår, så alle 12 måneder skal have data i dit klimaregnskab.",
       },
       {
-        title: "Vælg tema",
-        body: "Vælg et tema, fx Light Nordic eller McKinsey, så rapportens udtryk matcher afsenderen.",
+        title: "Vælg udtryk",
+        body: "Vælg det visuelle udtryk, rapporten skal have.",
       },
       {
         title: "Generér PDF'en",
-        body: "Klik generér. Dine tal sættes op i et færdigt layout, hver med kildehenvisning tilbage til datagrundlaget.",
+        body: "Klik generér. Rapporten sættes op og gemmes som en fast version sammen med sit datagrundlag.",
       },
       {
-        title: "Del og få den underskrevet",
-        body: "Send den underskrifts-klare PDF videre, eller inviter revisoren til at gennemgå og signere i sign-off-flowet.",
+        title: "Del og få den attesteret",
+        body: "Send PDF'en til bestyrelse, investor, bank eller kunde. Har du inviteret revisoren ind, kan revisoren attestere netop den version.",
       },
     ],
   },
   valueStats: [
-    { value: "Underskrifts-klar", label: "færdig til sign-off, ikke råt eksport" },
-    { value: "Flere temaer", label: "bl.a. Light Nordic og McKinsey" },
-    { value: "4 modtager-typer", label: "bestyrelse, investor, bank, samarbejdspartner" },
-    { value: "Pr. tal", label: "kildehenvisning bevaret i PDF'en" },
+    { value: "Hele året", label: "Scope 1, 2 og 3, overblik og reduktionsmål" },
+    { value: "Flere udtryk", label: "vælg rapportens visuelle stil" },
+    { value: "Fast version", label: "versionsnummer, datagrundlag og hash gemmes" },
+    { value: "Alle pakker", label: "PDF-rapporten er med i alle pakker" },
   ],
   faq: {
     title: "Ofte stillede spørgsmål om PDF-rapporten",
     items: [
       {
-        q: "Hvad vil det sige, at PDF'en er underskrifts-klar?",
-        a: "Rapporten genereres færdig og klar til sign-off, ikke som et råt eksport. Den indgår i revisorens gennemgangs- og signeringsflow, så underskriften sker et defineret sted frem for i en løs mail-tråd.",
+        q: "Hvad indeholder PDF-rapporten?",
+        a: "Rapporten dækker et helt regnskabsår og viser Scope 1, 2 og 3, et overblik over året og dine reduktionsmål, sat op i et gennemført layout, der er klar til at blive delt.",
       },
       {
-        q: "Hvilke temaer kan jeg vælge imellem?",
-        a: "Du kan vælge mellem temaer som Light Nordic og McKinsey, der giver rapporten forskellige visuelle udtryk. Hvert tema har sin egen detaljeside, hvor du kan se, hvordan udtrykket ser ud.",
+        q: "Kan jeg lave en rapport for en kortere periode?",
+        a: "Nej. PDF-rapporten dækker altid et helt regnskabsår, og alle 12 måneder skal have data. Vil du følge tallene løbende, gør du det i dashboardet.",
       },
       {
-        q: "Kan rapporten tilpasses forskellige modtagere?",
-        a: "Ja. Layoutet tilpasses modtageren: bestyrelse, investor, bank eller samarbejdspartner. Hver modtager-type har sin egen detaljeside, der beskriver, hvad netop den variant fremhæver.",
+        q: "Hvilke visuelle udtryk kan jeg vælge imellem?",
+        a: "Du vælger mellem flere udtryk, når du genererer rapporten. Tallene er de samme, det er opsætningen, der skifter. Book en demo, så viser vi dem.",
       },
       {
-        q: "Bevares kildehenvisningerne i PDF-format?",
-        a: "Ja. Hvert tal i PDF'en bærer sin kildehenvisning tilbage til det underliggende datagrundlag, så den delte rapport indeholder dokumenterede tal, ikke løsrevne påstande.",
+        q: "Kan revisoren stå inde for rapporten?",
+        a: "Ja. Du inviterer revisoren ind i platformen, og revisoren attesterer en gemt rapport ved at uploade sin underskrevne erklæring. Platformen forsegler en kvittering, der binder rapportfilen, dens datagrundlag og erklæringen sammen, så attesteringen hører til præcis den version.",
       },
       {
-        q: "Er PDF-tallene de samme som i Excel-rapporten?",
-        a: "Ja. Begge formater bygger på præcis samme datagrundlag, så tallene stemmer. Du vælger PDF, når rapporten skal præsenteres og underskrives, og Excel, når modtageren skal regne videre.",
+        q: "Hvad sker der, hvis jeg genererer rapporten igen?",
+        a: "Så får du en ny version. Den tidligere rapport er frosset med sit versionsnummer, datagrundlag og hash og ændres eller slettes aldrig, så du kan altid se, hvad der stod i den version, du sendte.",
+      },
+      {
+        q: "Har PDF'en kildehenvisninger?",
+        a: "Nej, ikke i selve PDF'en. Den er lavet til at blive læst og præsenteret. Sporet ligger i platformen, hvor hvert tal kan følges ned til posteringen og bilaget, og i audit-CSV'en, der følger med VSME-rapporten.",
       },
     ],
   },
   closingCta: {
     title: "Send en rapport, du tør stå inde for",
     description:
-      "Book en demo, så viser vi, hvordan du genererer en underskrifts-klar PDF af dit klimaregnskab, med tema og layout tilpasset modtageren.",
+      "Book en demo, så viser vi, hvordan du genererer en PDF-rapport over årets klimaregnskab, og hvordan revisoren attesterer den.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -871,7 +875,7 @@ export const PR_AUDIT: MarketingPageCopy = {
   },
   intro: {
     heading: "Dokumentationen der besvarer spørgsmålet før det stilles",
-    body: "Et klimaregnskab holder kun ved revision, hvis du kan vise, hvordan tallene blev til. CSRD kræver et audit-trail i op til 7 år, og en revisor vil altid spørge: hvem ændrede den kategori, hvilken faktor blev brugt, og hvornår? Med qlim8 er svaret ikke et regneark, nogen håber er opdateret. Det er et spor, systemet fører automatisk. Hver kategori-ændring, hver emissions-faktor og hver datakilde logges i takt med, at du arbejder, og sammen med kildehenvisningen pr. kg CO₂e giver det en ubrudt kæde fra det færdige tal tilbage til den oprindelige faktura. Det gør revisionen hurtigere og mindre nervepirrende: der er ingen \"hvor kom det tal fra?\"-øjeblikke, fordi historikken allerede ligger der.",
+    body: "Et klimaregnskab holder kun ved revision, hvis du kan vise, hvordan tallene blev til. CSRD kræver et audit-trail i op til 7 år, og en revisor vil altid spørge: hvem ændrede den kategori, hvilken faktor blev brugt, og hvornår? Med qlim8 er svaret ikke et regneark, nogen håber er opdateret. Det er et spor, systemet fører automatisk. Hver kategori-ændring, hver emissions-faktor og hver datakilde logges i takt med, at du arbejder, og sammen med sporet pr. kg CO₂e i platformen giver det en ubrudt kæde fra det færdige tal tilbage til den oprindelige faktura. Det gør revisionen hurtigere og mindre nervepirrende: der er ingen \"hvor kom det tal fra?\"-øjeblikke, fordi historikken allerede ligger der.",
     bullets: [
       "Hver kategori-ændring, faktor og datakilde logges automatisk",
       "7-årigt audit-trail, CSRD-krav, indbygget, ikke tilkøbt",
@@ -896,7 +900,7 @@ export const PR_AUDIT: MarketingPageCopy = {
     },
     {
       pain: "Revisionen trækker ud, fordi hvert spørgsmål udløser en manuel jagt gennem gamle mails og filer.",
-      solution: "Hele datakæden ligger samlet i sporet, med kildehenvisning fra tal tilbage til faktura.",
+      solution: "Hele datakæden ligger samlet i sporet, fra tal tilbage til faktura.",
       outcome: "Revisorens spørgsmål besvares på stedet, ingen bilagsjagt i mails.",
     },
     {
@@ -924,7 +928,7 @@ export const PR_AUDIT: MarketingPageCopy = {
     },
     {
       title: "Ubrudt kæde til bilaget",
-      body: "Sammen med kildehenvisningen pr. kg CO₂e danner sporet en ubrudt kæde fra det færdige tal tilbage til den oprindelige faktura. Ingen led mangler mellem påstand og bilag.",
+      body: "Sammen med sporet pr. kg CO₂e i platformen danner loggen en ubrudt kæde fra det færdige tal tilbage til den oprindelige faktura. Ingen led mangler mellem påstand og bilag.",
     },
   ],
   howItWorks: {
@@ -971,7 +975,7 @@ export const PR_AUDIT: MarketingPageCopy = {
       },
       {
         q: "Kan revisoren se hele datakæden?",
-        a: "Ja. Sammen med kildehenvisningen pr. kg CO₂e danner sporet en ubrudt kæde fra det færdige tal tilbage til den oprindelige faktura. Revisoren kan følge kæden uden at sende forespørgsler.",
+        a: "Ja. Sammen med sporet pr. kg CO₂e i platformen danner loggen en ubrudt kæde fra det færdige tal tilbage til den oprindelige faktura. Revisoren kan følge kæden uden at sende forespørgsler.",
       },
       {
         q: "Kan jeg se, hvem der ændrede et bestemt tal?",
@@ -979,7 +983,7 @@ export const PR_AUDIT: MarketingPageCopy = {
       },
       {
         q: "Hvad hvis jeg retter regnskabet, efter en rapport er lavet?",
-        a: "Ændringen logges i audit-trailet, og hvis rapporten var underskrevet, er dens data låst til tilstanden ved underskrift. Du kan altså rette regnskabet fremadrettet, mens historikken og den signerede rapport bevares.",
+        a: "Ændringen logges i audit-trailet. Rapporten blev frosset, da den blev genereret: den har et versionsnummer, dens datagrundlag er gemt med en hash, og den ændres aldrig. Retter du regnskabet, genererer du en ny version. Har revisoren attesteret rapporten, er attesteringen bundet til præcis den version, så både historikken og den attesterede rapport står fast.",
       },
     ],
   },
