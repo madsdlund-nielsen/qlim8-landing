@@ -184,7 +184,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'For det tredje: dit datakvalitetsbillede skal være ærligt. I qlim8 viser vi en datakvalitetsscore øverst på dashboardet, og på forsiden af PDF-rapporten. Den er bygget på et pointsystem: LCA og produkt-PCF får 5 point, EPD\'er får 4, fysiske enheder med en konkret emissionsfaktor får 3, spend-baserede estimater får 1, og manuelt valg af kategori under 5% confidence trækker fra. Det er vægtet efter virksomhedens samlede udledning. Det er ikke marketing, det er et tal. Min holdning er, at virksomhederne skal bære deres fejl som en rustning. Ærligheden er deres skjold. Når banken kan se, at I selv er transparente om jeres datakvalitet, bygger I tillid, ikke modsat.',
+      text: 'For det tredje: dit datakvalitetsbillede skal være ærligt. I qlim8 viser vi en datakvalitetsscore øverst på dashboardet. Den er bygget på et pointsystem: LCA og produkt-PCF får 5 point, EPD\'er får 4, fysiske enheder med en konkret emissionsfaktor får 3, spend-baserede estimater får 1, og manuelt valg af kategori under 5% confidence trækker fra. Det er vægtet efter virksomhedens samlede udledning. Det er ikke marketing, det er et tal. Min holdning er, at virksomhederne skal bære deres fejl som en rustning. Ærligheden er deres skjold. Når banken kan se, at I selv er transparente om jeres datakvalitet, bygger I tillid, ikke modsat.',
     },
     {
       type: 'paragraph',

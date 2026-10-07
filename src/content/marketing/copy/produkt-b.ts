@@ -572,16 +572,16 @@ export const PR_TEMAER: MarketingPageCopy = {
     eyebrow: "Rapport",
     title: "Vælg rapportens visuelle udtryk",
     subtitle:
-      "PDF-rapporten findes i flere visuelle udtryk. Du vælger det, der passer til jeres virksomhed og læsere, før du genererer. Tallene er de samme uanset udtryk.",
+      "PDF-rapporten findes i tre udgaver: Light, Dark og Consulting. Du vælger den, der passer til jeres virksomhed og læsere, før du genererer. Tallene er de samme i alle tre.",
     primaryCta: DEMO_CTA,
     secondaryCta: heroSecondaryCta,
   },
   intro: {
     heading: "Indpakningen betyder noget, når rapporten skal læses",
-    body: "En klimarapport skal læses, ikke bare arkiveres, og udtrykket er med til at afgøre, om den bliver det. qlim8 lader dig vælge mellem flere visuelle udtryk til PDF-rapporten uden at røre ved indholdet. Udtrykket bestemmer typografi, farver og layout; tallene kommer fra det samme klimaregnskab, uanset hvad du vælger. Du vælger udtryk, før du genererer, og rapporten kommer ud færdig-designet. Vil du se et andet udtryk, genererer du igen, og det bliver en ny version af rapporten med sit eget versionsnummer. Så du bruger ikke tid i et layoutprogram.",
+    body: "En klimarapport skal læses, ikke bare arkiveres, og udtrykket er med til at afgøre, om den bliver det. qlim8 lader dig vælge mellem tre udgaver af PDF-rapporten: Light med hvide sider og luft omkring tallene, Dark med mørke sider og fotografier i fuld bredde, og Consulting i konsulentstil med konklusionen som overskrift. Tallene kommer fra det samme klimaregnskab, uanset hvad du vælger. Du vælger udgave, før du genererer, og rapporten kommer ud færdig-designet. Vil du se et andet udtryk, genererer du igen, og det bliver en ny version af rapporten med sit eget versionsnummer. Så du bruger ikke tid i et layoutprogram.",
     bullets: [
-      "Flere visuelle udtryk til PDF-rapporten.",
-      "Samme tal; kun typografi, farver og layout skifter.",
+      "Tre udgaver af PDF-rapporten: Light, Dark og Consulting.",
+      "Samme tal i alle tre udgaver.",
       "Vælg før du genererer; en ny generering er en ny version.",
     ],
   },
@@ -589,7 +589,7 @@ export const PR_TEMAER: MarketingPageCopy = {
     {
       pain: "Standard-rapporten passer ikke til jer. Den er enten for pyntet eller for tør.",
       solution:
-        "Vælg det udtryk, der passer til jeres virksomhed og læsere, blandt flere designs.",
+        "Vælg den udgave, der passer til jeres virksomhed og læsere, blandt tre designs.",
       outcome: "Rapporten får et udtryk, der passer til læseren, uden at du rører ved tallene.",
     },
     {
@@ -601,7 +601,7 @@ export const PR_TEMAER: MarketingPageCopy = {
     {
       pain: "Skifter du udtryk, er du bange for at tallene flytter sig.",
       solution:
-        "Udtrykket er kun visuelt. Tallene kommer fra det samme klimaregnskab, uanset hvilket udtryk du vælger.",
+        "Udgaven ændrer ikke tallene. De kommer fra det samme klimaregnskab, uanset hvilken udgave du vælger.",
       outcome: "Udtrykket ændrer ikke beregningen, så du kan vælge efter læseren.",
     },
     {
@@ -613,12 +613,12 @@ export const PR_TEMAER: MarketingPageCopy = {
   ],
   features: [
     {
-      title: "Flere udtryk at vælge imellem",
-      body: "PDF-rapporten findes i flere visuelle udtryk med hver sin typografi, farvebrug og layout. Du vælger det, der passer til jeres virksomhed og til dem, der skal læse rapporten.",
+      title: "Tre udgaver at vælge imellem",
+      body: "Light er redaktionel, med hvide sider og luft omkring tallene. Dark har mørke sider og fotografier i fuld bredde. Consulting er sat op i konsulentstil: konklusionen som overskrift, nummererede figurer og kildelinjer. Du vælger den, der passer til jeres virksomhed og til dem, der skal læse rapporten.",
     },
     {
-      title: "Samme indhold i alle udtryk",
-      body: "Uanset udtryk bygger rapporten på det samme klimaregnskab og har det samme indhold: overblik over året, Scope 1, 2 og 3 og jeres reduktionsmål. Udtrykket ændrer typografi, farver og layout, ikke hvad rapporten siger.",
+      title: "Samme tal i alle udgaver",
+      body: "Alle tre udgaver bygger på det samme klimaregnskab og de samme oplysninger: Scope 1, 2 og 3, reduktionsmål og omstillingsplan, energi, affald, medarbejdere og governance. Consulting har desuden en executive summary, en side med nøgletal, en bro over udviklingen i udledningen og en side med jeres tiltag.",
     },
     {
       title: "Færdig-designet PDF",
@@ -641,8 +641,8 @@ export const PR_TEMAER: MarketingPageCopy = {
         body: "Kobl dit regnskab på, og lad qlim8 opgøre klimaregnskabet. Rapporten dækker et helt regnskabsår, så alle 12 måneder skal have data.",
       },
       {
-        title: "2. Vælg udtryk",
-        body: "Vælg rapportens visuelle udtryk, før du genererer. Valget bestemmer typografi, farver og layout.",
+        title: "2. Vælg udgave og skriv jeres tekster",
+        body: "Vælg Light, Dark eller Consulting. Tekster, kun I kan skrive, som lederens forord, skriver I selv i rapporten, og qlim8 kan foreslå en første udgave ud fra jeres egne tal.",
       },
       {
         title: "3. Generér rapporten",
@@ -655,9 +655,9 @@ export const PR_TEMAER: MarketingPageCopy = {
     ],
   },
   valueStats: [
-    { value: "Flere", label: "visuelle udtryk at vælge imellem" },
+    { value: "3", label: "udgaver at vælge imellem" },
     { value: "1 valg", label: "før du genererer" },
-    { value: "Samme tal", label: "uanset udtryk" },
+    { value: "Samme tal", label: "uanset udgave" },
     { value: "2-4 timer", label: "sparet pr. rapport i layout", note: "[antagelse: interne tidsestimater]" },
   ],
   faq: {
@@ -665,11 +665,11 @@ export const PR_TEMAER: MarketingPageCopy = {
     items: [
       {
         q: "Hvilke udtryk kan jeg vælge imellem?",
-        a: "PDF-rapporten findes i flere visuelle udtryk med hver sin typografi, farvebrug og layout. Vi viser dem gerne i en demo, så du kan se, hvilket der passer til jer. Indholdet er det samme i dem alle.",
+        a: "Light, Dark og Consulting. Light er redaktionel med hvide sider, Dark har mørke sider og fotografier i fuld bredde, og Consulting er sat op i konsulentstil med konklusionen som overskrift. Vi viser dem gerne i en demo, så du kan se, hvilken der passer til jer. Tallene er de samme i dem alle.",
       },
       {
         q: "Ændrer udtrykket på tallene i rapporten?",
-        a: "Nej. Udtrykket er rent visuelt: typografi, farver og layout. Tallene kommer fra det samme klimaregnskab, uanset hvilket udtryk du vælger.",
+        a: "Nej. Tallene kommer fra det samme klimaregnskab, uanset hvilken udgave du vælger. Consulting har nogle sider mere end Light og Dark, men de viser de samme tal.",
       },
       {
         q: "Kan jeg skifte udtryk efter jeg har genereret en rapport?",
@@ -677,7 +677,7 @@ export const PR_TEMAER: MarketingPageCopy = {
       },
       {
         q: "Kan jeg give hver modtager sit eget udtryk?",
-        a: "Du kan generere rapporten i det udtryk, der passer bedst til en given læser. Indholdet er det samme: der findes ikke særskilte udgaver til bestyrelse, investor eller bank.",
+        a: "Du kan generere rapporten i den udgave, der passer bedst til en given læser. Tallene er de samme: der findes ikke særskilte udgaver til bestyrelse, investor eller bank.",
       },
       {
         q: "Kan rapporten bære vores eget brand i stedet for qlim8's?",
@@ -688,7 +688,7 @@ export const PR_TEMAER: MarketingPageCopy = {
   closingCta: {
     title: "Giv rapporten et udtryk, der passer til læseren",
     description:
-      "Book en demo, så viser vi PDF-rapporten i de udtryk, du kan vælge imellem.",
+      "Book en demo, så viser vi PDF-rapporten i de tre udgaver, du kan vælge imellem.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },

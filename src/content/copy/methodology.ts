@@ -203,7 +203,7 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
   dataQuality: {
     title: "Hvordan vi måler datakvalitet",
     intro:
-      "Vi viser en datakvalitetsscore øverst på dit dashboard og på forsiden af PDF-rapporten. Den er ikke marketing: den er en konkret, vægtet beregning af hvor god din underliggende data er.",
+      "Vi viser en datakvalitetsscore øverst på dit dashboard. Den er ikke marketing: den er en konkret, vægtet beregning af hvor god din underliggende data er.",
     pointsIntro: "Hver emissionspost får point baseret på hvilken type data der ligger bag:",
     points: [
       { points: "5 point", text: "LCA eller produkt-PCF (mest specifik)" },
@@ -214,7 +214,7 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
     ],
     paragraphsAfter: [
       "Den samlede datakvalitetsscore er et vægtet gennemsnit baseret på din virksomheds samlede udledning. En post på 100 ton CO2e med 3 point vejer mere end en post på 1 ton CO2e med 5 point. Det betyder, at scoren afspejler dataens kvalitet der hvor det betyder noget.",
-      "Du ser scoren direkte på dashboardet, og du ser den på forsiden af PDF-rapporten. Vi skjuler den ikke. Den er en del af det at være ærlig, og over tid er det den der peger din virksomhed mod bedre datapraksis, fordi du kan se hvor du kan blive bedre.",
+      "Du ser scoren direkte på dashboardet. Vi skjuler den ikke. Den er en del af det at være ærlig, og over tid er det den der peger din virksomhed mod bedre datapraksis, fordi du kan se hvor du kan blive bedre.",
     ],
   },
   standards: {
@@ -270,7 +270,7 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
       },
       {
         title: "Vi skjuler ikke dårlig datakvalitet.",
-        body: "Datakvalitetsscoren står på dit dashboard og på forsiden af PDF-rapporten. Ærligheden er virksomhedens skjold.",
+        body: "Datakvalitetsscoren står øverst på dit dashboard. Ærligheden er virksomhedens skjold.",
       },
     ],
   },

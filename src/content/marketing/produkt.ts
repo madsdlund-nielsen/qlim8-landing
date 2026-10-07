@@ -150,7 +150,7 @@ export const PRODUKT_NODES: MarketingNode[] = [
     title: "Temaer", navLabel: "Temaer",
     blurb: "Vælg rapportens visuelle udtryk.",
     seoTitle: "Rapport-temaer: vælg PDF-rapportens udtryk",
-    seoDescription: "Vælg det visuelle udtryk til din PDF-rapport. Samme tal og samme indhold, sat op i den stil, der passer til anledningen.",
+    seoDescription: "Vælg mellem tre udgaver af PDF-rapporten: Light, Dark og Consulting. Samme tal, sat op i den stil, der passer til anledningen.",
     parentSlug: "pdf-rapport", navGroup: "Rapportering", related: ["pdf-rapport", "modtagere", "rapportering"],
     defaults: PR_TEMAER,
   },
