@@ -6,6 +6,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import {
+  comparisonSections,
   ctaLabel,
   formatKr,
   freeStartHref,
@@ -14,6 +15,7 @@ import {
   isSelfServe,
   offersFromPackages,
   priceLines,
+  salesLine,
   trialLine,
   type PublicPackages,
 } from "./packageView.ts";
@@ -22,6 +24,7 @@ const fixture = (name: string): PublicPackages =>
   JSON.parse(readFileSync(new URL(`../../scripts/fixtures/${name}`, import.meta.url), "utf8"));
 const v1 = fixture("public-packages.v1.json");
 const v2 = fixture("public-packages.v2.json");
+const v3 = fixture("public-packages.v3.json");
 const pkg = (data: PublicPackages, key: string) => data.packages.find((p) => p.key === key)!;
 
 test("catalog v1 keeps the sales-led page: nothing self-serve, no price, no offer", () => {
@@ -78,7 +81,7 @@ test("'Kom gratis i gang' goes to the free company package's signup URL, from th
 
 test("buttons say what they do", () => {
   assert.equal(ctaLabel(pkg(v2, "starter")), "Køb Starter");
-  assert.equal(ctaLabel(pkg(v2, "free")), "Kom gratis i gang");
+  assert.equal(ctaLabel(pkg(v2, "free")), "Opret gratis konto");
   assert.equal(ctaLabel(pkg(v2, "revisor")), "Kom i gang som revisor");
   assert.equal(ctaLabel(pkg(v2, "enterprise")), "Book demo");
 });
@@ -128,8 +131,81 @@ test("a card lists what the catalog sells, never a curated list that disagrees w
 });
 
 test("an advisor package, which lists no capabilities, keeps its curated list", () => {
-  assert.deepEqual(packageFeatures(v2, pkg(v2, "revisor"), ["Dedikeret overblik over kunder", " "]), {
-    label: null,
-    items: ["Dedikeret overblik over kunder"],
-  });
+  const card = packageFeatures(v2, pkg(v2, "revisor"), ["Dedikeret overblik over kunder", " "]);
+  assert.equal(card.label, null);
+  assert.deepEqual(card.items, ["Dedikeret overblik over kunder"]);
+  assert.deepEqual(card.entries, [{ text: "Dedikeret overblik over kunder", planned: false }]);
+});
+
+// Catalog version 3 (October 2026): Starter 795 kr and Business 3.995 kr, no
+// public price for Enterprise, cards with roadmap lines, the comparison by
+// category. v3 is the app's own answer, committed in scripts/fixtures/.
+
+test("v3: Starter and Business are priced, Enterprise has no price and says to contact sales", () => {
+  assert.deepEqual(priceLines(pkg(v3, "starter")), { main: "795 kr/md", note: "faktureres årligt (9.540 kr), ekskl. moms" });
+  assert.deepEqual(priceLines(pkg(v3, "business")), { main: "3.995 kr/md", note: "faktureres årligt (47.940 kr), ekskl. moms" });
+  assert.equal(priceLines(pkg(v3, "enterprise")), null);
+  assert.equal(salesLine(pkg(v3, "enterprise")), "Kontakt salg");
+  // A package with a price, an advisor package and a free one say nothing in a price's place.
+  for (const key of ["free", "starter", "business", "revisor"]) assert.equal(salesLine(pkg(v3, key)), null);
+  // Business is still sold after a conversation: its button books a demo.
+  assert.equal(pkg(v3, "business").cta.kind, "demo");
+  assert.equal(ctaLabel(pkg(v3, "business")), "Book demo");
+  assert.equal(ctaLabel(pkg(v3, "free")), "Opret gratis konto");
+});
+
+test("v3: the offers are one per public price: Free, Starter, Premium and Business; Enterprise has none", () => {
+  assert.deepEqual(offersFromPackages(v3).map((o) => [o.name, o.price]), [
+    ["Free", "0.00"],
+    ["Starter", "9540.00"],
+    ["Premium", "23940.00"],
+    ["Business", "47940.00"],
+  ]);
+});
+
+test("v3: a card lists its lines in order, the roadmap ones marked planned", () => {
+  const business = packageFeatures(v3, pkg(v3, "business"));
+  assert.equal(business.label, "Alt i Premium, plus");
+  assert.deepEqual(
+    business.entries.map((e) => `${e.planned ? "planlagt" : "bygget"}: ${e.text}`),
+    [
+      "planlagt: Dobbelt væsentlighedsanalyse (DMA)",
+      "planlagt: Rollebaseret adgangskontrol (RBAC)",
+      "bygget: Scenario Builder",
+      "bygget: Synk til Notion og Airtable",
+      "bygget: Chat & telefon-support",
+      "planlagt: Koncern (flere CVR-numre)",
+    ],
+  );
+  assert.deepEqual(business.items, business.entries.map((e) => e.text));
+  // The flat list a reader without highlightItems would use holds built lines only.
+  assert.deepEqual(pkg(v3, "business").highlights, ["Scenario Builder", "Synk til Notion og Airtable", "Chat & telefon-support"]);
+});
+
+test("a card from an API without highlightItems lists its built lines, none planned", () => {
+  const card = packageFeatures(v2, pkg(v2, "premium"));
+  assert.deepEqual(card.items, pkg(v2, "premium").highlights);
+  assert.ok(card.entries.every((e) => !e.planned));
+});
+
+test("v3: the comparison comes by category, roadmap rows marked; v2 has none and lists its flat rows", () => {
+  const sections = comparisonSections(v3)!;
+  assert.deepEqual(sections.map((s) => s.label), ["Views", "Analyser", "Funktioner", "Integrationer", "Rapporter", "Admin"]);
+  const rows = sections.flatMap((s) => s.rows);
+  assert.equal(rows.length, 43);
+  assert.deepEqual(rows.filter((r) => r.status === "planned").map((r) => r.label).sort(), [
+    "Dobbelt væsentlighedsanalyse (DMA)",
+    "Koncern (flere CVR-numre)",
+    "Kryds-mapping til alle store standarder (CSRD, IFRS, CPD m.fl.)",
+    "Leverandørportal",
+    "Oppetids-SLA",
+    "Politikker",
+    "Rollebaseret adgangskontrol (RBAC)",
+    "SSO / SAML",
+    "Scope 3",
+  ]);
+  // The flat rows, which a page without sections lists, hold built capabilities only.
+  assert.ok(v3.comparison.rows.every((r) => r.status === "live"));
+  assert.equal(comparisonSections(v2), null);
+  assert.equal(comparisonSections(v1), null);
 });

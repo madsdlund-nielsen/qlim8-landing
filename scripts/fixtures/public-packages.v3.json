@@ -1,0 +1,1433 @@
+{
+  "language": "da",
+  "catalogVersion": 3,
+  "currency": "DKK",
+  "vat": "exclusive",
+  "packages": [
+    {
+      "key": "free",
+      "name": "Free",
+      "tagline": "Gratis for evigt",
+      "audience": "Freelancere og enkeltmandsvirksomheder",
+      "accountType": "company",
+      "displayRank": 5,
+      "salesMotion": "plg",
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 0,
+        "monthlyMinor": 0
+      },
+      "advisorPrice": null,
+      "free": true,
+      "cta": {
+        "kind": "signup",
+        "url": "https://app.qlim8.com/signup?package=free"
+      },
+      "highlights": [
+        "Dashboard",
+        "Manuel dataregistrering",
+        "Automatisk kategorisering (AI-faktura)",
+        "Excel/CSV-upload",
+        "2 API-integrationer: Eloverblik og én simpel dansk ERP (e-conomic, Dinero eller Billy)",
+        "Udledningsoversigt",
+        "Excel rapport",
+        "Scope 1 og 2 i detaljer, scope 3 samlet (uden kategorier)"
+      ],
+      "highlightItems": [
+        {
+          "label": "Dashboard",
+          "status": "live"
+        },
+        {
+          "label": "Manuel dataregistrering",
+          "status": "live"
+        },
+        {
+          "label": "Automatisk kategorisering (AI-faktura)",
+          "status": "live"
+        },
+        {
+          "label": "Excel/CSV-upload",
+          "status": "live"
+        },
+        {
+          "label": "2 API-integrationer: Eloverblik og én simpel dansk ERP (e-conomic, Dinero eller Billy)",
+          "status": "live"
+        },
+        {
+          "label": "Udledningsoversigt",
+          "status": "live"
+        },
+        {
+          "label": "Excel rapport",
+          "status": "live"
+        },
+        {
+          "label": "Scope 1 og 2 i detaljer, scope 3 samlet (uden kategorier)",
+          "status": "live"
+        }
+      ],
+      "trialDays": 0
+    },
+    {
+      "key": "starter",
+      "name": "Starter",
+      "tagline": null,
+      "audience": "Små SMV'er, 1-20 ansatte",
+      "accountType": "company",
+      "displayRank": 10,
+      "salesMotion": "plg",
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 954000,
+        "monthlyMinor": 79500
+      },
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "buy",
+        "url": "https://app.qlim8.com/signup?package=starter"
+      },
+      "highlights": [
+        "5 API-integrationer",
+        "VSME Basis-rapport",
+        "Konsulent-adgang",
+        "Team-administration",
+        "PCF/EPD-upload",
+        "Eksport til Drive/OneDrive",
+        "Lønsystem-integrationer",
+        "Email-support"
+      ],
+      "highlightItems": [
+        {
+          "label": "5 API-integrationer",
+          "status": "live"
+        },
+        {
+          "label": "VSME Basis-rapport",
+          "status": "live"
+        },
+        {
+          "label": "Konsulent-adgang",
+          "status": "live"
+        },
+        {
+          "label": "Team-administration",
+          "status": "live"
+        },
+        {
+          "label": "PCF/EPD-upload",
+          "status": "live"
+        },
+        {
+          "label": "Eksport til Drive/OneDrive",
+          "status": "live"
+        },
+        {
+          "label": "Lønsystem-integrationer",
+          "status": "live"
+        },
+        {
+          "label": "Email-support",
+          "status": "live"
+        }
+      ],
+      "trialDays": 7
+    },
+    {
+      "key": "premium",
+      "name": "Premium",
+      "tagline": null,
+      "audience": "Etablerede SMV'er, 20-50 ansatte",
+      "accountType": "company",
+      "displayRank": 20,
+      "salesMotion": "plg",
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 2394000,
+        "monthlyMinor": 199500
+      },
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "buy",
+        "url": "https://app.qlim8.com/signup?package=premium"
+      },
+      "highlights": [
+        "Analyse: kategorier, leverandører og udvikling",
+        "Offentlig profil & Brag Board badge",
+        "Reduction Hub (reduktionsmål)",
+        "VSME Comprehensive-rapport",
+        "MCP-adgang",
+        "Slack/Teams-notifikationer",
+        "Zapier-integration",
+        "Professionel ESG rapport",
+        "Direkte revisor-adgang"
+      ],
+      "highlightItems": [
+        {
+          "label": "Analyse: kategorier, leverandører og udvikling",
+          "status": "live"
+        },
+        {
+          "label": "Offentlig profil & Brag Board badge",
+          "status": "live"
+        },
+        {
+          "label": "Reduction Hub (reduktionsmål)",
+          "status": "live"
+        },
+        {
+          "label": "Politikker",
+          "status": "planned"
+        },
+        {
+          "label": "VSME Comprehensive-rapport",
+          "status": "live"
+        },
+        {
+          "label": "MCP-adgang",
+          "status": "live"
+        },
+        {
+          "label": "Slack/Teams-notifikationer",
+          "status": "live"
+        },
+        {
+          "label": "Zapier-integration",
+          "status": "live"
+        },
+        {
+          "label": "Professionel ESG rapport",
+          "status": "live"
+        },
+        {
+          "label": "Direkte revisor-adgang",
+          "status": "live"
+        }
+      ],
+      "trialDays": 7
+    },
+    {
+      "key": "business",
+      "name": "Business",
+      "tagline": null,
+      "audience": "Mid-market og produktion, 40-120 ansatte",
+      "accountType": "company",
+      "displayRank": 25,
+      "salesMotion": "slg",
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 4794000,
+        "monthlyMinor": 399500
+      },
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "demo",
+        "url": null
+      },
+      "highlights": [
+        "Scenario Builder",
+        "Synk til Notion og Airtable",
+        "Chat & telefon-support"
+      ],
+      "highlightItems": [
+        {
+          "label": "Dobbelt væsentlighedsanalyse (DMA)",
+          "status": "planned"
+        },
+        {
+          "label": "Rollebaseret adgangskontrol (RBAC)",
+          "status": "planned"
+        },
+        {
+          "label": "Scenario Builder",
+          "status": "live"
+        },
+        {
+          "label": "Synk til Notion og Airtable",
+          "status": "live"
+        },
+        {
+          "label": "Chat & telefon-support",
+          "status": "live"
+        },
+        {
+          "label": "Koncern (flere CVR-numre)",
+          "status": "planned"
+        }
+      ],
+      "trialDays": 0
+    },
+    {
+      "key": "enterprise",
+      "name": "Enterprise",
+      "tagline": null,
+      "audience": "Værdikæder og koncerner, 100+ ansatte",
+      "accountType": "company",
+      "displayRank": 30,
+      "salesMotion": "slg",
+      "price": null,
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "demo",
+        "url": null
+      },
+      "highlights": [
+        "Komplet værdikæde via CVR",
+        "Fuld API-adgang",
+        "PCF/EPD dedikeret oversigt",
+        "Dedikeret Customer Success Manager"
+      ],
+      "highlightItems": [
+        {
+          "label": "Kryds-mapping til alle store standarder (CSRD, IFRS, CPD m.fl.)",
+          "status": "planned"
+        },
+        {
+          "label": "Komplet værdikæde via CVR",
+          "status": "live"
+        },
+        {
+          "label": "Fuld API-adgang",
+          "status": "live"
+        },
+        {
+          "label": "PCF/EPD dedikeret oversigt",
+          "status": "live"
+        },
+        {
+          "label": "Dedikeret Customer Success Manager",
+          "status": "live"
+        },
+        {
+          "label": "SSO / SAML",
+          "status": "planned"
+        },
+        {
+          "label": "Oppetids-SLA",
+          "status": "planned"
+        },
+        {
+          "label": "Leverandørportal",
+          "status": "planned"
+        }
+      ],
+      "trialDays": 0
+    },
+    {
+      "key": "revisor",
+      "name": "Revisor",
+      "tagline": "Gratis for revisorer",
+      "audience": "Revisorer, der attesterer klienters klimaregnskab",
+      "accountType": "advisor",
+      "displayRank": 100,
+      "salesMotion": "plg",
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 0,
+        "monthlyMinor": 0
+      },
+      "advisorPrice": null,
+      "free": true,
+      "cta": {
+        "kind": "signup",
+        "url": "https://app.qlim8.com/signup?package=revisor&type=advisor"
+      },
+      "highlights": [],
+      "highlightItems": [],
+      "trialDays": 0
+    },
+    {
+      "key": "konsulent",
+      "name": "Konsulent",
+      "tagline": "Gratis med en aktiv klient efter 14 dage",
+      "audience": "Konsulenter, der arbejder i klienters klimaregnskab",
+      "accountType": "advisor",
+      "displayRank": 110,
+      "salesMotion": "plg",
+      "price": null,
+      "advisorPrice": null,
+      "free": false,
+      "cta": {
+        "kind": "signup",
+        "url": "https://app.qlim8.com/signup?package=konsulent&type=advisor"
+      },
+      "highlights": [],
+      "highlightItems": [],
+      "trialDays": 0
+    }
+  ],
+  "comparison": {
+    "packages": [
+      {
+        "key": "free",
+        "name": "Free"
+      },
+      {
+        "key": "starter",
+        "name": "Starter"
+      },
+      {
+        "key": "premium",
+        "name": "Premium"
+      },
+      {
+        "key": "business",
+        "name": "Business"
+      },
+      {
+        "key": "enterprise",
+        "name": "Enterprise"
+      }
+    ],
+    "rows": [
+      {
+        "key": "dashboard",
+        "label": "Dashboard",
+        "status": "live",
+        "group": "views",
+        "cells": {
+          "free": true,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "carbonLedger",
+        "label": "Udledningsoversigt",
+        "status": "live",
+        "group": "views",
+        "cells": {
+          "free": true,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.publicBadge",
+        "label": "Offentlig profil & Brag Board badge",
+        "status": "live",
+        "group": "views",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "pcfEpdDedicatedView",
+        "label": "PCF/EPD dedikeret oversigt",
+        "status": "live",
+        "group": "views",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": false,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "core.emissionsCalculation",
+        "label": "Scope 1+2",
+        "status": "live",
+        "group": "analyses",
+        "cells": {
+          "free": true,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "analytics",
+        "label": "Analyse: kategorier, leverandører og udvikling",
+        "status": "live",
+        "group": "analyses",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "scenarioBuilder",
+        "label": "Scenario Builder",
+        "status": "live",
+        "group": "analyses",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "activitiesPerPeriod",
+        "label": "Posteringer pr. år",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": "Ubegrænset",
+          "starter": "Ubegrænset",
+          "premium": "Ubegrænset",
+          "business": "Ubegrænset",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "dataCollector.manual",
+        "label": "Manuel dataregistrering",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": true,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "dataCollector.aiInvoice",
+        "label": "Automatisk kategorisering (AI-faktura)",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": true,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "dataCollector.excelUpload",
+        "label": "Excel/CSV-upload",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": true,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "pcfSlots",
+        "label": "PCF/EPD-dokumenter",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": false,
+          "starter": "3 dokumenter",
+          "premium": "5 dokumenter",
+          "business": "20 dokumenter",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "reductionHub",
+        "label": "Reduction Hub (reduktionsmål)",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "supplyChain",
+        "label": "Komplet værdikæde via CVR",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": false,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "integrations.total",
+        "label": "Integrationer i alt",
+        "status": "live",
+        "group": "integrations",
+        "cells": {
+          "free": "2 forbindelser",
+          "starter": "5 forbindelser",
+          "premium": "Ubegrænset",
+          "business": "Ubegrænset",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "workforce.payroll",
+        "label": "Lønsystem-integrationer",
+        "status": "live",
+        "group": "integrations",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.destinations",
+        "label": "Eksport til Drive/OneDrive",
+        "status": "live",
+        "group": "integrations",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "notifications.channels",
+        "label": "Slack/Teams-notifikationer",
+        "status": "live",
+        "group": "integrations",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "integrations.automation",
+        "label": "Zapier-integration",
+        "status": "live",
+        "group": "integrations",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "mcpAccess",
+        "label": "MCP-adgang",
+        "status": "live",
+        "group": "integrations",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.recordSync",
+        "label": "Synk til Notion og Airtable",
+        "status": "live",
+        "group": "integrations",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "fullApiAccess",
+        "label": "Fuld API-adgang",
+        "status": "live",
+        "group": "integrations",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": false,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.excel",
+        "label": "Excel rapport",
+        "status": "live",
+        "group": "reports",
+        "cells": {
+          "free": true,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "vsmeBasic",
+        "label": "VSME Basis-rapport",
+        "status": "live",
+        "group": "reports",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "vsmeComprehensive",
+        "label": "VSME Comprehensive-rapport",
+        "status": "live",
+        "group": "reports",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "exportStudio.pdf",
+        "label": "Professionel ESG rapport",
+        "status": "live",
+        "group": "reports",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "seats",
+        "label": "Brugere",
+        "status": "live",
+        "group": "admin",
+        "cells": {
+          "free": "1 bruger",
+          "starter": "Ubegrænset",
+          "premium": "Ubegrænset",
+          "business": "Ubegrænset",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "externalAdvisors",
+        "label": "Eksterne rådgivere",
+        "status": "live",
+        "group": "admin",
+        "cells": {
+          "free": "0 rådgivere",
+          "starter": "1 rådgiver",
+          "premium": "Ubegrænset",
+          "business": "Ubegrænset",
+          "enterprise": "Ubegrænset"
+        }
+      },
+      {
+        "key": "teamManagement",
+        "label": "Team-administration",
+        "status": "live",
+        "group": "admin",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "consultantAccess",
+        "label": "Konsulent-adgang",
+        "status": "live",
+        "group": "admin",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "support.email",
+        "label": "Email-support",
+        "status": "live",
+        "group": "admin",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "auditAccess",
+        "label": "Direkte revisor-adgang",
+        "status": "live",
+        "group": "admin",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "support.chatPhone",
+        "label": "Chat & telefon-support",
+        "status": "live",
+        "group": "admin",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "support.dedicatedCsm",
+        "label": "Dedikeret Customer Success Manager",
+        "status": "live",
+        "group": "admin",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": false,
+          "enterprise": true
+        }
+      }
+    ],
+    "sections": [
+      {
+        "key": "views",
+        "label": "Views",
+        "rows": [
+          {
+            "key": "dashboard",
+            "label": "Dashboard",
+            "status": "live",
+            "group": "views",
+            "cells": {
+              "free": true,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "carbonLedger",
+            "label": "Udledningsoversigt",
+            "status": "live",
+            "group": "views",
+            "cells": {
+              "free": true,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "exportStudio.publicBadge",
+            "label": "Offentlig profil & Brag Board badge",
+            "status": "live",
+            "group": "views",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "pcfEpdDedicatedView",
+            "label": "PCF/EPD dedikeret oversigt",
+            "status": "live",
+            "group": "views",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": false,
+              "enterprise": true
+            }
+          }
+        ]
+      },
+      {
+        "key": "analyses",
+        "label": "Analyser",
+        "rows": [
+          {
+            "key": "core.emissionsCalculation",
+            "label": "Scope 1+2",
+            "status": "live",
+            "group": "analyses",
+            "cells": {
+              "free": true,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "core.scope3Categories",
+            "label": "Scope 3",
+            "status": "planned",
+            "group": "analyses",
+            "cells": {
+              "free": "Summeret",
+              "starter": "Kategoriseret",
+              "premium": "Kategoriseret",
+              "business": "Kategoriseret",
+              "enterprise": "Kategoriseret"
+            }
+          },
+          {
+            "key": "analytics",
+            "label": "Analyse: kategorier, leverandører og udvikling",
+            "status": "live",
+            "group": "analyses",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "scenarioBuilder",
+            "label": "Scenario Builder",
+            "status": "live",
+            "group": "analyses",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "reports.doubleMateriality",
+            "label": "Dobbelt væsentlighedsanalyse (DMA)",
+            "status": "planned",
+            "group": "analyses",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": true,
+              "enterprise": true
+            }
+          }
+        ]
+      },
+      {
+        "key": "functions",
+        "label": "Funktioner",
+        "rows": [
+          {
+            "key": "activitiesPerPeriod",
+            "label": "Posteringer pr. år",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": "Ubegrænset",
+              "starter": "Ubegrænset",
+              "premium": "Ubegrænset",
+              "business": "Ubegrænset",
+              "enterprise": "Ubegrænset"
+            }
+          },
+          {
+            "key": "dataCollector.manual",
+            "label": "Manuel dataregistrering",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": true,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "dataCollector.aiInvoice",
+            "label": "Automatisk kategorisering (AI-faktura)",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": true,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "dataCollector.excelUpload",
+            "label": "Excel/CSV-upload",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": true,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "pcfSlots",
+            "label": "PCF/EPD-dokumenter",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": "3 dokumenter",
+              "premium": "5 dokumenter",
+              "business": "20 dokumenter",
+              "enterprise": "Ubegrænset"
+            }
+          },
+          {
+            "key": "reductionHub",
+            "label": "Reduction Hub (reduktionsmål)",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "policies",
+            "label": "Politikker",
+            "status": "planned",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "supplyChain",
+            "label": "Komplet værdikæde via CVR",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": false,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "valueChain.supplierPortal",
+            "label": "Leverandørportal",
+            "status": "planned",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": false,
+              "enterprise": true
+            }
+          }
+        ]
+      },
+      {
+        "key": "integrations",
+        "label": "Integrationer",
+        "rows": [
+          {
+            "key": "integrations.total",
+            "label": "Integrationer i alt",
+            "status": "live",
+            "group": "integrations",
+            "cells": {
+              "free": "2 forbindelser",
+              "starter": "5 forbindelser",
+              "premium": "Ubegrænset",
+              "business": "Ubegrænset",
+              "enterprise": "Ubegrænset"
+            }
+          },
+          {
+            "key": "workforce.payroll",
+            "label": "Lønsystem-integrationer",
+            "status": "live",
+            "group": "integrations",
+            "cells": {
+              "free": false,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "exportStudio.destinations",
+            "label": "Eksport til Drive/OneDrive",
+            "status": "live",
+            "group": "integrations",
+            "cells": {
+              "free": false,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "notifications.channels",
+            "label": "Slack/Teams-notifikationer",
+            "status": "live",
+            "group": "integrations",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "integrations.automation",
+            "label": "Zapier-integration",
+            "status": "live",
+            "group": "integrations",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "mcpAccess",
+            "label": "MCP-adgang",
+            "status": "live",
+            "group": "integrations",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "exportStudio.recordSync",
+            "label": "Synk til Notion og Airtable",
+            "status": "live",
+            "group": "integrations",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "fullApiAccess",
+            "label": "Fuld API-adgang",
+            "status": "live",
+            "group": "integrations",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": false,
+              "enterprise": true
+            }
+          }
+        ]
+      },
+      {
+        "key": "reports",
+        "label": "Rapporter",
+        "rows": [
+          {
+            "key": "exportStudio.excel",
+            "label": "Excel rapport",
+            "status": "live",
+            "group": "reports",
+            "cells": {
+              "free": true,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "vsmeBasic",
+            "label": "VSME Basis-rapport",
+            "status": "live",
+            "group": "reports",
+            "cells": {
+              "free": false,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "vsmeComprehensive",
+            "label": "VSME Comprehensive-rapport",
+            "status": "live",
+            "group": "reports",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "exportStudio.pdf",
+            "label": "Professionel ESG rapport",
+            "status": "live",
+            "group": "reports",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "reports.crossMapping",
+            "label": "Kryds-mapping til alle store standarder (CSRD, IFRS, CPD m.fl.)",
+            "status": "planned",
+            "group": "reports",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": false,
+              "enterprise": true
+            }
+          }
+        ]
+      },
+      {
+        "key": "admin",
+        "label": "Admin",
+        "rows": [
+          {
+            "key": "seats",
+            "label": "Brugere",
+            "status": "live",
+            "group": "admin",
+            "cells": {
+              "free": "1 bruger",
+              "starter": "Ubegrænset",
+              "premium": "Ubegrænset",
+              "business": "Ubegrænset",
+              "enterprise": "Ubegrænset"
+            }
+          },
+          {
+            "key": "externalAdvisors",
+            "label": "Eksterne rådgivere",
+            "status": "live",
+            "group": "admin",
+            "cells": {
+              "free": "0 rådgivere",
+              "starter": "1 rådgiver",
+              "premium": "Ubegrænset",
+              "business": "Ubegrænset",
+              "enterprise": "Ubegrænset"
+            }
+          },
+          {
+            "key": "teamManagement",
+            "label": "Team-administration",
+            "status": "live",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "consultantAccess",
+            "label": "Konsulent-adgang",
+            "status": "live",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "support.email",
+            "label": "Email-support",
+            "status": "live",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "auditAccess",
+            "label": "Direkte revisor-adgang",
+            "status": "live",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "customUserProfiles",
+            "label": "Rollebaseret adgangskontrol (RBAC)",
+            "status": "planned",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "support.chatPhone",
+            "label": "Chat & telefon-support",
+            "status": "live",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "org.multiEntity",
+            "label": "Koncern (flere CVR-numre)",
+            "status": "planned",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "support.dedicatedCsm",
+            "label": "Dedikeret Customer Success Manager",
+            "status": "live",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": false,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "ssoAccess",
+            "label": "SSO / SAML",
+            "status": "planned",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": false,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "support.uptimeSla",
+            "label": "Oppetids-SLA",
+            "status": "planned",
+            "group": "admin",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": false,
+              "enterprise": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
