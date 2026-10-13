@@ -26,6 +26,7 @@ import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta"
 import { BASE_URL } from "@/lib/schema";
 import { fetchPublicPackages } from "@/lib/packages";
 import {
+  comparisonSections,
   ctaLabel,
   freeStartHref,
   groupPackages,
@@ -84,7 +85,8 @@ function renderApiPackage(
   level = "##",
 ): string {
   const price = priceLines(pkg);
-  const { label, items: features } = packageFeatures(data, pkg, curated?.features);
+  const { label, entries } = packageFeatures(data, pkg, curated?.features);
+  const features = entries.map((f) => (f.planned ? `${f.text} (planlagt)` : f.text));
   const button =
     pkg.cta.kind === "demo" || !pkg.cta.url ? `[${DEMO_LABEL}](${BASE_URL}${DEMO_HREF})` : `[${ctaLabel(pkg)}](${pkg.cta.url})`;
   return [
@@ -99,18 +101,27 @@ function renderApiPackage(
     .join("\n\n");
 }
 
-/** The API's comparison as one markdown table (any number of packages). */
+/**
+ * The API's comparison as markdown (any number of packages): one table, or one
+ * per category when the API sorts the rows into categories, a roadmap row
+ * marked "(planlagt)".
+ */
 function apiComparisonTable(data: PublicPackages, title: string): string | undefined {
   const cols = data.comparison.packages;
-  if (!cols.length || !data.comparison.rows.length) return undefined;
-  return [
-    `## ${title}`,
+  const sections = comparisonSections(data);
+  const rows = sections ? sections.flatMap((sec) => sec.rows) : data.comparison.rows;
+  if (!cols.length || !rows.length) return undefined;
+  const table = (rs: typeof rows) =>
     [
       `| Funktion | ${cols.map((c) => c.name).join(" | ")} |`,
       `| --- | ${cols.map(() => "---").join(" | ")} |`,
-      ...data.comparison.rows.map((r) => `| ${r.label} | ${cols.map((c) => comparisonCell(r.cells[c.key] ?? false)).join(" | ")} |`),
-    ].join("\n"),
-  ].join("\n\n");
+      ...rs.map(
+        (r) =>
+          `| ${r.label}${r.status === "planned" ? " (planlagt)" : ""} | ${cols.map((c) => comparisonCell(r.cells[c.key] ?? false)).join(" | ")} |`,
+      ),
+    ].join("\n");
+  if (!sections) return [`## ${title}`, table(rows)].join("\n\n");
+  return [`## ${title}`, ...sections.flatMap((sec) => [`### ${sec.label}`, table(sec.rows)])].join("\n\n");
 }
 
 function faqSection(faq: { title: string; items: { q: string; a: string }[] } | undefined): string | undefined {

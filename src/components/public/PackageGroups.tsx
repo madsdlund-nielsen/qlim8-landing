@@ -5,15 +5,19 @@
 // A package's curated name and tagline still come from the CMS-editable page
 // copy when it has an entry for the package key. Its list is what the API
 // says it adds over the package before it (packageFeatures): a curated list
-// is shown only for a package the API lists nothing for.
+// is shown only for a package the API lists nothing for. A capability the app
+// has not built is listed marked "Planlagt", never as built.
 import { DEMO_HREF, DEMO_LABEL } from "@/content/cta";
 import {
+  comparisonSections,
   ctaLabel,
   groupPackages,
   packageFeatures,
   priceLines,
+  salesLine,
   trialLine,
   type ComparisonCell,
+  type ComparisonRow,
   type PackageGroup,
   type PublicPackage,
   type PublicPackages,
@@ -38,9 +42,19 @@ function Cell({ value }: { value: ComparisonCell | undefined }) {
   return <span className="block text-center text-[12px] font-medium text-gray-700 leading-tight">{value}</span>;
 }
 
+/** The mark on a line or row that is on the roadmap, not built. */
+function PlannedMark() {
+  return (
+    <span className="ml-2 inline-block rounded-full border border-gray-300 px-2 py-0.5 align-middle text-[11px] font-medium text-gray-500" data-testid="planned-mark">
+      Planlagt
+    </span>
+  );
+}
+
 function PackageCard({ data, pkg, copy }: { data: PublicPackages; pkg: PublicPackage; copy?: PackageCardCopy }) {
   const price = priceLines(pkg);
-  const { label: includedLabel, items: features } = packageFeatures(data, pkg, copy?.features);
+  const { label: includedLabel, entries: features } = packageFeatures(data, pkg, copy?.features);
+  const sales = price ? null : salesLine(pkg);
   const href = pkg.cta.kind === "demo" || !pkg.cta.url ? DEMO_HREF : pkg.cta.url;
   const label = pkg.cta.kind === "demo" ? DEMO_LABEL : ctaLabel(pkg);
   const primary = pkg.cta.kind !== "demo";
@@ -52,6 +66,11 @@ function PackageCard({ data, pkg, copy }: { data: PublicPackages; pkg: PublicPac
           <p className="text-sm text-gray-600">{copy?.tagline ?? pkg.tagline ?? pkg.audience}</p>
         )}
       </div>
+      {sales && (
+        <div className="mb-4" data-testid={`price-${pkg.key}`}>
+          <p className="text-2xl font-bold text-gray-900">{sales}</p>
+        </div>
+      )}
       {price && (
         <div className="mb-4" data-testid={`price-${pkg.key}`}>
           <p className="text-2xl font-bold text-gray-900">{price.main}</p>
@@ -80,9 +99,12 @@ function PackageCard({ data, pkg, copy }: { data: PublicPackages; pkg: PublicPac
           {includedLabel && <p className="font-semibold text-gray-900 text-sm mb-3">{includedLabel}:</p>}
           <ul className="space-y-1.5 flex-1 text-sm text-gray-700">
             {features.map((f) => (
-              <li key={f} className="flex gap-2.5">
+              <li key={f.text} className="flex gap-2.5">
                 <span className="mt-2 h-1 w-2.5 shrink-0 bg-primary" aria-hidden="true" />
-                <span>{f}</span>
+                <span>
+                  {f.text}
+                  {f.planned && <PlannedMark />}
+                </span>
               </li>
             ))}
           </ul>
@@ -104,6 +126,25 @@ export function PackageGroups({
   const groups = groupPackages(data);
   const order: PackageGroup[] = ["free", "selfServe", "contact"];
   const columns = data.comparison.packages;
+  const sections = comparisonSections(data);
+  const rowCount = sections ? sections.reduce((n, sec) => n + sec.rows.length, 0) : data.comparison.rows.length;
+  let rowIndex = 0;
+  const renderRow = (row: ComparisonRow) => {
+    const i = rowIndex++;
+    return (
+      <tr key={row.key} className={`border-b border-gray-100 ${i % 2 === 0 ? "" : "bg-gray-50/50"}`} data-testid={`feature-row-${i}`}>
+        <td className="py-3 pr-4 text-sm text-gray-700">
+          {row.label}
+          {row.status === "planned" && <PlannedMark />}
+        </td>
+        {columns.map((c) => (
+          <td key={c.key} className="py-3 px-3 text-center">
+            <Cell value={row.cells[c.key]} />
+          </td>
+        ))}
+      </tr>
+    );
+  };
   return (
     <>
       {order
@@ -120,7 +161,7 @@ export function PackageGroups({
           </section>
         ))}
 
-      {columns.length > 0 && data.comparison.rows.length > 0 && (
+      {columns.length > 0 && rowCount > 0 && (
         <div className="mt-8 overflow-x-auto">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 border-t border-gray-200 pt-10">{comparisonTitle}</h2>
           <table className="w-full border-collapse" data-testid="feature-comparison-table">
@@ -135,16 +176,16 @@ export function PackageGroups({
               </tr>
             </thead>
             <tbody>
-              {data.comparison.rows.map((row, i) => (
-                <tr key={row.key} className={`border-b border-gray-100 ${i % 2 === 0 ? "" : "bg-gray-50/50"}`} data-testid={`feature-row-${i}`}>
-                  <td className="py-3 pr-4 text-sm text-gray-700">{row.label}</td>
-                  {columns.map((c) => (
-                    <td key={c.key} className="py-3 px-3 text-center">
-                      <Cell value={row.cells[c.key]} />
-                    </td>
-                  ))}
-                </tr>
-              ))}
+              {sections
+                ? sections.flatMap((sec) => [
+                    <tr key={`section-${sec.key}`} className="border-b border-gray-200" data-testid={`feature-section-${sec.key}`}>
+                      <th colSpan={columns.length + 1} className="pt-6 pb-2 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                        {sec.label}
+                      </th>
+                    </tr>,
+                    ...sec.rows.map(renderRow),
+                  ])
+                : data.comparison.rows.map(renderRow)}
             </tbody>
           </table>
         </div>

@@ -26,6 +26,12 @@ export interface PublicAdvisorPrice {
   freeWithoutClients: boolean;
 }
 
+/** One line on a package card: `planned` is on the roadmap, not built. */
+export interface PublicHighlight {
+  label: string;
+  status: "live" | "planned";
+}
+
 export interface PublicPackage {
   key: string;
   name: string;
@@ -40,6 +46,11 @@ export interface PublicPackage {
   cta: { kind: CtaKind; url: string | null };
   highlights: string[];
   /**
+   * The same list with the roadmap lines in their place, each with its
+   * status. Absent from an API that predates it, which sends built lines only.
+   */
+  highlightItems?: PublicHighlight[];
+  /**
    * Days of free trial on a package bought by card (Starter and Premium), as
    * the catalog in qlim8-app sets it. Absent from an API that predates it.
    */
@@ -47,6 +58,22 @@ export interface PublicPackage {
 }
 
 export type ComparisonCell = boolean | string;
+
+export interface ComparisonRow {
+  key: string;
+  label: string;
+  /** "planned": on the roadmap, not built. */
+  status: string;
+  group?: string | null;
+  cells: Record<string, ComparisonCell>;
+}
+
+/** The comparison rows of one category (Views, Analyser, ...). */
+export interface ComparisonSection {
+  key: string;
+  label: string;
+  rows: ComparisonRow[];
+}
 
 export interface PublicPackages {
   language: "da" | "en";
@@ -56,7 +83,14 @@ export interface PublicPackages {
   packages: PublicPackage[];
   comparison: {
     packages: { key: string; name: string }[];
-    rows: { key: string; label: string; status: string; cells: Record<string, ComparisonCell> }[];
+    /** Built capabilities only. */
+    rows: ComparisonRow[];
+    /**
+     * Every row by category, roadmap rows included with their status. Absent
+     * from an API that predates it, and empty when the catalog sorts no row
+     * into a category; the page then lists `rows`.
+     */
+    sections?: ComparisonSection[];
   };
 }
 
@@ -82,26 +116,51 @@ export function freeStartHref(data: PublicPackages | null | undefined): string |
   return free?.cta.url ?? null;
 }
 
+/** One line of a package card, and whether it is a capability not built yet. */
+export interface FeatureEntry {
+  text: string;
+  planned: boolean;
+}
+
 /**
  * What a package card lists, once the catalog sells something by itself: the
- * capabilities the API says the package adds over the one before it (built
- * ones only), headed "Alt i <previous>, plus". That keeps every list on the
- * site in step with what the app actually sells; a curated list in the CMS
- * once promised Premium a scenario builder that only Business has. Curated
- * copy is used only for a package the API lists nothing for (the advisor
- * packages, which carry no capabilities of their own).
+ * lines the API gives the package, in its order (built ones, and the roadmap
+ * ones marked as such when the API sends them), headed "Alt i <previous>,
+ * plus". That keeps every list on the site in step with what the app
+ * actually sells; a curated list in the CMS once promised Premium a scenario
+ * builder that only Business has. Curated copy is used only for a package the
+ * API lists nothing for (the advisor packages, which carry no capabilities of
+ * their own). `items` holds the lines' texts; `entries` also says which are
+ * planned, for a reader that marks them "Planlagt".
  */
 export function packageFeatures(
   data: PublicPackages,
   pkg: PublicPackage,
   curated: string[] = [],
-): { label: string | null; items: string[] } {
-  if (pkg.highlights.length === 0) return { label: null, items: curated.filter((f) => f.trim()) };
+): { label: string | null; items: string[]; entries: FeatureEntry[] } {
+  const lines: FeatureEntry[] =
+    pkg.highlightItems && pkg.highlightItems.length > 0
+      ? pkg.highlightItems.map((h) => ({ text: h.label, planned: h.status === "planned" }))
+      : pkg.highlights.map((text) => ({ text, planned: false }));
+  if (lines.length === 0) {
+    const items = curated.filter((f) => f.trim());
+    return { label: null, items, entries: items.map((text) => ({ text, planned: false })) };
+  }
   const sameKind = [...data.packages]
     .filter((p) => p.accountType === pkg.accountType)
     .sort((a, b) => a.displayRank - b.displayRank);
   const previous = sameKind[sameKind.findIndex((p) => p.key === pkg.key) - 1];
-  return { label: previous ? `Alt i ${previous.name}, plus` : null, items: pkg.highlights };
+  return { label: previous ? `Alt i ${previous.name}, plus` : null, items: lines.map((l) => l.text), entries: lines };
+}
+
+/**
+ * The comparison by category, or null when the API sends none (it predates
+ * them, or the catalog sorts no row into one): the page then lists
+ * `comparison.rows`, built capabilities only.
+ */
+export function comparisonSections(data: PublicPackages): ComparisonSection[] | null {
+  const sections = data.comparison.sections;
+  return sections && sections.some((s) => s.rows.length > 0) ? sections : null;
 }
 
 /** Danish kroner: thousands with ".", whole kroner without decimals. */
@@ -136,6 +195,15 @@ export function priceLines(pkg: PublicPackage): PriceLines | null {
     return { main: `fra ${monthly}`, note: "faktureres årligt, ekskl. moms" };
   }
   return { main: monthly, note: `faktureres årligt (${formatKr(pkg.price.yearlyMinor)}), ekskl. moms` };
+}
+
+/**
+ * What a company package with no price says in its price's place: the
+ * conversation decides it. Null for a package with a price, an advisor
+ * package, or one bought without a conversation.
+ */
+export function salesLine(pkg: PublicPackage): string | null {
+  return pkg.accountType === "company" && pkg.cta.kind === "demo" && !pkg.price ? "Kontakt salg" : null;
 }
 
 export type PackageGroup = "free" | "selfServe" | "contact";
@@ -182,7 +250,7 @@ export function trialLine(pkg: PublicPackage): string | null {
 /** The label on a package's button. Demo uses the site's own "Book demo". */
 export function ctaLabel(pkg: PublicPackage): string {
   if (pkg.cta.kind === "buy") return `Køb ${pkg.name}`;
-  if (pkg.cta.kind === "signup") return pkg.accountType === "advisor" ? `Kom i gang som ${pkg.name.toLowerCase()}` : "Kom gratis i gang";
+  if (pkg.cta.kind === "signup") return pkg.accountType === "advisor" ? `Kom i gang som ${pkg.name.toLowerCase()}` : "Opret gratis konto";
   return "Book demo";
 }
 

@@ -187,33 +187,38 @@ async function main() {
   const { offersFromPackages } = await import("../src/lib/packageView.ts");
   const fixture = (name) => JSON.parse(readFileSync(new URL(`./fixtures/${name}`, import.meta.url), "utf8"));
   const salesLed = fixture("public-packages.v1.json");
-  const selfServe = fixture("public-packages.v2.json");
   if (offersFromPackages(salesLed).length !== 0) {
     fail("catalog v1 (every package behind a demo) must give #software no offers");
   }
-  const expected = selfServe.packages.filter((p) => p.accountType === "company" && p.price?.visibility === "public");
-  const offers = offersFromPackages(selfServe);
-  const software = schema.buildSoftwareSchema(offers);
-  if (software["@id"] !== `${BASE_URL}/#software`) fail("offers must sit on #software");
-  if (offers.length !== expected.length || expected.length === 0) {
-    fail(`#software has ${offers.length} offers, the API shows ${expected.length} public prices`);
-  }
-  for (const pkg of expected) {
-    const offer = offers.find((o) => o.name === pkg.name);
-    const price = (pkg.price.yearlyMinor / 100).toFixed(2);
-    if (!offer) {
-      fail(`no offer for ${pkg.name}`);
-    } else if (
-      offer.price !== price ||
-      offer.priceCurrency !== "DKK" ||
-      offer.priceSpecification?.billingDuration !== "P1Y" ||
-      offer.priceSpecification?.valueAddedTaxIncluded !== false
-    ) {
-      fail(`offer for ${pkg.name} is not its yearly price ex. VAT (${price} DKK)`);
+  // Every self-serve answer the site must read: the lineup as first published
+  // (v2) and catalog version 3, which shows Business' price and not Enterprise's.
+  let offers = [];
+  for (const name of ["public-packages.v2.json", "public-packages.v3.json"]) {
+    const selfServe = fixture(name);
+    const expected = selfServe.packages.filter((p) => p.accountType === "company" && p.price?.visibility === "public");
+    offers = offersFromPackages(selfServe);
+    const software = schema.buildSoftwareSchema(offers);
+    if (software["@id"] !== `${BASE_URL}/#software`) fail("offers must sit on #software");
+    if (offers.length !== expected.length || expected.length === 0) {
+      fail(`${name}: #software has ${offers.length} offers, the API shows ${expected.length} public prices`);
     }
-  }
-  for (const hidden of selfServe.packages.filter((p) => p.price === null || p.price.visibility !== "public")) {
-    if (offers.some((o) => o.name === hidden.name)) fail(`${hidden.name} has no public price but got an offer`);
+    for (const pkg of expected) {
+      const offer = offers.find((o) => o.name === pkg.name);
+      const price = (pkg.price.yearlyMinor / 100).toFixed(2);
+      if (!offer) {
+        fail(`${name}: no offer for ${pkg.name}`);
+      } else if (
+        offer.price !== price ||
+        offer.priceCurrency !== "DKK" ||
+        offer.priceSpecification?.billingDuration !== "P1Y" ||
+        offer.priceSpecification?.valueAddedTaxIncluded !== false
+      ) {
+        fail(`${name}: offer for ${pkg.name} is not its yearly price ex. VAT (${price} DKK)`);
+      }
+    }
+    for (const hidden of selfServe.packages.filter((p) => p.price === null || p.price.visibility !== "public")) {
+      if (offers.some((o) => o.name === hidden.name)) fail(`${name}: ${hidden.name} has no public price but got an offer`);
+    }
   }
 
   const summary = `${pages.size} routes, ${entities} typed entities, ${siteWide.size} site-wide @ids, ${offers.length} offers from the API fixture`;
