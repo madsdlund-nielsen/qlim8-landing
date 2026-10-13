@@ -4,7 +4,7 @@ export const artikel: Article = {
   slug: 'undgaa-greenwashing-smv',
   title: 'Undgå greenwashing: Den ærlige guide til at kommunikere jeres klimadata uden at bryde loven',
   description:
-    'Forbrugerombudsmanden stramper op på greenwashing. EU\'s nye direktiv træder i kraft 27. september 2026. Her er forskellen mellem en bøde og en konkurrencefordel. Den ligger i sproget.',
+    'Forbrugerombudsmanden strammer op på greenwashing. EU\'s nye direktiv træder i kraft 27. september 2026. Her er forskellen mellem en bøde og en konkurrencefordel. Den ligger i sproget.',
   category: 'Compliance',
   publishedAt: '2026-05-15',
   readingTime: 13,
