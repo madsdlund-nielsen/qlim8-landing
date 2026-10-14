@@ -287,7 +287,7 @@
       ],
       "highlightItems": [
         {
-          "label": "Kryds-mapping til alle store standarder (CSRD, IFRS, CPD m.fl.)",
+          "label": "Kryds-mapping til alle store standarder (CSRD, IFRS, CDP m.fl.)",
           "status": "planned"
         },
         {
@@ -1253,7 +1253,7 @@
           },
           {
             "key": "reports.crossMapping",
-            "label": "Kryds-mapping til alle store standarder (CSRD, IFRS, CPD m.fl.)",
+            "label": "Kryds-mapping til alle store standarder (CSRD, IFRS, CDP m.fl.)",
             "status": "planned",
             "group": "reports",
             "cells": {
