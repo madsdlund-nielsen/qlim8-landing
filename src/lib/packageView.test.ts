@@ -196,7 +196,7 @@ test("v3: the comparison comes by category, roadmap rows marked; v2 has none and
   assert.deepEqual(rows.filter((r) => r.status === "planned").map((r) => r.label).sort(), [
     "Dobbelt væsentlighedsanalyse (DMA)",
     "Koncern (flere CVR-numre)",
-    "Kryds-mapping til alle store standarder (CSRD, IFRS, CPD m.fl.)",
+    "Kryds-mapping til alle store standarder (CSRD, IFRS, CDP m.fl.)",
     "Leverandørportal",
     "Oppetids-SLA",
     "Politikker",
