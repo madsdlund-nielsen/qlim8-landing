@@ -90,3 +90,14 @@ export function trackContactRequest(topic: "demo" | "question", source: string) 
   if (!currentConsent()?.statistics) return;
   window.gtag("event", "generate_lead", { lead_topic: topic, signup_source: source });
 }
+
+/**
+ * Report a submitted whitepaper request (the slide-in, src/components/public/SlideIn.tsx)
+ * to GA4 as `generate_lead` with the topic "whitepaper". No Google Ads label
+ * exists for it, so only GA4 is told, and only with statistics consent.
+ */
+export function trackWhitepaperLead(source: string) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  if (!currentConsent()?.statistics) return;
+  window.gtag("event", "generate_lead", { lead_topic: "whitepaper", signup_source: source });
+}

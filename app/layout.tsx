@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "../src/index.css";
 import { CookieConsent } from "@/components/CookieConsent";
 import { DemoDialog } from "@/components/public/DemoDialog";
+import { SlideIn } from "@/components/public/SlideIn";
 import { Toaster } from "@/components/ui/toaster";
 import { SelfServeProvider } from "@/components/public/SelfServeContext";
 import { fetchPublicPackages } from "@/lib/packages";
@@ -91,6 +92,7 @@ export default async function RootLayout({
         <SelfServeProvider value={selfServe}>{children}</SelfServeProvider>
         <CookieConsent />
         <DemoDialog />
+        <SlideIn />
         <Toaster />
       </body>
     </html>

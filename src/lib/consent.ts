@@ -12,6 +12,8 @@
 export const CONSENT_KEY = "qlim8_cookie_consent";
 export const CONSENT_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
 export const OPEN_COOKIE_SETTINGS = "qlim8:open-cookie-settings";
+/** Dispatched on window by the banner when a choice has been saved (the slide-in listens). */
+export const CONSENT_CHANGED = "qlim8:consent-changed";
 
 export interface ConsentChoice {
   statistics: boolean;

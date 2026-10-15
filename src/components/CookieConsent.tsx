@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Cookie } from "lucide-react";
 import { GOOGLE_ADS_ID } from "@/lib/tracking";
 import {
+  CONSENT_CHANGED,
   CONSENT_KEY,
   OPEN_COOKIE_SETTINGS,
   consentModeFor,
@@ -98,6 +99,7 @@ export function CookieConsent() {
       deleteGoogleCookies(choice);
     }
     applyGoogleTags(choice);
+    window.dispatchEvent(new Event(CONSENT_CHANGED));
     setCustomizing(false);
     setIsVisible(false);
   }, []);
