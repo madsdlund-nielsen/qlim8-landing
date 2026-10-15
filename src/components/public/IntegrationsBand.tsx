@@ -2,7 +2,10 @@
 // uniform tiles running left in a loop. Pure CSS (src/index.css), so the logos
 // are in the server-rendered HTML and nothing ships to the client.
 import type { CSSProperties } from "react";
-import { INTEGRATION_LOGOS, type IntegrationLogo } from "@/content/integration-logos";
+import { INTEGRATION_LOGOS as ALL_LOGOS, type IntegrationLogo } from "@/content/integration-logos";
+
+// Only the systems with a logo file: a name-only entry (Dinero) has none to show.
+const INTEGRATION_LOGOS = ALL_LOGOS.filter((l): l is IntegrationLogo & { src: string } => l.src !== null);
 
 // Tile geometry from sm up, in px. The classes on <Tile> and --band-gap and the
 // viewport padding in src/index.css carry the same numbers; these copies size
@@ -45,7 +48,7 @@ const FITS_CSS = `@container integrations-band (min-width: ${FITS_AT}px) {
   .integrations-band-list + .integrations-band-list { display: none; }
 }`;
 
-function Tile({ logo, decorative }: { logo: IntegrationLogo; decorative: boolean }) {
+function Tile({ logo, decorative }: { logo: IntegrationLogo & { src: string }; decorative: boolean }) {
   const { w, h } = logoSize(logo);
   // The vendor's own file in its own colours: the brand rules we could find
   // allow a logo as supplied, never recoloured, so the tiles are what make

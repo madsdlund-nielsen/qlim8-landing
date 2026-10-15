@@ -51,7 +51,17 @@ function PlannedMark() {
   );
 }
 
-function PackageCard({ data, pkg, copy }: { data: PublicPackages; pkg: PublicPackage; copy?: PackageCardCopy }) {
+function PackageCard({
+  data,
+  pkg,
+  copy,
+  anchorId,
+}: {
+  data: PublicPackages;
+  pkg: PublicPackage;
+  copy?: PackageCardCopy;
+  anchorId?: string;
+}) {
   const price = priceLines(pkg);
   const { label: includedLabel, entries: features } = packageFeatures(data, pkg, copy?.features);
   const sales = price ? null : salesLine(pkg);
@@ -59,7 +69,7 @@ function PackageCard({ data, pkg, copy }: { data: PublicPackages; pkg: PublicPac
   const label = pkg.cta.kind === "demo" ? DEMO_LABEL : ctaLabel(pkg);
   const primary = pkg.cta.kind !== "demo";
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid={`plan-${pkg.key}`}>
+    <div id={anchorId} className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col" data-testid={`plan-${pkg.key}`}>
       <div className="mb-4">
         <h3 className="text-lg font-bold text-gray-900 mb-1">{copy?.name ?? pkg.name}</h3>
         {(copy?.tagline ?? pkg.tagline ?? pkg.audience) && (
@@ -124,6 +134,9 @@ export function PackageGroups({
   comparisonTitle: string;
 }) {
   const groups = groupPackages(data);
+  // "Opret gratis rådgiver-konto" in page copy links to /priser#raadgivere: the
+  // anchor sits on the first advisor package, wherever its group puts it.
+  const firstAdvisorKey = [...data.packages].sort((a, b) => a.displayRank - b.displayRank).find((p) => p.accountType === "advisor")?.key;
   const order: PackageGroup[] = ["free", "selfServe", "contact"];
   const columns = data.comparison.packages;
   const sections = comparisonSections(data);
@@ -155,7 +168,13 @@ export function PackageGroups({
             <p className="text-sm text-gray-600 mb-5">{GROUP_TITLES[g].body}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {groups[g].map((pkg) => (
-                <PackageCard key={pkg.key} data={data} pkg={pkg} copy={cardCopy[pkg.key]} />
+                <PackageCard
+                  key={pkg.key}
+                  data={data}
+                  pkg={pkg}
+                  copy={cardCopy[pkg.key]}
+                  anchorId={pkg.key === firstAdvisorKey ? "raadgivere" : undefined}
+                />
               ))}
             </div>
           </section>

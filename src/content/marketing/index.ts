@@ -31,6 +31,8 @@ export const ALL_MARKETING_NODES: MarketingNode[] = [
 // defaults, so each page carries a page-specific + general mix for answer
 // engines and search ranking. Runs once at module load; de-dup makes it safe.
 for (const node of ALL_MARKETING_NODES) {
+  // `genericFaq: false` is for the pages that carry their own 6 to 8 questions.
+  if (node.genericFaq === false) continue;
   node.defaults.faq.items = mergeFaqItems(node.defaults.faq.items, GENERIC_ESG_FAQ);
 }
 for (const hub of MARKETING_HUBS) {

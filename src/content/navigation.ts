@@ -10,6 +10,8 @@ export interface NavLeaf {
   label: string;
   blurb?: string;
   comingSoon?: boolean;
+  /** A featured hub card (MarketingNode.highlight). */
+  highlight?: boolean;
   /** Levels below the collection hub (0 = top-level area). Menus indent by it. */
   depth?: number;
 }
@@ -104,5 +106,6 @@ export function hubCards(collection: MarketingCollection): NavLeaf[] {
       label: n.navLabel,
       blurb: n.blurb,
       comingSoon: n.status === "coming-soon",
+      highlight: n.highlight === true,
     }));
 }

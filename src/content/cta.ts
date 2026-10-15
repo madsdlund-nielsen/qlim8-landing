@@ -30,3 +30,16 @@ export const PHONE_CTA = { label: `Ring ${PHONE_DISPLAY}`, href: PHONE_HREF } as
 
 /** Header and homepage, once the catalog sells something by itself: to the package page. */
 export const FREE_START_CTA = { label: "Kom gratis i gang", href: "/priser" } as const;
+
+/** The mail address shown in the ContactBox, the footer and the contact page. */
+export const CONTACT_EMAIL = "kontakt@qlim8.com";
+export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
+
+/**
+ * The line that stands in for a page's trust line and micro line while the
+ * catalog sells nothing by itself (catalog v1, or the API cannot be reached).
+ * "Ingen kreditkort" and "Ingen binding" are true of Free only, so they must
+ * not stand over a button that books a demo. Placeholder wording: the final
+ * text comes from the copywriter.
+ */
+export const SALES_LED_TRUST = `Personlig hjælp på ${PHONE_DISPLAY}`;

@@ -17,7 +17,7 @@ import type { MarketingHubCopy } from "@/content/marketing/types";
 import type { NavLeaf } from "@/content/navigation";
 
 function Card({ card }: { card: NavLeaf }) {
-  const highlight = card.href.endsWith("/vvs");
+  const highlight = card.highlight === true;
   const inner = (
     <div
       className={

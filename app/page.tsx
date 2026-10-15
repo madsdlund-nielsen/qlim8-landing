@@ -3,6 +3,7 @@ import Landing from "@/page-components/landing";
 import { HOMEPAGE_FAQS, buildFaqSchema, type HomepageFaq } from "@/content/homepage-faqs";
 import { fetchMarketingCopy, cmsImageUrl } from "@/lib/cms";
 import { resolvePageCopy } from "@/lib/pageCopy";
+import { applyPriceTokens } from "@/lib/priceTokens";
 import { HOME_PAGE_KEY, HOME_COPY } from "@/content/copy/home";
 import { JsonLd } from "@/components/JsonLd";
 import type { LandingImages } from "@/page-components/landing";
@@ -47,9 +48,11 @@ async function resolveFaqs(): Promise<HomepageFaq[]> {
     Array.isArray(items) &&
     items.every((i) => i && typeof i.q === "string" && typeof i.a === "string")
   ) {
-    return items as HomepageFaq[];
+    // A price in an answer is a token: filled from the packages API, or the
+    // sentence dropped (src/lib/priceTokens.ts). Also what the FAQPage JSON-LD sees.
+    return applyPriceTokens(items as HomepageFaq[], await fetchPublicPackages());
   }
-  return HOMEPAGE_FAQS;
+  return applyPriceTokens(HOMEPAGE_FAQS, await fetchPublicPackages());
 }
 
 async function resolveLandingImages(): Promise<LandingImages> {

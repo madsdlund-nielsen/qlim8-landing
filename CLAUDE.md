@@ -214,6 +214,36 @@ rules used to forbid. The legal documents are exempt, since contract wording
 is changed with whoever drafted it; `src/content/copy/legal.ts` §3.3 still
 provides for a 14-day trial, which is the owner's to change.
 
+**The price token (owner's decision, October 2026): prices may appear in copy,
+but the figure is never typed.** A sentence that names a package price is
+wrapped in `[[ ... ]]` and holds `{pris:<packageKey>}` (the monthly amount,
+"795 kr." style) or `{pris:<packageKey>:aar}` (the yearly amount, "9.540 kr."),
+with Danish formatting (thousands with ".", then "kr."). `src/lib/priceTokens.ts`
+(`applyPriceTokens`, run by `resolvePageCopy` in `src/lib/pageCopy.ts`, so on
+every rendered page, every `.md` twin and every CMS override) fills each token
+from the packages API and strips the markers. **If any token inside a `[[ ]]`
+segment cannot be resolved** (catalog v1, API down, a package with no public
+price, the free and advisor packages, an unknown key) **the whole segment is
+removed**, so write the sentence to read with and without it:
+
+```
+Det er enkelt at starte. [[Starter koster {pris:starter} om måneden, betalt årligt.]] Free er gratis for altid.
+```
+
+`scripts/lib/salesLed.mjs` allows a token inside `[[ ]]` and fails a token
+outside it, a malformed token, an unbalanced `[[ ]]` and an unknown package key
+(validated against `scripts/fixtures/public-packages.v3.json`, so a package added
+to the catalog is added to that fixture first). A hand-typed figure stays an
+error everywhere, inside `[[ ]]` too. A string in an array that is only a removed
+sentence is dropped, and so is an object whose field was.
+
+While the catalog sells nothing by itself, buttons that lead to `/priser` become
+Book demo (`resolveCta` in `src/lib/packageView.ts`) and the trust and micro
+lines under a main button become `SALES_LED_TRUST` (`src/content/cta.ts`),
+because "Ingen kreditkort" and "Ingen binding" are true of Free only.
+"Opret gratis rådgiver-konto" links to `/priser#raadgivere`, an anchor on the
+first advisor package.
+
 Structured data is guarded separately: `check-schema.mjs` fails on any
 `offers` or price in the pages as bundled, and holds the offers the API would
 give `#software` (one per public yearly company price, ex. VAT, none under

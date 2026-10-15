@@ -4,7 +4,10 @@
  * signup or checkout link, or promises a trial.
  *
  * Package prices come only from the app's packages API (src/lib/packages.ts),
- * and so do the signup URLs; Free is free for good, so there is no trial to
+ * and so do the signup URLs. A price may be written as a token,
+ * `[[... {pris:starter} ...]]`, which the site fills from that API (see
+ * src/lib/priceTokens.ts); a token outside `[[ ]]` or for an unknown package
+ * fails here; Free is free for good, so there is no trial to
  * offer. A stray "fra 695 kr/md" or "14 dages prøveperiode" in copy is the
  * likely way that comes undone; this is the guard against it. The rules
  * themselves live in scripts/lib/salesLed.mjs, shared with the live CMS check
@@ -18,7 +21,7 @@
 import { readFileSync, statSync, readdirSync, existsSync } from "fs";
 import { join, extname, relative, resolve } from "path";
 import { fileURLToPath } from "url";
-import { salesLedViolations } from "./lib/salesLed.mjs";
+import { priceTokenViolations, salesLedViolations } from "./lib/salesLed.mjs";
 
 /** CHECK_ROOT points the check at another tree; scripts/lib/guards.test.mjs uses it. */
 const ROOT = process.env.CHECK_ROOT ? resolve(process.env.CHECK_ROOT) : fileURLToPath(new URL("..", import.meta.url));
@@ -54,13 +57,22 @@ for (const dir of COVERED) {
     const rel = relative(ROOT, file);
     if (EXCLUDED.some((re) => re.test(rel))) continue;
     scanned++;
-    const lines = readFileSync(file, "utf8").split("\n");
-    lines.forEach((line, i) => {
-      for (const { kind, match } of salesLedViolations(line, { file: rel })) {
+    const content = readFileSync(file, "utf8");
+    content.split("\n").forEach((line, i) => {
+      for (const { kind, match } of salesLedViolations(line, { file: rel, tokens: false })) {
         console.error(`  ✗ ${rel}:${i + 1}: ${kind}: "${match}"`);
         failures++;
       }
     });
+    // The price tokens span lines ([[ ... ]] around a long string), so they
+    // are read over the whole file. priceTokens.ts describes the syntax in
+    // prose and is the one file that names it.
+    if (rel !== "src/lib/priceTokens.ts") {
+      for (const { kind, match, index } of priceTokenViolations(content)) {
+        console.error(`  ✗ ${rel}:${content.slice(0, index).split("\n").length}: ${kind}: "${match}"`);
+        failures++;
+      }
+    }
   }
 }
 

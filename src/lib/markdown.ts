@@ -23,6 +23,7 @@ import { HOME_PAGE_KEY, HOME_COPY, type HomeCopy } from "@/content/copy/home";
 import { INTEGRATION_LOGOS } from "@/content/integration-logos";
 import { PRICING_PAGE_KEY, PRICING_COPY, type PricingCopy } from "@/content/copy/pricing";
 import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
+import type { SectionKey } from "@/content/marketing/types";
 import { BASE_URL } from "@/lib/schema";
 import { fetchPublicPackages } from "@/lib/packages";
 import {
@@ -33,6 +34,7 @@ import {
   isSelfServe,
   packageFeatures,
   priceLines,
+  resolveCta,
   type PublicPackage,
   type PublicPackages,
 } from "@/lib/packageView";
@@ -136,9 +138,134 @@ function faqSection(faq: { title: string; items: { q: string; a: string }[] } | 
 // Marketing leaves and hubs
 // ---------------------------------------------------------------------------
 
-function renderMarketingPage(node: MarketingNode, copy: MarketingPageCopy): string {
+/** A CTA as a markdown link: a /priser button books a demo while nothing is sold by itself. */
+function ctaMd(cta: { label: string; href: string } | undefined, selfServe: boolean): string | undefined {
+  if (!cta?.label || !cta.href) return undefined;
+  const c = resolveCta(cta, selfServe);
+  return `[${c.label}](${c.href.startsWith("/") ? BASE_URL + c.href : c.href})`;
+}
+
+/** A GFM table cell: no pipes, no line breaks. */
+function cell(text: string): string {
+  return text.replace(/\|/g, "\\|").replace(/\s*\n\s*/g, " ");
+}
+
+type Titled = { title: string; body: string };
+
+/** "**Title**: body" bullets. */
+function titledBullets(items: Titled[] | undefined): string | undefined {
+  if (!items?.length) return undefined;
+  return items.map((i) => `- **${i.title}**: ${i.body}`).join("\n");
+}
+
+/** The contact block as plain lines: person, phone and e-mail as written, then the button. */
+function contactSection(
+  c: MarketingPageCopy["contact"] | MarketingHubCopy["contact"],
+  selfServe: boolean,
+): string | undefined {
+  if (!c?.title) return undefined;
+  return [
+    `## ${c.title}`,
+    c.body,
+    [`${c.personName}, ${c.personRole}`, c.phoneLine, c.emailLine].filter(Boolean).join("  \n"),
+    ctaMd(c.cta, selfServe),
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+}
+
+function trustSection(t: MarketingPageCopy["trust"]): string | undefined {
+  if (!t?.items?.length) return undefined;
+  return [`## ${t.title}`, titledBullets(t.items)].join("\n\n");
+}
+
+/** The default order of the blocks: the one src/page-components/marketing-page.tsx renders in. */
+const DEFAULT_SECTION_ORDER: SectionKey[] = [
+  "hero", "reassurance", "intro", "reasons", "painPoints", "table", "features", "howItWorks", "checks", "trust",
+  "integrations", "options", "valueStats", "body", "depth", "children", "testimonial", "contact", "faq", "related",
+  "closingCta",
+];
+
+export function renderMarketingPage(node: MarketingNode, copy: MarketingPageCopy, selfServe = false): string {
   const url = `${BASE_URL}/${node.collection}/${node.slug}`;
   const trail = getAncestors(node).map((a) => a.title);
+
+  const sections: Partial<Record<SectionKey, string | undefined | false | 0>> = {
+    hero: [`# ${copy.hero.title}`, copy.hero.subtitle].join("\n\n"),
+    reassurance: copy.reassurance?.body && [`## ${copy.reassurance.title}`, copy.reassurance.body].join("\n\n"),
+    intro: copy.intro && [`## ${copy.intro.heading}`, copy.intro.body, bullets(copy.intro.bullets)].filter(Boolean).join("\n\n"),
+    reasons:
+      copy.reasons?.items?.length &&
+      [
+        `## ${copy.reasons.title}`,
+        copy.reasons.intro,
+        copy.reasons.items.map((r, i) => `${i + 1}. **${r.title}**: ${r.body}`).join("\n"),
+      ]
+        .filter(Boolean)
+        .join("\n\n"),
+    painPoints:
+      copy.painPoints?.length &&
+      [
+        "## Udfordringer og løsninger",
+        ...copy.painPoints.map((p) =>
+          [`**${p.pain}**`, p.solution, p.outcome && `_${p.outcome}_`].filter(Boolean).join("\n\n"),
+        ),
+      ].join("\n\n"),
+    table:
+      copy.table?.rows?.length &&
+      [
+        `## ${copy.table.title}`,
+        copy.table.intro,
+        // One string, not one per row: join() puts a blank line between parts,
+        // which would break the table into unrelated paragraphs.
+        [
+          `| ${cell(copy.table.headers.a)} | ${cell(copy.table.headers.b)} | ${cell(copy.table.headers.c)} |`,
+          "| --- | --- | --- |",
+          ...copy.table.rows.map((r) => `| ${cell(r.a)} | ${cell(r.b)} | ${cell(r.c)} |`),
+        ].join("\n"),
+        copy.table.note,
+      ]
+        .filter(Boolean)
+        .join("\n\n"),
+    features: copy.features?.length && ["## Det får du", ...copy.features.map((f) => `### ${f.title}\n\n${f.body}`)].join("\n\n"),
+    howItWorks:
+      copy.howItWorks?.steps?.length &&
+      [`## ${copy.howItWorks.title}`, ...copy.howItWorks.steps.map((s) => `### ${s.title}\n\n${s.body}`)].join("\n\n"),
+    checks:
+      copy.checks?.items?.length &&
+      [`## ${copy.checks.title}`, copy.checks.intro, titledBullets(copy.checks.items)].filter(Boolean).join("\n\n"),
+    trust: trustSection(copy.trust),
+    integrations:
+      copy.integrations?.title &&
+      [
+        `## ${copy.integrations.title}`,
+        `Systemer: ${INTEGRATION_LOGOS.map((l) => (l.status === "kommer-snart" ? `${l.name} (kommer snart)` : l.name)).join(", ")}.`,
+        copy.integrations.footnote,
+      ]
+        .filter(Boolean)
+        .join("\n\n"),
+    options:
+      copy.options?.items?.length &&
+      [
+        `## ${copy.options.title}`,
+        copy.options.intro,
+        ...copy.options.items.map((o) => [`### ${o.title}`, o.body, bullets(o.bullets)].filter(Boolean).join("\n\n")),
+      ]
+        .filter(Boolean)
+        .join("\n\n"),
+    valueStats:
+      copy.valueStats?.length &&
+      ["## Nøgletal", ...copy.valueStats.map((v) => `- **${v.value}**: ${v.label}${v.note ? ` ${v.note}` : ""}`)].join("\n"),
+    depth:
+      copy.depth?.items?.length &&
+      [`## ${copy.depth.title}`, ...copy.depth.items.map((d) => `### ${d.summary}\n\n${d.body}`)].join("\n\n"),
+    testimonial:
+      copy.testimonial?.quote &&
+      `> ${copy.testimonial.quote}\n\n${[copy.testimonial.name, copy.testimonial.role].filter(Boolean).join(", ")}`,
+    contact: contactSection(copy.contact, selfServe),
+    faq: faqSection(copy.faq),
+    closingCta: [`## ${copy.closingCta.title}`, copy.closingCta.description].join("\n\n"),
+  };
 
   return join([
     frontMatter({
@@ -147,37 +274,16 @@ function renderMarketingPage(node: MarketingNode, copy: MarketingPageCopy): stri
       url,
       section: [node.collection, ...trail.slice(1)].join(" / "),
     }),
-    `# ${copy.hero.title}`,
-    copy.hero.subtitle,
-    `## ${copy.intro.heading}`,
-    copy.intro.body,
-    bullets(copy.intro.bullets),
-    copy.painPoints?.length &&
-      [
-        "## Udfordringer og løsninger",
-        ...copy.painPoints.map((p) =>
-          [`**${p.pain}**`, p.solution, p.outcome && `_${p.outcome}_`].filter(Boolean).join("\n\n"),
-        ),
-      ].join("\n\n"),
-    copy.features?.length &&
-      ["## Det får du", ...copy.features.map((f) => `### ${f.title}\n\n${f.body}`)].join("\n\n"),
-    copy.howItWorks?.steps?.length &&
-      [
-        `## ${copy.howItWorks.title}`,
-        ...copy.howItWorks.steps.map((s) => `### ${s.title}\n\n${s.body}`),
-      ].join("\n\n"),
-    copy.valueStats?.length &&
-      [
-        "## Nøgletal",
-        ...copy.valueStats.map((v) => `- **${v.value}**: ${v.label}${v.note ? ` ${v.note}` : ""}`),
-      ].join("\n"),
-    faqSection(copy.faq),
-    `## ${copy.closingCta.title}`,
-    copy.closingCta.description,
+    ...(node.sectionOrder ?? DEFAULT_SECTION_ORDER).map((k) => sections[k]),
   ]);
 }
 
-function renderMarketingHub(hub: MarketingHub, copy: MarketingHubCopy, children: MarketingNode[]): string {
+export function renderMarketingHub(
+  hub: MarketingHub,
+  copy: MarketingHubCopy,
+  children: MarketingNode[],
+  selfServe = false,
+): string {
   return join([
     frontMatter({
       title: hub.seoTitle,
@@ -191,6 +297,8 @@ function renderMarketingHub(hub: MarketingHub, copy: MarketingHubCopy, children:
         "## Sider i dette afsnit",
         ...children.map((c) => `- [${c.title}](${BASE_URL}/${c.collection}/${c.slug}.md): ${c.blurb}`),
       ].join("\n"),
+    trustSection(copy.trust),
+    contactSection(copy.contact, selfServe),
     faqSection(copy.faq),
   ]);
 }
@@ -457,11 +565,11 @@ export async function renderMarkdownFor(segments: string[]): Promise<string | nu
 
     const hub = MARKETING_HUBS.find((h) => h.route === `/${first}`);
     if (hub) {
-      const copy = await resolvePageCopy(hub.pageKey, hub.defaults);
+      const [copy, packages] = await Promise.all([resolvePageCopy(hub.pageKey, hub.defaults), fetchPublicPackages()]);
       const children = ALL_MARKETING_NODES.filter(
         (n) => n.collection === hub.collection && !n.parentSlug && n.status !== "coming-soon",
       );
-      return renderMarketingHub(hub, copy, children);
+      return renderMarketingHub(hub, copy, children, isSelfServe(packages));
     }
     return null;
   }
@@ -476,8 +584,8 @@ export async function renderMarkdownFor(segments: string[]): Promise<string | nu
     if (!hub) return null;
     const node = getNode(hub.collection, second);
     if (!node || node.status === "coming-soon") return null;
-    const copy = await resolvePageCopy(node.pageKey, node.defaults);
-    return renderMarketingPage(node, copy);
+    const [copy, packages] = await Promise.all([resolvePageCopy(node.pageKey, node.defaults), fetchPublicPackages()]);
+    return renderMarketingPage(node, copy, isSelfServe(packages));
   }
 
   return null;

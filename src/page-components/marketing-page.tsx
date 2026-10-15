@@ -68,6 +68,7 @@ export default function MarketingPageTemplate({
       </section>
 
       {/* Intro / differentiation */}
+      {copy.intro && (
       <section className="py-16 sm:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-5">
@@ -86,9 +87,10 @@ export default function MarketingPageTemplate({
           )}
         </div>
       </section>
+      )}
 
       {/* Pain → solution */}
-      {copy.painPoints.length > 0 && (
+      {copy.painPoints && copy.painPoints.length > 0 && (
         <section className="py-16 sm:py-20 bg-white border-y border-gray-100">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10 max-w-2xl">
@@ -114,7 +116,7 @@ export default function MarketingPageTemplate({
       )}
 
       {/* Features */}
-      {copy.features.length > 0 && (
+      {copy.features && copy.features.length > 0 && (
         <section className="py-16 sm:py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10">Det får du</h2>
@@ -153,7 +155,7 @@ export default function MarketingPageTemplate({
       )}
 
       {/* Value stats */}
-      {copy.valueStats.length > 0 && (
+      {copy.valueStats && copy.valueStats.length > 0 && (
         <section className="py-16 sm:py-20 bg-white border-y border-gray-100">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

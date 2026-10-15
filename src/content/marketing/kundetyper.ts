@@ -83,6 +83,7 @@ export const KUNDETYPER_NODES: MarketingNode[] = [
     collection: "kundetyper",
     slug: "vvs",
     pageKey: "page.kundetyper.vvs",
+    highlight: true,
     title: "VVS'ere",
     navLabel: "VVS'ere",
     blurb: "Klimaregnskab for VVS-firmaet: servicevogne, materialer, kølemidler og udbud.",

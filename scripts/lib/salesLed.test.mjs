@@ -79,3 +79,34 @@ test("a signup URL is allowed in the CTA module only, and never in CMS copy", ()
   assert.equal(salesLedViolations(url, { file: "src/content/copy/home.ts" })[0]?.kind, "signup link");
   assert.equal(salesLedViolations(url)[0]?.kind, "signup link");
 });
+
+// ---------------------------------------------------------------------------
+// The price token: {pris:<package>} inside [[ ... ]]
+// ---------------------------------------------------------------------------
+import { priceTokenViolations, PRICE_PACKAGE_KEYS } from "./salesLed.mjs";
+
+test("the token keys are the packages of the v3 fixture", () => {
+  for (const k of ["free", "starter", "premium", "business", "enterprise"]) assert.ok(PRICE_PACKAGE_KEYS.has(k), k);
+});
+
+test("a token inside [[ ]] passes, monthly and yearly, across lines", () => {
+  assert.deepEqual(salesLedViolations("[[Starter koster {pris:starter} om måneden.]]"), []);
+  assert.deepEqual(salesLedViolations("[[Det er {pris:business:aar} om året.]]"), []);
+  assert.deepEqual(priceTokenViolations('"[[Starter koster {pris:starter}" +\n" om måneden.]]"'), []);
+});
+
+test("a token outside [[ ]], a malformed token, an unknown package and an unbalanced marker are errors", () => {
+  const kinds = (t) => priceTokenViolations(t).map((v) => v.match);
+  assert.match(kinds("Starter koster {pris:starter}")[0], /outside \[\[ \]\]/);
+  assert.match(kinds("[[Pris {pris:starter:maaned}]]")[0], /malformed/);
+  assert.match(kinds("[[Pris {pris:}]]")[0], /malformed/);
+  assert.match(kinds("[[Pris {pris:starter:aar:x}]]")[0], /malformed/);
+  assert.match(kinds("[[Pris {pris:platin}]]")[0], /unknown package/);
+  assert.match(kinds("[[Pris {pris:starter}")[0], /unbalanced/);
+  assert.equal(salesLedViolations("Starter {pris:starter}")[0]?.kind, "price token");
+});
+
+test("a hand-typed figure stays an error, token or not", () => {
+  assert.equal(salesLedViolations("[[Starter koster 795 kr om måneden, {pris:starter}]]")[0]?.kind, "package price");
+  assert.equal(salesLedViolations("[[Starter koster 9.540 kr om året]]")[0]?.kind, "package price");
+});

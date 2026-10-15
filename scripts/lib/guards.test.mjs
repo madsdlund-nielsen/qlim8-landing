@@ -92,3 +92,10 @@ test("the shared dash rule finds an em-dash and a stray en-dash, not a range or 
   assert.deepEqual(dashFindings("qlim8 – klimaregnskab"), []);
   assert.deepEqual(dashFindings("Mandag–fredag 9:00–17:00, 2024–2026"), []);
 });
+
+test("check-sales-led reads a [[ ]] sentence over several lines, fails a token outside it and an unknown package", () => {
+  const ok = 'export const a = "[[Starter koster {pris:starter}" +\n  " om måneden.]]";\n';
+  assert.equal(run("check-sales-led.mjs", { "src/content/a.ts": ok }).status, 0);
+  assert.equal(run("check-sales-led.mjs", { "src/content/a.ts": 'export const a = "Starter koster {pris:starter}";\n' }).status, 1);
+  assert.equal(run("check-sales-led.mjs", { "src/content/a.ts": 'export const a = "[[Pris {pris:platin}]]";\n' }).status, 1);
+});

@@ -5,6 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { DEMO_CTA } from "../content/cta.ts";
 import {
   comparisonSections,
   ctaLabel,
@@ -15,6 +16,7 @@ import {
   isSelfServe,
   offersFromPackages,
   priceLines,
+  resolveCta,
   salesLine,
   trialLine,
   type PublicPackages,
@@ -208,4 +210,20 @@ test("v3: the comparison comes by category, roadmap rows marked; v2 has none and
   assert.ok(v3.comparison.rows.every((r) => r.status === "live"));
   assert.equal(comparisonSections(v2), null);
   assert.equal(comparisonSections(v1), null);
+});
+
+test("resolveCta: under catalog v1 or with no API, a /priser button books a demo", () => {
+  const priser = { label: "Se pakker", href: "/priser" };
+  const raadgiver = { label: "Opret gratis rådgiver-konto", href: "/priser#raadgivere" };
+  const other = { label: "Se rapporten", href: "/produkt/rapportering" };
+  for (const selfServe of [isSelfServe(v1), isSelfServe(null)]) {
+    assert.equal(selfServe, false);
+    assert.deepEqual(resolveCta(priser, selfServe), DEMO_CTA);
+    assert.deepEqual(resolveCta(raadgiver, selfServe), DEMO_CTA);
+    assert.deepEqual(resolveCta(other, selfServe), other);
+  }
+  assert.deepEqual(resolveCta(priser, isSelfServe(v3)), priser);
+  assert.deepEqual(resolveCta(raadgiver, isSelfServe(v3)), raadgiver);
+  // /priser-lookalikes are not the package page
+  assert.deepEqual(resolveCta({ label: "x", href: "/priserne" }, false), { label: "x", href: "/priserne" });
 });
