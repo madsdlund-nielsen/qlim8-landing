@@ -13,6 +13,7 @@ import {
   comparisonSections,
   ctaLabel,
   groupPackages,
+  introLines,
   packageFeatures,
   priceLines,
   salesLine,
@@ -91,6 +92,15 @@ function PackageCard({
               {trialLine(pkg)}
             </p>
           )}
+        </div>
+      )}
+      {introLines(pkg).length > 0 && (
+        <div className="mb-4 space-y-1" data-testid={`intro-${pkg.key}`}>
+          {introLines(pkg).map((line) => (
+            <p key={line} className="text-body-sm text-foreground">
+              {line}
+            </p>
+          ))}
         </div>
       )}
       <Button

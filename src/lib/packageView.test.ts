@@ -12,6 +12,8 @@ import {
   formatKr,
   freeStartHref,
   groupPackages,
+  introBoostLine,
+  introLines,
   packageFeatures,
   isSelfServe,
   offersFromPackages,
@@ -19,6 +21,7 @@ import {
   resolveCta,
   salesLine,
   trialLine,
+  upgradeOfferLine,
   type PublicPackages,
 } from "./packageView.ts";
 
@@ -92,17 +95,35 @@ test("a trial is shown only where the catalog gives one, on a package bought by 
   // The API before trialDays, and a catalog without a trial: no trial anywhere.
   for (const p of v2.packages) assert.equal(trialLine(p), null, p.key);
   const withTrial = (key: string, trialDays: number) => ({ ...pkg(v2, key), trialDays });
-  assert.equal(
-    trialLine(withTrial("starter", 7)),
-    "7 dages gratis prøveperiode, når du har booket en kort introsamtale med os i den første uge. Kortet trækkes først bagefter, og du kan opsige før.",
-  );
-  // The call unlocks the trial, so the button does not promise it.
-  assert.equal(ctaLabel(withTrial("premium", 7)), "Køb Premium");
+  // No intro call any more: the card is taken at the start, and the button promises nothing.
+  assert.equal(trialLine(withTrial("premium", 14)), "14 dages gratis prøve. Kortet registreres ved start.");
+  assert.equal(ctaLabel(withTrial("premium", 14)), "Køb Premium");
   // Never on a free or a demo package, whatever the field says.
   assert.equal(trialLine(withTrial("free", 7)), null);
   assert.equal(trialLine(withTrial("enterprise", 7)), null);
   assert.equal(ctaLabel(withTrial("enterprise", 7)), "Book demo");
   assert.equal(trialLine(withTrial("starter", 0)), null);
+  // The v3 answer: Premium has the trial, Starter none.
+  assert.equal(trialLine(pkg(v3, "starter")), null);
+  assert.equal(trialLine(pkg(v3, "premium")), "14 dages gratis prøve. Kortet registreres ved start.");
+});
+
+test("the intro lines come from introBoost and upgradeOffer, and an older API has none", () => {
+  assert.equal(introBoostLine(pkg(v3, "free")), "De første 30 dage med alt fra Starter. Intet kreditkort.");
+  assert.equal(introBoostLine(pkg(v3, "starter")), "De første 30 dage med alt fra Premium.");
+  assert.equal(introBoostLine(pkg(v3, "premium")), null);
+  assert.equal(upgradeOfferLine(pkg(v3, "starter")), `Opgrader til Premium inden for det første år: første år ${formatKr(1995000)} ekskl. moms.`);
+  assert.match(upgradeOfferLine(pkg(v3, "starter"))!, /første år 19\.950 kr ekskl\. moms/);
+  assert.equal(upgradeOfferLine(pkg(v3, "free")), null);
+  assert.deepEqual(introLines(pkg(v3, "starter")).length, 2);
+  // v1 and v2 lack the fields: nothing is rendered and nothing throws.
+  for (const data of [v1, v2]) for (const p of data.packages) assert.deepEqual(introLines(p), [], p.key);
+  // Never on a package that sells through a conversation, whatever the field says.
+  const boost = { packageKey: "premium", packageName: "Premium", days: 30 };
+  assert.equal(introBoostLine({ ...pkg(v3, "business"), introBoost: boost }), null);
+  assert.equal(introBoostLine({ ...pkg(v3, "free"), introBoost: { ...boost, days: 0 } }), null);
+  assert.equal(introBoostLine({ ...pkg(v3, "free"), introBoost: null }), null);
+  assert.equal(upgradeOfferLine({ ...pkg(v3, "premium"), upgradeOffer: { toPackageKey: "business", toPackageName: "Business", freeMonths: 2, windowDays: 365, firstYearMinor: 0 } }), null);
 });
 
 test("structured data offers only the public yearly company prices", () => {

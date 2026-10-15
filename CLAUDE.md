@@ -302,7 +302,15 @@ tested in `scripts/lib/salesLed.test.mjs` under `npm test`) fails
   phrasing ("fra N kr", "% rabat");
 - a hard-coded signup link (`?tab=register`, or `app.qlim8.com/signup`
   anywhere but `cta.ts`; the API names the signup URLs) or a checkout call;
-- a trial ("prøveperiode", "prøv gratis"): Free does not run out.
+- a trial or intro-offer claim ("prøveperiode", "prøv gratis", "gratis prøve",
+  "de første N dage med alt fra", "opgrader til X inden for det første år").
+  This wording comes only from the packages API: `trialDays`, `introBoost` and
+  `upgradeOffer` are turned into the card lines by `trialLine`, `introBoostLine`
+  and `upgradeOfferLine` in `src/lib/packageView.ts`, which is the single file
+  the rule exempts (`allowedIn` in `scripts/lib/salesLed.mjs`, tested in
+  `salesLed.test.mjs`). Copy in `src/content` and CMS fields still may not say
+  it, so an offer the app does not give cannot be promised, and a field absent
+  from the API (or a sales-led catalog) renders no line.
 
 It covers `src/content`, `src/page-components`, `src/components`, `src/lib`
 and `app`. The rules are deliberately narrow: money that is not a qlim8

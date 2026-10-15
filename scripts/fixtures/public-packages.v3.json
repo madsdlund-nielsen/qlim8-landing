@@ -68,7 +68,12 @@
           "status": "live"
         }
       ],
-      "trialDays": 0
+      "trialDays": 0,
+      "introBoost": {
+        "packageKey": "starter",
+        "packageName": "Starter",
+        "days": 30
+      }
     },
     {
       "key": "starter",
@@ -134,7 +139,19 @@
           "status": "live"
         }
       ],
-      "trialDays": 7
+      "trialDays": 0,
+      "introBoost": {
+        "packageKey": "premium",
+        "packageName": "Premium",
+        "days": 30
+      },
+      "upgradeOffer": {
+        "toPackageKey": "premium",
+        "toPackageName": "Premium",
+        "freeMonths": 2,
+        "windowDays": 365,
+        "firstYearMinor": 1995000
+      }
     },
     {
       "key": "premium",
@@ -209,7 +226,7 @@
           "status": "live"
         }
       ],
-      "trialDays": 7
+      "trialDays": 14
     },
     {
       "key": "business",

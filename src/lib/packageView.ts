@@ -57,6 +57,32 @@ export interface PublicPackage {
    * the catalog in qlim8-app sets it. Absent from an API that predates it.
    */
   trialDays?: number;
+  /**
+   * Days of the next package's features a new customer gets on this one
+   * (Free: Starter, Starter: Premium). Absent from an API that predates it,
+   * and null when the package has none.
+   */
+  introBoost?: PublicIntroBoost | null;
+  /**
+   * A discount on the first year of the package above, for a customer who
+   * upgrades inside the window. Absent from an API that predates it.
+   */
+  upgradeOffer?: PublicUpgradeOffer | null;
+}
+
+export interface PublicIntroBoost {
+  packageKey: string;
+  packageName: string;
+  days: number;
+}
+
+export interface PublicUpgradeOffer {
+  toPackageKey: string;
+  toPackageName: string;
+  freeMonths: number;
+  windowDays: number;
+  /** Øre, ex. VAT: the target's yearly price minus the free months. */
+  firstYearMinor: number;
 }
 
 export type ComparisonCell = boolean | string;
@@ -251,18 +277,48 @@ export function trialDaysOf(pkg: PublicPackage): number {
 
 /**
  * The one line on qlim8.com that names the trial. It comes from the catalog,
- * never from copy: scripts/lib/salesLed.mjs allows trial wording in this file
- * only, so a trial the app does not give cannot be promised anywhere else.
- *
- * The trial is unlocked by an intro call booked in the first week (qlim8-app,
- * shared/entitlements/trialBooking.ts), so the line says so, and the button
- * does not promise it.
+ * never from copy: scripts/lib/salesLed.mjs allows trial and intro wording in
+ * this file only, so an offer the app does not give cannot be promised
+ * anywhere else. The card is registered at the start, and the first payment
+ * comes after the trial.
  */
 export function trialLine(pkg: PublicPackage): string | null {
   const days = trialDaysOf(pkg);
-  return days > 0
-    ? `${days} dages gratis prøveperiode, når du har booket en kort introsamtale med os i den første uge. Kortet trækkes først bagefter, og du kan opsige før.`
-    : null;
+  return days > 0 ? `${days} dages gratis prøve. Kortet registreres ved start.` : null;
+}
+
+function wholeDays(n: unknown): number {
+  return typeof n === "number" && Number.isInteger(n) && n > 0 ? n : 0;
+}
+
+/**
+ * The line about the days of the next package a new customer gets, built from
+ * `introBoost`. Only on a package with a signup or buy button (the same rule
+ * the API applies); Free adds that no card is asked for. Null when the field
+ * is absent, so an older API changes nothing.
+ */
+export function introBoostLine(pkg: PublicPackage): string | null {
+  const boost = pkg.introBoost;
+  const days = wholeDays(boost?.days);
+  if (!boost || days === 0 || !boost.packageName || (pkg.cta.kind !== "signup" && pkg.cta.kind !== "buy")) return null;
+  const base = `De første ${days} dage med alt fra ${boost.packageName}.`;
+  return pkg.free && pkg.cta.kind === "signup" ? `${base} Intet kreditkort.` : base;
+}
+
+/**
+ * The upgrade offer on a package bought by card: the first year of the next
+ * package, priced from `firstYearMinor` in the API. Null when absent.
+ */
+export function upgradeOfferLine(pkg: PublicPackage): string | null {
+  const offer = pkg.upgradeOffer;
+  if (!offer || pkg.cta.kind !== "buy" || !offer.toPackageName) return null;
+  if (!Number.isFinite(offer.firstYearMinor) || offer.firstYearMinor <= 0) return null;
+  return `Opgrader til ${offer.toPackageName} inden for det første år: første år ${formatKr(offer.firstYearMinor)} ekskl. moms.`;
+}
+
+/** The short intro lines of a package card, in order; empty for an older API. */
+export function introLines(pkg: PublicPackage): string[] {
+  return [introBoostLine(pkg), upgradeOfferLine(pkg)].filter((l): l is string => Boolean(l));
 }
 
 /** The label on a package's button. Demo uses the site's own "Book demo". */

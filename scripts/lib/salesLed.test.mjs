@@ -23,6 +23,9 @@ const BREAKS = [
   ["Start med 14 dages prøveperiode", "trial claim"],
   ["Prøv qlim8 gratis", "trial claim"],
   ["Få en gratis demo-konto", "trial claim"],
+  ["14 dages gratis prøve", "trial claim"],
+  ["De første 30 dage med alt fra Starter", "intro offer claim"],
+  ["Opgrader til Premium inden for det første år", "intro offer claim"],
   ["https://app.qlim8.com/auth?tab=register", "signup link"],
   ["https://app.qlim8.com/signup?package=starter", "signup link"],
   ["fetch('/api/stripe/checkout')", "checkout"],
@@ -71,6 +74,24 @@ test("trial wording is allowed where the catalog's trial is turned into a senten
   assert.deepEqual(salesLedViolations(text, { file: "src/lib/packageView.ts" }), []);
   assert.equal(salesLedViolations(text, { file: "src/content/copy/pricing.ts" })[0]?.kind, "trial claim");
   assert.equal(salesLedViolations(text)[0]?.kind, "trial claim");
+});
+
+test("trial and intro-offer wording from the packages API is allowed in packageView.ts only", () => {
+  const lines = [
+    "14 dages gratis prøve. Kortet registreres ved start.",
+    "De første 30 dage med alt fra Premium.",
+    "Opgrader til Premium inden for det første år: første år 19.950 kr ekskl. moms.",
+  ];
+  for (const text of lines.slice(0, 2)) {
+    assert.deepEqual(salesLedViolations(text, { file: "src/lib/packageView.ts" }), [], text);
+    assert.ok(salesLedViolations(text, { file: "src/content/copy/pricing.ts" }).length > 0, text);
+    assert.ok(salesLedViolations(text, { file: "src/components/public/PackageGroups.tsx" }).length > 0, text);
+    assert.ok(salesLedViolations(text).length > 0, `${text} (CMS)`);
+  }
+  // The upgrade line carries a computed figure that is not a plan figure, so
+  // only the wording rule applies to it.
+  assert.deepEqual(salesLedViolations(lines[2], { file: "src/lib/packageView.ts" }), []);
+  assert.equal(salesLedViolations(lines[2], { file: "src/content/copy/home.ts" })[0]?.kind, "intro offer claim");
 });
 
 test("a signup URL is allowed in the CTA module only, and never in CMS copy", () => {
