@@ -3,7 +3,7 @@
 // below it. The sales-led switch is built in: "Ingen binding" and "Ingen
 // kreditkort" are true of the free package only, so while the catalog sells
 // nothing by itself (catalog v1, or the packages API unreachable) the trust
-// line is SALES_LED_TRUST and the micro line is left out.
+// line is SALES_LED_TRUST and the micro line SALES_LED_MICRO (MicroLine.tsx).
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SALES_LED_TRUST } from "@/content/cta";
@@ -12,7 +12,7 @@ import { getSelfServe } from "@/lib/selfServe";
 export async function TrustLine({ items, inverted, center, className }: { items?: string[]; inverted?: boolean; center?: boolean; className?: string }) {
   const own = (items ?? []).filter((t) => t.trim());
   if (own.length === 0) return null;
-  const lines = (await getSelfServe()) ? own.slice(0, 3) : [SALES_LED_TRUST];
+  const lines = (await getSelfServe()) ? own.slice(0, 3) : SALES_LED_TRUST;
   return (
     <ul
       className={cn(

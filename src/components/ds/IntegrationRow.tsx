@@ -1,7 +1,9 @@
 // The integration row (design-system/komponenter/IntegrationCard.md): the
 // systems qlim8 connects to, one card each, with the vendor's own logo
 // unaltered (never recoloured or dimmed), how the connection is made, and a
-// "Kommer snart" label on the ones the app's catalog has not shipped. Absorbs
+// "Kommer snart" label on the ones the app's catalog has not shipped, under
+// the heading "Direkte forbindelser i dag og flere på vej" (INTEGRATION_BAND
+// in cta.ts). Absorbs
 // the logo band that used to scroll across the homepage (the marquee is gone:
 // a calm row, content in the HTML). The footnote under it is the design's
 // "Logoer for tredjepartsintegrationer tilhører deres respektive ejere".
@@ -9,9 +11,10 @@
 // Data: src/content/integration-logos.ts (status and subline per system).
 import Image from "next/image";
 import { INTEGRATION_LOGOS, type IntegrationLogo } from "@/content/integration-logos";
+import { INTEGRATION_BAND } from "@/content/cta";
 import { cn } from "@/lib/utils";
 
-export const INTEGRATION_FOOTNOTE = "Logoer for tredjepartsintegrationer tilhører deres respektive ejere";
+export const INTEGRATION_FOOTNOTE = "Logoer for tredjepartsintegrationer tilhører deres respektive ejere.";
 
 // Logos are sized by area, not height, so a square symbol and a long wordmark
 // read as the same weight: height = sqrt(area / aspect), bounded by the box.
@@ -45,9 +48,11 @@ function IntegrationCard({ logo }: { logo: IntegrationLogo }) {
         )}
       </div>
       <div className="grid gap-1">
-        <span className="text-trust text-muted-foreground">{logo.subline}</span>
+        {!(logo.status === "kommer-snart" && logo.subline === INTEGRATION_BAND.statusLabel) && (
+          <span className="text-trust text-muted-foreground">{logo.subline}</span>
+        )}
         {logo.status === "kommer-snart" && (
-          <span className="w-fit rounded-md bg-sand px-2 py-0.5 text-trust font-semibold text-primary">Kommer snart</span>
+          <span className="w-fit rounded-md bg-sand px-2 py-0.5 text-trust font-semibold text-primary">{INTEGRATION_BAND.statusLabel}</span>
         )}
       </div>
     </li>
@@ -57,8 +62,11 @@ function IntegrationCard({ logo }: { logo: IntegrationLogo }) {
 export function IntegrationRow({ footnote = INTEGRATION_FOOTNOTE, className }: { footnote?: string; className?: string }) {
   return (
     <div className={className}>
+      <p id="integration-band-title" className="mb-4 text-body-sm font-semibold text-foreground">
+        {INTEGRATION_BAND.title}
+      </p>
       <ul
-        aria-label="Systemer qlim8 forbindes med"
+        aria-labelledby="integration-band-title"
         className={cn("m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3")}
       >
         {INTEGRATION_LOGOS.map((logo) => (
