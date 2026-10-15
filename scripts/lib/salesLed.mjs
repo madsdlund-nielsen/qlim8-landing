@@ -5,7 +5,8 @@
  * (the API names the signup URL), and no trial in copy. Starter and Premium
  * start with a trial since 2026-10-03, but its length is catalog data
  * (`trialDays` in the packages API), so the one sentence that names it is
- * built from the API in src/lib/packageView.ts and nowhere else. Shared by scripts/check-sales-led.mjs (the bundled copy, in
+ * built from the API in src/lib/packageView.ts and nowhere else. The same goes
+ * for the intro boost and the upgrade offer (`introBoost`, `upgradeOffer`). Shared by scripts/check-sales-led.mjs (the bundled copy, in
  * `npm run lint`) and scripts/check-cms-copy.mjs (the CMS-published copy that
  * overrides it, in `npm run test:contract`), so both hold the same line. The
  * rules are tested against known strings in salesLed.test.mjs (`npm test`).
@@ -85,7 +86,11 @@ const PLAN_FIGURES = [
 
 const figure = `(?:${PLAN_FIGURES.map((f) => (f.length > 3 ? `${f.slice(0, -3)}[.\\s]?${f.slice(-3)}` : f)).join("|")})`;
 
-/** The file that builds the trial sentence from the packages API. */
+/**
+ * The one file that builds the trial and intro-offer sentences from the
+ * packages API (`trialDays`, `introBoost`, `upgradeOffer`). Everywhere else,
+ * including every CMS field, this wording is still refused.
+ */
 const TRIAL_FROM_DATA = ["src/lib/packageView.ts"];
 
 /**
@@ -103,6 +108,9 @@ export const SALES_LED_RULES = [
   { kind: "package price", re: /\d+\s*%\s*rabat\b/i },
   { kind: "trial claim", re: /\bprøveperiode\b/i, allowedIn: TRIAL_FROM_DATA },
   { kind: "trial claim", re: /\bprøv\s+(?:platformen\s+|qlim8\s+)?gratis\b/i, allowedIn: TRIAL_FROM_DATA },
+  { kind: "trial claim", re: /\bgratis\s+prøve\b/i, allowedIn: TRIAL_FROM_DATA },
+  { kind: "intro offer claim", re: /\bde\s+første\s+\d+\s+dage\s+med\s+alt\s+fra\b/i, allowedIn: TRIAL_FROM_DATA },
+  { kind: "intro offer claim", re: /\bopgrader\s+til\s+\S+\s+inden\s+for\s+det\s+første\s+år\b/i, allowedIn: TRIAL_FROM_DATA },
   { kind: "trial claim", re: /\bgratis\s+demo-konto\b/i },
 ];
 
