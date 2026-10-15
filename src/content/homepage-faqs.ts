@@ -1,4 +1,19 @@
 export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
+  // The first three are the owner's, from the mockup "qlim8 Grøn Landingside".
+  // Its fourth ("Er mine data sikre og fortrolige?") is marked "Forslag" there
+  // and awaits a fact-check, so it is not here.
+  {
+    q: "Hvad hvis jeg ikke har alle bilag eller el-data klar med det samme?",
+    a: "Du kan tage det i dit eget tempo. Systemet gemmer automatisk, og vi hjælper dig med hullerne.",
+  },
+  {
+    q: "Binder jeg mig til noget ved at oprette en profil?",
+    a: "Nej, det er gratis og uden binding.",
+  },
+  {
+    q: "Kan jeg få hjælp, hvis jeg er i tvivl om et tal?",
+    a: "Ja, du ringer eller skriver bare direkte til os.",
+  },
   {
     q: "Hvad er qlim8?",
     a: "qlim8 er en dansk SaaS-platform der laver automatisk klimaregnskab og VSME-rapportering for små og mellemstore virksomheder. Platformen henter data direkte fra danske regnskabssystemer (Dinero, e-conomic, Billy) og fra Eloverblik som officiel tredjepart hos Energinet, og leverer revisionsklare Scope 1-3 beregninger. Du kan oprette en gratis konto og komme i gang med det samme, eller booke en demo, hvis du vil se platformen først.",

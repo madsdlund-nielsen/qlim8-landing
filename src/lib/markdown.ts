@@ -367,18 +367,19 @@ function renderHome(copy: HomeCopy, packages: PublicPackages | null = null): str
     }),
     `# ${copy.hero.title}`,
     copy.hero.subtitle,
-    copy.hero.ctaNote,
     `## ${copy.integrations.title}`,
-    `Systemer: ${INTEGRATION_LOGOS.map((l) => l.name).join(", ")}.`,
-    ...copy.features.map((f) =>
-      [`## ${f.title}`, f.body, bullets(f.bullets)].filter(Boolean).join("\n\n"),
-    ),
-    `## ${copy.builtDifferent.title}`,
-    copy.builtDifferent.intro,
-    ...copy.builtDifferent.commitments.map((c) => `### ${c.title}\n\n${c.body}`),
+    ...copy.integrations.paragraphs,
+    `Systemer: ${INTEGRATION_LOGOS.map((l) => (l.status === "kommer-snart" ? `${l.name} (kommer snart)` : l.name)).join(", ")}.`,
+    copy.recipients?.items?.length &&
+      [`## ${copy.recipients.title}`, copy.recipients.intro, titledBullets(copy.recipients.items)].filter(Boolean).join("\n\n"),
+    `## ${copy.trust.title}`,
+    ...copy.trust.paragraphs,
+    titledBullets(copy.trust.items),
     `## ${copy.steps.title}`,
-    copy.steps.intro,
     ...copy.steps.items.map((s) => `### ${s.title}\n\n${s.body}`),
+    `## ${copy.themes.title}`,
+    copy.themes.intro,
+    ...copy.themes.items.map((t) => `### ${t.title}\n\n${t.body}\n\n[${t.linkLabel.replace(/\s*→\s*$/, "")}](${BASE_URL}${t.href}.md)`),
     `## ${copy.pricingTeaser.title}`,
     ...(selfServe
       ? packages!.packages
@@ -394,6 +395,9 @@ function renderHome(copy: HomeCopy, packages: PublicPackages | null = null): str
     selfServe
       ? `Priserne er pr. måned, faktureret årligt, ekskl. moms. Alle pakker på [${BASE_URL}/priser](${BASE_URL}/priser.md).`
       : `Prisen afhænger af pakke og behov, og I får et konkret tilbud ved en demo. Se hvad hver pakke indeholder på [${BASE_URL}/priser](${BASE_URL}/priser.md).`,
+    `## ${copy.human.title}`,
+    `> ${copy.human.quote}`,
+    contactSection(copy.human.contact, selfServe)?.replace(/^## /, "### "),
     `## ${copy.finalCta.title}`,
     copy.finalCta.body,
     startLine(packages),

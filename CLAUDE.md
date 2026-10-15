@@ -78,7 +78,7 @@ listed):
 | `shadow-soft` | `shadow-soft` | the only shadow; `shadow-sm` to `shadow-2xl` resolve to it |
 | `space-section`, `space-section-lg` | `py-section`, `py-section-lg` | 80px and 100px |
 | `radius-md`, `radius-lg` | `rounded-md`, `rounded-lg` | 8px controls, 12px cards; `rounded-xl` to `3xl` are 12px too |
-| `container-max` | `max-w-(--container-max)` | 1120px. Defining it makes Tailwind read `max-w-max` as 1120px, so `max-w-[max-content]` is spelled out where the content width is meant |
+| `container-max` | `max-w-(--container-max)` | 1120px. A plain variable in `:root`, not a theme key: as a theme key it would make Tailwind read `w-max` and `max-w-max` as 1120px |
 | `measure-body` | `max-w-(--measure-body)` | 68ch |
 | `type-h1` to `type-trust` | `text-h1`, `text-h2`, `text-h3`, `text-lead`, `text-body`, `text-body-sm`, `text-trust`, `text-button` | bare `h1` to `h3` are Fraunces 500 from the base layer (h1 44/52, 32/40 on mobile; h2 32/40, 27/35; h3 22/30) |
 

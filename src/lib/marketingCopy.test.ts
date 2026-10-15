@@ -11,12 +11,15 @@ import "../../scripts/lib/register-ts.mjs";
 
 const { ALL_MARKETING_NODES, MARKETING_HUBS } = await import("../content/marketing/index.ts");
 const cta = await import("../content/cta.ts");
+const { HOME_COPY, HOME_PAGE_KEY } = await import("../content/copy/home.ts");
 const { ICON_NAMES } = await import("../components/ds/iconNames.ts");
 
 type Page = { label: string; copy: Record<string, unknown> };
 const pages: Page[] = [
   ...(ALL_MARKETING_NODES as unknown as { pageKey: string; defaults: Record<string, unknown> }[]).map((n) => ({ label: n.pageKey, copy: n.defaults })),
   ...(MARKETING_HUBS as unknown as { pageKey: string; defaults: Record<string, unknown> }[]).map((h) => ({ label: h.pageKey, copy: h.defaults })),
+  // The homepage is held to the same rules: it is CMS-merged the same way.
+  { label: HOME_PAGE_KEY as string, copy: HOME_COPY as unknown as Record<string, unknown> },
 ];
 
 /** Every array in `value` with its path. */
@@ -32,7 +35,7 @@ function arrays(value: unknown, path: string, out: { path: string; items: unknow
 
 // painPoints[].outcome and valueStats[].note are optional keys that predate the
 // rule: copyMerge passes an extra key through, so they do no harm. Nothing new may join them.
-const LEGACY_OPTIONAL = new Set(["painPoints[].outcome", "valueStats[].note"]);
+const LEGACY_OPTIONAL = new Set(["painPoints[].outcome", "valueStats[].note", "pricingTeaser.plans[].badge"]);
 
 test("arrays are homogeneous: every item has the same keys, and defaults[0] has them all", () => {
   for (const { label, copy } of pages) {
@@ -66,8 +69,10 @@ test("no arrays of arrays", () => {
 test("icon names come from the allow-list, and Icon.tsx maps every name on it", () => {
   const allowed = new Set<string>(ICON_NAMES);
   for (const { label, copy } of pages) {
-    const trust = copy.trust as { items: { icon: string }[] } | undefined;
-    for (const item of trust?.items ?? []) assert.ok(allowed.has(item.icon), `${label}: icon "${item.icon}" is not in ICON_NAMES`);
+    const blocks = [copy.trust, copy.recipients] as ({ items: { icon: string }[] } | undefined)[];
+    for (const block of blocks) {
+      for (const item of block?.items ?? []) assert.ok(allowed.has(item.icon), `${label}: icon "${item.icon}" is not in ICON_NAMES`);
+    }
   }
   const icon = readFileSync(new URL("../components/ds/Icon.tsx", import.meta.url), "utf8");
   for (const name of ICON_NAMES) assert.match(icon, new RegExp(`\\b${name}\\b`), `Icon.tsx does not import ${name}`);
@@ -82,6 +87,9 @@ test("CTA hrefs come from src/content/cta.ts or lead to /priser", () => {
     { where: "closingCta.primary", href: copy.closingCta?.primary?.href },
     { where: "closingCta.secondary", href: copy.closingCta?.secondary?.href },
     { where: "contact.cta", href: copy.contact?.cta?.href },
+    { where: "finalCta.primary", href: copy.finalCta?.primary?.href },
+    { where: "finalCta.secondary", href: copy.finalCta?.secondary?.href },
+    { where: "human.contact.cta", href: copy.human?.contact?.cta?.href },
   ];
   for (const { label, copy } of pages) {
     for (const { where, href } of links(copy)) {

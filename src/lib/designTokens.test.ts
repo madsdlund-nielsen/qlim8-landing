@@ -129,7 +129,7 @@ test("shadow, spacing, radius and layout tokens match", () => {
   assert.equal(theme.get("--spacing-section-lg"), tokenValue("space-section-lg"));
   assert.equal(theme.get("--radius-md"), tokenValue("radius-md"));
   assert.equal(theme.get("--radius-lg"), tokenValue("radius-lg"));
-  assert.equal(theme.get("--container-max"), tokenValue("container-max"));
+  assert.equal(root.get("--container-max"), tokenValue("container-max"));
   assert.equal(root.get("--measure-body"), tokenValue("measure-body"));
   // Cards, panels and big surfaces stay at 12px: nothing rounder than the design.
   for (const k of ["--radius-xl", "--radius-2xl", "--radius-3xl"]) assert.equal(theme.get(k), tokenValue("radius-lg"), k);

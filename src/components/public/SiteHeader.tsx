@@ -10,7 +10,9 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { PRIMARY_NAV, type NavTop } from "@/content/navigation";
-import { Wordmark } from "@/components/Wordmark";
+import Image from "next/image";
+import { buttonStyles } from "@/components/ds/Button";
+import { cn } from "@/lib/utils";
 import { DEMO_HREF, DEMO_LABEL, FREE_START_CTA, LOGIN_URL } from "@/content/cta";
 import { useSelfServe } from "@/components/public/SelfServeContext";
 
@@ -19,7 +21,7 @@ interface SiteHeaderProps {
 }
 
 const TRIGGER_CLASS =
-  "bg-transparent text-gray-700 hover:text-primary hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-primary px-0 h-auto";
+  "bg-transparent text-foreground hover:text-sage hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-sage px-0 h-auto text-body-sm font-semibold";
 
 function MegaMenu({ item }: { item: NavTop }) {
   const groups = item.groups ?? [];
@@ -34,7 +36,7 @@ function MegaMenu({ item }: { item: NavTop }) {
           {groups.map((g) => (
             <div key={g.heading || item.label}>
               {g.heading && (
-                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+                <p className="text-trust font-semibold text-muted-foreground mb-3">
                   {g.heading}
                 </p>
               )}
@@ -44,24 +46,24 @@ function MegaMenu({ item }: { item: NavTop }) {
                     <NavigationMenuLink asChild>
                       <a
                         href={leaf.href}
-                        className="block rounded-lg px-3 py-2 hover:bg-gray-50 transition-colors"
+                        className="block rounded-md px-3 py-2 hover:bg-band transition-colors duration-200"
                         style={leaf.depth ? { paddingLeft: `${12 + Math.min(leaf.depth, 3) * 12}px` } : undefined}
                       >
                         <span
                           className={
                             "flex items-center gap-2 text-sm " +
-                            (leaf.depth ? "font-normal text-gray-700" : "font-medium text-gray-900")
+                            (leaf.depth ? "font-normal text-foreground" : "font-semibold text-primary")
                           }
                         >
                           {leaf.label}
                           {leaf.comingSoon && (
-                            <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-semibold text-primary">
+                            <span className="rounded-md bg-sand px-2 py-0.5 text-[10px] font-semibold text-primary">
                               Snart
                             </span>
                           )}
                         </span>
                         {withBlurb && leaf.blurb && (
-                          <span className="block text-xs text-gray-500 mt-0.5">{leaf.blurb}</span>
+                          <span className="block text-trust text-muted-foreground mt-0.5">{leaf.blurb}</span>
                         )}
                       </a>
                     </NavigationMenuLink>
@@ -73,7 +75,7 @@ function MegaMenu({ item }: { item: NavTop }) {
         </div>
         <a
           href={item.href}
-          className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+          className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-sage underline-offset-4 hover:underline"
         >
           Se alle {item.label.toLowerCase()} →
         </a>
@@ -110,7 +112,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
 
   return (
     <header
-      className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-gray-100"
+      className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-sand"
       data-site-header
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
@@ -120,14 +122,24 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                 annotation to stay legible, so it is desktop-only; phones fall
                 back to the wordmark alone, exactly as the design manual says
                 below 160px. */}
-            <Wordmark className="h-7 w-auto text-[#2b303b] sm:hidden" />
-            <img
+            <Image
+              src="/brand/qlim8-ordmaerke-primaer.svg"
+              alt="qlim8"
+              width={496}
+              height={182}
+              priority
+              className="h-7 w-auto sm:hidden"
+            />
+            <Image
               src="/brand/qlim8-laas-primaer.svg"
               alt="qlim8"
+              width={496}
+              height={182}
+              priority
               className="hidden h-14 w-auto sm:block"
             />
             {!isHome && (
-              <span className="ml-4 text-xs sm:text-sm font-medium text-gray-500 hidden sm:inline">
+              <span className="ml-4 text-trust font-semibold text-muted-foreground hidden sm:inline">
                 ← Forside
               </span>
             )}
@@ -148,7 +160,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                     <NavigationMenuLink asChild>
                       <a
                         href={item.href}
-                        className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                        className="text-body-sm font-semibold text-foreground hover:text-sage transition-colors duration-200"
                         data-testid={`nav-${item.label.toLowerCase()}`}
                       >
                         {item.label}
@@ -163,7 +175,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href={LOGIN_URL}
-              className="hidden sm:inline-flex text-sm font-medium px-3 py-1.5 text-gray-700 hover:text-primary transition-colors"
+              className="hidden sm:inline-flex text-body-sm font-semibold px-3 py-1.5 text-foreground hover:text-sage transition-colors duration-200"
               data-testid="button-signin"
             >
               Log ind
@@ -172,14 +184,14 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
               <>
                 <a
                   href={DEMO_HREF}
-                  className="hidden md:inline-flex text-sm font-semibold px-4 py-2 rounded-full border border-gray-300 text-gray-800 hover:border-primary hover:text-primary transition-all"
+                  className={cn(buttonStyles({ variant: "outline" }), "hidden min-h-10 px-4 py-2 text-body-sm md:inline-flex")}
                   data-testid="button-book-demo"
                 >
                   {DEMO_LABEL}
                 </a>
                 <a
                   href={FREE_START_CTA.href}
-                  className="text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                  className={cn(buttonStyles({ variant: "primary" }), "min-h-10 px-3 py-2 text-body-sm sm:px-4")}
                   data-testid="button-free-start"
                 >
                   {FREE_START_CTA.label}
@@ -188,7 +200,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
             ) : (
               <a
                 href={DEMO_HREF}
-                className="text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                className={cn(buttonStyles({ variant: "primary" }), "min-h-10 px-3 py-2 text-body-sm sm:px-4")}
                 data-testid="button-book-demo"
               >
                 {DEMO_LABEL}
@@ -198,14 +210,14 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
             <div className="relative lg:hidden" data-site-header>
               <button
                 onClick={() => setMenuOpen((v) => !v)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-2 hover:bg-band rounded-md transition-colors duration-200"
                 aria-label="Åbn menu"
                 data-testid="button-burger"
               >
                 {menuOpen ? (
-                  <X className="h-5 w-5 text-gray-700" />
+                  <X className="h-5 w-5 text-primary" />
                 ) : (
-                  <Menu className="h-5 w-5 text-gray-700" />
+                  <Menu className="h-5 w-5 text-primary" />
                 )}
               </button>
 
@@ -218,21 +230,21 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
               <nav
                 aria-label="Menu"
                 hidden={!menuOpen}
-                className="absolute right-0 top-full mt-2 w-72 max-h-[80vh] overflow-y-auto bg-white rounded-xl shadow-lg border border-gray-100 z-50"
+                className="absolute right-0 top-full mt-2 w-72 max-h-[80vh] overflow-y-auto bg-card rounded-lg shadow-soft border border-border z-50"
               >
                   {PRIMARY_NAV.map((item) =>
                     item.groups && item.groups.length > 0 ? (
-                      <div key={item.label} className="border-b border-gray-100 last:border-0">
+                      <div key={item.label} className="border-b border-border last:border-0">
                         <button
                           onClick={() =>
                             setOpenSection((s) => (s === item.label ? null : item.label))
                           }
-                          className="flex w-full items-center justify-between px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-50 transition-colors"
+                          className="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-primary hover:bg-band transition-colors duration-200"
                         >
                           {item.label}
                           <ChevronDown
                             className={
-                              "h-4 w-4 text-gray-400 transition-transform " +
+                              "h-4 w-4 text-sage transition-transform " +
                               (openSection === item.label ? "rotate-180" : "")
                             }
                           />
@@ -241,7 +253,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                             <a
                               href={item.href}
                               onClick={() => setMenuOpen(false)}
-                              className="block px-6 py-2 text-sm font-semibold text-primary hover:bg-gray-50"
+                              className="block px-6 py-2 text-sm font-semibold text-sage hover:bg-band"
                             >
                               Se alle {item.label.toLowerCase()} →
                             </a>
@@ -251,12 +263,12 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                                   key={leaf.href}
                                   href={leaf.href}
                                   onClick={() => setMenuOpen(false)}
-                                  className="flex items-center gap-2 px-6 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+                                  className="flex items-center gap-2 px-6 py-2 text-sm text-foreground hover:bg-band hover:text-primary transition-colors duration-200"
                                   style={leaf.depth ? { paddingLeft: `${24 + Math.min(leaf.depth, 3) * 12}px` } : undefined}
                                 >
                                   {leaf.label}
                                   {leaf.comingSoon && (
-                                    <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-semibold text-primary">
+                                    <span className="rounded-md bg-sand px-2 py-0.5 text-[10px] font-semibold text-primary">
                                       Snart
                                     </span>
                                   )}
@@ -270,7 +282,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                         key={item.label}
                         href={item.href}
                         onClick={() => setMenuOpen(false)}
-                        className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
+                        className="block px-4 py-3 text-sm font-semibold text-foreground hover:bg-band transition-colors duration-200 border-b border-border last:border-0"
                         data-testid={`menu-${item.label.toLowerCase()}`}
                       >
                         {item.label}
@@ -280,7 +292,7 @@ export function SiteHeader({ isHome = false }: SiteHeaderProps) {
                   <a
                     href={LOGIN_URL}
                     onClick={() => setMenuOpen(false)}
-                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors border-t border-gray-100 sm:hidden"
+                    className="block px-4 py-3 text-sm font-semibold text-foreground hover:bg-band transition-colors duration-200 border-t border-border sm:hidden"
                     data-testid="menu-signin"
                   >
                     Log ind
