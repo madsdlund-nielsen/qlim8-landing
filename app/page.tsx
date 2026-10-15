@@ -26,8 +26,9 @@ export async function generateMetadata(): Promise<Metadata> {
     ? "Få ro i maven med et klimaregnskab bygget oven på din bogføring i e-conomic, Dinero eller Billy. Gratis profil uden binding og personlig hjælp."
     : "Klimaregnskab og ESG rapporter til små og mellemstore virksomheder, hentet direkte fra dit regnskabssystem. Book en demo.";
   return {
-    // The root layout's "%s | qlim8" template puts the brand after the title.
-    title,
+    // `absolute`: a title template applies to child segments only, never to the
+    // page in the layout's own segment, so the homepage adds the brand itself.
+    title: { absolute: `${title} | qlim8` },
     description,
     alternates: { canonical: "https://qlim8.com/" },
     openGraph: {
