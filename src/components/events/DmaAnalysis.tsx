@@ -3,9 +3,9 @@
 // questions each and the live matrix beside them, and, once every topic is
 // answered, the profile (counts per group, the topics ranked, the same matrix,
 // an info dialog per topic) with a form to have the profile sent. The answers
-// stay in this component's state; only the form sends anything, and then
-// through the contact proxy (app/api/contact/route.ts) as a question, so the
-// request lands in the app's contact list with the profile in the message.
+// stay in this component's state; only the form sends anything, through the
+// proxy app/api/dma-profile/route.ts to qlim8-app, which renders the profile
+// as a PDF, mails it to the visitor and files the request in its contact list.
 import { useEffect, useRef, useState } from "react";
 import { Check, Leaf, Scale, Users, X } from "lucide-react";
 import { Button, ButtonRow } from "@/components/ds/Button";
@@ -435,13 +435,9 @@ function Profile({
   );
 }
 
-/** The profile as plain text, for the message that reaches us with the request. */
-function profileMessage(answers: DmaAnswers): string {
-  const lines = DMA_TOPICS.map((t) => {
-    const a = answers[t.code];
-    return `${t.code} ${t.name}: påvirkning ${a.i}, økonomi ${a.f} (${DMA_ZONE_LABEL[zoneOf(a)!].toLowerCase()})`;
-  });
-  return ["Væsentlighedsprofil fra qlim8.com/events/dma. Send profilen til afsenderen.", "", ...lines].join("\n");
+/** The scores as the app's endpoint takes them: every topic, both dimensions. */
+function scores(answers: DmaAnswers): Record<string, { i: number; f: number }> {
+  return Object.fromEntries(DMA_TOPICS.map((t) => [t.code, { i: answers[t.code].i!, f: answers[t.code].f! }]));
 }
 
 function LeadForm({ answers }: { answers: DmaAnswers }) {
@@ -467,14 +463,13 @@ function LeadForm({ answers }: { answers: DmaAnswers }) {
     setLoading(true);
     const source = resolveSignupSource("events-dma");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/dma-profile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          topic: "question",
           name: name.trim(),
           email: v,
-          message: profileMessage(answers),
+          answers: scores(answers),
           source,
           website: website || undefined,
         }),
@@ -482,7 +477,7 @@ function LeadForm({ answers }: { answers: DmaAnswers }) {
       const data = await res.json();
       if (res.ok && data.success) {
         trackContactRequest("question", source);
-        setSent(`Tak. Vi sender din væsentlighedsprofil til ${v}.`);
+        setSent(data.message || `Tak. Din væsentlighedsprofil er på vej til ${v}.`);
       } else {
         setError(data.message || "Noget gik galt. Prøv igen, eller ring på +45 93 90 13 84.");
       }
@@ -497,7 +492,7 @@ function LeadForm({ answers }: { answers: DmaAnswers }) {
     <div className={cn(CARD, "mb-12 grid gap-4")}>
       <h3>Få tilsendt din væsentlighedsprofil</h3>
       <p className="max-w-(--measure-body)">
-        Vi sender dit billede og de emner, der fylder mest, så du kan gemme det eller dele det med din ledelse, din bank eller din revisor.
+        Du får din profil som PDF på mail: dit billede, de emner, der fylder mest, og hvad du kan gøre ved dem. Gem den, eller del den med din ledelse, din bank eller din revisor.
       </p>
       {sent ? (
         <div className="flex items-start gap-3 rounded-md bg-band p-4" role="status">
