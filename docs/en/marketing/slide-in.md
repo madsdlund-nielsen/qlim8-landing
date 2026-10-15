@@ -13,6 +13,12 @@ Hidden on `/kontakt`, `/priser`, `/nyhedsbrev` (and sub-paths), `/privatlivspoli
 `/cookies`, `/handelsbetingelser`, `/databehandleraftale`, `/docs`, `/api`, `/md` and any path
 ending in `.md`. The list is `isHiddenRoute` in `src/lib/slideIn.ts`.
 
+## No step count
+
+The panel never shows how many steps there are or which one the visitor is on: no "Trin 2 af 4",
+no progress marks. A visitor who sees the work ahead does not start; one who has filled in the
+first step goes on, and drop-off comes around step 5 to 7. The owner's rule, October 2026.
+
 ## When it opens
 
 On the first of: 8 seconds, 50% scroll, the pointer leaving through the top of the window. It

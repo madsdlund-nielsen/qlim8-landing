@@ -2,7 +2,7 @@
 
 > Sidst opdateret: 2026-10-15
 
-Et leadpanel på de offentlige sider: den besøgende får whitepapperet "Din første VSME-rapport"
+Et leadpanel på de offentlige sider: den besøgende får whitepaperet "Din første VSME-rapport"
 (3 sider, PDF) på mail og kan bagefter bede om VSME-skabelonen (en Excel-fil, der følger de samme
 syv trin).
 
@@ -12,6 +12,13 @@ Monteret én gang i `app/layout.tsx` (`SlideIn`, en klientkomponent, der læser 
 Skjult på `/kontakt`, `/priser`, `/nyhedsbrev` (og undersider), `/privatlivspolitik`, `/cookies`,
 `/handelsbetingelser`, `/databehandleraftale`, `/docs`, `/api`, `/md` og alle stier, der ender på
 `.md`. Listen er `isHiddenRoute` i `src/lib/slideIn.ts`.
+
+## Ingen trin-tæller
+
+Panelet viser aldrig, hvor mange trin der er, eller hvilket den besøgende er på: intet "Trin 2 af
+4" og ingen fremskridtsmærker. Ser man arbejdet forude, starter man ikke. Har man udfyldt det
+første trin, fortsætter man gerne, og frafaldet kommer først omkring trin 5-7. Ejerens regel,
+oktober 2026.
 
 ## Hvornår den åbner
 
