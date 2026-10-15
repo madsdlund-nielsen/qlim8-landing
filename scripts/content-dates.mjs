@@ -53,6 +53,7 @@ const STATIC_ROUTES = {
   "/kontakt": ["app/kontakt/page.tsx", "src/page-components/kontakt.tsx", "src/content/copy/contact.ts"],
   "/nyhedsbrev": ["app/nyhedsbrev/page.tsx", "src/page-components/nyhedsbrev.tsx"],
   "/demo": ["app/demo/page.tsx", "src/page-components/demo.tsx"],
+  "/events/dma": ["app/events/dma/page.tsx", "src/page-components/events-dma.tsx", "src/components/events/DmaAnalysis.tsx", "src/components/events/DmaMatrix.tsx", "src/content/copy/events-dma.ts"],
   "/karriere": ["app/karriere/page.tsx", "src/page-components/karriere.tsx", "src/content/copy/careers.ts"],
   "/cookies": ["app/cookies/page.tsx", "src/page-components/cookies.tsx", "src/content/copy/legal.ts"],
   "/privatlivspolitik": ["app/privatlivspolitik/page.tsx", "src/page-components/privatlivspolitik.tsx", "src/content/copy/legal.ts"],

@@ -37,6 +37,12 @@ This repository is the **marketing site** (qlim8.com). For the **whole-system ar
   per page and CMS field). The Danish file is the one handed to the
   photographer. Photos are uploaded in the app's `/admin`, never committed here.
 
+- 📨 [English: whitepaper slide-in](./en/marketing/slide-in.md) ·
+  🇩🇰 [Dansk: whitepaper-slide-in](./da/marketing/slide-in.md)
+
+  The lead-capture panel: where it shows, when it opens, what it stores (marketing consent
+  only), and the proxy routes to qlim8-app.
+
 ## Operations
 
 - 📋 [English: post-mortem, 2026-07-28](./en/operations/postmortem-2026-07-28.md) ·

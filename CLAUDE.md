@@ -302,6 +302,24 @@ is the single source for their links (`DEMO_CTA`, `PHONE_CTA`,
 there rather than spelling out an href. "Log ind" stays in the header for
 existing customers (`app.qlim8.com/auth`).
 
+**The whitepaper slide-in** (`src/components/public/SlideIn.tsx`, mounted once in
+`app/layout.tsx`) offers the whitepaper "Din første VSME-rapport" in five steps
+(welcome, name and email, two questions, phone, topics) and then the VSME
+template as a follow-up. It opens on the first of 8 seconds, 50% scroll or exit
+intent, waits while the cookie banner is unanswered (`CONSENT_CHANGED` in
+`src/lib/consent.ts`, dispatched by `CookieConsent`) and minimises to a pill when
+closed. It never shows on `/kontakt`, `/priser`, `/nyhedsbrev`, the legal pages,
+`/docs`, `/api` or a `.md` route (`isHiddenRoute` in `src/lib/slideIn.ts`).
+Session state is in sessionStorage; `signedUp`, `dismissCount` and
+`lastDismissAt` go to localStorage **only with marketing consent**, and after 3
+closed visits it starts as the pill for 30 days. The logic is in
+`src/lib/slideIn.ts` (tested in `slideIn.test.ts`), the copy in
+`src/content/slideIn.ts`. It posts through the same-origin proxies
+`app/api/whitepaper-lead/route.ts` and `.../[id]/vsme/route.ts` to qlim8-app's
+`/api/public/whitepaper-lead[/<id>/vsme]`, and reports GA4 `generate_lead` with
+`lead_topic: "whitepaper"` (`trackWhitepaperLead`, statistics consent). Details:
+`docs/en/marketing/slide-in.md` (Danish: `docs/da/marketing/slide-in.md`).
+
 ### What copy may not say
 
 A package price is never typed in copy: it goes stale the day the catalog
