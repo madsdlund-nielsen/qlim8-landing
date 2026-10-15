@@ -1,6 +1,6 @@
 # System architecture: qlim8 app + landing, end to end
 
-> Status: stable · Last updated: 2026-09-25 · Owner: qlim8 team
+> Status: stable · Last updated: 2026-10-15 · Owner: qlim8 team
 
 > ℹ️ **Synced copy.** This architecture reference is maintained in the **qlim8-app** repository
 > ([`docs/en/architecture/system-architecture.md`](https://github.com/madsdlund-nielsen/qlim8-app/blob/main/docs/en/architecture/system-architecture.md)),
@@ -8,7 +8,8 @@
 > system. Last synced: 2026-06-29. Updated here on 2026-09-25, ahead of the qlim8-app copy, for
 > the sales-led change (no signup, no checkout): §1, §5, §6, §7.2 and §8. Updated again on
 > 2026-10-02 for self-serve (signup and prices from the app's packages API): §1, §5, §7.2, §7.5
-> (new) and §8.
+> (new) and §8. Updated again on 2026-10-15 for the restructured site (optional copy blocks, the
+> price token, the sales-led fallback, 301 redirects): §5 and diagram 6.
 
 ## Overview
 
@@ -453,12 +454,14 @@ flowchart LR
   visitor["Marketing visitor"]
 
   subgraph landing["qlim8 Landing, Next.js 15 (standalone)"]
-    pages["Pages: / · /priser (packages; prices once self-serve) · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
-    content["Bundled copy (src/content)<br/>merged with CMS overrides"]
+    redirects["Redirects (next.config.ts)<br/>301 for retired pages and their .md twins<br/>(src/content/marketing/redirects.json)"]
+    pages["Pages: / · /priser (packages; prices once self-serve) · /blog + [slug]<br/>/kundetyper (industries) · /produkt (themes) · /integrationer<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
+    content["Bundled copy (src/content)<br/>optional blocks, merged with CMS overrides"]
+    pricetok["Price token {pris:key}<br/>(src/lib/priceTokens.ts)<br/>filled from the packages API,<br/>sentence dropped if no price"]
     packages["Packages view (src/lib/packageView.ts)<br/>groups, prices, buttons, #software offers"]
     ga["Google Analytics 4 (cookie consent)"]
     freecta["Kom gratis i gang · Køb<br/>(signup URL from the packages API)"]
-    cta["Book demo CTAs<br/>(/kontakt?emne=demo)"]
+    cta["Book demo CTAs<br/>(/kontakt?emne=demo; replace the<br/>/priser buttons when sales-led)"]
     contactform["Contact form on /kontakt<br/>(demo or question)"]
     contactproxy["/api/contact<br/>(same-origin proxy)"]
     nlform["Newsletter form<br/>(/nyhedsbrev · /blog · hero modal)"]
@@ -475,6 +478,8 @@ flowchart LR
     apppackages["/api/public/packages<br/>(live package catalog)"]
   end
 
+  visitor -->|"retired address"| redirects
+  redirects -->|"301"| pages
   visitor --> pages
   pages --- content
   pages --- packages
@@ -482,6 +487,9 @@ flowchart LR
   packages -->|"server-side fetch, ISR 300 s, tag packages"| apppackages
   pages -.-> ga
   packages --> freecta
+  packages --> pricetok
+  pricetok -->|"fills the token, or drops the sentence"| content
+  packages -.->|"catalog v1 or API down"| cta
   freecta -->|"HTTPS anchor"| appsignup
   cta --> contactform
   contactform -->|"POST (topic, name, email, ...)"| contactproxy
@@ -496,7 +504,7 @@ flowchart LR
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
   classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
   class visitor persona;
-  class pages,content,packages,freecta,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appsignup,appcontact,appnews,appcms,apppackages internal;
+  class redirects,pricetok,pages,content,packages,freecta,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appsignup,appcontact,appnews,appcms,apppackages internal;
   class ga external;
 ```
 
@@ -520,6 +528,36 @@ stay in both modes: Book demo (`/kontakt?emne=demo`), the contact form on `/kont
 number and the newsletter, all taken from `src/content/cta.ts`. "Log ind" links existing customers
 to `app.qlim8.com/auth`. Business and Enterprise are always sold after a conversation and invoiced,
 see §7.2.
+
+**The fallback is in the code, not in a mock.** Under catalog version 1, or when the packages API
+cannot be reached, `resolveCta` (`src/lib/packageView.ts`) turns every button that leads to `/priser`
+into Book demo, the trust and micro lines under a main button become `SALES_LED_TRUST` and
+`SALES_LED_MICRO` (`src/content/cta.ts`; "No credit card" is true of Free only), a sentence that
+carries a price is dropped (the price token, below), `#software` has no offers, and `/llms.txt` and
+the `.md` twins list no price. The same path serves a real outage and the emergency stop; no flag
+or stub is needed.
+
+**Copy as optional blocks.** A marketing page's copy is a set of optional, named blocks (hero,
+reasons, table, trust, integrations, depth, contact, FAQ and more). The page's node in
+`src/content/marketing/` sets the order (`sectionOrder`), which a CMS edit cannot change, and a block
+without content is not rendered. The app's CMS manifest (`shared/marketingCopySchema.ts`) describes
+the same blocks, so `/admin` can edit them. List items have one shape with no optional keys, because
+`copyMerge` falls back to the bundled item when a CMS item lacks a key (the rules are in
+`src/content/marketing/types.ts`). Photos are fields in the CMS (`hero.imageUrl`, `landing.images`,
+`about.images`), never files in this repo, and a page without a photo renders without a box.
+
+**The price token.** Copy may say a price but never types it: the sentence is wrapped in `[[ ]]` and
+holds `{pris:<package>}` (monthly) or `{pris:<package>:aar}` (yearly). `applyPriceTokens`
+(`src/lib/priceTokens.ts`), called by `resolvePageCopy`, fills each token from the packages API on
+every rendered page, `.md` twin and CMS override, so a price in a sentence follows the catalog. If any
+token in a segment cannot be filled (catalog v1, API down, a package without a public price, the free
+and adviser packages, an unknown key), the whole segment is removed, which is why such a sentence is
+written to read with and without it.
+
+**Retired pages answer 301.** The industry and product pages merged in October 2026 live on as rows in
+`src/content/marketing/redirects.json`; `next.config.ts` turns each row into two 301 rules, the page
+and its `.md` twin, and `scripts/lib/redirects.test.mjs` holds the table to the live routes. The
+table and the reasons are in [`seo/information-architecture.md`](../seo/information-architecture.md).
 
 **Both forms go through same-origin proxies.** `ContactForm.tsx` POSTs to `/api/contact`, and
 `NewsletterForm.tsx` and `NewsletterSignupDialog.tsx` POST to `/api/newsletter/signup`. Those are

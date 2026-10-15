@@ -1,6 +1,6 @@
 # Systemarkitektur: qlim8 app + landing, fra ende til anden
 
-> Status: stabil · Sidst opdateret: 2026-09-25 · Ejer: qlim8-teamet
+> Status: stabil · Sidst opdateret: 2026-10-15 · Ejer: qlim8-teamet
 
 > ℹ️ **Synkroniseret kopi.** Denne arkitektur-reference vedligeholdes i **qlim8-app**-repoet
 > ([`docs/da/architecture/system-architecture.md`](https://github.com/madsdlund-nielsen/qlim8-app/blob/main/docs/da/architecture/system-architecture.md)),
@@ -8,7 +8,8 @@
 > systemet. Sidst synkroniseret: 2026-06-29. Opdateret her 2026-09-25, før qlim8-app-kopien, for
 > sales-led-ændringen (ingen signup, ingen checkout): §1, §5, §6, §7.2 og §8. Opdateret igen
 > 2026-10-02 for selvbetjening (signup og priser fra app'ens pakke-API): §1, §5, §7.2, §7.5 (ny)
-> og §8.
+> og §8. Opdateret igen 2026-10-15 for det omlagte site (valgfrie copy-blokke, pristegnet,
+> den salgsledte fallback, 301-redirects): §5 og diagram 6.
 
 ## Overblik
 
@@ -454,12 +455,14 @@ flowchart LR
   visitor["Marketing visitor"]
 
   subgraph landing["qlim8 Landing, Next.js 15 (standalone)"]
-    pages["Pages: / · /priser (packages; prices once self-serve) · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
-    content["Bundled copy (src/content)<br/>merged with CMS overrides"]
+    redirects["Redirects (next.config.ts)<br/>301 for retired pages and their .md twins<br/>(src/content/marketing/redirects.json)"]
+    pages["Pages: / · /priser (packages; prices once self-serve) · /blog + [slug]<br/>/kundetyper (industries) · /produkt (themes) · /integrationer<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
+    content["Bundled copy (src/content)<br/>optional blocks, merged with CMS overrides"]
+    pricetok["Price token {pris:key}<br/>(src/lib/priceTokens.ts)<br/>filled from the packages API,<br/>sentence dropped if no price"]
     packages["Packages view (src/lib/packageView.ts)<br/>groups, prices, buttons, #software offers"]
     ga["Google Analytics 4 (cookie consent)"]
     freecta["Kom gratis i gang · Køb<br/>(signup URL from the packages API)"]
-    cta["Book demo CTAs<br/>(/kontakt?emne=demo)"]
+    cta["Book demo CTAs<br/>(/kontakt?emne=demo; replace the<br/>/priser buttons when sales-led)"]
     contactform["Contact form on /kontakt<br/>(demo or question)"]
     contactproxy["/api/contact<br/>(same-origin proxy)"]
     nlform["Newsletter form<br/>(/nyhedsbrev · /blog · hero modal)"]
@@ -476,6 +479,8 @@ flowchart LR
     apppackages["/api/public/packages<br/>(live package catalog)"]
   end
 
+  visitor -->|"retired address"| redirects
+  redirects -->|"301"| pages
   visitor --> pages
   pages --- content
   pages --- packages
@@ -483,6 +488,9 @@ flowchart LR
   packages -->|"server-side fetch, ISR 300 s, tag packages"| apppackages
   pages -.-> ga
   packages --> freecta
+  packages --> pricetok
+  pricetok -->|"fills the token, or drops the sentence"| content
+  packages -.->|"catalog v1 or API down"| cta
   freecta -->|"HTTPS anchor"| appsignup
   cta --> contactform
   contactform -->|"POST (topic, name, email, ...)"| contactproxy
@@ -497,7 +505,7 @@ flowchart LR
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
   classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
   class visitor persona;
-  class pages,content,packages,freecta,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appsignup,appcontact,appnews,appcms,apppackages internal;
+  class redirects,pricetok,pages,content,packages,freecta,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appsignup,appcontact,appnews,appcms,apppackages internal;
   class ga external;
 ```
 
@@ -521,6 +529,38 @@ gælder i begge tilstande: Book demo (`/kontakt?emne=demo`), kontaktformularen p
 telefonnummeret og nyhedsbrevet, alle hentet fra `src/content/cta.ts`. "Log ind" linker
 eksisterende kunder til `app.qlim8.com/auth`. Business og Enterprise sælges altid efter en samtale
 og faktureres, se §7.2.
+
+**Fallbacken ligger i koden, ikke i en mock.** Under katalog version 1, eller når pakke-API'et ikke
+kan nås, gør `resolveCta` (`src/lib/packageView.ts`) hver knap, der fører til `/priser`, til Book
+demo, tryghedslinjen og mikrolinjen under en hovedknap bliver til `SALES_LED_TRUST` og
+`SALES_LED_MICRO` (`src/content/cta.ts`; "Ingen kreditkort" gælder kun Free), en sætning med en
+pris udelades (pristegnet, nedenfor), `#software` har ingen offers, og `/llms.txt` og
+`.md`-tvillingerne viser ingen pris. Den samme vej dækker et rigtigt nedbrud og nødstoppet; der
+skal hverken et flag eller en stub til.
+
+**Copy som valgfrie blokke.** En marketingsides copy er et sæt valgfrie, navngivne blokke (hero,
+årsager, tabel, tryghed, integrationer, dybde, kontakt, FAQ og flere). Sidens node i
+`src/content/marketing/` bestemmer rækkefølgen (`sectionOrder`), som en CMS-rettelse ikke kan ændre,
+og en blok uden indhold renderes ikke. App'ens CMS-manifest (`shared/marketingCopySchema.ts`)
+beskriver de samme blokke, så `/admin` kan redigere dem. Listeelementer har én form uden valgfrie
+nøgler, fordi `copyMerge` falder tilbage til det bundlede element, når et CMS-element mangler en
+nøgle (reglerne står i `src/content/marketing/types.ts`). Fotos er felter i CMS'et
+(`hero.imageUrl`, `landing.images`, `about.images`), aldrig filer i dette repo, og en side uden foto
+renderes uden boks.
+
+**Pristegnet.** Copy må gerne sige en pris, men aldrig skrive den: sætningen står i `[[ ]]` og
+indeholder `{pris:<pakke>}` (pr. måned) eller `{pris:<pakke>:aar}` (pr. år). `applyPriceTokens`
+(`src/lib/priceTokens.ts`), kaldt af `resolvePageCopy`, udfylder hvert tegn fra pakke-API'et på hver
+renderet side, `.md`-tvilling og CMS-override, så en pris i en sætning følger kataloget. Kan et
+tegn i et segment ikke udfyldes (katalog v1, API'et nede, en pakke uden offentlig pris, de gratis
+pakker og rådgiverpakkerne, en ukendt nøgle), fjernes hele segmentet, og derfor skrives sådan en
+sætning, så den læses både med og uden.
+
+**Udgåede sider svarer 301.** Branche- og produktsiderne, der blev slået sammen i oktober 2026,
+lever videre som rækker i `src/content/marketing/redirects.json`; `next.config.ts` laver to
+301-regler af hver række, siden og dens `.md`-tvilling, og `scripts/lib/redirects.test.mjs` holder
+tabellen op mod de live ruter. Tabellen og begrundelserne står i
+[`seo/informationsarkitektur.md`](../seo/informationsarkitektur.md).
 
 **Begge formularer går gennem same-origin-proxies.** `ContactForm.tsx` POST'er til `/api/contact`,
 og `NewsletterForm.tsx` og `NewsletterSignupDialog.tsx` POST'er til `/api/newsletter/signup`. Det
