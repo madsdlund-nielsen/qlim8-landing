@@ -108,12 +108,12 @@ export function CookieConsent() {
     <div
       role="dialog"
       aria-label="Cookieindstillinger"
-      className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t border-gray-200 shadow-lg animate-in slide-in-from-bottom-5 duration-300"
+      className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-card border-t border-border shadow-soft animate-in slide-in-from-bottom-5 duration-300"
     >
-      <div className="max-w-4xl mx-auto flex flex-col gap-4">
+      <div className="max-w-(--container-max) mx-auto flex flex-col gap-4">
         <div className="flex items-start gap-3">
           <Cookie className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-          <p className="text-sm text-gray-600">
+          <p className="text-body-sm text-muted-foreground">
             Vi bruger nødvendige cookies, for at siden virker. Med dit samtykke bruger vi også Google Analytics til
             statistik og Google Ads til at måle vores annoncer.{" "}
             <a href="/cookies" className="text-primary hover:underline">
@@ -123,7 +123,7 @@ export function CookieConsent() {
         </div>
 
         {customizing && (
-          <fieldset className="grid gap-2 text-sm text-gray-700 sm:pl-8">
+          <fieldset className="grid gap-2 text-body-sm text-foreground sm:pl-8">
             <legend className="sr-only">Vælg cookies</legend>
             <label className="flex items-start gap-2">
               <input type="checkbox" checked disabled className="mt-1" />
@@ -179,7 +179,6 @@ export function CookieConsent() {
           <Button
             size="sm"
             onClick={() => save({ statistics: true, marketing: true })}
-            className="bg-primary hover:bg-primary/90"
             data-testid="button-accept-cookies"
           >
             Acceptér alle

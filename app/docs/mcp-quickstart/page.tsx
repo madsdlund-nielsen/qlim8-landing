@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@/components/ds/Button";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
@@ -30,7 +31,7 @@ const EXAMPLE_PROMPTS = [
 
 function CodeBlock({ children }: { children: string }) {
   return (
-    <pre className="bg-gray-900 text-gray-100 text-xs sm:text-sm rounded-xl p-5 overflow-x-auto">
+    <pre className="bg-primary-hover text-primary-foreground text-xs sm:text-sm rounded-lg p-5 overflow-x-auto">
       <code>{children}</code>
     </pre>
   );
@@ -42,12 +43,12 @@ function Section({ number, title, children }: { number: string; title: string; c
     // URLs in MCP_QUICKSTART_PAGE_SCHEMA (src/lib/pageSchemas.ts) point at.
     // Without it those anchors resolve to the top of the page and the
     // structured data claims more than it delivers.
-    <section id={number} className="border-t border-gray-200 pt-10 sm:pt-12 scroll-mt-24">
-      <p className="text-sm font-semibold text-gray-500 mb-2">{number}</p>
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
+    <section id={number} className="border-t border-border pt-10 sm:pt-12 scroll-mt-24">
+      <p className="text-body-sm font-semibold text-muted-foreground mb-2">{number}</p>
+      <h2 className="mb-6">
         {title}
       </h2>
-      <div className="space-y-5 text-gray-700 text-base leading-relaxed">{children}</div>
+      <div className="space-y-5 text-foreground text-body">{children}</div>
     </section>
   );
 }
@@ -57,7 +58,7 @@ function Steps({ items }: { items: React.ReactNode[] }) {
     <ol className="space-y-3">
       {items.map((item, i) => (
         <li key={i} className="flex gap-4">
-          <span className="flex-none w-7 h-7 rounded-full bg-gray-900 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+          <span className="flex-none w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold flex items-center justify-center mt-0.5">
             {i + 1}
           </span>
           <span>{item}</span>
@@ -76,30 +77,30 @@ export default function Page() {
 
       <section className="px-4 sm:px-6 pt-14 sm:pt-24 pb-12 sm:pb-16">
         <div className="max-w-3xl mx-auto">
-          <Link href="/docs" className="text-sm text-gray-600 hover:text-primary transition-colors mb-6 inline-block">
+          <Link href="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors mb-6 inline-block">
             ← Tilbage til docs
           </Link>
-          <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
+          <h1 className="mb-6">
             Forbind din AI-assistent til dine klimadata
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
+          <p className="text-lead text-foreground max-w-(--measure-body)">
             Med qlim8's MCP-server kan Claude og ChatGPT svare på spørgsmål direkte fra jeres
             klimaregnskab: udledninger, rapporter, mål og leverandører. Du logger bare ind med
             din qlim8-konto. <strong>Ingen API-nøgle, ingen kode.</strong>
           </p>
 
-          <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-4 border-t border-gray-200 pt-6 text-sm">
+          <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-4 border-t border-border pt-6 text-sm">
             <div>
-              <dt className="font-semibold text-gray-500 mb-1">Server-adresse</dt>
-              <dd className="font-mono text-gray-900 break-all">{MCP_URL}</dd>
+              <dt className="font-semibold text-muted-foreground mb-1">Server-adresse</dt>
+              <dd className="font-mono text-foreground break-all">{MCP_URL}</dd>
             </div>
             <div>
-              <dt className="font-semibold text-gray-500 mb-1">Login</dt>
-              <dd className="text-gray-900">Din qlim8-konto (OAuth), ingen API-nøgle nødvendig</dd>
+              <dt className="font-semibold text-muted-foreground mb-1">Login</dt>
+              <dd className="text-foreground">Din qlim8-konto (OAuth), ingen API-nøgle nødvendig</dd>
             </div>
             <div>
-              <dt className="font-semibold text-gray-500 mb-1">Adgang</dt>
-              <dd className="text-gray-900">Kun læseadgang som standard; kun jeres egne data</dd>
+              <dt className="font-semibold text-muted-foreground mb-1">Adgang</dt>
+              <dd className="text-foreground">Kun læseadgang som standard; kun jeres egne data</dd>
             </div>
           </dl>
         </div>
@@ -132,9 +133,9 @@ export default function Page() {
                 <>Åbn <strong>Settings → Connectors</strong> i Claude.</>,
                 <>Klik på <strong>Add custom connector</strong>.</>,
                 <>
-                  Giv den navnet <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">qlim8</code>{" "}
+                  Giv den navnet <code className="text-[13px] bg-band px-1.5 py-0.5 rounded-md">qlim8</code>{" "}
                   og indsæt adressen{" "}
-                  <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded break-all">{MCP_URL}</code>.
+                  <code className="text-[13px] bg-band px-1.5 py-0.5 rounded-md break-all">{MCP_URL}</code>.
                   Lad OAuth-felterne under &quot;Advanced settings&quot; stå tomme.
                 </>,
                 <>
@@ -147,7 +148,7 @@ export default function Page() {
                 </>,
               ]}
             />
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               På <strong>Team/Enterprise-planer</strong> skal en organisations-Owner først tilføje
               connectoren under <em>Organization Settings → Connectors</em>, derefter klikker
               hvert medlem selv på <em>Connect</em> og logger ind.
@@ -164,9 +165,9 @@ export default function Page() {
                 </>,
                 <>
                   Gå tilbage til <strong>Apps</strong> og vælg at tilføje en app: navn{" "}
-                  <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">qlim8</code>,
+                  <code className="text-[13px] bg-band px-1.5 py-0.5 rounded-md">qlim8</code>,
                   MCP-server-URL{" "}
-                  <code className="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded break-all">{MCP_URL}</code>,
+                  <code className="text-[13px] bg-band px-1.5 py-0.5 rounded-md break-all">{MCP_URL}</code>,
                   og vælg <strong>OAuth</strong> som godkendelse (lad client-felterne stå tomme).
                 </>,
                 <>
@@ -175,7 +176,7 @@ export default function Page() {
                 <>Aktivér qlim8-appen i chatten og spørg løs.</>,
               ]}
             />
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Custom MCP-connectors (kaldet <em>apps</em> i ChatGPT) kræver Plus, Pro, Business,
               Enterprise eller Edu: de er ikke tilgængelige på gratisplanen.
             </p>
@@ -195,12 +196,12 @@ export default function Page() {
             <p>Når forbindelsen er oprettet, kan du stille spørgsmål som:</p>
             <ul className="space-y-3">
               {EXAMPLE_PROMPTS.map((p) => (
-                <li key={p} className="bg-white rounded-xl border border-gray-200 px-5 py-3.5 text-[15px] text-gray-800">
+                <li key={p} className="bg-card rounded-lg border border-border px-5 py-3.5 text-[15px] text-foreground">
                   &quot;{p}&quot;
                 </li>
               ))}
             </ul>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Assistenten henter tallene live fra qlim8, samme tal som i platformen, med samme
               beregningsgrundlag og kildesporing.
             </p>
@@ -231,25 +232,19 @@ export default function Page() {
             </ul>
           </Section>
 
-          <div className="bg-gray-900 text-gray-100 rounded-2xl p-7 sm:p-10">
-            <h2 className="text-xl sm:text-2xl font-bold mb-3">Til udviklere</h2>
-            <p className="text-gray-300 text-[15px] leading-relaxed mb-5">
+          <div className="bg-primary text-primary-foreground rounded-lg p-7 sm:p-10">
+            <h2 className="mb-3 text-primary-foreground">Til udviklere</h2>
+            <p className="text-primary-foreground text-body-sm mb-5">
               API-nøgle-baseret opsætning (Claude Code, Cursor, curl), den fulde reference for alle
               32 MCP-tools og REST API v1-dokumentationen bor på udviklerportalen.
             </p>
-            <div className="flex flex-wrap gap-3 text-sm">
-              <a
-                href="https://developers.qlim8.com/mcp/"
-                className="bg-white text-gray-900 font-semibold rounded-full px-5 py-2.5 hover:bg-gray-200 transition-colors"
-              >
+            <div className="flex flex-wrap gap-3">
+              <Button href="https://developers.qlim8.com/mcp/" variant="inverted">
                 developers.qlim8.com/mcp ↗
-              </a>
-              <a
-                href="https://app.qlim8.com/api/mcp/schema"
-                className="border border-gray-600 text-gray-100 font-semibold rounded-full px-5 py-2.5 hover:border-gray-400 transition-colors"
-              >
+              </Button>
+              <Button href="https://app.qlim8.com/api/mcp/schema" variant="invertedOutline">
                 Maskinlæsbart tool-katalog ↗
-              </a>
+              </Button>
             </div>
             <div className="mt-6">
               <CodeBlock>{`curl https://app.qlim8.com/api/mcp/schema`}</CodeBlock>

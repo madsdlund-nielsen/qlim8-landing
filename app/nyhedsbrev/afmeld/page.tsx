@@ -20,7 +20,7 @@ export default async function Page({
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="max-w-xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-28">
-        <div className="bg-white rounded-2xl border border-gray-200 p-8 lg:p-10">
+        <div className="bg-card rounded-lg border border-border p-8 lg:p-10">
           <UnsubscribeForm id={sp.id ?? ""} token={sp.token ?? ""} />
         </div>
       </main>

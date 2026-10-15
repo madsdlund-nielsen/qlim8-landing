@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@/components/ds/Button";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
@@ -46,47 +47,41 @@ export default function Page() {
       <SiteHeader />
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-12">
-        <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
+        <h1 className="mb-6">
           Klimaregnskab som API
         </h1>
-        <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-9 max-w-2xl">
+        <p className="text-lead text-foreground mb-9 max-w-(--measure-body)">
           Træk scope 1-3-data, leverandørrapporter eller hele VSME-eksporter ud af qlim8 via REST eller MCP. Til store kunder, BI-værktøjer og custom-flows, eller til CSRD-leverandører, der har brug for konsoliderede tal på tværs af jeres SMV-leverandører.
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
-          <a
-            href="mailto:kontakt@qlim8.com?subject=Anmod%20om%20API-adgang"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
-          >
+          <Button href="mailto:kontakt@qlim8.com?subject=Anmod%20om%20API-adgang">
             Anmod om API-adgang
-            <ArrowRight className="h-4 w-4" />
-          </a>
-          <Link
-            href="/docs/api-reference"
-            className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white border border-gray-200 text-gray-900 font-semibold text-base hover:border-gray-300 transition-colors"
-          >
+            <ArrowRight aria-hidden="true" />
+          </Button>
+          <Button href="/docs/api-reference" variant="outline">
             Se API-reference
-          </Link>
+          </Button>
         </div>
       </section>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10 border-t border-gray-200 pt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10 border-t border-border pt-10">
           {CAPABILITIES.map((c) => (
             <div key={c.title}>
-              <h2 className="text-lg font-bold text-gray-900 mb-3">{c.title}</h2>
-              <p className="text-gray-700 text-[15px] leading-relaxed">{c.body}</p>
+              <h2 className="mb-3 text-h3">{c.title}</h2>
+              <p className="text-foreground text-body-sm">{c.body}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-12">
-        <div className="bg-gray-900 text-gray-100 rounded-2xl p-7 sm:p-10">
-          <h2 className="text-xl sm:text-2xl font-bold mb-3">REST: hent månedens scope-3-data</h2>
-          <p className="text-gray-300 text-[15px] leading-relaxed mb-5">
-            Cursor-pagineret, scope-filter. Fuld OpenAPI-spec på <code className="bg-white/10 text-gray-100 text-[13px] px-1.5 py-0.5 rounded">GET /api/v1/openapi.json</code>.
+        <div className="bg-primary text-primary-foreground rounded-lg p-7 sm:p-10">
+          <h2 className="mb-3 text-primary-foreground">REST: hent månedens scope-3-data</h2>
+          <p className="text-primary-foreground text-body-sm mb-5">
+            Cursor-pagineret, scope-filter. Fuld OpenAPI-spec på <code className="bg-primary-hover text-primary-foreground text-[13px] px-1.5 py-0.5 rounded-md">GET /api/v1/openapi.json</code>.
           </p>
-          <pre className="bg-black/40 text-gray-100 text-xs sm:text-sm rounded-xl p-5 overflow-x-auto">
+          <pre className="bg-primary-hover text-primary-foreground text-xs sm:text-sm rounded-lg p-5 overflow-x-auto">
             <code>{`curl https://app.qlim8.com/api/v1/emissions \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -G \\
@@ -98,12 +93,12 @@ export default function Page() {
       </section>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-20 sm:pb-28">
-        <div className="bg-gray-900 text-gray-100 rounded-2xl p-7 sm:p-10">
-          <h2 className="text-xl sm:text-2xl font-bold mb-3">MCP: forbind en agent</h2>
-          <p className="text-gray-300 text-[15px] leading-relaxed mb-5">
+        <div className="bg-primary text-primary-foreground rounded-lg p-7 sm:p-10">
+          <h2 className="mb-3 text-primary-foreground">MCP: forbind en agent</h2>
+          <p className="text-primary-foreground text-body-sm mb-5">
             Almindelige brugere forbinder Claude eller ChatGPT via OAuth, uden API-nøgle (se MCP Quickstart). Udviklere tilføjer qlim8 i fx Claude Code eller Cursor med samme Bearer-token som REST-API'en. Agenten har derefter adgang til alle 32 tools direkte.
           </p>
-          <pre className="bg-black/40 text-gray-100 text-xs sm:text-sm rounded-xl p-5 overflow-x-auto">
+          <pre className="bg-primary-hover text-primary-foreground text-xs sm:text-sm rounded-lg p-5 overflow-x-auto">
             <code>{`{
   "mcpServers": {
     "qlim8": {
@@ -117,18 +112,18 @@ export default function Page() {
 }`}</code>
           </pre>
           <div className="mt-6 flex flex-col sm:flex-row gap-4 text-sm">
-            <Link href="/docs/mcp-quickstart" className="font-semibold text-white hover:underline">
+            <Link href="/docs/mcp-quickstart" className="font-semibold text-primary-foreground hover:underline">
               MCP Quickstart →
             </Link>
-            <Link href="/docs/mcp-tools" className="font-semibold text-white hover:underline">
+            <Link href="/docs/mcp-tools" className="font-semibold text-primary-foreground hover:underline">
               Tool reference →
             </Link>
           </div>
         </div>
 
-        <p className="mt-10 text-sm text-gray-600">
+        <p className="mt-10 text-sm text-muted-foreground">
           Spørgsmål om adgang, scopes eller Enterprise-features? Skriv til{" "}
-          <a href="mailto:kontakt@qlim8.com" className="text-primary font-semibold hover:underline">
+          <a href="mailto:kontakt@qlim8.com" className="font-semibold hover:underline">
             kontakt@qlim8.com
           </a>.
         </p>
