@@ -16,17 +16,22 @@ import { isSelfServe, offersFromPackages } from "@/lib/packageView";
 export const revalidate = 300;
 
 // The call to action follows the app's catalog, like the buttons on the page.
+// Self-serve: the copywriter's description (a free profile, no binding).
+// Sales-led (catalog v1, or the API cannot be reached): the earlier
+// description, which promises no free start.
 export async function generateMetadata(): Promise<Metadata> {
-  const cta = isSelfServe(await fetchPublicPackages()) ? "Kom gratis i gang, eller book en demo." : "Book en demo.";
-  const description = `Klimaregnskab og ESG rapporter til små og mellemstore virksomheder, hentet direkte fra dit regnskabssystem. ${cta}`;
+  const selfServe = isSelfServe(await fetchPublicPackages());
+  const title = "Klimaregnskab og ESG-rapport til danske SMV'er";
+  const description = selfServe
+    ? "Få ro i maven med et klimaregnskab bygget oven på din bogføring i e-conomic, Dinero eller Billy. Gratis profil uden binding og personlig hjælp."
+    : "Klimaregnskab og ESG rapporter til små og mellemstore virksomheder, hentet direkte fra dit regnskabssystem. Book en demo.";
   return {
-    // `absolute` opts out of the root layout's "%s | qlim8" title template so the
-    // homepage title isn't suffixed with a second copy of the brand name.
-    title: { absolute: "qlim8 - ESG er nemt" },
+    // The root layout's "%s | qlim8" template puts the brand after the title.
+    title,
     description,
     alternates: { canonical: "https://qlim8.com/" },
     openGraph: {
-      title: "qlim8 - ESG er nemt",
+      title: `${title} | qlim8`,
       description,
       url: "https://qlim8.com/",
       images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8" }],

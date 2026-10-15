@@ -360,9 +360,10 @@ function renderHome(copy: HomeCopy, packages: PublicPackages | null = null): str
   const curatedByName = new Map(copy.pricingTeaser.plans.map((p) => [p.name.trim().toLowerCase(), p]));
   return join([
     frontMatter({
-      title: "qlim8: automatisk klimaregnskab og VSME-rapportering",
-      description:
-        "Dansk ESG-platform til klimaregnskab (Scope 1-3) og VSME-rapportering, med indbygget MCP-server til AI-assistenter.",
+      title: "Klimaregnskab og ESG-rapport til danske SMV'er",
+      description: selfServe
+        ? "Få ro i maven med et klimaregnskab bygget oven på din bogføring i e-conomic, Dinero eller Billy. Gratis profil uden binding og personlig hjælp."
+        : "Klimaregnskab og ESG rapporter til små og mellemstore virksomheder, hentet direkte fra dit regnskabssystem. Book en demo.",
       url: `${BASE_URL}/`,
     }),
     `# ${copy.hero.title}`,
@@ -380,7 +381,9 @@ function renderHome(copy: HomeCopy, packages: PublicPackages | null = null): str
     `## ${copy.themes.title}`,
     copy.themes.intro,
     ...copy.themes.items.map((t) => `### ${t.title}\n\n${t.body}\n\n[${t.linkLabel.replace(/\s*→\s*$/, "")}](${BASE_URL}${t.href}.md)`),
-    `## ${copy.pricingTeaser.title}`,
+    `## ${selfServe ? copy.pricingTeaser.title : copy.pricingTeaser.salesLedTitle}`,
+    selfServe && copy.pricingTeaser.lead,
+    selfServe && titledBullets(copy.pricingTeaser.points),
     ...(selfServe
       ? packages!.packages
           .filter((p) => p.accountType === "company")
@@ -396,7 +399,7 @@ function renderHome(copy: HomeCopy, packages: PublicPackages | null = null): str
       ? `Priserne er pr. måned, faktureret årligt, ekskl. moms. Alle pakker på [${BASE_URL}/priser](${BASE_URL}/priser.md).`
       : `Prisen afhænger af pakke og behov, og I får et konkret tilbud ved en demo. Se hvad hver pakke indeholder på [${BASE_URL}/priser](${BASE_URL}/priser.md).`,
     `## ${copy.human.title}`,
-    `> ${copy.human.quote}`,
+    `> ${copy.human.quote}\n\n${[copy.human.quoteName, copy.human.quoteRole].filter(Boolean).join(", ")}`,
     contactSection(copy.human.contact, selfServe)?.replace(/^## /, "### "),
     `## ${copy.finalCta.title}`,
     copy.finalCta.body,
@@ -420,9 +423,9 @@ function renderPricing(copy: PricingCopy, packages: PublicPackages | null = null
   if (isSelfServe(packages)) return renderSelfServePricing(copy, packages!);
   return join([
     frontMatter({
-      title: "Pakker: Starter, Premium & Enterprise",
+      title: "Pakker til klimaregnskab og ESG-rapportering",
       description:
-        "Starter, Premium og Enterprise, og hvad hver pakke indeholder. Prisen afhænger af pakke og behov og gives ved en demo.",
+        "Se qlim8's pakker til klimaregnskab og ESG-rapportering. Tag en uformel snak, eller ring direkte på +45 93 90 13 84, så finder vi pakken, der passer.",
       url: `${BASE_URL}/priser`,
     }),
     `# ${copy.header.title}`,
@@ -434,7 +437,6 @@ function renderPricing(copy: PricingCopy, packages: PublicPackages | null = null
       ...copy.enterprise,
       features: copy.enterprise.features.map((f) => (f.note ? `${f.label} (${f.note})` : f.label)),
     }),
-    "VSME Basis er med fra Starter. VSME Comprehensive og MCP-adgang kræver Premium. CSRD kræver Enterprise.",
     copy.comparison?.rows?.length &&
       [
         `## ${copy.comparison.title}`,
@@ -469,9 +471,9 @@ function renderSelfServePricing(copy: PricingCopy, packages: PublicPackages): st
   const groups = groupPackages(packages);
   return join([
     frontMatter({
-      title: "Pakker og priser: Free, Starter og Premium",
+      title: "Priser: start gratis og uden binding",
       description:
-        "Free er gratis for altid. Starter og Premium købes direkte, Business og Enterprise efter en samtale. Priser pr. måned, faktureret årligt, ekskl. moms.",
+        "Start gratis på Free uden binding og uden kreditkort. De betalte pakker er årsaftaler med prisen vist pr. måned ekskl. moms. Ring, hvis du er i tvivl.",
       url: `${BASE_URL}/priser`,
     }),
     `# ${copy.header.title}`,
@@ -481,7 +483,6 @@ function renderSelfServePricing(copy: PricingCopy, packages: PublicPackages): st
     ...(["free", "selfServe", "contact"] as const)
       .filter((g) => groups[g].length > 0)
       .flatMap((g) => [`## ${GROUP_HEADINGS[g]}`, ...groups[g].map((p) => renderApiPackage(packages, p, curated[p.key], "###"))]),
-    "VSME Basis er med fra Starter. VSME Comprehensive og MCP-adgang kræver Premium. CSRD kræver Enterprise.",
     apiComparisonTable(packages, copy.comparison?.title ?? "Sammenlign pakkerne"),
     "## Pris",
     "Priserne er pr. måned, faktureret årligt, ekskl. moms. Starter og Premium betales med kort i appen; Business og Enterprise faktureres årligt.",

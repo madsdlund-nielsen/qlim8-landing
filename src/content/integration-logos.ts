@@ -50,24 +50,25 @@ export interface IntegrationLogo {
    * How the connection is made, in the card under the name. It is per system
    * because it is not the same for all of them: Dinero is a login through
    * Visma Connect, e-conomic takes two keys, Billy an API key, Eloverblik a
-   * power of attorney with MitID. Placeholder wording until the copywriter
-   * has been through it; the facts come from the connectors in qlim8-app.
+   * power of attorney with MitID. The copywriter's wording (forside.md); the
+   * facts come from the connectors in qlim8-app. For the coming-soon systems
+   * the line is the status itself, so the row shows it once.
    */
   subline: string;
 }
 
 export const INTEGRATION_LOGOS: IntegrationLogo[] = [
-  { id: "economic", name: "e-conomic", src: "/logos/economic.svg", width: 283.48, height: 63.88, scale: 1.15, status: "live", subline: "To nøgler fra din e-conomic-aftale" },
+  { id: "economic", name: "e-conomic", src: "/logos/economic.svg", width: 283.48, height: 63.88, scale: 1.15, status: "live", subline: "Forbindes med to nøgler fra din e-conomic-aftale" },
   // Dinero's brand terms allow no logo without written consent (see above): the name stands alone.
-  { id: "dinero", name: "Dinero", src: null, width: 0, height: 0, status: "live", subline: "Log ind med Visma Connect" },
+  { id: "dinero", name: "Dinero", src: null, width: 0, height: 0, status: "live", subline: "Forbindes med et par enkle klik via Visma Connect" },
   // Billy is becoming Shine Regnskab; billy.dk still serves this lockup.
-  { id: "billy", name: "Billy", src: "/logos/billy.svg", width: 878, height: 398.3, scale: 1.1, status: "live", subline: "En API-nøgle fra Billy" },
-  { id: "eloverblik", name: "Eloverblik", src: "/logos/eloverblik.svg", width: 285.81, height: 35.28, status: "live", subline: "Fuldmagt med MitID" },
-  { id: "zenegy", name: "Zenegy", src: "/logos/zenegy.svg", width: 116.84, height: 20.56, status: "live", subline: "Lønsystem" },
+  { id: "billy", name: "Billy", src: "/logos/billy.svg", width: 878, height: 398.3, scale: 1.1, status: "live", subline: "Forbindes med en API-nøgle, du opretter i Billy" },
+  { id: "eloverblik", name: "Eloverblik", src: "/logos/eloverblik.svg", width: 285.81, height: 35.28, status: "live", subline: "Giv fuldmagt med MitID, så hentes dit elforbrug time for time hver uge" },
+  { id: "zenegy", name: "Zenegy", src: "/logos/zenegy.svg", width: 116.84, height: 20.56, status: "live", subline: "Henter medarbejdertal og FTE pr. måned" },
   // Payroll and HR: "Kommer snart" in the app's catalog for now.
-  { id: "salary", name: "Shine Salary", src: "/logos/salary.svg", width: 410.309, height: 144.3, scale: 1.1, status: "kommer-snart", subline: "Lønsystem" },
-  { id: "hr_on", name: "HR-ON", src: "/logos/hr-on.svg", width: 284.906, height: 84, status: "kommer-snart", subline: "HR-system" },
+  { id: "salary", name: "Shine Salary", src: "/logos/salary.svg", width: 410.309, height: 144.3, scale: 1.1, status: "kommer-snart", subline: "Kommer snart" },
+  { id: "hr_on", name: "HR-ON", src: "/logos/hr-on.svg", width: 284.906, height: 84, status: "kommer-snart", subline: "Kommer snart" },
   // Visma Enterprise became Intega on 6 March 2026. Intega publishes its logo
   // as PNG only (integaone.dk), at 2522 × 757. Coming soon: the owner is building it.
-  { id: "visma_enterprise", name: "Intega", src: "/logos/intega.png", width: 2522, height: 757, status: "kommer-snart", subline: "Lønsystem" },
+  { id: "visma_enterprise", name: "Intega", src: "/logos/intega.png", width: 2522, height: 757, status: "kommer-snart", subline: "Kommer snart" },
 ];

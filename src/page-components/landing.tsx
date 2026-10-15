@@ -70,7 +70,17 @@ function PricingTeaser({ copy, packages }: { copy: HomeCopy["pricingTeaser"]; pa
   const cardBase = "relative flex flex-col rounded-lg border bg-card p-6 shadow-soft md:p-8";
   return (
     <>
-      <SectionHead title={copy.title} />
+      <SectionHead title={selfServe ? copy.title : copy.salesLedTitle} lead={selfServe ? copy.lead || undefined : undefined} />
+      {selfServe && copy.points.length > 0 && (
+        <div className="mb-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+          {copy.points.map((pt) => (
+            <Card key={pt.title} className="flex flex-col gap-3">
+              <h3>{pt.title}</h3>
+              <p className="text-body-sm text-muted-foreground">{pt.body}</p>
+            </Card>
+          ))}
+        </div>
+      )}
       {selfServe ? (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8" data-testid="pricing-teaser-packages">
           {teaserPackages(packages!, copy.plans).map(({ pkg, plan }) => {
@@ -203,11 +213,13 @@ export default async function Landing({
           return (
             <Section tone={tone} id="tillid">
               <h2 className="mb-6 max-w-3xl text-balance">{copy.trust.title}</h2>
-              <div className="mb-10 grid max-w-(--measure-body) gap-4 md:mb-12">
-                {copy.trust.paragraphs.map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
-              </div>
+              {copy.trust.paragraphs.length > 0 && (
+                <div className="mb-10 grid max-w-(--measure-body) gap-4 md:mb-12">
+                  {copy.trust.paragraphs.map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
+                </div>
+              )}
               <CardGrid>
                 {copy.trust.items.map((t) => (
                   <TrustCard key={t.title} icon={t.icon} title={t.title} body={t.body} onBand={tone === "band"} />
@@ -256,7 +268,7 @@ export default async function Landing({
         <Section tone={next()} id="kontakt">
           <h2 className="mb-10 max-w-3xl text-balance md:mb-12">{copy.human.title}</h2>
           <ContactBox contact={copy.human.contact}>
-            <Quote quote={copy.human.quote} />
+            <Quote quote={copy.human.quote} name={copy.human.quoteName} role={copy.human.quoteRole} />
           </ContactBox>
         </Section>
 
@@ -279,6 +291,7 @@ export default async function Landing({
           description={copy.finalCta.body}
           primary={copy.finalCta.primary}
           secondary={copy.finalCta.secondary}
+          trustLine={copy.finalCta.trustLine}
         />
       </main>
       <SiteFooter />
