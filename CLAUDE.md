@@ -49,16 +49,46 @@ both to the live `app.qlim8.com/api/mcp/schema`. When the app adds or removes a
 tool, change them here, and in `/admin` for any page that has published its own
 count (`page.integrationer.mcp-server` has).
 
-## The palette comes from the app
+## The palette
 
-`src/index.css` holds the same colours as `qlim8-app/client/src/index.css`, in
-the same HSL-triple form. They are kept in step **by hand**: this repo has no
-import path into that one, and a marketing site showing a green the product
-does not use is worse than a duplicated table. Change one, change the other.
+The palette is the green design system "Roligt": `design-system/tokens.json` is
+the source, `design-system/BRAND.md` and the skill `qlim8-groen-design` say how
+to use it. `src/index.css` holds the same values in the shadcn HSL-triple form
+(one decimal, so each round-trips to its hex; the hex is in a comment) plus the
+design-only names in `@theme inline`. The values must equal
+`design-system/tokens.json` **and** qlim8-app's Roligt theme block
+(`client/src/index.css`, `:root[data-theme="calm"]`). This repo has no import
+path into that one, so they are kept in step by hand, and
+`src/lib/designTokens.test.ts` (in `npm test`) holds this side to
+`tokens.json`. Change one, change the other.
 
-Light only. The `.dark` block and `@custom-variant dark` exist but nothing sets
-the class and there are no `dark:` utilities anywhere. That is deliberate, not
-an oversight: the app has light and dark, this site does not.
+`design-system/tailwind-theme.css` is deliberately **not** imported: its
+`--color-accent` is the sage green, and shadcn's `accent` here is a hover
+surface, so importing it would turn every hover state green.
+
+Name translation, design token to the utility in this repo (same name unless
+listed):
+
+| Design token (`tokens.json`) | Utility here | Note |
+|---|---|---|
+| `color-accent` (sage) | `sage` | `accent` here is the hover surface (band) |
+| `color-border-strong` | `border-strong` | the edge of a control (5.6:1); `border` is decorative sand |
+| `color-focus-ring` | `ring` | solid 2px, 2px offset, set in the base layer |
+| `color-background`, `-card`, `-band`, `-sand`, `-primary`, `-primary-hover`, `-primary-foreground`, `-foreground`, `-muted-foreground`, `-secondary-hover`, `-warm`, `-warm-ink` | `background`, `card`, `band`, `sand`, `primary`, `primary-hover`, `primary-foreground`, `foreground`, `muted-foreground`, `secondary-hover`, `warm`, `warm-ink` | `warm` is never text |
+| `shadow-soft` | `shadow-soft` | the only shadow; `shadow-sm` to `shadow-2xl` resolve to it |
+| `space-section`, `space-section-lg` | `py-section`, `py-section-lg` | 80px and 100px |
+| `radius-md`, `radius-lg` | `rounded-md`, `rounded-lg` | 8px controls, 12px cards; `rounded-xl` to `3xl` are 12px too |
+| `container-max` | `max-w-(--container-max)` | 1120px. Defining it makes Tailwind read `max-w-max` as 1120px, so `max-w-[max-content]` is spelled out where the content width is meant |
+| `measure-body` | `max-w-(--measure-body)` | 68ch |
+| `type-h1` to `type-trust` | `text-h1`, `text-h2`, `text-h3`, `text-lead`, `text-body`, `text-body-sm`, `text-trust`, `text-button` | bare `h1` to `h3` are Fraunces 500 from the base layer (h1 44/52, 32/40 on mobile; h2 32/40, 27/35; h3 22/30) |
+
+Light only, deliberately: there is no `.dark` block and no dark variant, and the
+design is light only too. Fonts are loaded in `app/layout.tsx` with
+`next/font/local` from `design-system/fonts` (Source Sans 3 as `font-sans`,
+Fraunces as `font-display`).
+
+Tokens only in new and rewritten files: no `gray-*`, `bg-white`, hex in a
+className or `rounded-2xl/3xl`. The rest of the site is moved over page by page.
 
 The product screenshots in `attached_assets/` are **rendered from the design
 board**, not screen-captured, so they carry the product's own palette and can be

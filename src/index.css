@@ -2,8 +2,16 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:is(.dark *));
+/* Light only, deliberately: this site has no dark mode and does not pretend to.
+   The design system (design-system/BRAND.md) is light-only too. */
 
+/* design-system/tailwind-theme.css is NOT imported. Its --color-accent is the
+   sage green, and shadcn's --accent here is a hover surface; importing it would
+   turn every hover state in src/components/ui into a green fill. The design
+   values are re-pointed onto the variables the components already use, and the
+   design-only names are added to @theme inline below (sage, sand, band ...).
+   src/lib/designTokens.test.ts holds every one of them to
+   design-system/tokens.json. */
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -56,22 +64,65 @@
   --color-sidebar-accent-border: var(--sidebar-accent-border);
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
-  --font-sans: var(--app-font-sans);
+  /* Design-only names. In the design system's tokens.json "accent" is the sage
+     green; here that is `sage`, because --color-accent above is the hover
+     surface. The map is in CLAUDE.md, under "The palette". */
+  --color-sage: #4A6B56;
+  --color-sand: #EBE7DF;
+  --color-band: #F2F4F1;
+  --color-warm: #C87A5B; /* never text: 3.1:1. Use warm-ink for text. */
+  --color-warm-ink: #9A4F32;
+  --color-primary-hover: #162B1F;
+  --color-secondary-hover: #E3DED3;
+  --color-border-strong: #4A6B56;
+
+  --shadow-soft: 0 4px 20px rgba(31, 58, 43, 0.05);
+
+  --spacing-section: 80px;
+  --spacing-section-lg: 100px;
+  --container-max: 1120px;
+
+  /* Fraunces for H1 to H3, Source Sans 3 for the rest (app/layout.tsx loads
+     both with next/font/local from design-system/fonts). */
+  --font-sans: var(--app-font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--app-font-display), Georgia, "Times New Roman", serif;
   --font-serif: var(--app-font-serif);
   --font-mono: var(--app-font-mono);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  /* The type scale of tokens.json (desktop). `text-h1` and friends are
+     utilities; the base layer below also uses them for bare h1 to h3. */
+  --text-h1: 44px;
+  --text-h1--line-height: 52px;
+  --text-h1--letter-spacing: -0.01em;
+  --text-h2: 32px;
+  --text-h2--line-height: 40px;
+  --text-h2--letter-spacing: -0.005em;
+  --text-h3: 22px;
+  --text-h3--line-height: 30px;
+  --text-lead: 20px;
+  --text-lead--line-height: 32px;
+  --text-body: 17px;
+  --text-body--line-height: 28px;
+  --text-body-sm: 15px;
+  --text-body-sm--line-height: 24px;
+  --text-trust: 14px;
+  --text-trust--line-height: 20px;
+  --text-button: 16px;
+  --text-button--line-height: 24px;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 12px;
+  --radius-2xl: 12px;
+  --radius-3xl: 12px;
 }
 
-/* LIGHT MODE: qlim8 brand theme */
-/* The palette is the app's, from qlim8-app/client/src/index.css. The two are
-   kept in step by hand: this repo has no import path into that one, and a
-   marketing site showing a green the product does not use is worse than a
-   duplicated table. HSL is the stored form, hex in the comments is derived.
-   Light only: this site has no dark mode and does not pretend to. */
+/* The palette is the design system's (design-system/tokens.json), the same as
+   qlim8-app's Roligt theme block. This repo has no import path into that one,
+   so they are kept in step by hand and held to tokens.json by a test in each
+   repo. HSL is the stored form (one decimal, so every value round-trips to
+   its hex); the hex in the comments is the source. Light only. */
 :root {
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
@@ -79,54 +130,55 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  --background: 96 20% 95%;              /* #f2f5f0, the app's content pane */
-  --foreground: 217 18% 14%;             /* #1d222a */
-  --border: 104 13% 83%;                 /* #d2dacf */
-  --card: 90 25% 98%;                    /* #fbfcfa */
-  --card-foreground: 217 18% 14%;
-  --card-border: 104 13% 83%;
-  --sidebar: 90 25% 98%;
-  --sidebar-foreground: 217 18% 14%;
-  --sidebar-border: 104 13% 83%;
-  --sidebar-primary: 111 22% 37%;
-  --sidebar-primary-foreground: 90 25% 98%;
-  --sidebar-accent: 92 28% 90%;
-  --sidebar-accent-foreground: 110 22% 27%;
-  --sidebar-ring: 111 22% 37%;
-  --popover: 90 25% 98%;
-  --popover-foreground: 217 18% 14%;
-  --popover-border: 104 13% 83%;
-  --primary: 111 22% 37%;                /* #50744a, green-600 */
-  --primary-foreground: 90 25% 98%;
-  --secondary: 216 13% 92%;              /* #e9ebee */
-  --secondary-foreground: 217 18% 14%;
-  --muted: 216 13% 92%;
-  --muted-foreground: 219 10% 40%;       /* #5c6370 */
-  --accent: 92 28% 90%;                  /* #e4ecdd */
-  --accent-foreground: 110 22% 27%;      /* #3b5536 */
+  --background: 60 20% 97.1%;            /* #F9F9F6 color-background */
+  --foreground: 128.6 7.4% 18.6%;        /* #2C332D color-foreground */
+  --border: 40 23.1% 89.8%;              /* #EBE7DF color-border (= sand), decorative only */
+  --card: 0 0% 100%;                     /* #FFFFFF color-card */
+  --card-foreground: 128.6 7.4% 18.6%;   /* #2C332D */
+  --card-border: 40 23.1% 89.8%;         /* #EBE7DF */
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 128.6 7.4% 18.6%;
+  --sidebar-border: 40 23.1% 89.8%;
+  --sidebar-primary: 146.7 30.3% 17.5%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 100 12% 95.1%;
+  --sidebar-accent-foreground: 146.7 30.3% 17.5%;
+  --sidebar-ring: 146.7 30.3% 17.5%;
+  --popover: 0 0% 100%;                  /* #FFFFFF */
+  --popover-foreground: 128.6 7.4% 18.6%; /* #2C332D */
+  --popover-border: 40 23.1% 89.8%;
+  --primary: 146.7 30.3% 17.5%;          /* #1F3A2B color-primary (forest green) */
+  --primary-foreground: 0 0% 100%;       /* #FFFFFF color-primary-foreground */
+  --secondary: 40 23.1% 89.8%;           /* #EBE7DF color-sand */
+  --secondary-foreground: 146.7 30.3% 17.5%; /* #1F3A2B */
+  --muted: 100 12% 95.1%;                /* #F2F4F1 color-band */
+  --muted-foreground: 138 5.3% 37.3%;    /* #5A645D color-muted-foreground */
+  --accent: 100 12% 95.1%;               /* #F2F4F1: the hover surface. NOT the design's accent (sage), see --color-sage */
+  --accent-foreground: 146.7 30.3% 17.5%; /* #1F3A2B */
   --destructive: 5 80% 38%;
   --destructive-foreground: 0 0% 100%;
-  --input: 104 13% 83%;
-  --ring: 111 22% 37%;
-  /* The app's green ramp, so a chart here cannot contradict one there. */
-  --chart-1: 111 22% 37%;
-  --chart-2: 112 22% 67%;
-  --chart-3: 110 22% 27%;
-  --chart-4: 215 9% 58%;
-  --chart-5: 11 39% 39%;
+  --input: 141.8 18.2% 35.5%;            /* #4A6B56 color-border-strong: a field's edge marks a control (5.6:1) */
+  --input-decorative: 40 23.1% 89.8%;    /* #EBE7DF: an edge that only decorates */
+  --ring: 146.7 30.3% 17.5%;             /* #1F3A2B color-focus-ring */
+  /* The sage and forest ramp. */
+  --chart-1: 146.7 30.3% 17.5%;          /* #1F3A2B */
+  --chart-2: 141.8 18.2% 35.5%;          /* #4A6B56 */
+  --chart-3: 136.4 10.9% 60.4%;          /* #8FA595 */
+  --chart-4: 132.9 13.2% 79.2%;          /* #C3D1C6 */
+  --chart-5: 17.1 49.8% 57.1%;           /* #C87A5B color-warm */
 
-  --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: Georgia, serif;
   --app-font-mono: Menlo, monospace;
-  --radius: .5rem;
-  --shadow-2xs: 0px 1px 2px 0px rgba(0,0,0,0.04);
-  --shadow-xs: 0px 1px 3px 0px rgba(0,0,0,0.06);
-  --shadow-sm: 0px 1px 2px 0px rgba(0,0,0,0.04), 0px 2px 4px 0px rgba(0,0,0,0.04);
-  --shadow: 0px 1px 3px 0px rgba(0,0,0,0.06), 0px 2px 6px 0px rgba(0,0,0,0.06);
-  --shadow-md: 0px 4px 6px -1px rgba(0,0,0,0.08), 0px 2px 4px -1px rgba(0,0,0,0.04);
-  --shadow-lg: 0px 10px 15px -3px rgba(0,0,0,0.08), 0px 4px 6px -2px rgba(0,0,0,0.04);
-  --shadow-xl: 0px 20px 25px -5px rgba(0,0,0,0.1), 0px 10px 10px -5px rgba(0,0,0,0.04);
-  --shadow-2xl: 0px 25px 50px -12px rgba(0,0,0,0.15);
+  --measure-body: 68ch;                  /* measure-body: 55 to 75 characters a line */
+  /* One soft shadow (shadow-soft); the hairline sizes are dropped. */
+  --shadow-2xs: none;
+  --shadow-xs: none;
+  --shadow-sm: 0 4px 20px rgba(31, 58, 43, 0.05);
+  --shadow: 0 4px 20px rgba(31, 58, 43, 0.05);
+  --shadow-md: 0 4px 20px rgba(31, 58, 43, 0.05);
+  --shadow-lg: 0 4px 20px rgba(31, 58, 43, 0.05);
+  --shadow-xl: 0 4px 20px rgba(31, 58, 43, 0.05);
+  --shadow-2xl: 0 4px 20px rgba(31, 58, 43, 0.05);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
@@ -146,66 +198,78 @@
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
-.dark {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
-  --opaque-button-border-intensity: 9;
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
-
-  --background: 220 20% 10%;
-  --foreground: 45 15% 92%;
-  --border: 220 15% 20%;
-  --card: 220 18% 14%;
-  --card-foreground: 45 15% 92%;
-  --card-border: 220 15% 22%;
-  --sidebar: 220 20% 10%;
-  --sidebar-foreground: 45 15% 92%;
-  --sidebar-border: 220 15% 20%;
-  --sidebar-primary: 155 35% 55%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 155 25% 18%;
-  --sidebar-accent-foreground: 155 35% 75%;
-  --sidebar-ring: 155 35% 55%;
-  --popover: 220 18% 14%;
-  --popover-foreground: 45 15% 92%;
-  --popover-border: 220 15% 22%;
-  --primary: 155 35% 55%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 220 15% 20%;
-  --secondary-foreground: 45 15% 80%;
-  --muted: 220 15% 18%;
-  --muted-foreground: 45 10% 55%;
-  --accent: 155 25% 18%;
-  --accent-foreground: 155 35% 75%;
-  --destructive: 0 72% 51%;
-  --destructive-foreground: 0 0% 100%;
-  --input: 220 15% 22%;
-  --ring: 155 35% 55%;
-  --chart-1: 155 35% 55%;
-  --chart-2: 175 60% 50%;
-  --chart-3: 199 75% 55%;
-  --chart-4: 48 95% 55%;
-  --chart-5: 15 85% 60%;
-
-  --shadow-2xs: 0px 1px 2px 0px rgba(0,0,0,0.20);
-  --shadow-xs: 0px 1px 3px 0px rgba(0,0,0,0.25);
-  --shadow-sm: 0px 1px 2px 0px rgba(0,0,0,0.20), 0px 2px 4px 0px rgba(0,0,0,0.20);
-  --shadow: 0px 1px 3px 0px rgba(0,0,0,0.25), 0px 2px 6px 0px rgba(0,0,0,0.20);
-  --shadow-md: 0px 4px 6px -1px rgba(0,0,0,0.30), 0px 2px 4px -1px rgba(0,0,0,0.20);
-  --shadow-lg: 0px 10px 15px -3px rgba(0,0,0,0.30), 0px 4px 6px -2px rgba(0,0,0,0.20);
-  --shadow-xl: 0px 20px 25px -5px rgba(0,0,0,0.35), 0px 10px 10px -5px rgba(0,0,0,0.20);
-  --shadow-2xl: 0px 25px 50px -12px rgba(0,0,0,0.40);
-}
-
 @layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-padding-top: 6rem;
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
   }
+
+  /* Headings: Fraunces 500 in the forest green. Mobile steps down one size,
+     as in the design (h1 32/40, h2 27/35). Utilities such as `text-2xl` on an
+     element still win, which is what lets the pages not yet moved to the
+     design keep their own sizes. */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: hsl(var(--primary));
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: var(--text-h1--letter-spacing);
+  }
+  h2 {
+    font-size: 27px;
+    line-height: 35px;
+    letter-spacing: var(--text-h2--letter-spacing);
+  }
+  h3 {
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
+  }
+  @media (min-width: 768px) {
+    h1 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); }
+    h2 { font-size: var(--text-h2); line-height: var(--text-h2--line-height); }
+  }
+
+  /* Focus: a solid 2px ring with 2px offset, in the focus-ring token. */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+/* @tailwindcss/typography (blog, legal): the prose colours are the tokens. Not
+   in a layer, so they beat `.prose-gray` from the plugin. */
+.prose,
+.prose-gray {
+  --tw-prose-body: hsl(var(--foreground));
+  --tw-prose-headings: hsl(var(--primary));
+  --tw-prose-lead: hsl(var(--muted-foreground));
+  --tw-prose-links: var(--color-sage);
+  --tw-prose-bold: hsl(var(--foreground));
+  --tw-prose-counters: hsl(var(--muted-foreground));
+  --tw-prose-bullets: var(--color-sage);
+  --tw-prose-hr: hsl(var(--border));
+  --tw-prose-quotes: hsl(var(--primary));
+  --tw-prose-quote-borders: var(--color-sage);
+  --tw-prose-captions: hsl(var(--muted-foreground));
+  --tw-prose-kbd: hsl(var(--foreground));
+  --tw-prose-kbd-shadows: hsl(var(--foreground));
+  --tw-prose-code: hsl(var(--foreground));
+  --tw-prose-pre-code: hsl(var(--card));
+  --tw-prose-pre-bg: hsl(var(--primary));
+  --tw-prose-th-borders: hsl(var(--border));
+  --tw-prose-td-borders: hsl(var(--border));
 }
 
 @layer utilities {
