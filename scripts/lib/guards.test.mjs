@@ -48,6 +48,53 @@ test("check-dashes reads src/lib, where the .md twins and price lines are writte
   assert.match(r.out, /src\/lib\/markdown\.ts:1/);
 });
 
+test("check-design-tokens fails on an empty tree and passes the tokens", () => {
+  const empty = run("check-design-tokens.mjs", {});
+  assert.equal(empty.status, 1);
+  assert.match(empty.out, /0 filer fundet/);
+  const ok = run("check-design-tokens.mjs", { "src/a.tsx": 'export const A = () => <p className="text-foreground bg-card rounded-lg border-border-strong" />;\n' });
+  assert.equal(ok.status, 0, ok.out);
+});
+
+test("check-design-tokens fails gray, white, a hex in a className and rounded-2xl, in src and in app", () => {
+  const bad = {
+    "src/a.tsx": 'export const A = () => <p className="text-gray-900" />;\n',
+    "app/b.tsx": 'export const B = () => <p className="bg-white rounded-2xl" />;\n',
+    "app/c.tsx": 'export const C = () => <p className="p-2 text-[#123456]" style={{ color: "#fff" }} />;\n',
+  };
+  const r = run("check-design-tokens.mjs", bad);
+  assert.equal(r.status, 1, r.out);
+  assert.match(r.out, /src\/a\.tsx:1.*text-gray-900/);
+  assert.match(r.out, /app\/b\.tsx:1.*bg-white/);
+  assert.match(r.out, /app\/b\.tsx:1.*rounded-2xl/);
+  assert.match(r.out, /app\/c\.tsx:1.*text-\[#/);
+  for (const [path, content] of Object.entries(bad)) {
+    assert.equal(run("check-design-tokens.mjs", { "src/ok.tsx": "export const O = 1;\n", [path]: content }).status, 1, path);
+  }
+});
+
+test("check-design-tokens: an allow-list entry lets that text through, and goes stale loudly", () => {
+  const file = { "src/logo.tsx": 'export const L = () => <i className="text-gray-900" />;\n' };
+  const entry = { file: "src/logo.tsx", match: "text-gray-900", reason: "brand ink" };
+  const allowed = run("check-design-tokens.mjs", { ...file, "scripts/design-tokens-allowlist.json": JSON.stringify({ allow: [entry] }) });
+  assert.equal(allowed.status, 0, allowed.out);
+  // The same entry for text that is not in the file: stale.
+  const stale = run("check-design-tokens.mjs", { "src/logo.tsx": "export const L = 1;\n", "scripts/design-tokens-allowlist.json": JSON.stringify({ allow: [entry] }) });
+  assert.equal(stale.status, 1);
+  assert.match(stale.out, /forekommer ikke længere/);
+  // No reason, or a file that does not exist.
+  const noReason = run("check-design-tokens.mjs", { ...file, "scripts/design-tokens-allowlist.json": JSON.stringify({ allow: [{ ...entry, reason: "" }] }) });
+  assert.equal(noReason.status, 1);
+  assert.match(noReason.out, /mangler/);
+  const missing = run("check-design-tokens.mjs", { ...file, "scripts/design-tokens-allowlist.json": JSON.stringify({ allow: [{ ...entry, file: "src/gone.tsx" }] }) });
+  assert.equal(missing.status, 1);
+  assert.match(missing.out, /findes ikke/);
+  // An allow-list entry does not cover other text in the same file.
+  const other = run("check-design-tokens.mjs", { "src/logo.tsx": 'export const L = () => <i className="text-gray-900 bg-white" />;\n', "scripts/design-tokens-allowlist.json": JSON.stringify({ allow: [entry] }) });
+  assert.equal(other.status, 1);
+  assert.match(other.out, /bg-white/);
+});
+
 test("check-sales-led fails on an empty tree, passes clean copy, fails a trial", () => {
   const empty = run("check-sales-led.mjs", {});
   assert.equal(empty.status, 1);

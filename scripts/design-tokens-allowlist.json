@@ -1,0 +1,4 @@
+{
+  "_comment": "Justified exceptions to scripts/check-design-tokens.mjs. Each entry: file, match (the exact text), reason. Empty today: the logo inks in SiteHeader, SiteFooter and Wordmark are not hard-coded, they are currentColor set by the caller from tokens (text-primary), so nothing needed an exception. Add an entry only with a reason; a stale entry fails the check.",
+  "allow": []
+}

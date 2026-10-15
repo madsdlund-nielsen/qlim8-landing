@@ -14,7 +14,7 @@ app.qlim8.com and also hosts the CMS this site reads from.
 ```bash
 npm ci --legacy-peer-deps   # matches the Dockerfile, which is the build of record
 npm run dev                 # next dev
-npm run lint                # eslint + dash guard + copy guard + workflow guard + SEO titles + schema graph
+npm run lint                # eslint + dash guard + design-token guard + copy guard + workflow guard + SEO titles + schema graph
 npm run typecheck           # tsc --noEmit
 npm test                    # copyMerge + content-dates + packageView + copy rules (pretest regenerates the dates)
 npm run build               # next build (standalone output; prebuild regenerates the dates)
@@ -87,8 +87,19 @@ design is light only too. Fonts are loaded in `app/layout.tsx` with
 `next/font/local` from `design-system/fonts` (Source Sans 3 as `font-sans`,
 Fraunces as `font-display`).
 
-Tokens only in new and rewritten files: no `gray-*`, `bg-white`, hex in a
-className or `rounded-2xl/3xl`. The rest of the site is moved over page by page.
+Tokens only, everywhere in `src/` and `app/`: no `gray-*` (or any other
+Tailwind palette step), `bg-white`/`text-black`/`text-white`, hex or arbitrary
+colour in a className, and no `rounded-2xl/3xl`. `npm run lint` fails on them
+via `scripts/check-design-tokens.mjs` (rule in `scripts/lib/designTokens.mjs`,
+tests in `designTokens.test.mjs` and `guards.test.mjs`). A justified exception
+goes in `scripts/design-tokens-allowlist.json` (file, exact text, reason); a
+stale or reasonless entry fails too, and the list is empty today. The sweep map:
+`text-gray-900` is `text-primary` on headings and `text-foreground` elsewhere,
+`-500/-600` is `text-muted-foreground`, `bg-white` is `bg-card`, `bg-gray-50/100`
+is `bg-band` (`bg-sand` for quotes), `border-gray-200` is `border-border`
+(`border-border-strong` on controls), a dark section is `bg-primary` with
+`text-primary-foreground` and the `inverted` ds Button, buttons are `rounded-md`
+and cards `rounded-lg` (`rounded-full` stays on dots, avatars and small status pills).
 
 The product screenshots in `attached_assets/` are **rendered from the design
 board**, not screen-captured, so they carry the product's own palette and can be
