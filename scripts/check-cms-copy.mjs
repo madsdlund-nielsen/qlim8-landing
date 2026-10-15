@@ -19,7 +19,10 @@
  * whatever the figure: it goes stale the day the catalog changes.
  *
  * So, for every CMS page key this site reads:
- *   - every internal path in the copy must be a route this site serves, and
+ *   - every internal path in the copy must be a route this site serves. A path
+ *     that is a redirect source (next.config.ts, redirects.json) still works,
+ *     one hop later, so it is a warning ("link via redirect"), not a dead link;
+ *     and
  *   - no string may break the sales-led rules in scripts/lib/salesLed.mjs
  *     (a package price, a hard-coded signup or checkout link, a trial).
  *     The same rules hold the bundled copy in `npm run lint`. The legal
@@ -96,8 +99,6 @@ async function main() {
   const routes = new Set([
     ...pageRoutes(),
     "/llms.txt", "/llms-full.txt", "/sitemap.xml", "/robots.txt",
-    // permanent redirects in next.config.ts still resolve
-    "/pricing", "/about", "/viden",
     ...MARKETING_HUBS.map((h) => h.route),
     ...ALL_MARKETING_NODES.map((n) => `/${n.collection}/${n.slug}`),
     ...articles.map((a) => `/blog/${a.slug}`),
@@ -110,6 +111,18 @@ async function main() {
     fail(`could not list published articles: ${err.message}`);
   }
   const isRoute = (p) => routes.has(p) || routes.has(p.replace(/\.md$/, ""));
+
+  // ── Redirect sources ───────────────────────────────────────────────────────
+  // Read from next.config.ts, the one place they are set (the merged industry
+  // and product pages come from src/content/marketing/redirects.json). A link
+  // to one still works, one hop later, so it is a warning to update, not a
+  // dead link. A source with a parameter ("/viden/:slug*") matches by prefix.
+  const nextConfig = (await import("../next.config.ts")).default;
+  const redirectRules = await nextConfig.redirects();
+  const redirectSources = new Set(redirectRules.map((r) => r.source).filter((x) => !x.includes(":")));
+  const redirectPrefixes = redirectRules.map((r) => r.source).filter((x) => x.includes(":")).map((x) => x.slice(0, x.indexOf(":")));
+  const viaRedirect = (p) => redirectSources.has(p) || redirectPrefixes.some((pre) => p.startsWith(pre));
+  const redirectTarget = (p) => redirectRules.find((r) => r.source === p)?.destination;
 
   const LEGAL_KEYS = new Set([LEGAL_COOKIES_PAGE_KEY, LEGAL_PRIVACY_PAGE_KEY, LEGAL_TERMS_PAGE_KEY, LEGAL_DPA_PAGE_KEY]);
 
@@ -131,6 +144,22 @@ async function main() {
     seen.set(problem, key);
     fail(`${key} · ${where}: ${problem}`);
   };
+  const warned = new Set();
+  const warn = (problem, key, where) => {
+    if (warned.has(problem)) return;
+    warned.add(problem);
+    console.warn(`  ! ${key} · ${where}: ${problem}`);
+  };
+  /** A path in published copy: a route is fine, a redirect source is a warning, anything else is dead. */
+  const checkPath = (p, key, where) => {
+    if (isRoute(p)) return;
+    if (viaRedirect(p)) {
+      const to = redirectTarget(p);
+      warn(`link via redirect: ${p}${to ? ` (now ${to})` : ""}, link to the new address`, key, where);
+      return;
+    }
+    report(`links to ${p}, which is not a route on qlim8.com`, key, where);
+  };
 
   const results = await Promise.all(
     pageKeys.map(async (key) => {
@@ -149,9 +178,7 @@ async function main() {
     publishedKeys++;
     for (const [where, text] of strings(copy)) {
       checkedStrings++;
-      for (const p of internalPaths(text)) {
-        if (!isRoute(p)) report(`links to ${p}, which is not a route on qlim8.com`, key, where);
-      }
+      for (const p of internalPaths(text)) checkPath(p, key, where);
       for (const { char } of dashFindings(text)) report(`${char} in published copy`, key, where);
       if (LEGAL_KEYS.has(key)) continue;
       for (const { kind, match } of salesLedViolations(text)) {
@@ -166,9 +193,7 @@ async function main() {
       const art = await getJson(`/api/public/cms/articles/${encodeURIComponent(a.slug)}?language=da`);
       for (const [where, text] of strings(art?.sections ?? [])) {
         checkedStrings++;
-        for (const p of internalPaths(text)) {
-          if (!isRoute(p)) report(`links to ${p}, which is not a route on qlim8.com`, `article ${a.slug}`, where);
-        }
+        for (const p of internalPaths(text)) checkPath(p, `article ${a.slug}`, where);
         for (const { char } of dashFindings(text)) report(`${char} in published copy`, `article ${a.slug}`, where);
         for (const { kind, match } of salesLedViolations(text)) {
           report(`${kind}: "${match}" (qlim8 is sold after a demo and names no package price)`, `article ${a.slug}`, where);
@@ -188,6 +213,7 @@ async function main() {
   }
 
   console.log("");
+  if (warned.size > 0) console.warn(`${warned.size} link(s) go through a redirect (warnings, not failures).\n`);
   if (failures > 0) {
     console.error(`CMS copy check FAILED, ${failures} problem(s). These are fixed in the app's /admin editor, not in this repo.`);
     process.exit(1);

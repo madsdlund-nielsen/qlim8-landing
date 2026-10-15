@@ -54,7 +54,7 @@ package and the company's needs, and is quoted after a demo or a call. After the
 qlim8 creates the customer's account and helps connect the accounting system.
 
 ${contact.join("\n")}
-- [Packages: Starter, Premium, Enterprise](${BASE_URL}/priser.md)`;
+- [Packages](${BASE_URL}/priser.md)`;
   }
   const lines = [...packages!.packages]
     .sort((a, b) => a.displayRank - b.displayRank)
@@ -119,8 +119,8 @@ other MCP-compatible client can query a company's carbon ledger directly.
 - Surface: 32 tools, 3 resources, 3 prompts
 - Auth: OAuth 2.1 with Dynamic Client Registration and PKCE (no API key to copy),
   or a Bearer API key (\`qk_live_*\` / \`qk_sandbox_*\`) shared with the REST API
-- Access tier: Premium. Read-only by default; every write is recorded in a
-  tamper-evident audit chain
+- Access: read-only by default; every write is recorded in a tamper-evident
+  audit chain
 - [Tool catalog (JSON, unauthenticated)](${MCP_ENDPOINT}/schema)
 - [Discovery document](${BASE_URL}/.well-known/mcp.json)
 - [Quickstart, Danish](${BASE_URL}/docs/mcp-quickstart)
@@ -139,9 +139,7 @@ VSME (Voluntary SME standard) is EFRAG's voluntary sustainability reporting
 standard for SMEs. qlim8 produces both versions and an AI agent can start either
 one with \`generate_report\`.
 
-- [VSME reporting overview](${BASE_URL}/produkt/vsme-rapport.md)
-- [VSME Basic](${BASE_URL}/produkt/vsme-basis.md): sections B1-B11, included from Starter
-- [VSME Comprehensive](${BASE_URL}/produkt/vsme-comprehensive.md): adds C1-C9, requires Premium
+- [VSME reporting](${BASE_URL}/produkt/vsme-rapport.md): VSME Basic and Comprehensive in one place, and the data each module asks for
 - [VSME reporting via an AI agent](${BASE_URL}/integrationer/vsme-rapport-med-ai-agent.md)
 
 ## Developer surfaces
