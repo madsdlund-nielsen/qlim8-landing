@@ -1,0 +1,122 @@
+[
+  {
+    "from": "/kundetyper/tomrer",
+    "to": "/kundetyper/byggeri-og-haandvaerk"
+  },
+  {
+    "from": "/kundetyper/maler",
+    "to": "/kundetyper/byggeri-og-haandvaerk"
+  },
+  {
+    "from": "/kundetyper/elektriker",
+    "to": "/kundetyper/byggeri-og-haandvaerk"
+  },
+  {
+    "from": "/kundetyper/vvs",
+    "to": "/kundetyper/byggeri-og-haandvaerk"
+  },
+  {
+    "from": "/kundetyper/entreprenoer",
+    "to": "/kundetyper/byggeri-og-haandvaerk"
+  },
+  {
+    "from": "/kundetyper/vognmand",
+    "to": "/kundetyper/transport-og-vognmaend"
+  },
+  {
+    "from": "/kundetyper/plastfabrikant",
+    "to": "/kundetyper/produktion-og-industri"
+  },
+  {
+    "from": "/kundetyper/revisor",
+    "to": "/kundetyper/revisorer-og-raadgivere"
+  },
+  {
+    "from": "/kundetyper/raadgiver",
+    "to": "/kundetyper/revisorer-og-raadgivere"
+  },
+  {
+    "from": "/kundetyper/konsulent",
+    "to": "/kundetyper/revisorer-og-raadgivere"
+  },
+  {
+    "from": "/kundetyper/frisoer",
+    "to": "/kundetyper"
+  },
+  {
+    "from": "/kundetyper/store-virksomheder",
+    "to": "/priser"
+  },
+  {
+    "from": "/produkt/dashboard",
+    "to": "/produkt/platform-og-overblik"
+  },
+  {
+    "from": "/produkt/udforskning",
+    "to": "/produkt/platform-og-overblik"
+  },
+  {
+    "from": "/produkt/data-udtraek",
+    "to": "/produkt/platform-og-overblik"
+  },
+  {
+    "from": "/produkt/excel-rapport",
+    "to": "/produkt/rapportering"
+  },
+  {
+    "from": "/produkt/pdf-rapport",
+    "to": "/produkt/rapportering"
+  },
+  {
+    "from": "/produkt/modtagere",
+    "to": "/produkt/rapportering"
+  },
+  {
+    "from": "/produkt/bestyrelsesrapport",
+    "to": "/produkt/rapportering"
+  },
+  {
+    "from": "/produkt/investorrapport",
+    "to": "/produkt/rapportering"
+  },
+  {
+    "from": "/produkt/bankrapport",
+    "to": "/produkt/rapportering"
+  },
+  {
+    "from": "/produkt/samarbejdspartnere",
+    "to": "/produkt/rapportering"
+  },
+  {
+    "from": "/produkt/temaer",
+    "to": "/produkt/rapportering"
+  },
+  {
+    "from": "/produkt/brag-board",
+    "to": "/produkt/rapportering"
+  },
+  {
+    "from": "/produkt/vsme-basis",
+    "to": "/produkt/vsme-rapport"
+  },
+  {
+    "from": "/produkt/vsme-comprehensive",
+    "to": "/produkt/vsme-rapport"
+  },
+  {
+    "from": "/produkt/audit-trail",
+    "to": "/produkt/audit-trail-og-revisor"
+  },
+  {
+    "from": "/produkt/revisor-adgang",
+    "to": "/produkt/audit-trail-og-revisor"
+  },
+  {
+    "from": "/produkt/tiltag",
+    "to": "/produkt/reduktionsmaal-og-scenarier"
+  },
+  {
+    "from": "/produkt/scenarier",
+    "to": "/produkt/reduktionsmaal-og-scenarier"
+  }
+]

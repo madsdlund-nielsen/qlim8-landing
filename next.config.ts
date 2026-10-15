@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+// The JSON, not src/content/marketing/redirects.ts: next.config.ts cannot load
+// a sibling TypeScript module. The typed accessor reads the same file.
+import redirectRows from "./src/content/marketing/redirects.json";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -29,14 +32,23 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Every redirect carries an explicit statusCode: 301. `permanent: true` makes
+  // Next answer 308, which crawlers treat the same but which this site does not
+  // want to depend on (the plan and the tests say 301).
   async redirects() {
     return [
-      { source: "/pricing",      destination: "/priser",      permanent: true },
-      { source: "/about",        destination: "/om-os",       permanent: true },
-      { source: "/viden",        destination: "/blog",        permanent: true },
-      { source: "/viden/:slug*", destination: "/blog/:slug*", permanent: true },
-      { source: "/blog/bankens-nye-krav-esg-smv-finansiering", destination: "/blog/l193-bankens-esg-krav-smv", permanent: true },
-      { source: "/blog/csrd-leverandoer-rapportering",          destination: "/blog",                           permanent: true },
+      { source: "/pricing",      destination: "/priser",      statusCode: 301 },
+      { source: "/about",        destination: "/om-os",       statusCode: 301 },
+      { source: "/viden",        destination: "/blog",        statusCode: 301 },
+      { source: "/viden/:slug*", destination: "/blog/:slug*", statusCode: 301 },
+      { source: "/blog/bankens-nye-krav-esg-smv-finansiering", destination: "/blog/l193-bankens-esg-krav-smv", statusCode: 301 },
+      { source: "/blog/csrd-leverandoer-rapportering",          destination: "/blog",                           statusCode: 301 },
+      // The merged industry and product pages (src/content/marketing/redirects.json):
+      // each row is the page and its .md twin.
+      ...redirectRows.flatMap(({ from, to }) => [
+        { source: from, destination: to, statusCode: 301 },
+        { source: `${from}.md`, destination: `${to}.md`, statusCode: 301 },
+      ]),
     ];
   },
 };
