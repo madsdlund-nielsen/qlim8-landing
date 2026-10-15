@@ -279,8 +279,20 @@ below), the metadata and `llms.txt`. The prose in `src/content/**` does not
 switch and speaks of starting for free; after an emergency stop that lasts,
 change it here and in `/admin`.
 
-The other ways in stay: **Book demo** (`DEMO_HREF`, `/kontakt?emne=demo`, the
-contact form with "Book en demo" preselected), **the contact form** on
+The other ways in stay: **Book demo** (`DEMO_HREF`, `/kontakt?emne=demo`; a
+plain link, so the contact form with "Book en demo" preselected is the no-JS
+fallback). With JavaScript `DemoDialog` (`src/components/public/DemoDialog.tsx`,
+mounted once in `app/layout.tsx`) catches a click on any such link in the capture
+phase, bundled and CMS-published copy alike, and opens a dialog instead: name and
+e-mail, then "Hvor mange ansatte er I?" in the app slide-in's four bands
+(`EMPLOYEE_BANDS`). `1-9` goes to `/demo` (`DEMO_VIDEO_HREF`, the film
+`public/demo/qlim8-demo.mp4`, copied from qlim8-app's `demo/`); `10-49` and up
+shows the Google Calendar booking page the app names as `bookingUrl` in its
+answer to `POST /api/contact` (linked, never framed: the CSP has no `frame-src`).
+The lead is posted either way, and the film is never held back by it. A demo CTA
+needs no code: write the link as `DEMO_HREF` (the rule is `isDemoHref` in
+`src/lib/demoDialog.ts`, tested in `demoDialog.test.ts`); `openDemoDialog()`
+opens it from a button. **The contact form** on
 `/kontakt` (`src/components/public/ContactForm.tsx`, posted to the
 same-origin proxy `app/api/contact/route.ts`, which forwards to qlim8-app's
 `POST /api/public/contact`; a sent form fires GA4 `generate_lead`), **the

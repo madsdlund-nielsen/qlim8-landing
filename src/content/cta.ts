@@ -8,16 +8,42 @@
 // (or the API cannot be reached) every main button books a demo instead.
 //
 // Every CTA on the site points at one of these, so moving the demo booking
-// (to a calendar tool, say) is a one-line change. `scripts/check-sales-led.mjs`
+// (to a calendar tool, say) is a one-line change. A demo CTA is a plain link to
+// DEMO_HREF; DemoDialog (src/components/public/DemoDialog.tsx) intercepts a
+// click on it, bundled and CMS-published copy alike, and opens the demo dialog:
+// name and e-mail, then the number of employees. Up to nine goes to the film on
+// /demo (DEMO_VIDEO_HREF), ten or more to the calendar page the app names. `scripts/check-sales-led.mjs`
 // fails `npm run lint` when a package price, a signup or checkout link or a
 // trial appears in the bundled copy; `scripts/check-cms-copy.mjs` does the
 // same for CMS-published copy.
 
-/** The contact form with "Book en demo" preselected (see page-components/kontakt). */
+/**
+ * The contact form with "Book en demo" preselected (see page-components/kontakt).
+ * With JavaScript, DemoDialog catches a click on a link to this address and opens
+ * the demo dialog instead (see isDemoHref in src/lib/demoDialog.ts). Without it,
+ * the link still works and leads to the form, so keep the address as it is.
+ */
 export const DEMO_HREF = "/kontakt?emne=demo";
 export const DEMO_LABEL = "Book demo";
 
 export const CONTACT_HREF = "/kontakt";
+
+/** The film of the platform, where a company with fewer than ten employees is sent (app/demo). */
+export const DEMO_VIDEO_HREF = "/demo";
+
+/**
+ * The employee bands of the demo dialog: the same four as the app's slide-in
+ * ("Hvor mange ansatte er I?"), with the same values. A small company (the
+ * first band) sees the film; the others book a time in the calendar.
+ */
+export const EMPLOYEE_BANDS = [
+  { value: "1-9", label: "1-9 ansatte" },
+  { value: "10-49", label: "10-49 ansatte" },
+  { value: "50-249", label: "50-249 ansatte" },
+  { value: "250+", label: "250 eller flere ansatte" },
+] as const;
+export type EmployeeBand = (typeof EMPLOYEE_BANDS)[number]["value"];
+export const SMALL_COMPANY_BAND: EmployeeBand = "1-9";
 
 export const PHONE_DISPLAY = "+45 93 90 13 84";
 export const PHONE_HREF = "tel:+4593901384";

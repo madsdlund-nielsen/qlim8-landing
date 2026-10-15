@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../src/index.css";
 import { CookieConsent } from "@/components/CookieConsent";
+import { DemoDialog } from "@/components/public/DemoDialog";
 import { Toaster } from "@/components/ui/toaster";
 import { SelfServeProvider } from "@/components/public/SelfServeContext";
 import { fetchPublicPackages } from "@/lib/packages";
@@ -89,6 +90,7 @@ export default async function RootLayout({
       <body>
         <SelfServeProvider value={selfServe}>{children}</SelfServeProvider>
         <CookieConsent />
+        <DemoDialog />
         <Toaster />
       </body>
     </html>
