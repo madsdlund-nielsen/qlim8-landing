@@ -1,6 +1,6 @@
 # qlim8-landing: documentation
 
-> Last updated: 2026-09-25 · Owner: qlim8 team
+> Last updated: 2026-10-15 · Owner: qlim8 team
 
 This repository is the **marketing site** (qlim8.com). For the **whole-system architecture**
 (the app at app.qlim8.com **and** this landing site) see the diagram suite:
@@ -17,7 +17,25 @@ This repository is the **marketing site** (qlim8.com). For the **whole-system ar
   The three rules the site holds itself to (a real `lastmod` per URL, one
   `@id`-linked schema graph with no `offers` or prices, content in the HTML)
   and the scripts that enforce each: `scripts/content-dates.mjs`,
-  `scripts/check-schema.mjs`, `scripts/check-cms-copy.mjs`.
+  `scripts/check-schema.mjs`, `scripts/check-cms-copy.mjs`. Since the
+  October 2026 restructure it also covers the 43-URL sitemap and the redirects.
+
+- 🗺️ [English: information architecture](./en/seo/information-architecture.md) ·
+  🇩🇰 [Dansk: informationsarkitektur](./da/seo/informationsarkitektur.md)
+
+  The page tree (hubs, the four industry pages, the six product theme pages, the
+  eight integration pages), which pages are written green and which blue, the
+  full table of the 30 redirects, and which search terms each merged page took
+  over. How to retire a page is in `CLAUDE.md`.
+
+## Marketing
+
+- 📷 [English: photo list](./en/marketing/photo-list.md) ·
+  🇩🇰 [Dansk: fotoliste](./da/marketing/fotoliste.md)
+
+  The brief for the photos the site wants (style, format, consent, one entry
+  per page and CMS field). The Danish file is the one handed to the
+  photographer. Photos are uploaded in the app's `/admin`, never committed here.
 
 ## Operations
 
@@ -40,9 +58,11 @@ These are **synced copies**. The canonical, always-current architecture docs liv
 (`docs/{en,da}/architecture/`). Last synced: 2026-06-29; the sales-led sections (§1, §5, §6,
 §7.2, §8) were updated here on 2026-09-25, ahead of the qlim8-app copy.
 
-> Note (2026-09-25): qlim8 is sold after a demo, with no self-service signup and no published
-> package prices. The landing site no longer calls the app's `/api/stripe/checkout-public`. Its
-> bridges to the app are now the same-origin proxies `/api/contact` → `/api/public/contact` and
-> `/api/newsletter/signup` → `/api/newsletter/signup`, the CMS reads, and the "Log ind" link for
-> existing customers. Diagram 8 now shows the demo request → customer account sequence in place
-> of the checkout. See §5, §7.2 and §8 of the architecture doc, and "Sales-led" in `CLAUDE.md`.
+> Note (2026-10-15): the site is self-serve when the app's package catalog sells something by
+> itself, and sales-led (no price, every main button books a demo) while it does not or the
+> packages API cannot be reached. The landing site never calls a checkout: its bridges to the app
+> are the same-origin proxies `/api/contact` → `/api/public/contact` and `/api/newsletter/signup`
+> → `/api/newsletter/signup`, the CMS reads, the packages API, the signup URL the API names, and
+> the "Log ind" link for existing customers. Since October 2026 the pages also read optional copy
+> blocks, fill price tokens from the packages API and answer 301 for retired addresses; see §5
+> of the architecture doc, and "Self-serve" and "Site structure and redirects" in `CLAUDE.md`.
