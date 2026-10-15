@@ -1,0 +1,67 @@
+/* qlim8 Grøn Designsystem: komponentklasser (præfiks g-). Bruger kun tokens. */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--color-background);color:var(--color-foreground);font-family:var(--font-body);font-size:17px;line-height:28px}
+:focus-visible{outline:2px solid var(--color-focus-ring);outline-offset:2px}
+.g-wrap{padding:var(--space-8)}
+.g-measure{max-width:var(--measure-body)}
+
+/* Button */
+.g-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-height:48px;padding:var(--space-3) var(--space-6);border:1px solid transparent;border-radius:var(--radius-md);font:600 16px/24px var(--font-body);text-decoration:none;cursor:pointer;transition:background-color .2s ease,border-color .2s ease}
+.g-btn--primary{background:var(--color-primary);color:var(--color-primary-foreground)}
+.g-btn--primary:hover{background:var(--color-primary-hover)}
+.g-btn--secondary{background:var(--color-sand);color:var(--color-primary)}
+.g-btn--secondary:hover{background:var(--color-secondary-hover)}
+.g-btn--outline{background:transparent;color:var(--color-primary);border-color:var(--color-border-strong)}
+.g-btn--outline:hover{background:var(--color-band)}
+.g-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.g-btn-row{display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:center}
+
+/* TrustLine */
+.g-trust{display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-4);margin:var(--space-3) 0 0;padding:0;list-style:none;font:400 14px/20px var(--font-body);color:var(--color-muted-foreground)}
+.g-trust li{display:inline-flex;align-items:center;gap:var(--space-1)}
+.g-trust svg{width:16px;height:16px;stroke:var(--color-accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.g-micro{margin:var(--space-3) 0 0;font:400 14px/20px var(--font-body);color:var(--color-muted-foreground)}
+
+/* Hero */
+.g-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:var(--space-12);align-items:center;padding:var(--space-section) var(--space-8)}
+.g-hero h1{margin:0 0 var(--space-6);font:500 44px/52px var(--font-display);letter-spacing:-.01em;color:var(--color-primary)}
+.g-hero p.g-lead{margin:0 0 var(--space-8);max-width:var(--measure-body);font:400 20px/32px var(--font-body);color:var(--color-foreground)}
+.g-photo{display:flex;align-items:flex-end;min-height:280px;padding:var(--space-4);border-radius:var(--radius-lg);background:var(--color-band);border:1px solid var(--color-border);color:var(--color-muted-foreground);font:400 14px/20px var(--font-body)}
+
+/* Card / TrustCard / StepCard / IntegrationCard */
+.g-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-8)}
+.g-card{padding:var(--space-8);border-radius:var(--radius-lg);background:var(--color-card);border:1px solid var(--color-border);box-shadow:var(--shadow-soft)}
+.g-card--band{background:var(--color-band);box-shadow:none}
+.g-card h3{margin:var(--space-4) 0 var(--space-2);font:500 22px/30px var(--font-display);color:var(--color-primary)}
+.g-card p{margin:0;font:400 15px/24px var(--font-body);color:var(--color-muted-foreground)}
+.g-icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--radius-md);background:var(--color-card);color:var(--color-accent)}
+.g-card:not(.g-card--band) .g-icon{background:var(--color-band)}
+.g-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.g-step-no{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-md);background:var(--color-primary);color:var(--color-primary-foreground);font:600 16px/24px var(--font-body)}
+.g-integ{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-2);min-height:112px;padding:var(--space-6);text-align:center;border-radius:var(--radius-lg);background:var(--color-card);border:1px solid var(--color-border);box-shadow:var(--shadow-soft)}
+.g-integ strong{font:600 17px/24px var(--font-body);color:var(--color-foreground)}
+.g-integ span{font:400 14px/20px var(--font-body);color:var(--color-muted-foreground)}
+
+/* ContactBox */
+.g-contact{padding:var(--space-8);border-radius:var(--radius-lg);background:var(--color-card);border:1px solid var(--color-border);box-shadow:var(--shadow-soft)}
+.g-contact h3{margin:0 0 var(--space-4);font:500 22px/30px var(--font-display);color:var(--color-primary)}
+.g-contact p{margin:0 0 var(--space-2);font:400 17px/28px var(--font-body)}
+.g-contact a:not(.g-btn){color:var(--color-accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.g-contact .g-btn{margin-top:var(--space-4);width:100%}
+
+/* Quote */
+.g-quote{margin:0;padding:var(--space-8);border-radius:var(--radius-lg);background:var(--color-sand);color:var(--color-foreground)}
+.g-quote p{margin:0;font:400 20px/32px var(--font-display);max-width:var(--measure-body)}
+.g-quote footer{margin-top:var(--space-4);font:400 15px/24px var(--font-body);color:var(--color-foreground)}
+
+/* ClosingCta */
+.g-closing{padding:var(--space-section-lg) var(--space-8);border-radius:var(--radius-lg);background:var(--color-primary);color:var(--color-primary-foreground);text-align:center}
+.g-closing h2{margin:0 0 var(--space-4);font:500 32px/40px var(--font-display);color:var(--color-primary-foreground)}
+.g-closing p{margin:0 auto var(--space-8);max-width:var(--measure-body);font:400 17px/28px var(--font-body);color:var(--color-primary-foreground)}
+.g-closing .g-btn-row{justify-content:center}
+.g-closing .g-btn--primary{background:var(--color-primary-foreground);color:var(--color-primary)}
+.g-closing .g-btn--primary:hover{background:var(--color-sand)}
+.g-closing .g-btn--outline{color:var(--color-primary-foreground);border-color:var(--color-primary-foreground)}
+.g-closing .g-btn--outline:hover{background:var(--color-primary-hover)}
+.g-closing .g-trust,.g-closing .g-micro{justify-content:center;color:var(--color-primary-foreground)}
+.g-closing .g-trust svg{stroke:var(--color-primary-foreground)}

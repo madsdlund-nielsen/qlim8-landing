@@ -1,0 +1,1 @@
+Logoerne er qlim8's egne filer. Primær (lås og ordmærke) har skifergrå blæk (#2b303b) og bruges på lyse flader som color-background, color-card og color-band. Invers har næsten hvid blæk (#f8fafc) og bruges på color-primary. Genfarv aldrig logoet og sæt det ikke i grønt.

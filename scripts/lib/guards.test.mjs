@@ -85,9 +85,10 @@ test("check-workflows fails the unquoted colon that broke a workflow on 2026-08-
   assert.match(r.out, /diag\.yml/);
 });
 
-test("the shared dash rule finds an em-dash and a stray en-dash, not a range", async () => {
+test("the shared dash rule finds an em-dash and a stray en-dash, not a range or a spaced tankestreg", async () => {
   const { dashFindings } = await import("./dashes.mjs");
   assert.deepEqual(dashFindings("qlim8 — klimaregnskab").map((f) => f.char), ["em-dash"]);
-  assert.deepEqual(dashFindings("qlim8 – klimaregnskab").map((f) => f.char), ["en-dash"]);
+  assert.deepEqual(dashFindings("klima–regnskab").map((f) => f.char), ["en-dash"]);
+  assert.deepEqual(dashFindings("qlim8 – klimaregnskab"), []);
   assert.deepEqual(dashFindings("Mandag–fredag 9:00–17:00, 2024–2026"), []);
 });

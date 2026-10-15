@@ -1,5 +1,7 @@
 # qlim8-landing: Claude Code Reference
 
+Ved UI og tekst: følg skillen `qlim8-groen-design` og tokens i `design-system/tokens.json` (navneoversættelse står under 'The palette').
+
 ## Project Overview
 The public marketing site at **qlim8.com**. Next.js 15 App Router, React 19,
 Tailwind 4, TypeScript. Danish only (`<html lang="da">`, `locale: "da_DK"`).
@@ -71,12 +73,26 @@ They show views that have shipped. The board also holds frames for views that
 have not, and putting one of those on the marketing site would promise
 something the product does not do yet.
 
-## No em-dashes in copy
+## Dashes in copy
 
-The em-dash (`—`) is banned in everything a visitor can read. It is not a
+The long em-dash (`—`) is banned in everything a visitor can read. It is not a
 character anyone here types on purpose, and its presence reads as machine-written
 text. `npm run lint` fails on it via `scripts/check-dashes.mjs`, which covers
-`src/content`, `src/page-components`, `src/components`, `src/index.css` and `app`.
+`src/content`, `src/page-components`, `src/components`, `src/lib`, `src/index.css`
+and `app`. The rule is `scripts/lib/dashes.mjs`, tested in
+`scripts/lib/dashes.test.mjs`, and shared with the live CMS check.
+
+A **short en-dash with a space on each side** (` – `) is allowed between words,
+as the Danish tankestreg: "Det er rigtigt – men ikke nok". It is for where
+Danish grammar calls for it. A comma, colon or full stop is preferred wherever
+one fits, and a dash used as a fixed ornament reads as machine-written too.
+The owner's rule, October 2026 (it replaces the earlier blanket ban on the
+en-dash outside ranges).
+
+The en-dash **without** spaces is a range sign and nothing else: between two
+numbers (`9:00–17:00`, `2024–2026`, `80–94%`) or between two weekdays or months
+(`Mandag–fredag`, `januar–marts`). An unspaced en-dash between ordinary words
+(`klima–regnskab`) is rejected, and so is a dash with a space on one side only.
 
 Use the punctuation Danish grammar actually calls for, not a blanket
 substitution:
@@ -88,10 +104,7 @@ substitution:
 | Before an enumeration | `: ` | `ned i den konkrete beregning: input, emissionsfaktor og kilde` |
 | Two main clauses (a comma would splice) | `. ` | `Du kan opgradere når som helst. Adgangen er øjeblikkelig.` |
 | An aside that itself contains commas | `( )` | `Fra dit regnskabssystem (Dinero, e-conomic eller Billy) hentes …` |
-
-The en-dash (`–`) is fine **only** as a range between two numbers or two words
-(`Mandag–fredag: 9:00–17:00`). Anywhere else it is an em-dash in disguise and
-the guard rejects it.
+| A pause or turn that only a dash gives | ` – ` | `Det er rigtigt – men ikke nok` |
 
 This applies to CMS-authored copy too, which the guard cannot see. Text written
 in the app's `/admin` editor is held to the same rule.
