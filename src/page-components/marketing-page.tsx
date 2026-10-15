@@ -26,6 +26,7 @@ import { CheckList } from "@/components/ds/CheckList";
 import { OptionCards } from "@/components/ds/OptionCards";
 import { DepthDetails } from "@/components/ds/DepthDetails";
 import { Faq } from "@/components/ds/Faq";
+import { Paragraphs } from "@/components/ds/Paragraphs";
 import type { MarketingNode, MarketingPageCopy, SectionKey } from "@/content/marketing/types";
 import { getRelated, getChildren } from "@/content/marketing";
 import { buildBreadcrumbTrail } from "@/lib/marketingPage";
@@ -102,7 +103,9 @@ export default function MarketingPageTemplate({ node, copy }: { node: MarketingN
         return (
           <Section tone={tone}>
             <h2 className="mb-5 max-w-3xl text-balance">{copy.intro!.heading}</h2>
-            <p className="max-w-(--measure-body)">{copy.intro!.body}</p>
+            <div className="max-w-(--measure-body)">
+              <Paragraphs text={copy.intro!.body} />
+            </div>
             {copy.intro!.bullets && copy.intro!.bullets.length > 0 && (
               <CheckList className="mt-6" items={copy.intro!.bullets.map((b) => ({ body: b }))} />
             )}
@@ -156,7 +159,7 @@ export default function MarketingPageTemplate({ node, copy }: { node: MarketingN
       case "howItWorks":
         return (
           <Section tone={tone}>
-            <SectionHead title={copy.howItWorks!.title} />
+            <SectionHead title={copy.howItWorks!.title} lead={copy.howItWorks!.intro} />
             <CardGrid>
               {copy.howItWorks!.steps.map((s, i) => (
                 <StepCard key={i} n={i + 1} title={s.title} body={s.body} />
@@ -272,11 +275,11 @@ export default function MarketingPageTemplate({ node, copy }: { node: MarketingN
             <div className="flex flex-wrap gap-3">
               {related.map((r) => (
                 <a
-                  key={`${r.collection}/${r.slug}`}
-                  href={`/${r.collection}/${r.slug}`}
+                  key={r.href}
+                  href={r.href}
                   className="inline-flex items-center gap-2 rounded-md border border-border-strong px-4 py-2 text-body-sm font-semibold text-primary transition-colors duration-200 hover:bg-band"
                 >
-                  {r.navLabel}
+                  {r.label}
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </a>
               ))}

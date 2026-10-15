@@ -171,6 +171,8 @@ export interface MarketingPageCopy {
   features?: FeatureItem[];
   howItWorks?: {
     title: string;
+    /** One line under the heading. "" = none (give "" in the defaults to make it editable). */
+    intro?: string;
     steps: HowItWorksStep[];
   };
   /** Three trust cards (TrustCard x 3). */
@@ -289,7 +291,9 @@ export interface MarketingNode {
   featured?: boolean;
   /**
    * Slugs shown as related links. A bare `"slug"` resolves inside this node's
-   * collection; `"collection/slug"` crosses collections (see getRelated).
+   * collection; `"collection/slug"` crosses collections; a path that starts
+   * with "/" is one of the static pages in STATIC_RELATED (see getRelated).
+   * An entry that resolves to nothing throws outside production.
    */
   related?: string[];
   /** Bundled default copy: resolved + CMS-merged at request time. */
@@ -321,5 +325,11 @@ export interface MarketingHub {
   title: string;
   seoTitle: string;
   seoDescription: string;
+  /**
+   * Append the hub questions seed and the shared ESG questions (genericFaq.ts)
+   * to the hub's own FAQ. Default true. A hub whose copy carries its own
+   * questions sets false.
+   */
+  genericFaq?: boolean;
   defaults: MarketingHubCopy;
 }

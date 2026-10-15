@@ -1,5 +1,5 @@
 import { Linkedin } from "lucide-react";
-import { FOOTER_SOLUTIONS } from "@/content/navigation";
+import { FOOTER_PRODUCT, FOOTER_SOLUTIONS } from "@/content/navigation";
 import Image from "next/image";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, CONTACT_HREF, DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
@@ -11,15 +11,15 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
   },
   {
     heading: "Produkt",
-    links: [
-      { label: "Pakker", href: "/priser" },
-      { label: "Metodologi", href: "/metodologi" },
-      { label: "API", href: "/api" },
-    ],
+    links: FOOTER_PRODUCT.map((l) => ({ label: l.label, href: l.href })),
   },
   {
     heading: "Ressourcer",
     links: [
+      { label: "Integrationer", href: "/integrationer" },
+      { label: "Pakker", href: "/priser" },
+      { label: "Metodologi", href: "/metodologi" },
+      { label: "API", href: "/api" },
       { label: "Blog", href: "/blog" },
       { label: "Nyhedsbrev", href: "/nyhedsbrev" },
       { label: "Docs", href: "/docs" },

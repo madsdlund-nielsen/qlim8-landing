@@ -230,7 +230,9 @@ export function renderMarketingPage(node: MarketingNode, copy: MarketingPageCopy
     features: copy.features?.length && ["## Det får du", ...copy.features.map((f) => `### ${f.title}\n\n${f.body}`)].join("\n\n"),
     howItWorks:
       copy.howItWorks?.steps?.length &&
-      [`## ${copy.howItWorks.title}`, ...copy.howItWorks.steps.map((s) => `### ${s.title}\n\n${s.body}`)].join("\n\n"),
+      [`## ${copy.howItWorks.title}`, copy.howItWorks.intro, ...copy.howItWorks.steps.map((s) => `### ${s.title}\n\n${s.body}`)]
+        .filter(Boolean)
+        .join("\n\n"),
     checks:
       copy.checks?.items?.length &&
       [`## ${copy.checks.title}`, copy.checks.intro, titledBullets(copy.checks.items)].filter(Boolean).join("\n\n"),

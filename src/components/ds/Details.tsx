@@ -1,6 +1,7 @@
 // Native <details> fold-outs: the answer is in the HTML whether or not it is
 // open, and nothing here ships JavaScript. DepthDetails and Faq use it.
 import { ChevronDown } from "lucide-react";
+import { Paragraphs } from "./Paragraphs";
 
 /** Native <details>: the answer is in the HTML whether or not it is open. */
 export function Details({ items, openFirst }: { items: { summary: string; body: string }[]; openFirst?: boolean }) {
@@ -12,7 +13,9 @@ export function Details({ items, openFirst }: { items: { summary: string; body: 
             {it.summary}
             <ChevronDown aria-hidden="true" strokeWidth={1.75} className="h-5 w-5 shrink-0 text-sage transition-transform duration-200 group-open:rotate-180" />
           </summary>
-          <p className="max-w-(--measure-body) pb-4 text-foreground">{it.body}</p>
+          <div className="max-w-(--measure-body) pb-4 text-foreground">
+            <Paragraphs text={it.body} />
+          </div>
         </details>
       ))}
     </div>

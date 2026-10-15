@@ -15,6 +15,7 @@ import { TrustCard } from "@/components/ds/TrustCard";
 import { ContactBox } from "@/components/ds/ContactBox";
 import { ClosingCta } from "@/components/ds/ClosingCta";
 import { Faq } from "@/components/ds/Faq";
+import { Paragraphs } from "@/components/ds/Paragraphs";
 import type { MarketingHubCopy } from "@/content/marketing/types";
 import type { NavLeaf } from "@/content/navigation";
 import { cn } from "@/lib/utils";
@@ -66,7 +67,9 @@ export default function MarketingHubTemplate({ copy, cards }: { copy: MarketingH
 
         <Section tone="band">
           <h2 className="mb-5 max-w-3xl text-balance">{copy.intro.heading}</h2>
-          <p className="max-w-(--measure-body)">{copy.intro.body}</p>
+          <div className="max-w-(--measure-body)">
+            <Paragraphs text={copy.intro.body} />
+          </div>
         </Section>
 
         <Section>
