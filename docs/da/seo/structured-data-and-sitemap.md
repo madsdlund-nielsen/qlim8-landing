@@ -1,6 +1,6 @@
 # SEO: sitemap-datoer, struktureret data og hvad crawlere ser
 
-> Sidst opdateret: 2026-09-25 · Ejer: qlim8-team · Engelsk udgave: [`docs/en/seo/structured-data-and-sitemap.md`](../../en/seo/structured-data-and-sitemap.md)
+> Sidst opdateret: 2026-10-15 · Ejer: qlim8-team · Engelsk udgave: [`docs/en/seo/structured-data-and-sitemap.md`](../../en/seo/structured-data-and-sitemap.md)
 
 Tre regler, hver med det script der håndhæver den. De kommer fra en
 gennemgang af qlim8.com i september 2026 mod de tre fejl der får AI-byggede
@@ -24,14 +24,16 @@ findes når JavaScript har kørt.
 
 Det der ikke flytter en dato: layout, header, footer, den fælles
 marketing-skabelon og den generiske FAQ der sættes på alle marketing-sider. En
-header-rettelse er ikke en grund til at fortælle Google at 60 sider er ændret.
+header-rettelse er ikke en grund til at fortælle Google, at alle sider er ændret.
 Granulariteten er per fil, så en rettelse af én side i
-`src/content/marketing/copy/produkt-a.ts` daterer også de andre sider i filen.
-Det er en lille overdrivelse i den ærlige retning.
+`src/content/marketing/copy/produkt-temaer.ts` også daterer de andre sider i
+filen (produkthubben og de øvrige temasider). Det er en lille overdrivelse i
+den ærlige retning.
 
 Aldrig `new Date()` (alle URLs ændres ved hvert deploy) og aldrig én fælles
 konstant (ingen husker at bumpe den; den tidligere `SITE_UPDATED` var to
-måneder gammel på 59 af 66 URLs).
+måneder gammel på 59 af de 66 URLs, sitet havde dengang. Det har 43 siden
+oktober 2026, se afsnit 4).
 
 **Guard:** `src/lib/contentDates.test.ts` (i `npm test`) fejler når en rute
 mangler dato, en dato ligger i fremtiden, eller alle datoer er ens.
@@ -53,14 +55,15 @@ anonym `{ "@type": "Organization", "name": "qlim8" }` er en virksomhed nummer
 to. Det var hvad de 44 marketing-sider og hvert blogindlæg udgav.
 
 Side-entiteter får et `@id` af deres egen kanoniske URL plus et fragment
-(`pageId()` i `src/lib/schema.ts`): `…/produkt/bankrapport#webpage`,
+(`pageId()` i `src/lib/schema.ts`): `…/produkt/rapportering#webpage`,
 `#breadcrumb`, `#service`, `#article`. Sidens `breadcrumb`-felt peger på dens
 `BreadcrumbList` via det id.
 
 Brødkrummer følger indholdshierarkiet (`parentSlug` i
 `src/content/marketing/*.ts`), som også er det den synlige brødkrumme og
-megamenuen viser. URL'erne er flade; det er tilladt, så længe de tre er enige.
-Megamenuen viser alle live sider, børn indrykket under forældre.
+megamenuen viser. URL'erne er flade (`/produkt/<slug>`, aldrig indlejrede); det
+er tilladt, så længe de tre er enige. Megamenuen viser alle live sider i de
+grupper, `navGroup` giver dem.
 
 `#software`'s offers kommer kun fra app'ens pakke-API, aldrig fra copy.
 `buildSoftwareSchema(offers)` får dem fra `offersFromPackages()`
@@ -81,9 +84,9 @@ definerer, to forskellige definitioner af samme `@id`, en brødkrumme der
 nævner en ikke-rute, et tomt FAQ-svar, eller en entitet med `offers`, `price`
 eller `lowPrice` i siderne, som de er bundlet. Derefter holder den de offers,
 API'et ville give `#software`, op mod app'ens egne svar, committet i
-`scripts/fixtures/public-packages.v1.json` (ingen offers) og `.v2.json` (ét pr.
-offentlig årspris for en virksomhedspakke, ekskl. moms, og intet for en skjult
-eller "fra"-pris).
+`scripts/fixtures/public-packages.v1.json` (ingen offers), `.v2.json` og `.v3.json`
+(ét pr. offentlig årspris for en virksomhedspakke, ekskl. moms, og intet for en
+skjult eller "fra"-pris).
 
 ## 3. Indholdet er i HTML'en
 
@@ -111,8 +114,11 @@ af de filbaserede guards kan se den. `scripts/check-cms-copy.mjs` (i
 `npm run test:contract`, planlagt af `cms-contract.yml`) henter hver page-key
 sitet læser, plus alle CMS-artikler, og fejler på et internt link til en
 ikke-rute eller på alt hvad copy-reglerne i `scripts/lib/salesLed.mjs`
-forbyder: en pakkepris eller en startpris-formulering ("fra N kr"), et
-hardkodet signup- eller checkout-link, en prøveperiode.
+forbyder: en skrevet pakkepris eller en startpris-formulering ("fra N kr"; et
+pristegn `[[ {pris:key} ]]` er tilladt, se `CLAUDE.md`), et hardkodet signup-
+eller checkout-link, en prøveperiode. Et link til en udgået adresse (en
+redirect-kilde) er en advarsel og ikke en fejl: det virker stadig, bare et
+hop senere.
 `scripts/check-sales-led.mjs` anvender de samme regler på den bundlede copy i
 `npm run lint`, begge undtager de juridiske dokumenter, og
 `scripts/lib/salesLed.test.mjs` holder reglerne op mod kendte strenge i
@@ -121,13 +127,61 @@ tidligere tjek af at en annonceret startpris var en planpris i
 `src/content/copy/pricing.ts`; der er ingen planpriser tilbage at sammenligne
 med. En fejl dér rettes i app'ens `/admin`-editor, ikke med et commit.
 
+## 4. Sitemappet og redirects bag det
+
+`app/sitemap.ts` bygges af sidenoderne, så det følger sitet uden en håndholdt
+liste: de statiske sider, `/blog` og dens artikler, de tre hubs og hver live
+node. En node med `status: "coming-soon"` (i dag integrationen Appelsin)
+renderes `noindex` og er ikke med. Sitemappet har **43 URL'er**:
+
+| Del | URL'er |
+|---|---|
+| Statiske sider (forside, priser, metodologi, API, om os, docs x4, kontakt, nyhedsbrev, karriere, juridiske x4) | 16 |
+| `/blog` | 1 |
+| Blogartikler (bundlede; en artikel kun i CMS'et lægger én til) | 6 |
+| Hubs (`/kundetyper`, `/produkt`, `/integrationer`) | 3 |
+| Branchesider | 4 |
+| Temasider under produkt | 6 |
+| Integrationssider (otte sider, Appelsin er ikke med) | 7 |
+
+Før omlægningen i oktober 2026 havde det 66: de samme 33 øvrige URL'er, plus 12
+branchesider og 21 produktsider. At samle de 33 sider i 10 fjernede 23 URL'er.
+Antallet af sider i Search Console bør falde mod cirka 43 i ugerne efter, at
+sitemappet er sendt ind igen, og et midlertidigt fald i visninger på de gamle
+adresser er forventet, mens Google følger 301'erne. Begrundelsen for hver
+sammenlægning, og hvad hver ny side overtog, står i
+[`informationsarkitektur.md`](./informationsarkitektur.md).
+
+**Redirects.** De 30 udgåede adresser (hele tabellen står i
+informationsarkitektur-dokumentet) er rækker i
+`src/content/marketing/redirects.json`. `next.config.ts` laver to regler af hver
+række, siden og dens `.md`-tvilling (`/produkt/bankrapport.md` går til
+`/produkt/rapportering.md`), og begge har `statusCode: 301`. Med
+`permanent: true` svarer Next 308, som crawlere læser på samme måde, men som
+sitet ikke vil være afhængigt af. De seks ældre redirects (`/pricing`, `/about`,
+`/viden`, to blogindlæg) er ændret til 301 af samme grund. Sitemappet lister
+kun destinationer, og schema-grafen og brødkrummerne nævner kun live ruter, så
+ingen gammel adresse bliver reklameret for nogen steder.
+
+**Guard:** `scripts/lib/redirects.test.mjs` (i `npm test`) fejler, når en af de
+33 historiske sider hverken er live eller omdirigeret, en destination ikke er en
+side, en kilde stadig er en side, en destination selv er en kilde (en kæde), en
+række mangler sin `.md`-tvilling, eller en regel ikke er en 301. Den fejler
+også, når en menuindgang eller en `related`-indgang nævner en side, der ikke
+findes. Hvordan en side udgår næste gang, står i `CLAUDE.md` under "Site
+structure and redirects".
+
 ## Tjek af en deployet side
 
 ```bash
 curl -s https://qlim8.com/sitemap.xml | grep -oE '<lastmod>[0-9-]{10}' | sort | uniq -c
-curl -s https://qlim8.com/produkt/bankrapport | grep -o '<script type="application/ld+json">[^<]*' | head
+curl -s https://qlim8.com/produkt/rapportering | grep -o '<script type="application/ld+json">[^<]*' | head
+curl -sI https://qlim8.com/produkt/bankrapport | grep -iE '^(HTTP|location)'   # 301 til /produkt/rapportering
+curl -sI https://qlim8.com/produkt/bankrapport.md | grep -iE '^(HTTP|location)' # 301 til /produkt/rapportering.md
 ```
 
 Sæt derefter URL'en i Googles Rich Results Test eller schema.org-validatoren.
 Search Console → Sitemaps skal blive ved med at vise "Success" uden fald i
-indekserede sider efter et deploy der ændrer datoer.
+indekserede sider efter et deploy der ændrer datoer. Efter omlægningen skal
+antallet af indekserede sider bevæge sig mod de 43 i sitemappet, og URL-inspektion
+på tre af de gamle adresser viser den redirect, Google har registreret.
