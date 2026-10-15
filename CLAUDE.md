@@ -337,9 +337,7 @@ sentence is dropped, and so is an object whose field was.
 
 Copy also does not say which package holds a feature ("fra Premium"): what is in
 a package changes with the catalog, and `/priser` shows it from the API. This is
-a rule from the fact base, not a guard; `GENERIC_ESG_FAQ` in
-`src/content/marketing/genericFaq.ts` still has one such sentence (MCP access
-"kræver Premium"), appended to the pages that do not set `genericFaq: false`.
+a rule from the fact base, not a guard.
 
 While the catalog sells nothing by itself, buttons that lead to `/priser` become
 Book demo (`resolveCta` in `src/lib/packageView.ts`) and the trust and micro
