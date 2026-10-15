@@ -30,3 +30,32 @@ export const PHONE_CTA = { label: `Ring ${PHONE_DISPLAY}`, href: PHONE_HREF } as
 
 /** Header and homepage, once the catalog sells something by itself: to the package page. */
 export const FREE_START_CTA = { label: "Kom gratis i gang", href: "/priser" } as const;
+
+/** The mail address shown in the ContactBox, the footer and the contact page. */
+export const CONTACT_EMAIL = "kontakt@qlim8.com";
+export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
+
+/**
+ * The trust line and the micro line under a main button while the catalog
+ * sells nothing by itself (catalog v1, or the API cannot be reached). "Ingen
+ * kreditkort" and "Ingen binding" are true of the free package only, so they
+ * must not stand over a button that books a demo; the call is the offer, and
+ * the phone and the mail are the ways in. TrustLine and MicroLine swap these
+ * in for whatever a page has written.
+ */
+export const SALES_LED_TRUST: string[] = ["Uforpligtende samtale", "Du taler direkte med stifteren", "Personlig hjælp"];
+export const SALES_LED_MICRO = `Ring direkte på ${PHONE_DISPLAY} · Eller skriv til ${CONTACT_EMAIL}`;
+
+/** The default trust line and micro line, for a page that sells the free start and has no text of its own. */
+export const STANDARD_TRUST: string[] = ["Ingen binding", "Oprettelse tager et par minutter", "Vi hjælper dig i gang"];
+export const STANDARD_MICRO = `Ingen kreditkort påkrævet · Personlig hjælp på ${PHONE_DISPLAY}`;
+
+/**
+ * The heading over the row of logos (IntegrationRow) and the label on the
+ * systems that are not shipped yet. The heading holds only because the three
+ * coming-soon systems carry the label.
+ */
+export const INTEGRATION_BAND = {
+  title: "Direkte forbindelser i dag og flere på vej",
+  statusLabel: "Kommer snart",
+} as const;

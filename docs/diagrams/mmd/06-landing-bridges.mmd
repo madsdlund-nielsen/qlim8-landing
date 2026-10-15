@@ -4,17 +4,20 @@
 %% from the app. Once the app's catalog sells something by itself, the package
 %% buttons and "Kom gratis i gang" link to the signup URL the packages API names;
 %% the payment is the app's (Stripe Checkout), never this site's. Until then, and
-%% when the API cannot be reached, every main button books a demo.
+%% when the API cannot be reached, every main button books a demo and a sentence
+%% with a price token is dropped. Retired pages answer 301 from redirects.json.
 flowchart LR
   visitor["Marketing visitor"]
 
   subgraph landing["qlim8 Landing, Next.js 15 (standalone)"]
-    pages["Pages: / · /priser (packages; prices once self-serve) · /blog + [slug]<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
-    content["Bundled copy (src/content)<br/>merged with CMS overrides"]
+    redirects["Redirects (next.config.ts)<br/>301 for retired pages and their .md twins<br/>(src/content/marketing/redirects.json)"]
+    pages["Pages: / · /priser (packages; prices once self-serve) · /blog + [slug]<br/>/kundetyper (industries) · /produkt (themes) · /integrationer<br/>/nyhedsbrev · /api + /docs/* · /kontakt<br/>/om-os · /metodologi · /karriere · legal"]
+    content["Bundled copy (src/content)<br/>optional blocks, merged with CMS overrides"]
+    pricetok["Price token {pris:key}<br/>(src/lib/priceTokens.ts)<br/>filled from the packages API,<br/>sentence dropped if no price"]
     packages["Packages view (src/lib/packageView.ts)<br/>groups, prices, buttons, #software offers"]
     ga["Google Analytics 4 (cookie consent)"]
     freecta["Kom gratis i gang · Køb<br/>(signup URL from the packages API)"]
-    cta["Book demo CTAs<br/>(/kontakt?emne=demo)"]
+    cta["Book demo CTAs<br/>(/kontakt?emne=demo; replace the<br/>/priser buttons when sales-led)"]
     contactform["Contact form on /kontakt<br/>(demo or question)"]
     contactproxy["/api/contact<br/>(same-origin proxy)"]
     nlform["Newsletter form<br/>(/nyhedsbrev · /blog · hero modal)"]
@@ -31,6 +34,8 @@ flowchart LR
     apppackages["/api/public/packages<br/>(live package catalog)"]
   end
 
+  visitor -->|"retired address"| redirects
+  redirects -->|"301"| pages
   visitor --> pages
   pages --- content
   pages --- packages
@@ -38,6 +43,9 @@ flowchart LR
   packages -->|"server-side fetch, ISR 300 s, tag packages"| apppackages
   pages -.-> ga
   packages --> freecta
+  packages --> pricetok
+  pricetok -->|"fills the token, or drops the sentence"| content
+  packages -.->|"catalog v1 or API down"| cta
   freecta -->|"HTTPS anchor"| appsignup
   cta --> contactform
   contactform -->|"POST (topic, name, email, ...)"| contactproxy
@@ -52,5 +60,5 @@ flowchart LR
   classDef external fill:#f3f4f6,stroke:#9ca3af,color:#374151,stroke-dasharray:5 3;
   classDef persona fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
   class visitor persona;
-  class pages,content,packages,freecta,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appsignup,appcontact,appnews,appcms,apppackages internal;
+  class redirects,pricetok,pages,content,packages,freecta,cta,contactform,contactproxy,nlform,nlproxy,login,appauth,appsignup,appcontact,appnews,appcms,apppackages internal;
   class ga external;

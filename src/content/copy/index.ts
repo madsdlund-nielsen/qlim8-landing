@@ -13,9 +13,11 @@ import {
   LEGAL_COOKIES_PAGE_KEY,
   LEGAL_TERMS_PAGE_KEY,
   LEGAL_PRIVACY_PAGE_KEY,
+  LEGAL_DPA_PAGE_KEY,
   LEGAL_COOKIES_COPY,
   LEGAL_TERMS_COPY,
   LEGAL_PRIVACY_COPY,
+  LEGAL_DPA_COPY,
 } from "./legal";
 import { ALL_MARKETING_NODES, MARKETING_HUBS } from "@/content/marketing";
 
@@ -35,6 +37,7 @@ export const COPY_DEFAULTS: Record<string, unknown> = {
   [LEGAL_COOKIES_PAGE_KEY]: LEGAL_COOKIES_COPY,
   [LEGAL_TERMS_PAGE_KEY]: LEGAL_TERMS_COPY,
   [LEGAL_PRIVACY_PAGE_KEY]: LEGAL_PRIVACY_COPY,
+  [LEGAL_DPA_PAGE_KEY]: LEGAL_DPA_COPY,
 };
 
 // Register the ~40 marketing pages (3 hubs + industry/feature/integration leaves)

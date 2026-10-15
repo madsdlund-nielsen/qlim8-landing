@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 /**
  * Fails the build if an em-dash (U+2014) or a stray en-dash (U+2013) has crept
- * into visitor-facing copy.
+ * into visitor-facing copy. The rule itself is scripts/lib/dashes.mjs: the
+ * long dash is never allowed; a short en-dash with a space on both sides is a
+ * Danish tankestreg and is allowed; an unspaced en-dash is allowed only as a
+ * range (9:00–17:00, Mandag–fredag).
  *
  * Why a standalone script rather than an ESLint rule: the copy that reaches a
  * reader is not only string literals. It is also JSX text, Markdown, and the
@@ -10,9 +13,9 @@
  * bans the character outright inside COVERED: a check with no false negatives
  * beats one with a clever scope.
  *
- * The en-dash is only wrong when it is doing an em-dash's job. Between two
- * numbers or two weekdays it is the correct Danish range sign, so RANGE_OK
- * exempts exactly that shape and nothing else.
+ * The en-dash is only wrong when it is doing an em-dash's job. As a spaced
+ * tankestreg or between two numbers or two weekdays it is correct Danish, and
+ * dashes.mjs exempts exactly those shapes and nothing else.
  *
  * Run directly (`node scripts/check-dashes.mjs`) or via `npm run lint`.
  */
@@ -91,11 +94,12 @@ for (const f of findings) {
   console.error(`    ${f.text}`);
 }
 console.error(`
-Brug det tegn dansk grammatik kræver i stedet:
+Em-dash (lang tankestreg) er forbudt. En kort tankestreg med mellemrum (" – ") må stå
+mellem ord, hvor grammatikken kalder på den, men foretræk disse:
   ", "   forklarende tilføjelse, modstilling, og foran en ledsætning
   ": "   overskrift eller punkt af formen "Label" + uddybning, og foran en opremsning
   ". "   hvor et komma ville give kommasplejsning
   "( )"  indskud der selv indeholder kommaer
-  "-"    sammensætninger. Kun mellem to tal eller to ord i et interval bruges "–"
+  "-"    sammensætninger. Uden mellemrum bruges "–" kun i et interval (9:00–17:00, Mandag–fredag)
 `);
 process.exit(1);

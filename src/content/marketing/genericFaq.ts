@@ -26,7 +26,7 @@ export const GENERIC_ESG_FAQ: FaqItem[] = [
   },
   {
     q: "Kan jeg snakke med mit klimaregnskab i Claude eller ChatGPT?",
-    a: "Ja. qlim8 har en indbygget MCP-server (Model Context Protocol), altså den standard AI-assistenter bruger til at hente data fra et system. Du forbinder Claude eller ChatGPT via OAuth uden en API-nøgle at kopiere, og kan derefter spørge til dine tal i naturligt sprog: Scope 1-3, de største poster i Scope 3, fremdrift mod jeres mål, eller bede assistenten sætte VSME-rapporten i gang. Adgangen er read-only som default og kræver Premium.",
+    a: "Ja. qlim8 har en indbygget MCP-server (Model Context Protocol), altså den standard AI-assistenter bruger til at hente data fra et system. Du forbinder Claude eller ChatGPT via OAuth uden en API-nøgle at kopiere, og kan derefter spørge til dine tal i naturligt sprog: Scope 1-3, de største poster i Scope 3, fremdrift mod jeres mål, eller bede assistenten sætte VSME-rapporten i gang. Adgangen er read-only som standard, og prissiden viser, hvilke pakker der giver adgang.",
   },
 ];
 

@@ -1,42 +1,45 @@
-// Server component: the only interactive parts are the FAQ accordion and the
-// newsletter dialog, which are client components of their own. Marking this
-// whole file "use client" put 300 lines of static copy in the client bundle.
-import { ArrowRight } from "lucide-react";
-import { NewsletterSignupDialog } from "@/components/public/NewsletterSignupDialog";
-import { SiteFooter } from "@/components/public/SiteFooter";
+// The homepage in the green design. A server component: the interactive part
+// is the newsletter dialog, a client component of its own; the FAQ is native
+// <details> (the answers are in the HTML), and every block is a design-system
+// component (src/components/ds).
+//
+// Order: hero, integrations, the people who read the report (optional), trust,
+// steps, themes, the package teaser from the packages API, the human contact,
+// FAQ, closing. The package teaser keeps its behaviour and the self-serve
+// switch exactly: sales-led (catalog v1, or the API unreachable) it shows the
+// curated plans behind Book demo, no price; self-serve it shows the company
+// packages from the API with their prices and buttons.
+import * as React from "react";
 import { SiteHeader } from "@/components/public/SiteHeader";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { SiteFooter } from "@/components/public/SiteFooter";
+import { NewsletterSignupDialog } from "@/components/public/NewsletterSignupDialog";
+import { Section, SectionHead, type SectionTone } from "@/components/ds/Section";
+import { Hero } from "@/components/ds/Hero";
+import { buttonStyles } from "@/components/ds/Button";
+import { Card, CardGrid } from "@/components/ds/Card";
+import { TrustCard } from "@/components/ds/TrustCard";
+import { StepCard } from "@/components/ds/StepCard";
+import { IntegrationRow } from "@/components/ds/IntegrationRow";
+import { Quote } from "@/components/ds/Quote";
+import { ContactBox } from "@/components/ds/ContactBox";
+import { ClosingCta } from "@/components/ds/ClosingCta";
+import { Faq } from "@/components/ds/Faq";
+import { Photo } from "@/components/ds/Photo";
 import { HOMEPAGE_FAQS, type HomepageFaq } from "@/content/homepage-faqs";
-import { HOME_COPY, type HomeCopy } from "@/content/copy/home";
-import { MarketingImage } from "@/components/public/MarketingImage";
-import { IntegrationsBand } from "@/components/public/IntegrationsBand";
-import { DEMO_CTA, DEMO_HREF, DEMO_LABEL, FREE_START_CTA, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
+import { HOME_COPY, type HomeCopy, type HomePlan } from "@/content/copy/home";
+import { DEMO_HREF, DEMO_LABEL } from "@/content/cta";
 import { ctaLabel, isSelfServe, packageFeatures, priceLines, trialLine, type PublicPackage, type PublicPackages } from "@/lib/packageView";
-import type { HomePlan } from "@/content/copy/home";
-
-// Rendered from the design board in qlim8-app, not screen-captured, so they
-// stay in step with the product's own palette. Regenerate with
-// docs/design/redesign-2026/render-frames.mjs over there.
-import overviewImg from "@assets/qlim8-overview.jpg";
-import supplierImg from "@assets/qlim8-supplier.jpg";
-import categoriesImg from "@assets/qlim8-categories.jpg";
-import integrationsImg from "@assets/qlim8-integrations.jpg";
-
-// Bundled feature screenshots, by copy.features order.
-const FEATURE_IMAGES = [integrationsImg, supplierImg, categoriesImg];
+import { cn } from "@/lib/utils";
 
 // All copy lives in src/content/copy/home.ts (pageKey "page.home");
 // app/page.tsx passes the CMS-merged result. `faqs` defaults to the bundled
 // list (pageKey "homepage.faqs"); marketing images are CMS-overridable
-// (pageKey "landing.images") with bundled @assets fallbacks.
+// (pageKey "landing.images"): the hero photo, and one image for each of the
+// three theme teasers. With no image a section renders without one: there is
+// no placeholder box.
 export interface LandingImages {
   hero?: string;
-  features?: (string | undefined)[]; // by copy.features order
+  features?: (string | undefined)[]; // by copy.themes.items order
 }
 
 /**
@@ -53,7 +56,98 @@ function teaserPackages(data: PublicPackages, plans: HomePlan[]): { pkg: PublicP
     .map((pkg) => ({ pkg, plan: byName.get(pkg.key) ?? byName.get(pkg.name.trim().toLowerCase()) }));
 }
 
-export default function Landing({
+function Bullet({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex gap-2.5 leading-relaxed">
+      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-sm bg-sage" aria-hidden="true" />
+      <span>{children}</span>
+    </li>
+  );
+}
+
+function PricingTeaser({ copy, packages }: { copy: HomeCopy["pricingTeaser"]; packages: PublicPackages | null }) {
+  const selfServe = isSelfServe(packages);
+  const cardBase = "relative flex flex-col rounded-lg border bg-card p-6 shadow-soft md:p-8";
+  return (
+    <>
+      <SectionHead title={selfServe ? copy.title : copy.salesLedTitle} lead={selfServe ? copy.lead || undefined : undefined} />
+      {selfServe && copy.points.length > 0 && (
+        <div className="mb-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+          {copy.points.map((pt) => (
+            <Card key={pt.title} className="flex flex-col gap-3">
+              <h3>{pt.title}</h3>
+              <p className="text-body-sm text-muted-foreground">{pt.body}</p>
+            </Card>
+          ))}
+        </div>
+      )}
+      {selfServe ? (
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8" data-testid="pricing-teaser-packages">
+          {teaserPackages(packages!, copy.plans).map(({ pkg, plan }) => {
+            const price = priceLines(pkg);
+            const { label: includedLabel, items: features } = packageFeatures(packages!, pkg, plan?.features);
+            const demo = pkg.cta.kind === "demo" || !pkg.cta.url;
+            const highlighted = plan?.highlighted ?? false;
+            return (
+              <div key={pkg.key} className={cn(cardBase, highlighted ? "border-border-strong" : "border-border")} data-testid={`teaser-${pkg.key}`}>
+                {plan?.badge && <p className="mb-3 text-trust font-semibold text-sage">{plan.badge}</p>}
+                <h3 className="mb-2">{pkg.name}</h3>
+                {price ? (
+                  <div className="mb-4">
+                    <p className="text-lead font-semibold text-foreground">{price.main}</p>
+                    {price.note && <p className="mt-1 text-trust text-muted-foreground">{price.note}</p>}
+                    {trialLine(pkg) && <p className="mt-2 text-trust font-semibold text-sage">{trialLine(pkg)}</p>}
+                  </div>
+                ) : (
+                  <p className="mb-4 text-body-sm font-semibold text-muted-foreground">Pris efter en samtale</p>
+                )}
+                <p className="mb-6 whitespace-pre-line text-body-sm text-muted-foreground">{plan?.tag ?? pkg.tagline ?? pkg.audience}</p>
+                {includedLabel && <p className="mb-2 text-body-sm font-semibold text-foreground">{includedLabel}:</p>}
+                <ul className="m-0 mb-8 flex-1 list-none space-y-2 p-0 text-body-sm text-foreground">
+                  {features.map((feat) => (
+                    <Bullet key={feat}>{feat}</Bullet>
+                  ))}
+                </ul>
+                <a
+                  href={demo ? DEMO_HREF : pkg.cta.url!}
+                  className={buttonStyles({ variant: demo ? "secondary" : "primary", full: true })}
+                  data-testid={`button-${pkg.cta.kind}-teaser-${pkg.key}`}
+                >
+                  {demo ? DEMO_LABEL : ctaLabel(pkg)}
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+          {copy.plans.map((p) => (
+            <div key={p.name} className={cn(cardBase, p.highlighted ? "border-border-strong" : "border-border")}>
+              {p.badge && <p className="mb-3 text-trust font-semibold text-sage">{p.badge}</p>}
+              <h3 className="mb-4">{p.name}</h3>
+              <p className="mb-6 min-h-16 text-body-sm text-muted-foreground">{p.tag}</p>
+              <ul className="m-0 mb-8 flex-1 list-none space-y-2 p-0 text-body-sm text-foreground">
+                {p.features.map((feat) => (
+                  <Bullet key={feat}>{feat}</Bullet>
+                ))}
+              </ul>
+              <a href={DEMO_HREF} className={buttonStyles({ variant: p.highlighted ? "primary" : "secondary", full: true })}>
+                {DEMO_LABEL}
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
+      <p className="mt-10 text-body-sm">
+        <a href="/priser" className="font-semibold text-sage underline underline-offset-4 hover:text-primary">
+          {copy.linkLabel}
+        </a>
+      </p>
+    </>
+  );
+}
+
+export default async function Landing({
   copy = HOME_COPY,
   faqs = HOMEPAGE_FAQS,
   images = {},
@@ -64,336 +158,142 @@ export default function Landing({
   images?: LandingImages;
   packages?: PublicPackages | null;
 }) {
-  // Sales-led (catalog version 1, or the API cannot be reached): every main
-  // button books a demo. Self-serve: they lead with "Kom gratis i gang".
-  const selfServe = isSelfServe(packages);
-  const lead = selfServe ? FREE_START_CTA : DEMO_CTA;
+  const hero = copy.hero;
+  // The surfaces alternate down the page, band first (the hero is on the page).
+  let band = true;
+  const next = (): SectionTone => {
+    const t: SectionTone = band ? "band" : "background";
+    band = !band;
+    return t;
+  };
+
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-background">
       <SiteHeader isHome />
+      <main>
+        {/* 1. Hero */}
+        <Section size="hero" className="pt-10 md:pt-section">
+          <Hero
+            title={hero.title}
+            lead={hero.subtitle}
+            primary={hero.primaryCta}
+            secondary={hero.secondaryCta}
+            trustLine={hero.trustLine}
+            microLine={hero.microLine}
+            image={images.hero ? { src: images.hero, alt: hero.imageAlt } : undefined}
+          />
+        </Section>
 
-      {/* 1. Hero */}
-      <section className="px-4 sm:px-6 pt-14 sm:pt-24 pb-16 sm:pb-24">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-6">
-            {copy.hero.title}
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-9">
-            {copy.hero.subtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-5">
-            <a
-              href={lead.href}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
-              data-testid={selfServe ? "button-hero-free-start" : "button-hero-demo"}
-            >
-              {lead.label}
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <NewsletterSignupDialog />
+        {/* 2. Integrationer */}
+        <Section tone={next()} id="integrationer">
+          <h2 className="mb-6 max-w-3xl text-balance">{copy.integrations.title}</h2>
+          <div className="mb-10 grid max-w-(--measure-body) gap-4">
+            {copy.integrations.paragraphs.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
           </div>
-          <p className="text-sm text-gray-500 mb-14">
-            {copy.hero.ctaNote}
-          </p>
+          <IntegrationRow footnote={copy.integrations.footnote} />
+        </Section>
 
-          <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-            <MarketingImage
-              src={images.hero ?? overviewImg}
-              alt="qlim8 dashboard"
-              priority
-              className="w-full h-auto"
-            />
-          </div>
-        </div>
-      </section>
+        {/* 3. Dem, der skal læse regnskabet (først når teksten er faktatjekket) */}
+        {copy.recipients && copy.recipients.items.length > 0 && (
+          <Section tone={next()} id="modtagere">
+            <SectionHead title={copy.recipients.title} lead={copy.recipients.intro} />
+            <CardGrid>
+              {copy.recipients.items.map((t) => (
+                <TrustCard key={t.title} icon={t.icon} title={t.title} body={t.body} />
+              ))}
+            </CardGrid>
+          </Section>
+        )}
 
-      {/* 2. Integrationsbånd */}
-      <section className="py-16 sm:py-24 bg-white border-y border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="text-center text-2xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-10 sm:mb-12">
-            {copy.integrations.title}
-          </h2>
-        </div>
-        <IntegrationsBand />
-      </section>
-
-      {/* 3-5. Features */}
-      <section className="py-20 sm:py-28 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="space-y-20 sm:space-y-28">
-            {copy.features.map((f, i) => (
-              <div
-                key={f.title}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}
-              >
-                <div>
-                  <h3 className="text-2xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-5">
-                    {f.title}
-                  </h3>
-                  <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-7">
-                    {f.body}
-                  </p>
-                  <ul className="space-y-2 text-[15px] text-gray-800">
-                    {f.bullets.map((b) => (
-                      <li key={b} className="leading-relaxed flex gap-2.5">
-                        <span className="mt-2 h-1 w-2.5 shrink-0 bg-primary" aria-hidden="true" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
+        {/* 4. Dokumentation og tillid */}
+        {(() => {
+          const tone = next();
+          return (
+            <Section tone={tone} id="tillid">
+              <h2 className="mb-6 max-w-3xl text-balance">{copy.trust.title}</h2>
+              {copy.trust.paragraphs.length > 0 && (
+                <div className="mb-10 grid max-w-(--measure-body) gap-4 md:mb-12">
+                  {copy.trust.paragraphs.map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
                 </div>
-                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200">
-                  <MarketingImage src={images.features?.[i] ?? FEATURE_IMAGES[i] ?? FEATURE_IMAGES[0]} alt={f.title} className="w-full h-auto" />
-                </div>
-              </div>
+              )}
+              <CardGrid>
+                {copy.trust.items.map((t) => (
+                  <TrustCard key={t.title} icon={t.icon} title={t.title} body={t.body} onBand={tone === "band"} />
+                ))}
+              </CardGrid>
+            </Section>
+          );
+        })()}
+
+        {/* 5. Proces */}
+        <Section tone={next()} id="proces">
+          <SectionHead title={copy.steps.title} />
+          <CardGrid>
+            {copy.steps.items.slice(0, 3).map((s, i) => (
+              <StepCard key={s.title} n={i + 1} title={s.title} body={s.body} />
             ))}
-          </div>
-        </div>
-      </section>
+          </CardGrid>
+        </Section>
 
-      {/* 6. Bygget anderledes */}
-      <section className="py-20 sm:py-28 bg-gray-900 text-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="mb-14">
-            <h2 className="text-3xl sm:text-5xl font-bold leading-tight tracking-tight text-white mb-6">
-              {copy.builtDifferent.title}
-            </h2>
-            <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-              {copy.builtDifferent.intro}
-            </p>
-          </div>
-
-          <div className="space-y-8 sm:space-y-10">
-            {copy.builtDifferent.commitments.map((c) => (
-              <div key={c.title} className="border-t border-white/20 pt-7">
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-snug">{c.title}</h3>
-                <p className="text-gray-300 text-[15px] sm:text-base leading-relaxed">{c.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-sm text-gray-400 mt-12">
-            {copy.builtDifferent.sourcesNote}
-          </p>
-        </div>
-      </section>
-
-      {/* 7. Sådan kommer du i gang */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="mb-14 max-w-3xl">
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-4">
-              {copy.steps.title}
-            </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              {copy.steps.intro}
-            </p>
-          </div>
-          <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-14">
-            {copy.steps.items.map((s, i) => (
-              <li key={s.title}>
-                <p className="text-4xl font-bold text-gray-300 mb-4">{i + 1}</p>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-snug">
-                  {s.title}
-                </h3>
-                <p className="text-gray-700 text-[15px] leading-relaxed">{s.body}</p>
-              </li>
-            ))}
-          </ol>
-          <div>
-            <a
-              href={lead.href}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
-            >
-              {lead.label}
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <p className="text-sm text-gray-500 mt-4">
-              {copy.steps.ctaNote}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Pakker. Sales-led: no prices, every card books a demo. Self-serve:
-          the company packages from the API, with their prices and buttons. */}
-      <section className="py-20 sm:py-28 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl mb-14">
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
-              {copy.pricingTeaser.title}
-            </h2>
-          </div>
-
-          {selfServe ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" data-testid="pricing-teaser-packages">
-            {teaserPackages(packages!, copy.pricingTeaser.plans).map(({ pkg, plan }) => {
-              const price = priceLines(pkg);
-              const { label: includedLabel, items: features } = packageFeatures(packages!, pkg, plan?.features);
-              const demo = pkg.cta.kind === "demo" || !pkg.cta.url;
-              const highlighted = plan?.highlighted ?? false;
+        {/* 6. Temaer */}
+        <Section tone={next()} id="temaer">
+          <SectionHead title={copy.themes.title} lead={copy.themes.intro || undefined} />
+          <CardGrid>
+            {copy.themes.items.map((t, i) => {
+              const img = images.features?.[i];
               return (
-                <div
-                  key={pkg.key}
-                  className={`relative rounded-2xl p-7 sm:p-8 border bg-white flex flex-col ${
-                    highlighted ? "border-primary shadow-lg" : "border-gray-200"
-                  }`}
-                  data-testid={`teaser-${pkg.key}`}
-                >
-                  {plan?.badge && <p className="text-xs font-semibold text-gray-500 mb-3">{plan.badge}</p>}
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                  {price ? (
-                    <div className="mb-4">
-                      <p className="text-xl font-bold text-gray-900">{price.main}</p>
-                      {price.note && <p className="text-xs text-gray-500 mt-1">{price.note}</p>}
-                      {trialLine(pkg) && <p className="text-xs font-medium text-primary mt-2">{trialLine(pkg)}</p>}
-                    </div>
-                  ) : (
-                    <p className="text-sm font-semibold text-gray-500 mb-4">Pris efter en samtale</p>
-                  )}
-                  <p className="text-sm text-gray-600 leading-relaxed mb-6 whitespace-pre-line">
-                    {plan?.tag ?? pkg.tagline ?? pkg.audience}
-                  </p>
-                  {includedLabel && <p className="text-sm font-semibold text-gray-900 mb-2">{includedLabel}:</p>}
-                  <ul className="space-y-2 mb-8 text-sm text-gray-700 flex-1">
-                    {features.map((feat) => (
-                      <li key={feat} className="leading-relaxed flex gap-2.5">
-                        <span className="mt-2 h-1 w-2.5 shrink-0 bg-primary" aria-hidden="true" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href={demo ? DEMO_HREF : pkg.cta.url!}
-                    className={`block text-center px-5 py-2.5 rounded-full text-sm font-semibold transition-colors ${
-                      demo ? "bg-gray-100 text-gray-900 hover:bg-gray-200" : "bg-primary text-primary-foreground hover:bg-primary/90"
-                    }`}
-                    data-testid={`button-${pkg.cta.kind}-teaser-${pkg.key}`}
-                  >
-                    {demo ? DEMO_LABEL : ctaLabel(pkg)}
+                <Card key={t.title} className="flex flex-col gap-4">
+                  {img && <Photo src={img} alt={t.title} sizes="(min-width: 1024px) 340px, 100vw" />}
+                  <h3>{t.title}</h3>
+                  <p className="flex-1 text-body-sm text-muted-foreground">{t.body}</p>
+                  <a href={t.href} className="text-body-sm font-semibold text-sage underline underline-offset-4 hover:text-primary">
+                    {t.linkLabel}
                   </a>
-                </div>
+                </Card>
               );
             })}
-          </div>
-          ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {copy.pricingTeaser.plans.map((p) => (
-              <div
-                key={p.name}
-                className={`relative rounded-2xl p-7 sm:p-8 border bg-white ${
-                  p.highlighted ? "border-primary shadow-lg" : "border-gray-200"
-                }`}
-              >
-                {p.badge && (
-                  <p className="text-xs font-semibold text-gray-500 mb-3">
-                    {p.badge}
-                  </p>
-                )}
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{p.name}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-6 min-h-[4rem]">{p.tag}</p>
-                <ul className="space-y-2 mb-8 text-sm text-gray-700">
-                  {p.features.map((feat) => (
-                    <li key={feat} className="leading-relaxed flex gap-2.5">
-                      <span className="mt-2 h-1 w-2.5 shrink-0 bg-primary" aria-hidden="true" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={DEMO_HREF}
-                  className={`block text-center px-5 py-2.5 rounded-full text-sm font-semibold transition-colors ${
-                    p.highlighted
-                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                      : "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                  }`}
-                >
-                  {DEMO_LABEL}
-                </a>
-              </div>
-            ))}
-          </div>
-          )}
+          </CardGrid>
+        </Section>
 
-          <p className="mt-10 text-sm text-gray-600">
-            <a href="/priser" className="text-primary font-semibold hover:underline">
-              {copy.pricingTeaser.linkLabel}
-            </a>
-          </p>
-        </div>
-      </section>
+        {/* 7. Pakker, fra API'et */}
+        <Section tone={next()} id="pakker">
+          <PricingTeaser copy={copy.pricingTeaser} packages={packages} />
+        </Section>
 
-      {/* 9. FAQ */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="mb-10">
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
-              {copy.faq.title}
-            </h2>
-          </div>
-          <Accordion type="single" collapsible defaultValue="item-0" className="border-t border-gray-200">
-            {faqs.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-b border-gray-200">
-                <AccordionTrigger className="text-left text-base sm:text-lg font-semibold text-gray-900 py-5 hover:no-underline">
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-700 text-[15px] leading-relaxed pb-5">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-          <p className="mt-10 text-sm text-gray-600">
-            <a href="/kontakt" className="text-primary font-semibold hover:underline">
+        {/* 8. Menneskelig kontakt */}
+        <Section tone={next()} id="kontakt">
+          <h2 className="mb-10 max-w-3xl text-balance md:mb-12">{copy.human.title}</h2>
+          <ContactBox contact={copy.human.contact}>
+            <Quote quote={copy.human.quote} name={copy.human.quoteName} role={copy.human.quoteRole} />
+          </ContactBox>
+        </Section>
+
+        {/* 9. FAQ, i HTML'en som <details> */}
+        <Section tone={next()} id="faq">
+          <SectionHead title={copy.faq.title} />
+          <Faq items={faqs} openFirst />
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <a href="/kontakt" className="text-body-sm font-semibold text-sage underline underline-offset-4 hover:text-primary">
               {copy.faq.linkLabel}
             </a>
-          </p>
-        </div>
-      </section>
-
-      {/* 10. Final CTA */}
-      <section className="py-20 sm:py-28 bg-background border-t border-gray-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-5">
-            {copy.finalCta.title}
-          </h2>
-          <p className="text-gray-600 text-lg leading-relaxed mb-9 max-w-xl">
-            {copy.finalCta.body}
-          </p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-            <a
-              href={lead.href}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-colors"
-            >
-              {lead.label}
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            {selfServe && (
-              <a
-                href={DEMO_HREF}
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-gray-300 text-gray-800 font-semibold text-base hover:border-primary hover:text-primary transition-colors"
-              >
-                {DEMO_LABEL}
-              </a>
-            )}
-            <a
-              href={PHONE_HREF}
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-gray-300 text-gray-800 font-semibold text-base hover:border-primary hover:text-primary transition-colors"
-            >
-              Ring {PHONE_DISPLAY}
-            </a>
-            {/* A link, not a second NewsletterSignupDialog: the hero already
-                mounts one, and each instance opens itself on ?nyhedsbrev=1. */}
-            <a
-              href="/nyhedsbrev"
-              className="inline-flex items-center justify-center px-8 py-4 text-gray-700 font-semibold text-base hover:text-primary transition-colors"
-            >
-              Tilmeld nyhedsbrev
-            </a>
+            {/* One NewsletterSignupDialog on the page: it opens itself on ?nyhedsbrev=1. */}
+            <NewsletterSignupDialog />
           </div>
-        </div>
-      </section>
+        </Section>
 
+        {/* 10. Afslutning */}
+        <ClosingCta
+          title={copy.finalCta.title}
+          description={copy.finalCta.body}
+          primary={copy.finalCta.primary}
+          secondary={copy.finalCta.secondary}
+          trustLine={copy.finalCta.trustLine}
+        />
+      </main>
       <SiteFooter />
     </div>
   );

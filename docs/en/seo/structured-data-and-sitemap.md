@@ -1,6 +1,6 @@
 # SEO: sitemap dates, structured data and what crawlers see
 
-> Last updated: 2026-09-25 · Owner: qlim8 team · Danish twin: [`docs/da/seo/structured-data-and-sitemap.md`](../../da/seo/structured-data-and-sitemap.md)
+> Last updated: 2026-10-15 · Owner: qlim8 team · Danish twin: [`docs/da/seo/structured-data-and-sitemap.md`](../../da/seo/structured-data-and-sitemap.md)
 
 Three rules, each with the script that enforces it. They came out of an audit
 of qlim8.com in September 2026 against the three failure modes that get
@@ -24,13 +24,14 @@ whose content only exists after JavaScript runs.
 
 What does not move a date: the layout, header, footer, the shared marketing
 template and the generic FAQ appended to every marketing page. A header tweak
-is not a reason to tell Google that 60 pages changed. Granularity is per file,
-so an edit to one page in `src/content/marketing/copy/produkt-a.ts` also dates
-its file-mates; that is a small overstatement in the honest direction.
+is not a reason to tell Google that every page changed. Granularity is per file,
+so an edit to one page in `src/content/marketing/copy/produkt-temaer.ts` also
+dates its file-mates (the product hub and the other theme pages); that is a
+small overstatement in the honest direction.
 
 Never `new Date()` (every URL changes on every deploy) and never one shared
 constant (nobody bumps it; the previous `SITE_UPDATED` sat two months stale on
-59 of 66 URLs).
+59 of the 66 URLs the site had then; it has 43 since October 2026, see section 4).
 
 **Guard:** `src/lib/contentDates.test.ts` (in `npm test`) fails when a route
 has no date, a date is in the future, or all dates are identical.
@@ -52,14 +53,15 @@ anonymous `{ "@type": "Organization", "name": "qlim8" }` is a second company.
 That is what the 44 marketing pages and every blog post used to emit.
 
 Page-level entities get an `@id` of their own canonical URL plus a fragment
-(`pageId()` in `src/lib/schema.ts`): `…/produkt/bankrapport#webpage`,
+(`pageId()` in `src/lib/schema.ts`): `…/produkt/rapportering#webpage`,
 `#breadcrumb`, `#service`, `#article`. The page's `breadcrumb` property points
 at its `BreadcrumbList` by that id.
 
 Breadcrumbs follow the content hierarchy (`parentSlug` in
 `src/content/marketing/*.ts`), which is also what the visible breadcrumb and
-the mega-menu show. URLs stay flat; that is allowed, as long as the three
-agree. The mega-menu lists every live page, children indented under parents.
+the mega-menu show. URLs stay flat (`/produkt/<slug>`, never nested); that is
+allowed, as long as the three agree. The mega-menu lists every live page, in
+the groups `navGroup` gives them.
 
 `#software`'s offers come only from the app's packages API, never from copy.
 `buildSoftwareSchema(offers)` takes them from `offersFromPackages()`
@@ -79,8 +81,9 @@ an `@id` nothing defines, two differing definitions of one `@id`, a breadcrumb
 naming a non-route, an empty FAQ answer, or any entity carrying `offers`,
 `price` or `lowPrice` in the pages as bundled. It then holds the offers the
 API would give `#software` to the app's own answers, committed in
-`scripts/fixtures/public-packages.v1.json` (no offers) and `.v2.json` (one per
-public yearly company price, ex. VAT, and none for a hidden or "fra" price).
+`scripts/fixtures/public-packages.v1.json` (no offers), `.v2.json` and `.v3.json`
+(one per public yearly company price, ex. VAT, and none for a hidden or "fra"
+price).
 
 ## 3. Content is in the HTML
 
@@ -109,8 +112,10 @@ the file-based guards can see it. `scripts/check-cms-copy.mjs` (in
 `npm run test:contract`, scheduled by `cms-contract.yml`) fetches every page
 key the site reads, plus every CMS article, and fails on an internal link to
 a non-route or on anything the copy rules in `scripts/lib/salesLed.mjs`
-forbid: a package price or entry-price phrasing ("fra N kr"), a hard-coded
-signup or checkout link, a trial. `scripts/check-sales-led.mjs` applies the
+forbid: a typed package price or entry-price phrasing ("fra N kr"; a price
+token `[[ {pris:key} ]]` is allowed, see `CLAUDE.md`), a hard-coded signup or
+checkout link, a trial. A link to a retired address (a redirect source) is a
+warning, not a failure: it still works, one hop later. `scripts/check-sales-led.mjs` applies the
 same rules to the bundled copy in `npm run lint`, both exempt the legal
 documents, and `scripts/lib/salesLed.test.mjs` holds the rules to known
 strings in `npm test`. This replaces the earlier check that an advertised entry
@@ -118,13 +123,61 @@ price matched a plan price in `src/content/copy/pricing.ts`; there are no plan
 prices left to match. A failure there is fixed in the app's `/admin` editor,
 not with a commit.
 
+## 4. The sitemap and the redirects behind it
+
+`app/sitemap.ts` builds the list from the page nodes, so it follows the site
+without a hand-kept list: the static pages, `/blog` and its articles, the three
+hubs, and every live node. A node with `status: "coming-soon"` (today the
+Appelsin integration) renders `noindex` and is left out. The sitemap has
+**43 URLs**:
+
+| Part | URLs |
+|---|---|
+| Static pages (home, pricing, methodology, API, about, docs x4, contact, newsletter, careers, legal x4) | 16 |
+| `/blog` | 1 |
+| Blog articles (bundled; a CMS-only article adds one) | 6 |
+| Hubs (`/kundetyper`, `/produkt`, `/integrationer`) | 3 |
+| Industry pages | 4 |
+| Product theme pages | 6 |
+| Integration pages (eight pages, Appelsin left out) | 7 |
+
+Before the October 2026 restructure it had 66: the same 33 other URLs, plus 12
+industry pages and 21 product pages. Merging those 33 pages into 10 removed 23
+URLs; the page count in Search Console should fall to about 43 over the weeks
+after the sitemap is resubmitted, and a temporary dip in impressions on the old
+addresses is expected while Google follows the 301s. The reasons for each merge,
+and what each new page took over, are in
+[`information-architecture.md`](./information-architecture.md).
+
+**Redirects.** The 30 retired addresses (the full table is in the
+information-architecture document) are rows in
+`src/content/marketing/redirects.json`. `next.config.ts` makes two rules of each
+row, the page and its `.md` twin (`/produkt/bankrapport.md` goes to
+`/produkt/rapportering.md`), and both carry `statusCode: 301`. With
+`permanent: true` Next answers 308, which crawlers read the same but which the
+site does not want to depend on; the six older redirects (`/pricing`, `/about`,
+`/viden`, two blog posts) were changed to 301 for the same reason. The sitemap
+lists destinations only, and the schema graph and breadcrumbs only name live
+routes, so no old address is advertised anywhere.
+
+**Guard:** `scripts/lib/redirects.test.mjs` (in `npm test`) fails when one of
+the 33 historic pages is neither live nor redirected, a destination is not a
+page, a source is still a page, a destination is itself a source (a chain), a
+row has no `.md` twin, or a rule is not a 301. It also fails when a menu entry
+or a `related` entry names a page that is not there. How to retire a page the
+next time is in `CLAUDE.md`, under "Site structure and redirects".
+
 ## Checking a deployed page
 
 ```bash
 curl -s https://qlim8.com/sitemap.xml | grep -oE '<lastmod>[0-9-]{10}' | sort | uniq -c
-curl -s https://qlim8.com/produkt/bankrapport | grep -o '<script type="application/ld+json">[^<]*' | head
+curl -s https://qlim8.com/produkt/rapportering | grep -o '<script type="application/ld+json">[^<]*' | head
+curl -sI https://qlim8.com/produkt/bankrapport | grep -iE '^(HTTP|location)'   # 301 to /produkt/rapportering
+curl -sI https://qlim8.com/produkt/bankrapport.md | grep -iE '^(HTTP|location)' # 301 to /produkt/rapportering.md
 ```
 
 Then paste the URL into Google's Rich Results Test or the schema.org validator.
 Search Console → Sitemaps should keep reporting "Success" with no drop in
-indexed pages after a deploy that changes dates.
+indexed pages after a deploy that changes dates. After the restructure, expect
+the indexed count to move towards the 43 in the sitemap, and use URL inspection
+on three of the old addresses to see the redirect Google has recorded.

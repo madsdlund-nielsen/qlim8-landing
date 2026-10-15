@@ -19,22 +19,20 @@ export default function Nyhedsbrev() {
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-10">
         <h1
-          className="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 tracking-tight leading-[1.05]"
+          className="mb-5 text-balance"
           data-testid="text-newsletter-title"
         >
           ESG-viden i indbakken, uden konsulentjargon
         </h1>
-        <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
+        <p className="text-lead text-foreground">
           Tilmeld dig qlim8s nyhedsbrev og få konkrete guides til klimaregnskab,
           compliance og bæredygtighed for danske SMV&apos;er.
         </p>
 
         <ul className="mt-8 space-y-3">
           {HIGHLIGHTS.map((item) => (
-            <li key={item} className="flex gap-3 text-base text-gray-700 leading-relaxed">
-              <span aria-hidden="true" className="text-primary font-bold">
-, 
-              </span>
+            <li key={item} className="flex gap-3 text-body text-foreground">
+              <span aria-hidden="true" className="mt-3 h-1 w-2.5 shrink-0 bg-sage" />
               <span>{item}</span>
             </li>
           ))}
@@ -50,7 +48,7 @@ export default function Nyhedsbrev() {
       </section>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 pb-20">
-        <p className="text-sm text-gray-500 leading-relaxed">
+        <p className="text-body-sm text-muted-foreground">
           Vi bruger kun din email til nyhedsbrevet. Læs hvordan vi behandler dine
           oplysninger i vores{' '}
           <Link href="/privatlivspolitik" className="text-primary hover:underline">

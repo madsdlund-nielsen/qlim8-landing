@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ds/Button";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -35,16 +35,10 @@ export function MobileStickyCTA({ text, href, showAfterScroll = 300 }: MobileSti
   if (!isMounted || !isVisible) return null;
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-4 bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg">
-      <Button
-        asChild
-        className="w-full bg-gray-900 hover:bg-gray-800 text-white py-6 text-base font-semibold gap-2"
-        data-testid="button-sticky-cta"
-      >
-        <a href={href}>
-          {text}
-          <ArrowRight className="h-5 w-5" />
-        </a>
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-4 bg-card/95 backdrop-blur-sm border-t border-border shadow-soft">
+      <Button href={href} full data-testid="button-sticky-cta">
+        {text}
+        <ArrowRight aria-hidden="true" />
       </Button>
     </div>
   );

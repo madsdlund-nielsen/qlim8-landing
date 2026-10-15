@@ -31,9 +31,13 @@ export const ALL_MARKETING_NODES: MarketingNode[] = [
 // defaults, so each page carries a page-specific + general mix for answer
 // engines and search ranking. Runs once at module load; de-dup makes it safe.
 for (const node of ALL_MARKETING_NODES) {
+  // `genericFaq: false` is for the pages that carry their own 6 to 8 questions.
+  if (node.genericFaq === false) continue;
   node.defaults.faq.items = mergeFaqItems(node.defaults.faq.items, GENERIC_ESG_FAQ);
 }
 for (const hub of MARKETING_HUBS) {
+  // A hub with `genericFaq: false` carries its own questions.
+  if (hub.genericFaq === false) continue;
   const seeded = mergeFaqItems(hub.defaults.faq?.items ?? [], HUB_FAQ_SEED[hub.collection] ?? []);
   hub.defaults.faq = {
     title: hub.defaults.faq?.title ?? GENERIC_FAQ_TITLE,
@@ -64,28 +68,64 @@ export function getChildren(
   return NODES_BY_COLLECTION[collection].filter((n) => n.parentSlug === parentSlug);
 }
 
+/** A link under "Relateret": a marketing node or one of the static pages. */
+export interface RelatedLink {
+  href: string;
+  label: string;
+}
+
 /**
- * Resolve a node's `related` entries to nodes.
- *
- * A bare `"slug"` resolves inside the node's own collection, which is what
- * every entry was when this only linked siblings. A qualified
- * `"collection/slug"` crosses collections, so a Produkt page can point at an
- * Integrationer page and vice versa. Without that, a cross-collection entry
- * resolved to undefined and was dropped by the filter below: a silently
- * missing link rather than an error, which is the failure mode worth avoiding
- * here.
+ * The static pages a node's `related` may name by path ("/metodologi"). A
+ * short list on purpose: a page that is not here is a typo, and getRelated
+ * throws on it outside production.
  */
-export function getRelated(node: MarketingNode): MarketingNode[] {
-  if (!node.related) return [];
-  return node.related
-    .map((entry) => {
-      const slash = entry.indexOf("/");
-      if (slash === -1) return getNode(node.collection, entry);
-      const collection = entry.slice(0, slash) as MarketingCollection;
-      if (!(collection in NODES_BY_COLLECTION)) return undefined;
-      return getNode(collection, entry.slice(slash + 1));
-    })
-    .filter((n): n is MarketingNode => Boolean(n));
+export const STATIC_RELATED: Record<string, string> = {
+  "/metodologi": "Metodologi",
+  "/priser": "Pakker",
+};
+
+/**
+ * Resolve one `related` entry to a link, or undefined when it names nothing.
+ * A bare `"slug"` resolves inside the node's own collection; a qualified
+ * `"collection/slug"` crosses collections, so a Produkt page can point at an
+ * Integrationer page and vice versa; a path that starts with "/" is a static
+ * page (STATIC_RELATED).
+ */
+export function resolveRelated(node: MarketingNode, entry: string): RelatedLink | undefined {
+  if (entry.startsWith("/")) {
+    const label = STATIC_RELATED[entry];
+    return label ? { href: entry, label } : undefined;
+  }
+  const slash = entry.indexOf("/");
+  let target: MarketingNode | undefined;
+  if (slash === -1) {
+    target = getNode(node.collection, entry);
+  } else {
+    const collection = entry.slice(0, slash) as MarketingCollection;
+    target = collection in NODES_BY_COLLECTION ? getNode(collection, entry.slice(slash + 1)) : undefined;
+  }
+  return target ? { href: `/${target.collection}/${target.slug}`, label: target.navLabel } : undefined;
+}
+
+/**
+ * Resolve a node's `related` entries to links.
+ *
+ * An entry that resolves to nothing used to be dropped by a filter: a silently
+ * missing link, which is how `store-virksomheder` went missing from menus and
+ * related lists unseen. Outside production it throws instead (tests, dev), so
+ * the page that points at a page that is gone fails where it is written. In
+ * production a dead entry is still dropped rather than taking the page down.
+ */
+export function getRelated(node: MarketingNode): RelatedLink[] {
+  const out: RelatedLink[] = [];
+  for (const entry of node.related ?? []) {
+    const link = resolveRelated(node, entry);
+    if (link) out.push(link);
+    else if (process.env.NODE_ENV !== "production") {
+      throw new Error(`${node.pageKey}: related "${entry}" does not resolve to a page`);
+    }
+  }
+  return out;
 }
 
 /**

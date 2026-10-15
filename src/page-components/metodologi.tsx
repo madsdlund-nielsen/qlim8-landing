@@ -12,14 +12,14 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-gray-200 pt-10 sm:pt-14">
-      <p className="text-sm font-semibold text-gray-500 mb-2">
+    <section className="border-t border-border pt-10 sm:pt-14">
+      <p className="text-body-sm font-semibold text-muted-foreground mb-2">
         {number}
       </p>
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
+      <h2 className="mb-6">
         {title}
       </h2>
-      <div className="space-y-5 text-gray-700 text-base sm:text-lg leading-relaxed">
+      <div className="space-y-5 text-foreground text-body">
         {children}
       </div>
     </section>
@@ -28,9 +28,9 @@ function Section({
 
 function Callout({ callout }: { callout: MethodologyCallout }) {
   return (
-    <div className="border-l-2 border-gray-300 pl-5 py-1 mt-2">
-      <p className="font-bold text-gray-900 mb-1">{callout.title}</p>
-      <p className="text-gray-700">{callout.body}</p>
+    <div className="border-l-2 border-sage pl-5 py-1 mt-2">
+      <p className="font-semibold text-primary mb-1">{callout.title}</p>
+      <p className="text-foreground">{callout.body}</p>
     </div>
   );
 }
@@ -45,22 +45,22 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
       {/* Hero / Lead */}
       <section className="px-4 sm:px-6 pt-14 sm:pt-24 pb-12 sm:pb-16">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
+          <h1 className="mb-6 text-balance">
             {copy.hero.title}
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8">
+          <p className="text-lead text-foreground mb-8">
             {copy.hero.subtitle}
           </p>
-          <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+          <p className="text-foreground text-body">
             {copy.hero.intro}
           </p>
         </div>
       </section>
 
       {/* Pull-quote 1 */}
-      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-gray-900 text-gray-100">
+      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-primary text-primary-foreground">
         <div className="max-w-3xl mx-auto">
-          <blockquote className="text-2xl sm:text-4xl font-bold leading-[1.2] tracking-tight text-white">
+          <blockquote className="font-display text-2xl sm:text-4xl font-medium leading-[1.2] text-primary-foreground">
             {copy.quote1}
           </blockquote>
         </div>
@@ -80,7 +80,7 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
               <p key={i}>{p}</p>
             ))}
             <Callout callout={copy.categorization.callout} />
-            <p className="text-sm text-gray-600">
+            <p className="text-body-sm text-muted-foreground">
               {copy.categorization.antiCheatNote}
             </p>
           </Section>
@@ -92,11 +92,11 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
             <dl className="space-y-4 mt-2">
               {copy.factors.sources.map((s) => (
                 <div key={s.name}>
-                  <dt className="font-semibold text-gray-900">
+                  <dt className="font-semibold text-primary">
                     {s.name}
-                    {s.danish && <span className="ml-2 text-sm font-normal text-gray-500">{copy.factors.danishPriorityLabel}</span>}
+                    {s.danish && <span className="ml-2 text-body-sm font-normal text-muted-foreground">{copy.factors.danishPriorityLabel}</span>}
                   </dt>
-                  <dd className="text-gray-700 mt-1">{s.note}</dd>
+                  <dd className="text-foreground mt-1">{s.note}</dd>
                 </div>
               ))}
             </dl>
@@ -114,10 +114,13 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
               <p key={i}>{p}</p>
             ))}
             <div className="mt-2">
-              <p className="font-semibold text-gray-900 mb-3">{copy.auditTrail.containsLabel}</p>
-              <ul className="space-y-1 text-gray-700">
+              <p className="font-semibold text-primary mb-3">{copy.auditTrail.containsLabel}</p>
+              <ul className="space-y-1 text-foreground">
                 {copy.auditTrail.contains.map((item) => (
-                  <li key={item}>, {item}</li>
+                  <li key={item} className="flex gap-2.5">
+                    <span className="mt-3 h-1 w-2.5 shrink-0 bg-sage" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -127,9 +130,9 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
       </section>
 
       {/* Pull-quote 2 */}
-      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-gray-900 text-gray-100">
+      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-primary text-primary-foreground">
         <div className="max-w-3xl mx-auto">
-          <blockquote className="text-xl sm:text-3xl font-bold leading-[1.3] tracking-tight text-white">
+          <blockquote className="font-display text-xl sm:text-3xl font-medium leading-[1.3] text-primary-foreground">
             {copy.quote2}
           </blockquote>
         </div>
@@ -142,9 +145,9 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
             <p>{copy.dataQuality.pointsIntro}</p>
             <dl className="space-y-2 mt-2">
               {copy.dataQuality.points.map((q) => (
-                <div key={q.points} className="flex flex-col sm:flex-row sm:gap-6 border-b border-gray-200 pb-3 last:border-b-0">
-                  <dt className="font-bold text-gray-900 sm:w-24 sm:flex-shrink-0">{q.points}</dt>
-                  <dd className="text-gray-700">{q.text}</dd>
+                <div key={q.points} className="flex flex-col sm:flex-row sm:gap-6 border-b border-border pb-3 last:border-b-0">
+                  <dt className="font-semibold text-primary sm:w-24 sm:flex-shrink-0">{q.points}</dt>
+                  <dd className="text-foreground">{q.text}</dd>
                 </div>
               ))}
             </dl>
@@ -158,8 +161,8 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
             <dl className="space-y-4 mt-2">
               {copy.standards.items.map((s) => (
                 <div key={s.name}>
-                  <dt className="font-semibold text-gray-900">{s.name}</dt>
-                  <dd className="text-gray-700 mt-1">{s.body}</dd>
+                  <dt className="font-semibold text-primary">{s.name}</dt>
+                  <dd className="text-foreground mt-1">{s.body}</dd>
                 </div>
               ))}
             </dl>
@@ -177,22 +180,22 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
             <dl className="space-y-5 mt-2">
               {copy.notDoing.items.map((item) => (
                 <div key={item.title}>
-                  <dt className="font-bold text-gray-900 mb-1">{item.title}</dt>
-                  <dd className="text-gray-700">{item.body}</dd>
+                  <dt className="font-semibold text-primary mb-1">{item.title}</dt>
+                  <dd className="text-foreground">{item.body}</dd>
                 </div>
               ))}
             </dl>
           </Section>
 
           {/* Afslutning */}
-          <section className="border-t border-gray-200 pt-10 sm:pt-14">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight text-gray-900">
+          <section className="border-t border-border pt-10 sm:pt-14">
+            <h2 className="mb-4">
               {copy.outro.title}
             </h2>
-            <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-7 max-w-2xl">
+            <p className="text-foreground text-body mb-7 max-w-(--measure-body)">
               {copy.outro.body}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 text-sm">
+            <div className="flex flex-col sm:flex-row gap-4 text-body-sm">
               <a href="/kontakt" className="text-primary font-semibold hover:underline">
                 {copy.outro.linkContact}
               </a>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@/components/ds/Button";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
@@ -70,10 +71,10 @@ function DocLink({
   const arrow = external ? "↗" : "→";
   const content = (
     <>
-      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-        {title} <span className="font-normal text-gray-400">{arrow}</span>
+      <h3 className="mb-2 group-hover:text-primary transition-colors">
+        {title} <span className="font-normal text-muted-foreground">{arrow}</span>
       </h3>
-      <p className="text-sm text-gray-600 leading-relaxed">{body}</p>
+      <p className="text-body-sm text-muted-foreground">{body}</p>
     </>
   );
   if (external) {
@@ -98,16 +99,16 @@ export default function Page() {
       <SiteHeader />
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-14">
-        <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
+        <h1 className="mb-6">
           Sådan kommer du i gang med qlim8
         </h1>
-        <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
+        <p className="text-lead text-foreground max-w-(--measure-body)">
           Onboarding-guides lever i platformen, mens udvikler-dokumentation samles her: MCP-serveren, REST API'en og metodologien bag dit klimaregnskab.
         </p>
       </section>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-14">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8 border-t border-gray-200 pt-10">
+        <h2 className="mb-8 border-t border-border pt-10">
           For udviklere
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-10">
@@ -118,7 +119,7 @@ export default function Page() {
       </section>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-20 sm:pb-24">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8 border-t border-gray-200 pt-10">
+        <h2 className="mb-8 border-t border-border pt-10">
           Generelt
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-10">
@@ -127,18 +128,15 @@ export default function Page() {
           ))}
         </div>
 
-        <div className="mt-16 bg-gray-900 text-gray-100 rounded-2xl p-7 sm:p-10">
-          <h2 className="text-xl sm:text-2xl font-bold mb-3">developers.qlim8.com er live</h2>
-          <p className="text-gray-300 text-[15px] leading-relaxed mb-5">
+        <div className="mt-16 bg-primary text-primary-foreground rounded-lg p-7 sm:p-10">
+          <h2 className="mb-3 text-primary-foreground">developers.qlim8.com er live</h2>
+          <p className="text-primary-foreground text-body-sm mb-5">
             Udviklerportalen samler den fulde reference: MCP-serverens 32 tools, interaktiv REST
             API-reference (OpenAPI), auth-, webhook- og migrationsguides.
           </p>
-          <a
-            href="https://developers.qlim8.com"
-            className="inline-block bg-white text-gray-900 font-semibold rounded-full px-5 py-2.5 text-sm hover:bg-gray-200 transition-colors"
-          >
+          <Button href="https://developers.qlim8.com" variant="inverted">
             Åbn developers.qlim8.com ↗
-          </a>
+          </Button>
         </div>
       </section>
 

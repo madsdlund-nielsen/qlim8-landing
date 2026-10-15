@@ -10,6 +10,8 @@ export interface NavLeaf {
   label: string;
   blurb?: string;
   comingSoon?: boolean;
+  /** A featured hub card (MarketingNode.highlight). */
+  highlight?: boolean;
   /** Levels below the collection hub (0 = top-level area). Menus indent by it. */
   depth?: number;
 }
@@ -28,22 +30,19 @@ export interface NavTop {
 // Which leaves appear in each collection's mega-menu, in order. Every live
 // page is here: the menu is the one place the whole site hierarchy is visible
 // to a visitor and a crawler at once, and it has to agree with the breadcrumb
-// schema on every page. Produkt used to list 12 of its 21 pages, which left
-// nine (the report-recipient and VSME sub-pages) three clicks from the
-// header, reachable only from a parent's in-page grid. The order is the
-// hierarchy: a child follows its parent, and `depth` indents it.
-const MENU_SLUGS: Record<MarketingCollection, string[]> = {
-  kundetyper: [
-    "tomrer", "maler", "elektriker", "vvs", "entreprenoer", "vognmand", "plastfabrikant", "frisoer", "store-virksomheder",
-    "revisor", "raadgiver", "konsulent",
-  ],
+// schema on every page. The order is the hierarchy: a child follows its
+// parent, and `depth` indents it (none of the current pages has a parent).
+// An entry that names no node throws outside production (buildGroups), and
+// scripts/lib/redirects.test.mjs holds every entry to a live page.
+export const MENU_SLUGS: Record<MarketingCollection, string[]> = {
+  kundetyper: ["byggeri-og-haandvaerk", "transport-og-vognmaend", "produktion-og-industri", "revisorer-og-raadgivere"],
   produkt: [
-    "dashboard", "udforskning", "data-udtraek",
-    "rapportering", "excel-rapport", "pdf-rapport", "modtagere",
-    "bestyrelsesrapport", "investorrapport", "bankrapport", "samarbejdspartnere", "temaer",
-    "vsme-rapport", "vsme-basis", "vsme-comprehensive", "audit-trail",
-    "tiltag", "scenarier",
-    "revisor-adgang", "leverandoerkaede", "brag-board",
+    "platform-og-overblik",
+    "rapportering",
+    "vsme-rapport",
+    "audit-trail-og-revisor",
+    "reduktionsmaal-og-scenarier",
+    "leverandoerkaede",
   ],
   integrationer: [
     "e-conomic", "dinero", "billy", "appelsin", "eloverblik", "rest-api", "mcp-server",
@@ -51,12 +50,19 @@ const MENU_SLUGS: Record<MarketingCollection, string[]> = {
   ],
 };
 
-function buildGroups(collection: MarketingCollection): NavGroup[] {
+export function buildGroups(collection: MarketingCollection): NavGroup[] {
   const order = MENU_SLUGS[collection];
   const groups: NavGroup[] = [];
   for (const slug of order) {
     const node = getNode(collection, slug);
-    if (!node) continue;
+    if (!node) {
+      // Dropping it here is how a page vanished from the menu unseen. In
+      // production a dead entry is still skipped rather than failing the site.
+      if (process.env.NODE_ENV !== "production") {
+        throw new Error(`MENU_SLUGS.${collection}: "${slug}" is not a ${collection} page`);
+      }
+      continue;
+    }
     const heading = node.navGroup ?? "";
     let group = groups.find((g) => g.heading === heading);
     if (!group) {
@@ -88,12 +94,14 @@ export const PRIMARY_NAV: NavTop[] = [
   { label: "Blog", href: "/blog" },
 ];
 
-// Footer "Løsninger" column, derived so header + footer stay in sync.
-export const FOOTER_SOLUTIONS: NavLeaf[] = [
-  { href: "/kundetyper", label: "Kundetyper" },
-  { href: "/produkt", label: "Produkt" },
-  { href: "/integrationer", label: "Integrationer" },
-];
+// Footer columns "Løsninger" (the industry pages) and "Produkt" (the theme
+// pages), derived from the same menu lists so header and footer stay in sync.
+function footerLeaves(collection: MarketingCollection): NavLeaf[] {
+  return buildGroups(collection).flatMap((g) => g.items.map(({ href, label }) => ({ href, label })));
+}
+
+export const FOOTER_SOLUTIONS: NavLeaf[] = footerLeaves("kundetyper");
+export const FOOTER_PRODUCT: NavLeaf[] = footerLeaves("produkt");
 
 // Featured leaves per collection, for hub card grids (server-side).
 export function hubCards(collection: MarketingCollection): NavLeaf[] {
@@ -104,5 +112,6 @@ export function hubCards(collection: MarketingCollection): NavLeaf[] {
       label: n.navLabel,
       blurb: n.blurb,
       comingSoon: n.status === "coming-soon",
+      highlight: n.highlight === true,
     }));
 }

@@ -1,12 +1,14 @@
 // How qlim8.com shows the packages it reads from the app
 // (GET /api/public/packages, qlim8-app shared/publicPackages.ts).
 //
-// Pure: no fetch, no imports, so `npm test` runs it directly. The fetch is in
+// Pure: no fetch, no alias imports, so `npm test` runs it directly. The fetch is in
 // src/lib/packages.ts, the rendering in src/page-components/pricing.tsx.
 //
 // Every price on the page comes from the API. A package whose price is hidden
 // has none here, and when the API cannot be reached the page shows no price
 // at all and offers a demo for everything: a stale price is worse than none.
+
+import { DEMO_CTA } from "../content/cta.ts";
 
 export type CtaKind = "signup" | "buy" | "demo";
 
@@ -101,6 +103,22 @@ export interface PublicPackages {
  */
 export function isSelfServe(data: PublicPackages | null | undefined): boolean {
   return Boolean(data?.packages.some((p) => p.cta.kind !== "demo" && p.cta.url));
+}
+
+/**
+ * A CTA from page copy, as the visitor may follow it. While the catalog sells
+ * nothing by itself (catalog version 1, or the packages API cannot be reached)
+ * a button that leads to the package page (/priser, /priser#raadgivere, ...)
+ * books a demo instead: there is no price and no signup to lead to. Every
+ * other href is left as it is.
+ */
+export function resolveCta<T extends { label: string; href: string }>(
+  cta: T,
+  selfServe: boolean,
+  demo: { label: string; href: string } = DEMO_CTA,
+): T | { label: string; href: string } {
+  if (selfServe) return cta;
+  return /^\/priser(?:[/?#]|$)/.test(cta.href) ? demo : cta;
 }
 
 /**

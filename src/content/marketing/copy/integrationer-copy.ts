@@ -30,7 +30,7 @@ export const INTEGRATIONER_HUB_COPY: MarketingHubCopy = {
   intro: {
     heading: "Et klimaregnskab bygget oven på det regnskab, du allerede fører",
     body:
-      "En klimaplatform er kun noget værd, hvis den taler med det, du allerede bruger. Ellers er det bare et ekstra sted at taste de samme tal ind en gang til. qlim8 forbinder direkte til dansk regnskabssoftware: Dinero, e-conomic og Billy. Så dine posteringer bliver til CO₂e-emissioner automatisk. Vi henter faktisk elforbrug fra Eloverblik og Energinet, så dine Scope 2-tal er målte i stedet for gættede. Og for udviklere og AI-assistenter er der REST API og en live MCP-server. Første tilslutning tager typisk 5-15 minutter pr. system [antagelse: interne opsætningsmålinger, ikke kundevalideret], og derefter synkroniserer vi løbende. Du skifter ikke system: du kobler klimaregnskabet på det, du har.",
+      "En klimaplatform er kun noget værd, hvis den taler med det, du allerede bruger. Ellers er det bare et ekstra sted at taste de samme tal ind en gang til. qlim8 forbinder direkte til dansk regnskabssoftware: Dinero, e-conomic og Billy. Så bliver en stor del af dine posteringer til CO₂e-emissioner automatisk, og linjer, som systemet er i tvivl om, lægges til gennemsyn hos dig. Vi henter faktisk elforbrug fra Eloverblik og Energinet, så dine Scope 2-tal er målte i stedet for gættede. Og for udviklere og AI-assistenter er der REST API og en live MCP-server. Vi hjælper gerne med den første tilslutning. Du skifter ikke system: du kobler klimaregnskabet på det, du har.",
     bullets: [
       "Dansk regnskabsdata native: vi forstår danske konteringsmønstre, ikke et generisk CSV-flow.",
       "Automatisk kategorisering af posteringer til emissions-kategorier, så du slipper for manuel mapping.",
@@ -50,12 +50,12 @@ export const INTEGRATIONER_HUB_COPY: MarketingHubCopy = {
     {
       title: "Automatisk kategorisering",
       body:
-        "Hver postering får en emissions-kategori automatisk, og de mest brugte konti er dækket fra start. Du retter kun det, der er tenant-specifikt, typisk en håndfuld konti frem for hundredvis af linjer i hånden.",
+        "Posteringerne får en emissions-kategori automatisk, når systemet er sikkert nok, og resten lægges til gennemsyn hos dig. Du retter kun det, der er tenant-specifikt, typisk en håndfuld konti frem for hundredvis af linjer i hånden.",
     },
     {
       title: "Ingen manuel indtastning",
       body:
-        "Målt elforbrug fra Eloverblik og bookede fakturaer fra dit regnskab trækkes ind af sig selv. Det fjerner den månedlige CSV-eksport og indtastning, anslået 30-60 minutter pr. system pr. måned [antagelse: pilot-tal, ikke bredt kundevalideret].",
+        "Målt elforbrug fra Eloverblik og bookede fakturaer fra dit regnskab trækkes ind af sig selv. Det fjerner den månedlige CSV-eksport og indtastning.",
     },
     {
       title: "Åben via API og MCP",
@@ -64,7 +64,7 @@ export const INTEGRATIONER_HUB_COPY: MarketingHubCopy = {
     },
   ],
   closingCta: {
-    title: "Tilslut dit første system på under et kvarter",
+    title: "Tilslut dit første system med personlig hjælp",
     description:
       "Opret en gratis konto og forbind regnskabet eller elmåleren, så ser du dine posteringer blive til et klimaregnskab. Ingen CSV-eksport, ingen konsulent. Vil du hellere se det først, så book en demo.",
     primary: DEMO_CTA,
@@ -81,12 +81,16 @@ export const IN_ECONOMIC: MarketingPageCopy = {
     eyebrow: "Regnskabsintegration",
     title: "Forbind e-conomic: dine posteringer bliver til klimaregnskab",
     subtitle:
-      "Tilslut e-conomic med to tokens, og qlim8 henter dine bookede fakturaer og din kontoplan. Hver postering kategoriseres automatisk til en emissions-kategori, så du ikke sidder og mapper konti i hånden.",
+      "Tilslut e-conomic med to tokens, og qlim8 henter dine bookede fakturaer og din kontoplan. Posteringerne kategoriseres automatisk, når systemet er sikkert nok, og resten lægges til gennemsyn hos dig, så du ikke sidder og mapper konti i hånden.",
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
+  reassurance: {
+    title: "Du bogfører i e-conomic, som du plejer",
+    body: "Når e-conomic er forbundet, henter qlim8 tallene fra din bogføring og gør dem til et klimaregnskab. Du skifter ikke program og taster ikke dine fakturaer ind igen. Forbindelsen kræver to nøgler fra din e-conomic-aftale, og vi viser dig gerne, hvor du finder dem. Linjer, som systemet er i tvivl om, lægges til gennemsyn hos dig, før de tæller med.",
+  },
   intro: {
-    heading: "Regnskabet du allerede fører er 90 % af et klimaregnskab",
+    heading: "Regnskabet, du allerede fører, er grundlaget for dit klimaregnskab",
     body:
       "e-conomic er et af Danmarks mest udbredte regnskabssystemer, og dine bogførte udgifter fortæller allerede det meste af historien om dit CO₂e-aftryk. De ligger bare som kroner, ikke som emissioner. qlim8 forbinder via dobbelt-token-auth (appSecretToken plus agreementGrantToken), henter dine bookede fakturaer og din kontoplan, og oversætter tallene til spend-baserede emissioner. De mest brugte standardkonti er forudfyldt med en emissions-kategori: fx gas, el og flyrejser, så du kun mapper det, der er specifikt for din virksomhed. For revisorer betyder det, at endnu et dansk regnskabssystem er dækket, uanset hvad klienten kører.",
     bullets: [
@@ -102,7 +106,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       solution:
         "qlim8 forbinder direkte til e-conomic og henter bookede fakturaer automatisk, ingen eksport, ingen upload.",
       outcome:
-        "Sparet manuel eksport og indtastning: anslået 30-60 minutter pr. måned [antagelse: pilot-tal, ikke bredt kundevalideret].",
+        "Ingen manuel eksport og indtastning hver måned.",
     },
     {
       pain:
@@ -110,7 +114,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       solution:
         "Vi leverer et default-mapping for de mest brugte danske standardkonti; du overstyrer kun de tenant-specifikke konti.",
       outcome:
-        "Fra manuel mapping af alle konti til en håndfuld overrides, anslået 70-80 % dækket fra start [antagelse: baseret på standardkontoplan, ikke bredt kundevalideret].",
+        "Fra manuel mapping af alle konti til en håndfuld rettelser.",
     },
     {
       pain:
@@ -162,7 +166,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       {
         title: "1. Tilslut e-conomic",
         body:
-          "Udsted et agreementGrantToken i e-conomic og indsæt det i qlim8. Vi validerer forbindelsen og henter dit firmanavn med det samme.",
+          "Indsæt de to tokens fra din e-conomic-aftale og appen (App Secret Token og Agreement Grant Token) i qlim8. Vi validerer forbindelsen og henter dit firmanavn med det samme.",
       },
       {
         title: "2. Hent data",
@@ -182,9 +186,9 @@ export const IN_ECONOMIC: MarketingPageCopy = {
     ],
   },
   valueStats: [
-    { value: "5-15 min", label: "til at tilslutte", note: "[antagelse: interne opsætningsmålinger]" },
-    { value: "30-60 min/md", label: "sparet manuel eksport", note: "[antagelse: pilot-tal]" },
-    { value: "70-80 %", label: "konti mappet fra start", note: "[antagelse: standardkontoplan]" },
+    { value: "Personlig", label: "hjælp til opsætningen" },
+    { value: "2 tokens", label: "fra din e-conomic-aftale" },
+    { value: "Bilag", label: "bag hvert tal" },
     { value: "0", label: "kopierede passwords" },
   ],
   faq: {
@@ -212,7 +216,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Regnskabsintegrationen er allerede med i Free, der er gratis for altid og giver én regnskabs- og én forsyningsforbindelse. Starter giver op til 5 forbindelser, og Premium ubegrænsede. Priserne står på /priser, og I køber direkte i appen.",
+        a: "Du kan forbinde e-conomic på en gratis konto. Med Free forbinder du Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab. Free er gratis og har ingen udløbsdato. Hvad de betalte pakker indeholder, står på /priser.",
       },
     ],
   },
@@ -234,9 +238,13 @@ export const IN_DINERO: MarketingPageCopy = {
     eyebrow: "Regnskabsintegration",
     title: "Forbind Dinero med ét login: klimaregnskabet henter sig selv",
     subtitle:
-      "Tilslut Dinero via Visma Connect (OAuth), og qlim8 læser 12 måneders historik ved første forbindelse. Derefter holder en daglig sync dit klimaregnskab opdateret. Du gør ingenting.",
+      "Tilslut Dinero via Visma Connect (OAuth), og qlim8 læser 12 måneders historik ved første forbindelse. Derefter holder en daglig sync dit klimaregnskab opdateret, og du tager kun stilling til de linjer, systemet er i tvivl om.",
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
+  },
+  reassurance: {
+    title: "Et login med Visma Connect, så er du i gang",
+    body: "Du forbinder Dinero ved at logge ind med Visma Connect og vælge din virksomhed. Det klares med et par klik, og der er ingen nøgler at kopiere. Derefter bliver din bogføring til et klimaregnskab, mens du bogfører i Dinero, som du plejer. Er du i tvivl undervejs, så ring til os på +45 93 90 13 84, så tager vi det sammen.",
   },
   intro: {
     heading: "Bygget til den mindre virksomhed, der bruger Dinero",
@@ -255,7 +263,7 @@ export const IN_DINERO: MarketingPageCopy = {
       solution:
         "qlim8 forbinder direkte til Dinero via OAuth og trækker indkøbsfakturaer og posteringer ind automatisk, med daglig sync.",
       outcome:
-        "Sparet manuelt arbejde: anslået 2-4 timer pr. måned pr. virksomhed [antagelse: interne målinger, ikke bredt kundevalideret].",
+        "Ingen manuel eksport og mapping hver måned.",
     },
     {
       pain:
@@ -299,9 +307,9 @@ export const IN_DINERO: MarketingPageCopy = {
         "Efter opsætning holder en daglig sync qlim8 i takt med Dineros fakturamodtagelse. Nye udgifter bliver til emissioner uden at du gør noget.",
     },
     {
-      title: "Indkøb til Scope 3",
+      title: "Indkøb til Scope 1, 2 og 3",
       body:
-        "Vi henter indkøbsfakturaer (de udgifter, der er relevante for dine Scope 3-emissioner) og udleder CO₂e-aftryk fra dem automatisk.",
+        "Vi henter indkøbsfakturaer og udleder CO₂e-aftryk fra dem. Brændstof, du selv køber til dine køretøjer, tæller i Scope 1, el i Scope 2 og de fleste andre indkøb i Scope 3.",
     },
     {
       title: "Audit-log på hver sync",
@@ -335,9 +343,9 @@ export const IN_DINERO: MarketingPageCopy = {
     ],
   },
   valueStats: [
-    { value: "5-15 min", label: "til at tilslutte", note: "[antagelse: interne opsætningsmålinger]" },
+    { value: "Personlig", label: "hjælp til opsætningen" },
     { value: "12 mdr", label: "historik ved første sync" },
-    { value: "2-4 timer/md", label: "sparet manuelt arbejde", note: "[antagelse: interne målinger]" },
+    { value: "Visma Connect", label: "ét login, ingen nøgle at kopiere" },
     { value: "Dagligt", label: "automatisk sync" },
   ],
   faq: {
@@ -357,7 +365,7 @@ export const IN_DINERO: MarketingPageCopy = {
       },
       {
         q: "Henter I mine salgsfakturaer?",
-        a: "Nej, vi henter indkøbsfakturaer, fordi det er dine udgifter, der driver Scope 3-emissionerne. Salgsfakturaer trækkes ikke ind.",
+        a: "Nej, vi henter indkøbsfakturaer, fordi det er dine udgifter, der driver klimaregnskabet: brændstof i Scope 1, el i Scope 2 og de fleste andre indkøb i Scope 3. Salgsfakturaer trækkes ikke ind.",
       },
       {
         q: "Er det sikkert at give qlim8 adgang?",
@@ -365,14 +373,14 @@ export const IN_DINERO: MarketingPageCopy = {
       },
       {
         q: "Hvad koster Dinero-integrationen?",
-        a: "Den er allerede inkluderet i Free, der er gratis for altid og giver én regnskabs- og én forsyningsforbindelse. Starter giver op til 5 forbindelser, og Premium ubegrænsede. Priserne står på /priser, og I køber direkte i appen.",
+        a: "Dinero kan du forbinde på en gratis konto, hvor du også kan forbinde Eloverblik og se dit eget klimaregnskab. Free er gratis og har ingen udløbsdato. Indholdet i de betalte pakker står på /priser.",
       },
     ],
   },
   closingCta: {
     title: "Tilslut Dinero, og lad klimaregnskabet hente sig selv",
     description:
-      "Opret en gratis konto og forbind Dinero via Visma Connect, så ser du din bogføring blive til et klimaregnskab. Daglig sync derefter: du gør ingenting. Vil du hellere se det først, så book en demo.",
+      "Opret en gratis konto og forbind Dinero via Visma Connect, så ser du din bogføring blive til et klimaregnskab. Derefter kører en daglig sync, og du tager kun stilling til de linjer, systemet er i tvivl om. Vil du hellere se det først, så book en demo.",
     primary: DEMO_CTA,
     secondary: PHONE_CTA,
   },
@@ -391,6 +399,10 @@ export const IN_BILLY: MarketingPageCopy = {
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
+  reassurance: {
+    title: "Én nøgle fra Billy, så er du forbundet",
+    body: "Du opretter en API-nøgle i Billy og sætter den ind i qlim8. Vi viser dig gerne, hvor du finder den. Herefter henter qlim8 tallene fra din bogføring, og hvert tal i klimaregnskabet kan spores tilbage til bilaget. Du fortsætter i Billy, som du plejer, og behøver ikke skifte system for at få styr på klimaet.",
+  },
   intro: {
     heading: "Bygget til freelancere og enkeltmandsfirmaer på Billy",
     body:
@@ -408,7 +420,7 @@ export const IN_BILLY: MarketingPageCopy = {
       solution:
         "qlim8 henter dine leverandørfakturaer direkte fra Billy og laver spend-baserede emissioner ud af dem automatisk.",
       outcome:
-        "Fra manuel Excel-opbygning til et klimaregnskab, der fylder sig selv, sparet indtastning pr. måned [antagelse: ikke bredt kundevalideret].",
+        "Fra manuel Excel-opbygning til et klimaregnskab, der bygger direkte på din bogføring.",
     },
     {
       pain:
@@ -488,7 +500,7 @@ export const IN_BILLY: MarketingPageCopy = {
     ],
   },
   valueStats: [
-    { value: "5-15 min", label: "til at tilslutte", note: "[antagelse: interne opsætningsmålinger]" },
+    { value: "Personlig", label: "hjælp til opsætningen" },
     { value: "Approved", label: "kun godkendte fakturaer" },
     { value: "Bilagsnr.", label: "på hver postering" },
     { value: "0", label: "Excel-uploads" },
@@ -518,7 +530,7 @@ export const IN_BILLY: MarketingPageCopy = {
       },
       {
         q: "Hvad koster Billy-integrationen?",
-        a: "Den er allerede med i Free, der er gratis for altid og giver én regnskabs- og én forsyningsforbindelse. Starter giver op til 5 forbindelser, og Premium ubegrænsede. Priserne står på /priser, og I køber direkte i appen.",
+        a: "Billy er et af de tre regnskabsprogrammer, du kan forbinde på en gratis konto sammen med Eloverblik. Free er gratis og har ingen udløbsdato. Se /priser for, hvad de betalte pakker giver.",
       },
     ],
   },
@@ -544,12 +556,16 @@ export const IN_APPELSIN: MarketingPageCopy = {
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
+  reassurance: {
+    title: "Appelsin kommer snart, og du kan starte nu",
+    body: "Vi arbejder på en direkte forbindelse til Appelsin, men den er ikke klar endnu. Du behøver ikke vente: kan du trække en CSV- eller Excel-fil med dato og beløb ud af dit regnskab, kan du uploade den og se dit klimaregnskab allerede nu. Skriv eller ring til os, så hjælper vi med filen og giver dig besked, når Appelsin er på plads.",
+  },
   intro: {
     heading: "Bruger du Appelsin? Så er du snart dækket",
     body:
       "Appelsin-integrationen er under udvikling og endnu ikke tilgængelig i qlim8. Planen er den samme som for vores øvrige regnskabsintegrationer: du forbinder dit Appelsin-regnskab, vi henter dine bogførte udgifter, og posteringerne kategoriseres automatisk til CO₂e-emissioner, uden CSV-eksport og uden manuel indtastning. Vi melder detaljerne ud, når integrationen er klar. Har du allerede Dinero, e-conomic eller Billy, kan vi forbinde det nu; er Appelsin dit eneste system, kan du bruge Excel-upload som midlertidig løsning, indtil den native integration er live.",
     bullets: [
-      "Status: under udvikling, ikke live endnu [antagelse: roadmap, ingen fast lanceringsdato meldt].",
+      "Status: under udvikling, ikke live endnu og uden fast lanceringsdato.",
       "Samme flow som vores øvrige regnskabsintegrationer er planlagt.",
       "Excel-upload er en midlertidig løsning, indtil integrationen er klar.",
     ],
@@ -615,8 +631,8 @@ export const IN_APPELSIN: MarketingPageCopy = {
     ],
   },
   valueStats: [
-    { value: "Kommer snart", label: "Appelsin-integration", note: "[antagelse: under udvikling]" },
-    { value: "3", label: "regnskabssystemer live i dag" },
+    { value: "Kommer snart", label: "Appelsin-integration" },
+    { value: "Dinero, e-conomic, Billy", label: "kan forbindes i dag" },
     { value: "Excel", label: "midlertidig løsning nu" },
   ],
   faq: {
@@ -628,7 +644,7 @@ export const IN_APPELSIN: MarketingPageCopy = {
       },
       {
         q: "Hvornår er Appelsin-integrationen klar?",
-        a: "Den er under udvikling, og vi har ikke meldt en fast lanceringsdato ud [antagelse: roadmap, ingen offentlig dato]. Vi opdaterer, så snart der er nyt. Skriv til os via /kontakt, hvis du vil have besked, når den lander.",
+        a: "Den er under udvikling, og vi har ikke meldt en fast lanceringsdato ud. Vi opdaterer, så snart der er nyt. Skriv til os via /kontakt, hvis du vil have besked, når den lander.",
       },
       {
         q: "Kommer Appelsin til at fungere som Dinero-integrationen?",
@@ -640,7 +656,7 @@ export const IN_APPELSIN: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det, når integrationen kommer?",
-        a: "Regnskabsintegrationer er med i alle pakker, også Free, der er gratis for altid. Den endelige placering for Appelsin meldes ud ved lancering. Priserne står på /priser.",
+        a: "Med Free forbinder du i dag Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy). Free er gratis og har ingen udløbsdato. Hvilke pakker Appelsin kommer med i, melder vi ud ved lancering, og pakkerne står på /priser.",
       },
     ],
   },
@@ -666,6 +682,10 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
+  reassurance: {
+    title: "Dit elforbrug, hentet for dig hver uge",
+    body: "Du giver qlim8 fuldmagt med MitID på eloverblik.dk. Derefter henter vi dit elforbrug time for time for hvert målepunkt, én gang om ugen, og regner det om med Energinets data. Du skal ikke fotografere elregninger eller taste kWh ind. Fuldmagten kan virke lidt teknisk første gang, så vi tager den gerne sammen med dig over telefonen.",
+  },
   intro: {
     heading: "Målt elforbrug slår et årsgennemsnit hver gang",
     body:
@@ -683,7 +703,7 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
       solution:
         "qlim8 henter time-baseret forbrug direkte fra Eloverblik, så du aldrig indtaster en kWh igen.",
       outcome:
-        "Sparet manuel el-indtastning: anslået 1-2 timer pr. måned samlet [antagelse: interne målinger, ikke bredt kundevalideret].",
+        "Ingen manuel el-indtastning, hverken pr. måned eller pr. målepunkt.",
     },
     {
       pain:
@@ -715,14 +735,14 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
       solution:
         "qlim8 mailer dine admins før og efter udløb på en fast kadence og markerer datakilden, så du kan forny i tide.",
       outcome:
-        "Ingen tavse huller når en fuldmagt udløber. Du får besked og kan forny med et klik.",
+        "Ingen tavse huller når en fuldmagt udløber. Du får besked og fornyer fuldmagten med MitID på eloverblik.dk.",
     },
   ],
   features: [
     {
       title: "Time-baseret forbrug",
       body:
-        "Vi henter dit elforbrug pr. time pr. målepunkt fra Eloverblik. Det giver præcise Scope 2-tal og lægger grunden til senere features som fordeling af ladestander-forbrug.",
+        "Vi henter dit elforbrug pr. time pr. målepunkt fra Eloverblik. Det giver præcise Scope 2-tal. Forbruget er hele målepunktets, så en ladestander på adressen kan ikke skilles ud.",
     },
     {
       title: "Energinets CO₂-faktor",
@@ -751,7 +771,7 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
       {
         title: "1. Tilslut Eloverblik",
         body:
-          "Giv qlim8 fuldmagt på eloverblik.dk og indsæt din customerKey i qlim8. Vi finder din adgang via Eloverbliks authorization-opslag.",
+          "Log ind med MitID på eloverblik.dk, og giv qlim8 fuldmagt med qlim8's CVR-nummer og din kundenøgle (customerKey). Begge dele finder du i qlim8. Vi finder din adgang via Eloverbliks authorization-opslag.",
       },
       {
         title: "2. Hent forbrug",
@@ -772,7 +792,7 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
   },
   valueStats: [
     { value: "Time-data", label: "faktisk elforbrug" },
-    { value: "1-2 timer/md", label: "sparet indtastning", note: "[antagelse: interne målinger]" },
+    { value: "Ugentligt", label: "nye data fra Eloverblik" },
     { value: "Scope 2", label: "målt, ikke gættet" },
     { value: "0", label: "elregninger at taste" },
   ],
@@ -781,7 +801,7 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
     items: [
       {
         q: "Hvordan giver jeg qlim8 adgang til mit elforbrug?",
-        a: "Du giver qlim8 en fuldmagt på eloverblik.dk-portalen og indsætter din customerKey i qlim8. Vi finder adgangen via Eloverbliks authorization-opslag og henter derefter dit forbrug automatisk. Det kræver, at din virksomhed har en aftaleforbinder på sin CVR-profil på eloverblik.dk.",
+        a: "Du logger ind med MitID på eloverblik.dk og giver qlim8 en fuldmagt, hvor du indtaster qlim8's CVR-nummer og din kundenøgle (customerKey). Begge dele står i qlim8, når du opretter forbindelsen. Vi finder adgangen via Eloverbliks authorization-opslag og henter derefter dit forbrug automatisk. Det kræver, at din virksomhed har en aftaleforbinder på sin CVR-profil på eloverblik.dk.",
       },
       {
         q: "Hvor præcise bliver mine Scope 2-tal?",
@@ -801,7 +821,7 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
       },
       {
         q: "Kan I også hente gas og fjernvarme?",
-        a: "Ikke endnu. I dag henter vi kun el fra Eloverblik. Gas og fjernvarme leveres også af Eloverblik, men er ikke implementeret endnu. Det ligger på vores roadmap.",
+        a: "Ikke automatisk. I dag henter vi kun el fra Eloverblik. Forbruget af gas og fjernvarme kan du i stedet indtaste selv.",
       },
     ],
   },
@@ -826,6 +846,10 @@ export const IN_REST_API: MarketingPageCopy = {
       "Et versioneret REST API under /api/v1 giver dig programmatisk adgang til posteringer, emissionsdata og rapportstatus. JSON over HTTPS, Bearer-token, cursor-paginering og webhooks til dine egne flows.",
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
+  },
+  reassurance: {
+    title: "Dine klimadata i dine egne systemer",
+    body: "Med REST API'et henter du dine klimadata ind i de værktøjer, du allerede bruger, med en API-nøgle til din virksomhed. Spørgsmål til opsætningen kan du sende til kontakt@qlim8.com.",
   },
   intro: {
     heading: "Dine klimadata, der hvor dine andre systemer er",
@@ -959,7 +983,7 @@ export const IN_REST_API: MarketingPageCopy = {
       },
       {
         q: "Hvem har adgang til API'et?",
-        a: "Programmatisk adgang er rettet mod større kunder, BI-værktøjer og custom-flows. Skriv til os via /kontakt eller kontakt@qlim8.com om adgang, scopes og Enterprise-features.",
+        a: "Programmatisk adgang er rettet mod større kunder, BI-værktøjer og custom-flows. Skriv til os via /kontakt eller kontakt@qlim8.com om adgang og scopes.",
       },
     ],
   },
@@ -985,6 +1009,10 @@ export const IN_MCP: MarketingPageCopy = {
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
   },
+  reassurance: {
+    title: "Dine tal er med, hvor du er",
+    body: "Forbind Claude eller ChatGPT til qlim8, og spørg til dine tal med dine egne ord. Assistenten henter svarene direkte fra dit klimaregnskab, og vi hjælper gerne med at komme i gang.",
+  },
   intro: {
     heading: "Din assistent henter tallene, så du ikke skal åbne dashboardet",
     body:
@@ -1002,7 +1030,7 @@ export const IN_MCP: MarketingPageCopy = {
       solution:
         "Med MCP spørger de deres assistent i naturligt sprog, og den henter live tal direkte fra qlim8.",
       outcome:
-        "Sparet tid pr. spørgsmål, som kumulativt bliver til mange timer om ugen for et analyseteam [antagelse: interne skøn, ikke bredt kundevalideret].",
+        "Sparet tid pr. spørgsmål, fordi svaret kommer i samtalen i stedet for i et nyt udtræk.",
     },
     {
       pain:
@@ -1026,7 +1054,7 @@ export const IN_MCP: MarketingPageCopy = {
       solution:
         "Claude og ChatGPT forbinder via OAuth 2.1 med dynamisk klient-registrering, helt uden en nøgle at kopiere.",
       outcome:
-        "Ét-kliks forbindelse for almindelige brugere, uden nøgler der cirkulerer på mail.",
+        "Almindelige brugere forbinder med et login, uden nøgler der cirkulerer på mail.",
     },
   ],
   features: [
@@ -1126,7 +1154,7 @@ export const IN_MCP: MarketingPageCopy = {
       },
       {
         q: "Kræver MCP en bestemt plan?",
-        a: "Ja. MCP-adgang kræver Premium, fordi den sælges som en del af API-integrationerne. Derudover deler serveren nøgle- og scope-model med REST-API'et, og enkelte tools går videre: leverandør- og værdikæde-tools kræver Enterprise, og scenarie-tools kræver scenarie-funktionen. Se /priser, eller skriv til os via /kontakt om Enterprise-adgang.",
+        a: "MCP-adgang følger pakken, og hvilke pakker der giver adgang, står på /priser. Serveren deler nøgle- og scope-model med REST-API'et, og enkelte tools kræver desuden den funktion, de bruger, fx scenarier. Skriv til os via /kontakt, hvis du er i tvivl.",
       },
     ],
   },
@@ -1166,6 +1194,10 @@ export const IN_VSME_MCP: MarketingPageCopy = {
       "qlim8 AI-integration med vores egen MCP-server. Spørg Claude eller ChatGPT om dine VSME-tal, bed assistenten sætte rapporten i gang, og få den tilbage i det format, standarden giver: PDF for VSME Basis og BP, EFRAG's eget Excel-ark for Comprehensive.",
     primaryCta: DEMO_CTA,
     secondaryCta: HERO_SECONDARY_CTA,
+  },
+  reassurance: {
+    title: "VSME-rapporten bygger på det, du allerede har",
+    body: "En VSME-rapport kan lyde som et stort stykke arbejde, men tallene bygger på dit klimaregnskab. Med qlim8's MCP-server kan du bede Claude eller ChatGPT om at hente dem og sætte rapporten i gang. Det, kun du kender, fx virksomhedens politikker, skriver du selv, og vi hjælper gerne, hvis du går i stå.",
   },
   intro: {
     heading: "VSME-rapportering, spurgt i naturligt sprog",
@@ -1291,7 +1323,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
       },
       {
         q: "Kræver det en bestemt plan?",
-        a: "VSME Basis er med fra Starter. VSME Comprehensive kræver Premium. MCP-adgang kræver også Premium, fordi den sælges som en del af API-integrationerne. Enkelte tools går videre end det: leverandør- og værdikæde-tools kræver Enterprise, og scenarie-tools kræver scenarie-funktionen. Se /priser.",
+        a: "Både VSME-rapporten og MCP-adgangen følger pakken. Pakkeindholdet kan ændre sig, så det sikre sted at se det er /priser. Enkelte tools kræver desuden den funktion, de bruger, fx scenarier eller leverandørkæden.",
       },
       {
         q: "Kan assistenten ændre mine tal ved et uheld?",
@@ -1303,7 +1335,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
       },
       {
         q: "Er mine klimadata så tilgængelige for AI-udbyderen?",
-        a: "Assistenten henter kun det, den bliver bedt om, og kun inden for de scopes du har givet. Der ligger ingen kopi af dit klimaregnskab hos AI-udbyderen: hvert svar hentes live fra qlim8 i det øjeblik, spørgsmålet stilles. Dine data bliver hos os, hostet i EU.",
+        a: "Assistenten henter kun det, den bliver bedt om, og kun inden for de scopes du har givet. Det, assistenten henter, indgår i din samtale hos udbyderen af assistenten (Anthropic for Claude, OpenAI for ChatGPT), og der gælder deres vilkår. Selve klimaregnskabet ligger hos qlim8 på servere i EU, i Tyskland, og behandles efter GDPR med en databehandleraftale.",
       },
     ],
   },

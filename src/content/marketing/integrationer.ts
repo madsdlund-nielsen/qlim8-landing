@@ -2,7 +2,7 @@
 // Appelsin is status "coming-soon" (still statically generated, noindex, shown
 // as a non-linked "Kommer snart" card on the hub).
 
-import type { MarketingNode, MarketingHub } from "./types";
+import type { MarketingNode, MarketingHub, SectionKey } from "./types";
 import {
   INTEGRATIONER_HUB_COPY,
   IN_ECONOMIC,
@@ -14,6 +14,16 @@ import {
   IN_MCP,
   IN_VSME_MCP,
 } from "./copy/integrationer-copy";
+
+// The order every integration page renders its blocks in: the reassurance
+// right after the hero, then what these pages had before (intro, pain points,
+// features, how it works, value stats, the long-form body, the sub pages, the
+// FAQ, related links, the closing). Blocks a page has no text for are skipped.
+const INTEGRATION_ORDER: SectionKey[] = [
+  "hero", "reassurance", "intro", "reasons", "painPoints", "table", "features", "howItWorks", "checks", "trust",
+  "integrations", "options", "valueStats", "body", "depth", "children", "testimonial", "contact", "faq", "related",
+  "closingCta",
+];
 
 export const INTEGRATIONER_HUB: MarketingHub = {
   collection: "integrationer",
@@ -34,6 +44,7 @@ export const INTEGRATIONER_NODES: MarketingNode[] = [
     seoTitle: "e-conomic klimaregnskab-integration",
     seoDescription: "Forbind e-conomic til qlim8, og få dine posteringer kategoriseret og omregnet til klimaregnskab automatisk, uden manuel indtastning.",
     navGroup: "Regnskab", featured: true, related: ["dinero", "billy", "eloverblik"],
+    sectionOrder: INTEGRATION_ORDER,
     defaults: IN_ECONOMIC,
   },
   {
@@ -43,6 +54,7 @@ export const INTEGRATIONER_NODES: MarketingNode[] = [
     seoTitle: "Dinero klimaregnskab-integration",
     seoDescription: "Forbind Dinero til qlim8 via sikker adgang, og lad dine regnskabsdata blive til et klimaregnskab automatisk. Perfekt til mindre virksomheder.",
     navGroup: "Regnskab", featured: true, related: ["e-conomic", "billy", "eloverblik"],
+    sectionOrder: INTEGRATION_ORDER,
     defaults: IN_DINERO,
   },
   {
@@ -52,6 +64,7 @@ export const INTEGRATIONER_NODES: MarketingNode[] = [
     seoTitle: "Billy klimaregnskab-integration",
     seoDescription: "Forbind Billy by Shine til qlim8, og få dine regnskabsdata omregnet til klimaregnskab automatisk, uden regneark.",
     navGroup: "Regnskab", featured: true, related: ["dinero", "e-conomic", "eloverblik"],
+    sectionOrder: INTEGRATION_ORDER,
     defaults: IN_BILLY,
   },
   {
@@ -61,6 +74,7 @@ export const INTEGRATIONER_NODES: MarketingNode[] = [
     seoTitle: "Appelsin-integration (kommer snart)",
     seoDescription: "En Appelsin-integration til qlim8 er under udvikling. Se hvad du kan forvente, når den lander.",
     navGroup: "Regnskab", featured: true, status: "coming-soon", related: ["dinero", "e-conomic", "billy"],
+    sectionOrder: INTEGRATION_ORDER,
     defaults: IN_APPELSIN,
   },
   {
@@ -70,6 +84,7 @@ export const INTEGRATIONER_NODES: MarketingNode[] = [
     seoTitle: "Eloverblik-integration til Scope 2",
     seoDescription: "Hent dit faktiske elforbrug automatisk fra Eloverblik og Energinet, så dit Scope 2 bygger på præcise tal i stedet for skøn.",
     navGroup: "Data & API", featured: true, related: ["e-conomic", "dinero", "rest-api"],
+    sectionOrder: INTEGRATION_ORDER,
     defaults: IN_ELOVERBLIK,
   },
   {
@@ -79,6 +94,7 @@ export const INTEGRATIONER_NODES: MarketingNode[] = [
     seoTitle: "qlim8 REST API",
     seoDescription: "Byg oven på qlim8 med REST API'et: hent emissioner og rapporter programmatisk og modtag webhooks. Se API-referencen i vores docs.",
     navGroup: "Data & API", featured: true, related: ["mcp-server", "eloverblik", "e-conomic"],
+    sectionOrder: INTEGRATION_ORDER,
     defaults: IN_REST_API,
   },
   {
@@ -88,6 +104,7 @@ export const INTEGRATIONER_NODES: MarketingNode[] = [
     seoTitle: "AI-integration til klimaregnskab via MCP-server",
     seoDescription: "Forbind qlim8 til Claude og ChatGPT via vores MCP-server, og spørg dit klimaregnskab i naturligt sprog. 32 tools, OAuth uden API-nøgle.",
     navGroup: "Data & API", featured: true, related: ["vsme-rapport-med-ai-agent", "rest-api", "eloverblik"],
+    sectionOrder: INTEGRATION_ORDER,
     defaults: IN_MCP,
   },
   {
@@ -99,6 +116,7 @@ export const INTEGRATIONER_NODES: MarketingNode[] = [
     seoDescription: "qlim8 er en dansk ESG-platform til VSME-rapportering med indbygget MCP-server. Lad Claude eller ChatGPT hente dine Scope 1-3 tal og starte VSME-rapporten.",
     parentSlug: "mcp-server",
     navGroup: "Data & API", featured: true, related: ["mcp-server", "rest-api", "produkt/vsme-rapport"],
+    sectionOrder: INTEGRATION_ORDER,
     defaults: IN_VSME_MCP,
   },
 ];

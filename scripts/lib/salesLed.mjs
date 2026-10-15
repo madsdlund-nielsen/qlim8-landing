@@ -21,6 +21,54 @@
  * after a demo. Those are true now and were removed with it.
  */
 
+import { readFileSync } from "node:fs";
+
+/**
+ * The price token (src/lib/priceTokens.ts). A price may stand in copy only as
+ * `{pris:<packageKey>}` (monthly) or `{pris:<packageKey>:aar}` (yearly), inside
+ * a `[[ ... ]]` sentence that the site drops when the catalog shows no price.
+ * Hand-typed figures stay forbidden exactly as before (SALES_LED_RULES below
+ * still match the raw text, inside `[[ ]]` too); what is new is that a token
+ * is allowed, and that a token outside `[[ ]]`, a malformed token, an unknown
+ * package key and an unbalanced marker are errors of their own.
+ *
+ * The keys are the packages of the app's catalog v3, from the committed API
+ * answer in scripts/fixtures: a package added to the catalog is added there
+ * (CLAUDE.md says to regenerate the fixtures), and then it is a valid key.
+ */
+export const PRICE_PACKAGE_KEYS = new Set(
+  JSON.parse(readFileSync(new URL("../fixtures/public-packages.v3.json", import.meta.url), "utf8")).packages.map((p) => p.key),
+);
+
+const TOKEN_RE = /\{pris:([^}]*)\}/gi;
+const SEGMENT_RE = /\[\[[\s\S]*?\]\]/g;
+
+/**
+ * Every fault in the price tokens of `text`: with the kind "price token", the
+ * matching words and the offset. Needs the whole text of a file or a CMS field
+ * (a `[[ ]]` sentence may span several source lines), unlike the per-line
+ * figure rules.
+ */
+export function priceTokenViolations(text) {
+  const out = [];
+  const opens = (text.match(/\[\[/g) ?? []).length;
+  const closes = (text.match(/\]\]/g) ?? []).length;
+  if (opens !== closes) out.push({ kind: "price token", match: "[[ ]] unbalanced", index: 0 });
+  const outside = text.replace(SEGMENT_RE, (m) => " ".repeat(m.length));
+  for (const m of outside.matchAll(TOKEN_RE)) {
+    out.push({ kind: "price token", match: `${m[0]} outside [[ ]]`, index: m.index });
+  }
+  for (const m of text.matchAll(TOKEN_RE)) {
+    const [key, unit, extra] = m[1].split(":");
+    if (!/^[a-z0-9_-]+$/i.test(key) || extra !== undefined || (unit !== undefined && unit !== "aar")) {
+      out.push({ kind: "price token", match: `${m[0]} malformed (use {pris:<pakke>} or {pris:<pakke>:aar})`, index: m.index });
+    } else if (!PRICE_PACKAGE_KEYS.has(key.toLowerCase())) {
+      out.push({ kind: "price token", match: `${m[0]} unknown package (${[...PRICE_PACKAGE_KEYS].join(", ")})`, index: m.index });
+    }
+  }
+  return out;
+}
+
 /**
  * Every figure a qlim8 package or add-on has been advertised at, in kr, and
  * the ones the self-serve catalog sells at (per month and per year, ex. VAT).
@@ -62,12 +110,15 @@ export const SALES_LED_RULES = [
  * Every rule a piece of text breaks, with the matching words. `file` is the
  * repo-relative path of bundled copy, for the rules that exempt a file.
  */
-export function salesLedViolations(text, { file } = {}) {
+export function salesLedViolations(text, { file, tokens = true } = {}) {
   const out = [];
   for (const { kind, re, allowedIn } of SALES_LED_RULES) {
     if (file && allowedIn?.includes(file)) continue;
     const m = text.match(re);
     if (m) out.push({ kind, match: m[0] });
   }
+  // `tokens: false` is for a caller that reads line by line and checks the
+  // tokens once over the whole file (scripts/check-sales-led.mjs).
+  if (tokens) out.push(...priceTokenViolations(text).map(({ kind, match }) => ({ kind, match })));
   return out;
 }

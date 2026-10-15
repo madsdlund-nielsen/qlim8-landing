@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ds/Button";
 
 type LoadState = "loading" | "form" | "already" | "invalid" | "done";
 
@@ -66,14 +67,14 @@ export function UnsubscribeForm({ id, token }: { id: string; token: string }) {
   };
 
   if (state === "loading") {
-    return <p className="text-gray-600">Indlæser…</p>;
+    return <p className="text-muted-foreground">Indlæser…</p>;
   }
 
   if (state === "invalid") {
     return (
       <div data-testid="unsubscribe-invalid">
-        <h1 className="text-2xl font-bold text-gray-900 mb-3">Linket er ugyldigt</h1>
-        <p className="text-gray-600">
+        <h1 className="mb-3">Linket er ugyldigt</h1>
+        <p className="text-muted-foreground">
           Dette afmeldingslink er ugyldigt eller udløbet. Brug linket nederst i en af vores
           seneste mails, eller kontakt os på{" "}
           <a className="text-primary underline" href="mailto:kontakt@qlim8.com">
@@ -88,8 +89,8 @@ export function UnsubscribeForm({ id, token }: { id: string; token: string }) {
   if (state === "already") {
     return (
       <div data-testid="unsubscribe-already">
-        <h1 className="text-2xl font-bold text-gray-900 mb-3">Du er allerede afmeldt</h1>
-        <p className="text-gray-600">
+        <h1 className="mb-3">Du er allerede afmeldt</h1>
+        <p className="text-muted-foreground">
           Du modtager ikke længere markedsføringsmails fra qlim8. Du behøver ikke gøre mere.
         </p>
       </div>
@@ -99,8 +100,8 @@ export function UnsubscribeForm({ id, token }: { id: string; token: string }) {
   if (state === "done") {
     return (
       <div data-testid="unsubscribe-done">
-        <h1 className="text-2xl font-bold text-gray-900 mb-3">Du er nu afmeldt</h1>
-        <p className="text-gray-600">
+        <h1 className="mb-3">Du er nu afmeldt</h1>
+        <p className="text-muted-foreground">
           Tak for tilbagemeldingen. Du modtager ikke længere markedsføringsmails fra qlim8.
           Du vil stadig få vigtige kontomails (fx adgangskode og sikkerhed).
         </p>
@@ -111,25 +112,25 @@ export function UnsubscribeForm({ id, token }: { id: string; token: string }) {
   // state === "form"
   return (
     <div data-testid="unsubscribe-form">
-      <h1 className="text-2xl font-bold text-gray-900 mb-3">Afmeld nyhedsbrev</h1>
-      <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+      <h1 className="mb-3">Afmeld nyhedsbrev</h1>
+      <p className="text-muted-foreground mb-6 text-body-sm">
         Vi er kede af at se dig gå. Vil du fortælle os hvorfor? Det hjælper os med at blive
         bedre.
       </p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <fieldset className="flex flex-col gap-2">
-          <legend className="text-sm font-medium text-gray-900 mb-1">
+          <legend className="text-body-sm font-medium text-foreground mb-1">
             Hvorfor afmelder du dig?
           </legend>
           {REASONS.map((r) => (
-            <label key={r.value} className="flex items-center gap-3 text-sm text-gray-700">
+            <label key={r.value} className="flex items-center gap-3 text-body-sm text-foreground">
               <input
                 type="radio"
                 name="reason"
                 value={r.value}
                 checked={reason === r.value}
                 onChange={(e) => setReason(e.target.value)}
-                className="accent-primary"
+                className="size-5 accent-primary"
                 data-testid={`reason-${r.value}`}
               />
               {r.label}
@@ -142,20 +143,20 @@ export function UnsubscribeForm({ id, token }: { id: string; token: string }) {
           value={freeText}
           onChange={(e) => setFreeText(e.target.value.slice(0, 1000))}
           rows={3}
-          className="px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+          className="min-h-12 px-4 py-3 rounded-md border border-border-strong bg-card text-body text-foreground placeholder:text-muted-foreground"
           data-testid="unsubscribe-freetext"
         />
 
-        <button
+        <Button
           type="submit"
           disabled={!reason || submitting}
-          className="px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+          className="disabled:cursor-not-allowed disabled:opacity-50"
           data-testid="unsubscribe-submit"
         >
           {submitting ? "Afmelder…" : "Afmeld mig"}
-        </button>
+        </Button>
         {error && (
-          <p className="p-3 rounded-lg text-sm bg-red-100 text-red-800" data-testid="unsubscribe-error">
+          <p className="p-3 rounded-md border border-destructive bg-card text-body-sm text-destructive" data-testid="unsubscribe-error">
             {error}
           </p>
         )}

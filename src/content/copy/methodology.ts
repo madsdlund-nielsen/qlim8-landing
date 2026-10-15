@@ -100,61 +100,61 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
   hero: {
     title: "Sådan bygger vi qlim8",
     subtitle:
-      "Et klimaregnskab er kun lige så godt som metodologien bag. Her er hvordan vores ser ud, uden filter.",
+      "Et klimaregnskab er kun lige så godt som metoden bag. Her kan du se, hvordan vores ser ud.",
     intro:
-      "ESG handler ikke om at være pæn. Det handler om at være ærlig og agere på baggrund af tingenes faktiske tilstand. Derfor er hele qlim8 bygget omkring transparens: hvor data kommer fra, hvordan den kategoriseres, hvilken emissionsfaktor der bruges, og hvordan beregningen kommer til sit endelige tal. Du kan altid klikke fra et samlet CO2e-tal ned til den enkelte faktura, den enkelte måling, den enkelte beslutning. Det er ikke en feature: det er metoden.",
+      "ESG handler ikke om at være pæn og poleret. Det handler om at være ærlig og agere på baggrund af tingenes faktiske tilstand. Derfor er hele qlim8 bygget omkring transparens: hvor data kommer fra, hvordan de kategoriseres, hvilke emissionsfaktorer der bruges, og hvordan beregningen kommer frem til sit endelige tal. Hvert tal kan spores tilbage til den faktura, den måling eller den beslutning, det bygger på.",
   },
-  quote1: '"Virksomhederne skal bære deres fejl som en rustning. Ærligheden er deres skjold."',
+  quote1: '"Virksomheder skal bære deres fejl som en rustning. Ærligheden er deres skjold."',
   quote2:
     '"Det er det grundlæggende krav fra en revisor: kan du vise mig hvordan du nåede frem til det her tal."',
   dataSources: {
     title: "Hvor data kommer fra",
     paragraphs: [
       "qlim8 henter aktivitetsdata fra tre slags kilder: dit regnskabssystem, dit elforbrug og din manuelle indtastning.",
-      'Fra dit regnskabssystem (Dinero, e-conomic eller Billy) hentes alle posteringer via nattlige API-kørsler. Hver postering gemmes som struktureret JSON-metadata, så vi kan tilgå hver detalje (leverandør, beløb, dato, kontoplan, fritekst) når kategoriseringen senere skal vælges. Vi henter alt, ikke kun "indkøb".',
-      "Fra Eloverblik, hvor vi er officiel tredjepart hos Energinet, hentes både dit elforbrug fra elnettet og din egetproduktion fra solceller, hvis du har dem. Kørslen er ugentlig på grund af rate limits hos Energinet, men du kan altid hente nyeste data manuelt med ét tryk i UI'en.",
-      "Manuelt kan du indtaste data i alle kategorier: forretningsrejser, brændstof, materialeforbrug, hvad det end måtte være. Du skriver fritekst om hvad varelinjen er, og du kan enten selv kategorisere eller lade AI'en foreslå. Uanset valget fremgår det af audit trail.",
+      "Fra dit regnskabssystem (fx Dinero, e-conomic eller Billy) hentes dine posteringer direkte via systemets API. Hver postering gemmes, så vi kan tilgå alle detaljer (leverandør, beløb, dato, kontoplan, fritekst), når kategoriseringen senere skal vælges. Xero, QuickBooks Online, Dynamics 365 Business Central og Oracle NetSuite kan også forbindes, og Uniconta er i beta. Bruger du et andet system, kan du importere en CSV-fil med dato og beløb.",
+      "Fra Eloverblik, hvor vi er officiel tredjepart hos Energinet, hentes dit elforbrug fra elnettet time for time for hvert målepunkt og din egenproduktion fra solceller, hvis du har solceller installeret. Adgangen giver du med en fuldmagt med MitID på eloverblik.dk. Kørslen er ugentlig på grund af begrænsninger hos Energinet, men du kan altid hente de nyeste data manuelt med ét tryk i platformen, fx når du skal lave en rapport.",
+      "Manuelt kan du indtaste data i alle kategorier: forretningsrejser, brændstof, materialeforbrug, hvad det end måtte være. Du skriver fritekst om hvad varelinjen er, og du kan enten selv kategorisere eller lade AI'en foreslå. Uanset valget fremgår det af audit trail, hvilke beslutninger der er truffet, og hvor godt den valgte kategori passer til de data, der er indtastet.",
     ],
   },
   categorization: {
     title: "Hvordan vi kategoriserer",
     paragraphs: [
-      "Hver post i klimaregnskabet skal placeres i den rigtige kategori, før den kan beregnes korrekt. qlim8 bruger en tre-niveau-struktur: hovedkategori → underkategori → specifik kategori. Vi forsøger altid at ramme det mest specifikke niveau, og falder ellers tilbage på det næstbedste.",
+      "Hver post i klimaregnskabet skal placeres i den rigtige kategori, før den kan beregnes korrekt. qlim8 bruger en tre-niveau-struktur: hovedkategori → underkategori → specifik kategori. Vi forsøger altid at ramme det mest specifikke niveau, og falder ellers tilbage på det næstbedste. Alle valg er synlige i audit trail og får en score, der afhænger af, hvor godt kategorien faktisk matcher.",
       'Eksempel: en stiksav lander i den specifikke kategori "elektrisk håndværktøj", der ligger under "håndværktøj", der igen ligger under hovedkategorien "værktøj". Hvis vi kan vælge "elektrisk håndværktøj", bruger vi den faktor. Hvis ikke, bruger vi en gennemsnitsfaktor for "håndværktøj". Det bedste tilgængelige niveau vælges altid, og det fremgår af beregningen, hvilket niveau der er brugt.',
-      "AI'en foreslår kategorisering baseret på al tilgængelig metadata: leverandørnavn, fakturatekst, kontoplan, beløb, dato. Hvert forslag har en indbygget confidence score, der følger med ind i audit trail. Du kan altid overskrive forslaget, og hvis du gør det, registreres det også.",
+      "AI'en foreslår kategorisering ud fra alle tilgængelige data: leverandørnavn, fakturatekst, kontoplan, beløb, dato. Hvert forslag har en indbygget confidence score, der følger med ind i audit trail. Du kan altid overskrive forslaget, og hvis du gør det, registreres det også. qlim8 lærer af dine rettelser, så gentagne linjer rammes bedre næste gang.",
     ],
     callout: {
-      title: "85% confidence threshold",
-      body: 'Hvis AI\'en ikke kan finde en kategori med over 85% confidence, vælges højest mulige niveau som draft, og posten dukker op på dit dashboard under "Kræver jeres opmærksomhed". Her kan du frisøge i alle kategorier og placere posten manuelt.',
+      title: "Grænsen på 85 % sikkerhed",
+      body: 'Er AI\'en under 85 % sikker på en kategori (standardgrænsen), vælges det højest mulige niveau som kladde, og posten lægges under "Til gennemsyn". Den tæller først med i klimaregnskabet, når du har taget stilling til den. Her kan du søge i alle kategorier og placere posten manuelt.',
     },
     antiCheatNote:
-      "Anti-snyd: Manuelt valg af en kategori med under 5% confidence trækkes fra i din samlede datakvalitetsscore. Det skal ikke kunne betale sig at flytte poster til kategorier der ikke matcher.",
+      "Anti-snyd: Er sikkerheden for en kategori under 50 %, tæller en aktivitetsbaseret post som estimeret og dermed lavest i datakvalitetsscoren. Det skal ikke kunne betale sig at flytte poster til kategorier, der ikke matcher, for at pynte på regnskabet.",
   },
   factors: {
     title: "Hvilke emissionsfaktorer vi bruger",
     paragraphs: [
-      "qlim8 har omkring 50.000 validerede emissionsfaktorer fra en kombination af danske og internationale kilder. Vi multiplicerer dem ikke kreativt med regioner eller år for at få større tal: vi tæller dem som de er, og vi vælger den rigtige til hver enkelt post.",
-      "Rangordenen følger to principper. For det første: danske kilder har forrang frem for internationale, så beregningerne afspejler en dansk kontekst før vi falder tilbage på europæiske gennemsnit. For det andet: vi følger GHG Protokollens datakvalitetshierarki: specifikke målinger og LCA-data har forrang frem for branchespecifikke gennemsnit, som har forrang frem for spend-baserede estimater.",
+      "qlim8 bruger primært danske kilder (Klimakompasset og Energinet) og supplerer med internationale kilder som EXIOBASE. Til hver enkelt post vælger vi den faktor, der passer bedst.",
+      "Rangordenen følger to principper. For det første har danske kilder forrang frem for internationale, så beregningerne afspejler en dansk kontekst, før vi falder tilbage på internationale data. For det andet følger vi GHG-protokollens datakvalitetshierarki og bruger den mest præcise kilde først: leverandørens egen PCF eller EPD, så faktorer for målte mængder (kWh, liter, kg) og til sidst indkøbsbeløb. I appen viser hver post sin datakvalitet, så du kan se, hvor på rangordenen den ligger.",
     ],
     sources: [
       {
         name: "Klimakompasset",
-        note: "Erhvervsstyrelsen og Energistyrelsen. Danske emissionsfaktorer for typiske aktiviteter og indkøbskategorier.",
+        note: "Erhvervsstyrelsen og Energistyrelsen. Danske emissionsfaktorer for aktiviteter opgjort i fysiske mængder, fx kWh, liter og kg.",
         danish: true,
       },
       {
         name: "Energinet",
-        note: "Eldeklarationer via Eloverblik. Officielle danske el-emissionsfaktorer for både lokationsbaseret og markedsbaseret beregning.",
+        note: "Officielle danske el-faktorer: CO2-intensitet time for time til den lokationsbaserede beregning og Energinets generelle eldeklaration til den markedsbaserede. Grønne elaftaler med oprindelsesgaranti kan registreres.",
         danish: true,
       },
       {
-        name: "EXIOBASE 3.11",
-        note: "Globalt input-output-datasæt for spend-baserede beregninger på indkøbskategorier hvor specifik aktivitetsdata mangler.",
+        name: "EXIOBASE 3.8.2",
+        note: "Internationalt input-output-datasæt (2022-data) til spend-baserede beregninger på indkøb, hvor der ikke er fysiske mængder. Faktorerne er angivet i kg CO2e pr. 1.000 kr. i 2020-priser.",
         danish: false,
       },
       {
-        name: "EPD-databaser",
-        note: "INIES (Frankrig), International EPD System, IBU (Tyskland), ÖKOBAUDAT, EPD Norge og EPD Danmark. Specifikke produkt-EPD'er bruges hvor de er tilgængelige.",
+        name: "Leverandørers PCF og EPD",
+        note: "PCF- og EPD-dokumenter, som du eller din leverandør uploader (PDF eller XML efter EN 15804/ILCD). Når en produktlinje er koblet til en godkendt PCF eller EPD, bruges leverandørens eget tal.",
         danish: false,
       },
       {
@@ -165,24 +165,24 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
     ],
     danishPriorityLabel: ", dansk forrang",
     callout: {
-      title: "Inflation-tilbagediskontering på EXIOBASE",
-      body: "EXIOBASE's nyeste validerede udgivelse er typisk ældre end de regnskabsposteringer der skal beregnes på. Vi løser det ved at tilbagediskontere det monetære input til EXIOBASE-udgivelsens basisår, så inflation ikke kunstigt oppuster udledningen. Vi bruger kun EXIOBASE's seneste validerede public release, aldrig betaer.",
+      title: "Indkøbsbeløb deflateres før beregning",
+      body: "Spend-faktorerne er angivet i kg CO2e pr. 1.000 kr. i 2020-priser, mens dine posteringer typisk er nyere. Derfor deflaterer vi først beløbet med Danmarks Statistiks forbrugerprisindeks, så inflation ikke kunstigt puster udledningen op. Vi bruger kun validerede udgivelser af EXIOBASE, aldrig betaversioner.",
     },
   },
   calculation: {
     title: "Hvordan vi beregner",
     paragraphs: [
       "Selve beregningen er simpel: aktivitetsdata gange emissionsfaktor giver CO2e. Det interessante er hvilke valg vi træffer undervejs.",
-      "Vi foretrækker fysiske enheder frem for spend-baserede beregninger, hvor det er muligt. En faktura på 5.000 kr for diesel beregnes ikke ud fra beløbet. Den beregnes ud fra de liter der står i fakturaen, ganget med en validitet diesel-faktor. Først når vi ikke har fysiske enheder, falder vi tilbage på spend-baserede estimater fra EXIOBASE.",
-      "Hver beregning gemmer både input, valgte faktor, kilde, kategori-niveau og resultat. Så du altid kan klikke fra det samlede CO2e-tal ned til den enkelte beregning og se præcis hvor tallet kommer fra.",
+      "Vi foretrækker fysiske enheder frem for spend-baserede beregninger, hvor det er muligt. En faktura på 5.000 kr. for 385 liter diesel beregnes ikke ud fra beløbet, men ud fra de liter, der står i fakturaen, ganget med en valideret faktor for diesel fra Klimakompasset. Brændstof, som virksomheden selv køber til sine køretøjer, tælles i Scope 1. Først når vi ikke har fysiske enheder, falder vi tilbage på spend-baserede estimater fra EXIOBASE.",
+      "Hver beregning gemmer både input, valgt faktor, kilde, kategoriniveau og resultat, så hvert tal kan spores tilbage til den enkelte beregning og det bilag eller den måleraflæsning, den bygger på. Biogen CO2 vises separat for de brændsler, der har en biogen faktor.",
     ],
   },
   auditTrail: {
     title: "Audit trail: hvert tal kan spores",
     paragraphs: [
-      'Vores audit trail kan ikke slettes eller forkortes. Det er en designbeslutning, ikke en bivirkning. Når en kategorisering ændres, en faktor opdateres, eller en bruger retter et input, tilføjes ændringen til audit trail, den oprindelige post forbliver. Du kan altid se hvem der lavede hvad, hvornår, og med hvilken begrundelse. Ved kategoriændringer efter en beregning er lavet, beder qlim8 brugeren om at indtaste en begrundelse, så ændringen ikke bare står som "rettet".',
-      "Hver audit trail får en unik hash: det er den, du ser i beregningsdetaljer-popup'en. Hashen er navnet på audit trail, ikke beregningen i sig selv. Det betyder at to identiske beregninger ikke deler hash, fordi de stammer fra forskellige posteringer med forskellig historik.",
-      "Rapporter er også immutable. Når du genererer en VSME-rapport eller en PDF, fryser qlim8 den: den får et versionsnummer, dens datagrundlag og hashes gemmes, og den bliver aldrig ændret eller slettet. Genererer du igen, bliver det en ny version, så du om fem år kan trække præcis den rapport frem, du sendte. Det er det grundlæggende krav fra en revisor: kan du vise mig hvordan du nåede frem til det her tal, præcis som det stod på rapporten?",
+      'Vores audit trail kan ikke redigeres eller slettes i programmet. Det er en designbeslutning, ikke en bivirkning. Når en kategorisering ændres, en faktor opdateres, eller en bruger retter et input, tilføjes ændringen til audit trail, og den oprindelige post bliver stående. Når en linje skifter kategori, gemmes tidspunktet, hvem der ændrede den, og den tidligere værdi. qlim8 beder om en begrundelse, så ændringen ikke bare står som "rettet". For dine egne brugere er begrundelsen frivillig, men en konsulent skal altid give en. Den eneste undtagelse fra reglen om sletning er personoplysninger, som kan slettes efter en GDPR-anmodning.',
+      "Hver audit trail får en unik hash, et langt fingeraftryk, som du kan se i beregningsdetaljerne. Hasherne hænger sammen i en kæde, så det kan ses, hvis en post er blevet ændret. Hashen hører til den enkelte audit trail, ikke til beregningen i sig selv. Derfor deler to identiske beregninger ikke hash, når de stammer fra forskellige posteringer med forskellig historik.",
+      "Rapporter er også uforanderlige. Når du genererer en VSME-rapport eller en PDF, fryser qlim8 et snapshot af det, rapporten bygger på: input, faktorer og audit trail. Rapporten får et versionsnummer, og den bliver ikke ændret bagefter. Genererer du igen, bliver det en ny version, så du om fem år kan trække præcis den rapport frem, du sendte. Det er det grundlæggende krav fra en revisor: kan du vise mig hvordan du nåede frem til det her tal, præcis som det stod på rapporten?",
     ],
     containsLabel: "Hvad audit trail indeholder:",
     contains: [
@@ -197,23 +197,23 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
     ],
     callout: {
       title: "To formater til revisor",
-      body: "Audit trail kan eksporteres som komplet CSV-oversigt over alle posteringer. VSME-rapporten kommer i EFRAG's officielle Excel-format, i en ZIP sammen med en audit-CSV med bilagsreference pr. linje, en audit trail i JSON og et verifikationsscript. Det letter revisorens opgave markant.",
+      body: "Audit trail kan eksporteres som en komplet CSV-oversigt over alle posteringer. Excel-rapporten viser hver linje med dato, kategori, mængde, emissionsfaktor og kilde, og unikke ID'er og bilagsreferencer ligger i revisionspakken. Hver rapport gemmes med et uforanderligt snapshot af de tal, faktorer og det revisionsspor, den bygger på. Det letter revisorens opgave markant.",
     },
   },
   dataQuality: {
     title: "Hvordan vi måler datakvalitet",
     intro:
-      "Vi viser en datakvalitetsscore øverst på dit dashboard. Den er ikke marketing: den er en konkret, vægtet beregning af hvor god din underliggende data er.",
+      "Vi viser en datakvalitetsscore fra 0 til 100 øverst på dit dashboard. Den er ikke et marketingstunt, men en konkret, vægtet beregning af, hvor gode dine underliggende data er. Forhåbentlig bliver den bedre over tid.",
     pointsIntro: "Hver emissionspost får point baseret på hvilken type data der ligger bag:",
     points: [
-      { points: "5 point", text: "LCA eller produkt-PCF (mest specifik)" },
-      { points: "4 point", text: "EPD (produkt-specifik miljøvaredeklaration)" },
-      { points: "3 point", text: "Fysiske enheder med konkret emissionsfaktor (fx elektricitet, fjernvarme)" },
-      { points: "1 point", text: "Spend-baseret estimat (mindst specifik)" },
-      { points: "−1 point", text: "Manuelt valgt kategori med under 5% confidence (anti-snyd)" },
+      { points: "100 point", text: "Leverandørens egen PCF eller EPD (mest specifik)" },
+      { points: "85 point", text: "LCA-baseret faktor for en målt mængde" },
+      { points: "70 point", text: "Fysiske enheder med konkret emissionsfaktor (fx elektricitet, fjernvarme)" },
+      { points: "40 point", text: "Spend-baseret estimat ud fra indkøbsbeløbet" },
+      { points: "20 point", text: "Estimeret eller lav sikkerhed for kategorien (mindst specifik)" },
     ],
     paragraphsAfter: [
-      "Den samlede datakvalitetsscore er et vægtet gennemsnit baseret på din virksomheds samlede udledning. En post på 100 ton CO2e med 3 point vejer mere end en post på 1 ton CO2e med 5 point. Det betyder, at scoren afspejler dataens kvalitet der hvor det betyder noget.",
+      "Den samlede datakvalitetsscore er et vægtet gennemsnit baseret på din virksomheds samlede udledning. En post på 100 ton CO2e med 70 point vejer mere end en post på 1 ton CO2e med 100 point. Det betyder, at scoren afspejler dataens kvalitet der hvor det betyder noget.",
       "Du ser scoren direkte på dashboardet. Vi skjuler den ikke. Den er en del af det at være ærlig, og over tid er det den der peger din virksomhed mod bedre datapraksis, fordi du kan se hvor du kan blive bedre.",
     ],
   },
@@ -223,7 +223,7 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
     items: [
       {
         name: "GHG Protocol Corporate Standard",
-        body: "Det fundamentale rammeværk for virksomhedsrapportering af Scope 1, 2 og 3.",
+        body: "Det grundlæggende rammeværk for virksomheders rapportering af Scope 1 og 2.",
       },
       {
         name: "GHG Protocol Corporate Value Chain (Scope 3) Standard",
@@ -231,18 +231,18 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
       },
       {
         name: "VSME (Voluntary SME standard)",
-        body: "EFRAG's frivillige bæredygtighedsstandard for små og mellemstore virksomheder. Vi genererer VSME-rapporter direkte fra EFRAG's egen Excel-skabelon, så de er maskinlæsbare for bankerne, som er det format bankerne forventer.",
+        body: "EFRAG's frivillige bæredygtighedsstandard for små og mellemstore virksomheder. Vi laver VSME-rapporter i både Basic- og Comprehensive-modulet. De genereres direkte fra EFRAG's egen Excel-skabelon, så de er maskinlæsbare for modtageren, fx banken.",
       },
     ],
     callout: {
-      title: "Hvad vi ikke har: endnu",
-      body: "qlim8's metodologi er ikke formelt tredjepartscertificeret. Vi har dialog med fagligt miljø på Syddansk Universitets Life Cycle Centre om kvalitetssikring, men der foreligger intet på skrift, og vi vil ikke navngive personer eller insinuere godkendelse vi ikke har. Hvis det er et must-have for din organisation, kontakt os. Vi er på vej.",
+      title: "Hvad vi endnu ikke har",
+      body: "qlim8's metodologi er ikke formelt tredjepartscertificeret. Er det et krav i din organisation, så kontakt os. Det er på vej.",
     },
   },
   updates: {
     title: "Hvordan vi holder os ajour",
     paragraphs: [
-      "Emissionsfaktorer ændrer sig. El-mixet bliver grønnere, nye EPD'er udgives, Klimakompasset opdateres årligt med revision af faktorer. qlim8 følger disse opdateringer og bruger altid den nyeste validerede version af hver kilde.",
+      "Emissionsfaktorer ændrer sig. Elmixet bliver grønnere, leverandører udgiver nye EPD'er, og Klimakompasset opdateres årligt med revision af faktorer. qlim8 følger disse opdateringer og bruger kun validerede versioner af hver kilde.",
       "Vi genberegner ikke historiske beregninger bagudrettet, når en faktor opdateres. Det er et bevidst valg: en ny faktor afspejler at den virkelige verden har ændret sig, ikke at den gamle beregning var forkert. Hvis vi rettede historikken hver gang en faktor blev opdateret, ville du aldrig have et sammenligneligt baseline-år, og dine reduktionsmål ville flytte sig under fødderne på dig.",
       "Hver beregning gemmer derfor versionsnummeret på den faktor der blev brugt, så du om to år stadig kan se præcis hvilken Klimakompas-version din 2024-baseline byggede på.",
     ],
@@ -262,15 +262,15 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
       },
       {
         title: "Vi laver ikke produkt-LCA fra bunden.",
-        body: "qlim8 bruger eksisterende EPD'er og LCA-data hvor de findes, men vi udfører ikke selv primær LCA-arbejde for individuelle produkter.",
+        body: "qlim8 bruger de PCF'er og EPD'er, som du eller dine leverandører uploader, og LCA-baserede faktorer, hvor de findes, men vi udfører ikke selv LCA-arbejde for de enkelte produkter.",
       },
       {
         title: "Vi bruger ikke beta-data.",
-        body: "Selv om EXIOBASE eller en EPD-database har en nyere version i beta, bruger vi den ikke. Kun officielle, validerede udgivelser.",
+        body: "Selv om EXIOBASE eller en anden kilde har en nyere version i beta, bruger vi den ikke. Kun officielle, validerede udgivelser.",
       },
       {
         title: "Vi skjuler ikke dårlig datakvalitet.",
-        body: "Datakvalitetsscoren står øverst på dit dashboard. Ærligheden er virksomhedens skjold.",
+        body: "Datakvalitetsscoren står øverst på dit dashboard. Ærligheden er din virksomheds skjold.",
       },
     ],
   },

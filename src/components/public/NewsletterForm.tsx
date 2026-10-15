@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react'
+import { Button } from '@/components/ds/Button'
 import { resolveSignupSource, trackNewsletterSignup } from '@/lib/tracking'
 
 type NewsletterFormProps = {
@@ -50,10 +51,10 @@ export function NewsletterForm({
   }
 
   return (
-    <div className="bg-accent rounded-2xl p-8 lg:p-12">
+    <div className="bg-band rounded-lg p-8 lg:p-12">
       <div className="max-w-xl mx-auto text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-3">{heading}</h2>
-        <p className="text-gray-600 mb-6 text-sm leading-relaxed">{description}</p>
+        <h2 className="mb-3 text-h3">{heading}</h2>
+        <p className="text-foreground mb-6 text-body-sm">{description}</p>
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
             type="text"
@@ -61,7 +62,7 @@ export function NewsletterForm({
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+            className="min-h-12 px-4 py-3 rounded-md border border-border-strong bg-card text-body text-foreground placeholder:text-muted-foreground"
             data-testid="input-newsletter-name"
           />
           <input
@@ -70,24 +71,24 @@ export function NewsletterForm({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+            className="min-h-12 px-4 py-3 rounded-md border border-border-strong bg-card text-body text-foreground placeholder:text-muted-foreground"
             data-testid="input-newsletter-email"
           />
-          <button
+          <Button
             type="submit"
             disabled={loading}
-            className="px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+            className="disabled:cursor-not-allowed disabled:opacity-50"
             data-testid="button-newsletter-subscribe"
           >
             {loading ? 'Tilmelder...' : 'Tilmeld nyhedsbrev'}
-          </button>
+          </Button>
         </form>
         {message && (
           <p
-            className={`mt-4 p-3 rounded-lg text-sm ${
+            className={`mt-4 p-3 rounded-md border text-body-sm ${
               message.type === 'success'
-                ? 'bg-accent text-accent-foreground'
-                : 'bg-red-100 text-red-800'
+                ? 'border-border-strong bg-card text-foreground'
+                : 'border-destructive bg-card text-destructive'
             }`}
             data-testid={`message-${message.type}`}
           >

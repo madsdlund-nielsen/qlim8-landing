@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "../src/index.css";
 import { CookieConsent } from "@/components/CookieConsent";
 import { Toaster } from "@/components/ui/toaster";
@@ -7,10 +7,20 @@ import { SelfServeProvider } from "@/components/public/SelfServeContext";
 import { fetchPublicPackages } from "@/lib/packages";
 import { isSelfServe } from "@/lib/packageView";
 
-const inter = Inter({
-  subsets: ["latin"],
+// The design system's two typefaces, from design-system/fonts (the files in
+// design-system/tokens.json: type.fonts). Source Sans 3 is the text face,
+// Fraunces the display face for H1 to H3. Self-hosted by next/font, so no
+// request goes to Google and the CSP needs nothing new.
+const sourceSans = localFont({
+  src: [{ path: "../design-system/fonts/SourceSans3-latin.woff2", weight: "400 600", style: "normal" }],
   display: "swap",
   variable: "--app-font-sans",
+});
+
+const fraunces = localFont({
+  src: [{ path: "../design-system/fonts/Fraunces-latin.woff2", weight: "400 600", style: "normal" }],
+  display: "swap",
+  variable: "--app-font-display",
 });
 
 export const metadata: Metadata = {
@@ -70,7 +80,7 @@ export default async function RootLayout({
   // Cached and revalidated with the package page (tag "packages").
   const selfServe = isSelfServe(await fetchPublicPackages());
   return (
-    <html lang="da" className={inter.variable}>
+    <html lang="da" className={`${sourceSans.variable} ${fraunces.variable}`}>
       {/* No app-wide client provider beyond that boolean: the site is Danish-
           only and server-rendered. The I18nProvider that used to wrap this
           shipped a 300 KB, eight-language dictionary to every visitor and

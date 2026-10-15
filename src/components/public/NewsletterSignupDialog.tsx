@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dialog'
 import { resolveSignupSource, trackNewsletterSignup } from '@/lib/tracking'
 import { useToast } from '@/hooks/use-toast'
+import { buttonStyles } from '@/components/ds/Button'
 
 // Opening the dialog from a link: /?nyhedsbrev=1 lands on the homepage with the
 // signup already open, so one URL can point at the newsletter without leaving the
@@ -81,7 +82,7 @@ export function NewsletterSignupDialog() {
       <DialogTrigger asChild>
         <button
           type="button"
-          className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white border border-gray-200 text-gray-900 font-semibold text-base hover:border-gray-300 transition-colors"
+          className={buttonStyles({ variant: "outline" })}
           data-testid="button-open-newsletter"
         >
           Skriv dig op til nyheder og udgivelser
@@ -101,7 +102,7 @@ export function NewsletterSignupDialog() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+            className="min-h-12 rounded-md border border-border-strong bg-card px-4 py-3 text-body-sm text-foreground"
             data-testid="input-newsletter-name"
           />
           <input
@@ -110,13 +111,13 @@ export function NewsletterSignupDialog() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+            className="min-h-12 rounded-md border border-border-strong bg-card px-4 py-3 text-body-sm text-foreground"
             data-testid="input-newsletter-email"
           />
           <button
             type="submit"
             disabled={loading}
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className={`${buttonStyles({ variant: "primary" })} disabled:cursor-not-allowed disabled:opacity-50`}
             data-testid="button-newsletter-subscribe"
           >
             {loading ? 'Tilmelder...' : 'Skriv mig op'}
@@ -124,10 +125,10 @@ export function NewsletterSignupDialog() {
         </form>
         {message && (
           <p
-            className={`p-3 rounded-lg text-sm ${
+            className={`p-3 rounded-md text-sm ${
               message.type === 'success'
-                ? 'bg-accent text-accent-foreground'
-                : 'bg-red-100 text-red-800'
+                ? 'bg-band text-primary'
+                : 'bg-destructive/10 text-destructive'
             }`}
             data-testid={`message-${message.type}`}
           >

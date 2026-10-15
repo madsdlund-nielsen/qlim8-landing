@@ -9,14 +9,13 @@ import { CONTACT_PAGE_SCHEMA } from "@/lib/pageSchemas";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Book en demo eller kontakt qlim8",
+  title: "Kontakt: ring, skriv eller tag en uformel snak",
   description:
-    "Book en demo af qlim8, eller stil et spørgsmål om klimaregnskab og ESG. Skriv via formularen, send en email eller ring på +45 93 90 13 84.",
+    "Ring direkte på +45 93 90 13 84, skriv til os, eller book en uformel snak på 15 minutter. Ingen telefonsælgere, bare et menneske, der kender qlim8.",
   alternates: { canonical: "https://qlim8.com/kontakt" },
   openGraph: {
-    title: "Book en demo eller kontakt qlim8",
-    description:
-      "Book en demo af qlim8, eller stil et spørgsmål om klimaregnskab og ESG. Ring på +45 93 90 13 84.",
+    title: "Kontakt qlim8: ring, skriv eller tag en snak",
+    description: "Ring direkte på +45 93 90 13 84, eller skriv til os. Ingen telefonsælgere, bare en rolig snak.",
     url: "https://qlim8.com/kontakt",
     images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "Kontakt qlim8" }],
   },

@@ -45,19 +45,19 @@ export default function Page() {
 
       <section className="px-4 sm:px-6 pt-14 sm:pt-24 pb-12 sm:pb-16">
         <div className="max-w-3xl mx-auto">
-          <Link href="/docs" className="text-sm text-gray-600 hover:text-primary transition-colors mb-6 inline-block">
+          <Link href="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors mb-6 inline-block">
             ← Tilbage til docs
           </Link>
-          <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
+          <h1 className="mb-6">
             MCP tool-reference
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
+          <p className="text-lead text-foreground max-w-(--measure-body)">
             qlim8's MCP-server eksponerer <strong>32 kuraterede tools</strong>, 3 resources og 3
             prompts, fra emissions-opsummeringer og rapportgenerering til værdikæde, mål,
             scenarier og webhooks. Hvert tool kræver et specifikt scope, og læse-tools er markeret
             som sikre at auto-køre.
           </p>
-          <p className="mt-4 text-gray-600 leading-relaxed max-w-2xl">
+          <p className="mt-4 text-muted-foreground leading-relaxed max-w-2xl">
             Den komplette reference vedligeholdes ét sted, på udviklerportalen, så den altid
             matcher serverens faktiske katalog.
           </p>
@@ -70,17 +70,17 @@ export default function Page() {
             <a
               key={l.href}
               href={l.href}
-              className="group block bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 hover:border-gray-400 transition-colors"
+              className="group block bg-card rounded-lg border border-border p-6 sm:p-8 hover:border-border-strong transition-colors"
             >
-              <h2 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                {l.title} <span className="font-normal text-gray-400">↗</span>
+              <h2 className="mb-2 text-h3 group-hover:underline underline-offset-4">
+                {l.title} <span className="font-normal text-muted-foreground">↗</span>
               </h2>
-              <p className="text-sm text-gray-600 leading-relaxed">{l.body}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{l.body}</p>
             </a>
           ))}
 
           <div className="pt-6">
-            <Link href="/docs/mcp-quickstart" className="text-primary font-semibold hover:underline">
+            <Link href="/docs/mcp-quickstart" className="font-semibold hover:underline">
               Ny her? Start med MCP Quickstart: forbind Claude eller ChatGPT uden kode →
             </Link>
           </div>

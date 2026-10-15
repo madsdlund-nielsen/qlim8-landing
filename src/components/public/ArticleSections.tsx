@@ -1,30 +1,31 @@
 // Renders the typed ArticleSection block union (lead/h2/paragraph/list/callout/
 // cta/image/richtext). Extracted from the article template so long-form prose
 // bodies can be reused by marketing pages too.
+import { Button } from "@/components/ds/Button";
 import type { ArticleSection } from "@/content/article";
 
 function Section({ section }: { section: ArticleSection }) {
   switch (section.type) {
     case "lead":
       return (
-        <p className="text-xl text-gray-700 leading-relaxed font-medium mb-8 border-l-2 border-gray-300 pl-5">
+        <p className="text-lead text-foreground font-medium mb-8 border-l-2 border-sage pl-5">
           {section.text}
         </p>
       );
     case "h2":
-      return <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-4">{section.text}</h2>;
+      return <h2 className="mt-12 mb-4">{section.text}</h2>;
     case "h3":
-      return <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-3">{section.text}</h3>;
+      return <h3 className="mt-8 mb-3">{section.text}</h3>;
     case "h4":
-      return <h4 className="text-base font-semibold text-gray-800 mt-6 mb-2">{section.text}</h4>;
+      return <h4 className="mt-6 mb-2 font-display text-lg font-medium text-primary">{section.text}</h4>;
     case "paragraph":
-      return <p className="text-gray-700 leading-relaxed mb-5 text-[17px]">{section.text}</p>;
+      return <p className="text-foreground text-body mb-5">{section.text}</p>;
     case "list":
       return (
-        <ul className="space-y-2 my-5 text-gray-700 text-[17px]">
+        <ul className="space-y-2 my-5 text-foreground text-body">
           {section.items.map((item, i) => (
             <li key={i} className="leading-relaxed flex gap-2.5">
-              <span className="mt-2 h-1 w-2.5 shrink-0 bg-primary" aria-hidden="true" />
+              <span className="mt-2 h-1 w-2.5 shrink-0 bg-sage" aria-hidden="true" />
               <span>{item}</span>
             </li>
           ))}
@@ -32,7 +33,7 @@ function Section({ section }: { section: ArticleSection }) {
       );
     case "ordered-list":
       return (
-        <ol className="space-y-2 my-5 list-decimal list-inside text-gray-700 text-[17px]">
+        <ol className="space-y-2 my-5 list-decimal list-inside text-foreground text-body">
           {section.items.map((item, i) => (
             <li key={i} className="leading-relaxed pl-1">{item}</li>
           ))}
@@ -40,21 +41,18 @@ function Section({ section }: { section: ArticleSection }) {
       );
     case "callout":
       return (
-        <div className="my-8 p-5 border-l-2 border-gray-300 bg-gray-50 text-[15px] text-gray-800 leading-relaxed">
+        <div className="my-8 p-5 border-l-2 border-sage bg-band text-body-sm text-foreground">
           {section.text}
         </div>
       );
     case "cta":
       return (
-        <div className="my-10 p-7 bg-gray-900 rounded-2xl">
-          <p className="text-white font-bold text-lg mb-2">{section.heading}</p>
-          <p className="text-gray-300 text-sm mb-5 max-w-xl">{section.text}</p>
-          <a
-            href={section.buttonHref}
-            className="inline-block px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full text-sm transition-colors"
-          >
+        <div className="my-10 rounded-lg bg-primary p-7 text-primary-foreground">
+          <p className="mb-2 font-display text-h3 text-primary-foreground">{section.heading}</p>
+          <p className="mb-5 max-w-xl text-body-sm text-primary-foreground">{section.text}</p>
+          <Button href={section.buttonHref} variant="inverted">
             {section.buttonText}
-          </a>
+          </Button>
         </div>
       );
     case "image":
@@ -63,7 +61,7 @@ function Section({ section }: { section: ArticleSection }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={section.url} alt={section.alt} className="w-full h-auto rounded-lg" />
           {section.caption && (
-            <figcaption className="text-sm text-gray-500 mt-2 text-center">{section.caption}</figcaption>
+            <figcaption className="text-body-sm text-muted-foreground mt-2 text-center">{section.caption}</figcaption>
           )}
         </figure>
       );
@@ -72,7 +70,7 @@ function Section({ section }: { section: ArticleSection }) {
       // super-admins author, so the stored HTML is trusted here.
       return (
         <div
-          className="prose prose-gray max-w-none my-5 text-[17px]"
+          className="prose prose-gray max-w-none my-5 text-body"
           dangerouslySetInnerHTML={{ __html: section.html }}
         />
       );
