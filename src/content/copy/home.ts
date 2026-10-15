@@ -249,7 +249,7 @@ export const HOME_COPY: HomeCopy = {
     plans: [
       {
         name: "Free",
-        tag: "Gratis for altid. Til virksomheder der vil have styr på deres klimaregnskab og et overblik over deres udledning.",
+        tag: "Gratis uden udløbsdato. Til virksomheder der vil have styr på deres klimaregnskab og et overblik over deres udledning.",
         features: [
           "Komplet Scope 1-3 klimaregnskab",
           "Ubegrænsede posteringer",

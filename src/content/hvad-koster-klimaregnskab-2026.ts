@@ -102,7 +102,7 @@ export const artikel: Article = {
       type: 'paragraph',
       text: 'SMV-specifikke platforme: det segment hvor qlim8 lever, sammen med en håndfuld andre danske og europæiske aktører. Her ligger priserne typisk i 3-cifret kroneklasse pr. måned. Det er bevidst designet til den SMV-virkelighed, hvor budgettet for bæredygtighedsarbejde er reelt begrænset, og hvor man ikke har en dedikeret bæredygtighedschef til at lære et komplekst system at kende.',
     },
-    { type: 'paragraph', text: 'Lad mig være konkret om qlim8\'s egne pakker, for det er den eneste platform, jeg kan udtale mig fagligt præcist om. Priserne står på /priser, så du kan se dem uden at tale med os: Free er gratis for altid, Starter og Premium har faste priser pr. måned, faktureret årligt og ekskl. moms, og Business og Enterprise tilpasser vi jeres behov.' },
+    { type: 'paragraph', text: 'Lad mig være konkret om qlim8\'s egne pakker, for det er den eneste platform, jeg kan udtale mig fagligt præcist om. Priserne står på /priser, så du kan se dem uden at tale med os: Free er gratis og har ingen udløbsdato, Starter og Premium har faste priser pr. måned, faktureret årligt og ekskl. moms, og Business og Enterprise tilpasser vi jeres behov.' },
     {
       type: 'paragraph',
       text: 'qlim8 Free dækker komplet Scope 1, 2 og 3 klimaregnskab med AI-kategorisering, fuld audit trail på hver beregning, Excel- og PDF-eksport og én regnskabs- og én forsyningsforbindelse, fx Dinero, e-conomic eller Billy og Eloverblik. qlim8 Starter lægger VSME Basis-rapport med wizard, ubegrænsede brugere, revisoradgang og op til 5 forbindelser oveni.',
