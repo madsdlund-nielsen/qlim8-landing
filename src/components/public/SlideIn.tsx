@@ -327,7 +327,6 @@ function SlideInPanel() {
           </div>
 
           <div key={s.step} className="px-5 pb-5 pt-2 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-300">
-            {s.step >= 1 && s.step <= TOTAL_STEPS && <Progress step={s.step} />}
 
             {s.step === 0 && (
               <>
@@ -631,27 +630,6 @@ function Avatar({ dot }: { dot?: boolean }) {
         </span>
       )}
     </span>
-  );
-}
-
-function Progress({ step }: { step: number }) {
-  return (
-    <div className="mb-3 mt-1 flex items-center gap-1.5">
-      {Array.from({ length: TOTAL_STEPS }, (_, i) => (
-        <svg
-          key={i}
-          viewBox="0 0 28 14"
-          aria-hidden="true"
-          className={cn(
-            "h-3.5 w-7 stroke-1 motion-safe:transition-colors",
-            i < step ? "fill-primary stroke-primary" : "fill-band stroke-border-strong",
-          )}
-        >
-          <path d="M1 13C1 6 7 1 27 1c0 8-6 12-26 12Z" />
-        </svg>
-      ))}
-      <span className="ml-1.5 text-trust tabular-nums text-muted-foreground">{COPY.stepOf(step)}</span>
-    </div>
   );
 }
 

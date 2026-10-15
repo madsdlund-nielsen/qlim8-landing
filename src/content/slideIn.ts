@@ -36,7 +36,6 @@ export const COPY = {
   pillStartSub: "Din første VSME-rapport",
   pillResume: "Fortsæt, hvor du slap",
   pillResumeSub: "Dit gratis whitepaper",
-  stepOf: (n: number) => `Trin ${n} af ${TOTAL_STEPS}`,
 
   welcomeTitle: "ESG behøver ikke være svært",
   welcomeLead: (bookTitle: string) =>
@@ -45,11 +44,11 @@ export const COPY = {
     }.`,
   freebieTitle: "Whitepaper: Din første VSME-rapport",
   freebieSmall: "Gratis PDF, 3 sider",
-  welcomeCta: "Send mig whitepapperet",
+  welcomeCta: "Send mig whitepaperet",
   notNow: "Ikke nu",
 
   contactTitle: "Hvor skal vi sende den?",
-  contactLead: "Skriv din email, så er whitepapperet hos dig om et øjeblik.",
+  contactLead: "Skriv din email, så er whitepaperet hos dig om et øjeblik.",
   nameLabel: "Dit navn",
   emailLabel: "Din email",
   next: "Fortsæt",
@@ -62,7 +61,7 @@ export const COPY = {
 
   phoneTitle: "Vil du have hjælp af en rådgiver?",
   phoneLead:
-    "Skriv dit nummer, så kan en rådgiver fra qlim8 ringe, hvis du har spørgsmål til whitepapperet. Du kan også springe over.",
+    "Skriv dit nummer, så kan en rådgiver fra qlim8 ringe, hvis du har spørgsmål til whitepaperet. Du kan også springe over.",
   phoneLabel: "Telefonnummer",
   skip: "Spring over",
 
@@ -70,14 +69,14 @@ export const COPY = {
   topicsLead: "Vælg de emner, du vil høre mere om.",
   topicsLeadBank: "Vælg de emner, du vil høre mere om. Vi starter med det, der hjælper dig med bankens spørgsmål.",
   topicsLegend: "Emner",
-  submit: "Send mig whitepapperet",
+  submit: "Send mig whitepaperet",
   finePrefix:
-    "Når du sender, accepterer du, at vi sender whitepapperet og nyheder om de emner, du har valgt. Du kan altid afmelde dig. Læs vores ",
+    "Når du sender, accepterer du, at vi sender whitepaperet og nyheder om de emner, du har valgt. Du kan altid afmelde dig. Læs vores ",
   finePrivacy: "privatlivspolitik",
   fineSuffix: ".",
 
   thanks: (first: string) => (first ? `Tak, ${first}` : "Tak"),
-  thanksLeadBefore: "Whitepapperet er på vej til ",
+  thanksLeadBefore: "Whitepaperet er på vej til ",
   thanksLeadAfter: ". Dukker det ikke op om få minutter, så kig i spamfilteret.",
   alsoSending: (topics: string) => `Vi sender dig også noget om: ${topics}.`,
   followupTitle: "Næste skridt: VSME-skabelonen",
