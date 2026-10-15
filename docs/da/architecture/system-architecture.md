@@ -525,7 +525,7 @@ sitet kalder aldrig en checkout (§7.5).
 
 **Salgsledet som fallback.** Så længe alle pakker er "demo" (katalog version 1), eller API'et ikke
 kan nås, er sitet salgsledet: ingen pris, og alle hovedknapper booker en demo. De andre veje ind
-gælder i begge tilstande: Book demo (`/kontakt?emne=demo`), kontaktformularen på `/kontakt`,
+gælder i begge tilstande: Book demo (`/kontakt?emne=demo`, som med JavaScript åbner en dialog: navn og e-mail, derefter antal ansatte; 1-9 går til filmen på `/demo`, 10 eller flere til kalenderen), kontaktformularen på `/kontakt`,
 telefonnummeret og nyhedsbrevet, alle hentet fra `src/content/cta.ts`. "Log ind" linker
 eksisterende kunder til `app.qlim8.com/auth`. Business og Enterprise sælges altid efter en samtale
 og faktureres, se §7.2.

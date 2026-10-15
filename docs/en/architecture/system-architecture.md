@@ -524,7 +524,7 @@ checkout (§7.5).
 
 **Sales-led as the fallback.** While every package is "demo" (catalog version 1), or the API cannot
 be reached, the site is sales-led: no price, and every main button books a demo. The other ways in
-stay in both modes: Book demo (`/kontakt?emne=demo`), the contact form on `/kontakt`, the phone
+stay in both modes: Book demo (`/kontakt?emne=demo`, which with JavaScript opens a dialog: name and e-mail, then the number of employees; 1-9 goes to the film on `/demo`, 10 or more to the calendar), the contact form on `/kontakt`, the phone
 number and the newsletter, all taken from `src/content/cta.ts`. "Log ind" links existing customers
 to `app.qlim8.com/auth`. Business and Enterprise are always sold after a conversation and invoiced,
 see §7.2.

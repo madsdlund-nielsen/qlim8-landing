@@ -10,7 +10,7 @@ test("the real app/ yields the pages the hand-kept lists had, and /databehandler
   const routes = pageRoutes();
   for (const r of [
     "/", "/priser", "/metodologi", "/blog", "/api", "/om-os", "/docs", "/docs/mcp-quickstart",
-    "/docs/mcp-tools", "/docs/api-reference", "/kontakt", "/nyhedsbrev", "/nyhedsbrev/afmeld",
+    "/docs/mcp-tools", "/docs/api-reference", "/kontakt", "/nyhedsbrev", "/nyhedsbrev/afmeld", "/demo",
     "/karriere", "/cookies", "/privatlivspolitik", "/handelsbetingelser", "/databehandleraftale",
   ]) {
     assert.ok(routes.includes(r), `${r} missing from ${routes.join(" ")}`);
