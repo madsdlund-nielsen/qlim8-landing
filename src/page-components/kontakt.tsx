@@ -14,35 +14,35 @@ export default function Kontakt({ copy = CONTACT_COPY }: { copy?: ContactCopy })
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-20 sm:pb-28">
+      <article className="max-w-(--container-max) mx-auto px-4 sm:px-6 pt-14 sm:pt-24 pb-20 sm:pb-28">
         <header className="mb-14">
-          <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6" data-testid="text-kontakt-title">
+          <h1 className="mb-6 max-w-3xl text-balance" data-testid="text-kontakt-title">
             {copy.hero.title}
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
+          <p className="text-lead text-foreground max-w-(--measure-body)">
             {copy.hero.subtitle}
           </p>
         </header>
 
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">{copy.form.title}</h2>
+            <h2 className="mb-6 text-h3">{copy.form.title}</h2>
             <ContactForm submitLabel={copy.form.submitLabel} />
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">{copy.info.title}</h2>
+            <h2 className="mb-6 text-h3">{copy.info.title}</h2>
             <a
               href={`tel:${copy.info.phone.replace(/\s+/g, "")}`}
-              className="mb-8 block rounded-2xl border border-gray-200 bg-white p-6 hover:border-primary transition-colors"
+              className="mb-8 block rounded-lg border border-border bg-card p-6 shadow-soft hover:border-border-strong transition-colors"
               data-testid="link-call"
             >
-              <span className="block text-sm text-gray-500 mb-1">Hellere tale sammen? Ring direkte</span>
-              <span className="block text-2xl font-bold text-gray-900">{copy.info.phone}</span>
+              <span className="block text-body-sm text-muted-foreground mb-1">Hellere tale sammen? Ring direkte</span>
+              <span className="block font-display text-2xl font-medium text-primary">{copy.info.phone}</span>
             </a>
-            <dl className="space-y-6 text-base">
+            <dl className="space-y-6 text-body">
               <div>
-                <dt className="font-semibold text-gray-900 mb-1">Email</dt>
+                <dt className="font-semibold text-primary mb-1">Email</dt>
                 <dd>
                   <a href={`mailto:${copy.info.email}`} className="text-primary hover:underline break-all">
                     {copy.info.email}
@@ -50,27 +50,27 @@ export default function Kontakt({ copy = CONTACT_COPY }: { copy?: ContactCopy })
                 </dd>
               </div>
               <div>
-                <dt className="font-semibold text-gray-900 mb-1">Telefon</dt>
+                <dt className="font-semibold text-primary mb-1">Telefon</dt>
                 <dd>
-                  <a href={`tel:${copy.info.phone.replace(/\s+/g, "")}`} className="text-gray-700 hover:text-gray-900">
+                  <a href={`tel:${copy.info.phone.replace(/\s+/g, "")}`} className="text-foreground hover:text-primary">
                     {copy.info.phone}
                   </a>
                 </dd>
               </div>
               <div>
-                <dt className="font-semibold text-gray-900 mb-1">Adresse</dt>
-                <dd className="text-gray-700">{copy.info.address}</dd>
+                <dt className="font-semibold text-primary mb-1">Adresse</dt>
+                <dd className="text-foreground">{copy.info.address}</dd>
               </div>
               <div>
-                <dt className="font-semibold text-gray-900 mb-1">Åbningstider</dt>
-                <dd className="text-gray-700">
+                <dt className="font-semibold text-primary mb-1">Åbningstider</dt>
+                <dd className="text-foreground">
                   {copy.info.hoursWeekdays}
                   <br />
                   {copy.info.hoursWeekend}
                 </dd>
               </div>
             </dl>
-            <p className="mt-10 text-sm text-gray-600">
+            <p className="mt-10 text-body-sm text-muted-foreground">
               Vil du bare følge med?{" "}
               <a href="/nyhedsbrev" className="text-primary font-semibold hover:underline">
                 Tilmeld dig nyhedsbrevet

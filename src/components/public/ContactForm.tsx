@@ -11,7 +11,7 @@ type Topic = "demo" | "question";
 const TOPIC_PARAM = "emne";
 
 const INPUT =
-  "w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base bg-white";
+  "w-full min-h-12 px-4 py-3 rounded-md border border-border-strong bg-card text-body text-foreground placeholder:text-muted-foreground";
 
 /**
  * The contact form: a demo booking or a question, sent through the same-origin
@@ -71,11 +71,11 @@ export function ContactForm({ submitLabel }: { submitLabel: string }) {
 
   if (sent) {
     return (
-      <div className="rounded-2xl bg-accent p-8" role="status" data-testid="contact-sent">
-        <p className="text-lg font-semibold text-gray-900 mb-2">
+      <div className="rounded-lg bg-band p-8" role="status" data-testid="contact-sent">
+        <p className="font-display text-h3 text-primary mb-2">
           {topic === "demo" ? "Tak for din booking" : "Tak for din besked"}
         </p>
-        <p className="text-gray-700">{sent}</p>
+        <p className="text-foreground">{sent}</p>
       </div>
     );
   }
@@ -83,7 +83,7 @@ export function ContactForm({ submitLabel }: { submitLabel: string }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-5" data-testid="form-contact">
       <fieldset>
-        <legend className="block text-sm font-medium text-gray-700 mb-2">Hvad drejer det sig om?</legend>
+        <legend className="block text-body-sm font-medium text-foreground mb-2">Hvad drejer det sig om?</legend>
         <div className="grid grid-cols-2 gap-2">
           {(
             [
@@ -93,8 +93,8 @@ export function ContactForm({ submitLabel }: { submitLabel: string }) {
           ).map(([value, label]) => (
             <label
               key={value}
-              className={`flex cursor-pointer items-center justify-center rounded-lg border px-4 py-3 text-sm font-medium transition-colors ${
-                topic === value ? "border-primary bg-accent text-gray-900" : "border-gray-300 bg-white text-gray-700 hover:border-gray-400"
+              className={`flex cursor-pointer items-center justify-center has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ring rounded-md border px-4 py-3 text-body-sm font-medium transition-colors ${
+                topic === value ? "border-primary bg-band text-primary" : "border-border-strong bg-card text-foreground hover:bg-band"
               }`}
             >
               <input
@@ -112,28 +112,28 @@ export function ContactForm({ submitLabel }: { submitLabel: string }) {
         </div>
       </fieldset>
       <div>
-        <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-2">Navn</label>
+        <label htmlFor="contact-name" className="block text-body-sm font-medium text-foreground mb-2">Navn</label>
         <input id="contact-name" type="text" autoComplete="name" required value={fields.name} onChange={set("name")} className={INPUT} placeholder="Dit fulde navn" data-testid="input-name" />
       </div>
       <div>
-        <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
+        <label htmlFor="contact-email" className="block text-body-sm font-medium text-foreground mb-2">E-mail</label>
         <input id="contact-email" type="email" autoComplete="email" required value={fields.email} onChange={set("email")} className={INPUT} placeholder="din@email.dk" data-testid="input-email" />
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="contact-company" className="block text-sm font-medium text-gray-700 mb-2">Virksomhed</label>
+          <label htmlFor="contact-company" className="block text-body-sm font-medium text-foreground mb-2">Virksomhed</label>
           <input id="contact-company" type="text" autoComplete="organization" value={fields.company} onChange={set("company")} className={INPUT} placeholder="Dit virksomhedsnavn" data-testid="input-company" />
         </div>
         <div>
-          <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-2">
-            Telefon {topic === "demo" ? "" : <span className="font-normal text-gray-500">(valgfri)</span>}
+          <label htmlFor="contact-phone" className="block text-body-sm font-medium text-foreground mb-2">
+            Telefon {topic === "demo" ? "" : <span className="font-normal text-muted-foreground">(valgfri)</span>}
           </label>
           <input id="contact-phone" type="tel" autoComplete="tel" value={fields.phone} onChange={set("phone")} className={INPUT} placeholder="12 34 56 78" data-testid="input-phone" />
         </div>
       </div>
       <div>
-        <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-2">
-          Besked {topic === "demo" && <span className="font-normal text-gray-500">(valgfri)</span>}
+        <label htmlFor="contact-message" className="block text-body-sm font-medium text-foreground mb-2">
+          Besked {topic === "demo" && <span className="font-normal text-muted-foreground">(valgfri)</span>}
         </label>
         <textarea
           id="contact-message"
@@ -155,14 +155,14 @@ export function ContactForm({ submitLabel }: { submitLabel: string }) {
         <input id="contact-website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
       </div>
       {error && (
-        <p className="rounded-lg bg-red-100 p-3 text-sm text-red-800" role="alert" data-testid="contact-error">
+        <p className="rounded-md border border-destructive bg-card p-3 text-body-sm text-destructive" role="alert" data-testid="contact-error">
           {error}
         </p>
       )}
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-full bg-primary py-4 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+        className="min-h-12 w-full rounded-md bg-primary px-6 py-3 text-button font-semibold text-primary-foreground transition-colors duration-200 hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
         data-testid="button-submit"
       >
         {loading ? "Sender..." : topic === "demo" ? "Book demo" : submitLabel}
