@@ -15,10 +15,10 @@ export const revalidate = 300;
 // without prices, behind a demo. Self-serve: the prices are on the page.
 export async function generateMetadata(): Promise<Metadata> {
   const selfServe = isSelfServe(await fetchPublicPackages());
-  const title = selfServe ? "Pakker og priser: Free, Starter og Premium" : "Pakker: Starter, Premium & Enterprise";
+  const title = selfServe ? "Priser: start gratis og uden binding" : "Pakker til klimaregnskab og ESG-rapportering";
   const description = selfServe
-    ? "Free er gratis for altid. Se priserne på Starter og Premium, sammenlign alle pakker, og tal med os om Business og Enterprise."
-    : "Se hvad der er i qlim8's pakker, Starter, Premium og Enterprise, og sammenlign dem. Book en demo, så finder vi den pakke der passer til jer.";
+    ? "Start gratis på Free uden binding og uden kreditkort. De betalte pakker er årsaftaler med prisen vist pr. måned ekskl. moms. Ring, hvis du er i tvivl."
+    : "Se qlim8's pakker til klimaregnskab og ESG-rapportering. Tag en uformel snak, eller ring direkte på +45 93 90 13 84, så finder vi pakken, der passer.";
   return {
     title,
     description,
@@ -26,8 +26,8 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: `${title} | qlim8`,
       description: selfServe
-        ? "Free er gratis for altid. Se priserne på Starter og Premium, og kom i gang i dag."
-        : "Se hvad der er i qlim8's pakker, og book en demo, så finder vi den pakke der passer til jer.",
+        ? "Start gratis uden binding. De betalte pakker er årsaftaler med prisen vist pr. måned ekskl. moms."
+        : "Se qlim8's pakker, og tag en uformel snak, så finder vi sammen den pakke, der passer til dig.",
       url: "https://qlim8.com/priser",
       images: [{ url: "/opengraph.jpg", width: 1200, height: 630, alt: "qlim8 pakker" }],
     },

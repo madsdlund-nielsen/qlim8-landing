@@ -1,6 +1,9 @@
 import { ContactForm } from "@/components/public/ContactForm";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
+import { Section, SectionHead } from "@/components/ds/Section";
+import { CardGrid } from "@/components/ds/Card";
+import { StepCard } from "@/components/ds/StepCard";
 import { CONTACT_COPY, type ContactCopy } from "@/content/copy/contact";
 
 // All copy lives in src/content/copy/contact.ts (pageKey "page.contact");
@@ -76,6 +79,17 @@ export default function Kontakt({ copy = CONTACT_COPY }: { copy?: ContactCopy })
           </div>
         </div>
       </article>
+
+      {copy.next && copy.next.items.length > 0 && (
+        <Section tone="band" id="naeste">
+          <SectionHead title={copy.next.title} />
+          <CardGrid>
+            {copy.next.items.slice(0, 3).map((item, i) => (
+              <StepCard key={item.title} n={i + 1} title={item.title} body={item.body} />
+            ))}
+          </CardGrid>
+        </Section>
+      )}
 
       <SiteFooter />
     </div>
