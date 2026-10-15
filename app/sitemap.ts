@@ -50,6 +50,7 @@ const STATIC_ROUTES: Entry[] = [
   { route: "/docs/api-reference",                                    changeFrequency: "monthly", priority: 0.6 },
   { route: "/kontakt",             pageKeys: [CONTACT_PAGE_KEY],     changeFrequency: "monthly", priority: 0.6 },
   { route: "/nyhedsbrev",                                            changeFrequency: "monthly", priority: 0.6 },
+  { route: "/events/dma",                                            changeFrequency: "monthly", priority: 0.5 },
   { route: "/karriere",            pageKeys: [CAREERS_PAGE_KEY],     changeFrequency: "monthly", priority: 0.5 },
   { route: "/cookies",             pageKeys: [LEGAL_COOKIES_PAGE_KEY], changeFrequency: "yearly", priority: 0.3 },
   { route: "/privatlivspolitik",   pageKeys: [LEGAL_PRIVACY_PAGE_KEY], changeFrequency: "yearly", priority: 0.3 },
