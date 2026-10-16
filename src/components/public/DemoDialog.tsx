@@ -13,6 +13,7 @@ import {
   safeBookingUrl,
 } from "@/lib/demoDialog";
 import { resolveSignupSource, trackContactRequest } from "@/lib/tracking";
+import { trackSiteEvent } from "@/lib/siteEvents";
 
 // The demo dialog, mounted once in app/layout.tsx. Every "Book demo" on the
 // site is a plain link to DEMO_HREF (/kontakt?emne=demo), in bundled and in
@@ -56,6 +57,7 @@ export function DemoDialog() {
   const show = useCallback((from: HTMLElement | null) => {
     opener.current = from ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setOpen(true);
+    trackSiteEvent("demo_dialog_opened");
   }, []);
 
   useEffect(() => {
@@ -144,6 +146,7 @@ export function DemoDialog() {
       const data = await res.json().catch(() => ({}));
       if (res.ok && data?.success) {
         trackContactRequest("demo", source);
+        trackSiteEvent("demo_requested", { band: chosen });
         return {
           ok: true,
           message: typeof data.message === "string" ? data.message : null,

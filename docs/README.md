@@ -43,6 +43,11 @@ This repository is the **marketing site** (qlim8.com). For the **whole-system ar
   The lead-capture panel: where it shows, when it opens, what it stores (marketing consent
   only), and the proxy routes to qlim8-app.
 
+- 📈 Cookieless website analytics (`src/lib/siteEvents.ts`, `app/api/site-events/route.ts`):
+  the events, the daily visitor hash and the sources are documented in qlim8-app,
+  `docs/en/marketing/website-analytics.md` (🇩🇰 `docs/da/marketing/website-analytics.md`),
+  next to the `/admin` tab that shows them. The short version is in `CLAUDE.md`.
+
 ## Operations
 
 - 📋 [English: post-mortem, 2026-07-28](./en/operations/postmortem-2026-07-28.md) ·

@@ -11,6 +11,7 @@ import { Check, Leaf, Scale, Users, X } from "lucide-react";
 import { Button, ButtonRow } from "@/components/ds/Button";
 import { cn } from "@/lib/utils";
 import { resolveSignupSource, trackContactRequest } from "@/lib/tracking";
+import { dmaMilestone, trackSiteEvent } from "@/lib/siteEvents";
 import {
   DMA_BOOKING_URL,
   DMA_COPY,
@@ -69,6 +70,10 @@ export function DmaAnalysis() {
     const was = complete(cur);
     const next = { ...answers, [cur]: { ...answers[cur], [dim]: val } };
     setAnswers(next);
+    // Analytics (src/lib/siteEvents.ts): the first, fifth and tenth topic done.
+    const doneAfter = DMA_TOPICS.filter((t) => zoneOf(next[t.code]) !== null).length;
+    const milestone = dmaMilestone(done, doneAfter, DMA_TOPICS.length);
+    if (milestone) trackSiteEvent(milestone);
     if (was || zoneOf(next[cur]) === null) return;
     if (timer.current) clearTimeout(timer.current);
     const remaining = DMA_TOPICS.filter((t) => zoneOf(next[t.code]) === null);
@@ -477,6 +482,7 @@ function LeadForm({ answers }: { answers: DmaAnswers }) {
       const data = await res.json();
       if (res.ok && data.success) {
         trackContactRequest("question", source);
+        trackSiteEvent("dma_profile_requested");
         setSent(data.message || `Tak. Din væsentlighedsprofil er på vej til ${v}.`);
       } else {
         setError(data.message || "Noget gik galt. Prøv igen, eller ring på +45 93 90 13 84.");
