@@ -27,7 +27,10 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
       label: "Tag en uformel snak (Book 15 min)",
       href: DEMO_HREF,
     },
-    imageUrl: "",
+    // Bundled while the app cannot serve CMS images (app.qlim8.com/api/cms/assets
+    // answers 500, October 2026). Photos belong in /admin: move it back there and
+    // empty this field, plus public/photos/, once that is fixed.
+    imageUrl: "/photos/qlim8-kundetyper-vaerksted.jpg",
     imageAlt: "Håndværker ved et træbord på værkstedet med en bærbar computer",
     trustLine: [
       "Ingen binding",
