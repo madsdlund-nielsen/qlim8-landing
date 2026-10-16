@@ -232,6 +232,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <h2>3. Hvilke personoplysninger behandler vi</h2>
 <h3>3.1 Besøgende på qlim8.com</h3>
 <ul>
+<li>Vi tæller besøg på qlim8.com uden cookies. Til det bruger vi din IP-adresse og browsertype et øjeblik til at danne en anonym kode, der skifter hver dag og ikke kan føres tilbage til dig. IP-adressen gemmes ikke. Grundlaget er vores legitime interesse i at vide, hvordan hjemmesiden bruges (GDPR art. 6, stk. 1, litra f).</li>
 <li>Hvis du giver samtykke til statistik eller marketing: IP-adresse, browser, enhed, besøgte sider og hvorfra du kom (Google Analytics og Google Ads).</li>
 <li>Det, du skriver i kontaktformularen: emne, navn, e-mail, virksomhed, telefon og besked.</li>
 </ul>
