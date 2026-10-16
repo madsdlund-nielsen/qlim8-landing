@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { ClosingCta } from "@/components/ds/ClosingCta";
+import { DemoVideo } from "@/components/public/DemoVideo";
 import { DEMO_HREF, FREE_START_CTA, STANDARD_MICRO, STANDARD_TRUST } from "@/content/cta";
 import { getSelfServe } from "@/lib/selfServe";
 
@@ -40,21 +41,7 @@ export default async function Demo() {
 
       <section className="mx-auto max-w-(--container-max) px-4 pb-12 sm:px-6" aria-label="Film af platformen">
         <div className="overflow-hidden rounded-lg border border-border bg-primary shadow-soft">
-          <video
-            controls
-            preload="metadata"
-            playsInline
-            poster={POSTER_SRC}
-            className="aspect-video w-full bg-primary"
-            data-testid="demo-video"
-          >
-            <source src={VIDEO_SRC} type="video/mp4" />
-            Din browser kan ikke afspille filmen her.{" "}
-            <a href={VIDEO_SRC} className="underline">
-              Hent filmen som MP4
-            </a>
-            .
-          </video>
+          <DemoVideo src={VIDEO_SRC} poster={POSTER_SRC} />
         </div>
         <p className="mt-3 max-w-(--measure-body) text-body-sm text-muted-foreground">
           Filmen er animeret efter platformens egen brugerflade. Virksomheden, tallene og bilagene i den er opdigtede.
@@ -73,16 +60,19 @@ export default async function Demo() {
         </ul>
       </section>
 
-      <ClosingCta
-        title="Vakte noget i filmen spørgsmål?"
-        description="Spørg os om, hvad du vil. Du får et ærligt svar, og ingen ringer efter dig uden at være bedt om det."
-        primary={FREE_START_CTA}
-        // Once the catalog sells nothing by itself the primary button already
-        // books a demo, and a second button to the same place would be noise.
-        secondary={selfServe ? { label: "Har I 10 eller flere ansatte? Book en demo", href: DEMO_HREF } : undefined}
-        trustLine={STANDARD_TRUST}
-        microLine={STANDARD_MICRO}
-      />
+      {/* A click on either button counts as "Klikkede videre" in /admin (src/components/SiteAnalytics.tsx). */}
+      <div data-site-event="demo_cta_clicked">
+        <ClosingCta
+          title="Vakte noget i filmen spørgsmål?"
+          description="Spørg os om, hvad du vil. Du får et ærligt svar, og ingen ringer efter dig uden at være bedt om det."
+          primary={FREE_START_CTA}
+          // Once the catalog sells nothing by itself the primary button already
+          // books a demo, and a second button to the same place would be noise.
+          secondary={selfServe ? { label: "Har I 10 eller flere ansatte? Book en demo", href: DEMO_HREF } : undefined}
+          trustLine={STANDARD_TRUST}
+          microLine={STANDARD_MICRO}
+        />
+      </div>
 
       <SiteFooter />
     </div>

@@ -4,6 +4,7 @@ import "../src/index.css";
 import { CookieConsent } from "@/components/CookieConsent";
 import { DemoDialog } from "@/components/public/DemoDialog";
 import { SlideIn } from "@/components/public/SlideIn";
+import { SiteAnalytics } from "@/components/SiteAnalytics";
 import { Toaster } from "@/components/ui/toaster";
 import { SelfServeProvider } from "@/components/public/SelfServeContext";
 import { fetchPublicPackages } from "@/lib/packages";
@@ -93,6 +94,7 @@ export default async function RootLayout({
         <CookieConsent />
         <DemoDialog />
         <SlideIn />
+        <SiteAnalytics />
         <Toaster />
       </body>
     </html>

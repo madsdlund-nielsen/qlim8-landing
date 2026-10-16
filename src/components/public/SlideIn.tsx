@@ -5,6 +5,7 @@ import { Button } from "@/components/ds/Button";
 import { cn } from "@/lib/utils";
 import { CONSENT_CHANGED, OPEN_COOKIE_SETTINGS, currentConsent } from "@/lib/consent";
 import { resolveSignupSource, trackWhitepaperLead } from "@/lib/tracking";
+import { trackSiteEvent } from "@/lib/siteEvents";
 import {
   DELAY_MS,
   PERSIST_KEY,
@@ -141,6 +142,9 @@ function SlideInPanel() {
 
   const openPanel = useCallback((by: Trigger) => {
     pendingFocus.current = true;
+    // Cookieless analytics (src/lib/siteEvents.ts): the pill is a reopening, the rest a showing.
+    if (by === "pille") trackSiteEvent("slidein_reopened");
+    else trackSiteEvent("slidein_shown", { trigger: by });
     setS((cur) => ({ ...cur, touched: true, triggeredBy: cur.triggeredBy ?? by }));
     setView("open");
   }, []);
@@ -173,6 +177,7 @@ function SlideInPanel() {
     }
     focusPill.current = true;
     setView("minimized");
+    trackSiteEvent("slidein_minimized", { step: s.step });
     if (!s.counted) {
       if (currentConsent()?.marketing) {
         write("local", PERSIST_KEY, JSON.stringify(recordDismiss(parsePersistent(read("local", PERSIST_KEY)))));
@@ -206,6 +211,7 @@ function SlideInPanel() {
 
   const go = (step: number) => {
     pendingFocus.current = true;
+    trackSiteEvent("slidein_step", { step });
     shown.current = new Set();
     setErrors({});
     setSubmitError("");
@@ -265,6 +271,7 @@ function SlideInPanel() {
       write("local", PERSIST_KEY, JSON.stringify(recordSignup(parsePersistent(read("local", PERSIST_KEY)), completedAt)));
     }
     trackWhitepaperLead(source);
+    trackSiteEvent("whitepaper_requested", s.triggeredBy ? { trigger: s.triggeredBy } : undefined);
     setSubmitting(false);
     pendingFocus.current = true;
     setS((cur) => ({ ...cur, signedUp: true, step: 5, completedAt, leadId: res.leadId ?? null }));
@@ -285,6 +292,7 @@ function SlideInPanel() {
       setVsmeError(res.message);
       return;
     }
+    trackSiteEvent("vsme_requested");
     pendingFocus.current = true;
     setS((cur) => ({ ...cur, data: { ...cur.data, vsme: true } }));
   };

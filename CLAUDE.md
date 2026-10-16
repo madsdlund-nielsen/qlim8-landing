@@ -320,6 +320,25 @@ closed visits it starts as the pill for 30 days. The logic is in
 `lead_topic: "whitepaper"` (`trackWhitepaperLead`, statistics consent). Details:
 `docs/en/marketing/slide-in.md` (Danish: `docs/da/marketing/slide-in.md`).
 
+**Cookieless analytics** (`/admin` → Analyse → Hjemmeside in qlim8-app). Next
+to GA4, which needs consent, the site reports pageviews and a few interactions
+to its own `/api/site-events` with `trackSiteEvent()` (`src/lib/siteEvents.ts`):
+no cookie, no browser storage, so it runs regardless of the banner. The route
+(`app/api/site-events/route.ts`) drops bots, hashes IP and user agent with a
+salt kept in memory and replaced daily (`src/lib/siteVisitor.ts`; the IP stops
+there) and forwards to qlim8-app's `POST /api/public/site-events` with
+`CMS_REVALIDATE_SECRET`. `<SiteAnalytics />` (mounted in `app/layout.tsx`)
+sends the pageviews and turns a click inside any `data-site-event="<event>"`
+element into that event, which is how the server-rendered closing CTA on
+`/demo` is measured. Instrumented: the film on `/demo` (`DemoVideo`), the demo
+dialog, `/events/dma` (first, fifth and tenth topic, profile sent) and the
+slide-in (shown with trigger, steps, minimised, reopened, sent, VSME). The
+event list is `SITE_EVENT_NAMES`, kept in step with qlim8-app's
+`shared/siteEvents.ts`, which drops a name it does not know: add it there
+first. The source is `?ref=`, then `utm_*`, then the referrer; LinkedIn's apps
+send no referrer, so LinkedIn links carry `?ref=linkedin`. Details:
+qlim8-app `docs/en/marketing/website-analytics.md`.
+
 ### What copy may not say
 
 A package price is never typed in copy: it goes stale the day the catalog
