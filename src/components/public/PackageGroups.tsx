@@ -144,6 +144,7 @@ export function PackageGroups({
   const groups = groupPackages(data);
   // "Opret gratis rådgiver-konto" in page copy links to /priser#raadgivere: the
   // anchor sits on the first advisor package, wherever its group puts it.
+  // /priser#medlemskab (MEMBERSHIP_HREF) lands on the "Køb selv" group, past the free packages.
   const firstAdvisorKey = [...data.packages].sort((a, b) => a.displayRank - b.displayRank).find((p) => p.accountType === "advisor")?.key;
   const order: PackageGroup[] = ["free", "selfServe", "contact"];
   const columns = data.comparison.packages;
@@ -171,7 +172,7 @@ export function PackageGroups({
       {order
         .filter((g) => groups[g].length > 0)
         .map((g) => (
-          <section key={g} className="mb-12" data-testid={`package-group-${g}`}>
+          <section key={g} id={g === "selfServe" ? "medlemskab" : undefined} className="mb-12" data-testid={`package-group-${g}`}>
             <h2 className="mb-1 text-h3">{GROUP_TITLES[g].title}</h2>
             <p className="text-body-sm text-muted-foreground mb-5">{GROUP_TITLES[g].body}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

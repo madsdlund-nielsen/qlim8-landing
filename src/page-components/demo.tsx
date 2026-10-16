@@ -2,14 +2,14 @@ import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { ClosingCta } from "@/components/ds/ClosingCta";
 import { DemoVideo } from "@/components/public/DemoVideo";
-import { DEMO_HREF, FREE_START_CTA, STANDARD_MICRO, STANDARD_TRUST } from "@/content/cta";
-import { getSelfServe } from "@/lib/selfServe";
+import { FREE_START_CTA, MEMBERSHIP_HREF, STANDARD_MICRO, STANDARD_TRUST } from "@/content/cta";
+import { fetchPublicPackages } from "@/lib/packages";
+import { freeStartHref, isSelfServe } from "@/lib/packageView";
 
 // /demo: the film of the platform, where the demo dialog sends a company with
 // fewer than ten employees (src/components/public/DemoDialog.tsx). The film is
 // the app's own (qlim8-app, demo/qlim8-demo.mp4), copied into public/demo with
-// its poster. It is an animated film built after the app's interface, with
-// made-up company data, and the text below says so.
+// its poster. It is the app's own film, with made-up demo data.
 const VIDEO_SRC = "/demo/qlim8-demo.mp4";
 const POSTER_SRC = "/demo/qlim8-demo-poster.jpg";
 
@@ -24,7 +24,9 @@ const SHOWN = [
 ];
 
 export default async function Demo() {
-  const selfServe = await getSelfServe();
+  const packages = await fetchPublicPackages();
+  const selfServe = isSelfServe(packages);
+  const freeStart = freeStartHref(packages);
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -43,9 +45,6 @@ export default async function Demo() {
         <div className="overflow-hidden rounded-lg border border-border bg-primary shadow-soft">
           <DemoVideo src={VIDEO_SRC} poster={POSTER_SRC} />
         </div>
-        <p className="mt-3 max-w-(--measure-body) text-body-sm text-muted-foreground">
-          Filmen er animeret efter platformens egen brugerflade. Virksomheden, tallene og bilagene i den er opdigtede.
-        </p>
       </section>
 
       <section className="mx-auto max-w-(--container-max) px-4 pb-14 sm:px-6 md:pb-section">
@@ -63,12 +62,12 @@ export default async function Demo() {
       {/* A click on either button counts as "Klikkede videre" in /admin (src/components/SiteAnalytics.tsx). */}
       <div data-site-event="demo_cta_clicked">
         <ClosingCta
-          title="Vakte noget i filmen spørgsmål?"
-          description="Spørg os om, hvad du vil. Du får et ærligt svar, og ingen ringer efter dig uden at være bedt om det."
-          primary={FREE_START_CTA}
+          title="Klar til at komme i gang?"
+          description="Opret en gratis konto, og kom i gang på et par minutter. Når I er klar til mere, vælger I det medlemskab, der passer til jer."
+          primary={selfServe && freeStart ? { label: "Start din gratis konto", href: freeStart } : FREE_START_CTA}
           // Once the catalog sells nothing by itself the primary button already
           // books a demo, and a second button to the same place would be noise.
-          secondary={selfServe ? { label: "Har I 10 eller flere ansatte? Book en demo", href: DEMO_HREF } : undefined}
+          secondary={selfServe ? { label: "Vælg dit medlemskab", href: MEMBERSHIP_HREF } : undefined}
           trustLine={STANDARD_TRUST}
           microLine={STANDARD_MICRO}
         />

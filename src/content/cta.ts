@@ -57,6 +57,12 @@ export const PHONE_CTA = { label: `Ring ${PHONE_DISPLAY}`, href: PHONE_HREF } as
 /** Header and homepage, once the catalog sells something by itself: to the package page. */
 export const FREE_START_CTA = { label: "Kom gratis i gang", href: "/priser" } as const;
 
+/**
+ * The package page scrolled past the free packages to the self-serve group
+ * ("Køb selv"), whose first card is Starter (the anchor is set in PackageGroups).
+ */
+export const MEMBERSHIP_HREF = "/priser#medlemskab";
+
 /** The mail address shown in the ContactBox, the footer and the contact page. */
 export const CONTACT_EMAIL = "kontakt@qlim8.com";
 export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
