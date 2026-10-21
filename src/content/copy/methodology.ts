@@ -1,5 +1,5 @@
 // Bundled default copy for /metodologi. CMS pageKey: "page.methodology".
-// Section numbering (1-9) is layout and stays in the JSX.
+// Section numbering (1-10) is layout and stays in the JSX.
 
 export const METHODOLOGY_PAGE_KEY = "page.methodology";
 
@@ -79,6 +79,11 @@ export interface MethodologyCopy {
     callout: MethodologyCallout;
   };
   updates: {
+    title: string;
+    paragraphs: string[];
+  };
+  /** The business-as-usual projection of the reduction plan (section 9). */
+  forecast: {
     title: string;
     paragraphs: string[];
   };
@@ -245,6 +250,14 @@ export const METHODOLOGY_COPY: MethodologyCopy = {
       "Emissionsfaktorer ændrer sig. Elmixet bliver grønnere, leverandører udgiver nye EPD'er, og Klimakompasset opdateres årligt med revision af faktorer. qlim8 følger disse opdateringer og bruger kun validerede versioner af hver kilde.",
       "Vi genberegner ikke historiske beregninger bagudrettet, når en faktor opdateres. Det er et bevidst valg: en ny faktor afspejler at den virkelige verden har ændret sig, ikke at den gamle beregning var forkert. Hvis vi rettede historikken hver gang en faktor blev opdateret, ville du aldrig have et sammenligneligt baseline-år, og dine reduktionsmål ville flytte sig under fødderne på dig.",
       "Hver beregning gemmer derfor versionsnummeret på den faktor der blev brugt, så du om to år stadig kan se præcis hvilken Klimakompas-version din 2024-baseline byggede på.",
+    ],
+  },
+  forecast: {
+    title: "Forventet forløb uden nye tiltag",
+    paragraphs: [
+      "I reduktionsplanen viser qlim8 også et forventet forløb, hvis virksomheden ikke gør mere. Det er en fremskrivning og ikke en måling, og det indgår aldrig i opgørelsen, i rapporterne eller i målets fremdrift. Forløbet starter i det seneste afsluttede regnskabsår og er fladt, medmindre virksomheden selv lader en kategori følge omsætningen eller antallet af medarbejdere og angiver en årlig vækst.",
+      "Elforbrugets udledning følger Energistyrelsens fremskrevne el-emissionsfaktor for 2025–2035 (KF25, udgivet 24. september 2025), det gennemsnitlige udslip pr. forbrugt kWh fra det danske net. Har virksomheden Eloverblik, bruger qlim8 serien for Vestdanmark (DK1) eller Østdanmark (DK2) efter målepunkternes postnumre, vejet efter hvor meget strøm hvert målepunkt bruger. Uden Eloverblik, eller for et målepunkt uden postnummer, bruges landsgennemsnittet og aldrig Vestdanmark som standard. Efter 2035 holdes den sidste værdi uændret, og fjernvarme holdes uændret.",
+      "Fremskrivningen ændrer virksomhedens eget niveau i samme forhold og erstatter det ikke. Linjen nævner den udgave, den bygger på, og planen bruger altid Energistyrelsens nyeste udgave. Fremskrivningen er usikker, fordi den forudsætter, at der ikke kommer nye politiske tiltag.",
     ],
   },
   notDoing: {

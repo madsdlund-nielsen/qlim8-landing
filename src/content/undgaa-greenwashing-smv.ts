@@ -129,7 +129,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Det er præcis det her princip, vi har bygget ind som en hård regel i qlim8. Når brugere arbejder med reduktionsmål og scenarier, behandles eventuel CO2-kompensation under en isoleret logik, der aldrig blandes med reduktionsfremdriften. Det kan ikke ved en fejl præsenteres som en reduktion i en VSME-rapport. Det er ikke en feature, det er en grundregel, fordi det er den ene fejl, der koster mest, hvis I laver den.',
+      text: 'Det er præcis det her princip, vi har bygget ind som en hård regel i qlim8. Når brugere arbejder med reduktionsmål og tiltag, tæller kompensation og kreditter aldrig med i reduktionsfremdriften. Det kan ikke ved en fejl præsenteres som en reduktion i en VSME-rapport. Det er ikke en feature, det er en grundregel, fordi det er den ene fejl, der koster mest, hvis I laver den.',
     },
 
     { type: 'h2', text: 'Hvordan dokumentation faktisk fungerer som skjold' },

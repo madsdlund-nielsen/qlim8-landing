@@ -175,7 +175,13 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
             ))}
           </Section>
 
-          <Section number="9" title={copy.notDoing.title}>
+          <Section number="9" title={copy.forecast.title}>
+            {copy.forecast.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </Section>
+
+          <Section number="10" title={copy.notDoing.title}>
             <p>{copy.notDoing.intro}</p>
             <dl className="space-y-5 mt-2">
               {copy.notDoing.items.map((item) => (

@@ -22,7 +22,7 @@ qlim8 laver klimaregnskaber til små og mellemstore danske virksomheder. Billede
 Siderne er skrevet til to slags læsere, og billederne følger med. Det handler om stemning, ikke om farvefilter. Blå betyder aldrig koldt eller blåt lys.
 
 - **Grønne sider** er varme og hverdagsnære. Tættere på personen, lidt mere rod på bordet, kaffe og arbejdstøj. Læseren skal tænke "det ligner os". Det gælder forsiden, Byggeri og håndværk, Transport og vognmænd, Produktion og industri, de to hubs, Om os og Kontakt. Platform og overblik og Rapportering er mest grønne med lidt blåt.
-- **Blå sider** er mere strukturerede og rolige. Et ryddeligt bord, papirer i orden, rette linjer i baggrunden, koncentrerede blikke. Læseren skal tænke "det her er gjort ordentligt". Det gælder Revisorer og rådgivere, Audit trail og revisor, VSME-rapport, Reduktionsmål og scenarier og Leverandørkæde.
+- **Blå sider** er mere strukturerede og rolige. Et ryddeligt bord, papirer i orden, rette linjer i baggrunden, koncentrerede blikke. Læseren skal tænke "det her er gjort ordentligt". Det gælder Revisorer og rådgivere, Audit trail og revisor, VSME-rapport, Reduktionsmål og klimaplan og Leverandørkæde.
 
 ## Tekniske krav
 
@@ -47,7 +47,7 @@ Vi laver færdige skærmbilleder i Roligt fra appen med demodata. De sættes på
 | S3 | En udledningslinje med ID, faktor og kilde og bilaget ved siden af | 8, 14 |
 | S4 | Rapportvisningen med PDF-rapporten | 3, 10, 12 |
 | S5 | VSME-rapporten | 4, 13 |
-| S6 | Scenarie: diesel mod el for varevogne, i tabletformat | 15 |
+| S6 | Målkurven for et reduktionsmål, i tabletformat | 15 |
 | S7 | Revisionssporet | 14 |
 | S8 | Værdikæde: oversigten over leverandørerne | 16 |
 | S9 | Energi: elforbruget fra Eloverblik | 7 |
@@ -90,7 +90,7 @@ Sådan står skærmen bedst:
 | 12 | Rapportering | `page.produkt.rapportering` · `hero.imageUrl` | 3:2 | Kan vente | `qlim8-rapportering-bankraadgiver.jpg` |
 | 13 | VSME-rapport | `page.produkt.vsme-rapport` · `hero.imageUrl` | 3:2 | Kan vente | `qlim8-vsme-rapport-ejer.jpg` |
 | 14 | Audit trail og revisor | `page.produkt.audit-trail-og-revisor` · `hero.imageUrl` | 3:2 | Kan vente | `qlim8-audit-trail-og-revisor-gennemgang.jpg` |
-| 15 | Reduktionsmål og scenarier | `page.produkt.reduktionsmaal-og-scenarier` · `hero.imageUrl` | 3:2 | Kan vente | `qlim8-reduktionsmaal-og-scenarier-elvarevogn.jpg` |
+| 15 | Reduktionsmål og klimaplan | `page.produkt.reduktionsmaal-og-scenarier` · `hero.imageUrl` | 3:2 | Kan vente | `qlim8-reduktionsmaal-og-scenarier-elvarevogn.jpg` |
 | 16 | Leverandørkæde | `page.produkt.leverandoerkaede` · `hero.imageUrl` | 3:2 | Kan vente | `qlim8-leverandoerkaede-indkoeber.jpg` |
 | 17 | Kontaktportræt, alle sider og Om os | `about.images` · `founder` | 4:5 | Før lancering | `qlim8-kontaktboks-mads-portraet.jpg` |
 | 18 | Om os | intet felt endnu | 3:2 | Kan vente | `qlim8-om-os-mads-hos-kunde.jpg` |
@@ -265,10 +265,10 @@ Fordel køn og alder over siderne. Brug gerne rigtige folk fra branchen frem for
 - **Alt-tekst (som i copy):** "En revisor og en bogholder ved et lyst træbord gennemgår et klimaregnskab på en bærbar computer i dagslys"
 - **Filnavn:** `qlim8-audit-trail-og-revisor-gennemgang.jpg`
 
-#### Nr. 15. Reduktionsmål og scenarier
+#### Nr. 15. Reduktionsmål og klimaplan
 
 - **Side og felt:** `/produkt/reduktionsmaal-og-scenarier`. CMS-nøgle `page.produkt.reduktionsmaal-og-scenarier`, felt `hero.imageUrl`. Alt-tekst i `hero.imageAlt`.
-- **Motiv:** Gården foran en virksomhed. To kolleger, fx ejeren og værkføreren, står ved en elvarevogn, gerne sat til ladestanderen. Den ene holder en tablet med scenariet, den anden kigger med. Arbejdsjakker i dæmpede farver. Varevognen uden firmanavn, og bilmærket må ikke fylde.
+- **Motiv:** Gården foran en virksomhed. To kolleger, fx ejeren og værkføreren, står ved en elvarevogn, gerne sat til ladestanderen. Den ene holder en tablet med målkurven, den anden kigger med. Arbejdsjakker i dæmpede farver. Varevognen uden firmanavn, og bilmærket må ikke fylde.
 - **Skærm:** S6 på tabletten.
 - **Komposition og stemning:** De to og tabletten i højre tredjedel. Varevognen bag dem, venstre side er en rolig facade eller hæk. Overskyet vejr eller skygge, så skærmen kan ses, og ingen hårde skygger. Ryddelig gård, varevognen parkeret lige. Blå.
 - **Format:** Landskab 3:2, mindst 2.400 px bred.

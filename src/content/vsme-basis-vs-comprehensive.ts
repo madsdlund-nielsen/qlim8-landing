@@ -145,7 +145,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'VSME Comprehensive i praksis for samme virksomhed: Basis-data er stadig grundlaget, men dertil kommer mindst tre faser. Først en strategiproces, hvor ledelsen definerer reduktionsmål og handlinger, typisk en workshop på en halv eller hel dag. Derefter scenario-modellering, hvor I tester forskellige tiltag og deres effekt: udskiftning af bilflåde, energirenovering, leverandørskift, og lignende. Det er den proces, vi har bygget vores Scenario Builder til, fordi det er det, der konkret kan automatiseres med ordentlig data. Og endelig dokumentation i de specifikke disclosures C1-C7 efter EFRAG\'s Supporting Guides: det er typisk her, en konsulent eller intern facilitator gør størst forskel, fordi det handler om at oversætte strategi til den rigtige form.',
+      text: 'VSME Comprehensive i praksis for samme virksomhed: Basis-data er stadig grundlaget, men dertil kommer mindst tre faser. Først en strategiproces, hvor ledelsen definerer reduktionsmål og handlinger, typisk en workshop på en halv eller hel dag. Derefter en plan for tiltagene, hvor I vælger de tiltag, der skal bringe jer til målet, og regner på deres effekt: udskiftning af bilflåde, energirenovering og lignende. Den del har vi bygget reduktionsmål og et katalog med tiltag til, fordi det er det, der konkret kan regnes på med ordentlig data. Og endelig dokumentation i de specifikke disclosures C1-C7 efter EFRAG\'s Supporting Guides: det er typisk her, en konsulent eller intern facilitator gør størst forskel, fordi det handler om at oversætte strategi til den rigtige form.',
     },
     {
       type: 'paragraph',
@@ -210,7 +210,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Premium tilføjer VSME Comprehensive med wizard for C1-C7, Reduction Hub til at sætte og spore avancerede reduktionsmål over tid, samt analyse af kategorier, leverandører og udvikling. Det er bygget til den virksomhed, der har taget skridtet og vil arbejde med ESG strategisk. Scenario Builder, hvor I modellerer reduktionstiltag før I forpligter jer til dem, kommer med Business.',
+      text: 'qlim8 Premium tilføjer VSME Comprehensive med wizard for C1-C7 samt analyse af kategorier, leverandører og udvikling. Det er bygget til den virksomhed, der har taget skridtet og vil arbejde med ESG strategisk. Mål for Scope 1 og 2 sætter I i qlim8, og de skrives ind i C3 sammen med de tiltag, I har knyttet til dem. Hvilke reduktionsfunktioner der følger med hver pakke, står på /priser.',
     },
     {
       type: 'paragraph',

@@ -46,7 +46,7 @@ export const HUB_FAQ_SEED: Record<MarketingCollection, FaqItem[]> = {
   produkt: [
     {
       q: "Hvad kan jeg bruge qlim8 til?",
-      a: "qlim8 samler klimaregnskabet ét sted: et dashboard med overblik, udforskning af data bag tallene, rapportering (Excel, PDF, VSME) klar til revisor og bank, samt tiltag, scenarier, revisor-adgang og leverandørkæde, så klimaregnskabet bliver et arbejdsredskab hele året, ikke kun en årlig rapport.",
+      a: "qlim8 samler klimaregnskabet ét sted: et dashboard med overblik, udforskning af data bag tallene, rapportering (Excel, PDF, VSME) klar til revisor og bank, samt reduktionsmål og tiltag, revisor-adgang og leverandørkæde, så klimaregnskabet bliver et arbejdsredskab hele året, ikke kun en årlig rapport.",
     },
     {
       q: "Kan jeg se platformen, før vi beslutter os?",

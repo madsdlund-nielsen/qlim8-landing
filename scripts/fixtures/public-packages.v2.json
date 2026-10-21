@@ -300,8 +300,20 @@
         }
       },
       {
-        "key": "reductionHub",
-        "label": "Reduction Hub (reduktionsmål)",
+        "key": "reductionGoals",
+        "label": "Reduktionsmål på kategorier",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionGoals.scope",
+        "label": "Reduktionsmål på scope",
         "status": "live",
         "cells": {
           "free": false,
@@ -312,8 +324,44 @@
         }
       },
       {
-        "key": "scenarioBuilder",
-        "label": "Scenario Builder",
+        "key": "reductionActions",
+        "label": "Reduktionstiltag",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionGoals.intensity",
+        "label": "Intensitetsmål",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionPlan.bau",
+        "label": "Business-as-usual og planlinje",
+        "status": "live",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionGoals.scope3",
+        "label": "Scope 3-mål",
         "status": "live",
         "cells": {
           "free": false,
