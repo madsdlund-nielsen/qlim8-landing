@@ -54,7 +54,7 @@ export default function Page() {
           <p className="text-lead text-foreground max-w-(--measure-body)">
             qlim8's MCP-server eksponerer <strong>32 kuraterede tools</strong>, 3 resources og 3
             prompts, fra emissions-opsummeringer og rapportgenerering til værdikæde, mål,
-            scenarier og webhooks. Hvert tool kræver et specifikt scope, og læse-tools er markeret
+            tiltag og webhooks. Hvert tool kræver et specifikt scope, og læse-tools er markeret
             som sikre at auto-køre.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed max-w-2xl">

@@ -1061,7 +1061,7 @@ export const IN_MCP: MarketingPageCopy = {
     {
       title: "32 tools på tværs af dit klimaregnskab",
       body:
-        "Assistenten kan hente emissioner (fx get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), generere rapporter, oprette mål, liste leverandører og planlægge reduktioner via scenarier og tiltag.",
+        "Assistenten kan hente emissioner (fx get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), generere rapporter, oprette mål og følge deres fremdrift, liste leverandører og tilføje tiltag fra kataloget til et mål.",
     },
     {
       title: "Naturligt sprog, live tal",
@@ -1110,7 +1110,7 @@ export const IN_MCP: MarketingPageCopy = {
       {
         title: "3. Generér og handl",
         body:
-          "Bed assistenten generere en rapport, oprette et mål eller udkaste et reduktionsscenarie. Muterende tools kræver det rette scope.",
+          "Bed assistenten generere en rapport, oprette et mål eller tilføje et tiltag fra kataloget. Muterende tools kræver det rette scope.",
       },
       {
         title: "4. Færdig rapport",
@@ -1142,7 +1142,7 @@ export const IN_MCP: MarketingPageCopy = {
       },
       {
         q: "Hvilke tools findes der?",
-        a: "De 32 tools spænder fra emissions-opslag (get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), aktiviteter og rapporter til leverandører, mål, emissionsfaktorer, scenarier og tiltag, PCF-records, afdelinger og webhooks. Den fulde liste med scopes står i /docs/mcp-tools.",
+        a: "De 32 tools spænder fra emissions-opslag (get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), aktiviteter og rapporter til leverandører, mål og deres fremdrift, tiltag og tiltagskataloget, emissionsfaktorer, PCF-records, afdelinger og webhooks. Den fulde liste med scopes står i /docs/mcp-tools.",
       },
       {
         q: "Kan assistenten hjælpe med VSME-rapporten?",
@@ -1154,7 +1154,7 @@ export const IN_MCP: MarketingPageCopy = {
       },
       {
         q: "Kræver MCP en bestemt plan?",
-        a: "MCP-adgang følger pakken, og hvilke pakker der giver adgang, står på /priser. Serveren deler nøgle- og scope-model med REST-API'et, og enkelte tools kræver desuden den funktion, de bruger, fx scenarier. Skriv til os via /kontakt, hvis du er i tvivl.",
+        a: "MCP-adgang følger pakken, og hvilke pakker der giver adgang, står på /priser. Serveren deler nøgle- og scope-model med REST-API'et, og enkelte tools kræver desuden den funktion, de bruger, fx tiltag. Skriv til os via /kontakt, hvis du er i tvivl.",
       },
     ],
   },
@@ -1267,7 +1267,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
     {
       title: "Mål og reduktioner i samme samtale",
       body:
-        "list_targets og create_target dækker VSME's B4-reduktionsmål, og scenarie-toolsene lader assistenten udkaste en reduktionsplan, du kan tage stilling til bagefter.",
+        "list_targets og create_target dækker VSME's B4-reduktionsmål, get_target_progress viser, hvor et mål står, og tiltags-toolsene lader assistenten tilføje tiltag fra kataloget til et mål, så du kan tage stilling til dem bagefter.",
     },
     {
       title: "Ingen integration at bygge",
@@ -1323,7 +1323,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
       },
       {
         q: "Kræver det en bestemt plan?",
-        a: "Både VSME-rapporten og MCP-adgangen følger pakken. Pakkeindholdet kan ændre sig, så det sikre sted at se det er /priser. Enkelte tools kræver desuden den funktion, de bruger, fx scenarier eller leverandørkæden.",
+        a: "Både VSME-rapporten og MCP-adgangen følger pakken. Pakkeindholdet kan ændre sig, så det sikre sted at se det er /priser. Enkelte tools kræver desuden den funktion, de bruger, fx tiltag eller leverandørkæden.",
       },
       {
         q: "Kan assistenten ændre mine tal ved et uheld?",

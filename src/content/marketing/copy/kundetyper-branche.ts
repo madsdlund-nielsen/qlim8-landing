@@ -453,7 +453,7 @@ export const KT_TRANSPORT: MarketingPageCopy = {
       },
       {
         q: "Kan jeg regne på et skift fra diesel til el?",
-        a: "Ja, for personbiler og varevogne. Under Scenarier i qlim8 tester du, hvad et skift fra diesel til el betyder, og du kan sætte et reduktionsmål med basisår og målår. Lastbiler og HVO er ikke med i scenarierne i dag. Se pakkerne for, hvad der følger med.",
+        a: "Ja, for personbiler. Du kan sætte et reduktionsmål med basisår og målår og tilføje tiltaget \"Elbil i stedet for dieselbil\" fra kataloget. Skiftet regnes netto: dieselforbruget i Scope 1 falder, og den ekstra strøm til bilerne lægges til i Scope 2. Tallene i kataloget gælder personbiler i mellemklassen. Varevogne, lastbiler og HVO er ikke med i kataloget i dag. Se pakkerne for, hvad der følger med.",
       },
       {
         q: "Hvor lang tid tager det, og binder jeg mig til noget?",
@@ -769,7 +769,7 @@ export const KT_REVISORER: MarketingPageCopy = {
         bullets: [
           "Ét login til alle kunder, der har inviteret dig",
           "Kategoriskift logges altid med din begrundelse",
-          "Reduktionsmål og Scenarier i samme klimaregnskab",
+          "Forslag til reduktionsmål og tiltag, som kunden godkender",
         ],
       },
       {

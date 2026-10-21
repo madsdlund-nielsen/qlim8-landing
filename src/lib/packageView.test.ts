@@ -194,7 +194,9 @@ test("v3: a card lists its lines in order, the roadmap ones marked planned", () 
     [
       "planlagt: Dobbelt væsentlighedsanalyse (DMA)",
       "planlagt: Rollebaseret adgangskontrol (RBAC)",
-      "bygget: Scenario Builder",
+      "bygget: Intensitetsmål, med forklaring af årets ændring",
+      "bygget: Business-as-usual og planlinje mod målet",
+      "bygget: Scope 3-mål på kategorier med fysiske data",
       "bygget: Synk til Notion og Airtable",
       "bygget: Chat & telefon-support",
       "planlagt: Koncern (flere CVR-numre)",
@@ -202,7 +204,13 @@ test("v3: a card lists its lines in order, the roadmap ones marked planned", () 
   );
   assert.deepEqual(business.items, business.entries.map((e) => e.text));
   // The flat list a reader without highlightItems would use holds built lines only.
-  assert.deepEqual(pkg(v3, "business").highlights, ["Scenario Builder", "Synk til Notion og Airtable", "Chat & telefon-support"]);
+  assert.deepEqual(pkg(v3, "business").highlights, [
+    "Intensitetsmål, med forklaring af årets ændring",
+    "Business-as-usual og planlinje mod målet",
+    "Scope 3-mål på kategorier med fysiske data",
+    "Synk til Notion og Airtable",
+    "Chat & telefon-support",
+  ]);
 });
 
 test("a card from an API without highlightItems lists its built lines, none planned", () => {
@@ -215,7 +223,7 @@ test("v3: the comparison comes by category, roadmap rows marked; v2 has none and
   const sections = comparisonSections(v3)!;
   assert.deepEqual(sections.map((s) => s.label), ["Views", "Analyser", "Funktioner", "Integrationer", "Rapporter", "Admin"]);
   const rows = sections.flatMap((s) => s.rows);
-  assert.equal(rows.length, 43);
+  assert.equal(rows.length, 47);
   assert.deepEqual(rows.filter((r) => r.status === "planned").map((r) => r.label).sort(), [
     "Dobbelt væsentlighedsanalyse (DMA)",
     "Koncern (flere CVR-numre)",
@@ -231,6 +239,25 @@ test("v3: the comparison comes by category, roadmap rows marked; v2 has none and
   assert.ok(v3.comparison.rows.every((r) => r.status === "live"));
   assert.equal(comparisonSections(v2), null);
   assert.equal(comparisonSections(v1), null);
+});
+
+test("v3: the goals and actions are rows under Funktioner, and no scenario row is left", () => {
+  const rows = comparisonSections(v3)!.flatMap((s) => s.rows);
+  const goalRows = rows.filter((r) => /^reduction/.test(r.key));
+  assert.deepEqual(goalRows.map((r) => r.key), [
+    "reductionGoals",
+    "reductionGoals.scope",
+    "reductionActions",
+    "reductionGoals.intensity",
+    "reductionPlan.bau",
+    "reductionGoals.scope3",
+  ]);
+  assert.ok(goalRows.every((r) => r.status === "live"));
+  assert.ok(!rows.some((r) => /Scenario Builder|Reduction Hub/.test(r.label)), "the old module's rows are gone");
+  // Each step up the lineup keeps what the one below has.
+  const cell = (key: string, p: string) => (goalRows.find((r) => r.key === key)!.cells as Record<string, unknown>)[p];
+  assert.deepEqual(["free", "starter", "premium", "business"].map((p) => cell("reductionGoals", p)), [false, true, true, true]);
+  assert.deepEqual(["free", "starter", "premium", "business"].map((p) => cell("reductionPlan.bau", p)), [false, false, false, true]);
 });
 
 test("resolveCta: under catalog v1 or with no API, a /priser button books a demo", () => {

@@ -265,6 +265,7 @@ export const HOME_COPY: HomeCopy = {
         features: [
           "Alt i Free",
           "VSME Basis-rapport med wizard",
+          "Reduktionsmål på kategorier i scope 1 og 2",
           "Ubegrænsede brugere og revisoradgang",
           "Op til 5 forbindelser, også lønsystemer",
         ],
@@ -277,7 +278,8 @@ export const HOME_COPY: HomeCopy = {
         features: [
           "Alt i Starter",
           "VSME Comprehensive med wizard",
-          "Reduction Hub med avancerede reduktionsmål",
+          "Reduktionsmål på hele scopes, med i VSME-rapportens C3",
+          "Reduktionstiltag: katalog, pakker og overgangsplan",
           "Analyse af kategorier, leverandører og udvikling",
           "Offentlig profil og badge",
           "AI-assistenter via MCP-server",
@@ -289,7 +291,8 @@ export const HOME_COPY: HomeCopy = {
         tag: "Til virksomheder der vil planlægge reduktioner strategisk og have support tæt på.",
         features: [
           "Alt i Premium",
-          "Scenario Builder: test tiltag før du beslutter",
+          "Intensitetsmål, med forklaring af årets ændring",
+          "Business-as-usual og planlinje mod målet",
           "Synk til Notion og Airtable",
           "Chat- og telefonsupport",
         ],

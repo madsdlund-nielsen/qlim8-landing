@@ -131,7 +131,7 @@ other MCP-compatible client can query a company's carbon ledger directly.
 Representative tools: \`get_emissions_summary\`, \`get_emissions_by_scope3_category\`,
 \`get_emission_lineage\`, \`generate_report\`, \`get_report_status\`,
 \`get_report_attestations\`, \`list_suppliers\`, \`get_value_chain_coverage\`,
-\`list_targets\`, \`create_target\`, \`list_scenarios\`, \`create_webhook\`.
+\`list_targets\`, \`create_target\`, \`get_target_progress\`, \`list_actions\`, \`create_webhook\`.
 
 ## VSME reporting
 

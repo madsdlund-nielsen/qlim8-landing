@@ -22,7 +22,7 @@ qlim8 makes carbon accounts for small and medium-sized Danish businesses. The ph
 The pages are written for two kinds of reader, and the photos follow. This is about mood, not a colour filter. Blue never means cold or blue light.
 
 - **Green pages** are warm and close to everyday life. Closer to the person, a little more clutter on the table, coffee and workwear. The reader should think "that looks like us". This covers the homepage, Construction and trades (Byggeri og håndværk), Transport and hauliers (Transport og vognmænd), Manufacturing and industry (Produktion og industri), the two hubs, About and Contact. Platform and overview (Platform og overblik) and Reporting (Rapportering) are mostly green with some blue.
-- **Blue pages** are more structured and calm. A tidy table, papers in order, straight lines in the background, focused looks. The reader should think "this has been done properly". This covers Auditors and advisers (Revisorer og rådgivere), Audit trail and auditor (Audit trail og revisor), VSME report (VSME-rapport), Reduction targets and scenarios (Reduktionsmål og scenarier) and Supply chain (Leverandørkæde).
+- **Blue pages** are more structured and calm. A tidy table, papers in order, straight lines in the background, focused looks. The reader should think "this has been done properly". This covers Auditors and advisers (Revisorer og rådgivere), Audit trail and auditor (Audit trail og revisor), VSME report (VSME-rapport), Reduction targets and climate plan (Reduktionsmål og klimaplan) and Supply chain (Leverandørkæde).
 
 ## Technical requirements
 
@@ -47,7 +47,7 @@ We produce finished screenshots in Calm from the app with demo data. They are pu
 | S3 | An emission line with ID, factor and source, with the voucher beside it | 8, 14 |
 | S4 | The report view with the PDF report | 3, 10, 12 |
 | S5 | The VSME report | 4, 13 |
-| S6 | Scenario: diesel against electric for vans, in tablet format | 15 |
+| S6 | The goal curve of a reduction goal, in tablet format | 15 |
 | S7 | The audit trail (Revisionsspor) | 14 |
 | S8 | Value chain (Værdikæde): the overview of suppliers | 16 |
 | S9 | Energy (Energi): electricity use from Eloverblik | 7 |
@@ -90,7 +90,7 @@ How the screen looks best:
 | 12 | Reporting | `page.produkt.rapportering` · `hero.imageUrl` | 3:2 | Can wait | `qlim8-rapportering-bankraadgiver.jpg` |
 | 13 | VSME report | `page.produkt.vsme-rapport` · `hero.imageUrl` | 3:2 | Can wait | `qlim8-vsme-rapport-ejer.jpg` |
 | 14 | Audit trail and auditor | `page.produkt.audit-trail-og-revisor` · `hero.imageUrl` | 3:2 | Can wait | `qlim8-audit-trail-og-revisor-gennemgang.jpg` |
-| 15 | Reduction targets and scenarios | `page.produkt.reduktionsmaal-og-scenarier` · `hero.imageUrl` | 3:2 | Can wait | `qlim8-reduktionsmaal-og-scenarier-elvarevogn.jpg` |
+| 15 | Reduction targets and climate plan | `page.produkt.reduktionsmaal-og-scenarier` · `hero.imageUrl` | 3:2 | Can wait | `qlim8-reduktionsmaal-og-scenarier-elvarevogn.jpg` |
 | 16 | Supply chain | `page.produkt.leverandoerkaede` · `hero.imageUrl` | 3:2 | Can wait | `qlim8-leverandoerkaede-indkoeber.jpg` |
 | 17 | Contact portrait, all pages and About | `about.images` · `founder` | 4:5 | Before launch | `qlim8-kontaktboks-mads-portraet.jpg` |
 | 18 | About (Om os) | no field yet | 3:2 | Can wait | `qlim8-om-os-mads-hos-kunde.jpg` |
@@ -267,10 +267,10 @@ The alt texts are entered in Danish on the site; each is given in Danish with an
 - **Alt text (as in the copy):** "En revisor og en bogholder ved et lyst træbord gennemgår et klimaregnskab på en bærbar computer i dagslys" (An auditor and a bookkeeper at a light wooden table go through a carbon account on a laptop in daylight.)
 - **File name:** `qlim8-audit-trail-og-revisor-gennemgang.jpg`
 
-#### No. 15. Reduction targets and scenarios
+#### No. 15. Reduction targets and climate plan
 
 - **Page and field:** `/produkt/reduktionsmaal-og-scenarier`. CMS key `page.produkt.reduktionsmaal-og-scenarier`, field `hero.imageUrl`. Alt text in `hero.imageAlt`.
-- **Subject:** The yard in front of a business. Two colleagues, for example the owner and the foreman, stand by an electric van, preferably plugged into the charger. One holds a tablet with the scenario, the other looks on. Work jackets in muted colours. The van without a company name, and the car make must not dominate.
+- **Subject:** The yard in front of a business. Two colleagues, for example the owner and the foreman, stand by an electric van, preferably plugged into the charger. One holds a tablet with the goal curve, the other looks on. Work jackets in muted colours. The van without a company name, and the car make must not dominate.
 - **Screen:** S6 on the tablet.
 - **Composition and mood:** The two and the tablet in the right third. The van behind them, the left side a calm facade or hedge. Overcast weather or shade, so the screen can be seen and there are no hard shadows. Tidy yard, the van parked straight. Blue.
 - **Format:** Landscape 3:2, at least 2,400 px wide.

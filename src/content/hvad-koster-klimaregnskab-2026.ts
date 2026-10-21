@@ -39,7 +39,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'For det fjerde, for de virksomheder der vil videre end ren compliance, en reduktionsstrategi. Reduktionsmål, scenarier for hvad forskellige tiltag betyder, og en plan, der kan dokumenteres overfor bank, kunder og bestyrelse.',
+      text: 'For det fjerde, for de virksomheder der vil videre end ren compliance, en reduktionsstrategi. Reduktionsmål, en beregning af, hvad forskellige tiltag betyder for målet, og en plan, der kan dokumenteres overfor bank, kunder og bestyrelse.',
     },
     { type: 'paragraph', text: 'Det er hvad du køber. Nu til hvad det koster.' },
 
@@ -109,7 +109,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Premium inkluderer alt i Starter plus VSME Comprehensive, analyse, Reduction Hub med avancerede reduktionsmål, offentlig profil og badge, ubegrænsede forbindelser og MCP-integration. Business lægger Scenario Builder og chat- og telefonsupport oveni.',
+      text: 'qlim8 Premium inkluderer alt i Starter plus VSME Comprehensive, analyse, offentlig profil og badge, ubegrænsede forbindelser og MCP-integration. Business lægger chat- og telefonsupport oveni. Hvilke reduktionsfunktioner der følger med hver pakke, står på /priser.',
     },
     {
       type: 'paragraph',

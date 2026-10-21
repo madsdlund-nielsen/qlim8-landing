@@ -73,7 +73,8 @@
         "packageKey": "starter",
         "packageName": "Starter",
         "days": 30
-      }
+      },
+      "upgradeOffer": null
     },
     {
       "key": "starter",
@@ -98,6 +99,7 @@
       "highlights": [
         "5 API-integrationer",
         "VSME Basis-rapport",
+        "Reduktionsmål på kategorier i scope 1 og 2",
         "Konsulent-adgang",
         "Team-administration",
         "PCF/EPD-upload",
@@ -112,6 +114,10 @@
         },
         {
           "label": "VSME Basis-rapport",
+          "status": "live"
+        },
+        {
+          "label": "Reduktionsmål på kategorier i scope 1 og 2",
           "status": "live"
         },
         {
@@ -176,7 +182,8 @@
       "highlights": [
         "Analyse: kategorier, leverandører og udvikling",
         "Offentlig profil & Brag Board badge",
-        "Reduction Hub (reduktionsmål)",
+        "Reduktionsmål på hele scopes, med i VSME-rapportens C3",
+        "Reduktionstiltag: katalog, pakker og overgangsplan",
         "VSME Comprehensive-rapport",
         "MCP-adgang",
         "Slack/Teams-notifikationer",
@@ -194,7 +201,11 @@
           "status": "live"
         },
         {
-          "label": "Reduction Hub (reduktionsmål)",
+          "label": "Reduktionsmål på hele scopes, med i VSME-rapportens C3",
+          "status": "live"
+        },
+        {
+          "label": "Reduktionstiltag: katalog, pakker og overgangsplan",
           "status": "live"
         },
         {
@@ -226,7 +237,9 @@
           "status": "live"
         }
       ],
-      "trialDays": 14
+      "trialDays": 14,
+      "introBoost": null,
+      "upgradeOffer": null
     },
     {
       "key": "business",
@@ -249,7 +262,9 @@
         "url": null
       },
       "highlights": [
-        "Scenario Builder",
+        "Intensitetsmål, med forklaring af årets ændring",
+        "Business-as-usual og planlinje mod målet",
+        "Scope 3-mål på kategorier med fysiske data",
         "Synk til Notion og Airtable",
         "Chat & telefon-support"
       ],
@@ -263,7 +278,15 @@
           "status": "planned"
         },
         {
-          "label": "Scenario Builder",
+          "label": "Intensitetsmål, med forklaring af årets ændring",
+          "status": "live"
+        },
+        {
+          "label": "Business-as-usual og planlinje mod målet",
+          "status": "live"
+        },
+        {
+          "label": "Scope 3-mål på kategorier med fysiske data",
           "status": "live"
         },
         {
@@ -279,7 +302,9 @@
           "status": "planned"
         }
       ],
-      "trialDays": 0
+      "trialDays": 0,
+      "introBoost": null,
+      "upgradeOffer": null
     },
     {
       "key": "enterprise",
@@ -336,7 +361,9 @@
           "status": "planned"
         }
       ],
-      "trialDays": 0
+      "trialDays": 0,
+      "introBoost": null,
+      "upgradeOffer": null
     },
     {
       "key": "revisor",
@@ -360,7 +387,9 @@
       },
       "highlights": [],
       "highlightItems": [],
-      "trialDays": 0
+      "trialDays": 0,
+      "introBoost": null,
+      "upgradeOffer": null
     },
     {
       "key": "konsulent",
@@ -379,7 +408,9 @@
       },
       "highlights": [],
       "highlightItems": [],
-      "trialDays": 0
+      "trialDays": 0,
+      "introBoost": null,
+      "upgradeOffer": null
     }
   ],
   "comparison": {
@@ -485,19 +516,6 @@
         }
       },
       {
-        "key": "scenarioBuilder",
-        "label": "Scenario Builder",
-        "status": "live",
-        "group": "analyses",
-        "cells": {
-          "free": false,
-          "starter": false,
-          "premium": false,
-          "business": true,
-          "enterprise": true
-        }
-      },
-      {
         "key": "activitiesPerPeriod",
         "label": "Posteringer pr. år",
         "status": "live",
@@ -563,14 +581,79 @@
         }
       },
       {
-        "key": "reductionHub",
-        "label": "Reduction Hub (reduktionsmål)",
+        "key": "reductionGoals",
+        "label": "Reduktionsmål på kategorier",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": false,
+          "starter": true,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionGoals.scope",
+        "label": "Reduktionsmål på scope (med i VSME C3)",
         "status": "live",
         "group": "functions",
         "cells": {
           "free": false,
           "starter": false,
           "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionActions",
+        "label": "Reduktionstiltag: katalog, pakker og overgangsplan",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionGoals.intensity",
+        "label": "Intensitetsmål og forklaring af årets ændring",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionPlan.bau",
+        "label": "Business-as-usual og planlinje",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reductionGoals.scope3",
+        "label": "Scope 3-mål på fysiske data",
+        "status": "live",
+        "group": "functions",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
           "business": true,
           "enterprise": true
         }
@@ -952,19 +1035,6 @@
             }
           },
           {
-            "key": "scenarioBuilder",
-            "label": "Scenario Builder",
-            "status": "live",
-            "group": "analyses",
-            "cells": {
-              "free": false,
-              "starter": false,
-              "premium": false,
-              "business": true,
-              "enterprise": true
-            }
-          },
-          {
             "key": "reports.doubleMateriality",
             "label": "Dobbelt væsentlighedsanalyse (DMA)",
             "status": "planned",
@@ -1049,14 +1119,79 @@
             }
           },
           {
-            "key": "reductionHub",
-            "label": "Reduction Hub (reduktionsmål)",
+            "key": "reductionGoals",
+            "label": "Reduktionsmål på kategorier",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": true,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "reductionGoals.scope",
+            "label": "Reduktionsmål på scope (med i VSME C3)",
             "status": "live",
             "group": "functions",
             "cells": {
               "free": false,
               "starter": false,
               "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "reductionActions",
+            "label": "Reduktionstiltag: katalog, pakker og overgangsplan",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": true,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "reductionGoals.intensity",
+            "label": "Intensitetsmål og forklaring af årets ændring",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "reductionPlan.bau",
+            "label": "Business-as-usual og planlinje",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": true,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "reductionGoals.scope3",
+            "label": "Scope 3-mål på fysiske data",
+            "status": "live",
+            "group": "functions",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
               "business": true,
               "enterprise": true
             }

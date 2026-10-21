@@ -90,7 +90,7 @@ export const SOFTWARE_FEATURE_LIST = [
   "Metered electricity consumption from Eloverblik and Energinet",
   "REST API v1 with OpenAPI 3.1 specification and signed webhooks",
   "Tamper-evident audit trail with per-entry source citation",
-  "Reduction targets and scenario planning",
+  "Reduction goals with a goal curve, and actions from a sourced catalog",
   "Auditor access with version-locked report attestations",
   "EU hosting",
 ];

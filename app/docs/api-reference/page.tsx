@@ -22,7 +22,7 @@ const LINKS = [
   {
     href: "https://developers.qlim8.com/api-reference/",
     title: "Interaktiv API-reference",
-    body: "Alle /api/v1-endpoints med parametre, svar-skemaer og eksempler: identity, emissions, factors, audit, suppliers, targets, reports, scenarier og webhooks.",
+    body: "Alle /api/v1-endpoints med parametre, svar-skemaer og eksempler: identity, emissions, factors, audit, suppliers, targets, actions, reports og webhooks.",
   },
   {
     href: "https://developers.qlim8.com/guides/authentication.md",
