@@ -304,7 +304,7 @@ export const HOME_COPY: HomeCopy = {
         features: [
           "Alt i Business",
           "Komplet værdikæde via CVR",
-          "CSRD-rapport",
+          "Dedikeret oversigt over PCF og EPD",
           "Fuld API-adgang",
           "Dedikeret Customer Success Manager",
         ],

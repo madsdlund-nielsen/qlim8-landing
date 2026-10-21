@@ -377,7 +377,7 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
       {
         icon: "FileCheck",
         title: "Bygget på anerkendte standarder",
-        body: "Rapporten bygger på VSME, CSRD (ESRS E1) og GHG-protokollen, så læseren kan se, hvad tallene er opgjort efter.",
+        body: "Rapporten bygger på VSME og GHG-protokollen, så læseren kan se, hvad tallene er opgjort efter.",
       },
       {
         icon: "Eye",
@@ -444,7 +444,7 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
       {
         a: "Bank",
         b: "Hvad er jeres udledning, og hvad bygger tallene på",
-        c: "Udledningen og metoden: VSME, CSRD (ESRS E1) og GHG-protokollen",
+        c: "Udledningen og metoden: VSME og GHG-protokollen",
       },
       {
         a: "Investorer",
@@ -566,7 +566,7 @@ export const PR_VSME: MarketingPageCopy = {
     imageAlt: "En virksomhedsejer ved et træbord med en kop kaffe læser en rapport på sin bærbare computer",
     trustLine: [
       "Basic- og Comprehensive-modulet",
-      "Bygget på VSME, ESRS E1 og GHG-protokollen",
+      "Bygget på VSME og GHG-protokollen",
       "Hver linje kan spores tilbage til grundlaget",
     ],
     microLine: "Ingen kreditkort påkrævet · Personlig hjælp på +45 93 90 13 84",
@@ -581,7 +581,7 @@ export const PR_VSME: MarketingPageCopy = {
       {
         icon: "FileCheck",
         title: "Bygget på standarderne",
-        body: "Rapporten bygger på VSME, CSRD (ESRS E1) og GHG-protokollen.",
+        body: "Rapporten bygger på VSME og GHG-protokollen.",
       },
       {
         icon: "Landmark",
@@ -697,8 +697,8 @@ export const PR_VSME: MarketingPageCopy = {
         body: "Comprehensive bruges, når modtageren vil vide mere om strategi, reduktionsmål, omstilling og klimarisici.\n\nEr I leverandør til en virksomhed, der bruger qlim8, kan I dele jeres VSME Comprehensive-rapport med kunden, når I har takket ja til kundens invitation.",
       },
       {
-        summary: "Fra VSME til CSRD",
-        body: "Rapporten bygger på VSME, CSRD (ESRS E1) og GHG-protokollen, så opgørelsen kan bruges igen, hvis kravene vokser.\n\nEn dobbelt væsentlighedsanalyse er planlagt. I dag kan begrundelsen for de væsentlige emner skrives som fritekst i CSRD-rapporten.",
+        summary: "Når kravene vokser",
+        body: "Rapporten bygger på VSME og GHG-protokollen, så opgørelsen kan bruges igen, hvis kravene vokser.\n\nKlimaregnskabet bag den er det samme, uanset om du sender en VSME-rapport, en ESG-rapport eller et udtræk i Excel. Du skal ikke indsamle tallene forfra.",
       },
     ],
   },
@@ -735,7 +735,7 @@ export const PR_VSME: MarketingPageCopy = {
       },
       {
         q: "Bygger VSME-rapporten i qlim8 på en bankstandard?",
-        a: "Nej. Rapporten bygger på VSME, CSRD (ESRS E1) og GHG-protokollen. Har banken særlige ønsker, så spørg, hvilket VSME-modul den vil have.",
+        a: "Nej. Rapporten bygger på VSME og GHG-protokollen. Har banken særlige ønsker, så spørg, hvilket VSME-modul den vil have.",
       },
       {
         q: "Hvorfor beder kunderne om VSME, når vi ikke er omfattet af CSRD?",
