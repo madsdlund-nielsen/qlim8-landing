@@ -207,7 +207,7 @@ export const KT_BYGGERI: MarketingPageCopy = {
       },
       {
         title: "Hent rapporten, og send den videre",
-        body: "Rapporten bygger på VSME, CSRD (ESRS E1) og GHG-protokollen og kan dannes som PDF eller Excel. Den samme rapport kan sendes til hovedentreprenøren, bygherren og banken. Hver udledningslinje kan spores tilbage til bilaget.",
+        body: "Rapporten bygger på VSME og GHG-protokollen og kan dannes som PDF eller Excel. Den samme rapport kan sendes til hovedentreprenøren, bygherren og banken. Hver udledningslinje kan spores tilbage til bilaget.",
       },
     ],
   },
@@ -449,7 +449,7 @@ export const KT_TRANSPORT: MarketingPageCopy = {
       },
       {
         q: "Kan jeg give en kunde eller speditør vores CO2-tal?",
-        a: "Ja. Du sender rapporten fra qlim8 som PDF eller Excel. Den viser jeres samlede udledning og bygger på VSME, CSRD (ESRS E1) og GHG-protokollen. Det er den samme rapport til alle, ikke tal for en bestemt kunde eller rute. Bruger kunden selv qlim8, kan de invitere jer som leverandør, så du kan dele din VSME Comprehensive-rapport med dem.",
+        a: "Ja. Du sender rapporten fra qlim8 som PDF eller Excel. Den viser jeres samlede udledning og bygger på VSME og GHG-protokollen. Det er den samme rapport til alle, ikke tal for en bestemt kunde eller rute. Bruger kunden selv qlim8, kan de invitere jer som leverandør, så du kan dele din VSME Comprehensive-rapport med dem.",
       },
       {
         q: "Kan jeg regne på et skift fra diesel til el?",
@@ -727,7 +727,7 @@ export const KT_REVISORER: MarketingPageCopy = {
       },
       {
         a: "Rapportering",
-        b: "VSME i Basic-modulet og Comprehensive-modulet. Rapporterne findes som Excel og PDF og bygger på VSME, CSRD (ESRS E1) og GHG-protokollen.",
+        b: "VSME i Basic-modulet og Comprehensive-modulet. Rapporterne findes som Excel og PDF og bygger på VSME og GHG-protokollen.",
         c: "Samme rapport til erklæringsarbejdet, banken og bestyrelsen.",
       },
     ],

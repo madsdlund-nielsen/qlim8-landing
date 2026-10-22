@@ -181,7 +181,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       {
         title: "4. Færdig rapport",
         body:
-          "Tallene lander i dit klimaregnskab, klar til VSME- eller CSRD-rapportering, uden et eneste regneark.",
+          "Tallene lander i dit klimaregnskab, klar til VSME-rapporten, uden et eneste regneark.",
       },
     ],
   },
@@ -338,7 +338,7 @@ export const IN_DINERO: MarketingPageCopy = {
       {
         title: "4. Færdig rapport",
         body:
-          "Dine tal ligger klar i klimaregnskabet til VSME- eller CSRD-rapportering, opdateret dagligt, uden manuelt arbejde.",
+          "Dine tal ligger klar i klimaregnskabet til VSME-rapporten, opdateret dagligt, uden manuelt arbejde.",
       },
     ],
   },
@@ -626,7 +626,7 @@ export const IN_APPELSIN: MarketingPageCopy = {
       {
         title: "3. Færdig rapport",
         body:
-          "Tallene lander i klimaregnskabet, klar til VSME- eller CSRD-rapportering.",
+          "Tallene lander i klimaregnskabet, klar til VSME-rapporten.",
       },
     ],
   },
@@ -786,7 +786,7 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
       {
         title: "4. Færdig rapport",
         body:
-          "Præcist elforbrug står klar i klimaregnskabet til VSME- eller CSRD-rapportering, uden en eneste manuel kWh.",
+          "Præcist elforbrug står klar i klimaregnskabet til VSME-rapporten, uden en eneste manuel kWh.",
       },
     ],
   },
@@ -1115,7 +1115,7 @@ export const IN_MCP: MarketingPageCopy = {
       {
         title: "4. Færdig rapport",
         body:
-          "Resultatet lander i qlim8, klar til VSME- eller CSRD-rapportering, med hvert write sporet i audit-loggen.",
+          "Resultatet lander i qlim8, klar til VSME-rapporten, med hvert write sporet i audit-loggen.",
       },
     ],
   },

@@ -66,7 +66,7 @@ export const ABOUT_COPY: AboutCopy = {
       },
       {
         title: "Hver linje kan forklares",
-        body: "Et tal, du ikke kan forklare, hjælper dig ikke hos banken eller revisoren. Hver udledningslinje har sit eget ID og kan spores tilbage til det bilag eller den måleraflæsning, den bygger på. Revisionssporet kan ikke redigeres eller slettes i programmet, og rapporten bygger på VSME, CSRD (ESRS E1) og GHG-protokollen.",
+        body: "Et tal, du ikke kan forklare, hjælper dig ikke hos banken eller revisoren. Hver udledningslinje har sit eget ID og kan spores tilbage til det bilag eller den måleraflæsning, den bygger på. Revisionssporet kan ikke redigeres eller slettes i programmet, og rapporten bygger på VSME og GHG-protokollen.",
       },
       {
         title: "Ingen telefonsælgere, et direkte nummer",
