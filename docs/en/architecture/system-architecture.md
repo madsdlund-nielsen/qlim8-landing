@@ -639,7 +639,7 @@ _Exports: [SVG](../../diagrams/svg/05-deployment.svg) · [PNG](../../diagrams/pn
 - **App** ships via `deploy.sh` over SSH (`git pull → npm install → playwright install →
   npm run build → npm run db:push --force → backfills → pm2 restart`), then publishes the
   OpenAPI snapshot to the static developer portal.
-- **Landing** ships via GitHub Actions: build a multi-stage Alpine/Node 22 standalone image →
+- **Landing** ships via GitHub Actions: build a multi-stage Alpine/Node 24 standalone image →
   push to GHCR → SCP `docker-compose.yml`+`nginx.conf` → SSH `docker compose pull web && up -d`.
 
 ---

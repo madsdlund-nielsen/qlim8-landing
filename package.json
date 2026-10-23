@@ -34,7 +34,7 @@
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.545.0",
-    "next": "^15.3.2",
+    "next": "^15.5.28",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwind-merge": "^3.3.0",
@@ -44,7 +44,7 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^16.2.11",
     "@tailwindcss/postcss": "^4.1.14",
-    "@types/node": "^22.15.29",
+    "@types/node": "^24.19.2",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "eslint": "^9.39.5",
@@ -53,8 +53,11 @@
     "eslint-plugin-unused-imports": "^4.4.1",
     "globals": "^15.15.0",
     "js-yaml": "^4.3.0",
-    "postcss": "^8.5.4",
+    "postcss": "^8.5.31",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.65.0"
+  },
+  "overrides": {
+    "postcss": "$postcss"
   }
 }
