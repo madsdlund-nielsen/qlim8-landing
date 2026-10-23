@@ -55,7 +55,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
 
       # No install step: both scripts use only built-in fetch (the second one
       # reads this repo's content via node's type stripping, no packages).

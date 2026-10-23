@@ -642,7 +642,7 @@ _Eksporter: [SVG](../../diagrams/svg/05-deployment.svg) · [PNG](../../diagrams/
 - **App'en** udrulles via `deploy.sh` over SSH (`git pull → npm install → playwright install →
   npm run build → npm run db:push --force → backfills → pm2 restart`) og publicerer derefter
   OpenAPI-snapshottet til den statiske developer-portal.
-- **Landing** udrulles via GitHub Actions: byg et multi-stage Alpine/Node 22 standalone-image →
+- **Landing** udrulles via GitHub Actions: byg et multi-stage Alpine/Node 24 standalone-image →
   push til GHCR → SCP `docker-compose.yml`+`nginx.conf` → SSH `docker compose pull web && up -d`.
 
 ---
