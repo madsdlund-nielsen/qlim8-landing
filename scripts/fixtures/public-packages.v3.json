@@ -262,6 +262,7 @@
         "url": null
       },
       "highlights": [
+        "Dobbelt væsentlighedsanalyse (DMA)",
         "Intensitetsmål, med forklaring af årets ændring",
         "Business-as-usual og planlinje mod målet",
         "Scope 3-mål på kategorier med fysiske data",
@@ -271,7 +272,7 @@
       "highlightItems": [
         {
           "label": "Dobbelt væsentlighedsanalyse (DMA)",
-          "status": "planned"
+          "status": "live"
         },
         {
           "label": "Rollebaseret adgangskontrol (RBAC)",
@@ -322,6 +323,7 @@
         "url": null
       },
       "highlights": [
+        "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
         "Komplet værdikæde via CVR",
         "Fuld API-adgang",
         "PCF/EPD dedikeret oversigt",
@@ -329,8 +331,8 @@
       ],
       "highlightItems": [
         {
-          "label": "Kryds-mapping til alle store standarder (CSRD, IFRS, CDP m.fl.)",
-          "status": "planned"
+          "label": "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
+          "status": "live"
         },
         {
           "label": "Komplet værdikæde via CVR",
@@ -511,6 +513,19 @@
           "free": false,
           "starter": false,
           "premium": true,
+          "business": true,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reports.doubleMateriality",
+        "label": "Dobbelt væsentlighedsanalyse (DMA)",
+        "status": "live",
+        "group": "analyses",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
           "business": true,
           "enterprise": true
         }
@@ -828,6 +843,19 @@
         }
       },
       {
+        "key": "reports.crossMapping",
+        "label": "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
+        "status": "live",
+        "group": "reports",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": false,
+          "enterprise": true
+        }
+      },
+      {
         "key": "seats",
         "label": "Brugere",
         "status": "live",
@@ -1037,7 +1065,7 @@
           {
             "key": "reports.doubleMateriality",
             "label": "Dobbelt væsentlighedsanalyse (DMA)",
-            "status": "planned",
+            "status": "live",
             "group": "analyses",
             "cells": {
               "free": false,
@@ -1405,8 +1433,8 @@
           },
           {
             "key": "reports.crossMapping",
-            "label": "Kryds-mapping til alle store standarder (CSRD, IFRS, CDP m.fl.)",
-            "status": "planned",
+            "label": "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
+            "status": "live",
             "group": "reports",
             "cells": {
               "free": false,

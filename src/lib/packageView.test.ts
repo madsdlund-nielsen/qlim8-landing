@@ -192,7 +192,8 @@ test("v3: a card lists its lines in order, the roadmap ones marked planned", () 
   assert.deepEqual(
     business.entries.map((e) => `${e.planned ? "planlagt" : "bygget"}: ${e.text}`),
     [
-      "planlagt: Dobbelt væsentlighedsanalyse (DMA)",
+      // Built since DMA step 4: the app's registry says live, so the same placement is no longer marked.
+      "bygget: Dobbelt væsentlighedsanalyse (DMA)",
       "planlagt: Rollebaseret adgangskontrol (RBAC)",
       "bygget: Intensitetsmål, med forklaring af årets ændring",
       "bygget: Business-as-usual og planlinje mod målet",
@@ -205,12 +206,34 @@ test("v3: a card lists its lines in order, the roadmap ones marked planned", () 
   assert.deepEqual(business.items, business.entries.map((e) => e.text));
   // The flat list a reader without highlightItems would use holds built lines only.
   assert.deepEqual(pkg(v3, "business").highlights, [
+    "Dobbelt væsentlighedsanalyse (DMA)",
     "Intensitetsmål, med forklaring af årets ændring",
     "Business-as-usual og planlinje mod målet",
     "Scope 3-mål på kategorier med fysiske data",
     "Synk til Notion og Airtable",
     "Chat & telefon-support",
   ]);
+});
+
+test("v3: Enterprise lists the cross-mapping as built, worded as what it is, and the roadmap lines still planned", () => {
+  const enterprise = packageFeatures(v3, pkg(v3, "enterprise"));
+  assert.deepEqual(
+    enterprise.entries.map((e) => `${e.planned ? "planlagt" : "bygget"}: ${e.text}`),
+    [
+      "bygget: Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
+      "bygget: Komplet værdikæde via CVR",
+      "bygget: Fuld API-adgang",
+      "bygget: PCF/EPD dedikeret oversigt",
+      "bygget: Dedikeret Customer Success Manager",
+      "planlagt: SSO / SAML",
+      "planlagt: Oppetids-SLA",
+      "planlagt: Leverandørportal",
+    ],
+  );
+  // The old wording promised every standard; no line says so any more.
+  const everywhere = JSON.stringify(v3);
+  assert.ok(!everywhere.includes("alle store standarder"), "the retired cross-mapping label is gone from the answer");
+  assert.ok(pkg(v3, "enterprise").highlights.includes("Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP"));
 });
 
 test("a card from an API without highlightItems lists its built lines, none planned", () => {
@@ -225,9 +248,7 @@ test("v3: the comparison comes by category, roadmap rows marked; v2 has none and
   const rows = sections.flatMap((s) => s.rows);
   assert.equal(rows.length, 47);
   assert.deepEqual(rows.filter((r) => r.status === "planned").map((r) => r.label).sort(), [
-    "Dobbelt væsentlighedsanalyse (DMA)",
     "Koncern (flere CVR-numre)",
-    "Kryds-mapping til alle store standarder (CSRD, IFRS, CDP m.fl.)",
     "Leverandørportal",
     "Oppetids-SLA",
     "Politikker",
@@ -239,6 +260,23 @@ test("v3: the comparison comes by category, roadmap rows marked; v2 has none and
   assert.ok(v3.comparison.rows.every((r) => r.status === "live"));
   assert.equal(comparisonSections(v2), null);
   assert.equal(comparisonSections(v1), null);
+});
+
+test("v3: the materiality assessment is a built row from Business, the cross-mapping a built row for Enterprise only", () => {
+  const rows = comparisonSections(v3)!.flatMap((s) => s.rows);
+  const row = (key: string) => rows.find((r) => r.key === key)!;
+  const cells = (key: string) => ["free", "starter", "premium", "business", "enterprise"].map((p) => (row(key).cells as Record<string, unknown>)[p]);
+  assert.equal(row("reports.doubleMateriality").label, "Dobbelt væsentlighedsanalyse (DMA)");
+  assert.equal(row("reports.doubleMateriality").status, "live");
+  assert.deepEqual(cells("reports.doubleMateriality"), [false, false, false, true, true]);
+  // The label says what it is (the assessment seen through the standards); it names no report and no filing.
+  assert.equal(row("reports.crossMapping").label, "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP");
+  assert.equal(row("reports.crossMapping").status, "live");
+  assert.deepEqual(cells("reports.crossMapping"), [false, false, false, false, true]);
+  // Built, so both are in the flat rows a page without sections lists.
+  const flat = v3.comparison.rows.map((r) => r.key);
+  assert.ok(flat.includes("reports.doubleMateriality"));
+  assert.ok(flat.includes("reports.crossMapping"));
 });
 
 test("v3: the goals and actions are rows under Funktioner, and no scenario row is left", () => {
