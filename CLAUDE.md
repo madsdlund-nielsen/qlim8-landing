@@ -407,13 +407,18 @@ Structured data is guarded separately: `check-schema.mjs` fails on any
 `offers` or price in the pages as bundled, and holds the offers the API would
 give `#software` (one per public yearly company price, ex. VAT, none under
 catalog v1) to `scripts/fixtures/public-packages.*.json`, which are the app's
-own API answers for catalog v1, v2 and v3 (regenerate them
-from qlim8-app's `buildPublicPackages(buildLineupV2(...))`, and for v3
-`buildCatalogV3(buildLineupV2(...))` from `server/services/catalogV3.ts`, when
-its shape or the lineup changes; Stripe ids never appear in them). v3 adds
+own API answers for catalog v1, v2 and v3. Regenerate **v3** from qlim8-app's
+`buildPublicPackages("da", indexCatalog(buildCatalogV3(buildLineupV2(ids), ids3), 3))`
+(`server/services/catalogV3.ts`; it imports `server/db`, so run it with a dummy
+`DATABASE_URL`) when its shape, the lineup, or a capability's status or label
+changes. Run against the app commit the committed file came from, it reproduces
+the file byte for byte, so the diff is only what changed (DMA step 4: two
+statuses, one label, two flat rows). Stripe ids never appear in it. v3 adds
 `highlightItems` and `comparison.sections`, which carry the capabilities the
-app has not built marked `planned`; the page shows them as "Planlagt", and
-v1 and v2 stay to prove the site still reads an API without them.
+app has not built marked `planned`; the page shows them as "Planlagt". **v1 and
+v2 are not regenerated**: they are older answers, kept as they were to prove the
+site still reads an API without `highlightItems`, and today's builders no
+longer reproduce them.
 
 CMS-published copy is held to the same rules by `npm run test:contract`
 (`scripts/check-cms-copy.mjs`, legal page keys exempt), because the lint cannot
