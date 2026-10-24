@@ -183,7 +183,7 @@
         "Analyse: kategorier, leverandører og udvikling",
         "Offentlig profil & Brag Board badge",
         "Reduktionsmål på hele scopes, med i VSME-rapportens C3",
-        "Reduktionstiltag, pakker og overgangsplan",
+        "Reduktionstiltag: egne tiltag, pakker og overgangsplan",
         "VSME Comprehensive-rapport",
         "MCP-adgang",
         "Slack/Teams-notifikationer",
@@ -205,7 +205,7 @@
           "status": "live"
         },
         {
-          "label": "Reduktionstiltag, pakker og overgangsplan",
+          "label": "Reduktionstiltag: egne tiltag, pakker og overgangsplan",
           "status": "live"
         },
         {
@@ -623,7 +623,7 @@
       },
       {
         "key": "reductionActions",
-        "label": "Reduktionstiltag, pakker og overgangsplan",
+        "label": "Reduktionstiltag: egne tiltag, pakker og overgangsplan",
         "status": "live",
         "group": "functions",
         "cells": {
@@ -1174,7 +1174,7 @@
           },
           {
             "key": "reductionActions",
-            "label": "Reduktionstiltag, pakker og overgangsplan",
+            "label": "Reduktionstiltag: egne tiltag, pakker og overgangsplan",
             "status": "live",
             "group": "functions",
             "cells": {
