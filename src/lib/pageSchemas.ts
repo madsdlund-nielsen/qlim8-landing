@@ -106,7 +106,7 @@ export const MCP_TOOLS_PAGE_SCHEMA = [
   buildTechArticleSchema({
     headline: "qlim8 MCP tool-reference",
     description:
-      "qlim8's MCP-server (Model Context Protocol) eksponerer 32 tools, 3 resources og 3 prompts til AI-assistenter som Claude og ChatGPT.",
+      "qlim8's MCP-server (Model Context Protocol) eksponerer 31 tools, 3 resources og 3 prompts til AI-assistenter som Claude og ChatGPT.",
     path: "/docs/mcp-tools",
     dateModified: contentDate("/docs/mcp-tools"),
   }),
@@ -139,7 +139,7 @@ export const API_REFERENCE_PAGE_SCHEMA = [
 const API_FAQ = [
   {
     q: "Hvad er qlim8's MCP-server?",
-    a: "Det er en live server, der taler Model Context Protocol, den standard AI-assistenter bruger til at hente data fra et system. Claude, ChatGPT, Claude Code, Cursor og egne agenter kan kalde 32 kuraterede tools og hente emissioner, generere rapporter, oprette mål og planlægge reduktioner. Endpointet er https://app.qlim8.com/api/mcp.",
+    a: "Det er en live server, der taler Model Context Protocol, den standard AI-assistenter bruger til at hente data fra et system. Claude, ChatGPT, Claude Code, Cursor og egne agenter kan kalde 31 kuraterede tools og hente emissioner, generere rapporter, oprette mål og planlægge reduktioner. Endpointet er https://app.qlim8.com/api/mcp.",
   },
   {
     q: "Hvordan forbinder jeg uden en API-nøgle?",
@@ -147,7 +147,7 @@ const API_FAQ = [
   },
   {
     q: "Kan jeg læse tool-kataloget programmatisk?",
-    a: "Ja. https://app.qlim8.com/api/mcp/schema er et uautentificeret discovery-dokument med alle 32 tools, deres scopes, annotationer og konventioner for paginering, datoer og fejl.",
+    a: "Ja. https://app.qlim8.com/api/mcp/schema er et uautentificeret discovery-dokument med alle 31 tools, deres scopes, annotationer og konventioner for paginering, datoer og fejl.",
   },
   {
     q: "Kan en AI-agent lave en VSME-rapport?",

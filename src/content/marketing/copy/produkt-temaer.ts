@@ -51,7 +51,7 @@ export const PRODUKT_HUB_COPY: MarketingHubCopy = {
     },
     {
       title: "Mere end en årsrapport",
-      body: "Sæt reduktionsmål på dine egne tal, følg dem år for år, og planlæg tiltag fra et katalog med kilder, før du beslutter dig.",
+      body: "Sæt reduktionsmål på dine egne tal, følg dem år for år, og planlæg dine egne tiltag, før du beslutter dig.",
     },
   ],
   trust: {
@@ -983,7 +983,7 @@ export const PR_REDUKTION: MarketingPageCopy = {
   hero: {
     eyebrow: "Strategi og plan",
     title: "Fra klimaregnskab til en plan, du kan følge",
-    subtitle: "Sæt et reduktionsmål på dine egne tal, følg det år for år mod en målkurve, og vælg de tiltag, der skal bringe dig derhen, fra et katalog, der viser kilden til tallene.",
+    subtitle: "Sæt et reduktionsmål på dine egne tal, følg det år for år mod en målkurve, og planlæg de tiltag, der skal bringe dig derhen, med dit eget skøn over effekten.",
     primaryCta: {
       label: "Kom gratis i gang, helt uden binding",
       href: PRISER,
@@ -996,14 +996,14 @@ export const PR_REDUKTION: MarketingPageCopy = {
     imageAlt: "To kolleger står ved en elvarevogn i gården foran virksomheden, den ene med en tablet i hånden",
     trustLine: [
       "Mål regnet på dit eget klimaregnskab",
-      "Tiltag fra et katalog med kilder",
+      "Dine egne tiltag, gerne med en rådgiver",
       "Kun hele år tæller i rapporterne",
     ],
     microLine: "Ingen kreditkort påkrævet · Personlig hjælp på +45 93 90 13 84",
   },
   intro: {
     heading: "Et mål behøver ikke være et stort strategiprojekt",
-    body: "Når dit klimaregnskab er på plads, ved du, hvor udledningen kommer fra. Næste skridt er at beslutte, hvor meget den skal ned, og hvad du vil gøre ved det.\n\nI qlim8 regnes målet på det klimaregnskab, du allerede har fra bogføringen, og tiltagene ligger samme sted. Du vælger selv mål og tiltag, og tallene regnes ud fra dine egne data og kilder, du kan læse. Ingen AI sætter en plan sammen for dig. Du skal ikke vedligeholde et regneark ved siden af.",
+    body: "Når dit klimaregnskab er på plads, ved du, hvor udledningen kommer fra. Næste skridt er at beslutte, hvor meget den skal ned, og hvad du vil gøre ved det.\n\nI qlim8 regnes målet på det klimaregnskab, du allerede har fra bogføringen, og tiltagene ligger samme sted. Du vælger selv mål og tiltag og skriver selv dit skøn over effekten ind, gerne med en rådgivers hjælp. Målet regnes ud fra dine egne data og kilder, du kan læse. Ingen AI sætter en plan sammen for dig. Du skal ikke vedligeholde et regneark ved siden af.",
   },
   trust: {
     title: "En plan, der hviler på regnskabet",
@@ -1020,8 +1020,8 @@ export const PR_REDUKTION: MarketingPageCopy = {
       },
       {
         icon: "Calculator",
-        title: "Kilder til tallene",
-        body: "Hvert tiltag i kataloget viser, hvor tallene kommer fra, fx Energistyrelsens standardfaktorer og teknologikataloger. Er et tal et skøn, står det der.",
+        title: "Skøn og faktiske tal holdes adskilt",
+        body: "Effekten af et tiltag er dit eget skøn. Den står som planlagt effekt for sig, ved siden af den faktiske reduktion i dit klimaregnskab, og trækkes aldrig fra de faktiske tal.",
       },
     ],
   },
@@ -1035,12 +1035,12 @@ export const PR_REDUKTION: MarketingPageCopy = {
       body: "Kurven viser udledningen år for år og den lige linje fra basisåret til målet, så du ser, om du er foran, på sporet eller bagud. Året til dato kan ses i appen, men er foreløbigt og tæller aldrig i rapporterne.",
     },
     {
-      title: "Tiltag fra et katalog med kilder",
-      body: "Vælg fx en varmepumpe i stedet for en gas- eller oliekedel, en elbil i stedet for en diesel- eller benzinbil, LED, solceller eller efterisolering. Kilden til tallene står ved hvert tiltag, og du kan beskrive dit eget, hvis kataloget ikke har det, du skal bruge.",
+      title: "Dine egne tiltag, med dit eget skøn",
+      body: "Skriv de tiltag ind, du overvejer eller har besluttet, fx at skifte en gaskedel ud med en varmepumpe. Du angiver selv, hvilken kategori i klimaregnskabet tiltaget berører, hvor meget du forventer, at det giver, og hvornår det starter og slutter.",
     },
     {
-      title: "Skift af brændsel regnes netto",
-      body: "Når en varmepumpe eller en elbil afløser fossilt brændsel, falder udledningen det ene sted og stiger det andet. qlim8 regner skiftet netto og værdisætter den ekstra strøm med virksomhedens egen lokationsbaserede elfaktor.",
+      title: "Gerne med en rådgiver",
+      body: "Vi anbefaler at skrive tiltagene ind sammen med en rådgiver, som kan hjælpe med at vurdere effekten og omkostningerne. Det er en anbefaling og ikke et krav, og du kan lave hele planen selv.",
     },
     {
       title: "Tiltag samlet i pakker",
@@ -1085,7 +1085,7 @@ export const PR_REDUKTION: MarketingPageCopy = {
       {
         a: "Plan",
         b: "Hvad gør vi for at komme derhen?",
-        c: "En varmepumpe i stedet for gaskedlen, regnet netto med den ekstra strøm",
+        c: "Gaskedlen skiftes ud med en varmepumpe, med dit eget skøn over effekten",
       },
       {
         a: "Fremskrivning",
@@ -1110,7 +1110,7 @@ export const PR_REDUKTION: MarketingPageCopy = {
       },
       {
         title: "Tilføj tiltag",
-        body: "Vælg et tiltag fra kataloget, eller beskriv dit eget, og knyt det til målet. Den planlagte effekt står for sig, ved siden af den faktiske reduktion.",
+        body: "Skriv de tiltag ind, du vil gennemføre, med dit eget skøn over effekten, og knyt dem til målet. Den planlagte effekt står for sig, ved siden af den faktiske reduktion.",
       },
       {
         title: "Følg kurven",
@@ -1135,11 +1135,11 @@ export const PR_REDUKTION: MarketingPageCopy = {
       },
       {
         summary: "Fra diesel til el i klimaregnskabet",
-        body: "Brændstof, som virksomheden selv køber til sine køretøjer, tæller i Scope 1. Lader du elbilerne på dine egne målere, flytter udledningen over i Scope 2.\n\nStrømmen hentes fra Eloverblik pr. målepunkt, og det er hele målepunktets forbrug, der indgår. En ladestander skilles altså ikke ud for sig.\n\nI planen regnes et skifte netto. Dieselforbruget i Scope 1 falder, elforbruget i Scope 2 stiger, og den ekstra strøm værdisættes med virksomhedens egen lokationsbaserede elfaktor. Kataloget har en elbil i stedet for en diesel- eller benzinbil, og tallene gælder personbiler i mellemklassen. Varevogne og lastbiler bruger mere og er ikke med i kataloget.",
+        body: "Brændstof, som virksomheden selv køber til sine køretøjer, tæller i Scope 1. Lader du elbilerne på dine egne målere, flytter udledningen over i Scope 2.\n\nStrømmen hentes fra Eloverblik pr. målepunkt, og det er hele målepunktets forbrug, der indgår. En ladestander skilles altså ikke ud for sig.\n\nI planen skriver du selv dit skøn over effekten ind, og en rådgiver kan hjælpe med at vurdere et skifte fra diesel til el.",
       },
       {
         summary: "Hvornår planlagt effekt tæller",
-        body: "Planlagt effekt er en beregning ud fra dit eget klimaregnskab. Den står for sig, ved siden af den faktiske reduktion, og trækkes aldrig fra de faktiske tal. Først når et tiltag virker, viser det sig i dit klimaregnskab og på kurven.\n\nTo tiltag på samme kategori fjerner tilsammen aldrig mere end 100 % af den. Et tiltag, der allerede er gennemført i det seneste hele år, ligger i tallene og tælles ikke en gang til, og et tiltag, der gennemføres midt i året, tæller kun resten af sin effekt. Effekten kan også vokse jævnt over flere år.\n\nBragboard viser milepælene og de nåede mål, mens den offentlige profil med Brag Board-badge er til omverdenen, fx kunder i et udbud.",
+        body: "Planlagt effekt er dit eget skøn, regnet på dit eget klimaregnskab. Den står for sig, ved siden af den faktiske reduktion, og trækkes aldrig fra de faktiske tal. Først når et tiltag virker, viser det sig i dit klimaregnskab og på kurven.\n\nTo tiltag på samme kategori fjerner tilsammen aldrig mere end 100 % af den. Et tiltag, der allerede er gennemført i det seneste hele år, ligger i tallene og tælles ikke en gang til, og et tiltag, der gennemføres midt i året, tæller kun resten af sin effekt. Effekten kan også vokse jævnt over flere år.\n\nBragboard viser milepælene og de nåede mål, mens den offentlige profil med Brag Board-badge er til omverdenen, fx kunder i et udbud.",
       },
       {
         summary: "Forventet forløb uden nye tiltag",
@@ -1168,15 +1168,15 @@ export const PR_REDUKTION: MarketingPageCopy = {
     items: [
       {
         q: "Hvad er forskellen på et reduktionsmål og et tiltag?",
-        a: "Et reduktionsmål er destinationen: hvor meget udledningen skal ned fra et basisår til et målår. Et tiltag er en konkret handling, fx at skifte en gaskedel ud med en varmepumpe. I qlim8 knytter du tiltag til et mål, så deres planlagte effekt står ud for målet. Den planlagte effekt er en beregning og trækkes aldrig fra de faktiske tal.",
+        a: "Et reduktionsmål er destinationen: hvor meget udledningen skal ned fra et basisår til et målår. Et tiltag er en konkret handling, fx at skifte en gaskedel ud med en varmepumpe. I qlim8 knytter du tiltag til et mål, så deres planlagte effekt står ud for målet. Den planlagte effekt er dit eget skøn og trækkes aldrig fra de faktiske tal.",
       },
       {
         q: "Hvilket basisår skal vi vælge til vores reduktionsmål?",
         a: "Vælg et helt år med et pålideligt og komplet klimaregnskab. GHG-protokollen anbefaler at regne basisåret om ved væsentlige ændringer, fx opkøb, frasalg eller en ny beregningsmetode. Er du i tvivl, så aftal valget med din revisor.",
       },
       {
-        q: "Hvilke tiltag findes i kataloget?",
-        a: "Kataloget har en varmepumpe i stedet for en gas- eller oliekedel, en elbil i stedet for en diesel- eller benzinbil, LED-belysning, solceller på taget og efterisolering. Kilden til tallene står ved hvert tiltag, et skøn er markeret som et skøn, og kataloget fortæller også, hvad tallet ikke dækker. Passer dit tiltag ikke ind, kan du beskrive dit eget.",
+        q: "Hvordan tilføjer jeg et tiltag?",
+        a: "Du skriver tiltaget ind selv: hvilken kategori i klimaregnskabet det berører, hvor meget du forventer, at det giver, hvornår det starter og slutter, og gerne investering og driftsomkostning. Effekten er dit eget skøn. Vi anbefaler at få en rådgiver med, men det er ikke et krav.",
       },
       {
         q: "Tæller et tiltag automatisk mod reduktionsmålet?",

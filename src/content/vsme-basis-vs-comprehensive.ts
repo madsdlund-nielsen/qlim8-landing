@@ -145,7 +145,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'VSME Comprehensive i praksis for samme virksomhed: Basis-data er stadig grundlaget, men dertil kommer mindst tre faser. Først en strategiproces, hvor ledelsen definerer reduktionsmål og handlinger, typisk en workshop på en halv eller hel dag. Derefter en plan for tiltagene, hvor I vælger de tiltag, der skal bringe jer til målet, og regner på deres effekt: udskiftning af bilflåde, energirenovering og lignende. Den del har vi bygget reduktionsmål og et katalog med tiltag til, fordi det er det, der konkret kan regnes på med ordentlig data. Og endelig dokumentation i de specifikke disclosures C1-C7 efter EFRAG\'s Supporting Guides: det er typisk her, en konsulent eller intern facilitator gør størst forskel, fordi det handler om at oversætte strategi til den rigtige form.',
+      text: 'VSME Comprehensive i praksis for samme virksomhed: Basis-data er stadig grundlaget, men dertil kommer mindst tre faser. Først en strategiproces, hvor ledelsen definerer reduktionsmål og handlinger, typisk en workshop på en halv eller hel dag. Derefter en plan for tiltagene, hvor I vælger de tiltag, der skal bringe jer til målet, og vurderer deres effekt: udskiftning af bilflåde, energirenovering og lignende. Den del har vi bygget reduktionsmål og en tiltagsplan til: I skriver selv tiltagene ind med jeres eget skøn over effekten, helst sammen med en rådgiver, og knytter dem til målet. Og endelig dokumentation i de specifikke disclosures C1-C7 efter EFRAG\'s Supporting Guides: det er typisk her, en konsulent eller intern facilitator gør størst forskel, fordi det handler om at oversætte strategi til den rigtige form.',
     },
     {
       type: 'paragraph',

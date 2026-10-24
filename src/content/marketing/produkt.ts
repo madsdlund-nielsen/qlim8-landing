@@ -103,10 +103,10 @@ export const PRODUKT_NODES: MarketingNode[] = [
     pageKey: "page.produkt.reduktionsmaal-og-scenarier",
     title: "Reduktionsmål og klimaplan",
     navLabel: "Mål og klimaplan",
-    blurb: "Sæt reduktionsmål på dine egne tal, følg dem mod en målkurve, og vælg tiltag fra et katalog med kilder.",
-    seoTitle: "Reduktionsmål og klimaplan med målkurve og kilder",
+    blurb: "Sæt reduktionsmål på dine egne tal, følg dem mod en målkurve, og saml dine egne tiltag i en plan.",
+    seoTitle: "Reduktionsmål og klimaplan med målkurve og tiltag",
     seoDescription:
-      "Sæt et reduktionsmål på dit eget klimaregnskab, følg det år for år mod en målkurve, og planlæg tiltag fra et katalog med kilder til tallene.",
+      "Sæt et reduktionsmål på dit eget klimaregnskab, følg det år for år mod en målkurve, og planlæg dine egne tiltag, gerne med en rådgivers hjælp.",
     navGroup: "Handling",
     featured: true,
     genericFaq: false,

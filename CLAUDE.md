@@ -61,7 +61,7 @@ and the allowed icon names are in `src/content/marketing/types.ts`, and
 `src/lib/marketingCopy.test.ts` holds every page to them. A paragraph break inside
 a field is a blank line (`src/lib/paragraphs.ts`), so a body stays one editable value.
 
-The MCP tool count ("32 tools", written in about thirty places) and the tool
+The MCP tool count ("31 tools", written in about thirty places) and the tool
 list in `/.well-known/mcp.json` are hand-kept summaries of the app's catalog.
 `scripts/check-mcp-surface.mjs` (in `npm run test:contract`, scheduled) holds
 both to the live `app.qlim8.com/api/mcp/schema`. When the app adds or removes a
