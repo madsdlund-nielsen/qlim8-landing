@@ -2,13 +2,14 @@
 /**
  * Holds what this site says about the MCP server to the server itself.
  *
- * The tool count is written into the copy in about thirty places ("32 tools",
- * "alle 32 MCP-tools"), and /.well-known/mcp.json lists the tools by name.
+ * The tool count is written into the copy in about thirty places ("31 tools",
+ * "alle 31 MCP-tools"), and /.well-known/mcp.json lists the tools by name.
  * Both are hand-kept summaries of the app's catalog (server/mcp/lib/catalog.ts
  * in qlim8-app), and the app changes it with no commit here: October 2026 removed
  * submit_scenario_for_review and added reactivate_webhook and
  * redeliver_webhook_delivery, and the site went on saying 31 and listing the
- * removed tool.
+ * removed tool. The reduction action catalogue went later in the same month,
+ * and list_action_templates with it (32 to 31).
  *
  * So, against the live, unauthenticated discovery document:
  *   - the TOOLS list in app/well-known/mcp.json/route.ts names exactly the

@@ -453,7 +453,7 @@ export const KT_TRANSPORT: MarketingPageCopy = {
       },
       {
         q: "Kan jeg regne på et skift fra diesel til el?",
-        a: "Ja, for personbiler. Du kan sætte et reduktionsmål med basisår og målår og tilføje tiltaget \"Elbil i stedet for dieselbil\" fra kataloget. Skiftet regnes netto: dieselforbruget i Scope 1 falder, og den ekstra strøm til bilerne lægges til i Scope 2. Tallene i kataloget gælder personbiler i mellemklassen. Varevogne, lastbiler og HVO er ikke med i kataloget i dag. Se pakkerne for, hvad der følger med.",
+        a: "Ja. Du kan sætte et reduktionsmål med basisår og målår og tilføje skiftet som et tiltag på dieselforbruget, hvor du selv angiver, hvor meget du forventer, at det giver. Det er dit eget skøn, og en rådgiver kan hjælpe med tallet. Når bilerne kører på el, falder dieselforbruget i Scope 1, og strømmen til bilerne tæller i Scope 2, når de lades på jeres egne målere. Se pakkerne for, hvad der følger med.",
       },
       {
         q: "Hvor lang tid tager det, og binder jeg mig til noget?",

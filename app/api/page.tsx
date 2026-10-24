@@ -31,7 +31,7 @@ const CAPABILITIES = [
   },
   {
     title: "MCP-server (live)",
-    body: "32 kuraterede tools til AI-agenter via Anthropic's Model Context Protocol. Claude og ChatGPT forbinder med OAuth, helt uden API-nøgle, og Claude Code, Cursor, Replit, Lovable og custom JSON-RPC-klienter bruger samme Bearer-nøgler som REST-API'en.",
+    body: "31 kuraterede tools til AI-agenter via Anthropic's Model Context Protocol. Claude og ChatGPT forbinder med OAuth, helt uden API-nøgle, og Claude Code, Cursor, Replit, Lovable og custom JSON-RPC-klienter bruger samme Bearer-nøgler som REST-API'en.",
   },
   {
     title: "Granulær adgang",
@@ -96,7 +96,7 @@ export default function Page() {
         <div className="bg-primary text-primary-foreground rounded-lg p-7 sm:p-10">
           <h2 className="mb-3 text-primary-foreground">MCP: forbind en agent</h2>
           <p className="text-primary-foreground text-body-sm mb-5">
-            Almindelige brugere forbinder Claude eller ChatGPT via OAuth, uden API-nøgle (se MCP Quickstart). Udviklere tilføjer qlim8 i fx Claude Code eller Cursor med samme Bearer-token som REST-API'en. Agenten har derefter adgang til alle 32 tools direkte.
+            Almindelige brugere forbinder Claude eller ChatGPT via OAuth, uden API-nøgle (se MCP Quickstart). Udviklere tilføjer qlim8 i fx Claude Code eller Cursor med samme Bearer-token som REST-API'en. Agenten har derefter adgang til alle 31 tools direkte.
           </p>
           <pre className="bg-primary-hover text-primary-foreground text-xs sm:text-sm rounded-lg p-5 overflow-x-auto">
             <code>{`{

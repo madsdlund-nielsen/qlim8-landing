@@ -28,7 +28,7 @@ const DEVELOPER_DOCS = [
   {
     href: "/docs/mcp-tools",
     title: "MCP tool reference",
-    body: "Alle 32 MCP-tools, 3 resources og 3 prompts, den komplette reference vedligeholdes på developers.qlim8.com.",
+    body: "Alle 31 MCP-tools, 3 resources og 3 prompts, den komplette reference vedligeholdes på developers.qlim8.com.",
   },
   {
     href: "/docs/api-reference",
@@ -131,7 +131,7 @@ export default function Page() {
         <div className="mt-16 bg-primary text-primary-foreground rounded-lg p-7 sm:p-10">
           <h2 className="mb-3 text-primary-foreground">developers.qlim8.com er live</h2>
           <p className="text-primary-foreground text-body-sm mb-5">
-            Udviklerportalen samler den fulde reference: MCP-serverens 32 tools, interaktiv REST
+            Udviklerportalen samler den fulde reference: MCP-serverens 31 tools, interaktiv REST
             API-reference (OpenAPI), auth-, webhook- og migrationsguides.
           </p>
           <Button href="https://developers.qlim8.com" variant="inverted">

@@ -279,7 +279,7 @@ export const HOME_COPY: HomeCopy = {
           "Alt i Starter",
           "VSME Comprehensive med wizard",
           "Reduktionsmål på hele scopes, med i VSME-rapportens C3",
-          "Reduktionstiltag: katalog, pakker og overgangsplan",
+          "Reduktionstiltag, pakker og overgangsplan",
           "Analyse af kategorier, leverandører og udvikling",
           "Offentlig profil og badge",
           "AI-assistenter via MCP-server",
