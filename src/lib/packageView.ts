@@ -53,13 +53,13 @@ export interface PublicPackage {
    */
   highlightItems?: PublicHighlight[];
   /**
-   * Days of free trial on a package bought by card (Starter and Premium), as
+   * Days of free trial on a package bought by card (Basis and Udvidet, keys starter and premium), as
    * the catalog in qlim8-app sets it. Absent from an API that predates it.
    */
   trialDays?: number;
   /**
    * Days of the next package's features a new customer gets on this one
-   * (Free: Starter, Starter: Premium). Absent from an API that predates it,
+   * (Gratis: Basis, Basis: Udvidet). Absent from an API that predates it,
    * and null when the package has none.
    */
   introBoost?: PublicIntroBoost | null;
@@ -160,6 +160,23 @@ export function freeStartHref(data: PublicPackages | null | undefined): string |
   return free?.cta.url ?? null;
 }
 
+/**
+ * The curated plan (badge, tagline, list in the page copy) for an API package.
+ * A plan is matched on its `key` (the package key, which survives a rename of
+ * the display name). A plan without a key, such as one published in /admin,
+ * is matched on its name: the package key (the old display names were the keys
+ * with a capital) or the package's current display name.
+ */
+export function curatedPlanFor<P extends { key?: string; name: string }>(
+  plans: P[],
+  pkg: { key: string; name: string },
+): P | undefined {
+  const norm = (s: string) => s.trim().toLowerCase();
+  const keyed = plans.find((p) => p.key === pkg.key);
+  if (keyed) return keyed;
+  return plans.find((p) => !p.key && (norm(p.name) === pkg.key || norm(p.name) === norm(pkg.name)));
+}
+
 /** One line of a package card, and whether it is a capability not built yet. */
 export interface FeatureEntry {
   text: string;
@@ -171,8 +188,8 @@ export interface FeatureEntry {
  * lines the API gives the package, in its order (built ones, and the roadmap
  * ones marked as such when the API sends them), headed "Alt i <previous>,
  * plus". That keeps every list on the site in step with what the app
- * actually sells; a curated list in the CMS once promised Premium a scenario
- * builder that only Business has. Curated copy is used only for a package the
+ * actually sells; a curated list in the CMS once promised Udvidet a scenario
+ * builder that only Komplet has. Curated copy is used only for a package the
  * API lists nothing for (the advisor packages, which carry no capabilities of
  * their own). `items` holds the lines' texts; `entries` also says which are
  * planned, for a reader that marks them "Planlagt".
@@ -267,7 +284,7 @@ export function groupPackages(data: PublicPackages): Record<PackageGroup, Public
 
 /**
  * Days of free trial a package bought by card starts with, or 0. Only a "buy"
- * package has one: the catalog gives none to Free, Business or Enterprise.
+ * package has one: the catalog gives none to Gratis, Komplet or Koncern.
  */
 export function trialDaysOf(pkg: PublicPackage): number {
   if (pkg.cta.kind !== "buy") return 0;
@@ -294,7 +311,7 @@ function wholeDays(n: unknown): number {
 /**
  * The line about the days of the next package a new customer gets, built from
  * `introBoost`. Only on a package with a signup or buy button (the same rule
- * the API applies); Free adds that no card is asked for. Null when the field
+ * the API applies); Gratis adds that no card is asked for. Null when the field
  * is absent, so an older API changes nothing.
  */
 export function introBoostLine(pkg: PublicPackage): string | null {

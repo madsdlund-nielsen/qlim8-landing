@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const selfServe = isSelfServe(await fetchPublicPackages());
   const title = selfServe ? "Priser: start gratis og uden binding" : "Pakker til klimaregnskab og ESG-rapportering";
   const description = selfServe
-    ? "Start gratis på Free uden binding og uden kreditkort. De betalte pakker er årsaftaler med prisen vist pr. måned ekskl. moms. Ring, hvis du er i tvivl."
+    ? "Kom i gang med Gratis-pakken uden binding og uden kreditkort. De betalte pakker er årsaftaler med prisen vist pr. måned ekskl. moms. Ring, hvis du er i tvivl."
     : "Se qlim8's pakker til klimaregnskab og ESG-rapportering. Tag en uformel snak, eller ring direkte på +45 93 90 13 84, så finder vi pakken, der passer.";
   return {
     title,

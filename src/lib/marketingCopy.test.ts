@@ -13,6 +13,8 @@ const { ALL_MARKETING_NODES, MARKETING_HUBS } = await import("../content/marketi
 const cta = await import("../content/cta.ts");
 const { HOME_COPY, HOME_PAGE_KEY } = await import("../content/copy/home.ts");
 const { ICON_NAMES } = await import("../components/ds/iconNames.ts");
+const { mergeCopy } = await import("./copyMerge.ts");
+const { curatedPlanFor } = await import("./packageView.ts");
 
 type Page = { label: string; copy: Record<string, unknown> };
 const pages: Page[] = [
@@ -114,4 +116,22 @@ test("every node has the sections it names, and sectionOrder lists real, unique 
 test("no em-dash in the bundled marketing copy", () => {
   const text = JSON.stringify(pages.map((p) => p.copy));
   assert.ok(!text.includes(String.fromCharCode(0x2014)), "an em-dash is in the bundled marketing copy");
+});
+
+test("home plans carry the package key they are matched on, one each, and a CMS plan list without keys still merges and matches", () => {
+  const plans = HOME_COPY.pricingTeaser.plans as { key: string; name: string; tag: string; features: string[]; highlighted: boolean; badge?: string }[];
+  const packageKeys = ["free", "starter", "premium", "business", "enterprise"];
+  assert.deepEqual(plans.map((p) => p.key), packageKeys);
+  assert.equal(new Set(plans.map((p) => p.name)).size, plans.length);
+  // what /admin saves: the form fields only, no key
+  const published = plans.map(({ key: _key, ...rest }) => ({ ...rest, tag: `${rest.tag} (CMS)` }));
+  const merged = mergeCopy(HOME_COPY, { pricingTeaser: { plans: published } });
+  assert.deepEqual(merged.pricingTeaser.plans.map((p: { tag: string }) => p.tag), published.map((p) => p.tag), "the published list is used, not the bundled one");
+  for (const key of packageKeys) {
+    // the API names the package like the plan, whichever way the app calls it
+    const bundled = curatedPlanFor(plans, { key, name: "x" });
+    const cms = curatedPlanFor(merged.pricingTeaser.plans, { key, name: plans.find((p) => p.key === key)!.name });
+    assert.ok(bundled && cms, key);
+    assert.equal(cms.tag, `${bundled.tag} (CMS)`, key);
+  }
 });

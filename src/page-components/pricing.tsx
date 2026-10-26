@@ -120,7 +120,7 @@ export default function Pricing({
           <>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-0">
 
-            {/* ── Starter ── */}
+            {/* ── Basis (key starter) ── */}
             <div className="bg-card rounded-lg border border-border shadow-soft p-6 flex flex-col" data-testid="plan-starter">
               <div className="mb-5">
                 <h2 className="mb-1 text-h3">{copy.starter.name}</h2>
@@ -138,7 +138,7 @@ export default function Pricing({
               </ul>
             </div>
 
-            {/* ── Premium ── */}
+            {/* ── Udvidet (key premium) ── */}
             <div className="bg-primary text-primary-foreground rounded-lg border border-primary shadow-soft p-6 flex flex-col" data-testid="plan-premium">
               <div className="mb-5">
                 <h2 className="mb-1 text-h3 text-primary-foreground">{copy.premium.name}</h2>
@@ -156,7 +156,7 @@ export default function Pricing({
               </ul>
             </div>
 
-            {/* ── Enterprise ── */}
+            {/* ── Koncern (key enterprise) ── */}
             <div className="bg-card rounded-lg border border-border shadow-soft p-6 flex flex-col" data-testid="plan-enterprise">
               <div className="mb-5">
                 <h2 className="mb-1 text-h3">{copy.enterprise.name}</h2>

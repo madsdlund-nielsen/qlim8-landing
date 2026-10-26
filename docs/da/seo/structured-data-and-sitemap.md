@@ -69,7 +69,7 @@ grupper, `navGroup` giver dem.
 `buildSoftwareSchema(offers)` får dem fra `offersFromPackages()`
 (`src/lib/packageView.ts`): ét `Offer` pr. offentlig årspris for en
 virksomhedspakke, `billingDuration: P1Y`, `valueAddedTaxIncluded: false`. En
-skjult pris (Business) og en "fra"-pris (Enterprise) får intet. Så længe
+skjult pris (Komplet) og en "fra"-pris (Koncern) får intet. Så længe
 kataloget ikke sælger noget af sig selv (katalog version 1, eller API'et kan
 ikke nås), er der slet ingen offers. `/` og `/priser` udgiver samme entitet
 med samme offers. `src/lib/pricingSchema.ts` (som byggede offers fra

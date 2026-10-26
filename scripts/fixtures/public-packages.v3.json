@@ -6,8 +6,8 @@
   "packages": [
     {
       "key": "free",
-      "name": "Free",
-      "tagline": "Gratis for evigt",
+      "name": "Gratis",
+      "tagline": "Uden udløbsdato",
       "audience": "Freelancere og enkeltmandsvirksomheder",
       "accountType": "company",
       "displayRank": 5,
@@ -71,14 +71,14 @@
       "trialDays": 0,
       "introBoost": {
         "packageKey": "starter",
-        "packageName": "Starter",
+        "packageName": "Basis",
         "days": 30
       },
       "upgradeOffer": null
     },
     {
       "key": "starter",
-      "name": "Starter",
+      "name": "Basis",
       "tagline": null,
       "audience": "Små SMV'er, 1-20 ansatte",
       "accountType": "company",
@@ -148,12 +148,12 @@
       "trialDays": 0,
       "introBoost": {
         "packageKey": "premium",
-        "packageName": "Premium",
+        "packageName": "Udvidet",
         "days": 30
       },
       "upgradeOffer": {
         "toPackageKey": "premium",
-        "toPackageName": "Premium",
+        "toPackageName": "Udvidet",
         "freeMonths": 2,
         "windowDays": 365,
         "firstYearMinor": 1995000
@@ -161,7 +161,7 @@
     },
     {
       "key": "premium",
-      "name": "Premium",
+      "name": "Udvidet",
       "tagline": null,
       "audience": "Etablerede SMV'er, 20-50 ansatte",
       "accountType": "company",
@@ -243,7 +243,7 @@
     },
     {
       "key": "business",
-      "name": "Business",
+      "name": "Komplet",
       "tagline": null,
       "audience": "Mid-market og produktion, 40-120 ansatte",
       "accountType": "company",
@@ -299,7 +299,7 @@
           "status": "live"
         },
         {
-          "label": "Koncern (flere CVR-numre)",
+          "label": "Flere CVR-numre i én organisation",
           "status": "planned"
         }
       ],
@@ -309,7 +309,7 @@
     },
     {
       "key": "enterprise",
-      "name": "Enterprise",
+      "name": "Koncern",
       "tagline": null,
       "audience": "Værdikæder og koncerner, 100+ ansatte",
       "accountType": "company",
@@ -324,7 +324,7 @@
       },
       "highlights": [
         "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
-        "Komplet værdikæde via CVR",
+        "Hele værdikæden via CVR",
         "Fuld API-adgang",
         "PCF/EPD dedikeret oversigt",
         "Dedikeret Customer Success Manager"
@@ -335,7 +335,7 @@
           "status": "live"
         },
         {
-          "label": "Komplet værdikæde via CVR",
+          "label": "Hele værdikæden via CVR",
           "status": "live"
         },
         {
@@ -419,23 +419,23 @@
     "packages": [
       {
         "key": "free",
-        "name": "Free"
+        "name": "Gratis"
       },
       {
         "key": "starter",
-        "name": "Starter"
+        "name": "Basis"
       },
       {
         "key": "premium",
-        "name": "Premium"
+        "name": "Udvidet"
       },
       {
         "key": "business",
-        "name": "Business"
+        "name": "Komplet"
       },
       {
         "key": "enterprise",
-        "name": "Enterprise"
+        "name": "Koncern"
       }
     ],
     "rows": [
@@ -675,7 +675,7 @@
       },
       {
         "key": "supplyChain",
-        "label": "Komplet værdikæde via CVR",
+        "label": "Hele værdikæden via CVR",
         "status": "live",
         "group": "functions",
         "cells": {
@@ -1239,7 +1239,7 @@
           },
           {
             "key": "supplyChain",
-            "label": "Komplet værdikæde via CVR",
+            "label": "Hele værdikæden via CVR",
             "status": "live",
             "group": "functions",
             "cells": {
@@ -1556,7 +1556,7 @@
           },
           {
             "key": "org.multiEntity",
-            "label": "Koncern (flere CVR-numre)",
+            "label": "Flere CVR-numre i én organisation",
             "status": "planned",
             "group": "admin",
             "cells": {

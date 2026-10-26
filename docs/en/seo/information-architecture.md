@@ -169,7 +169,7 @@ before the restructure (`f813686^`); the new places were checked in the copy.
 | `audit-trail-og-revisor` | `audit-trail`, `revisor-adgang` | "audit trail til klimaregnskab", "revisor-adgang til klimaregnskab" | Line ID, trace to the voucher, hash chain, read access and attestation for the auditor (the SEO description) |
 | `reduktionsmaal-og-scenarier` | `tiltag`, `scenarier` | "reduktionstiltag og ROI", "scenarie-planlægger for klima" | Targets on the company's own climate accounts with a goal curve, actions the company enters itself and a projection with no new actions (the SEO description). The page was called "Reduktionsmål og scenarier" and promised a diesel-to-electric test for vans. Scenarios no longer exist in the product (the reduction goals were rebuilt in October 2026), so the title is now "Reduktionsmål og klimaplan". The address keeps "scenarier" on purpose: a new name is a page retirement (redirect, `HISTORIC` and the counts in `redirects.test.mjs`). **The new page does not use the word "ROI"** (checked in the copy), so a search for that exact term lost its landing page, and no page offers a scenario planner any more |
 | `/kundetyper` (hub) | `frisoer` | "klimaregnskab for frisørsalon" | An FAQ answer that the method is the same for a salon, a shop or an office |
-| `/priser` | `store-virksomheder` | "klimaregnskab og CSRD for store virksomheder" | The packages, with Business and Enterprise sold after a conversation |
+| `/priser` | `store-virksomheder` | "klimaregnskab og CSRD for store virksomheder" | The packages, with Complete and Enterprise sold after a conversation |
 
 A merged page whose old titles named a specific noun (a trade, a report type) is
 the one to watch in Search Console: the exact-match phrase now lives in body

@@ -1,8 +1,8 @@
 %% qlim8, Self-serve signup and purchase (Diagram 11). Once the app's catalog
 %% sells something by itself: the visitor starts on Free from the package page and
-%% may buy Starter or Premium later. The landing only links; the account, the
-%% company lookup and the payment are the app's. Business and Enterprise stay on
-%% the demo path (Diagram 8) and are invoiced.
+%% may buy Basic or Comprehensive later (Danish site names: Basis, Udvidet).
+%% The landing only links; the account, the company lookup and the payment are
+%% the app's. Complete and Enterprise stay on the demo path (Diagram 8) and are invoiced.
 sequenceDiagram
   autonumber
   actor V as Visitor / new customer
@@ -33,5 +33,5 @@ sequenceDiagram
   S-->>V: card payment
   S-->>V: redirect to /billing/success
   V->>A: GET /api/billing/checkout/session/:id
-  A->>DB: package = Starter (audited)
+  A->>DB: package = Basic (key starter, audited)
   S-)A: webhook customer.subscription.created / checkout.session.completed

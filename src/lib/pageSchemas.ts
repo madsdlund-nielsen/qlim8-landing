@@ -75,7 +75,7 @@ const HOWTO_SCHEMA = {
     "Forbind Claude eller ChatGPT til qlim8 via MCP (Model Context Protocol) og spørg til dit klimaregnskab i naturligt sprog. Ingen API-nøgle og ingen kode.",
   inLanguage: "da-DK",
   totalTime: "PT5M",
-  tool: [{ "@type": "HowToTool", name: "En qlim8-konto med Premium" }],
+  tool: [{ "@type": "HowToTool", name: "En qlim8-konto med MCP-adgang" }],
   step: [
     { "@type": "HowToStep", position: 1, name: "Før du starter", url: `${BASE_URL}/docs/mcp-quickstart#1` },
     { "@type": "HowToStep", position: 2, name: "Claude (claude.ai, desktop og mobil)", url: `${BASE_URL}/docs/mcp-quickstart#2` },
@@ -151,7 +151,7 @@ const API_FAQ = [
   },
   {
     q: "Kan en AI-agent lave en VSME-rapport?",
-    a: "Ja. generate_report sætter en VSME Basis eller Comprehensive-rapport i gang for et rapportår, og get_report_status følger jobbet. Kaldet er idempotent pr. år og standard. MCP-adgang kræver Premium.",
+    a: "Ja. generate_report sætter en VSME Basis eller Comprehensive-rapport i gang for et rapportår, og get_report_status følger jobbet. Kaldet er idempotent pr. år og standard. Hvilke pakker der giver MCP-adgang, står på /priser.",
   },
 ];
 export const API_PAGE_SCHEMA = [

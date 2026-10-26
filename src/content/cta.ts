@@ -1,7 +1,7 @@
-// The ways a visitor becomes a customer. A company can start on Free and buy
-// Starter or Premium by itself, and that path is the app's: the packages API
-// (src/lib/packages.ts) says which packages a visitor can start or buy, at
-// what price and at which signup URL, so no signup URL and no price is
+// The ways a visitor becomes a customer. A company can start on Gratis (key
+// free) and buy Basis (starter) or Udvidet (premium) by itself, and that path
+// is the app's: the packages API (src/lib/packages.ts) says which packages a
+// visitor can start or buy, at what price and at which signup URL, so no signup URL and no price is
 // written in this site. What lives here is the rest: the demo booking, the
 // contact form, the phone number, the login, and "Kom gratis i gang", which
 // leads to the package page. While the app's catalog sells nothing by itself
@@ -59,7 +59,7 @@ export const FREE_START_CTA = { label: "Kom gratis i gang", href: "/priser" } as
 
 /**
  * The package page scrolled past the free packages to the self-serve group
- * ("Køb selv"), whose first card is Starter (the anchor is set in PackageGroups).
+ * ("Køb selv"), whose first card is Basis (the anchor is set in PackageGroups).
  */
 export const MEMBERSHIP_HREF = "/priser#medlemskab";
 

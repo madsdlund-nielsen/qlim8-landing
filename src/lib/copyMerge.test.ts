@@ -100,13 +100,43 @@ test("does NOT surface unknown keys nested below the page root", () => {
 });
 
 test("keeps optional extra keys on array items (e.g. plan badge)", () => {
-  const defaults = { plans: [{ name: "Starter", cta: "Køb" }] };
+  const defaults = { plans: [{ name: "Basis", cta: "Køb" }] };
   const merged = mergeCopy(defaults, {
     plans: [
-      { name: "Starter", cta: "Køb" },
-      { name: "Premium", cta: "Køb", badge: "Anbefalet" },
+      { name: "Basis", cta: "Køb" },
+      { name: "Udvidet", cta: "Køb", badge: "Anbefalet" },
     ],
   });
   assert.equal(merged.plans.length, 2);
   assert.equal((merged.plans[1] as { badge?: string }).badge, "Anbefalet");
+});
+
+// Identity keys: the home plans carry the package `key`, the /admin editor has
+// no field for it, so a published plan list without it must still merge, and
+// must not inherit the first plan's key.
+test("an override item may omit an identity key: the list merges and the key is not inherited", () => {
+  const defaults = {
+    plans: [
+      { key: "free", name: "Gratis", tag: "t0", features: ["a"], highlighted: false },
+      { key: "starter", name: "Basis", tag: "t1", features: ["b"], highlighted: false },
+    ],
+  };
+  const merged = mergeCopy(defaults, {
+    plans: [
+      { name: "Gratis", tag: "Ny tagline", features: ["a"], highlighted: false },
+      { name: "Basis", tag: "t1", features: ["b", "c"], highlighted: true, badge: "Anbefalet" },
+    ],
+  });
+  assert.equal(merged.plans[0].tag, "Ny tagline");
+  assert.deepEqual(merged.plans[1].features, ["b", "c"]);
+  assert.ok(merged.plans.every((p) => !("key" in p)), "no plan inherits the template's key");
+  assert.equal((merged.plans[1] as { badge?: string }).badge, "Anbefalet");
+});
+
+test("an override item that does carry the identity key keeps it, and other keys stay required", () => {
+  const defaults = { plans: [{ key: "free", name: "Gratis", tag: "t0" }] };
+  const merged = mergeCopy(defaults, { plans: [{ key: "starter", name: "Basis", tag: "t1" }] });
+  assert.equal((merged.plans[0] as { key?: string }).key, "starter");
+  // `tag` is missing: the whole list falls back to the bundled one
+  assert.deepEqual(mergeCopy(defaults, { plans: [{ name: "Basis" }] }), defaults);
 });

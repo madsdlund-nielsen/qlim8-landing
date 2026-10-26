@@ -55,9 +55,26 @@ function itemMatchesTemplate(item: unknown, template: unknown): boolean {
   return false;
 }
 
+/**
+ * Identity keys on array items. A bundled item may carry one (the home plans
+ * carry the package `key`), but the /admin editor has no field for it, so an
+ * override item without it is still a valid item: it is not held to the
+ * template for this key and does not inherit the template's value (that would
+ * make every plan "free"). The consumer falls back to something else, see
+ * `curatedPlanFor`. Every other key stays required.
+ */
+const IDENTITY_KEYS = ["key"];
+
+function withoutIdentityKeys(template: unknown): unknown {
+  if (!isPlainObject(template)) return template;
+  const rest = { ...template };
+  for (const k of IDENTITY_KEYS) delete rest[k];
+  return rest;
+}
+
 function mergeArray(defaults: unknown[], override: unknown): unknown[] {
   if (!Array.isArray(override)) return defaults;
-  const template = defaults[0];
+  const template = withoutIdentityKeys(defaults[0]);
   if (template === undefined) {
     // No template (empty bundled array, e.g. open positions): accept any
     // array of scalars/objects as-is.

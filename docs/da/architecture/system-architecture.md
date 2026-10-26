@@ -527,13 +527,13 @@ sitet kalder aldrig en checkout (§7.5).
 kan nås, er sitet salgsledet: ingen pris, og alle hovedknapper booker en demo. De andre veje ind
 gælder i begge tilstande: Book demo (`/kontakt?emne=demo`, som med JavaScript åbner en dialog: navn og e-mail, derefter antal ansatte; 1-9 går til filmen på `/demo`, 10 eller flere til kalenderen), kontaktformularen på `/kontakt`,
 telefonnummeret og nyhedsbrevet, alle hentet fra `src/content/cta.ts`. "Log ind" linker
-eksisterende kunder til `app.qlim8.com/auth`. Business og Enterprise sælges altid efter en samtale
+eksisterende kunder til `app.qlim8.com/auth`. Komplet og Koncern sælges altid efter en samtale
 og faktureres, se §7.2.
 
 **Fallbacken ligger i koden, ikke i en mock.** Under katalog version 1, eller når pakke-API'et ikke
 kan nås, gør `resolveCta` (`src/lib/packageView.ts`) hver knap, der fører til `/priser`, til Book
 demo, tryghedslinjen og mikrolinjen under en hovedknap bliver til `SALES_LED_TRUST` og
-`SALES_LED_MICRO` (`src/content/cta.ts`; "Ingen kreditkort" gælder kun Free), en sætning med en
+`SALES_LED_MICRO` (`src/content/cta.ts`; "Ingen kreditkort" gælder kun Gratis), en sætning med en
 pris udelades (pristegnet, nedenfor), `#software` har ingen offers, og `/llms.txt` og
 `.md`-tvillingerne viser ingen pris. Den samme vej dækker et rigtigt nedbrud og nødstoppet; der
 skal hverken et flag eller en stub til.
@@ -689,7 +689,7 @@ _Eksporter: [SVG](../../diagrams/svg/07-seq-invoice.svg) · [PNG](../../diagrams
 
 Erstattede den tidligere pricing-checkout-bro (landing → app `/api/stripe/checkout-public` →
 Stripe), som ikke længere findes i nogen af de to repos. Siden selvbetjeningen er det vejen for
-Business og Enterprise og for alle, der vil have en demo først; en virksomhed, der starter selv,
+Komplet og Koncern og for alle, der vil have en demo først; en virksomhed, der starter selv,
 følger §7.5.
 
 ```mermaid
@@ -719,7 +719,7 @@ sequenceDiagram
   V->>A: choose password, log in
   V->>A: /onboarding: company details
   A->>DB: create tenant, subscriptionTier = provisioned package
-  Note over A: Business / Enterprise: invoiced yearly (Stripe send_invoice, created in /admin)
+  Note over A: Complete / Enterprise: invoiced yearly (Stripe send_invoice, created in /admin)
 ```
 
 _Eksporter: [SVG](../../diagrams/svg/08-seq-demo-request.svg) · [PNG](../../diagrams/png/08-seq-demo-request.png) · [Mermaid](../../diagrams/mmd/08-seq-demo-request.mmd) · [Excalidraw](../../diagrams/excalidraw/08-seq-demo-request.excalidraw)_
@@ -827,15 +827,15 @@ sequenceDiagram
   S-->>V: card payment
   S-->>V: redirect to /billing/success
   V->>A: GET /api/billing/checkout/session/:id
-  A->>DB: package = Starter (audited)
+  A->>DB: package = Basic (key starter, audited)
   S-)A: webhook customer.subscription.created / checkout.session.completed
 ```
 
 _Eksporter: [SVG](../../diagrams/svg/11-seq-self-serve-signup.svg) · [PNG](../../diagrams/png/11-seq-self-serve-signup.png) · [Mermaid](../../diagrams/mmd/11-seq-self-serve-signup.mmd) · [Excalidraw](../../diagrams/excalidraw/11-seq-self-serve-signup.excalidraw)_
 
-Signup-URL'en kommer fra pakke-API'et, så landing har ingen. Kontoen starter live på Free med
-virksomhedens egne data (ingen eksempeldata), og et registreringsnummer kan have én Free-organisation.
-En virksomhed, der vil have Starter eller Premium, opretter sig på samme måde (`package` i URL'en er
+Signup-URL'en kommer fra pakke-API'et, så landing har ingen. Kontoen starter live på Gratis-pakken med
+virksomhedens egne data (ingen eksempeldata), og et registreringsnummer kan have én Gratis-organisation.
+En virksomhed, der vil have Basis eller Udvidet, opretter sig på samme måde (`package` i URL'en er
 en hensigt, aldrig en tildeling) og køber pakken fra app'ens pakkeside (`/pricing`); en logget ind
 besøgende, der følger et købslink fra qlim8.com, lander dér med den pakke først. Revisorer og
 konsulenter opretter sig med `type=advisor` og lander på deres portefølje (`/portefolje`); en klient

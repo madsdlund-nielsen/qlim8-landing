@@ -9,8 +9,8 @@
 //
 // The terms and the data processing agreement are accepted at signup by
 // version: qlim8-app's CURRENT_TERMS_VERSION (shared/entitlements/signup.ts)
-// names the date in TERMS_EFFECTIVE below (2026-10-20 is version 2.1). Change
-// the text, change both. Version 2.1 is a DRAFT for the owner and a lawyer to
+// names the date in TERMS_EFFECTIVE below (2026-10-26 is version 2.2). Change
+// the text, change both. Version 2.2 is a DRAFT for the owner and a lawyer to
 // review before it is published or CURRENT_TERMS_VERSION is relied on.
 
 export const LEGAL_COOKIES_PAGE_KEY = "page.legal.cookies";
@@ -26,8 +26,8 @@ export interface LegalCopy {
   footerHtml: string;
 }
 
-/** The day the terms and the data processing agreement version 2.1 apply from. */
-export const TERMS_EFFECTIVE = "20. oktober 2026";
+/** The day the terms and the data processing agreement version 2.2 apply from. */
+export const TERMS_EFFECTIVE = "26. oktober 2026";
 
 const CONTACT_FOOTER = `Kontakt: qlim8 · CVR DK46033736 · Stenløkkevej 12, 5450 Otterup · <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a> · <a href="tel:+4593901384">+45 93 90 13 84</a>`;
 
@@ -106,7 +106,7 @@ export const LEGAL_COOKIES_COPY: LegalCopy = {
 export const LEGAL_TERMS_COPY: LegalCopy = {
   title: "Handelsbetingelser",
   metaLine: "qlim8: ESG-platform (SaaS)",
-  versionLine: `Version: 2.1 · Gældende fra: ${TERMS_EFFECTIVE}`,
+  versionLine: `Version: 2.2 · Gældende fra: ${TERMS_EFFECTIVE}`,
   bodyHtml: `<h2>1. Indledning og aftalegrundlag</h2>
 <p>1.1 Disse handelsbetingelser ("Betingelserne") regulerer aftalen mellem qlim8, CVR-nr. DK46033736, Stenløkkevej 12, 5450 Otterup ("Leverandøren") og den erhvervsdrivende kunde ("Kunden"), der opretter en konto på eller køber adgang til Leverandørens ESG-platform ("Tjenesten").</p>
 <p>1.2 Betingelserne gælder for alle pakker, uanset om Kunden opretter sig selv på qlim8.com eller app.qlim8.com, køber en pakke i Tjenesten eller indgår aftale på grundlag af et tilbud eller en Ordrebekræftelse.</p>
@@ -115,33 +115,33 @@ export const LEGAL_TERMS_COPY: LegalCopy = {
 <p>1.5 Ved uoverensstemmelse mellem en Ordrebekræftelse og Betingelserne går Ordrebekræftelsen forud. Kundens egne indkøbsbetingelser finder ikke anvendelse, medmindre Leverandøren skriftligt har accepteret dem.</p>
 <h2>2. Definitioner</h2>
 <p><strong>"Tjenesten"</strong>: Den ESG-platform, herunder moduler, dashboards, rapporter, integrationer og API'er, som Leverandøren stiller til rådighed som software-as-a-service.</p>
-<p><strong>"Pakke"</strong>: Det abonnement, Kunden har adgang til: Free, Starter, Premium, Business eller Enterprise for virksomheder, eller Revisor og Konsulent for rådgivere. Hvad hver pakke indeholder, fremgår af pakkesiden på <a href="https://qlim8.com/priser">qlim8.com/priser</a> på tidspunktet for købet eller af Ordrebekræftelsen.</p>
+<p><strong>"Pakke"</strong>: Det abonnement, Kunden har adgang til: Gratis, Basis, Udvidet, Komplet eller Koncern for virksomheder, eller Revisor og Konsulent for rådgivere. Hvad hver pakke indeholder, fremgår af pakkesiden på <a href="https://qlim8.com/priser">qlim8.com/priser</a> på tidspunktet for købet eller af Ordrebekræftelsen.</p>
 <p><strong>"Brugere"</strong>: Fysiske personer, som Kunden giver adgang til Tjenesten (typisk medarbejdere og rådgivere).</p>
 <p><strong>"Kundedata"</strong>: Alle data, herunder ESG-data, regnskabsdata, dokumenter og oplysninger, som Kunden eller dennes Brugere uploader, indtaster, henter via en integration eller danner i Tjenesten.</p>
 <p><strong>"Abonnementsperiode"</strong>: Den periode på 12 måneder, som en betalt Pakke løber og betales for ad gangen.</p>
 <p><strong>"Introperiode"</strong>: Den tidsbegrænsede periode (på tidspunktet for disse betingelser 30 dage), hvor Kunden har adgang til funktionerne og grænserne i en højere Pakke end den, Kunden er på eller har betalt for, jf. pkt. 5.</p>
-<p><strong>"Prøveperiode"</strong>: Den gratis periode (på tidspunktet for disse betingelser 14 dage), der går forud for den første Abonnementsperiode på Premium, jf. pkt. 5.</p>
-<p><strong>"Ordrebekræftelse"</strong>: Ved køb i Tjenesten den kvittering og faktura, Kunden modtager pr. e-mail. Ved Business og Enterprise det skriftlige tilbud eller den bekræftelse, der angiver Pakke, pris og særlige vilkår.</p>
+<p><strong>"Prøveperiode"</strong>: Den gratis periode (på tidspunktet for disse betingelser 14 dage), der går forud for den første Abonnementsperiode på Udvidet, jf. pkt. 5.</p>
+<p><strong>"Ordrebekræftelse"</strong>: Ved køb i Tjenesten den kvittering og faktura, Kunden modtager pr. e-mail. Ved Komplet og Koncern det skriftlige tilbud eller den bekræftelse, der angiver Pakke, pris og særlige vilkår.</p>
 <h2>3. Konto og aftalens indgåelse</h2>
-<p>3.1 Kunden opretter en konto med en e-mailadresse, som bekræftes med en kode, og angiver virksomhedens registreringsnummer (CVR-nummer eller EU-momsnummer). Aftalen om Free er indgået, når Kunden har accepteret Betingelserne og Databehandleraftalen ved oprettelsen.</p>
-<p>3.2 Starter og Premium købes i Tjenesten med betalingskort, som Kunden angiver, før Kunden får adgang til Tjenesten på den Pakke. Aftalen om Starter er indgået, når købet er gennemført. Aftalen om Premium er indgået, når Kunden har angivet sit kort og Prøveperioden er startet. Vælger Kunden ikke at gennemføre betalingen, kan Kunden fortsætte på Free i stedet. Business og Enterprise aftales efter dialog med Leverandøren, og aftalen er indgået, når Kunden accepterer tilbuddet eller Ordrebekræftelsen.</p>
-<p>3.3 Der kan oprettes én Free-konto pr. registreringsnummer. Hvert af tilbuddene i pkt. 5 kan kun benyttes én gang pr. registreringsnummer, på tværs af Kundens organisationer. Har organisationen intet registreringsnummer, gælder begrænsningen pr. organisation. Leverandøren kan afvise eller lukke en konto, der er oprettet med urigtige oplysninger.</p>
+<p>3.1 Kunden opretter en konto med en e-mailadresse, som bekræftes med en kode, og angiver virksomhedens registreringsnummer (CVR-nummer eller EU-momsnummer). Aftalen om Gratis-pakken er indgået, når Kunden har accepteret Betingelserne og Databehandleraftalen ved oprettelsen.</p>
+<p>3.2 Basis og Udvidet købes i Tjenesten med betalingskort, som Kunden angiver, før Kunden får adgang til Tjenesten på den Pakke. Aftalen om Basis er indgået, når købet er gennemført. Aftalen om Udvidet er indgået, når Kunden har angivet sit kort og Prøveperioden er startet. Vælger Kunden ikke at gennemføre betalingen, kan Kunden fortsætte på Gratis-pakken i stedet. Komplet og Koncern aftales efter dialog med Leverandøren, og aftalen er indgået, når Kunden accepterer tilbuddet eller Ordrebekræftelsen.</p>
+<p>3.3 Der kan oprettes én Gratis-konto pr. registreringsnummer. Hvert af tilbuddene i pkt. 5 kan kun benyttes én gang pr. registreringsnummer, på tværs af Kundens organisationer. Har organisationen intet registreringsnummer, gælder begrænsningen pr. organisation. Leverandøren kan afvise eller lukke en konto, der er oprettet med urigtige oplysninger.</p>
 <p>3.4 Den person, der accepterer aftalen på vegne af Kunden, indestår for at være berettiget til at forpligte Kunden.</p>
 <h2>4. Pakker</h2>
-<p>4.1 <strong>Free</strong> er gratis og har ingen udløbsdato. Leverandøren kan ændre indholdet af Free eller ophøre med at tilbyde Free med 30 dages varsel. Kunden kan i varslingsperioden eksportere sine Kundedata eller vælge en betalt Pakke.</p>
-<p>4.2 <strong>Starter</strong> og <strong>Premium</strong> købes af Kunden selv og betales med kort. Betalingen sker ved købet af Starter og efter Prøveperioden ved Premium, jf. pkt. 5.</p>
-<p>4.3 <strong>Business</strong> og <strong>Enterprise</strong> aftales efter dialog med Leverandøren og betales mod faktura. De har hverken Introperiode eller Prøveperiode.</p>
+<p>4.1 <strong>Gratis</strong> koster ingenting og har ingen udløbsdato. Leverandøren kan ændre indholdet af Gratis-pakken eller ophøre med at tilbyde den med 30 dages varsel. Kunden kan i varslingsperioden eksportere sine Kundedata eller vælge en betalt Pakke.</p>
+<p>4.2 <strong>Basis</strong> og <strong>Udvidet</strong> købes af Kunden selv og betales med kort. Betalingen sker ved købet af Basis og efter Prøveperioden ved Udvidet, jf. pkt. 5.</p>
+<p>4.3 <strong>Komplet</strong> og <strong>Koncern</strong> aftales efter dialog med Leverandøren og betales mod faktura. De har hverken Introperiode eller Prøveperiode.</p>
 <p>4.4 <strong>Revisor</strong> og <strong>Konsulent</strong> er gratis Pakker til rådgivere, der arbejder i deres klienters data. Den enkelte klient bestemmer, hvad rådgiveren må se og gøre i klientens data, og kan til enhver tid trække adgangen tilbage. Rådgiveren er selv ansvarlig for sit aftaleforhold med klienten.</p>
-<p>4.5 Kunden kan til enhver tid opgradere fra Starter til Premium i Tjenesten. Opgraderingen gælder straks og starter en ny Abonnementsperiode på 12 måneder for Premium fra opgraderingsdagen, hvor den ubrugte del af Starter-abonnementet godskrives. Opgraderingsrabatten i pkt. 5.5 kan gælde. En nedgradering gælder fra udløbet af den igangværende Abonnementsperiode.</p>
+<p>4.5 Kunden kan til enhver tid opgradere fra Basis til Udvidet i Tjenesten. Opgraderingen gælder straks og starter en ny Abonnementsperiode på 12 måneder for Udvidet fra opgraderingsdagen, hvor den ubrugte del af Basis-abonnementet godskrives. Opgraderingsrabatten i pkt. 5.5 kan gælde. En nedgradering gælder fra udløbet af den igangværende Abonnementsperiode.</p>
 <p>4.6 Overskrider Kunden grænserne i sin Pakke, fx efter en nedgradering, låses organisationen ("pakkelås"), indtil forholdet er bragt i orden. Under en pakkelås kan Kunden se og eksportere sine data, fjerne brugere og forbindelser og købe en større Pakke, men ikke tilføje nye data eller danne nye rapporter.</p>
 <h2>5. Introperiode, Prøveperiode og opgraderingsrabat</h2>
-<p>5.1 <strong>Free.</strong> Når Kunden opretter en organisation på Free, får Kunden adgang til funktionerne og grænserne i Starter i en Introperiode, uden at Kunden angiver et betalingskort. Når Introperioden udløber, fortsætter organisationen på Free.</p>
-<p>5.2 <strong>Starter.</strong> Kunden angiver sit betalingskort, før Kunden får adgang til Starter, og årsprisen trækkes straks. Fra købsdagen får Kunden adgang til funktionerne og grænserne i Premium i en Introperiode. Når Introperioden udløber, fortsætter organisationen på Starter. En Introperiode på Free, der er i gang, afløses af Introperioden fra købet af Starter.</p>
-<p>5.3 <strong>Premium.</strong> Kunden angiver sit betalingskort, før Prøveperioden starter. Der trækkes intet under Prøveperioden. Opsiger Kunden ikke inden Prøveperiodens udløb, overgår Premium automatisk til et betalt abonnement med en Abonnementsperiode på 12 måneder, og årsprisen trækkes på kortet ved Prøveperiodens udløb. Kunden kan opsige i Prøveperioden i Tjenesten under Konto (Administrer abonnement). Der trækkes da intet beløb, og organisationen fortsætter på Free. Når Kunden køber Premium, ophører en Introperiode fra Free, og der gives ikke en Introperiode oven på Prøveperioden.</p>
+<p>5.1 <strong>Gratis.</strong> Når Kunden opretter en organisation på Gratis-pakken, får Kunden adgang til funktionerne og grænserne i Basis i en Introperiode, uden at Kunden angiver et betalingskort. Når Introperioden udløber, fortsætter organisationen på Gratis-pakken.</p>
+<p>5.2 <strong>Basis.</strong> Kunden angiver sit betalingskort, før Kunden får adgang til Basis, og årsprisen trækkes straks. Fra købsdagen får Kunden adgang til funktionerne og grænserne i Udvidet i en Introperiode. Når Introperioden udløber, fortsætter organisationen på Basis. En Introperiode på Gratis-pakken, der er i gang, afløses af Introperioden fra købet af Basis.</p>
+<p>5.3 <strong>Udvidet.</strong> Kunden angiver sit betalingskort, før Prøveperioden starter. Der trækkes intet under Prøveperioden. Opsiger Kunden ikke inden Prøveperiodens udløb, overgår Udvidet automatisk til et betalt abonnement med en Abonnementsperiode på 12 måneder, og årsprisen trækkes på kortet ved Prøveperiodens udløb. Kunden kan opsige i Prøveperioden i Tjenesten under Konto (Administrer abonnement). Der trækkes da intet beløb, og organisationen fortsætter på Gratis-pakken. Når Kunden køber Udvidet, ophører en Introperiode fra Gratis-pakken, og der gives ikke en Introperiode oven på Prøveperioden.</p>
 <p>5.4 <strong>Når en Introperiode udløber.</strong> Organisationen har herefter funktionerne og grænserne i den Pakke, Kunden er på eller har betalt for. Overskrider organisationen grænserne i den Pakke, slettes Kundedata ikke. Kundedata kan fortsat ses og eksporteres, men ikke redigeres, og organisationen kan ikke tilføje nye data eller danne nye rapporter ud over grænserne, jf. pkt. 4.6, indtil forholdet er bragt i orden, eller Kunden køber en større Pakke.</p>
-<p>5.5 <strong>Opgraderingsrabat.</strong> En Kunde, der har købt Starter fra og med datoen for ikrafttrædelsen af disse betingelser, kan én gang inden for 365 dage fra Starter-abonnementets start opgradere til Premium med en rabat, også under en Introperiode. Opgraderingen starter en ny Abonnementsperiode for Premium fra opgraderingsdagen. Prisen for den første Abonnementsperiode er årsprisen for Premium fratrukket det antal måneder, der vises ved opgraderingen og på pakkesiden, og den ubrugte del af Starter-abonnementet godskrives. Ved fornyelsen gælder årsprisen uden rabat. Rabatten kan ikke kombineres med en kampagnepris eller anden rabat: Kunden får den største. Starter-abonnementer købt før ikrafttrædelsen er ikke omfattet.</p>
-<p>5.6 <strong>Én gang pr. registreringsnummer.</strong> Introperioden på Free, Introperioden på Starter, Prøveperioden på Premium og opgraderingsrabatten kan hver især kun benyttes én gang pr. registreringsnummer, på tværs af organisationer. Leverandøren kan afvise et tilbud, der søges opnået med urigtige oplysninger eller ved at oprette flere organisationer for samme virksomhed.</p>
-<p>5.7 <strong>Længde og indhold.</strong> Perioderne og rabattens størrelse fremgår af pakkesiden og ved oprettelsen eller købet. Leverandøren kan ændre dem for fremtidige kunder. Free, Business, Enterprise, Revisor og Konsulent har ikke en Prøveperiode, og Business, Enterprise, Revisor og Konsulent har ikke en Introperiode.</p>
+<p>5.5 <strong>Opgraderingsrabat.</strong> En Kunde, der har købt Basis fra og med datoen for ikrafttrædelsen af disse betingelser, kan én gang inden for 365 dage fra Basis-abonnementets start opgradere til Udvidet med en rabat, også under en Introperiode. Opgraderingen starter en ny Abonnementsperiode for Udvidet fra opgraderingsdagen. Prisen for den første Abonnementsperiode er årsprisen for Udvidet fratrukket det antal måneder, der vises ved opgraderingen og på pakkesiden, og den ubrugte del af Basis-abonnementet godskrives. Ved fornyelsen gælder årsprisen uden rabat. Rabatten kan ikke kombineres med en kampagnepris eller anden rabat: Kunden får den største. Basis-abonnementer købt før ikrafttrædelsen er ikke omfattet.</p>
+<p>5.6 <strong>Én gang pr. registreringsnummer.</strong> Introperioden på Gratis-pakken, Introperioden på Basis, Prøveperioden på Udvidet og opgraderingsrabatten kan hver især kun benyttes én gang pr. registreringsnummer, på tværs af organisationer. Leverandøren kan afvise et tilbud, der søges opnået med urigtige oplysninger eller ved at oprette flere organisationer for samme virksomhed.</p>
+<p>5.7 <strong>Længde og indhold.</strong> Perioderne og rabattens størrelse fremgår af pakkesiden og ved oprettelsen eller købet. Leverandøren kan ændre dem for fremtidige kunder. Gratis, Komplet, Koncern, Revisor og Konsulent har ikke en Prøveperiode, og Komplet, Koncern, Revisor og Konsulent har ikke en Introperiode.</p>
 <p>5.8 <strong>Introsamtale.</strong> Leverandøren kan invitere Kunden til en gratis, kort introsamtale. Samtalen er frivillig og er ikke en betingelse for en Introperiode, en Prøveperiode eller en rabat.</p>
 <h2>6. Tjenesten</h2>
 <p>6.1 Tjenesten leveres som standardiseret SaaS via internettet og omfatter de funktioner, der hører til Kundens Pakke.</p>
@@ -155,18 +155,18 @@ export const LEGAL_TERMS_COPY: LegalCopy = {
 <p>7.4 Leverandøren kan suspendere adgangen uden varsel ved væsentligt misbrug eller mistanke om sikkerhedsbrud. Ved manglende betaling gælder pkt. 8.5.</p>
 <h2>8. Pris og betaling</h2>
 <p>8.1 Priserne fremgår af pakkesiden på qlim8.com/priser eller af Ordrebekræftelsen og er angivet i DKK eksklusive moms. Moms opkræves efter gældende regler. Har Kunden et gyldigt momsnummer i et andet EU-land, gælder reglerne om omvendt betalingspligt.</p>
-<p>8.2 Starter og Premium betales årligt forud med betalingskort via Leverandørens betalingsudbyder (Stripe). Kunden giver Leverandøren tilladelse til at trække årsprisen ved købet af Starter, ved Prøveperiodens udløb for Premium og derefter ved hver fornyelse. Kvittering og faktura sendes pr. e-mail og kan hentes i Tjenesten.</p>
-<p>8.3 Business og Enterprise faktureres årligt forud og betales ved bankoverførsel. Betalingsbetingelserne er netto 30 dage fra fakturadato.</p>
+<p>8.2 Basis og Udvidet betales årligt forud med betalingskort via Leverandørens betalingsudbyder (Stripe). Kunden giver Leverandøren tilladelse til at trække årsprisen ved købet af Basis, ved Prøveperiodens udløb for Udvidet og derefter ved hver fornyelse. Kvittering og faktura sendes pr. e-mail og kan hentes i Tjenesten.</p>
+<p>8.3 Komplet og Koncern faktureres årligt forud og betales ved bankoverførsel. Betalingsbetingelserne er netto 30 dage fra fakturadato.</p>
 <p>8.4 Ved opgradering opkræves prisen for den nye Abonnementsperiode straks, med fradrag for den ubrugte del af den hidtidige Abonnementsperiode og for en eventuel opgraderingsrabat, jf. pkt. 4.5 og 5.5.</p>
 <p>8.5 Mislykkes en kortbetaling ved fornyelse, eller er en faktura ikke betalt ved forfald, giver Leverandøren Kunden besked, og Tjenesten fortsætter uændret i 7 dage. Er betalingen ikke sket herefter, låses organisationen som beskrevet i pkt. 4.6, indtil der er betalt. For fakturaer påløber morarenter efter rentelovens § 5 og et rykkergebyr på 100 kr. pr. rykker, jf. rentelovens § 9 b.</p>
 <p>8.6 Leverandøren kan én gang årligt regulere priserne med et varsel på 60 dage. En prisregulering gælder fra Kundens næste Abonnementsperiode. Prisreguleringer ud over udviklingen i nettoprisindekset giver Kunden ret til at opsige aftalen med virkning fra reguleringens ikrafttræden.</p>
 <p>8.7 Betalt vederlag refunderes ikke ved opsigelse eller nedgradering i en igangværende Abonnementsperiode, medmindre andet følger af Betingelserne eller af ufravigelig lovgivning.</p>
 <h2>9. Abonnementsperiode, fornyelse og opsigelse</h2>
 <p>9.1 Betalte Pakker løber i Abonnementsperioder på 12 måneder og fornyes automatisk for 12 måneder ad gangen, medmindre de opsiges.</p>
-<p>9.2 Starter og Premium kan til enhver tid opsiges i Tjenesten under Konto (Administrer abonnement) eller skriftligt til kontakt@qlim8.com. Opsigelsen gælder fra udløbet af den igangværende Abonnementsperiode.</p>
-<p>9.3 Business og Enterprise kan opsiges skriftligt til kontakt@qlim8.com med et varsel på mindst 3 måneder til udløbet af den igangværende Abonnementsperiode. Leverandøren sender cirka 4 måneder før udløbet et fornyelsesvarsel til Kundens fakturamodtager og administratorer med fornyelsesdato, pris og sidste frist for opsigelse.</p>
+<p>9.2 Basis og Udvidet kan til enhver tid opsiges i Tjenesten under Konto (Administrer abonnement) eller skriftligt til kontakt@qlim8.com. Opsigelsen gælder fra udløbet af den igangværende Abonnementsperiode.</p>
+<p>9.3 Komplet og Koncern kan opsiges skriftligt til kontakt@qlim8.com med et varsel på mindst 3 måneder til udløbet af den igangværende Abonnementsperiode. Leverandøren sender cirka 4 måneder før udløbet et fornyelsesvarsel til Kundens fakturamodtager og administratorer med fornyelsesdato, pris og sidste frist for opsigelse.</p>
 <p>9.4 Leverandøren kan opsige en betalt Pakke med 3 måneders varsel til udløbet af en Abonnementsperiode. Ved Kundens væsentlige misligholdelse kan Leverandøren ophæve aftalen uden varsel.</p>
-<p>9.5 Når en betalt Pakke ophører, fortsætter organisationen på Free, så Kundens data bevares. Har organisationen flere brugere eller forbindelser, end Free tillader, gælder pkt. 4.6.</p>
+<p>9.5 Når en betalt Pakke ophører, fortsætter organisationen på Gratis-pakken, så Kundens data bevares. Har organisationen flere brugere eller forbindelser, end Gratis-pakken tillader, gælder pkt. 4.6.</p>
 <p>9.6 Kunden kan til enhver tid bede om at få sin konto lukket. Ved lukning har Kunden 30 dage til at eksportere Kundedata i et standardformat. Herefter sletter Leverandøren Kundedata, medmindre opbevaring følger af lovgivning, jf. Databehandleraftalen.</p>
 <h2>10. Kundens forpligtelser og data</h2>
 <p>10.1 Kunden er ansvarlig for, at Kundedata er korrekte, opdaterede og lovligt indhentede, og for at have det fornødne grundlag for at behandle eventuelle personoplysninger i Kundedata.</p>
@@ -215,7 +215,7 @@ export const LEGAL_TERMS_COPY: LegalCopy = {
 export const LEGAL_PRIVACY_COPY: LegalCopy = {
   title: "Privatlivspolitik",
   metaLine: "qlim8: qlim8.com og ESG-platformen på app.qlim8.com",
-  versionLine: `Version: 2.1 · Senest opdateret: ${TERMS_EFFECTIVE}`,
+  versionLine: `Version: 2.2 · Senest opdateret: ${TERMS_EFFECTIVE}`,
   bodyHtml: `<h2>1. Dataansvarlig</h2>
 <p>Dataansvarlig for behandlingen af dine personoplysninger er:</p>
 <p>qlim8<br />Stenløkkevej 12, 5450 Otterup<br />CVR: DK46033736<br />E-mail: <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a><br />Telefon: <a href="tel:+4593901384">+45 93 90 13 84</a></p>
@@ -264,7 +264,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <li>Stripe får virksomhedens navn, adresse og momsnummer samt e-mailen på den, der køber.</li>
 <li>Vi gemmer, hvilken pakke organisationen har, abonnementets status, hvornår en introperiode eller prøveperiode udløber, og fakturaerne.</li>
 <li>Vi gemmer, at et tilbud (introperiode, prøveperiode eller opgraderingsrabat) er brugt for et registreringsnummer, så hvert tilbud kun gives én gang pr. virksomhed. Hos en enkeltmandsvirksomhed kan registreringsnummeret være knyttet til en person.</li>
-<li>Ved Business og Enterprise: fakturamodtagerens e-mail og et eventuelt indkøbsordrenummer.</li>
+<li>Ved Komplet og Koncern: fakturamodtagerens e-mail og et eventuelt indkøbsordrenummer.</li>
 <li>Frivillig introsamtale: hvis du vælger at booke en samtale på vores bookingside, får vi dit navn, din e-mail og tidspunktet i vores kalender hos Google. Platformen læser ikke kalenderen for at give adgang, og en booking er ikke en betingelse for noget tilbud.</li>
 </ul>
 <h3>3.7 Produktanalyse og fejl</h3>
@@ -349,7 +349,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 export const LEGAL_DPA_COPY: LegalCopy = {
   title: "Databehandleraftale",
   metaLine: "qlim8: ESG-platform (SaaS) · Bilag til handelsbetingelserne",
-  versionLine: `Version: 2.1 · Gældende fra: ${TERMS_EFFECTIVE}`,
+  versionLine: `Version: 2.2 · Gældende fra: ${TERMS_EFFECTIVE}`,
   bodyHtml: `<p>Denne databehandleraftale ("Aftalen") er indgået mellem kunden, der har accepteret qlim8's <a href="/handelsbetingelser">handelsbetingelser</a> ("den dataansvarlige"), og qlim8, CVR-nr. DK46033736, Stenløkkevej 12, 5450 Otterup ("databehandleren"). Aftalen accepteres sammen med handelsbetingelserne, når kunden opretter en konto, og gælder, så længe databehandleren behandler personoplysninger for den dataansvarlige. Aftalen bygger på Datatilsynets standardkontraktbestemmelser efter databeskyttelsesforordningens artikel 28, stk. 3.</p>
 <h2>1. Formål og anvendelse</h2>
 <p>1.1 Aftalen fastsætter parternes rettigheder og forpligtelser, når databehandleren behandler personoplysninger på vegne af den dataansvarlige for at levere ESG-platformen ("Tjenesten") efter handelsbetingelserne.</p>

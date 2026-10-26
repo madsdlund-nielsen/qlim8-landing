@@ -191,7 +191,7 @@ async function main() {
     fail("catalog v1 (every package behind a demo) must give #software no offers");
   }
   // Every self-serve answer the site must read: the lineup as first published
-  // (v2) and catalog version 3, which shows Business' price and not Enterprise's.
+  // (v2) and catalog version 3, which shows Komplet's price and not Koncern's.
   let offers = [];
   for (const name of ["public-packages.v2.json", "public-packages.v3.json"]) {
     const selfServe = fixture(name);
