@@ -185,6 +185,13 @@ export const artikel: Article = {
         'B11: Domme og bøder for korruption og bestikkelse',
       ],
     },
+    {
+      type: 'cta',
+      heading: 'Basismodulet ud fra bogholderiet',
+      text: 'qlim8 henter data direkte fra jeres regnskabssystem (e-conomic, Dinero, Billy eller Uniconta) og samler dem i en rapport efter VS. Se pakkerne, og kom gratis i gang.',
+      buttonText: 'Se priser og pakker',
+      buttonHref: '/priser',
+    },
     { type: 'h3', text: 'Det udvidede modul' },
     {
       type: 'list',
