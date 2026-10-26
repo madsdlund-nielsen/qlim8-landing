@@ -56,7 +56,7 @@ export const HUB_FAQ_SEED: Record<MarketingCollection, FaqItem[]> = {
   integrationer: [
     {
       q: "Hvilke systemer kan qlim8 hente data fra?",
-      a: "qlim8 integrerer direkte med regnskabssystemerne e-conomic, Dinero og Billy, henter elforbrug fra Eloverblik, og tilbyder et fuldt REST API og en MCP server til skræddersyede setups. En Appelsin-integration er på vej.",
+      a: "qlim8 integrerer direkte med regnskabssystemerne e-conomic, Dinero og Billy, henter elforbrug fra Eloverblik, og tilbyder et fuldt REST API og en MCP server til skræddersyede setups. En Appelsin-integration er på vej, og flere er under udvikling til HR og løn, cloud-lagring, ERP og KMD Connect. De er enten i beta eller kommer snart, se oversigten på siden.",
     },
     {
       q: "Skal jeg indtaste data manuelt?",

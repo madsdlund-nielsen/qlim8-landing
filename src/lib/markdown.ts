@@ -300,6 +300,14 @@ export function renderMarketingHub(
         "## Sider i dette afsnit",
         ...children.map((c) => `- [${c.title}](${BASE_URL}/${c.collection}/${c.slug}.md): ${c.blurb}`),
       ].join("\n"),
+    copy.options?.items?.length &&
+      [
+        `## ${copy.options.title}`,
+        copy.options.intro,
+        ...copy.options.items.map((o) => [`### ${o.title}`, o.body, bullets(o.bullets)].filter(Boolean).join("\n\n")),
+      ]
+        .filter(Boolean)
+        .join("\n\n"),
     trustSection(copy.trust),
     contactSection(copy.contact, selfServe),
     faqSection(copy.faq),
