@@ -244,6 +244,8 @@ export interface MarketingHubCopy {
   cardsSubheading?: string;
   /** Optional differentiation columns shown under the cards. */
   differentiators: FeatureItem[];
+  /** Optional grouped overview (no subpages): each item is a group, each bullet "Name: status". */
+  options?: { title: string; intro?: string; items: OptionItem[] };
   trust?: { title: string; items: TrustItem[] };
   contact?: {
     title: string;

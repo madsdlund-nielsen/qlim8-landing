@@ -81,6 +81,25 @@ export default function MarketingHubTemplate({ copy, cards }: { copy: MarketingH
           </div>
         </Section>
 
+        {copy.options && copy.options.items.length > 0 && (
+          <Section>
+            <SectionHead title={copy.options.title} lead={copy.options.intro} />
+            <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+              {copy.options.items.map((o) => (
+                <div key={o.title} className="rounded-lg border border-border bg-card p-6 shadow-soft md:p-8">
+                  <h3 className="mb-2">{o.title}</h3>
+                  <p className="mb-4 text-body-sm text-muted-foreground">{o.body}</p>
+                  <ul className="m-0 grid list-none gap-2 p-0 text-body-sm">
+                    {o.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Section>
+        )}
+
         {copy.differentiators.length > 0 && (
           <Section tone="band">
             <CardGrid>

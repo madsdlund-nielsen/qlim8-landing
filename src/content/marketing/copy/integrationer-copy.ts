@@ -30,7 +30,7 @@ export const INTEGRATIONER_HUB_COPY: MarketingHubCopy = {
   intro: {
     heading: "Et klimaregnskab bygget oven på det regnskab, du allerede fører",
     body:
-      "En klimaplatform er kun noget værd, hvis den taler med det, du allerede bruger. Ellers er det bare et ekstra sted at taste de samme tal ind en gang til. qlim8 forbinder direkte til dansk regnskabssoftware: Dinero, e-conomic og Billy. Så bliver en stor del af dine posteringer til CO₂e-emissioner automatisk, og linjer, som systemet er i tvivl om, lægges til gennemsyn hos dig. Vi henter faktisk elforbrug fra Eloverblik og Energinet, så dine Scope 2-tal er målte i stedet for gættede. Og for udviklere og AI-assistenter er der REST API og en live MCP-server. Vi hjælper gerne med den første tilslutning. Du skifter ikke system: du kobler klimaregnskabet på det, du har.",
+      "En klimaplatform er kun noget værd, hvis den taler med det, du allerede bruger. Ellers er det bare et ekstra sted at taste de samme tal ind en gang til. qlim8 forbinder direkte til dansk regnskabssoftware: Dinero, e-conomic og Billy. Så bliver en stor del af dine posteringer til CO₂e-emissioner automatisk, og linjer, som systemet er i tvivl om, lægges til gennemsyn hos dig. Vi henter faktisk elforbrug fra Eloverblik og Energinet, så dine Scope 2-tal er målte i stedet for gættede. Og for udviklere og AI-assistenter er der REST API og en live MCP-server. Flere integrationer er på vej, blandt andet til HR og løn og cloud-lagring (se oversigten nedenfor). Vi hjælper gerne med den første tilslutning. Du skifter ikke system: du kobler klimaregnskabet på det, du har.",
     bullets: [
       "Dansk regnskabsdata native: vi forstår danske konteringsmønstre, ikke et generisk CSV-flow.",
       "Automatisk kategorisering af posteringer til emissions-kategorier, så du slipper for manuel mapping.",
@@ -41,6 +41,51 @@ export const INTEGRATIONER_HUB_COPY: MarketingHubCopy = {
   cardsHeading: "Vælg din integration",
   cardsSubheading:
     "Regnskab, energi og programmatisk adgang: tilslut det, du har, og lad tallene lande i klimaregnskabet.",
+  options: {
+    title: "Nye integrationer på vej",
+    intro:
+      "Vi bygger flere forbindelser, så tallene kommer fra de systemer, du allerede bruger. Beta betyder, at integrationen er ny og lanceres som beta i appen. Kommer snart betyder, at den er planlagt og endnu ikke kan forbindes.",
+    items: [
+      {
+        title: "Eksport til cloud-lagring",
+        body: "Rapporter gemmes automatisk i en mappe hos Dropbox eller Box, så de ligger klar, hvor dit team allerede arbejder.",
+        bullets: ["Dropbox: Beta", "Box: Beta"],
+      },
+      {
+        title: "HR og løn",
+        body: "Medarbejdertal, køn og afdelinger bruges til den sociale del af VSME og ESRS og til nøgletal pr. medarbejder. qlim8 gemmer kun samlede tal, aldrig data om enkeltpersoner.",
+        bullets: [
+          "BambooHR: Beta",
+          "Deel: Beta",
+          "PeopleForce: Beta",
+          "Gusto: Beta",
+          "Zoho People: Beta",
+          "Mindkey: Kommer snart",
+          "Workday: Kommer snart",
+          "SAP SuccessFactors: Kommer snart",
+        ],
+      },
+      {
+        title: "ERP",
+        body: "Finansposter og indkøb fra dit ERP-system, så de indgår i klimaregnskabet.",
+        bullets: ["SAP S/4HANA: Kommer snart"],
+      },
+      {
+        title: "KMD Connect",
+        body: "Disse KMD-systemer kommer via KMD Connect.",
+        bullets: [
+          "KMD Opus: Kommer snart",
+          "KMD Delta: Kommer snart",
+          "KMD Atrium: Kommer snart",
+          "KMD EnergyKey: Kommer snart",
+          "KMD Elements: Kommer snart",
+          "KMD EasyEnergy: Kommer snart",
+          "KMD CarbonKey: Kommer snart",
+          "KMD Payroll Cloud: Kommer snart",
+        ],
+      },
+    ],
+  },
   differentiators: [
     {
       title: "Dansk regnskabsdata native",
