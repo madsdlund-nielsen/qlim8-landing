@@ -72,7 +72,7 @@ export const INTEGRATIONER_HUB_COPY: MarketingHubCopy = {
       },
       {
         title: "KMD Connect",
-        body: "Disse KMD-systemer kommer via KMD Connect: økonomi og løn (Opus, Payroll Cloud), organisation (Delta), ejendomme (Atrium), energi og forsyning (EnergyKey, Elements, EasyEnergy) og CO2-regnskab (CarbonKey).",
+        body: "Disse KMD-systemer kommer via KMD Connect: økonomi og løn (Opus, Payroll Cloud), organisationsstruktur og P-numre (Delta), ejendomme, arealer og forbrug (Atrium), energi og forsyning (EnergyKey, Elements, EasyEnergy) og CO2-regnskab (CarbonKey).",
         bullets: [
           "KMD Opus: Kommer snart",
           "KMD Delta: Kommer snart",
