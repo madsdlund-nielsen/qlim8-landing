@@ -1,7 +1,7 @@
 // The price token: how a package price may appear in copy without ever being
 // typed there.
 //
-//   [[Starter koster {pris:starter} om måneden, betalt årligt.]]
+//   [[Basis koster {pris:starter} om måneden, betalt årligt.]]
 //   [[Det er {pris:starter:aar} om året.]]
 //
 // A sentence that names a price is wrapped in [[ ... ]] and holds one or more

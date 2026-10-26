@@ -526,7 +526,7 @@ checkout (§7.5).
 be reached, the site is sales-led: no price, and every main button books a demo. The other ways in
 stay in both modes: Book demo (`/kontakt?emne=demo`, which with JavaScript opens a dialog: name and e-mail, then the number of employees; 1-9 goes to the film on `/demo`, 10 or more to the calendar), the contact form on `/kontakt`, the phone
 number and the newsletter, all taken from `src/content/cta.ts`. "Log ind" links existing customers
-to `app.qlim8.com/auth`. Business and Enterprise are always sold after a conversation and invoiced,
+to `app.qlim8.com/auth`. Complete and Enterprise are always sold after a conversation and invoiced,
 see §7.2.
 
 **The fallback is in the code, not in a mock.** Under catalog version 1, or when the packages API
@@ -685,7 +685,7 @@ _Exports: [SVG](../../diagrams/svg/07-seq-invoice.svg) · [PNG](../../diagrams/p
 ### 7.2 Demo request → customer account (landing → app → owner)
 
 This replaced the former pricing checkout bridge (landing → app `/api/stripe/checkout-public` →
-Stripe), which no longer exists on either side. Since self-serve it is the path for Business and
+Stripe), which no longer exists on either side. Since self-serve it is the path for Complete and
 Enterprise and for anyone who wants a demo first; a company that starts on its own follows §7.5.
 
 ```mermaid
@@ -715,7 +715,7 @@ sequenceDiagram
   V->>A: choose password, log in
   V->>A: /onboarding: company details
   A->>DB: create tenant, subscriptionTier = provisioned package
-  Note over A: Business / Enterprise: invoiced yearly (Stripe send_invoice, created in /admin)
+  Note over A: Complete / Enterprise: invoiced yearly (Stripe send_invoice, created in /admin)
 ```
 
 _Exports: [SVG](../../diagrams/svg/08-seq-demo-request.svg) · [PNG](../../diagrams/png/08-seq-demo-request.png) · [Mermaid](../../diagrams/mmd/08-seq-demo-request.mmd) · [Excalidraw](../../diagrams/excalidraw/08-seq-demo-request.excalidraw)_
@@ -823,7 +823,7 @@ sequenceDiagram
   S-->>V: card payment
   S-->>V: redirect to /billing/success
   V->>A: GET /api/billing/checkout/session/:id
-  A->>DB: package = Starter (audited)
+  A->>DB: package = Basic (key starter, audited)
   S-)A: webhook customer.subscription.created / checkout.session.completed
 ```
 
@@ -831,7 +831,7 @@ _Exports: [SVG](../../diagrams/svg/11-seq-self-serve-signup.svg) · [PNG](../../
 
 The signup URL comes from the packages API, so the landing holds none. The account starts live
 on Free with the company's own data (no sample data), and a registration number can hold one Free
-organization. A company that wants Starter or Premium signs up the same way (the `package` in the
+organization. A company that wants Basic or Comprehensive signs up the same way (the `package` in the
 URL is an intention, never a grant) and buys it from the app's package page (`/pricing`); a
 signed-in visitor who follows a buy link from qlim8.com lands there with that package first.
 Auditors and consultants sign up with `type=advisor` and land on their portfolio (`/portefolje`);

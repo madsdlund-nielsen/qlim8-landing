@@ -7,7 +7,7 @@
  * and so do the signup URLs. A price may be written as a token,
  * `[[... {pris:starter} ...]]`, which the site fills from that API (see
  * src/lib/priceTokens.ts); a token outside `[[ ]]` or for an unknown package
- * fails here; Free is free for good, so there is no trial to
+ * fails here; Gratis is free for good, so there is no trial to
  * offer. A stray "fra 695 kr/md" or "14 dages prøveperiode" in copy is the
  * likely way that comes undone; this is the guard against it. The rules
  * themselves live in scripts/lib/salesLed.mjs, shared with the live CMS check

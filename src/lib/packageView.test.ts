@@ -9,6 +9,7 @@ import { DEMO_CTA } from "../content/cta.ts";
 import {
   comparisonSections,
   ctaLabel,
+  curatedPlanFor,
   formatKr,
   freeStartHref,
   groupPackages,
@@ -31,6 +32,23 @@ const v1 = fixture("public-packages.v1.json");
 const v2 = fixture("public-packages.v2.json");
 const v3 = fixture("public-packages.v3.json");
 const pkg = (data: PublicPackages, key: string) => data.packages.find((p) => p.key === key)!;
+
+test("curatedPlanFor: a plan is matched on its package key, a keyless (CMS) plan on its name", () => {
+  const plans = [
+    { key: "free", name: "Gratis" },
+    { key: "starter", name: "Basis" },
+  ];
+  // renamed in the app too: the key still finds the plan
+  assert.equal(curatedPlanFor(plans, { key: "starter", name: "Noget helt andet" }), plans[1]);
+  const published = [{ name: "Free" }, { name: "Starter" }, { name: "Udvidet" }];
+  // old display names are the package keys with a capital
+  assert.equal(curatedPlanFor(published, { key: "starter", name: "Basis" }), published[1]);
+  // the current display name
+  assert.equal(curatedPlanFor(published, { key: "premium", name: "Udvidet" }), published[2]);
+  // a plan with another key is never matched on its name
+  assert.equal(curatedPlanFor(plans, { key: "premium", name: "Gratis" }), undefined);
+  assert.equal(curatedPlanFor(plans, { key: "enterprise", name: "Koncern" }), undefined);
+});
 
 test("catalog v1 keeps the sales-led page: nothing self-serve, no price, no offer", () => {
   assert.equal(isSelfServe(v1), false);

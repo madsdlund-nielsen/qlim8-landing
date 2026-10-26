@@ -9,7 +9,7 @@ export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Binder jeg mig til noget ved at oprette en profil?",
-    a: "Nej. Den gratis profil i qlim8, Free, har ingen binding og ingen udløbsdato, og du skal ikke bruge et kreditkort. Oprettelsen tager et par minutter.",
+    a: "Nej. Gratis-pakken i qlim8 har ingen binding og ingen udløbsdato, og du skal ikke bruge et kreditkort. Oprettelsen tager et par minutter.",
   },
   {
     q: "Hvad hvis jeg ikke har alle bilag eller el-data klar med det samme?",

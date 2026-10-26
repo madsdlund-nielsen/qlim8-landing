@@ -46,6 +46,15 @@ export interface HomePoint {
 }
 
 export interface HomePlan {
+  /**
+   * The package key (`free`, `starter`, `premium`, `business`, `enterprise`) the
+   * card is matched to in the packages API, so a package can be renamed
+   * (display name `name`) without losing its curated badge and tagline. A plan
+   * published in /admin carries no key (the form has no field for it), which
+   * copyMerge allows for this key alone; `curatedPlanFor` then falls back to
+   * the name.
+   */
+  key: string;
   name: string;
   badge?: string;
   tag: string;
@@ -239,19 +248,20 @@ export const HOME_COPY: HomeCopy = {
     points: [
       {
         title: "Gratis basisprofil, helt uden binding",
-        body: "Med Free forbinder du Eloverblik og ét regnskabsprogram og ser dit eget klimaregnskab tage form. Free er gratis uden udløbsdato og kræver intet kreditkort.",
+        body: "Med Gratis-pakken forbinder du Eloverblik og ét regnskabsprogram og ser dit eget klimaregnskab tage form. Gratis-pakken har ingen udløbsdato og kræver intet kreditkort.",
       },
       {
         title: "Et helt års fast partnerskab uden overraskelser",
-        body: "Et klimaregnskab lever hele året. Derfor faktureres de betalte pakker årligt, og prisen vises pr. måned ekskl. moms. [[Den mindste faste aftale, Starter, koster {pris:starter:aar} ekskl. moms for hele året.]] Der er ingen skjulte gebyrer. Tilkøb, du selv vælger, fx import af historiske data, koster ekstra.",
+        body: "Et klimaregnskab lever hele året. Derfor faktureres de betalte pakker årligt, og prisen vises pr. måned ekskl. moms. [[Den mindste faste aftale, Basis, koster {pris:starter:aar} ekskl. moms for hele året.]] Der er ingen skjulte gebyrer. Tilkøb, du selv vælger, fx import af historiske data, koster ekstra.",
       },
     ],
     plans: [
       {
-        name: "Free",
+        key: "free",
+        name: "Gratis",
         tag: "Gratis uden udløbsdato. Til virksomheder der vil have styr på deres klimaregnskab og et overblik over deres udledning.",
         features: [
-          "Komplet Scope 1-3 klimaregnskab",
+          "Fuldt Scope 1-3 klimaregnskab",
           "Ubegrænsede posteringer",
           "Én regnskabs- og én forsyningsforbindelse",
           "AI-kategorisering og fuld audit trail",
@@ -260,10 +270,11 @@ export const HOME_COPY: HomeCopy = {
         highlighted: false,
       },
       {
-        name: "Starter",
+        key: "starter",
+        name: "Basis",
         tag: "Til SMV'er der skal levere VSME-rapport til banken og vil have det overstået ordentligt.",
         features: [
-          "Alt i Free",
+          "Alt i Gratis",
           "VSME Basis-rapport med wizard",
           "Reduktionsmål på kategorier i scope 1 og 2",
           "Ubegrænsede brugere og revisoradgang",
@@ -272,11 +283,12 @@ export const HOME_COPY: HomeCopy = {
         highlighted: false,
       },
       {
-        name: "Premium",
+        key: "premium",
+        name: "Udvidet",
         badge: "Anbefalet til de fleste",
         tag: "Til virksomheder der vil bruge ESG aktivt, reducere udledninger og dele resultater.",
         features: [
-          "Alt i Starter",
+          "Alt i Basis",
           "VSME Comprehensive med wizard",
           "Reduktionsmål på hele scopes, med i VSME-rapportens C3",
           "Reduktionstiltag: egne tiltag, pakker og overgangsplan",
@@ -287,10 +299,11 @@ export const HOME_COPY: HomeCopy = {
         highlighted: true,
       },
       {
-        name: "Business",
+        key: "business",
+        name: "Komplet",
         tag: "Til virksomheder der vil planlægge reduktioner strategisk og have support tæt på.",
         features: [
-          "Alt i Premium",
+          "Alt i Udvidet",
           "Intensitetsmål, med forklaring af årets ændring",
           "Business-as-usual og planlinje mod målet",
           "Synk til Notion og Airtable",
@@ -299,11 +312,12 @@ export const HOME_COPY: HomeCopy = {
         highlighted: false,
       },
       {
-        name: "Enterprise",
+        key: "enterprise",
+        name: "Koncern",
         tag: "Til organisationer der skal indsamle VSME-rapporter fra deres supply chain.",
         features: [
-          "Alt i Business",
-          "Komplet værdikæde via CVR",
+          "Alt i Komplet",
+          "Hele værdikæden via CVR",
           "Dedikeret oversigt over PCF og EPD",
           "Fuld API-adgang",
           "Dedikeret Customer Success Manager",

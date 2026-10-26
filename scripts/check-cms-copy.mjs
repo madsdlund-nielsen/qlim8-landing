@@ -12,7 +12,7 @@
  *      /funktioner, a route that does not exist (404).
  *   2. A contradicting price: the homepage FAQ said "starter ved 250 kr/md"
  *      and a feature bullet said "fra 625 kr/md", while the hero, the meta
- *      description and the structured data all said 300 (and Premium 1195).
+ *      description and the structured data all said 300 (and Premium, now Udvidet, 1195).
  *
  * The second is now stricter. A package price on this site comes only from
  * the app's packages API, so a price written into published copy is wrong

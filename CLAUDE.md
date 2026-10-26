@@ -55,7 +55,7 @@ contact, methodology, careers, legal). The three collections live in
 and so on) and renders only the ones that have content. The node, not the CMS,
 carries `sectionOrder` (the order), `highlight` (a featured hub card) and
 `genericFaq` (`false` keeps the shared ESG questions off a page, or a hub, that
-brings its own). List items share one shape with no optional keys, or
+brings its own). List items share one shape with no optional keys (`key` on the home plans is the one exception, see Self-serve), or
 `copyMerge` falls back to the bundled item without a word. The shapes, the rules
 and the allowed icon names are in `src/content/marketing/types.ts`, and
 `src/lib/marketingCopy.test.ts` holds every page to them. A paragraph break inside
@@ -241,10 +241,19 @@ every workflow during `npm run lint` so this fails on the branch instead.
 
 ## Self-serve: prices and signup come from the app
 
-A company can start on Free (free, with no end date), buy Starter or Premium by
-itself, and talk to us about Business and Enterprise; auditors and
-consultants have free packages of their own. All of that is data in
+A company can start on Gratis (free, with no end date), buy Basis or Udvidet by
+itself, and talk to us about Komplet and Koncern; auditors and consultants
+have free packages of their own (Revisor, Konsulent). All of that is data in
 qlim8-app (Admin → Pakker), and this site only shows it.
+
+The package display names are Gratis, Basis, Udvidet, Komplet and Koncern
+(until October 2026: Free, Starter, Premium, Business, Enterprise). The package
+**keys** did not change and are what code, tokens and URLs use: `free`,
+`starter`, `premium`, `business`, `enterprise` (`{pris:starter}`,
+`/signup?package=starter`). Write the bare name where it reads as a name
+("Alt i Udvidet"), and "Gratis-pakken" / "Basis-abonnementet" where it would read
+as an adjective ("Gratis er gratis") or be mistaken for the VSME module ("VSME
+Basis" is EFRAG's term and stays).
 
 `src/lib/packages.ts` reads the app's `GET /api/public/packages` (ISR, tag
 `packages`; a publish in the app revalidates `/priser` and `/`), and
@@ -258,8 +267,10 @@ qlim8-app (Admin → Pakker), and this site only shows it.
   free package's signup URL (`freeStartHref`), fixed in the component, not
   CMS-editable.
 - The homepage teaser shows the company packages with their prices and
-  buttons from the API; a curated plan in the page copy with the same name
-  keeps its badge, tagline and list. The hero, steps and closing buttons lead
+  buttons from the API; a curated plan in the page copy with the same package
+  `key` (`pricingTeaser.plans[].key`; a plan published in /admin has none, which
+  `copyMerge` allows for `key` alone, and is then matched on its name,
+  `curatedPlanFor`) keeps its badge, tagline and list. The hero, steps and closing buttons lead
   with "Kom gratis i gang" (to `/priser`).
 - The header (a client component) gets "Kom gratis i gang" from a boolean the
   root layout reads on the server (`src/components/public/SelfServeContext.tsx`).
@@ -271,7 +282,7 @@ qlim8-app (Admin → Pakker), and this site only shows it.
 **The switch is the app's catalog.** While it sells nothing by itself (catalog
 version 1, or the API cannot be reached) every one of those falls back to the
 sales-led site: no price, every main button books a demo. That is also the
-emergency stop: publishing a version with Free, Starter and Premium as
+emergency stop: publishing a version with Gratis, Basis and Udvidet as
 sales-led in the app turns this site back within the ISR window. What switches
 is the buttons (`resolveCta`), the trust and micro lines (`SALES_LED_TRUST`,
 `SALES_LED_MICRO`), the price tokens (a sentence with a price is dropped, see
@@ -382,7 +393,7 @@ price, the free and advisor packages, an unknown key) **the whole segment is
 removed**, so write the sentence to read with and without it:
 
 ```
-Det er enkelt at starte. [[Starter koster {pris:starter} om måneden, betalt årligt.]] Free er gratis og har ingen udløbsdato.
+Det er enkelt at starte. [[Basis koster {pris:starter} om måneden, betalt årligt.]] Gratis-pakken har ingen udløbsdato.
 ```
 
 `scripts/lib/salesLed.mjs` allows a token inside `[[ ]]` and fails a token
@@ -392,14 +403,14 @@ to the catalog is added to that fixture first). A hand-typed figure stays an
 error everywhere, inside `[[ ]]` too. A string in an array that is only a removed
 sentence is dropped, and so is an object whose field was.
 
-Copy also does not say which package holds a feature ("fra Premium"): what is in
+Copy also does not say which package holds a feature ("fra Udvidet"): what is in
 a package changes with the catalog, and `/priser` shows it from the API. This is
 a rule from the fact base, not a guard.
 
 While the catalog sells nothing by itself, buttons that lead to `/priser` become
 Book demo (`resolveCta` in `src/lib/packageView.ts`) and the trust and micro
 lines under a main button become `SALES_LED_TRUST` (`src/content/cta.ts`),
-because "Ingen kreditkort" and "Ingen binding" are true of Free only.
+because "Ingen kreditkort" and "Ingen binding" are true of Gratis only.
 "Opret gratis rådgiver-konto" links to `/priser#raadgivere`, an anchor on the
 first advisor package.
 

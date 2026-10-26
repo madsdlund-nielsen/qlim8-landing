@@ -9,23 +9,26 @@ import assert from "node:assert/strict";
 import { SALES_LED_RULES, salesLedViolations } from "./salesLed.mjs";
 
 const BREAKS = [
-  ["Starter fra 695 kr/md", "package price"],
+  ["Basis fra 695 kr/md", "package price"],
   ["faktureret årligt (8.340 kr)", "package price"],
-  ["Premium koster 23 940 kr om året", "package price"],
-  ["Starter koster 795 kr/md", "package price"],
-  ["Business 3.995 kr om måneden", "package price"],
+  ["Udvidet koster 23 940 kr om året", "package price"],
+  ["Basis koster 795 kr/md", "package price"],
+  ["Komplet 3.995 kr om måneden", "package price"],
   ["faktureret årligt (9.540 kr)", "package price"],
-  ["Business 47 940 kr om året", "package price"],
-  ["Enterprise starter fra 6.500 kr. pr. måned", "package price"],
+  ["Komplet 47 940 kr om året", "package price"],
+  ["Koncern starter fra 6.500 kr. pr. måned", "package price"],
   ["Priserne starter ved 1.234 kroner", "package price"],
   ["Se premium-pris", "package price"],
+  ["Se udvidet-pris", "package price"],
+  ["Basis fra 795 kr", "package price"],
+  ["Basis ved 250 kr", "package price"],
   ["Spar 20 % rabat ved årlig betaling", "package price"],
   ["Start med 14 dages prøveperiode", "trial claim"],
   ["Prøv qlim8 gratis", "trial claim"],
   ["Få en gratis demo-konto", "trial claim"],
   ["14 dages gratis prøve", "trial claim"],
-  ["De første 30 dage med alt fra Starter", "intro offer claim"],
-  ["Opgrader til Premium inden for det første år", "intro offer claim"],
+  ["De første 30 dage med alt fra Basis", "intro offer claim"],
+  ["Opgrader til Udvidet inden for det første år", "intro offer claim"],
   ["https://app.qlim8.com/auth?tab=register", "signup link"],
   ["https://app.qlim8.com/signup?package=starter", "signup link"],
   ["fetch('/api/stripe/checkout')", "checkout"],
@@ -38,7 +41,7 @@ const FINE = [
   "Start gratis, og opgradér når I har brug for mere.",
   "Intet kreditkort, ingen udløbsdato.",
   "Vælg din plan på /priser",
-  "Free koster ingenting.",
+  "Gratis-pakken koster ingenting.",
   "Opret dig på et par minutter.",
   "Priserne står på /priser, pr. måned, faktureret årligt, ekskl. moms.",
   "En førstegangs-VSME-konsulent koster 75.000-200.000 kr.",
@@ -79,8 +82,8 @@ test("trial wording is allowed where the catalog's trial is turned into a senten
 test("trial and intro-offer wording from the packages API is allowed in packageView.ts only", () => {
   const lines = [
     "14 dages gratis prøve. Kortet registreres ved start.",
-    "De første 30 dage med alt fra Premium.",
-    "Opgrader til Premium inden for det første år: første år 19.950 kr ekskl. moms.",
+    "De første 30 dage med alt fra Udvidet.",
+    "Opgrader til Udvidet inden for det første år: første år 19.950 kr ekskl. moms.",
   ];
   for (const text of lines.slice(0, 2)) {
     assert.deepEqual(salesLedViolations(text, { file: "src/lib/packageView.ts" }), [], text);
@@ -111,23 +114,23 @@ test("the token keys are the packages of the v3 fixture", () => {
 });
 
 test("a token inside [[ ]] passes, monthly and yearly, across lines", () => {
-  assert.deepEqual(salesLedViolations("[[Starter koster {pris:starter} om måneden.]]"), []);
+  assert.deepEqual(salesLedViolations("[[Basis koster {pris:starter} om måneden.]]"), []);
   assert.deepEqual(salesLedViolations("[[Det er {pris:business:aar} om året.]]"), []);
-  assert.deepEqual(priceTokenViolations('"[[Starter koster {pris:starter}" +\n" om måneden.]]"'), []);
+  assert.deepEqual(priceTokenViolations('"[[Basis koster {pris:starter}" +\n" om måneden.]]"'), []);
 });
 
 test("a token outside [[ ]], a malformed token, an unknown package and an unbalanced marker are errors", () => {
   const kinds = (t) => priceTokenViolations(t).map((v) => v.match);
-  assert.match(kinds("Starter koster {pris:starter}")[0], /outside \[\[ \]\]/);
+  assert.match(kinds("Basis koster {pris:starter}")[0], /outside \[\[ \]\]/);
   assert.match(kinds("[[Pris {pris:starter:maaned}]]")[0], /malformed/);
   assert.match(kinds("[[Pris {pris:}]]")[0], /malformed/);
   assert.match(kinds("[[Pris {pris:starter:aar:x}]]")[0], /malformed/);
   assert.match(kinds("[[Pris {pris:platin}]]")[0], /unknown package/);
   assert.match(kinds("[[Pris {pris:starter}")[0], /unbalanced/);
-  assert.equal(salesLedViolations("Starter {pris:starter}")[0]?.kind, "price token");
+  assert.equal(salesLedViolations("Basis {pris:starter}")[0]?.kind, "price token");
 });
 
 test("a hand-typed figure stays an error, token or not", () => {
-  assert.equal(salesLedViolations("[[Starter koster 795 kr om måneden, {pris:starter}]]")[0]?.kind, "package price");
-  assert.equal(salesLedViolations("[[Starter koster 9.540 kr om året]]")[0]?.kind, "package price");
+  assert.equal(salesLedViolations("[[Basis koster 795 kr om måneden, {pris:starter}]]")[0]?.kind, "package price");
+  assert.equal(salesLedViolations("[[Basis koster 9.540 kr om året]]")[0]?.kind, "package price");
 });

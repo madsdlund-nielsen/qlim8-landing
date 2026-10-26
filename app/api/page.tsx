@@ -122,7 +122,7 @@ export default function Page() {
         </div>
 
         <p className="mt-10 text-sm text-muted-foreground">
-          Spørgsmål om adgang, scopes eller Enterprise-features? Skriv til{" "}
+          Spørgsmål om adgang, scopes eller Koncern-funktioner? Skriv til{" "}
           <a href="mailto:kontakt@qlim8.com" className="font-semibold hover:underline">
             kontakt@qlim8.com
           </a>.

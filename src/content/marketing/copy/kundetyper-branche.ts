@@ -74,7 +74,7 @@ export const KUNDETYPER_HUB_COPY: MarketingHubCopy = {
       {
         icon: "Clock",
         title: "Uden binding",
-        body: "Free er gratis uden udløbsdato og kræver intet kreditkort.",
+        body: "Gratis-pakken koster ingenting, har ingen udløbsdato og kræver intet kreditkort.",
       },
     ],
   },
@@ -282,11 +282,11 @@ export const KT_BYGGERI: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det at komme i gang med qlim8?",
-        a: "Ingenting. Med den gratis pakke, Free, forbinder du Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab. Betalte pakker faktureres årligt. [[Starter koster {pris:starter} om måneden ekskl. moms.]] Hvad hver pakke indeholder, står på prissiden.",
+        a: "Ingenting. Med Gratis-pakken forbinder du Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab. Betalte pakker faktureres årligt. [[Basis koster {pris:starter} om måneden ekskl. moms.]] Hvad hver pakke indeholder, står på prissiden.",
       },
       {
         q: "Binder jeg mig til noget?",
-        a: "Ikke når du starter. qlim8's gratis pakke, Free, har ingen binding og ingen udløbsdato, og du opretter kontoen på et par minutter uden kreditkort. Vælger du senere en betalt pakke, faktureres den årligt.",
+        a: "Ikke når du starter. Gratis-pakken har ingen binding og ingen udløbsdato, og du opretter kontoen på et par minutter uden kreditkort. Vælger du senere en betalt pakke, faktureres den årligt.",
       },
     ],
   },
@@ -457,7 +457,7 @@ export const KT_TRANSPORT: MarketingPageCopy = {
       },
       {
         q: "Hvor lang tid tager det, og binder jeg mig til noget?",
-        a: "Det tager et par minutter at oprette en gratis konto i qlim8, og du behøver ikke kreditkort. Free er gratis, har ingen udløbsdato og ingen binding. Du forbinder Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab. Betalte pakker faktureres årligt.",
+        a: "Det tager et par minutter at oprette en gratis konto i qlim8, og du behøver ikke kreditkort. Gratis-pakken koster ingenting, har ingen udløbsdato og ingen binding. Du forbinder Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab. Betalte pakker faktureres årligt.",
       },
     ],
   },
@@ -628,7 +628,7 @@ export const KT_PRODUKTION: MarketingPageCopy = {
       },
       {
         q: "Hvad koster qlim8, og binder vi os til noget?",
-        a: "Free er gratis, har ingen udløbsdato og ingen binding, og du behøver ikke kreditkort. Med Free forbinder du Eloverblik og ét regnskabsprogram og ser dit eget klimaregnskab. Betalte pakker faktureres årligt, og prisen vises pr. måned ekskl. moms. Indholdet ser du på siden med priser. [[Starter koster {pris:starter} om måneden, betalt årligt.]]",
+        a: "Gratis-pakken koster ingenting, har ingen udløbsdato og ingen binding, og du behøver ikke kreditkort. Med Gratis-pakken forbinder du Eloverblik og ét regnskabsprogram og ser dit eget klimaregnskab. Betalte pakker faktureres årligt, og prisen vises pr. måned ekskl. moms. Indholdet ser du på siden med priser. [[Basis koster {pris:starter} om måneden, betalt årligt.]]",
       },
     ],
   },

@@ -109,7 +109,7 @@ const DISCOVERY = {
   access: {
     tier: "premium",
     notes:
-      "MCP access requires a Premium or Enterprise subscription. Supplier and value chain tools additionally require Enterprise. Read-only by default; every write is recorded in a tamper-evident audit chain.",
+      "MCP access requires a Comprehensive or Enterprise subscription. Supplier and value chain tools additionally require Enterprise. Read-only by default; every write is recorded in a tamper-evident audit chain.",
   },
 };
 

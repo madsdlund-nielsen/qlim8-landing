@@ -67,7 +67,7 @@ the groups `navGroup` gives them.
 `buildSoftwareSchema(offers)` takes them from `offersFromPackages()`
 (`src/lib/packageView.ts`): one `Offer` per public yearly price of a company
 package, `billingDuration: P1Y`, `valueAddedTaxIncluded: false`. A hidden
-price (Business) and a "fra" price (Enterprise) get none. While the catalog
+price (Complete) and a "fra" price (Enterprise) get none. While the catalog
 sells nothing by itself (catalog version 1, or the API cannot be reached)
 there are no offers at all. `/` and `/priser` emit the same entity with the
 same offers. `src/lib/pricingSchema.ts` (which built offers from the pricing

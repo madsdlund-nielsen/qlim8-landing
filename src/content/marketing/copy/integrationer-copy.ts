@@ -216,7 +216,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det?",
-        a: "Du kan forbinde e-conomic på en gratis konto. Med Free forbinder du Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab. Free er gratis og har ingen udløbsdato. Hvad de betalte pakker indeholder, står på /priser.",
+        a: "Du kan forbinde e-conomic på en gratis konto. Med Gratis-pakken forbinder du Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab. Gratis-pakken har ingen udløbsdato. Hvad de betalte pakker indeholder, står på /priser.",
       },
     ],
   },
@@ -373,7 +373,7 @@ export const IN_DINERO: MarketingPageCopy = {
       },
       {
         q: "Hvad koster Dinero-integrationen?",
-        a: "Dinero kan du forbinde på en gratis konto, hvor du også kan forbinde Eloverblik og se dit eget klimaregnskab. Free er gratis og har ingen udløbsdato. Indholdet i de betalte pakker står på /priser.",
+        a: "Dinero kan du forbinde på en gratis konto, hvor du også kan forbinde Eloverblik og se dit eget klimaregnskab. Gratis-pakken har ingen udløbsdato. Indholdet i de betalte pakker står på /priser.",
       },
     ],
   },
@@ -530,7 +530,7 @@ export const IN_BILLY: MarketingPageCopy = {
       },
       {
         q: "Hvad koster Billy-integrationen?",
-        a: "Billy er et af de tre regnskabsprogrammer, du kan forbinde på en gratis konto sammen med Eloverblik. Free er gratis og har ingen udløbsdato. Se /priser for, hvad de betalte pakker giver.",
+        a: "Billy er et af de tre regnskabsprogrammer, du kan forbinde på en gratis konto sammen med Eloverblik. Gratis-pakken har ingen udløbsdato. Se /priser for, hvad de betalte pakker giver.",
       },
     ],
   },
@@ -656,7 +656,7 @@ export const IN_APPELSIN: MarketingPageCopy = {
       },
       {
         q: "Hvad koster det, når integrationen kommer?",
-        a: "Med Free forbinder du i dag Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy). Free er gratis og har ingen udløbsdato. Hvilke pakker Appelsin kommer med i, melder vi ud ved lancering, og pakkerne står på /priser.",
+        a: "Med Gratis-pakken forbinder du i dag Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy). Gratis-pakken har ingen udløbsdato. Hvilke pakker Appelsin kommer med i, melder vi ud ved lancering, og pakkerne står på /priser.",
       },
     ],
   },

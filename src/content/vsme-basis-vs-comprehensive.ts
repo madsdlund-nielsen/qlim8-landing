@@ -206,15 +206,15 @@ export const artikel: Article = {
     { type: 'h2', text: 'Hvordan vi håndterer det i qlim8' },
     {
       type: 'paragraph',
-      text: 'For klarhedens skyld om hvordan vi har struktureret det i platformen: qlim8 Starter dækker VSME Basis komplet med wizard, audit trail og den officielle EFRAG Excel-eksport. Det er bygget til at få dig fra "jeg har et regnskabssystem" til "jeg har en bankklar Basis-rapport" på under en arbejdsdag.',
+      text: 'For klarhedens skyld om hvordan vi har struktureret det i platformen: qlim8 Basis dækker VSME Basis fuldt ud med wizard, audit trail og den officielle EFRAG Excel-eksport. Det er bygget til at få dig fra "jeg har et regnskabssystem" til "jeg har en bankklar Basis-rapport" på under en arbejdsdag.',
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Premium tilføjer VSME Comprehensive med wizard for C1-C7 samt analyse af kategorier, leverandører og udvikling. Det er bygget til den virksomhed, der har taget skridtet og vil arbejde med ESG strategisk. Mål for Scope 1 og 2 sætter I i qlim8, og de skrives ind i C3 sammen med de tiltag, I har knyttet til dem. Hvilke reduktionsfunktioner der følger med hver pakke, står på /priser.',
+      text: 'qlim8 Udvidet tilføjer VSME Comprehensive med wizard for C1-C7 samt analyse af kategorier, leverandører og udvikling. Det er bygget til den virksomhed, der har taget skridtet og vil arbejde med ESG strategisk. Mål for Scope 1 og 2 sætter I i qlim8, og de skrives ind i C3 sammen med de tiltag, I har knyttet til dem. Hvilke reduktionsfunktioner der følger med hver pakke, står på /priser.',
     },
     {
       type: 'paragraph',
-      text: 'Forskellen er ikke kun feature-niveau. Det er en anden brugersituation. Hvis I er i tvivl om hvilken I skal vælge, så start med Starter, brug et eller to kvartaler på at få Basis på plads, og opgrader når I har et konkret behov for Comprehensive. Det er den rækkefølge, vi anbefaler alle nye kunder, der ikke kommer ind med et akut Comprehensive-krav fra en kunde. Starter og Premium køber I direkte i appen, og priserne står på /priser. Vil du se forskellen i praksis først, så book en demo, eller ring til mig på +45 93 90 13 84.',
+      text: 'Forskellen er ikke kun feature-niveau. Det er en anden brugersituation. Hvis I er i tvivl om hvilken I skal vælge, så start med qlim8 Basis, brug et eller to kvartaler på at få VSME Basis på plads, og opgrader når I har et konkret behov for Comprehensive. Det er den rækkefølge, vi anbefaler alle nye kunder, der ikke kommer ind med et akut Comprehensive-krav fra en kunde. Basis og Udvidet køber I direkte i appen, og priserne står på /priser. Vil du se forskellen i praksis først, så book en demo, eller ring til mig på +45 93 90 13 84.',
     },
 
     { type: 'h2', text: 'VSME er et skjold, ikke kun en byrde' },

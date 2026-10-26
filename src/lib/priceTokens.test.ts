@@ -25,8 +25,8 @@ test("v3: monthly and yearly tokens fill from the API", () => {
   assert.equal(resolvePriceToken(v3, "starter", true), "9.540 kr.");
   assert.equal(resolvePriceToken(v3, "business", false), "3.995 kr.");
   assert.equal(
-    applyPriceTokensToString("Før. [[Starter koster {pris:starter} om måneden, {pris:starter:aar} om året.]] Efter.", v3),
-    "Før. Starter koster 795 kr. om måneden, 9.540 kr. om året. Efter.",
+    applyPriceTokensToString("Før. [[Basis koster {pris:starter} om måneden, {pris:starter:aar} om året.]] Efter.", v3),
+    "Før. Basis koster 795 kr. om måneden, 9.540 kr. om året. Efter.",
   );
 });
 
@@ -36,7 +36,7 @@ test("the same copy follows the catalog when it changes", () => {
 });
 
 test("no price to show: the whole segment goes, and the text around it reads on", () => {
-  const text = "Det er enkelt. [[Starter koster {pris:starter} om måneden.]] Du kan starte gratis.";
+  const text = "Det er enkelt. [[Basis koster {pris:starter} om måneden.]] Du kan starte gratis.";
   for (const data of [v1, null, undefined]) {
     assert.equal(applyPriceTokensToString(text, data), "Det er enkelt. Du kan starte gratis.");
   }
@@ -49,15 +49,15 @@ test("no price to show: the whole segment goes, and the text around it reads on"
 
 test("one unresolvable token removes the whole segment, not just the token", () => {
   assert.equal(
-    applyPriceTokensToString("A. [[Starter {pris:starter}, Enterprise {pris:enterprise}.]] B.", v3),
+    applyPriceTokensToString("A. [[Basis {pris:starter}, Koncern {pris:enterprise}.]] B.", v3),
     "A. B.",
   );
 });
 
 test("two segments in one string are decided one by one", () => {
   assert.equal(
-    applyPriceTokensToString("[[Starter {pris:starter}.]] [[Enterprise {pris:enterprise}.]]", v3),
-    "Starter 795 kr.",
+    applyPriceTokensToString("[[Basis {pris:starter}.]] [[Koncern {pris:enterprise}.]]", v3),
+    "Basis 795 kr.",
   );
 });
 
@@ -80,7 +80,7 @@ test("deep transform: nested strings, string arrays and items that were only the
       { q: "Pris?", a: "[[{pris:starter}]]" },
       { q: "Andet?", a: "Svar" },
     ],
-    bullets: ["[[Starter {pris:starter}]]", "Altid med"],
+    bullets: ["[[Basis {pris:starter}]]", "Altid med"],
     n: 3,
     flag: true,
   };
@@ -94,5 +94,5 @@ test("deep transform: nested strings, string arrays and items that were only the
   const filled = applyPriceTokens(copy, v3);
   assert.equal(filled.hero.subtitle, "Fra 795 kr. Resten.");
   assert.equal(filled.items[0].a, "795 kr.");
-  assert.equal(filled.bullets[0], "Starter 795 kr.");
+  assert.equal(filled.bullets[0], "Basis 795 kr.");
 });

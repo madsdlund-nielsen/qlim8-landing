@@ -29,6 +29,7 @@ import { fetchPublicPackages } from "@/lib/packages";
 import {
   comparisonSections,
   ctaLabel,
+  curatedPlanFor,
   freeStartHref,
   groupPackages,
   isSelfServe,
@@ -359,7 +360,6 @@ export function renderArticle(a: Article): string {
 
 function renderHome(copy: HomeCopy, packages: PublicPackages | null = null): string {
   const selfServe = isSelfServe(packages);
-  const curatedByName = new Map(copy.pricingTeaser.plans.map((p) => [p.name.trim().toLowerCase(), p]));
   return join([
     frontMatter({
       title: "Klimaregnskab og ESG-rapport til danske SMV'er",
@@ -391,7 +391,7 @@ function renderHome(copy: HomeCopy, packages: PublicPackages | null = null): str
           .filter((p) => p.accountType === "company")
           .sort((a, b) => a.displayRank - b.displayRank)
           .map((p) => {
-            const plan = curatedByName.get(p.key) ?? curatedByName.get(p.name.trim().toLowerCase());
+            const plan = curatedPlanFor(copy.pricingTeaser.plans, p);
             return renderApiPackage(packages!, p, plan && { tagline: plan.tag, features: plan.features }, "###");
           })
       : copy.pricingTeaser.plans.map((p) =>
@@ -445,7 +445,7 @@ function renderPricing(copy: PricingCopy, packages: PublicPackages | null = null
         // One string, not one per row: `join` puts a blank line between parts,
         // which would break the table into unrelated paragraphs.
         [
-          "| Funktion | Starter | Premium | Enterprise |",
+          `| Funktion | ${copy.starter.name} | ${copy.premium.name} | ${copy.enterprise.name} |`,
           "| --- | --- | --- | --- |",
           ...copy.comparison.rows.map(
             (r) =>
@@ -475,7 +475,7 @@ function renderSelfServePricing(copy: PricingCopy, packages: PublicPackages): st
     frontMatter({
       title: "Priser: start gratis og uden binding",
       description:
-        "Start gratis på Free uden binding og uden kreditkort. De betalte pakker er årsaftaler med prisen vist pr. måned ekskl. moms. Ring, hvis du er i tvivl.",
+        "Kom i gang med Gratis-pakken uden binding og uden kreditkort. De betalte pakker er årsaftaler med prisen vist pr. måned ekskl. moms. Ring, hvis du er i tvivl.",
       url: `${BASE_URL}/priser`,
     }),
     `# ${copy.header.title}`,
@@ -487,7 +487,7 @@ function renderSelfServePricing(copy: PricingCopy, packages: PublicPackages): st
       .flatMap((g) => [`## ${GROUP_HEADINGS[g]}`, ...groups[g].map((p) => renderApiPackage(packages, p, curated[p.key], "###"))]),
     apiComparisonTable(packages, copy.comparison?.title ?? "Sammenlign pakkerne"),
     "## Pris",
-    "Priserne er pr. måned, faktureret årligt, ekskl. moms. Starter og Premium betales med kort i appen; Business og Enterprise faktureres årligt.",
+    "Priserne er pr. måned, faktureret årligt, ekskl. moms. Basis og Udvidet betales med kort i appen; Komplet og Koncern faktureres årligt.",
     faqSection(copy.faq),
     copy.closing && `## ${copy.closing.title}`,
     copy.closing?.body,

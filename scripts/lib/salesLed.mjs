@@ -1,8 +1,9 @@
 /**
- * What may not be said on qlim8.com, now that a company can start on Free and
- * buy Starter or Premium by itself: no package price in copy (prices come
- * only from the app's packages API), no hard-coded signup or checkout link
- * (the API names the signup URL), and no trial in copy. Starter and Premium
+ * What may not be said on qlim8.com, now that a company can start on Gratis
+ * (key free) and buy Basis (starter) or Udvidet (premium) by itself: no
+ * package price in copy (prices come only from the app's packages API), no
+ * hard-coded signup or checkout link
+ * (the API names the signup URL), and no trial in copy. Basis and Udvidet
  * start with a trial since 2026-10-03, but its length is catalog data
  * (`trialDays` in the packages API), so the one sentence that names it is
  * built from the API in src/lib/packageView.ts and nowhere else. The same goes
@@ -80,7 +81,7 @@ export function priceTokenViolations(text) {
 const PLAN_FIGURES = [
   "250", "300", "395", "625", "750", "1195", "1595", "3000", "3600", "7500", "9000", "14340",
   "695", "1995", "3495", "6500", "8340", "23940", "41940", "78000",
-  // Catalog version 3 (October 2026): Starter 795 and Business 3995 a month.
+  // Catalog version 3 (October 2026): Basis 795 and Komplet 3995 a month.
   "795", "3995", "9540", "47940",
 ];
 
@@ -103,8 +104,8 @@ export const SALES_LED_RULES = [
   { kind: "signup link", re: /app\.qlim8\.com\/signup/i, allowedIn: ["src/content/cta.ts"] },
   { kind: "checkout", re: /\/api\/stripe\/checkout|\/api\/billing\/checkout/i },
   { kind: "package price", re: new RegExp(`(?<![\\d.])${figure}\\s*(?:kr\\b|kr\\.|kroner|,-)`, "i") },
-  { kind: "package price", re: /\b(?:fra|starter ved|starter fra|allerede fra|priserne starter)\s+\d{1,3}(?:[.\s]\d{3})*\s*(?:kr|kroner)\b/i },
-  { kind: "package price", re: /premium-pris/i },
+  { kind: "package price", re: /\b(?:fra|starter ved|starter fra|basis ved|basis fra|allerede fra|priserne starter)\s+\d{1,3}(?:[.\s]\d{3})*\s*(?:kr|kroner)\b/i },
+  { kind: "package price", re: /premium-pris|udvidet-pris/i },
   { kind: "package price", re: /\d+\s*%\s*rabat\b/i },
   { kind: "trial claim", re: /\bprøveperiode\b/i, allowedIn: TRIAL_FROM_DATA },
   { kind: "trial claim", re: /\bprøv\s+(?:platformen\s+|qlim8\s+)?gratis\b/i, allowedIn: TRIAL_FROM_DATA },

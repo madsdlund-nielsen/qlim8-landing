@@ -170,7 +170,7 @@ før omlægningen (`f813686^`); de nye steder er kontrolleret i copyen.
 | `audit-trail-og-revisor` | `audit-trail`, `revisor-adgang` | "audit trail til klimaregnskab", "revisor-adgang til klimaregnskab" | Linje-ID, spor til bilaget, hash-kæde, læseadgang og attestering for revisoren (SEO-beskrivelsen) |
 | `reduktionsmaal-og-scenarier` | `tiltag`, `scenarier` | "reduktionstiltag og ROI", "scenarie-planlægger for klima" | Mål på det egne klimaregnskab med målkurve, tiltag som virksomheden selv skriver ind og en fremskrivning uden nye tiltag (SEO-beskrivelsen). Siden hed "Reduktionsmål og scenarier" og lovede en test af diesel mod el for varevogne. Scenarier findes ikke længere i produktet (reduktionsmålene blev bygget om i oktober 2026), så titlen er nu "Reduktionsmål og klimaplan". Adressen beholder "scenarier" bevidst: et nyt navn er en sidepensionering (redirect, `HISTORIC` og tællerne i `redirects.test.mjs`). **Den nye side bruger ikke ordet "ROI"** (kontrolleret i copyen), så en søgning på netop det udtryk har mistet sin landingsside, og ingen side tilbyder længere en scenarie-planlægger |
 | `/kundetyper` (hub) | `frisoer` | "klimaregnskab for frisørsalon" | Et FAQ-svar om, at metoden er den samme for en salon, en butik eller et kontor |
-| `/priser` | `store-virksomheder` | "klimaregnskab og CSRD for store virksomheder" | Pakkerne, hvor Business og Enterprise sælges efter en samtale |
+| `/priser` | `store-virksomheder` | "klimaregnskab og CSRD for store virksomheder" | Pakkerne, hvor Komplet og Koncern sælges efter en samtale |
 
 En sammenlagt side, hvis gamle titler nævnte et bestemt navneord (et fag, en
 rapporttype), er den, man skal holde øje med i Search Console: den præcise

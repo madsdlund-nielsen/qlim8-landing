@@ -66,16 +66,16 @@ export interface PricingCopy {
 export const PRICING_COPY: PricingCopy = {
   header: {
     title: "Start gratis, og vælg en årsaftale, når du er klar",
-    subtitle: "Free koster ingenting, har ingen binding og kræver ikke kreditkort. De betalte pakker er et helt års fast partnerskab uden overraskelser: prisen ligger fast hele året og vises pr. måned ekskl. moms, og ekstra betaler du kun for det, du selv vælger til, fx flere PCF-pladser eller historisk import. Er du i tvivl, så ring til Mads på +45 93 90 13 84.",
+    subtitle: "Gratis-pakken koster ingenting, har ingen binding og kræver ikke kreditkort. De betalte pakker er et helt års fast partnerskab uden overraskelser: prisen ligger fast hele året og vises pr. måned ekskl. moms, og ekstra betaler du kun for det, du selv vælger til, fx flere PCF-pladser eller historisk import. Er du i tvivl, så ring til Mads på +45 93 90 13 84.",
   },
   trustBar: [
-    "Free uden binding og uden kreditkort",
+    "Gratis-pakken uden binding og uden kreditkort",
     "Årspris, vist pr. måned ekskl. moms",
     "Servere og database i EU (Tyskland)",
     "Ingen telefonsælgere, et direkte nummer",
   ],
   starter: {
-    name: "Starter",
+    name: "Basis",
     tagline: "Til dig, der vil have klimaregnskabet på plads, når banken eller en kunde spørger.",
     includedLabel: "Det får du blandt andet",
     features: [
@@ -87,15 +87,15 @@ export const PRICING_COPY: PricingCopy = {
     ],
   },
   premium: {
-    name: "Premium",
+    name: "Udvidet",
     tagline: "Til dig, der får flere spørgsmål fra banken og kunderne og vil arbejde videre med tallene.",
-    includedLabel: "Alt i Starter, og desuden",
+    includedLabel: "Alt i Basis, og desuden",
     features: ["Det præcise indhold gennemgår vi med dig i en kort snak"],
   },
   enterprise: {
-    name: "Enterprise",
+    name: "Koncern",
     tagline: "Til større organisationer med flere led og særlige krav til rapporteringen.",
-    includedLabel: "Alt i Premium, og desuden",
+    includedLabel: "Alt i Udvidet, og desuden",
     features: [
       {
         label: "Indhold og vilkår, som vi aftaler sammen med jer",
@@ -149,11 +149,11 @@ export const PRICING_COPY: PricingCopy = {
     items: [
       {
         q: "Hvad koster det at komme i gang med qlim8?",
-        a: "Ingenting. Free er gratis, har ingen udløbsdato og ingen binding, og du behøver ikke et kreditkort for at oprette en konto. Det tager et par minutter. Med Free forbinder du Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab, før du beslutter dig.",
+        a: "Ingenting. Gratis-pakken har ingen udløbsdato og ingen binding, og du behøver ikke et kreditkort for at oprette en konto. Det tager et par minutter. Med Gratis-pakken forbinder du Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab, før du beslutter dig.",
       },
       {
         q: "Hvordan og hvornår betaler jeg for en pakke hos qlim8?",
-        a: "De betalte pakker er årsaftaler: du betaler forud for et år ad gangen, og prisen vises pr. måned ekskl. moms. Starter og Premium køber du selv i appen med betalingskort. Business og Enterprise aftaler vi efter en samtale, og de betales mod faktura. [[Starter koster {pris:starter} og Premium {pris:premium} om måneden ekskl. moms, betalt for et år ad gangen.]]",
+        a: "De betalte pakker er årsaftaler: du betaler forud for et år ad gangen, og prisen vises pr. måned ekskl. moms. Basis og Udvidet køber du selv i appen med betalingskort. Komplet og Koncern aftaler vi efter en samtale, og de betales mod faktura. [[Basis koster {pris:starter} og Udvidet {pris:premium} om måneden ekskl. moms, betalt for et år ad gangen.]]",
       },
       {
         q: "Hvorfor er de betalte pakker en årsaftale, og kan prisen stige?",
@@ -161,11 +161,11 @@ export const PRICING_COPY: PricingCopy = {
       },
       {
         q: "Hvordan opsiger jeg, og hvad sker der med mine data?",
-        a: "En betalt pakke fornyes automatisk for et år ad gangen. Starter og Premium kan du opsige når som helst i appen under Konto eller på kontakt@qlim8.com. Opsigelsen gælder fra udløbet af det år, du har betalt for, og du får ikke penge tilbage for resten af året. Bagefter fortsætter du på Free, og dine data bliver liggende, så du stadig kan se og eksportere dem. Business og Enterprise har tre måneders varsel før årets udløb.",
+        a: "En betalt pakke fornyes automatisk for et år ad gangen. Basis og Udvidet kan du opsige når som helst i appen under Konto eller på kontakt@qlim8.com. Opsigelsen gælder fra udløbet af det år, du har betalt for, og du får ikke penge tilbage for resten af året. Bagefter fortsætter du på Gratis-pakken, og dine data bliver liggende, så du stadig kan se og eksportere dem. Komplet og Koncern har tre måneders varsel før årets udløb.",
       },
       {
         q: "Kan jeg skifte pakke undervejs?",
-        a: "Ja. Fra Free køber du Starter eller Premium i appen. Går du fra Starter til Premium, gælder det med det samme, og du betaler kun forskellen for resten af året. Skifter du til en mindre pakke, sker det ved årets udløb. Business og Enterprise aftaler vi sammen med dig.",
+        a: "Ja. Fra Gratis-pakken køber du Basis eller Udvidet i appen. Går du fra Basis til Udvidet, gælder det med det samme, og du betaler kun forskellen for resten af året. Skifter du til en mindre pakke, sker det ved årets udløb. Komplet og Koncern aftaler vi sammen med dig.",
       },
       {
         q: "Skal min revisor betale for at få adgang?",
@@ -177,7 +177,7 @@ export const PRICING_COPY: PricingCopy = {
       },
       {
         q: "Hvilken pakke skal jeg vælge, hvis jeg er i tvivl?",
-        a: "Start på Free, og se dine egne tal, før du beslutter noget. Eller ring direkte til qlim8's stifter, Mads, på +45 93 90 13 84. Der sidder ingen telefonsælger i den anden ende. Vi kigger på dit behov sammen, og passer Free fint til dig, så siger vi det.",
+        a: "Start på Gratis-pakken, og se dine egne tal, før du beslutter noget. Eller ring direkte til qlim8's stifter, Mads, på +45 93 90 13 84. Der sidder ingen telefonsælger i den anden ende. Vi kigger på dit behov sammen, og passer Gratis-pakken fint til dig, så siger vi det.",
       },
     ],
   },

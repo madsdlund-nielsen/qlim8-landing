@@ -28,7 +28,7 @@ import { Photo } from "@/components/ds/Photo";
 import { HOMEPAGE_FAQS, type HomepageFaq } from "@/content/homepage-faqs";
 import { HOME_COPY, type HomeCopy, type HomePlan } from "@/content/copy/home";
 import { DEMO_HREF, DEMO_LABEL } from "@/content/cta";
-import { ctaLabel, isSelfServe, packageFeatures, priceLines, trialLine, type PublicPackage, type PublicPackages } from "@/lib/packageView";
+import { ctaLabel, curatedPlanFor, isSelfServe, packageFeatures, priceLines, trialLine, type PublicPackage, type PublicPackages } from "@/lib/packageView";
 import { cn } from "@/lib/utils";
 
 // All copy lives in src/content/copy/home.ts (pageKey "page.home");
@@ -45,15 +45,14 @@ export interface LandingImages {
 /**
  * The company packages for the teaser once the catalog sells something by
  * itself, in the catalog's order. A curated plan in the page copy with the
- * same name keeps its badge and tagline (CMS-editable, as on /priser); the
+ * same package key (or, if it has none, the same name) keeps its badge and tagline (CMS-editable, as on /priser); the
  * price, the button and the list come from the packages API (packageFeatures).
  */
 function teaserPackages(data: PublicPackages, plans: HomePlan[]): { pkg: PublicPackage; plan?: HomePlan }[] {
-  const byName = new Map(plans.map((p) => [p.name.trim().toLowerCase(), p]));
   return data.packages
     .filter((p) => p.accountType === "company")
     .sort((a, b) => a.displayRank - b.displayRank)
-    .map((pkg) => ({ pkg, plan: byName.get(pkg.key) ?? byName.get(pkg.name.trim().toLowerCase()) }));
+    .map((pkg) => ({ pkg, plan: curatedPlanFor(plans, pkg) }));
 }
 
 function Bullet({ children }: { children: React.ReactNode }) {
