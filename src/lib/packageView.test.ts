@@ -127,10 +127,10 @@ test("a trial is shown only where the catalog gives one, on a package bought by 
 });
 
 test("the intro lines come from introBoost and upgradeOffer, and an older API has none", () => {
-  assert.equal(introBoostLine(pkg(v3, "free")), "De første 30 dage med alt fra Starter. Intet kreditkort.");
-  assert.equal(introBoostLine(pkg(v3, "starter")), "De første 30 dage med alt fra Premium.");
+  assert.equal(introBoostLine(pkg(v3, "free")), "De første 30 dage med alt fra Basis. Intet kreditkort.");
+  assert.equal(introBoostLine(pkg(v3, "starter")), "De første 30 dage med alt fra Udvidet.");
   assert.equal(introBoostLine(pkg(v3, "premium")), null);
-  assert.equal(upgradeOfferLine(pkg(v3, "starter")), `Opgrader til Premium inden for det første år: første år ${formatKr(1995000)} ekskl. moms.`);
+  assert.equal(upgradeOfferLine(pkg(v3, "starter")), `Opgrader til Udvidet inden for det første år: første år ${formatKr(1995000)} ekskl. moms.`);
   assert.match(upgradeOfferLine(pkg(v3, "starter"))!, /første år 19\.950 kr ekskl\. moms/);
   assert.equal(upgradeOfferLine(pkg(v3, "free")), null);
   assert.deepEqual(introLines(pkg(v3, "starter")).length, 2);
@@ -195,18 +195,18 @@ test("v3: Starter and Business are priced, Enterprise has no price and says to c
   assert.equal(ctaLabel(pkg(v3, "free")), "Opret gratis konto");
 });
 
-test("v3: the offers are one per public price: Free, Starter, Premium and Business; Enterprise has none", () => {
+test("v3: the offers are one per public price: Gratis, Basis, Udvidet and Komplet; Koncern has none", () => {
   assert.deepEqual(offersFromPackages(v3).map((o) => [o.name, o.price]), [
-    ["Free", "0.00"],
-    ["Starter", "9540.00"],
-    ["Premium", "23940.00"],
-    ["Business", "47940.00"],
+    ["Gratis", "0.00"],
+    ["Basis", "9540.00"],
+    ["Udvidet", "23940.00"],
+    ["Komplet", "47940.00"],
   ]);
 });
 
 test("v3: a card lists its lines in order, the roadmap ones marked planned", () => {
   const business = packageFeatures(v3, pkg(v3, "business"));
-  assert.equal(business.label, "Alt i Premium, plus");
+  assert.equal(business.label, "Alt i Udvidet, plus");
   assert.deepEqual(
     business.entries.map((e) => `${e.planned ? "planlagt" : "bygget"}: ${e.text}`),
     [
@@ -218,7 +218,7 @@ test("v3: a card lists its lines in order, the roadmap ones marked planned", () 
       "bygget: Scope 3-mål på kategorier med fysiske data",
       "bygget: Synk til Notion og Airtable",
       "bygget: Chat & telefon-support",
-      "planlagt: Koncern (flere CVR-numre)",
+      "planlagt: Flere CVR-numre i én organisation",
     ],
   );
   assert.deepEqual(business.items, business.entries.map((e) => e.text));
@@ -239,7 +239,7 @@ test("v3: Enterprise lists the cross-mapping as built, worded as what it is, and
     enterprise.entries.map((e) => `${e.planned ? "planlagt" : "bygget"}: ${e.text}`),
     [
       "bygget: Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
-      "bygget: Komplet værdikæde via CVR",
+      "bygget: Hele værdikæden via CVR",
       "bygget: Fuld API-adgang",
       "bygget: PCF/EPD dedikeret oversigt",
       "bygget: Dedikeret Customer Success Manager",
@@ -266,7 +266,7 @@ test("v3: the comparison comes by category, roadmap rows marked; v2 has none and
   const rows = sections.flatMap((s) => s.rows);
   assert.equal(rows.length, 47);
   assert.deepEqual(rows.filter((r) => r.status === "planned").map((r) => r.label).sort(), [
-    "Koncern (flere CVR-numre)",
+    "Flere CVR-numre i én organisation",
     "Leverandørportal",
     "Oppetids-SLA",
     "Politikker",
