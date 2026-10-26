@@ -14,6 +14,12 @@ export const artikel: Article = {
       text: 'Mange danske SMV-ejere møder ESG første gang som et spørgeskema. Det kommer fra en stor kunde, fra banken eller som en del af et udbud. Det næste kommer fra en anden kunde og ser helt anderledes ud.',
     },
     {
+      type: 'image',
+      url: '/photos/qlim8-blog-vs-svejser.jpg',
+      alt: 'Svejser arbejder på metalprofiler i en produktionshal.',
+      caption: 'Foto: Collab Media / Unsplash',
+    },
+    {
       type: 'paragraph',
       text: 'VSME blev skabt til at løse det problem. En fælles europæisk skabelon, så en mindre virksomhed kan samle sine ESG-data ét sted og svare alle ud fra det samme grundlag.',
     },
@@ -63,6 +69,12 @@ export const artikel: Article = {
       text: 'CSRD kræver, at store virksomheder rapporterer om hele deres værdikæde. Når en stor virksomhed skal opgøre sin klimapåvirkning, skal den bruge data fra sine leverandører. Og leverandørerne er ofte små.',
     },
     {
+      type: 'image',
+      url: '/photos/qlim8-blog-vs-lagerhal.jpg',
+      alt: 'Lagerhal med reoler fyldt med paller og papkasser.',
+      caption: 'Foto: Alberto Rodríguez / Unsplash',
+    },
+    {
       type: 'paragraph',
       text: 'Kommissionen kalder det trickle-down-effekten. Kravene til de store siver ned til de små, ét spørgeskema ad gangen.',
     },
@@ -83,6 +95,12 @@ export const artikel: Article = {
     {
       type: 'paragraph',
       text: 'I februar 2025 fremlagde Kommissionen Omnibus I, en pakke der skulle forenkle EU\'s bæredygtighedsregler. Rådet og Europa-Parlamentet blev enige i december 2025. Direktivet, (EU) 2026/470, trådte i kraft den 18. marts 2026.',
+    },
+    {
+      type: 'image',
+      url: '/photos/qlim8-blog-vs-eu-flag.jpg',
+      alt: 'EU-flag foran Europa-Kommissionens hovedsæde i Bruxelles.',
+      caption: 'Foto: Christian Lue / Unsplash',
     },
     {
       type: 'paragraph',
@@ -340,6 +358,12 @@ export const artikel: Article = {
     {
       type: 'paragraph',
       text: 'Værdikædeloftet gælder fra regnskabsåret 2027. CSRD-virksomhederne skal bruge jeres data for 2027, når de rapporterer i 2028. Mange vil derfor begynde at spørge i løbet af 2027.',
+    },
+    {
+      type: 'image',
+      url: '/photos/qlim8-blog-vs-skrivebord.jpg',
+      alt: 'Person ved et skrivebord med bærbar computer og papirer.',
+      caption: 'Foto: Windows / Unsplash',
     },
     {
       type: 'ordered-list',
