@@ -6,12 +6,14 @@ import { artikel as undgaaGreenwashing } from './undgaa-greenwashing-smv'
 import { artikel as scope3SmvGuide } from './scope-3-smv-guide'
 import { artikel as vsmeAiAgentMcp } from './vsme-rapport-ai-agent-mcp'
 import { artikel as hvadErVsmeVs } from './hvad-er-vsme-vs'
+import { artikel as klimaregnskabSmvKlienterKonsulentkonto } from './klimaregnskab-smv-klienter-konsulentkonto'
 
 // Tilføj en ny artikel ved at:
 // 1. Oprette en ny fil i src/content/ (f.eks. min-artikel.ts) med Article-typen
 // 2. Importere og tilføje den til listen herunder (nyeste først)
 
 export const articles: Article[] = [
+  klimaregnskabSmvKlienterKonsulentkonto,
   hvadErVsmeVs,
   vsmeAiAgentMcp,
   undgaaGreenwashing,

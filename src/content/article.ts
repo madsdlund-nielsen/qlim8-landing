@@ -16,6 +16,7 @@ export type ArticleSection =
 export type Article = {
   slug:        string
   title:       string
+  seoTitle?:   string   // title-tag, hvis den skal afvige fra overskriften
   description: string
   category:    ArticleCategory
   publishedAt: string   // 'YYYY-MM-DD'
