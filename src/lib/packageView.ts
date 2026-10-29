@@ -21,13 +21,6 @@ export interface PublicPrice {
   monthlyMinor: number;
 }
 
-export interface PublicAdvisorPrice {
-  baseMinor: number;
-  discountPerClientMinor: number;
-  maxDiscountedClients: number;
-  freeWithoutClients: boolean;
-}
-
 /** One line on a package card: `planned` is on the roadmap, not built. */
 export interface PublicHighlight {
   label: string;
@@ -43,7 +36,6 @@ export interface PublicPackage {
   displayRank: number;
   salesMotion: "plg" | "slg";
   price: PublicPrice | null;
-  advisorPrice: PublicAdvisorPrice | null;
   free: boolean;
   cta: { kind: CtaKind; url: string | null };
   highlights: string[];
@@ -239,16 +231,6 @@ export interface PriceLines {
 }
 
 export function priceLines(pkg: PublicPackage): PriceLines | null {
-  if (pkg.advisorPrice) {
-    const a = pkg.advisorPrice;
-    const model =
-      `${formatKr(a.baseMinor)}/md minus ${formatKr(a.discountPerClientMinor)} pr. aktiv klient` +
-      (a.maxDiscountedClients > 0 ? ` (op til ${a.maxDiscountedClients} klienter)` : "") +
-      ", ekskl. moms";
-    return a.freeWithoutClients
-      ? { main: "Gratis", note: `indtil første aktive klient, derefter ${model}` }
-      : { main: `${formatKr(a.baseMinor)}/md`, note: model };
-  }
   if (pkg.free && pkg.price) return { main: "Gratis", note: null };
   if (!pkg.price) return null;
   const monthly = `${formatKr(pkg.price.monthlyMinor)}/md`;

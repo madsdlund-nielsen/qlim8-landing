@@ -18,7 +18,6 @@
         "yearlyMinor": 0,
         "monthlyMinor": 0
       },
-      "advisorPrice": null,
       "free": true,
       "cta": {
         "kind": "signup",
@@ -90,7 +89,6 @@
         "yearlyMinor": 954000,
         "monthlyMinor": 79500
       },
-      "advisorPrice": null,
       "free": false,
       "cta": {
         "kind": "buy",
@@ -173,7 +171,6 @@
         "yearlyMinor": 2394000,
         "monthlyMinor": 199500
       },
-      "advisorPrice": null,
       "free": false,
       "cta": {
         "kind": "buy",
@@ -255,7 +252,6 @@
         "yearlyMinor": 4794000,
         "monthlyMinor": 399500
       },
-      "advisorPrice": null,
       "free": false,
       "cta": {
         "kind": "demo",
@@ -316,7 +312,6 @@
       "displayRank": 30,
       "salesMotion": "slg",
       "price": null,
-      "advisorPrice": null,
       "free": false,
       "cta": {
         "kind": "demo",
@@ -381,7 +376,6 @@
         "yearlyMinor": 0,
         "monthlyMinor": 0
       },
-      "advisorPrice": null,
       "free": true,
       "cta": {
         "kind": "signup",
@@ -396,14 +390,18 @@
     {
       "key": "konsulent",
       "name": "Konsulent",
-      "tagline": "Gratis med en aktiv klient efter 14 dage",
+      "tagline": "Gratis for konsulenter",
       "audience": "Konsulenter, der arbejder i klienters klimaregnskab",
       "accountType": "advisor",
       "displayRank": 110,
       "salesMotion": "plg",
-      "price": null,
-      "advisorPrice": null,
-      "free": false,
+      "price": {
+        "visibility": "public",
+        "currency": "DKK",
+        "yearlyMinor": 0,
+        "monthlyMinor": 0
+      },
+      "free": true,
       "cta": {
         "kind": "signup",
         "url": "https://app.qlim8.com/signup?package=konsulent&type=advisor"

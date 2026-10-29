@@ -18,6 +18,7 @@ import {
   packageFeatures,
   isSelfServe,
   offersFromPackages,
+  packageGroup,
   priceLines,
   resolveCta,
   salesLine,
@@ -76,24 +77,15 @@ test("prices are quoted per month, billed yearly, ex. VAT", () => {
   assert.equal(priceLines(pkg(v2, "business")), null);
 });
 
-test("both advisor packages are free", () => {
-  for (const key of ["revisor", "konsulent"]) {
-    assert.equal(pkg(v2, key).free, true);
-    assert.deepEqual(priceLines(pkg(v2, key)), { main: "Gratis", note: null });
+test("both advisor packages are free, in the v2 and the v3 answer", () => {
+  for (const fixtureData of [v2, v3]) {
+    for (const key of ["revisor", "konsulent"]) {
+      assert.equal(pkg(fixtureData, key).free, true, key);
+      assert.deepEqual(priceLines(pkg(fixtureData, key)), { main: "Gratis", note: null }, key);
+      assert.equal(packageGroup(pkg(fixtureData, key)), "free", key);
+      assert.equal(trialLine(pkg(fixtureData, key)), null, key);
+    }
   }
-});
-
-test("an advisor package priced per client says so, should the catalog ever set one", () => {
-  const perClient = {
-    ...pkg(v2, "konsulent"),
-    price: null,
-    free: false,
-    advisorPrice: { baseMinor: 100000, discountPerClientMinor: 10000, maxDiscountedClients: 10, freeWithoutClients: true },
-  };
-  assert.deepEqual(priceLines(perClient), {
-    main: "Gratis",
-    note: "indtil første aktive klient, derefter 1.000 kr/md minus 100 kr pr. aktiv klient (op til 10 klienter), ekskl. moms",
-  });
 });
 
 test("'Kom gratis i gang' goes to the free company package's signup URL, from the API", () => {
