@@ -48,11 +48,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await resolveArticle(slug)
   if (!article) return {}
   return {
-    title: article.title,
+    title: article.seoTitle ?? article.title,
     description: article.description,
     alternates: { canonical: `https://qlim8.com/blog/${article.slug}` },
     openGraph: {
-      title: article.title,
+      title: article.seoTitle ?? article.title,
       description: article.description,
       url: `https://qlim8.com/blog/${article.slug}`,
       type: 'article',
