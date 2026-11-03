@@ -225,11 +225,12 @@ test("v3: a card lists its lines in order, the roadmap ones marked planned", () 
   ]);
 });
 
-test("v3: Enterprise lists the cross-mapping as built, worded as what it is, and the roadmap lines still planned", () => {
+test("v3: Enterprise lists the ESRS report and the cross-mapping as built, worded as what they are, and the roadmap lines still planned", () => {
   const enterprise = packageFeatures(v3, pkg(v3, "enterprise"));
   assert.deepEqual(
     enterprise.entries.map((e) => `${e.planned ? "planlagt" : "bygget"}: ${e.text}`),
     [
+      "bygget: ESRS-rapportering",
       "bygget: Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
       "bygget: Hele værdikæden via CVR",
       "bygget: Fuld API-adgang",
@@ -256,7 +257,7 @@ test("v3: the comparison comes by category, roadmap rows marked; v2 has none and
   const sections = comparisonSections(v3)!;
   assert.deepEqual(sections.map((s) => s.label), ["Views", "Analyser", "Funktioner", "Integrationer", "Rapporter", "Admin"]);
   const rows = sections.flatMap((s) => s.rows);
-  assert.equal(rows.length, 47);
+  assert.equal(rows.length, 48);
   assert.deepEqual(rows.filter((r) => r.status === "planned").map((r) => r.label).sort(), [
     "Flere CVR-numre i én organisation",
     "Leverandørportal",
@@ -276,6 +277,10 @@ test("v3: the materiality assessment is a built row from Business, the cross-map
   const rows = comparisonSections(v3)!.flatMap((s) => s.rows);
   const row = (key: string) => rows.find((r) => r.key === key)!;
   const cells = (key: string) => ["free", "starter", "premium", "business", "enterprise"].map((p) => (row(key).cells as Record<string, unknown>)[p]);
+  // The ESRS report went live for Koncern with the switch (qlim8-app, docs/design/standard-reports-2026/wp1/SWITCH-IMPLEMENTATION.md, M5).
+  assert.equal(row("reports.esrs").label, "ESRS-rapportering");
+  assert.equal(row("reports.esrs").status, "live");
+  assert.deepEqual(cells("reports.esrs"), [false, false, false, false, true]);
   assert.equal(row("reports.doubleMateriality").label, "Dobbelt væsentlighedsanalyse (DMA)");
   assert.equal(row("reports.doubleMateriality").status, "live");
   assert.deepEqual(cells("reports.doubleMateriality"), [false, false, false, true, true]);

@@ -318,6 +318,7 @@
         "url": null
       },
       "highlights": [
+        "ESRS-rapportering",
         "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
         "Hele værdikæden via CVR",
         "Fuld API-adgang",
@@ -325,6 +326,10 @@
         "Dedikeret Customer Success Manager"
       ],
       "highlightItems": [
+        {
+          "label": "ESRS-rapportering",
+          "status": "live"
+        },
         {
           "label": "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
           "status": "live"
@@ -843,6 +848,19 @@
       {
         "key": "reports.crossMapping",
         "label": "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
+        "status": "live",
+        "group": "reports",
+        "cells": {
+          "free": false,
+          "starter": false,
+          "premium": false,
+          "business": false,
+          "enterprise": true
+        }
+      },
+      {
+        "key": "reports.esrs",
+        "label": "ESRS-rapportering",
         "status": "live",
         "group": "reports",
         "cells": {
@@ -1432,6 +1450,19 @@
           {
             "key": "reports.crossMapping",
             "label": "Kryds-mapping: væsentlighedsanalysen set gennem CSRD (ESRS), IFRS, GRI og CDP",
+            "status": "live",
+            "group": "reports",
+            "cells": {
+              "free": false,
+              "starter": false,
+              "premium": false,
+              "business": false,
+              "enterprise": true
+            }
+          },
+          {
+            "key": "reports.esrs",
+            "label": "ESRS-rapportering",
             "status": "live",
             "group": "reports",
             "cells": {
