@@ -119,7 +119,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Rapporterne leveres som PDF eller Excel. Udvidet giver også en professionel ESG-rapport som PDF. Komplet har en dobbelt væsentlighedsanalyse med påvirkning og finansiel risiko pr. emne. qlim8 laver ikke CSRD/ESRS-rapporter.',
+      text: 'Rapporterne leveres som PDF eller Excel. Udvidet giver også en professionel ESG-rapport som PDF. Komplet har en dobbelt væsentlighedsanalyse med påvirkning og finansiel risiko pr. emne. qlim8 kan også lave en frivillig ESRS-rapport ud fra en godkendt væsentlighedsanalyse.',
     },
 
     { type: 'h2', text: 'Hvordan tjekker man leverandørernes klimadata i leverandørkæden?' },
