@@ -53,26 +53,26 @@ export const DMA_TOPICS: DmaTopic[] = [
     qf: "Hvor meget kan miljøkrav, påbud eller oprydning koste dig?",
     info: {
       what: "Forurening handler om udledning af stoffer til luft, vand og jord, for eksempel fra produktion, kølemidler og kemikalier.",
-      help: "Det frivillige VSME-format, som banker og kunder kender, har et punkt om forurening. Du kan se, hvordan qlim8 samler VSME-rapporten.",
+      help: "Den frivillige standard VS (tidligere VSME), som banker og kunder kender, har et punkt om forurening. Du kan se, hvordan qlim8 samler VS-rapporten.",
       links: [
-        { label: "Se VSME-rapporten", href: "/produkt/vsme-rapport" },
-        { label: "Læs om VSME-modulerne", href: "/blog/vsme-basis-vs-comprehensive" },
+        { label: "Se VS-rapporten", href: "/produkt/vsme-rapport" },
+        { label: "Læs om VS-modulerne", href: "/blog/vsme-basis-vs-comprehensive" },
       ],
     },
   },
   {
     code: "E3",
     group: "Miljø",
-    name: "Vand og havressourcer",
+    name: "Vand",
     desc: "Vandforbrug og påvirkning af vandmiljøet.",
     qi: "Hvor meget vand bruger eller belaster du, især hvor der er vandmangel?",
     qf: "Hvor afhængig er du af vand, og hvad koster det, hvis forsyningen svigter?",
     info: {
       what: "Vand handler om, hvor meget vand du bruger og udleder, og om du ligger i et område med vandmangel.",
-      help: "Det frivillige VSME-format har et punkt om vand, så du kan nøjes med at oplyse det, der er relevant for dig.",
+      help: "Den frivillige standard VS (tidligere VSME) har et punkt om vand, så du kan nøjes med at oplyse det, der er relevant for dig.",
       links: [
-        { label: "Se VSME-rapporten", href: "/produkt/vsme-rapport" },
-        { label: "Læs om VSME-modulerne", href: "/blog/vsme-basis-vs-comprehensive" },
+        { label: "Se VS-rapporten", href: "/produkt/vsme-rapport" },
+        { label: "Læs om VS-modulerne", href: "/blog/vsme-basis-vs-comprehensive" },
       ],
     },
   },
@@ -85,26 +85,26 @@ export const DMA_TOPICS: DmaTopic[] = [
     qf: "Hvor meget afhænger din drift af natur, for eksempel råvarer og tilladelser?",
     info: {
       what: "Biodiversitet handler om, hvordan dine aktiviteter og råvarer påvirker natur, arealer og dyreliv, og hvor meget din drift afhænger af naturen.",
-      help: "Det frivillige VSME-format har et punkt om biodiversitet. Det er en rolig måde at oplyse det på, hvis banken eller en kunde spørger.",
+      help: "Den frivillige standard VS (tidligere VSME) har et punkt om biodiversitet. Det er en rolig måde at oplyse det på, hvis banken eller en kunde spørger.",
       links: [
-        { label: "Se VSME-rapporten", href: "/produkt/vsme-rapport" },
-        { label: "Læs om VSME-modulerne", href: "/blog/vsme-basis-vs-comprehensive" },
+        { label: "Se VS-rapporten", href: "/produkt/vsme-rapport" },
+        { label: "Læs om VS-modulerne", href: "/blog/vsme-basis-vs-comprehensive" },
       ],
     },
   },
   {
     code: "E5",
     group: "Miljø",
-    name: "Ressourcer og cirkulær økonomi",
+    name: "Ressourceanvendelse og cirkulær økonomi",
     desc: "Materialeforbrug, affald og genbrug.",
     qi: "Hvor store mængder materialer bruger du, og hvor meget ender som affald?",
     qf: "Hvor følsom er du over for priser og knaphed på råvarer?",
     info: {
-      what: "Ressourcer og cirkulær økonomi handler om materialer, affald og genbrug.",
+      what: "Ressourceanvendelse og cirkulær økonomi handler om materialer, affald og genbrug.",
       help: "Opret og følg konkrete tiltag, og se effekten på dit klimaregnskab, så du kan vise, at du bruger færre ressourcer.",
       links: [
         { label: "Se mål og tiltag", href: "/produkt/reduktionsmaal-og-scenarier" },
-        { label: "Læs om VSME-modulerne", href: "/blog/vsme-basis-vs-comprehensive" },
+        { label: "Læs om VS-modulerne", href: "/blog/vsme-basis-vs-comprehensive" },
       ],
     },
   },
@@ -124,12 +124,12 @@ export const DMA_TOPICS: DmaTopic[] = [
   {
     code: "S2",
     group: "Mennesker",
-    name: "Arbejdere i værdikæden",
+    name: "Arbejdstagere i værdikæden",
     desc: "Vilkår for dem, der arbejder hos dine leverandører.",
     qi: "Hvor stor er risikoen for dårlige arbejdsvilkår hos dine leverandører?",
     qf: "Hvor meget kan leverandørernes forhold ramme leverancer eller dit omdømme?",
     info: {
-      what: "Arbejdere i værdikæden handler om vilkårene hos dine leverandører og deres underleverandører.",
+      what: "Arbejdstagere i værdikæden handler om vilkårene hos dine leverandører og deres underleverandører.",
       help: "Kortlæg dine leverandører via CVR, og indsaml deres data med ét link. Det er et roligt første skridt til at kende kæden.",
       links: [{ label: "Se leverandørkæden", href: "/produkt/leverandoerkaede" }],
     },
@@ -137,12 +137,12 @@ export const DMA_TOPICS: DmaTopic[] = [
   {
     code: "S3",
     group: "Mennesker",
-    name: "Berørte lokalsamfund",
+    name: "Berørte samfund",
     desc: "Naboer og lokalsamfund omkring dine aktiviteter.",
     qi: "Hvor meget påvirker dine aktiviteter naboer og lokalsamfund med støj, trafik eller miljø?",
     qf: "Hvor meget kan lokal modstand forsinke eller fordyre din drift?",
     info: {
-      what: "Berørte lokalsamfund handler om, hvordan dine aktiviteter påvirker naboer og lokalsamfund med støj, trafik eller miljø.",
+      what: "Berørte samfund handler om, hvordan dine aktiviteter påvirker naboer og lokalsamfund med støj, trafik eller miljø.",
       help: "Du kan vise omverdenen, hvad du gør, med en offentlig profil eller din rapport.",
       links: [{ label: "Se rapportering", href: "/produkt/rapportering" }],
     },
@@ -150,12 +150,12 @@ export const DMA_TOPICS: DmaTopic[] = [
   {
     code: "S4",
     group: "Mennesker",
-    name: "Kunder og slutbrugere",
+    name: "Forbrugere og slutbrugere",
     desc: "Sikkerhed, information og privatliv for dem, der bruger det, du leverer.",
     qi: "Hvor meget kan dine produkter, ydelser eller data skade kunder og brugere?",
     qf: "Hvor meget afhænger din omsætning af kundernes tillid og sikkerhed?",
     info: {
-      what: "Kunder og slutbrugere handler om sikkerhed, information og privatliv for dem, der bruger det, du leverer.",
+      what: "Forbrugere og slutbrugere handler om sikkerhed, information og privatliv for dem, der bruger det, du leverer.",
       help: "Når du fortæller om dine klimadata, skal det kunne dokumenteres. Guiden viser, hvordan du undgår greenwashing, og audit trail logger hver ændring og datakilde.",
       links: [
         { label: "Læs guiden om greenwashing", href: "/blog/undgaa-greenwashing-smv" },
@@ -166,12 +166,12 @@ export const DMA_TOPICS: DmaTopic[] = [
   {
     code: "G1",
     group: "Ledelse",
-    name: "Forretningsadfærd",
+    name: "Virksomhedsadfærd",
     desc: "Etik, korruption, betalingsadfærd og leverandørrelationer.",
     qi: "Hvor stor er risikoen for korruption, urimelig betalingsadfærd eller brud på etik?",
     qf: "Hvor meget kan bøder, sagsomkostninger eller tabte kunder koste dig?",
     info: {
-      what: "Forretningsadfærd handler om etik, korruption, betalingsadfærd og forholdet til dine leverandører.",
+      what: "Virksomhedsadfærd handler om etik, korruption, betalingsadfærd og forholdet til dine leverandører.",
       help: "En revisor og en bank vil gerne kunne se, hvor et tal kommer fra. Hver ændring, faktor og datakilde logges automatisk, og du kan give revisor direkte adgang.",
       links: [{ label: "Se audit trail og revisoradgang", href: "/produkt/audit-trail-og-revisor" }],
     },
@@ -183,7 +183,7 @@ export const DMA_SCALE_WORDS = ["Ingen", "Lav", "Middel", "Høj", "Meget høj"];
 export type DmaZone = "both" | "imp" | "fin" | "none";
 
 export const DMA_ZONE_LABEL: Record<DmaZone, string> = {
-  both: "Dobbelt væsentligt",
+  both: "Væsentligt for begge",
   imp: "Væsentligt for påvirkning",
   fin: "Væsentligt for økonomi",
   none: "Ikke væsentligt lige nu",

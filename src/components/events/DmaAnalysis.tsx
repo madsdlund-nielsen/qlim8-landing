@@ -383,7 +383,7 @@ function Profile({
         <p className="max-w-(--measure-body) text-lead text-foreground">
           {n} af {DMA_TOPICS.length} emner er væsentlige for din virksomhed
           {both.length > 0 &&
-            `, og ${both.length}${both.length === 1 ? " af dem er dobbelt væsentligt" : " af dem er dobbelt væsentlige"}`}
+            `, og ${both.length}${both.length === 1 ? " af dem er væsentligt for både påvirkning og økonomi" : " af dem er væsentlige for både påvirkning og økonomi"}`}
           . {line}
         </p>
       </div>
