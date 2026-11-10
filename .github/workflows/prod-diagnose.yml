@@ -74,7 +74,7 @@ jobs:
             # detail, the address it reached) is in certbot's debug log inside
             # the long-running container.
             docker compose exec -T certbot sh -c \
-              'grep -hE "\"(type|detail|status|url|hostname)\": |Domain: |Hint: |certbot.errors|CRITICAL|ERROR" /var/log/letsencrypt/letsencrypt.log* 2>/dev/null | grep -v "application/json" | tail -40' 2>&1
+              'grep -hE "\"(type|detail|status|url|hostname)\": |Domain: |Hint: |certbot.errors|CRITICAL|ERROR" /var/log/letsencrypt/letsencrypt.log 2>/dev/null | grep -v "application/json" | tail -40; ls -l --time-style=+%F_%T /var/log/letsencrypt/ | head -5' 2>&1
 
             echo "=============== CERT STATE ========="
             docker compose run --rm --entrypoint "certbot certificates" certbot 2>&1 | head -40
