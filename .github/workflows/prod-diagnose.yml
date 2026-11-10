@@ -68,6 +68,14 @@ jobs:
             # The actual renewal error, if the container has attempted one.
             docker compose logs certbot --tail 80 2>&1
 
+            echo "--- why the last renewals failed (letsencrypt.log, newest last) ---"
+            # The renew loop runs with --quiet, so the container log only says
+            # "Some challenges have failed". Let's Encrypt's own reason (type,
+            # detail, the address it reached) is in certbot's debug log inside
+            # the long-running container.
+            docker compose exec -T certbot sh -c \
+              'grep -hE "Domain:|Type:|Detail:|Hint:|urn:ietf:params:acme:error|status.: .invalid|addressUsed|hostname.:|port.:" /var/log/letsencrypt/letsencrypt.log* 2>/dev/null | tail -40' 2>&1
+
             echo "=============== CERT STATE ========="
             docker compose run --rm --entrypoint "certbot certificates" certbot 2>&1 | head -40
 
