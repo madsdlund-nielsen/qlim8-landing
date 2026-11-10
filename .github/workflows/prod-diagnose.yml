@@ -65,14 +65,15 @@ jobs:
             docker compose ps 2>&1
 
             echo "=============== CERTBOT LOGS ======="
-            # The actual renewal error, if the container has attempted one.
-            docker compose logs certbot --tail 80 2>&1
+            # Timestamps added: without them a months-old failure reads as current.
+            docker compose logs certbot --timestamps --tail 80 2>&1
 
-            echo "--- why the last renewals failed (letsencrypt.log, newest last) ---"
-            # The renew loop runs with --quiet, so the container log only says
-            # "Some challenges have failed". Let's Encrypt's own reason (type,
-            # detail, the address it reached) is in certbot's debug log inside
-            # the long-running container.
+            echo "--- the newest renewal run, from certbot's own debug log ---"
+            # `docker compose logs` above covers the container's whole life,
+            # so its "Some challenges have failed" lines can be months old (on
+            # 2026-11-10 they were July's, while renewals were healthy). The
+            # newest debug log says what the last run actually did: "not yet
+            # due" with Let's Encrypt's suggested window, or the real error.
             docker compose exec -T certbot sh -c \
               'tail -n 70 /var/log/letsencrypt/letsencrypt.log; ls -l /var/log/letsencrypt/ | head -4' 2>&1
 
