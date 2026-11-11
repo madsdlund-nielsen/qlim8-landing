@@ -12,6 +12,10 @@ services:
       # (docker compose auto-loads it for ${...} substitution); left unset
       # here it resolves to an empty string and those endpoints fail closed.
       - CMS_REVALIDATE_SECRET=${CMS_REVALIDATE_SECRET:-}
+      # The MCP registry's domain proof (a public key record, see
+      # app/well-known/mcp-registry-auth/route.ts). Optional: the route also
+      # reads a record committed in PROOF_RECORD, and answers 404 with neither.
+      - MCP_REGISTRY_AUTH=${MCP_REGISTRY_AUTH:-}
     expose:
       - "3000"
     networks:
