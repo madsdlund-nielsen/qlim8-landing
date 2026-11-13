@@ -98,7 +98,7 @@ export const LEGAL_COOKIES_COPY: LegalCopy = {
 <p>Vi opdaterer erklæringen, når vi tilføjer eller fjerner cookies, eller når lovgivningen ændres. Den gældende version står her med versionsnummer og dato.</p>
 <h2>10. Kontakt</h2>
 <p>Spørgsmål til cookieerklæringen kan rettes til:</p>
-<p>qlim8<br />E-mail: <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a><br />CVR: DK46033736</p>
+<p>qlim8<br />E-mail: <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a><br />CVR: DK46033736</p>
 `,
   footerHtml: "",
 };
@@ -218,7 +218,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
   versionLine: `Version: 2.2 · Senest opdateret: ${TERMS_EFFECTIVE}`,
   bodyHtml: `<h2>1. Dataansvarlig</h2>
 <p>Dataansvarlig for behandlingen af dine personoplysninger er:</p>
-<p>qlim8<br />Stenløkkevej 12, 5450 Otterup<br />CVR: DK46033736<br />E-mail: <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a><br />Telefon: <a href="tel:+4593901384">+45 93 90 13 84</a></p>
+<p>qlim8<br />Stenløkkevej 12, 5450 Otterup<br />CVR: DK46033736<br />E-mail: <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a><br />Telefon: <a href="tel:+4593901384">+45 93 90 13 84</a></p>
 <p>Spørgsmål om denne politik eller dine rettigheder kan rettes til ovenstående.</p>
 <h2>2. Hvornår gælder politikken</h2>
 <p>Politikken beskriver, hvordan vi behandler personoplysninger, når du:</p>
@@ -333,7 +333,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <li><strong>Indsigelse</strong> mod behandling på grundlag af legitim interesse, herunder direkte markedsføring.</li>
 <li><strong>Tilbagekaldelse af samtykke</strong> til enhver tid. Det påvirker ikke lovligheden af behandlingen før tilbagekaldelsen.</li>
 </ul>
-<p>Skriv til <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a>. Vi svarer uden ugrundet ophold og senest inden for én måned.</p>
+<p>Skriv til <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a>. Vi svarer uden ugrundet ophold og senest inden for én måned.</p>
 <h2>12. Sikkerhed</h2>
 <p>Vi beskytter personoplysninger med passende tekniske og organisatoriske foranstaltninger, blandt andet adgangsstyring med roller, totrinsbekræftelse, kryptering under transport, krypterede adgangsnøgler til integrationer, logning, sikkerhedskopier og en revisionslog, der ikke kan ændres bagefter.</p>
 <p>Ved et sikkerhedsbrud, der indebærer høj risiko for dig, underretter vi dig og Datatilsynet efter GDPR art. 33-34.</p>
@@ -343,7 +343,7 @@ export const LEGAL_PRIVACY_COPY: LegalCopy = {
 <h2>14. Ændringer i politikken</h2>
 <p>Vi opdaterer politikken, når vores behandling ændrer sig. Den gældende version står her med versionsnummer og dato. Ved væsentlige ændringer giver vi besked pr. e-mail eller i platformen.</p>
 `,
-  footerHtml: `Kontakt: qlim8 · CVR DK46033736 · Stenløkkevej 12, 5450 Otterup · <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a>`,
+  footerHtml: `Kontakt: qlim8 · CVR DK46033736 · Stenløkkevej 12, 5450 Otterup · <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a>`,
 };
 
 export const LEGAL_DPA_COPY: LegalCopy = {
@@ -387,7 +387,7 @@ export const LEGAL_DPA_COPY: LegalCopy = {
 <p>12.1 Aftalen træder i kraft, når den dataansvarlige accepterer handelsbetingelserne, og gælder, så længe databehandleren behandler personoplysninger for den dataansvarlige.</p>
 <p>12.2 Databehandleren kan ændre Aftalen efter reglerne for ændringer i handelsbetingelserne, dog ikke på en måde, der forringer beskyttelsen af personoplysningerne. Ændringer, som følger af lovgivning eller af nye underdatabehandlere, sker efter pkt. 6.2.</p>
 <h2>13. Kontakt</h2>
-<p>13.1 Databehandleren kontaktes på <a href="mailto:privacy@qlim8.com">privacy@qlim8.com</a>. Databehandleren kontakter den dataansvarlige via de administratorer, der er registreret i Tjenesten.</p>
+<p>13.1 Databehandleren kontaktes på <a href="mailto:kontakt@qlim8.com">kontakt@qlim8.com</a>. Databehandleren kontakter den dataansvarlige via de administratorer, der er registreret i Tjenesten.</p>
 <h2>Bilag A: Oplysninger om behandlingen</h2>
 <p><strong>Formål:</strong> At levere Tjenesten til den dataansvarlige: indsamling, beregning, analyse og rapportering af virksomhedens klima- og ESG-data, herunder hentning af data fra de integrationer, den dataansvarlige forbinder.</p>
 <p><strong>Behandlingens karakter:</strong> Opbevaring, strukturering, kategorisering (også med sprogmodeller), beregning, visning, eksport og sletning.</p>

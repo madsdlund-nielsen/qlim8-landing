@@ -408,7 +408,7 @@ export const artikel: Article = {
     {
       type: 'cta',
       heading: 'ESG er nemt',
-      text: 'Skriv til mig på LinkedIn eller på mads@qlim8.com, eller book en demo, så viser jeg dig, hvordan qlim8 laver jeres VS-rapport ud fra bogholderiet.',
+      text: 'Skriv til mig på LinkedIn eller på kontakt@qlim8.com, eller book en demo, så viser jeg dig, hvordan qlim8 laver jeres VS-rapport ud fra bogholderiet.',
       buttonText: 'Book demo',
       buttonHref: '/kontakt?emne=demo',
     },

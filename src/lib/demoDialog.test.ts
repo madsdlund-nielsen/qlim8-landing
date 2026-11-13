@@ -54,7 +54,7 @@ test("safeBookingUrl accepts only https", () => {
 });
 
 test("looksLikeEmail", () => {
-  assert.ok(looksLikeEmail("mads@viridis-ramosa.com"));
+  assert.ok(looksLikeEmail("kontakt@qlim8.com"));
   assert.ok(!looksLikeEmail("mads@"));
   assert.ok(!looksLikeEmail("mads@x"));
   assert.ok(!looksLikeEmail("mads viridis@x.dk"));
