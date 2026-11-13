@@ -39,6 +39,6 @@ export const CAREERS_COPY: CareersCopy = {
     title: "Kan du ikke finde den rette stilling?",
     body: "Vi er altid interesserede i at høre fra dygtige mennesker. Send en uopfordret ansøgning til os.",
     buttonLabel: "Send ansøgning",
-    email: "job@qlim8.com",
+    email: "kontakt@qlim8.com",
   },
 };
