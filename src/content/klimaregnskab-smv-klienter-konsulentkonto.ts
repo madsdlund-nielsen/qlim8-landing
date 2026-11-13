@@ -227,7 +227,7 @@ export const artikel: Article = {
     {
       type: 'cta',
       heading: 'ESG er nemt',
-      text: 'Konsulentkontoen giver dig én portefølje med dine klienters klimaregnskaber, adgang styret af klienten og rapportudkast i VS-formatet. Kontoen er gratis. Skriv til mig på LinkedIn eller på mads@qlim8.com, hvis du har spørgsmål.',
+      text: 'Konsulentkontoen giver dig én portefølje med dine klienters klimaregnskaber, adgang styret af klienten og rapportudkast i VS-formatet. Kontoen er gratis. Skriv til mig på LinkedIn eller på kontakt@qlim8.com, hvis du har spørgsmål.',
       buttonText: 'Opret gratis konsulentkonto',
       buttonHref: '/priser#raadgivere',
     },

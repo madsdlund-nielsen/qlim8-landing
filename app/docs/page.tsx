@@ -50,10 +50,10 @@ const GENERAL_DOCS = [
     body: "Alle emissionsfaktorer, datakilder og beregningsmetoder, fuld åbenhed om hvordan dit klimaregnskab produceres.",
   },
   {
-    href: "mailto:kontakt@qlim8.com?subject=Docs%20sp%C3%B8rgsm%C3%A5l",
+    href: "mailto:support@qlim8.com?subject=Docs%20sp%C3%B8rgsm%C3%A5l",
     external: true,
     title: "Support",
-    body: "Specifikke spørgsmål, integration-detaljer eller technical issues? Skriv til kontakt@qlim8.com.",
+    body: "Specifikke spørgsmål, integration-detaljer eller technical issues? Skriv til support@qlim8.com.",
   },
 ];
 

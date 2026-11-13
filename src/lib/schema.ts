@@ -43,7 +43,7 @@ export const ORGANIZATION = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    email: "kontakt@qlim8.com",
+    email: "support@qlim8.com",
     telephone: "+45 93 90 13 84",
     areaServed: "DK",
     availableLanguage: ["da", "en"],

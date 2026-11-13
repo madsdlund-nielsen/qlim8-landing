@@ -4,7 +4,7 @@
 set -e
 
 DOMAIN="qlim8.com"
-EMAIL="mads@viridis-ramosa.com"
+EMAIL="admin@qlim8.com"
 COMPOSE_DIR="/opt/qlim8"
 
 cd "$COMPOSE_DIR"

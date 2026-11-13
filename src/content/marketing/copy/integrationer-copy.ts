@@ -894,7 +894,7 @@ export const IN_REST_API: MarketingPageCopy = {
   },
   reassurance: {
     title: "Dine klimadata i dine egne systemer",
-    body: "Med REST API'et henter du dine klimadata ind i de værktøjer, du allerede bruger, med en API-nøgle til din virksomhed. Spørgsmål til opsætningen kan du sende til kontakt@qlim8.com.",
+    body: "Med REST API'et henter du dine klimadata ind i de værktøjer, du allerede bruger, med en API-nøgle til din virksomhed. Spørgsmål til opsætningen kan du sende til support@qlim8.com.",
   },
   intro: {
     heading: "Dine klimadata, der hvor dine andre systemer er",
