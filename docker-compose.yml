@@ -31,6 +31,13 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - certbot-etc:/etc/letsencrypt:ro
       - certbot-www:/var/www/certbot:ro
+      # Basic-auth users of staging.qlim8.com (nginx.conf). Lives on the host
+      # only; deploy.yml copies this file and nginx.conf, never it.
+      - ./staging.htpasswd:/etc/nginx/staging.htpasswd:ro
+    # host.docker.internal: the host, where the qlim8-app staging environment
+    # runs under PM2 (nginx.conf, server staging.qlim8.com).
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - web
     networks:
