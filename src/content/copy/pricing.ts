@@ -153,7 +153,7 @@ export const PRICING_COPY: PricingCopy = {
       },
       {
         q: "Hvordan og hvornår betaler jeg for en pakke hos qlim8?",
-        a: "De betalte pakker er årsaftaler: du betaler forud for et år ad gangen, og prisen vises pr. måned ekskl. moms. Basis og Udvidet køber du selv i appen med betalingskort. Komplet og Koncern aftaler vi efter en samtale, og de betales mod faktura. [[Basis koster {pris:starter} og Udvidet {pris:premium} om måneden ekskl. moms, betalt for et år ad gangen.]]",
+        a: "De betalte pakker er årsaftaler: du betaler forud for et år ad gangen, og prisen vises pr. måned ekskl. moms. Basis og Udvidet køber du selv i appen med betalingskort. Komplet og Koncern aftaler vi efter en samtale, og de betales mod faktura. [[Basis koster {pris:starter} og Udvidet {pris:premium} om måneden ekskl. moms, betalt for et år ad gangen.]] [[Komplet koster {pris:business} om måneden ekskl. moms, betalt for et år ad gangen, og Koncern prissætter vi efter samtalen.]]",
       },
       {
         q: "Hvorfor er de betalte pakker en årsaftale, og kan prisen stige?",
