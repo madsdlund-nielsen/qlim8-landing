@@ -39,15 +39,16 @@ Clauses not listed are unchanged from 2.2. The numbering is the same as in 2.2, 
 | 3.2 | Komplet is bought in the Service by card or by invoice. Access to Komplet by invoice from issue. Koncern after a dialogue. The trial is no longer mentioned. |
 | 4.2 | Basis, Udvidet and Komplet are bought by the customer and paid by card (Komplet also by invoice). No trial. |
 | 4.3 | Only Koncern, and Komplet when agreed after a dialogue, are agreed and invoiced. |
-| 4.5 | Upgrade to Komplet (by card) in addition to Basis to Udvidet. |
+| 4.5 | Upgrade to Komplet (by card) in addition to Basis to Udvidet. The text is corrected to what the Service does: the period continues and the difference for the rest of it is paid. Only an upgrade with the upgrade discount (5.5) starts a new period. |
+| 8.4 | Corrected in the same way as 4.5. |
 | 5 | The heading loses "Prøveperiode". The old 5.3 (Udvidet, trial) is replaced by a new 5.3: no trial and no intro period on Udvidet and Komplet; an intro period from Gratis ends on purchase. 5.6, 5.7 and 5.8 lose their references to the trial. The numbering is kept. |
 | 8.2 | Card payment also covers Komplet. The charge "at the end of the trial" goes. |
 | 8.3 | Split: (a) a self-serve invoice on Komplet, 8 days, access from issue, card through the payment link; (b) Koncern and agreed deals, net 30 as in 2.2. |
 | 8.5 | Text unchanged (7 days). See 8.5a. |
-| 8.5a (new) | The first self-serve invoice locks at the due date. Reminders. "Deemed received when registered." "Vi har betalt" postpones the lock by 3 days, once per invoice. |
-| 9.2 | Now also covers Komplet bought in the Service. |
+| 8.5a (new) | The first self-serve invoice locks at the due date. Reminders. "Deemed received when registered." "Vi har betalt" keeps the lock away for 3 days from the declaration, once per invoice. |
+| 9.2 | Now also covers Komplet bought in the Service. Refers to the button "Opsig abonnement" under Abonnement, which is the one the Service has. |
 | 9.3 | Only Koncern and Komplet agreed after a dialogue. No renewal notice for self-serve Komplet. |
-| 9.5a (new) | Cancelling a purchase by invoice before the first invoice is paid. |
+| 9.5a (new) | Cancelling a purchase by invoice before the first invoice is paid. A new purchase is then paid by card. |
 
 ## For the owner and the lawyer
 
@@ -56,7 +57,7 @@ Clauses not listed are unchanged from 2.2. The numbering is the same as in 2.2, 
 3. **Clause 18.1 (30 days' notice).** The changes do not put existing customers in a worse position (Komplet becomes easier to buy, and the short term and the lock apply only to the first self-serve invoice). The lawyer should confirm that no notice is needed, and whether current users must accept 2.3 again when `CURRENT_TERMS_VERSION` in the app is raised.
 4. **The lock at the due date (clause 8.5a).** No grace after the due date is the owner's wish. The risk is a paying customer who pays by bank transfer on day 7 or 8 and is locked before the payment is registered (DKK transfers cannot be matched automatically). The text's mitigations: card payment through the payment link, reminders, and "Vi har betalt" (3 days' postponement, once). The lawyer should assess the wording "deemed received when registered" and the lock as a remedy.
 5. **Cancelling a purchase by invoice (clause 9.5a).** The owner's accountant should confirm that a cancelled unpaid invoice may be voided rather than trigger a credit note.
-6. **Upgrade to Komplet (clause 4.5).** The text assumes an upgrade to Komplet works as Basis to Udvidet does today (a new subscription period from the upgrade day, the unused part credited). That has to be confirmed against the payment flow before the text is approved.
+6. **Upgrades (clauses 4.5 and 8.4): the text of 2.2 does not match the Service.** Version 2.2, in force today, says every upgrade starts a new Subscription Period of 12 months. The Service does that only when the upgrade discount in clause 5.5 is used (Basis to Udvidet within 365 days). Every other upgrade, including any upgrade to Komplet, lets the period continue and charges the difference for the rest of it (checked against the code and its test, `changePackage` in qlim8-app). The draft is corrected to what the Service does. The alternative is to change the Service so that every upgrade starts a new period. The owner chooses, and the lawyer should know that 2.2 has carried this discrepancy.
 7. **Date.** "Effective from" and `TERMS_EFFECTIVE` are set on the day 2.3 is published. The data processing agreement and the privacy policy show the same version date (`legal.ts` uses `TERMS_EFFECTIVE` in all three), but the agreement's text is unchanged.
 
 ## On the day of approval
@@ -73,6 +74,7 @@ Clauses not listed are unchanged from 2.2. The numbering is the same as in 2.2, 
 
 | Place in `legal.ts` | Current wording (excerpt) | Proposal |
 |---|---|---|
+| 3.3 Account creation | "Navn, e-mail, adgangskode (gemt som krypteret hash), om du opretter dig som virksomhed eller rådgiver, og hvilken pakke du valgte." | "E-mail, adgangskode (gemt som krypteret hash), om du opretter dig som virksomhed eller rådgiver, og hvilken pakke du valgte. Navn og telefonnummer kan du tilføje bagefter i velkomsttrinnet; det er frivilligt." (From the app release, not only from 2.3.) |
 | List of when we process data (about line 229) | "køber en pakke, får en introperiode eller prøveperiode eller modtager en faktura fra os." | "køber en pakke, får en introperiode eller modtager en faktura fra os." |
 | Heading 3.6 | "Køb, introperiode, prøveperiode og betaling" | "Køb, introperiode og betaling" |
 | 3.6, what we store | "...hvornår en introperiode eller prøveperiode udløber, og fakturaerne." | "...hvornår en introperiode udløber, og fakturaerne." |
@@ -81,6 +83,22 @@ Clauses not listed are unchanged from 2.2. The numbering is the same as in 2.2, 
 | Legal basis (about line 286) | "Køb, introperiode, prøveperiode, betaling og frivillig introsamtale" | "Køb, introperiode, betaling og frivillig introsamtale" |
 
 If the lawyer wants it, also add that a self-serve invoice is checked against the CVR register (that the company is Danish and active), and that we record that the company has used its one self-serve invoice (the offer marker `self_serve_invoice`, same purpose and legal basis as the other used offers). Afterwards run `npm run test:contract` in the landing repository.
+
+## The cookie policy (edited in `legal.ts`, at the app release)
+
+`page.legal.cookies` has no published text in the CMS, so the bundled `LEGAL_COOKIES_COPY` is what renders. One sentence becomes wrong on the day the app ships payment on qlim8's own page, which is before 2.3 and independent of the catalog:
+
+| Place in `legal.ts` | Current wording | Proposal (true both before and after) |
+|---|---|---|
+| The cookie policy, under the table (about line 76) | "Selve kortbetalingen sker på Stripes egen side (checkout.stripe.com), hvor Stripes egne vilkår og cookies gælder." | "Selve kortbetalingen sker hos Stripe: i et betalingsfelt fra Stripe, der vises i platformen, eller på Stripes egen side (checkout.stripe.com). Stripes egne vilkår og cookies gælder for betalingen." |
+
+The row for `__stripe_mid` and `__stripe_sid` still fits. The change has not been made: legal text is changed only once the owner has approved it.
+
+## Checked against the code (2026-11-16)
+
+The draft was held against the code on the branch in qlim8-app (PR 469). The Danish file has the table of what each clause says and where it was seen: 8 days, the eligibility rule, lock at the due date against 7 days, the reminders, "Vi har betalt" (the lock falls no earlier than 3 days after the declaration; the button is on the lock screen), cancellation in the Service, no renewal notice for self-serve Komplet, and cancelling an unpaid purchase (the once-per-company marker is not given back). The upgrade clauses 4.5 and 8.4 did not match and are corrected, see question 6.
+
+Not checked, because it is not in the code: that the invoice carries bank details (they are in the Stripe invoice template's footer, if `STRIPE_INVOICE_TEMPLATE` is set in production), and that the invoice is issued and sent at once and can be paid by card (the code asks Stripe for it; not yet seen against Stripe).
 
 ## The clauses that change, in English
 
@@ -98,9 +116,9 @@ This is a working translation for the owner. The Danish text is the one that is 
 
 **4. Packages**
 
-- (changed) 4.2 **Basis**, **Udvidet** and **Komplet** are bought by the Customer in the Service and paid by card, and Komplet may also be paid by invoice, cf. clause 8.3. Payment is made at the purchase. There is no Trial Period.
+- (changed) 4.2 **Basis**, **Udvidet** and **Komplet** are bought by the Customer in the Service and paid by card, and Komplet may also be paid by invoice, cf. clause 8.3. When paying by card, payment is made at the purchase. There is no Trial Period.
 - (changed) 4.3 **Koncern** is agreed after a dialogue with the Supplier and paid by invoice. Komplet, when agreed after a dialogue, is also paid by invoice. Koncern and Komplet have no Intro Period.
-- (changed) 4.5 The Customer may at any time upgrade in the Service from Basis to Udvidet or Komplet and from Udvidet to Komplet. An upgrade is paid by the payment card the Customer has provided. The upgrade takes effect at once and starts a new Subscription Period of 12 months for the new Package from the day of the upgrade, with the unused part of the previous subscription credited. The upgrade discount in clause 5.5 may apply. A downgrade takes effect at the end of the current Subscription Period.
+- (changed) 4.5 The Customer may at any time upgrade in the Service from Basis to Udvidet or Komplet and from Udvidet to Komplet. An upgrade is paid by the payment card the Customer has provided and takes effect at once. The current Subscription Period continues unchanged, and the Customer pays the difference between the two Packages' prices for the rest of the period. If the Customer upgrades from Basis to Udvidet under clause 5.5, the upgrade instead starts a new Subscription Period of 12 months for Udvidet from the day of the upgrade, with the unused part of the Basis subscription credited. A downgrade takes effect at the end of the current Subscription Period. (Corrected to what the Service does, see question 6.)
 
 **5. Intro Period and upgrade discount** (the heading loses "Trial Period")
 
@@ -112,13 +130,14 @@ This is a working translation for the owner. The Danish text is the one that is 
 **8. Price and payment**
 
 - (changed) 8.2 When the Customer pays by card, Basis, Udvidet and Komplet are paid yearly in advance by payment card through the Supplier's payment provider (Stripe). The Customer authorises the Supplier to charge the yearly price at the purchase and then at each renewal. A receipt and an invoice are sent by e-mail and can be downloaded in the Service.
+- (changed) 8.4 On an upgrade the difference for the rest of the current Subscription Period is charged at once, cf. clause 4.5. On an upgrade under clause 5.5 the price for the new Subscription Period is charged at once instead, less the unused part of the previous Subscription Period and the upgrade discount. (Corrected to what the Service does, see question 6. In the Danish text this clause follows 8.3.)
 - (changed) 8.3 Payment by invoice:
   - (a) (new) **Komplet bought in the Service by invoice.** If the Customer chooses invoice, the Supplier issues the First Self-serve Invoice at once and sends it to the e-mail address the Customer has given. The invoice is for the yearly price in advance and falls due 8 days from the invoice date. The Customer gets access to Komplet when the invoice has been issued. The invoice can be paid by bank transfer or by card through the payment link on the invoice. Payment by invoice in the Service can be chosen by a Danish company with an active CVR number, and only once per registration number. Later purchases are paid by card.
   - (b) **Koncern and agreements after a dialogue.** Koncern, and Komplet when agreed after a dialogue, are invoiced yearly in advance and paid by bank transfer. The payment terms are net 30 days from the invoice date unless the Order Confirmation says otherwise.
-- (new) 8.5a **The First Self-serve Invoice.** No grace period after the due date applies to the First Self-serve Invoice: if it is not paid at the due date, the organisation is locked as described in clause 4.6 until payment is made. The Supplier sends a reminder 3 days and 1 day before the due date. Payment is deemed received when it is registered with the Supplier. A card payment through the payment link is registered at once, whereas a bank transfer is received only when the Supplier has registered it. If the Customer has paid by bank transfer and the payment is not yet registered, the Customer may once per invoice declare in the Service that payment has been made ("Vi har betalt"). The lock is then postponed by 3 days so that the payment can be registered, and the Supplier is notified. The 7-day period in clause 8.5 applies to all other payments, including renewals of a subscription that was first bought by invoice.
+- (new) 8.5a **The First Self-serve Invoice.** No grace period after the due date applies to the First Self-serve Invoice: if it is not paid at the due date, the organisation is locked as described in clause 4.6 until payment is made. The Supplier sends a reminder 3 days and 1 day before the due date. Payment is deemed received when it is registered with the Supplier. A card payment through the payment link is registered at once, whereas a bank transfer is received only when the Supplier has registered it. If the Customer has paid by bank transfer and the payment is not yet registered, the Customer may once per invoice declare in the Service that payment has been made ("Vi har betalt"). The organisation is then not locked for 3 days from the declaration, so that the payment can be registered, and the Supplier is notified. The 7-day period in clause 8.5 applies to all other payments, including renewals of a subscription that was first bought by invoice.
 
 **9. Subscription Period, renewal and cancellation**
 
-- (changed) 9.2 Basis, Udvidet and Komplet bought in the Service (by card or by invoice) may be cancelled at any time in the Service under Account (Manage subscription) or in writing to kontakt@qlim8.com. The cancellation takes effect at the end of the current Subscription Period.
+- (changed) 9.2 Basis, Udvidet and Komplet bought in the Service (by card or by invoice) may be cancelled at any time in the Service under Abonnement ("Opsig abonnement") or in writing to kontakt@qlim8.com. The cancellation takes effect at the end of the current Subscription Period.
 - (changed) 9.3 Koncern, and Komplet when agreed after a dialogue, may be cancelled in writing to kontakt@qlim8.com with at least 3 months' notice to the end of the current Subscription Period. About 4 months before the end the Supplier sends a renewal notice to the Customer's invoice recipient and administrators with the renewal date, the price and the last date for cancellation. The renewal notice is not sent for Komplet bought in the Service.
-- (new) 9.5a **Cancelling a purchase by invoice.** As long as the First Self-serve Invoice on Komplet has not been paid, the Customer may cancel the purchase in the Service. The subscription then ends at once, the invoice is voided, and the organisation continues on the Gratis package, cf. clause 9.5. If the invoice has been paid, clause 9.2 applies.
+- (new) 9.5a **Cancelling a purchase by invoice.** As long as the First Self-serve Invoice on Komplet has not been paid, the Customer may cancel the purchase in the Service. The subscription then ends at once, the invoice is voided, and the organisation continues on the Gratis package, cf. clause 9.5. The option to buy by invoice in the Service has then been used, cf. clause 8.3 (a), so a new purchase is paid by card. If the invoice has been paid, clause 9.2 applies.

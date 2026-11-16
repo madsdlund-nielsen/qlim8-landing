@@ -37,15 +37,16 @@ Punkter, der ikke står her, er uændrede fra 2.2. Nummereringen er den samme so
 | 3.2 | Komplet købes i Tjenesten med kort eller mod faktura. Adgang til Komplet mod faktura fra udstedelsen. Koncern efter dialog. Prøveperioden nævnes ikke længere. |
 | 4.2 | Basis, Udvidet og Komplet købes selv og betales med kort (Komplet også mod faktura). Ingen Prøveperiode. |
 | 4.3 | Kun Koncern, og Komplet efter dialog, aftales og faktureres. |
-| 4.5 | Opgradering til Komplet (med kort) ud over Basis til Udvidet. |
+| 4.5 | Opgradering til Komplet (med kort) ud over Basis til Udvidet. Teksten er rettet til det, Tjenesten gør: perioden fortsætter, og forskellen for resten af perioden betales. Kun en opgradering med opgraderingsrabatten (5.5) starter en ny periode. |
+| 8.4 | Rettet på samme måde som 4.5. |
 | 5 | Overskriften mister "Prøveperiode". Det gamle 5.3 (Udvidet, Prøveperiode) erstattes af et nyt 5.3: ingen Prøveperiode og ingen Introperiode på Udvidet og Komplet; en Introperiode fra Gratis ophører ved køb. 5.6, 5.7 og 5.8 mister henvisningerne til Prøveperioden. Nummereringen er bevaret. |
 | 8.2 | Kortbetaling dækker også Komplet. Trækket "ved Prøveperiodens udløb" udgår. |
 | 8.3 | Opdelt: (a) selvbetjent faktura på Komplet, 8 dage, adgang fra udstedelsen, kort via betalingslink; (b) Koncern og aftalte forhold, netto 30 som i 2.2. |
 | 8.5 | Uændret tekst (7 dages frist). Se 8.5a. |
-| 8.5a (ny) | Den første selvbetjente faktura låser ved forfald. Påmindelser. "Anses for modtaget, når registreret." "Vi har betalt" udskyder låsen i 3 dage, én gang pr. faktura. |
-| 9.2 | Gælder nu også Komplet købt i Tjenesten. |
+| 8.5a (ny) | Den første selvbetjente faktura låser ved forfald. Påmindelser. "Anses for modtaget, når registreret." "Vi har betalt" holder låsen væk i 3 dage fra meddelelsen, én gang pr. faktura. |
+| 9.2 | Gælder nu også Komplet købt i Tjenesten. Henviser til knappen "Opsig abonnement" under Abonnement, som er den, Tjenesten har. |
 | 9.3 | Kun Koncern og aftalt Komplet. Ingen fornyelsesvarsel for selvbetjent Komplet. |
-| 9.5a (nyt) | Annullering af et køb mod faktura, før den første faktura er betalt. |
+| 9.5a (nyt) | Annullering af et køb mod faktura, før den første faktura er betalt. Et nyt køb betales derefter med kort. |
 
 ## Til ejeren og advokaten
 
@@ -54,7 +55,7 @@ Punkter, der ikke står her, er uændrede fra 2.2. Nummereringen er den samme so
 3. **Pkt. 18.1 (30 dages varsel).** Ændringerne stiller ikke eksisterende kunder ringere (Komplet bliver lettere at købe, og den korte frist og låsen gælder kun den første selvbetjente faktura). Advokaten bør bekræfte, at et varsel ikke er nødvendigt, og om nuværende brugere skal acceptere 2.3 på ny, når `CURRENT_TERMS_VERSION` i appen hæves.
 4. **Låsen ved forfald (pkt. 8.5a).** Ingen frist efter forfald er ejerens ønske. Risikoen er en betalende kunde, der betaler ved bankoverførsel dag 7 eller 8 og bliver låst, før betalingen er registreret (indbetalinger i DKK kan ikke afstemmes automatisk). Afbødningen i teksten: kortbetaling via betalingslinket, påmindelser, og "Vi har betalt" (3 dages udsættelse, én gang). Advokaten bør vurdere formuleringen "anses for modtaget, når den er registreret" og låsen som retsmiddel.
 5. **Annullering mod faktura (pkt. 9.5a).** Regnskabsføreren bør bekræfte, at en annulleret ubetalt faktura kan makuleres i stedet for at udløse en kreditnota.
-6. **Opgradering til Komplet (pkt. 4.5).** Teksten antager, at en opgradering til Komplet fungerer som Basis til Udvidet i dag (ny Abonnementsperiode fra opgraderingsdagen, den ubrugte del godskrives). Det skal bekræftes mod betalingsforløbet, før teksten godkendes.
+6. **Opgradering (pkt. 4.5 og 8.4): teksten i 2.2 passer ikke med Tjenesten.** Version 2.2, som gælder i dag, siger, at enhver opgradering starter en ny Abonnementsperiode på 12 måneder. Det gør Tjenesten kun, når opgraderingsrabatten i pkt. 5.5 bruges (Basis til Udvidet inden for 365 dage). Alle andre opgraderinger, herunder enhver opgradering til Komplet, lader perioden fortsætte og opkræver forskellen for resten af den (kontrolleret mod koden og dens test, `changePackage` i qlim8-app). Udkastet er rettet til det, Tjenesten gør. Alternativet er at ændre Tjenesten, så enhver opgradering starter en ny periode. Ejeren vælger, og advokaten bør vide, at 2.2 har stået med den afvigelse.
 7. **Dato.** "Gældende fra" og `TERMS_EFFECTIVE` sættes den dag, 2.3 udgives. Databehandleraftalen følger samme versionsdato (`legal.ts` bruger `TERMS_EFFECTIVE` begge steder), men dens tekst er uændret.
 
 ## Samme dag som godkendelsen
@@ -71,6 +72,7 @@ Punkter, der ikke står her, er uændrede fra 2.2. Nummereringen er den samme so
 
 | Sted i `legal.ts` | Nuværende ordlyd (uddrag) | Forslag |
 |---|---|---|
+| 3.3 Oprettelse af konto | "Navn, e-mail, adgangskode (gemt som krypteret hash), om du opretter dig som virksomhed eller rådgiver, og hvilken pakke du valgte." | "E-mail, adgangskode (gemt som krypteret hash), om du opretter dig som virksomhed eller rådgiver, og hvilken pakke du valgte. Navn og telefonnummer kan du tilføje bagefter i velkomsttrinnet; det er frivilligt." (Gælder fra app-udgivelsen, ikke først fra 2.3.) |
 | Liste over, hvornår vi behandler data (omkring linje 229) | "køber en pakke, får en introperiode eller prøveperiode eller modtager en faktura fra os." | "køber en pakke, får en introperiode eller modtager en faktura fra os." |
 | Overskrift 3.6 | "Køb, introperiode, prøveperiode og betaling" | "Køb, introperiode og betaling" |
 | 3.6, punkt om det vi gemmer | "...hvornår en introperiode eller prøveperiode udløber, og fakturaerne." | "...hvornår en introperiode udløber, og fakturaerne." |
@@ -79,6 +81,37 @@ Punkter, der ikke står her, er uændrede fra 2.2. Nummereringen er den samme so
 | Retsgrundlag (omkring linje 286) | "Køb, introperiode, prøveperiode, betaling og frivillig introsamtale" | "Køb, introperiode, betaling og frivillig introsamtale" |
 
 Tilføj desuden, hvis advokaten ønsker det, at en selvbetjent faktura kontrolleres mod CVR-registret (at virksomheden er dansk og aktiv), og at vi gemmer, at virksomheden har brugt sin ene selvbetjente faktura (tilbudsmærket `self_serve_invoice`, samme formål og retsgrundlag som de øvrige brugte tilbud). Kør bagefter `npm run test:contract` i landing-repoet.
+
+## Cookiepolitikken (rettes i `legal.ts`, ved app-udgivelsen)
+
+`page.legal.cookies` har ingen udgivet tekst i CMS'et, så det er den bundlede tekst i `LEGAL_COOKIES_COPY`, der vises. Én sætning bliver forkert den dag, appen udgives med betaling på qlim8's egen side, altså før 2.3 og uafhængigt af kataloget:
+
+| Sted i `legal.ts` | Nuværende ordlyd | Forslag (sandt både før og efter) |
+|---|---|---|
+| Cookiepolitikken, under tabellen (omkring linje 76) | "Selve kortbetalingen sker på Stripes egen side (checkout.stripe.com), hvor Stripes egne vilkår og cookies gælder." | "Selve kortbetalingen sker hos Stripe: i et betalingsfelt fra Stripe, der vises i platformen, eller på Stripes egen side (checkout.stripe.com). Stripes egne vilkår og cookies gælder for betalingen." |
+
+Rækken om `__stripe_mid` og `__stripe_sid` ("Svindelforebyggelse, når du betaler med kort i platformen") passer fortsat. Ændringen er ikke lavet: juridisk tekst ændres først, når ejeren har sagt god for den.
+
+## Kontrolleret mod koden (2026-11-16)
+
+Udkastet er holdt op mod den kode, der ligger på grenen i qlim8-app (PR 469). Det, teksten lover, og hvor det er set:
+
+| Punkt | Hvad teksten siger | Set i koden |
+|---|---|---|
+| 8.3 (a) | 8 dages frist | `SELF_SERVE_INVOICE_DAYS_UNTIL_DUE = 8` |
+| 8.3 (a) | Dansk virksomhed med aktivt CVR, én gang pr. registreringsnummer | `server/services/selfServeInvoice.ts`: kun `source: cvr_registry`, aktiv i registret, mærket `self_serve_invoice` |
+| 8.5a | Lås ved forfald for den første selvbetjente faktura, 7 dage ellers | `SELF_SERVE_FIRST_INVOICE_GRACE_DAYS = 0`, `PAYMENT_GRACE_DAYS = 7` |
+| 8.5a | Påmindelse 3 dage og 1 dag før | `INVOICE_REMINDER_DAYS_BEFORE_DUE = [3, 1]` |
+| 8.5a | "Vi har betalt": 3 dage, én gang pr. faktura | `PAID_CLAIM_LIFT_DAYS = 3`; låsen falder tidligst 3 dage efter meddelelsen. Knappen vises på låseskærmen |
+| 9.2 | Opsigelse i Tjenesten til periodens udløb, kort og selvbetjent faktura | `POST /api/billing/subscription/cancel`, knappen "Opsig abonnement" |
+| 9.3 | Intet fornyelsesvarsel for selvbetjent Komplet | `sendRenewalNotices` springer `channel: self_serve` over |
+| 9.5a | Annullering: abonnementet ophører, fakturaen annulleres, Gratis | `cancelUnpaidSelfServePurchase`; mærket for den ene faktura gives ikke tilbage |
+| 4.5, 8.4 | Opgradering | Rettet, se spørgsmål 6 |
+
+Ikke kontrolleret, fordi det ikke står i koden:
+
+- **Bankoplysninger på fakturaen (pkt. 8.3 (a)).** Teksten lover betaling ved bankoverførsel. Oplysningerne står kun på fakturaen, hvis fakturaskabelonen i Stripe (`STRIPE_INVOICE_TEMPLATE`) har dem i sin bundtekst, og hvis variablen er sat i produktion. Skal ses på en testfaktura.
+- **At fakturaen udstedes og sendes straks, og at den kan betales med kort.** Koden beder Stripe om det; det er ikke set mod Stripe endnu.
 
 ## Fuld tekst, version 2.3
 
@@ -132,13 +165,13 @@ Mærkerne i kursiv (_ændret_, _ny_, _udgår_) er til gennemlæsning og fjernes 
 
 4.1 **Gratis** koster ingenting og har ingen udløbsdato. Leverandøren kan ændre indholdet af Gratis-pakken eller ophøre med at tilbyde den med 30 dages varsel. Kunden kan i varslingsperioden eksportere sine Kundedata eller vælge en betalt Pakke.
 
-4.2 **Basis**, **Udvidet** og **Komplet** købes af Kunden selv i Tjenesten og betales med kort, og Komplet kan også betales mod faktura, jf. pkt. 8.3. Betalingen sker ved købet. Der er ingen Prøveperiode. _(ændret i 2.3)_
+4.2 **Basis**, **Udvidet** og **Komplet** købes af Kunden selv i Tjenesten og betales med kort, og Komplet kan også betales mod faktura, jf. pkt. 8.3. Ved kortbetaling sker betalingen ved købet. Der er ingen Prøveperiode. _(ændret i 2.3)_
 
 4.3 **Koncern** aftales efter dialog med Leverandøren og betales mod faktura. Komplet, når det aftales efter dialog, betales også mod faktura. Koncern og Komplet har ikke en Introperiode. _(ændret i 2.3)_
 
 4.4 **Revisor** og **Konsulent** er gratis Pakker til rådgivere, der arbejder i deres klienters data. Den enkelte klient bestemmer, hvad rådgiveren må se og gøre i klientens data, og kan til enhver tid trække adgangen tilbage. Rådgiveren er selv ansvarlig for sit aftaleforhold med klienten.
 
-4.5 Kunden kan til enhver tid opgradere i Tjenesten fra Basis til Udvidet eller Komplet og fra Udvidet til Komplet. En opgradering betales med det betalingskort, Kunden har angivet. Opgraderingen gælder straks og starter en ny Abonnementsperiode på 12 måneder for den nye Pakke fra opgraderingsdagen, hvor den ubrugte del af det hidtidige abonnement godskrives. Opgraderingsrabatten i pkt. 5.5 kan gælde. En nedgradering gælder fra udløbet af den igangværende Abonnementsperiode. _(ændret i 2.3)_
+4.5 Kunden kan til enhver tid opgradere i Tjenesten fra Basis til Udvidet eller Komplet og fra Udvidet til Komplet. En opgradering betales med det betalingskort, Kunden har angivet, og gælder straks. Den igangværende Abonnementsperiode fortsætter uændret, og Kunden betaler forskellen mellem de to Pakkers pris for resten af perioden. Opgraderer Kunden fra Basis til Udvidet efter pkt. 5.5, starter opgraderingen i stedet en ny Abonnementsperiode på 12 måneder for Udvidet fra opgraderingsdagen, hvor den ubrugte del af Basis-abonnementet godskrives. En nedgradering gælder fra udløbet af den igangværende Abonnementsperiode. _(ændret i 2.3: beskriver nu, hvad Tjenesten gør, se spørgsmål 6)_
 
 4.6 Overskrider Kunden grænserne i sin Pakke, fx efter en nedgradering, låses organisationen ("pakkelås"), indtil forholdet er bragt i orden. Under en pakkelås kan Kunden se og eksportere sine data, fjerne brugere og forbindelser og købe en større Pakke, men ikke tilføje nye data eller danne nye rapporter.
 
@@ -192,11 +225,11 @@ Mærkerne i kursiv (_ændret_, _ny_, _udgår_) er til gennemlæsning og fjernes 
 
 (b) **Koncern og aftaler efter dialog.** Koncern, og Komplet når det er aftalt efter dialog, faktureres årligt forud og betales ved bankoverførsel. Betalingsbetingelserne er netto 30 dage fra fakturadato, medmindre Ordrebekræftelsen siger andet. _(som 2.2, nu for Koncern og Komplet efter dialog)_
 
-8.4 Ved opgradering opkræves prisen for den nye Abonnementsperiode straks, med fradrag for den ubrugte del af den hidtidige Abonnementsperiode og for en eventuel opgraderingsrabat, jf. pkt. 4.5 og 5.5.
+8.4 Ved opgradering opkræves forskellen for resten af den igangværende Abonnementsperiode straks, jf. pkt. 4.5. Ved en opgradering efter pkt. 5.5 opkræves i stedet prisen for den nye Abonnementsperiode straks, med fradrag for den ubrugte del af den hidtidige Abonnementsperiode og for opgraderingsrabatten. _(ændret i 2.3: beskriver nu, hvad Tjenesten gør, se spørgsmål 6)_
 
 8.5 Mislykkes en kortbetaling ved fornyelse, eller er en faktura ikke betalt ved forfald, giver Leverandøren Kunden besked, og Tjenesten fortsætter uændret i 7 dage. Er betalingen ikke sket herefter, låses organisationen som beskrevet i pkt. 4.6, indtil der er betalt. For fakturaer påløber morarenter efter rentelovens § 5 og et rykkergebyr på 100 kr. pr. rykker, jf. rentelovens § 9 b. _(ændret i 2.3)_
 
-8.5a **Første selvbetjente faktura.** For den Første selvbetjente faktura gælder ingen frist efter forfald: er fakturaen ikke betalt ved forfald, låses organisationen som beskrevet i pkt. 4.6, indtil der er betalt. Leverandøren sender en påmindelse 3 dage og 1 dag før forfald. Betalingen anses for modtaget, når den er registreret hos Leverandøren. En kortbetaling via betalingslinket registreres straks, mens en bankoverførsel først er modtaget, når Leverandøren har registreret den. Har Kunden betalt ved bankoverførsel, og er betalingen endnu ikke registreret, kan Kunden én gang pr. faktura i Tjenesten meddele, at der er betalt (“Vi har betalt”). Låsen udskydes da i 3 dage, så betalingen kan nå at blive registreret, og Leverandøren får besked. Fristen på 7 dage i pkt. 8.5 gælder alle andre betalinger, herunder fornyelser af et abonnement, der først er købt mod faktura. _(ny i 2.3)_
+8.5a **Første selvbetjente faktura.** For den Første selvbetjente faktura gælder ingen frist efter forfald: er fakturaen ikke betalt ved forfald, låses organisationen som beskrevet i pkt. 4.6, indtil der er betalt. Leverandøren sender en påmindelse 3 dage og 1 dag før forfald. Betalingen anses for modtaget, når den er registreret hos Leverandøren. En kortbetaling via betalingslinket registreres straks, mens en bankoverførsel først er modtaget, når Leverandøren har registreret den. Har Kunden betalt ved bankoverførsel, og er betalingen endnu ikke registreret, kan Kunden én gang pr. faktura i Tjenesten meddele, at der er betalt (“Vi har betalt”). Organisationen er da ikke låst i 3 dage fra meddelelsen, så betalingen kan nå at blive registreret, og Leverandøren får besked. Fristen på 7 dage i pkt. 8.5 gælder alle andre betalinger, herunder fornyelser af et abonnement, der først er købt mod faktura. _(ny i 2.3)_
 
 8.6 Leverandøren kan én gang årligt regulere priserne med et varsel på 60 dage. En prisregulering gælder fra Kundens næste Abonnementsperiode. Prisreguleringer ud over udviklingen i nettoprisindekset giver Kunden ret til at opsige aftalen med virkning fra reguleringens ikrafttræden.
 
@@ -206,7 +239,7 @@ Mærkerne i kursiv (_ændret_, _ny_, _udgår_) er til gennemlæsning og fjernes 
 
 9.1 Betalte Pakker løber i Abonnementsperioder på 12 måneder og fornyes automatisk for 12 måneder ad gangen, medmindre de opsiges.
 
-9.2 Basis, Udvidet og Komplet købt i Tjenesten (med kort eller mod faktura) kan til enhver tid opsiges i Tjenesten under Konto (Administrer abonnement) eller skriftligt til kontakt@qlim8.com. Opsigelsen gælder fra udløbet af den igangværende Abonnementsperiode. _(ændret i 2.3)_
+9.2 Basis, Udvidet og Komplet købt i Tjenesten (med kort eller mod faktura) kan til enhver tid opsiges i Tjenesten under Abonnement (Opsig abonnement) eller skriftligt til kontakt@qlim8.com. Opsigelsen gælder fra udløbet af den igangværende Abonnementsperiode. _(ændret i 2.3)_
 
 9.3 Koncern, og Komplet når det er aftalt efter dialog, kan opsiges skriftligt til kontakt@qlim8.com med et varsel på mindst 3 måneder til udløbet af den igangværende Abonnementsperiode. Leverandøren sender cirka 4 måneder før udløbet et fornyelsesvarsel til Kundens fakturamodtager og administratorer med fornyelsesdato, pris og sidste frist for opsigelse. Fornyelsesvarslet sendes ikke for Komplet, der er købt i Tjenesten. _(ændret i 2.3)_
 
@@ -214,7 +247,7 @@ Mærkerne i kursiv (_ændret_, _ny_, _udgår_) er til gennemlæsning og fjernes 
 
 9.5 Når en betalt Pakke ophører, fortsætter organisationen på Gratis-pakken, så Kundens data bevares. Har organisationen flere brugere eller forbindelser, end Gratis-pakken tillader, gælder pkt. 4.6.
 
-9.5a **Annullering af et køb mod faktura.** Så længe den Første selvbetjente faktura på Komplet ikke er betalt, kan Kunden annullere købet i Tjenesten. Abonnementet ophører da straks, fakturaen annulleres, og organisationen fortsætter på Gratis-pakken, jf. pkt. 9.5. Er fakturaen betalt, gælder pkt. 9.2. _(ny i 2.3)_
+9.5a **Annullering af et køb mod faktura.** Så længe den Første selvbetjente faktura på Komplet ikke er betalt, kan Kunden annullere købet i Tjenesten. Abonnementet ophører da straks, fakturaen annulleres, og organisationen fortsætter på Gratis-pakken, jf. pkt. 9.5. Adgangen til at købe mod faktura i Tjenesten er dermed brugt, jf. pkt. 8.3 (a), så et nyt køb betales med kort. Er fakturaen betalt, gælder pkt. 9.2. _(ny i 2.3)_
 
 9.6 Kunden kan til enhver tid bede om at få sin konto lukket. Ved lukning har Kunden 30 dage til at eksportere Kundedata i et standardformat. Herefter sletter Leverandøren Kundedata, medmindre opbevaring følger af lovgivning, jf. Databehandleraftalen.
 
