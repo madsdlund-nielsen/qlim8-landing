@@ -17,6 +17,8 @@
 // server", "VSME") are the strings a model matches an English query against.
 // See "Terminology" in CLAUDE.md.
 
+import { stripInlineLinks } from "@/lib/inlineLinks";
+
 export const BASE_URL = "https://qlim8.com";
 
 export const ORG_ID = `${BASE_URL}/#organization`;
@@ -245,8 +247,9 @@ export function buildFaqPageSchema(items: { q: string; a: string }[]) {
     "@type": "FAQPage",
     mainEntity: items.map((f) => ({
       "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      // A copy answer may hold inline links (src/lib/inlineLinks.ts); structured data is plain text.
+      name: stripInlineLinks(f.q),
+      acceptedAnswer: { "@type": "Answer", text: stripInlineLinks(f.a) },
     })),
   };
 }

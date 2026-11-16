@@ -1,4 +1,5 @@
 // A numbered list: a number badge in primary and an H3 title with its sentence.
+import { InlineText } from "./InlineText";
 
 export function NumberedList({ items }: { items: { title: string; body: string }[] }) {
   return (
@@ -10,7 +11,7 @@ export function NumberedList({ items }: { items: { title: string; body: string }
           </span>
           <div>
             <h3 className="mb-1">{item.title}</h3>
-            <p className="max-w-(--measure-body)">{item.body}</p>
+            <p className="max-w-(--measure-body)"><InlineText text={item.body} /></p>
           </div>
         </li>
       ))}

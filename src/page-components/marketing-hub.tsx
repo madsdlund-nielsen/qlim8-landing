@@ -16,6 +16,7 @@ import { ContactBox } from "@/components/ds/ContactBox";
 import { ClosingCta } from "@/components/ds/ClosingCta";
 import { Faq } from "@/components/ds/Faq";
 import { Paragraphs } from "@/components/ds/Paragraphs";
+import { InlineText } from "@/components/ds/InlineText";
 import type { MarketingHubCopy } from "@/content/marketing/types";
 import type { NavLeaf } from "@/content/navigation";
 import { cn } from "@/lib/utils";
@@ -88,7 +89,7 @@ export default function MarketingHubTemplate({ copy, cards }: { copy: MarketingH
               {copy.options.items.map((o) => (
                 <div key={o.title} className="rounded-lg border border-border bg-card p-6 shadow-soft md:p-8">
                   <h3 className="mb-2">{o.title}</h3>
-                  <p className="mb-4 text-body-sm text-muted-foreground">{o.body}</p>
+                  <p className="mb-4 text-body-sm text-muted-foreground"><InlineText text={o.body} /></p>
                   <ul className="m-0 grid list-none gap-2 p-0 text-body-sm">
                     {o.bullets.map((b) => (
                       <li key={b}>{b}</li>
@@ -106,7 +107,7 @@ export default function MarketingHubTemplate({ copy, cards }: { copy: MarketingH
               {copy.differentiators.map((d, i) => (
                 <Card key={i}>
                   <h3 className="mb-2">{d.title}</h3>
-                  <p className="text-body-sm text-muted-foreground">{d.body}</p>
+                  <p className="text-body-sm text-muted-foreground"><InlineText text={d.body} /></p>
                 </Card>
               ))}
             </CardGrid>

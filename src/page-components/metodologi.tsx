@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
+import { InlineText } from "@/components/ds/InlineText";
 import { METHODOLOGY_COPY, type MethodologyCopy, type MethodologyCallout } from "@/content/copy/methodology";
 
 function Section({
@@ -30,7 +31,7 @@ function Callout({ callout }: { callout: MethodologyCallout }) {
   return (
     <div className="border-l-2 border-sage pl-5 py-1 mt-2">
       <p className="font-semibold text-primary mb-1">{callout.title}</p>
-      <p className="text-foreground">{callout.body}</p>
+      <p className="text-foreground"><InlineText text={callout.body} /></p>
     </div>
   );
 }
@@ -52,7 +53,7 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
             {copy.hero.subtitle}
           </p>
           <p className="text-foreground text-body">
-            {copy.hero.intro}
+            <InlineText text={copy.hero.intro} />
           </p>
         </div>
       </section>
@@ -71,23 +72,23 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
         <div className="max-w-3xl mx-auto space-y-12 sm:space-y-16">
           <Section number="1" title={copy.dataSources.title}>
             {copy.dataSources.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}><InlineText text={p} /></p>
             ))}
           </Section>
 
           <Section number="2" title={copy.categorization.title}>
             {copy.categorization.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}><InlineText text={p} /></p>
             ))}
             <Callout callout={copy.categorization.callout} />
             <p className="text-body-sm text-muted-foreground">
-              {copy.categorization.antiCheatNote}
+              <InlineText text={copy.categorization.antiCheatNote} />
             </p>
           </Section>
 
           <Section number="3" title={copy.factors.title}>
             {copy.factors.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}><InlineText text={p} /></p>
             ))}
             <dl className="space-y-4 mt-2">
               {copy.factors.sources.map((s) => (
@@ -96,7 +97,7 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
                     {s.name}
                     {s.danish && <span className="ml-2 text-body-sm font-normal text-muted-foreground">{copy.factors.danishPriorityLabel}</span>}
                   </dt>
-                  <dd className="text-foreground mt-1">{s.note}</dd>
+                  <dd className="text-foreground mt-1"><InlineText text={s.note} /></dd>
                 </div>
               ))}
             </dl>
@@ -105,13 +106,13 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
 
           <Section number="4" title={copy.calculation.title}>
             {copy.calculation.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}><InlineText text={p} /></p>
             ))}
           </Section>
 
           <Section number="5" title={copy.auditTrail.title}>
             {copy.auditTrail.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}><InlineText text={p} /></p>
             ))}
             <div className="mt-2">
               <p className="font-semibold text-primary mb-3">{copy.auditTrail.containsLabel}</p>
@@ -119,7 +120,7 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
                 {copy.auditTrail.contains.map((item) => (
                   <li key={item} className="flex gap-2.5">
                     <span className="mt-3 h-1 w-2.5 shrink-0 bg-sage" aria-hidden="true" />
-                    <span>{item}</span>
+                    <span><InlineText text={item} /></span>
                   </li>
                 ))}
               </ul>
@@ -141,28 +142,28 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
       <section className="px-4 sm:px-6 py-16 sm:py-20">
         <div className="max-w-3xl mx-auto space-y-12 sm:space-y-16">
           <Section number="6" title={copy.dataQuality.title}>
-            <p>{copy.dataQuality.intro}</p>
-            <p>{copy.dataQuality.pointsIntro}</p>
+            <p><InlineText text={copy.dataQuality.intro} /></p>
+            <p><InlineText text={copy.dataQuality.pointsIntro} /></p>
             <dl className="space-y-2 mt-2">
               {copy.dataQuality.points.map((q) => (
                 <div key={q.points} className="flex flex-col sm:flex-row sm:gap-6 border-b border-border pb-3 last:border-b-0">
                   <dt className="font-semibold text-primary sm:w-24 sm:flex-shrink-0">{q.points}</dt>
-                  <dd className="text-foreground">{q.text}</dd>
+                  <dd className="text-foreground"><InlineText text={q.text} /></dd>
                 </div>
               ))}
             </dl>
             {copy.dataQuality.paragraphsAfter.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}><InlineText text={p} /></p>
             ))}
           </Section>
 
           <Section number="7" title={copy.standards.title}>
-            <p>{copy.standards.intro}</p>
+            <p><InlineText text={copy.standards.intro} /></p>
             <dl className="space-y-4 mt-2">
               {copy.standards.items.map((s) => (
                 <div key={s.name}>
                   <dt className="font-semibold text-primary">{s.name}</dt>
-                  <dd className="text-foreground mt-1">{s.body}</dd>
+                  <dd className="text-foreground mt-1"><InlineText text={s.body} /></dd>
                 </div>
               ))}
             </dl>
@@ -171,23 +172,23 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
 
           <Section number="8" title={copy.updates.title}>
             {copy.updates.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}><InlineText text={p} /></p>
             ))}
           </Section>
 
           <Section number="9" title={copy.forecast.title}>
             {copy.forecast.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}><InlineText text={p} /></p>
             ))}
           </Section>
 
           <Section number="10" title={copy.notDoing.title}>
-            <p>{copy.notDoing.intro}</p>
+            <p><InlineText text={copy.notDoing.intro} /></p>
             <dl className="space-y-5 mt-2">
               {copy.notDoing.items.map((item) => (
                 <div key={item.title}>
                   <dt className="font-semibold text-primary mb-1">{item.title}</dt>
-                  <dd className="text-foreground">{item.body}</dd>
+                  <dd className="text-foreground"><InlineText text={item.body} /></dd>
                 </div>
               ))}
             </dl>
@@ -199,7 +200,7 @@ export default function Metodologi({ copy = METHODOLOGY_COPY }: { copy?: Methodo
               {copy.outro.title}
             </h2>
             <p className="text-foreground text-body mb-7 max-w-(--measure-body)">
-              {copy.outro.body}
+              <InlineText text={copy.outro.body} />
             </p>
             <div className="flex flex-col sm:flex-row gap-4 text-body-sm">
               <a href="/kontakt" className="text-primary font-semibold hover:underline">

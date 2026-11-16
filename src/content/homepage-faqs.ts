@@ -2,6 +2,8 @@
 // fact base. The earlier eleven answers are gone with their claims ("omkring
 // 50.000 faktorer", "EPD-databaser", "gratis for altid", natlige kørsler,
 // pakkeniveauer); the topics they covered live on the pages they belong to.
+import { stripInlineLinks } from "@/lib/inlineLinks";
+
 export const HOMEPAGE_FAQS: { q: string; a: string }[] = [
   {
     q: "Hvad er qlim8?",
@@ -40,8 +42,9 @@ export function buildFaqSchema(faqs: HomepageFaq[]) {
     "@type": "FAQPage",
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      // An answer may hold inline links (src/lib/inlineLinks.ts); structured data is plain text.
+      name: stripInlineLinks(f.q),
+      acceptedAnswer: { "@type": "Answer", text: stripInlineLinks(f.a) },
     })),
   };
 }
