@@ -1,6 +1,7 @@
 // The trust card (design-system/komponenter/TrustCard.md): three short claims
 // on soft sage-grey, a line icon in sage, a title (H3) and one sentence.
 import { Icon } from "./Icon";
+import { InlineText } from "./InlineText";
 import { cn } from "@/lib/utils";
 
 /**
@@ -15,7 +16,7 @@ export function TrustCard({ icon, title, body, onBand }: { icon: string; title: 
         <Icon name={icon} />
       </span>
       <h3 className="mb-2 mt-4">{title}</h3>
-      <p className="text-body-sm text-muted-foreground">{body}</p>
+      <p className="text-body-sm text-muted-foreground"><InlineText text={body} /></p>
     </div>
   );
 }

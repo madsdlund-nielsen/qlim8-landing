@@ -270,7 +270,7 @@ export const KT_BYGGERI: MarketingPageCopy = {
       },
       {
         q: "Vi leaser vores varebiler. Skal de med i klimaregnskabet?",
-        a: "Ja. Dieslen, I selv køber til bilerne, tæller qlim8 i Scope 1. Leasingydelsen hører til i Scope 3, kategori 8. Hvordan jeres leasingform skal opgøres, afklarer du med din revisor. Strøm til el-varebiler, der lades på værkstedet, indgår i målerens samlede forbrug og skilles ikke ud.",
+        a: "Ja. Dieslen, I selv køber til bilerne, tæller qlim8 i Scope 1. Leasingydelsen hører til i [Scope 3, kategori 8](/blog/scope-3-smv-guide). Hvordan jeres leasingform skal opgøres, afklarer du med din revisor. Strøm til el-varebiler, der lades på værkstedet, indgår i målerens samlede forbrug og skilles ikke ud.",
       },
       {
         q: "Kan min revisor se tallene i qlim8?",
@@ -390,7 +390,7 @@ export const KT_TRANSPORT: MarketingPageCopy = {
       },
       {
         title: "Tilføj strømmen og få rapporten",
-        body: "Du giver fuldmagt med MitID på eloverblik.dk, og elforbruget hentes time for time én gang om ugen. Rapporten får du som PDF eller Excel, og hver linje kan spores tilbage til bilaget eller måleraflæsningen.",
+        body: "Du giver fuldmagt med MitID på eloverblik.dk, og elforbruget hentes time for time én gang om ugen. Rapporten får du som PDF eller Excel, og hver linje kan [spores tilbage til bilaget](/produkt/audit-trail-og-revisor) eller måleraflæsningen.",
       },
     ],
   },
@@ -445,7 +445,7 @@ export const KT_TRANSPORT: MarketingPageCopy = {
       },
       {
         q: "Vi bruger undervognmænd til en del af turene. Kommer de med?",
-        a: "Ja. Kører en undervognmand en tur for jer, tæller kørslen i jeres Scope 3. qlim8 finder fakturaerne i bogføringen og regner udledningen ud fra beløbet. Usikre linjer lægges til gennemsyn hos dig, før de tæller med.",
+        a: "Ja. Kører en undervognmand en tur for jer, tæller kørslen i [jeres Scope 3](/blog/scope-3-smv-guide). qlim8 finder fakturaerne i bogføringen og regner udledningen ud fra beløbet. Usikre linjer lægges til gennemsyn hos dig, før de tæller med.",
       },
       {
         q: "Kan jeg give en kunde eller speditør vores CO2-tal?",
@@ -453,7 +453,7 @@ export const KT_TRANSPORT: MarketingPageCopy = {
       },
       {
         q: "Kan jeg regne på et skift fra diesel til el?",
-        a: "Ja. Du kan sætte et reduktionsmål med basisår og målår og tilføje skiftet som et tiltag på dieselforbruget, hvor du selv angiver, hvor meget du forventer, at det giver. Det er dit eget skøn, og en rådgiver kan hjælpe med tallet. Når bilerne kører på el, falder dieselforbruget i Scope 1, og strømmen til bilerne tæller i Scope 2, når de lades på jeres egne målere. Se pakkerne for, hvad der følger med.",
+        a: "Ja. Du kan sætte [et reduktionsmål med basisår og målår](/produkt/reduktionsmaal-og-scenarier) og tilføje skiftet som et tiltag på dieselforbruget, hvor du selv angiver, hvor meget du forventer, at det giver. Det er dit eget skøn, og en rådgiver kan hjælpe med tallet. Når bilerne kører på el, falder dieselforbruget i Scope 1, og strømmen til bilerne tæller i Scope 2, når de lades på jeres egne målere. Se pakkerne for, hvad der følger med.",
       },
       {
         q: "Hvor lang tid tager det, og binder jeg mig til noget?",
@@ -512,7 +512,7 @@ export const KT_PRODUKTION: MarketingPageCopy = {
       },
       {
         title: "Én VSME-rapport til alle, der spørger",
-        body: "qlim8 samler dine tal efter VSME, EU's frivillige standard for SMV'er, i én rapport, du kan sende til hver kunde. Skemaerne forsvinder ikke helt, men du udfylder dem ud fra de samme tal.",
+        body: "qlim8 samler dine tal efter [VSME, EU's frivillige standard for SMV'er](/blog/hvad-er-vsme-vs), i én rapport, du kan sende til hver kunde. Skemaerne forsvinder ikke helt, men du udfylder dem ud fra de samme tal.",
       },
       {
         title: "Banken får den samme rapport",
@@ -608,7 +608,7 @@ export const KT_PRODUKTION: MarketingPageCopy = {
     items: [
       {
         q: "Vi køber hundredvis af råvarer og komponenter. Hvordan griber vi Scope 3 an?",
-        a: "Ingen forventer CO2-tal på hver møtrik fra første dag. qlim8 kategoriserer vareindkøbet ud fra bogføringen med spend-baserede faktorer fra EXIOBASE 3.8.2, et internationalt datasæt. Beløbene deflateres med Danmarks Statistiks forbrugerprisindeks, så prisstigninger ikke ligner mere CO2. Bagefter forfiner du de tungeste råvarer, fx stål eller granulat, med leverandørens egne tal.",
+        a: "Ingen forventer CO2-tal på hver møtrik fra første dag. qlim8 kategoriserer vareindkøbet ud fra bogføringen med [spend-baserede faktorer](/blog/scope-3-smv-guide) fra EXIOBASE 3.8.2, et internationalt datasæt. Beløbene deflateres med Danmarks Statistiks forbrugerprisindeks, så prisstigninger ikke ligner mere CO2. Bagefter forfiner du de tungeste råvarer, fx stål eller granulat, med leverandørens egne tal.",
       },
       {
         q: "Kan vi lægge leverandørens egne CO2-tal ind?",
@@ -624,7 +624,7 @@ export const KT_PRODUKTION: MarketingPageCopy = {
       },
       {
         q: "Kan vores revisor tjekke tallene?",
-        a: "Ja. Hver udledningslinje i qlim8 har sit eget ID og kan spores tilbage til bilaget eller måleraflæsningen. Excel-rapporten viser linjens dato, kategori, mængde, emissionsfaktor og kilde, og revisionssporet kan ikke redigeres eller slettes i programmet. Revisoren, du inviterer, får læseadgang uden at kunne ændre tal. Revisoren kan attestere rapporten, og kontoen er gratis.",
+        a: "Ja. Hver udledningslinje i qlim8 har sit eget ID og kan spores tilbage til bilaget eller måleraflæsningen. Excel-rapporten viser linjens dato, kategori, mængde, emissionsfaktor og kilde, og [revisionssporet kan ikke redigeres eller slettes](/produkt/audit-trail-og-revisor) i programmet. Revisoren, du inviterer, får læseadgang uden at kunne ændre tal. Revisoren kan attestere rapporten, og kontoen er gratis.",
       },
       {
         q: "Hvad koster qlim8, og binder vi os til noget?",
@@ -752,7 +752,7 @@ export const KT_REVISORER: MarketingPageCopy = {
     },
     {
       title: "Medarbejderdata og API",
-      body: "Zenegy leverer medarbejdertal, FTE og afdelinger pr. måned, og køn kan indlæses via løn-CSV. Kunden kan også bruge et REST API og en MCP-server til AI-assistenter som Claude og ChatGPT.",
+      body: "Zenegy leverer medarbejdertal, FTE og afdelinger pr. måned, og køn kan indlæses via løn-CSV. Kunden kan også bruge et REST API og en [MCP-server til AI-assistenter](/integrationer/mcp-server) som Claude og ChatGPT.",
     },
   ],
   integrations: {
@@ -765,7 +765,7 @@ export const KT_REVISORER: MarketingPageCopy = {
     items: [
       {
         title: "qlim8 som dit eget værktøj",
-        body: "Kunden opretter en konto og inviterer dig. Fra ét konsulent-login arbejder du på tværs af dine kunder og bruger tiden på gennemsyn og rådgivning frem for indtastning.",
+        body: "Kunden opretter en konto og inviterer dig. Fra [ét konsulent-login](/blog/klimaregnskab-smv-klienter-konsulentkonto) arbejder du på tværs af dine kunder og bruger tiden på gennemsyn og rådgivning frem for indtastning.",
         bullets: [
           "Ét login til alle kunder, der har inviteret dig",
           "Kategoriskift logges altid med din begrundelse",
@@ -800,7 +800,7 @@ export const KT_REVISORER: MarketingPageCopy = {
     items: [
       {
         summary: "Faktorhierarki og datakvalitet",
-        body: "For hver post bruger qlim8 den mest præcise kilde, der findes. Først leverandørens egen PCF eller EPD, når en produktlinje er koblet til et godkendt dokument. Dernæst målte mængder som kWh, liter og kg med faktorer fra Klimakompasset, og elforbrug med Energinets data. Til sidst indkøbsbeløbet med spend-baserede faktorer fra EXIOBASE 3.8.2, hvor beløbene deflateres med Danmarks Statistiks forbrugerprisindeks.\n\nHver post viser sin datakvalitet, så du kan rette kontrollen mod de poster, der er estimeret ud fra beløb. Biogen CO2 vises separat for de brændsler, der har en biogen faktor, og Scope 3 kan vises fordelt på de 15 GHG-kategorier i udforskningen.",
+        body: "For hver post bruger qlim8 den mest præcise kilde, der findes. Først leverandørens egen PCF eller EPD, når en produktlinje er koblet til et godkendt dokument. Dernæst målte mængder som kWh, liter og kg med faktorer fra Klimakompasset, og elforbrug med Energinets data. Til sidst indkøbsbeløbet med spend-baserede faktorer fra EXIOBASE 3.8.2, hvor beløbene deflateres med Danmarks Statistiks forbrugerprisindeks.\n\nHver post viser sin datakvalitet, så du kan rette kontrollen mod de poster, der er estimeret ud fra beløb. Biogen CO2 vises separat for de brændsler, der har en biogen faktor, og Scope 3 kan vises fordelt på [de 15 GHG-kategorier](/blog/scope-3-smv-guide) i udforskningen.",
       },
       {
         summary: "Sådan er revisionssporet bygget",

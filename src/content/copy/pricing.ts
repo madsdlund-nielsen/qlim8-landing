@@ -149,7 +149,7 @@ export const PRICING_COPY: PricingCopy = {
     items: [
       {
         q: "Hvad koster det at komme i gang med qlim8?",
-        a: "Ingenting. Gratis-pakken har ingen udløbsdato og ingen binding, og du behøver ikke et kreditkort for at oprette en konto. Det tager et par minutter. Med Gratis-pakken forbinder du Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab, før du beslutter dig.",
+        a: "Ingenting. Gratis-pakken har ingen udløbsdato og ingen binding, og du behøver ikke et kreditkort for at oprette en konto. Det tager et par minutter. Med Gratis-pakken forbinder du [Eloverblik og ét regnskabsprogram](/integrationer) (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab, før du beslutter dig.",
       },
       {
         q: "Hvordan og hvornår betaler jeg for en pakke hos qlim8?",
@@ -169,7 +169,7 @@ export const PRICING_COPY: PricingCopy = {
       },
       {
         q: "Skal min revisor betale for at få adgang?",
-        a: "Nej. Revisorens egen konto i qlim8 er gratis. Du inviterer selv din revisor, som får læseadgang til udledningslinjer, revisionsspor, bilag og rapporter. Revisoren kan ikke ændre tal, men kan attestere rapporten. Hvilke pakker der giver revisoradgang, står i pakkeoversigten.",
+        a: "Nej. Revisorens egen konto i qlim8 er gratis. Du inviterer selv din revisor, som får læseadgang til udledningslinjer, revisionsspor, bilag og rapporter. Revisoren kan ikke ændre tal, men [kan attestere rapporten](/produkt/audit-trail-og-revisor). Hvilke pakker der giver revisoradgang, står i pakkeoversigten.",
       },
       {
         q: "Hvor ligger mine data hos qlim8?",

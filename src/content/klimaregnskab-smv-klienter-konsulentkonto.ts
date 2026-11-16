@@ -51,8 +51,8 @@ export const artikel: Article = {
       text: 'Data til et klimaregnskab kommer fra bogføring, elforbrug, lønsystem og mængdedata som brændstof. Fakturaer giver spend-baserede tal til scope 3, og målerdata giver forbrug til scope 2. Mængdedata giver mere præcise tal end beløb, så de er værd at hente ind der, hvor udledningen er størst.',
     },
     {
-      type: 'paragraph',
-      text: 'qlim8 henter data automatisk fra klientens bogføring, blandt andet fra e-conomic, Dinero, Billy, Uniconta og Dynamics 365 Business Central. Elforbrug hentes fra Eloverblik. Fra Basis kan lønsystemdata kobles på. Data uden for systemerne, for eksempel brændstofmængder, kommer ind via Excel/CSV-upload eller manuel registrering.',
+      type: 'richtext',
+      html: '<p>qlim8 <a href="/integrationer">henter data automatisk fra klientens bogføring</a>, blandt andet fra e-conomic, Dinero, Billy, Uniconta og Dynamics 365 Business Central. Elforbrug hentes fra Eloverblik. Fra Basis kan lønsystemdata kobles på. Data uden for systemerne, for eksempel brændstofmængder, kommer ind via Excel/CSV-upload eller manuel registrering.</p>',
     },
     {
       type: 'paragraph',
@@ -118,8 +118,8 @@ export const artikel: Article = {
       text: 'VS Basis-rapporten findes fra Basis-pakken og VS Comprehensive fra Udvidet. Du kan udarbejde rapportudkast, og klienten godkender udkastet, før det bliver en version. En ny rapport for samme år bliver en ny version.',
     },
     {
-      type: 'paragraph',
-      text: 'Rapporterne leveres som PDF eller Excel. Udvidet giver også en professionel ESG-rapport som PDF. Komplet har en dobbelt væsentlighedsanalyse med påvirkning og finansiel risiko pr. emne. qlim8 kan også lave en frivillig ESRS-rapport ud fra en godkendt væsentlighedsanalyse.',
+      type: 'richtext',
+      html: '<p>Rapporterne leveres som PDF eller Excel. Udvidet giver også en professionel ESG-rapport som PDF. Komplet har en <a href="/events/dma">dobbelt væsentlighedsanalyse</a> med påvirkning og finansiel risiko pr. emne. qlim8 kan også lave en frivillig ESRS-rapport ud fra en godkendt væsentlighedsanalyse.</p>',
     },
 
     { type: 'h2', text: 'Hvordan tjekker man leverandørernes klimadata i leverandørkæden?' },
@@ -142,8 +142,8 @@ export const artikel: Article = {
       ],
     },
     {
-      type: 'paragraph',
-      text: 'Klienter på Koncern kan samle hele værdikæden via CVR og invitere leverandørerne til at dele deres klimadata. Hver leverandørforbindelse har en status, fra inviteret til aktiv. Dækningsgraden viser, hvor stor en andel af handlen med de tilknyttede leverandører der er dækket af aktive klimadata. Eksponeringen sorterer leverandørerne efter købsbeløb, så I kan prioritere, hvem der skal spørges først. Som konsulent ser du værdikæden, og klienten inviterer leverandørerne.',
+      type: 'richtext',
+      html: '<p>Klienter på Koncern kan samle hele værdikæden via CVR og <a href="/produkt/leverandoerkaede">invitere leverandørerne</a> til at dele deres klimadata. Hver leverandørforbindelse har en status, fra inviteret til aktiv. Dækningsgraden viser, hvor stor en andel af handlen med de tilknyttede leverandører der er dækket af aktive klimadata. Eksponeringen sorterer leverandørerne efter købsbeløb, så I kan prioritere, hvem der skal spørges først. Som konsulent ser du værdikæden, og klienten inviterer leverandørerne.</p>',
     },
     {
       type: 'paragraph',
@@ -152,8 +152,8 @@ export const artikel: Article = {
 
     { type: 'h2', text: 'Hvordan håndterer man mange klienters klimaregnskaber på én gang?' },
     {
-      type: 'paragraph',
-      text: 'I qlim8 ligger alle dine klienter i én portefølje under din konsulentkonto. Du skifter mellem klienter, og hvert skift logges. Klienten styrer adgangen og kan tidsbegrænse den.',
+      type: 'richtext',
+      html: '<p>I qlim8 ligger alle dine klienter i <a href="/kundetyper/revisorer-og-raadgivere">én portefølje under din konsulentkonto</a>. Du skifter mellem klienter, og hvert skift logges. Klienten styrer adgangen og kan tidsbegrænse den.</p>',
     },
     {
       type: 'paragraph',
@@ -191,8 +191,8 @@ export const artikel: Article = {
     { type: 'h2', text: 'Ofte stillede spørgsmål' },
     { type: 'h3', text: 'Er VS (VSME) en pligt for SMV\'er?' },
     {
-      type: 'paragraph',
-      text: 'Nej. VS er frivillig at bruge. Den er EU-forordning (EU) 2026/1560 og har været i kraft siden 24. september 2026.',
+      type: 'richtext',
+      html: '<p>Nej. <a href="/blog/hvad-er-vsme-vs">VS er frivillig at bruge</a>. Den er EU-forordning (EU) 2026/1560 og har været i kraft siden 24. september 2026.</p>',
     },
     { type: 'h3', text: 'Skal en SMV have scope 3 med i VS?' },
     {

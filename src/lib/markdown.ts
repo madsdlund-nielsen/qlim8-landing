@@ -25,6 +25,8 @@ import { PRICING_PAGE_KEY, PRICING_COPY, type PricingCopy } from "@/content/copy
 import { DEMO_HREF, DEMO_LABEL, PHONE_DISPLAY, PHONE_HREF } from "@/content/cta";
 import type { SectionKey } from "@/content/marketing/types";
 import { BASE_URL } from "@/lib/schema";
+import { inlineLinksToMarkdown } from "@/lib/inlineLinks";
+import { richtextToMarkdown } from "@/lib/richtextMarkdown";
 import { fetchPublicPackages } from "@/lib/packages";
 import {
   comparisonSections,
@@ -47,10 +49,13 @@ export const MARKDOWN_CONTENT_TYPE = "text/markdown; charset=utf-8";
  * Accepts the falsy results of `array.length && ...` guards directly.
  */
 function join(parts: (string | undefined | false | 0)[]): string {
-  return parts.filter((p): p is string => typeof p === "string" && p.length > 0)
+  const doc = parts.filter((p): p is string => typeof p === "string" && p.length > 0)
     .join("\n\n")
     .replace(/\n{3,}/g, "\n\n")
     .trim() + "\n";
+  // Copy carries inline links as `[anchor](/path)` (src/lib/inlineLinks.ts);
+  // every other link in a twin is absolute, so these become absolute too.
+  return inlineLinksToMarkdown(doc, BASE_URL);
 }
 
 function bullets(items: string[] | undefined): string | undefined {
@@ -340,9 +345,9 @@ function renderSection(s: ArticleSection): string {
     case "image":
       return `![${s.alt}](${s.url})${s.caption ? `\n\n_${s.caption}_` : ""}`;
     case "richtext":
-      // The only block carrying HTML. Strip tags rather than emit raw markup
-      // into a document whose whole point is to be plain text.
-      return s.html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      // The only block carrying HTML: paragraphs, lists, tables and links stay
+      // markdown (src/lib/richtextMarkdown.ts), a site path made absolute.
+      return richtextToMarkdown(s.html, BASE_URL);
     default:
       return "";
   }

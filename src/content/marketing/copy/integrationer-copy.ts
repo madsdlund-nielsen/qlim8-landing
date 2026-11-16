@@ -202,7 +202,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
     {
       title: "Audit-spor på hver kilde",
       body:
-        "Forbindelse og mapping-ændringer logges automatisk. Under revision kan du spore hvert emissionstal tilbage til den bogførte faktura, det stammer fra.",
+        "Forbindelse og mapping-ændringer logges automatisk. Under revision kan du [spore hvert emissionstal tilbage](/produkt/audit-trail-og-revisor) til den bogførte faktura, det stammer fra.",
     },
   ],
   howItWorks: {
@@ -226,7 +226,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       {
         title: "4. Færdig rapport",
         body:
-          "Tallene lander i dit klimaregnskab, klar til VSME-rapporten, uden et eneste regneark.",
+          "Tallene lander i dit klimaregnskab, klar til [VSME-rapporten](/produkt/vsme-rapport), uden et eneste regneark.",
       },
     ],
   },
@@ -245,7 +245,7 @@ export const IN_ECONOMIC: MarketingPageCopy = {
       },
       {
         q: "Henter I salgsfakturaer eller kun udgifter?",
-        a: "Vi henter bookede fakturaer som grundlag for spend-baserede emissioner. Omsætningstal kan bruges til VSME-nøgletal, men det er dine udgifter, der driver størstedelen af klimaregnskabet.",
+        a: "Vi henter bookede fakturaer som grundlag for [spend-baserede emissioner](/blog/scope-3-smv-guide). Omsætningstal kan bruges til VSME-nøgletal, men det er dine udgifter, der driver størstedelen af klimaregnskabet.",
       },
       {
         q: "Skal jeg mappe alle mine konti selv?",
@@ -359,7 +359,7 @@ export const IN_DINERO: MarketingPageCopy = {
     {
       title: "Audit-log på hver sync",
       body:
-        "Forbindelse, synkronisering og afbrydelse logges automatisk. Du kan altid se, hvornår data sidst blev hentet, og spore et tal til dets faktura.",
+        "Forbindelse, synkronisering og afbrydelse logges automatisk. Du kan altid se, hvornår data sidst blev hentet, og [spore et tal til dets faktura](/produkt/audit-trail-og-revisor).",
     },
   ],
   howItWorks: {
@@ -383,7 +383,7 @@ export const IN_DINERO: MarketingPageCopy = {
       {
         title: "4. Færdig rapport",
         body:
-          "Dine tal ligger klar i klimaregnskabet til VSME-rapporten, opdateret dagligt, uden manuelt arbejde.",
+          "Dine tal ligger klar i klimaregnskabet til [VSME-rapporten](/produkt/vsme-rapport), opdateret dagligt, uden manuelt arbejde.",
       },
     ],
   },
@@ -410,7 +410,7 @@ export const IN_DINERO: MarketingPageCopy = {
       },
       {
         q: "Henter I mine salgsfakturaer?",
-        a: "Nej, vi henter indkøbsfakturaer, fordi det er dine udgifter, der driver klimaregnskabet: brændstof i Scope 1, el i Scope 2 og de fleste andre indkøb i Scope 3. Salgsfakturaer trækkes ikke ind.",
+        a: "Nej, vi henter indkøbsfakturaer, fordi det er dine udgifter, der driver klimaregnskabet: brændstof i Scope 1, el i Scope 2 og [de fleste andre indkøb i Scope 3](/blog/scope-3-smv-guide). Salgsfakturaer trækkes ikke ind.",
       },
       {
         q: "Er det sikkert at give qlim8 adgang?",
@@ -516,7 +516,7 @@ export const IN_BILLY: MarketingPageCopy = {
     {
       title: "Spor i revisions-panelet",
       body:
-        "Bilagsnummeret vises både i posteringsoversigten og revisions-panelet, så du under revision kan gå fra emissionslinje til original faktura.",
+        "Bilagsnummeret vises både i posteringsoversigten og revisions-panelet, så du under revision kan [gå fra emissionslinje til original faktura](/produkt/audit-trail-og-revisor).",
     },
   ],
   howItWorks: {
@@ -540,7 +540,7 @@ export const IN_BILLY: MarketingPageCopy = {
       {
         title: "4. Færdig rapport",
         body:
-          "Tallene ligger klar i klimaregnskabet til VSME-rapportering, uden Excel-upload og uden manuel indtastning.",
+          "Tallene ligger klar i klimaregnskabet til [VSME-rapportering](/produkt/vsme-rapport), uden Excel-upload og uden manuel indtastning.",
       },
     ],
   },
@@ -559,7 +559,7 @@ export const IN_BILLY: MarketingPageCopy = {
       },
       {
         q: "Hvilke fakturaer henter I fra Billy?",
-        a: "Vi henter dine godkendte (approved) leverandørfakturaer som grundlag for spend-baserede emissioner. Kladder og annullerede fakturaer springes over, så dit klimaregnskab hviler på faktisk bogførte udgifter.",
+        a: "Vi henter dine godkendte (approved) leverandørfakturaer som grundlag for [spend-baserede emissioner](/blog/scope-3-smv-guide). Kladder og annullerede fakturaer springes over, så dit klimaregnskab hviler på faktisk bogførte udgifter.",
       },
       {
         q: "Kan jeg spore et emissionstal tilbage til den rigtige faktura?",
@@ -792,7 +792,7 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
     {
       title: "Energinets CO₂-faktor",
       body:
-        "Forbruget ganges med Energinets CO₂-faktor, så dine emissioner følger den faktiske variation i elnettet i stedet for et fast årstal.",
+        "Forbruget ganges med [Energinets CO₂-faktor](/metodologi), så dine emissioner følger den faktiske variation i elnettet i stedet for et fast årstal.",
     },
     {
       title: "Autoritativ måling uden dobbelttælling",
@@ -831,7 +831,7 @@ export const IN_ELOVERBLIK: MarketingPageCopy = {
       {
         title: "4. Færdig rapport",
         body:
-          "Præcist elforbrug står klar i klimaregnskabet til VSME-rapporten, uden en eneste manuel kWh.",
+          "Præcist elforbrug står klar i klimaregnskabet til [VSME-rapporten](/produkt/vsme-rapport), uden en eneste manuel kWh.",
       },
     ],
   },
@@ -959,7 +959,7 @@ export const IN_REST_API: MarketingPageCopy = {
     {
       title: "Leverandørrapportering",
       body:
-        "CSRD-kunder kan trække scope 1-3-leverandørdata direkte fra deres tenant, så konsoliderede tal kan hentes uden manuelle Excel-runder.",
+        "CSRD-kunder kan trække [scope 1-3-leverandørdata](/produkt/leverandoerkaede) direkte fra deres tenant, så konsoliderede tal kan hentes uden manuelle Excel-runder.",
     },
     {
       title: "OpenAPI 3.1-spec",
@@ -969,7 +969,7 @@ export const IN_REST_API: MarketingPageCopy = {
     {
       title: "Audit-log på mutating-calls",
       body:
-        "Alle kald, der ændrer data, skrives i en tamper-evident audit-kæde. Under revision kan du vise, hvad der blev ændret, hvornår og af hvilken nøgle.",
+        "Alle kald, der ændrer data, skrives i en [tamper-evident audit-kæde](/produkt/audit-trail-og-revisor). Under revision kan du vise, hvad der blev ændret, hvornår og af hvilken nøgle.",
     },
   ],
   howItWorks: {
@@ -1106,7 +1106,7 @@ export const IN_MCP: MarketingPageCopy = {
     {
       title: "31 tools på tværs af dit klimaregnskab",
       body:
-        "Assistenten kan hente emissioner (fx get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), generere rapporter, oprette mål og følge deres fremdrift, liste leverandører og oprette et tiltag med din egen vurdering af effekten og knytte det til et mål.",
+        "Assistenten kan hente emissioner (fx get_emissions_summary, get_emissions_by_category, get_emissions_by_scope3_category), generere rapporter, [oprette mål og følge deres fremdrift](/produkt/reduktionsmaal-og-scenarier), liste leverandører og oprette et tiltag med din egen vurdering af effekten og knytte det til et mål.",
     },
     {
       title: "Naturligt sprog, live tal",
@@ -1136,7 +1136,7 @@ export const IN_MCP: MarketingPageCopy = {
     {
       title: "VSME-rapporten kan startes fra chatten",
       body:
-        "generate_report sætter en VSME Basis eller Comprehensive-rapport i gang for et rapportår, og get_report_status følger jobbet til filen er klar. Assistenten kan også hente Scope 3 delt op på GHG-protokollens 15 kategorier, den samme opdeling EFRAG-arket udfyldes med. Se /integrationer/vsme-rapport-med-ai-agent.",
+        "generate_report sætter en VSME Basis eller Comprehensive-rapport i gang for et rapportår, og get_report_status følger jobbet til filen er klar. Assistenten kan også hente Scope 3 delt op på [GHG-protokollens 15 kategorier](/blog/scope-3-smv-guide), den samme opdeling EFRAG-arket udfyldes med. Se /integrationer/vsme-rapport-med-ai-agent.",
     },
   ],
   howItWorks: {
@@ -1175,7 +1175,7 @@ export const IN_MCP: MarketingPageCopy = {
     items: [
       {
         q: "Hvad er qlim8's MCP-server?",
-        a: "Det er en live server, der taler Model Context Protocol, så LLM-klienter som Claude, ChatGPT og egne agenter kan kalde qlim8-funktioner programmatisk: hente emissioner, generere rapporter, oprette mål, liste leverandører og planlægge reduktioner. Overfladen er 31 tools, 3 resources og 3 prompts. Se /api.",
+        a: "Det er en live server, der taler [Model Context Protocol](/blog/vsme-rapport-ai-agent-mcp), så LLM-klienter som Claude, ChatGPT og egne agenter kan kalde qlim8-funktioner programmatisk: hente emissioner, generere rapporter, oprette mål, liste leverandører og planlægge reduktioner. Overfladen er 31 tools, 3 resources og 3 prompts. Se /api.",
       },
       {
         q: "Hvordan forbinder jeg Claude eller ChatGPT?",
@@ -1195,7 +1195,7 @@ export const IN_MCP: MarketingPageCopy = {
       },
       {
         q: "Er det sikkert at lade en agent ændre data?",
-        a: "Hvert tool bærer en adfærds-annotering (read-only kontra muterende) og kræver et scope, så en klient kan auto-køre sikre opslag men bede om bekræftelse før noget ændres. OAuth er read-only som default, og alle writes skrives i en tamper-evident audit-kæde med markeringen \"via mcp\".",
+        a: "Hvert tool bærer en adfærds-annotering (read-only kontra muterende) og kræver et scope, så en klient kan auto-køre sikre opslag men bede om bekræftelse før noget ændres. OAuth er read-only som default, og alle writes skrives i en [tamper-evident audit-kæde](/produkt/audit-trail-og-revisor) med markeringen \"via mcp\".",
       },
       {
         q: "Kræver MCP en bestemt plan?",
@@ -1265,7 +1265,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
     },
     {
       pain:
-        "Du ved ikke, om I skal vælge VSME Basis eller Comprehensive, og forskellen er svær at læse ud af standarden.",
+        "Du ved ikke, om I skal [vælge VSME Basis eller Comprehensive](/blog/vsme-basis-vs-comprehensive), og forskellen er svær at læse ud af standarden.",
       solution:
         "Bed assistenten sammenligne, hvad I allerede har data til. Den kan læse jeres emissioner, mål og datakilder og pege på, hvad der mangler for hver af de to versioner.",
       outcome:
@@ -1275,7 +1275,7 @@ export const IN_VSME_MCP: MarketingPageCopy = {
       pain:
         "Revisoren spørger, hvor et enkelt tal i rapporten kommer fra, og du skal grave manuelt i bilag og faktorer.",
       solution:
-        "get_emission_lineage giver hele sporet for en postering: kildeaktiviteten, emissionsfaktoren, kategoriskift og audit-hashes. get_factor_citations viser, hvilke posteringer der brugte en given faktor.",
+        "get_emission_lineage giver [hele sporet for en postering](/produkt/audit-trail-og-revisor): kildeaktiviteten, emissionsfaktoren, kategoriskift og audit-hashes. get_factor_citations viser, hvilke posteringer der brugte en given faktor.",
       outcome:
         "Revisoren kan selv følge tallet til bunds, i stedet for at bede dig om et nyt udtræk.",
     },
@@ -1360,11 +1360,11 @@ export const IN_VSME_MCP: MarketingPageCopy = {
       },
       {
         q: "Hvad er en MCP-server, sagt uden fagsprog?",
-        a: "Det er en standardiseret måde at lade en AI-assistent hente data fra et system. MCP står for Model Context Protocol. I stedet for at du kopierer tal ind i en chat, spørger assistenten qlim8 direkte og får de rigtige, aktuelle tal tilbage. Det er den samme mekanisme, Claude og ChatGPT bruger, når de kobles på andre værktøjer.",
+        a: "Det er en standardiseret måde at lade en AI-assistent hente data fra et system. MCP står for [Model Context Protocol](/blog/vsme-rapport-ai-agent-mcp). I stedet for at du kopierer tal ind i en chat, spørger assistenten qlim8 direkte og får de rigtige, aktuelle tal tilbage. Det er den samme mekanisme, Claude og ChatGPT bruger, når de kobles på andre værktøjer.",
       },
       {
         q: "Hvilke VSME-tal kan assistenten hente?",
-        a: "Samlet CO2e og fordelingen på Scope 1, 2 og 3, Scope 3 delt op på GHG-protokollens 15 kategorier, emissioner pr. beregningskategori, de enkelte posteringer med fuldt spor tilbage til bilag og emissionsfaktor, jeres datakilder, reduktionsmål og tidligere genererede rapporter med attesteringer.",
+        a: "Samlet CO2e og fordelingen på Scope 1, 2 og 3, Scope 3 delt op på [GHG-protokollens 15 kategorier](/blog/scope-3-smv-guide), emissioner pr. beregningskategori, de enkelte posteringer med fuldt spor tilbage til bilag og emissionsfaktor, jeres datakilder, reduktionsmål og tidligere genererede rapporter med attesteringer.",
       },
       {
         q: "Kræver det en bestemt plan?",

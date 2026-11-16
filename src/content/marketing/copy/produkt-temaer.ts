@@ -272,7 +272,7 @@ export const PR_PLATFORM: MarketingPageCopy = {
       },
       {
         summary: "Dataudtræk: tag tallene med ud",
-        body: "Excel-rapporten viser hver linje med dato, kategori, mængde, emissionsfaktor og kilde, så bogholderen kan regne efter i sit eget regneark. Fra Udforskning eksporterer du månederne, kategorierne eller de enkelte linjer til Excel.\n\nUnikke ID'er og bilagsreferencer ligger i revisionspakken. Skal tallene videre til egne systemer, er der et REST API med API-nøgler og en MCP-server til AI-assistenter som Claude og ChatGPT.",
+        body: "Excel-rapporten viser hver linje med dato, kategori, mængde, emissionsfaktor og kilde, så bogholderen kan regne efter i sit eget regneark. Fra Udforskning eksporterer du månederne, kategorierne eller de enkelte linjer til Excel.\n\nUnikke ID'er og bilagsreferencer ligger i revisionspakken. Skal tallene videre til egne systemer, er der et REST API med API-nøgler og en [MCP-server til AI-assistenter](/integrationer/mcp-server) som Claude og ChatGPT.",
       },
       {
         summary: "Hvor tallene kommer fra",
@@ -301,7 +301,7 @@ export const PR_PLATFORM: MarketingPageCopy = {
       },
       {
         q: "Hvordan finder jeg ud af, hvor vores udledning kommer fra?",
-        a: "Kategorier viser, hvilke typer forbrug der fylder mest, og Leverandører viser, hvem der står for den største del af Scope 3. I Udforskning går du ned til den enkelte beregning.",
+        a: "Kategorier viser, hvilke typer forbrug der fylder mest, og Leverandører viser, hvem der står for [den største del af Scope 3](/blog/scope-3-smv-guide). I Udforskning går du ned til den enkelte beregning.",
       },
       {
         q: "Hvad er forskellen på Dashboard og Udforskning?",
@@ -481,11 +481,11 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
       },
       {
         summary: "Til banken",
-        body: "Beder banken om jeres klimatal, fx i forbindelse med et lån, sender du den samme rapport, og hvert tal kan spores tilbage til bilaget, hvis rådgiveren spørger.\n\nqlim8 har ikke en særlig bankrapport og følger ikke en bestemt banks standard. Har banken sit eget skema, henter du tallene samme sted.",
+        body: "[Beder banken om jeres klimatal](/blog/l193-bankens-esg-krav-smv), fx i forbindelse med et lån, sender du den samme rapport, og hvert tal kan spores tilbage til bilaget, hvis rådgiveren spørger.\n\nqlim8 har ikke en særlig bankrapport og følger ikke en bestemt banks standard. Har banken sit eget skema, henter du tallene samme sted.",
       },
       {
         summary: "Kunder, samarbejdspartnere og Bragboard",
-        body: "Bruger en af dine store kunder selv qlim8, kan de invitere jer som leverandør, og I kan dele jeres VSME Comprehensive-rapport med dem.\n\nUdadtil kan I slå en offentlig profil med et Brag Board-badge til, og inde i qlim8 viser Bragboard de milepæle, I har nået i jeres reduktionsmål.",
+        body: "Bruger en af dine store kunder selv qlim8, kan de [invitere jer som leverandør](/produkt/leverandoerkaede), og I kan dele jeres VSME Comprehensive-rapport med dem.\n\nUdadtil kan I slå en offentlig profil med et Brag Board-badge til, og inde i qlim8 viser Bragboard de milepæle, I har nået i jeres reduktionsmål.",
       },
     ],
   },
@@ -522,7 +522,7 @@ export const PR_RAPPORTERING: MarketingPageCopy = {
       },
       {
         q: "Hvad er den offentlige profil med Brag Board-badge?",
-        a: "Det er en offentlig profil for jeres klimaarbejde, som I selv vælger at slå til, med et Brag Board-badge, I kan vise frem over for kunder og samarbejdspartnere. Den supplerer rapporten, men erstatter den ikke.",
+        a: "Det er en offentlig profil for jeres klimaarbejde, som I selv vælger at slå til, med et Brag Board-badge, I kan [vise frem over for kunder og samarbejdspartnere](/blog/undgaa-greenwashing-smv). Den supplerer rapporten, men erstatter den ikke.",
       },
       {
         q: "Kan jeg danne rapporten igen, hvis tallene ændrer sig?",
@@ -618,7 +618,7 @@ export const PR_VSME: MarketingPageCopy = {
     },
     {
       title: "Start fra en AI-assistent",
-      body: "Gennem qlim8's MCP-server kan en AI-assistent som Claude sætte rapporten i gang. Se integrationssiden VSME-rapport med AI-agent.",
+      body: "Gennem qlim8's MCP-server kan en AI-assistent som Claude sætte rapporten i gang. Se integrationssiden [VSME-rapport med AI-agent](/integrationer/vsme-rapport-med-ai-agent).",
     },
   ],
   table: {
@@ -719,7 +719,7 @@ export const PR_VSME: MarketingPageCopy = {
     items: [
       {
         q: "Hvad er forskellen på Basic-modulet og Comprehensive-modulet i VSME?",
-        a: "Basic er grundmodulet med blandt andet energi, udledning i Scope 1 og 2, affald, medarbejdere og korruption. Comprehensive er et tillæg oven på Basic med blandt andet strategi, reduktionsmål, klimarisici og flere oplysninger om medarbejdere og ledelse. qlim8 danner begge moduler.",
+        a: "Basic er grundmodulet med blandt andet energi, udledning i Scope 1 og 2, affald, medarbejdere og korruption. Comprehensive er [et tillæg oven på Basic](/blog/vsme-basis-vs-comprehensive) med blandt andet strategi, reduktionsmål, klimarisici og flere oplysninger om medarbejdere og ledelse. qlim8 danner begge moduler.",
       },
       {
         q: "Hvilket VSME-modul skal vi vælge?",
@@ -739,7 +739,7 @@ export const PR_VSME: MarketingPageCopy = {
       },
       {
         q: "Hvorfor beder kunderne om VSME, når vi ikke er omfattet af CSRD?",
-        a: "Store virksomheder, der rapporterer efter CSRD, skal også opgøre udledningen i deres værdikæde. Derfor spørger de deres leverandører. VSME giver mindre virksomheder ét format, de kan svare alle kunder i.",
+        a: "Store virksomheder, der rapporterer efter CSRD, skal også opgøre udledningen i deres værdikæde. Derfor spørger de deres leverandører. [VSME giver mindre virksomheder ét format](/blog/hvad-er-vsme-vs), de kan svare alle kunder i.",
       },
       {
         q: "Kan revisoren gennemgå VSME-rapporten?",
@@ -1060,7 +1060,7 @@ export const PR_REDUKTION: MarketingPageCopy = {
     },
     {
       title: "Bragboard og offentlig profil",
-      body: "Bragboard viser milepælene og de nåede mål fra dine reduktionsmål. Vil du vise dit arbejde udadtil, kan du slå en offentlig profil med Brag Board-badge til. Profilen aktiveres af dig.",
+      body: "Bragboard viser milepælene og de nåede mål fra dine reduktionsmål. Vil du [vise dit arbejde udadtil](/blog/undgaa-greenwashing-smv), kan du slå en offentlig profil med Brag Board-badge til. Profilen aktiveres af dig.",
     },
   ],
   table: {
@@ -1123,11 +1123,11 @@ export const PR_REDUKTION: MarketingPageCopy = {
     items: [
       {
         summary: "Sådan vælger du basisår, og hvad der sker, hvis det flytter sig",
-        body: "Basisåret, også kaldet baseline, er det år, målet måles imod. GHG-protokollen anbefaler et år med pålidelige data, og at basisåret regnes om, hvis virksomheden ændrer sig væsentligt, fx ved opkøb eller frasalg, eller hvis beregningsmetoden ændres.\n\nI qlim8 skal basisåret være et helt regnskabsår med data i det, målet dækker. Har virksomheden et regnskabsår, der ikke følger kalenderåret, følger målet det, så tallene er de samme som i VSME-rapporten. Det første år med et komplet klimaregnskab er ofte et godt udgangspunkt.\n\nNår målet er sat, ligger basisværdien fast. qlim8 regner basisåret igen på dine nuværende tal og giver besked, hvis det afviger med mere end 5 %, fx efter en opdateret emissionsfaktor eller sene fakturaer. Så kan du genberegne basisåret, og målet flytter med, så den aftalte reduktion står fast. Genberegningen kræver en begrundelse, som gemmes i revisionssporet. Tal med din revisor, før du ændrer et basisår, du har rapporteret på.",
+        body: "Basisåret, også kaldet baseline, er det år, målet måles imod. GHG-protokollen anbefaler et år med pålidelige data, og at basisåret regnes om, hvis virksomheden ændrer sig væsentligt, fx ved opkøb eller frasalg, eller hvis beregningsmetoden ændres.\n\nI qlim8 skal basisåret være et helt regnskabsår med data i det, målet dækker. Har virksomheden et regnskabsår, der ikke følger kalenderåret, følger målet det, så tallene er de samme som i VSME-rapporten. Det første år med et komplet klimaregnskab er ofte et godt udgangspunkt.\n\nNår målet er sat, ligger basisværdien fast. qlim8 regner basisåret igen på dine nuværende tal og giver besked, hvis det afviger med mere end 5 %, fx efter en opdateret emissionsfaktor eller sene fakturaer. Så kan du genberegne basisåret, og målet flytter med, så den aftalte reduktion står fast. Genberegningen kræver en begrundelse, som [gemmes i revisionssporet](/produkt/audit-trail-og-revisor). Tal med din revisor, før du ændrer et basisår, du har rapporteret på.",
       },
       {
         summary: "Hvilke mål kan du sætte",
-        body: "Et kategorimål gælder en enkelt kilde i Scope 1 eller 2, fx diesel eller el. Et mål for Scope 1 og 2 samler dem begge og er det, der kommer med i VSME-rapporten. Et intensitetsmål måler udledningen pr. million kroner i omsætning (nominelt) eller pr. fuldtidsansat, så du kan se, om du reducerer, selv om virksomheden vokser. Omsætningen hentes fra dit regnskabsprogram, hvis det er forbundet, ellers skriver du den selv. Antal fuldtidsansatte kommer fra lønsystemet eller indtastes.\n\nÆndrer udledningen sig fra ét år til det næste, deler qlim8 ændringen op for et intensitetsmål: hvor meget skyldes vækst eller lavere aktivitet, og hvor meget skyldes højere eller lavere udledning pr. enhed.\n\nScope 3-kategorier kan få et mål, når mindst 80 % af udledningen i basisåret bygger på målte mængder eller leverandørdata og ikke på indkøbsbeløb. Er en kategori ikke med, viser qlim8 andelen og hvorfor.",
+        body: "Et kategorimål gælder en enkelt kilde i Scope 1 eller 2, fx diesel eller el. Et mål for Scope 1 og 2 samler dem begge og er det, der kommer med i VSME-rapporten. Et intensitetsmål måler udledningen pr. million kroner i omsætning (nominelt) eller pr. fuldtidsansat, så du kan se, om du reducerer, selv om virksomheden vokser. Omsætningen hentes fra dit regnskabsprogram, hvis det er forbundet, ellers skriver du den selv. Antal fuldtidsansatte kommer fra lønsystemet eller indtastes.\n\nÆndrer udledningen sig fra ét år til det næste, deler qlim8 ændringen op for et intensitetsmål: hvor meget skyldes vækst eller lavere aktivitet, og hvor meget skyldes højere eller lavere udledning pr. enhed.\n\n[Scope 3-kategorier](/blog/scope-3-smv-guide) kan få et mål, når mindst 80 % af udledningen i basisåret bygger på målte mængder eller leverandørdata og ikke på indkøbsbeløb. Er en kategori ikke med, viser qlim8 andelen og hvorfor.",
       },
       {
         summary: "Grøn strøm flytter ikke målet",
@@ -1147,7 +1147,7 @@ export const PR_REDUKTION: MarketingPageCopy = {
       },
       {
         summary: "Omstillingsplan for brancher med stor klimapåvirkning",
-        body: "VSME-standarden spørger virksomheder i brancher med stor klimapåvirkning, om de har en omstillingsplan. Det gælder blandt andet landbrug, industri, byggeri, handel, transport og ejendomme. Angiv din branchekode, så viser qlim8 planen, hvis den er relevant for dig.\n\nPlanen samler de tiltag, der har reduktionspotentiale, med investering (CapEx), driftsomkostning (OpEx) og delmål for hvert år langs den lige linje fra basisåret til målet.",
+        body: "[VSME-standarden](/blog/hvad-er-vsme-vs) spørger virksomheder i brancher med stor klimapåvirkning, om de har en omstillingsplan. Det gælder blandt andet landbrug, industri, byggeri, handel, transport og ejendomme. Angiv din branchekode, så viser qlim8 planen, hvis den er relevant for dig.\n\nPlanen samler de tiltag, der har reduktionspotentiale, med investering (CapEx), driftsomkostning (OpEx) og delmål for hvert år langs den lige linje fra basisåret til målet.",
       },
     ],
   },
@@ -1349,7 +1349,7 @@ export const PR_LEVERANDOER: MarketingPageCopy = {
     items: [
       {
         summary: "Scope 3 og leverandørerne",
-        body: "Scope 3 er de indirekte udledninger i værdikæden, fordelt på GHG-protokollens 15 kategorier. Indkøbte varer og tjenester er ofte en af de største.\n\nI qlim8 starter Scope 3 i bogføringen. Indkøb kategoriseres og regnes ud fra mængden, når den kendes, og ellers ud fra beløbet. Jo flere produktlinjer der er koblet til leverandørens egen PCF eller EPD, jo mindre hviler regnskabet på gennemsnitsfaktorer.",
+        body: "Scope 3 er [de indirekte udledninger i værdikæden](/blog/scope-3-smv-guide), fordelt på GHG-protokollens 15 kategorier. Indkøbte varer og tjenester er ofte en af de største.\n\nI qlim8 starter Scope 3 i bogføringen. Indkøb kategoriseres og regnes ud fra mængden, når den kendes, og ellers ud fra beløbet. Jo flere produktlinjer der er koblet til leverandørens egen PCF eller EPD, jo mindre hviler regnskabet på gennemsnitsfaktorer.",
       },
       {
         summary: "Sådan virker invitationen",
@@ -1390,7 +1390,7 @@ export const PR_LEVERANDOER: MarketingPageCopy = {
       },
       {
         q: "Kan vi få leverandørens svar i vores eget spørgeskema?",
-        a: "Nej. qlim8 har ikke eksport skræddersyet til den enkelte kundes spørgeskema. Leverandøren deler sin VSME Comprehensive-rapport, som er den samme til alle kunder, og det er netop pointen med en fælles standard.",
+        a: "Nej. qlim8 har ikke eksport skræddersyet til den enkelte kundes spørgeskema. Leverandøren deler sin VSME Comprehensive-rapport, som er den samme til alle kunder, og det er netop pointen med [en fælles standard](/blog/hvad-er-vsme-vs).",
       },
       {
         q: "Hvad er forskellen på en PCF og en EPD?",
