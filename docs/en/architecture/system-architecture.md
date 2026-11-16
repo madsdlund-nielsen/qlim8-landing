@@ -526,8 +526,11 @@ checkout (§7.5).
 be reached, the site is sales-led: no price, and every main button books a demo. The other ways in
 stay in both modes: Book demo (`/kontakt?emne=demo`, which with JavaScript opens a dialog: name and e-mail, then the number of employees; 1-9 goes to the film on `/demo`, 10 or more to the calendar), the contact form on `/kontakt`, the phone
 number and the newsletter, all taken from `src/content/cta.ts`. "Log ind" links existing customers
-to `app.qlim8.com/auth`. Complete and Enterprise are always sold after a conversation and invoiced,
-see §7.2.
+to `app.qlim8.com/auth`. Enterprise is always sold after a conversation and invoiced, see §7.2.
+Complete is too until the app's catalog (version 4) sells it by itself: a package with a buy button
+is bought in the app, `paymentMethods` adds the line "Betal med kort eller mod faktura", and
+`demoAlongside` adds a second "Book demo" button beside the buy button (`paymentLine` and
+`secondaryCta` in `src/lib/packageView.ts`; an API that predates the fields changes nothing).
 
 **The fallback is in the code, not in a mock.** Under catalog version 1, or when the packages API
 cannot be reached, `resolveCta` (`src/lib/packageView.ts`) turns every button that leads to `/priser`
@@ -685,8 +688,8 @@ _Exports: [SVG](../../diagrams/svg/07-seq-invoice.svg) · [PNG](../../diagrams/p
 ### 7.2 Demo request → customer account (landing → app → owner)
 
 This replaced the former pricing checkout bridge (landing → app `/api/stripe/checkout-public` →
-Stripe), which no longer exists on either side. Since self-serve it is the path for Complete and
-Enterprise and for anyone who wants a demo first; a company that starts on its own follows §7.5.
+Stripe), which no longer exists on either side. Since self-serve it is the path for Enterprise (and for
+Complete until the catalog sells it by itself) and for anyone who wants a demo first; a company that starts on its own follows §7.5.
 
 ```mermaid
 sequenceDiagram

@@ -34,12 +34,12 @@ import { readFileSync } from "node:fs";
  * is allowed, and that a token outside `[[ ]]`, a malformed token, an unknown
  * package key and an unbalanced marker are errors of their own.
  *
- * The keys are the packages of the app's catalog v3, from the committed API
+ * The keys are the packages of the app's catalog v4 (the newest), from the committed API
  * answer in scripts/fixtures: a package added to the catalog is added there
  * (CLAUDE.md says to regenerate the fixtures), and then it is a valid key.
  */
 export const PRICE_PACKAGE_KEYS = new Set(
-  JSON.parse(readFileSync(new URL("../fixtures/public-packages.v3.json", import.meta.url), "utf8")).packages.map((p) => p.key),
+  JSON.parse(readFileSync(new URL("../fixtures/public-packages.v4.json", import.meta.url), "utf8")).packages.map((p) => p.key),
 );
 
 const TOKEN_RE = /\{pris:([^}]*)\}/gi;

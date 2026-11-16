@@ -109,7 +109,7 @@ test("a signup URL is allowed in the CTA module only, and never in CMS copy", ()
 // ---------------------------------------------------------------------------
 import { priceTokenViolations, PRICE_PACKAGE_KEYS } from "./salesLed.mjs";
 
-test("the token keys are the packages of the v3 fixture", () => {
+test("the token keys are the packages of the newest fixture (v4)", () => {
   for (const k of ["free", "starter", "premium", "business", "enterprise"]) assert.ok(PRICE_PACKAGE_KEYS.has(k), k);
 });
 

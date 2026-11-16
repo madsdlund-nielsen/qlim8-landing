@@ -527,8 +527,11 @@ sitet kalder aldrig en checkout (§7.5).
 kan nås, er sitet salgsledet: ingen pris, og alle hovedknapper booker en demo. De andre veje ind
 gælder i begge tilstande: Book demo (`/kontakt?emne=demo`, som med JavaScript åbner en dialog: navn og e-mail, derefter antal ansatte; 1-9 går til filmen på `/demo`, 10 eller flere til kalenderen), kontaktformularen på `/kontakt`,
 telefonnummeret og nyhedsbrevet, alle hentet fra `src/content/cta.ts`. "Log ind" linker
-eksisterende kunder til `app.qlim8.com/auth`. Komplet og Koncern sælges altid efter en samtale
-og faktureres, se §7.2.
+eksisterende kunder til `app.qlim8.com/auth`. Koncern sælges altid efter en samtale og faktureres,
+se §7.2. Komplet gør det også, indtil app'ens katalog (version 4) sælger den selv: en pakke med en
+købsknap købes i app'en, `paymentMethods` giver linjen "Betal med kort eller mod faktura", og
+`demoAlongside` giver en ekstra "Book demo"-knap ved siden af købsknappen (`paymentLine` og
+`secondaryCta` i `src/lib/packageView.ts`; et API uden felterne ændrer intet).
 
 **Fallbacken ligger i koden, ikke i en mock.** Under katalog version 1, eller når pakke-API'et ikke
 kan nås, gør `resolveCta` (`src/lib/packageView.ts`) hver knap, der fører til `/priser`, til Book
@@ -689,7 +692,7 @@ _Eksporter: [SVG](../../diagrams/svg/07-seq-invoice.svg) · [PNG](../../diagrams
 
 Erstattede den tidligere pricing-checkout-bro (landing → app `/api/stripe/checkout-public` →
 Stripe), som ikke længere findes i nogen af de to repos. Siden selvbetjeningen er det vejen for
-Komplet og Koncern og for alle, der vil have en demo først; en virksomhed, der starter selv,
+Koncern (og for Komplet, indtil kataloget sælger den selv) og for alle, der vil have en demo først; en virksomhed, der starter selv,
 følger §7.5.
 
 ```mermaid

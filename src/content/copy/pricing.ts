@@ -153,7 +153,7 @@ export const PRICING_COPY: PricingCopy = {
       },
       {
         q: "Hvordan og hvornår betaler jeg for en pakke hos qlim8?",
-        a: "De betalte pakker er årsaftaler: du betaler forud for et år ad gangen, og prisen vises pr. måned ekskl. moms. Basis og Udvidet køber du selv i appen med betalingskort. Komplet og Koncern aftaler vi efter en samtale, og de betales mod faktura. [[Basis koster {pris:starter} og Udvidet {pris:premium} om måneden ekskl. moms, betalt for et år ad gangen.]]",
+        a: "De betalte pakker er årsaftaler: du betaler forud for et år ad gangen, og prisen vises pr. måned ekskl. moms. De pakker, der har en Køb-knap, køber du selv i appen, og du betaler med betalingskort. De pakker, vi aftaler efter en samtale, betales mod faktura. Hvis en pakke også kan betales mod faktura, står det ved pakken. [[Basis koster {pris:starter} og Udvidet {pris:premium} om måneden ekskl. moms, betalt for et år ad gangen.]]",
       },
       {
         q: "Hvorfor er de betalte pakker en årsaftale, og kan prisen stige?",
@@ -165,7 +165,7 @@ export const PRICING_COPY: PricingCopy = {
       },
       {
         q: "Kan jeg skifte pakke undervejs?",
-        a: "Ja. Fra Gratis-pakken køber du Basis eller Udvidet i appen. Går du fra Basis til Udvidet, gælder det med det samme, og du betaler kun forskellen for resten af året. Skifter du til en mindre pakke, sker det ved årets udløb. Komplet og Koncern aftaler vi sammen med dig.",
+        a: "Ja. Fra Gratis-pakken køber du de pakker, der har en Køb-knap, i appen. Går du fra Basis til Udvidet, gælder det med det samme, og du betaler kun forskellen for resten af året. Skifter du til en mindre pakke, sker det ved årets udløb. De pakker, der ikke har en Køb-knap, aftaler vi sammen med dig.",
       },
       {
         q: "Skal min revisor betale for at få adgang?",

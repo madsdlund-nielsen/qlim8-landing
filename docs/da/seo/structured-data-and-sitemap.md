@@ -84,9 +84,12 @@ definerer, to forskellige definitioner af samme `@id`, en brødkrumme der
 nævner en ikke-rute, et tomt FAQ-svar, eller en entitet med `offers`, `price`
 eller `lowPrice` i siderne, som de er bundlet. Derefter holder den de offers,
 API'et ville give `#software`, op mod app'ens egne svar, committet i
-`scripts/fixtures/public-packages.v1.json` (ingen offers), `.v2.json` og `.v3.json`
-(ét pr. offentlig årspris for en virksomhedspakke, ekskl. moms, og intet for en
-skjult eller "fra"-pris).
+`scripts/fixtures/public-packages.v1.json` (ingen offers), `.v2.json`, `.v3.json` og
+`.v4.json` (ét pr. offentlig årspris for en virksomhedspakke, ekskl. moms, og intet
+for en skjult eller "fra"-pris). v4 er det aktuelle svar: det har `paymentMethods`
+og `demoAlongside` og sælger Komplet selv. v1 til v3 er ældre svar, bevaret som de
+var, for at bevise, at sitet stadig kan læse et API uden de felter; de regenereres
+ikke (se `CLAUDE.md`, Self-serve).
 
 ## 3. Indholdet er i HTML'en
 

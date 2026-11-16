@@ -1,5 +1,5 @@
 // The price token (src/lib/priceTokens.ts) against the app's own API answers in
-// scripts/fixtures: catalog v1 (nothing sold by itself), v2 and v3.
+// scripts/fixtures: catalog v1 (nothing sold by itself), v2, v3 and v4.
 //   npm test
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -12,6 +12,7 @@ const fixture = (v: number) =>
 const v1 = fixture(1);
 const v2 = fixture(2);
 const v3 = fixture(3);
+const v4 = fixture(4);
 
 test("Danish formatting: thousands with a dot, kr. after", () => {
   assert.equal(formatPrice(79500), "795 kr.");
@@ -95,4 +96,11 @@ test("deep transform: nested strings, string arrays and items that were only the
   assert.equal(filled.hero.subtitle, "Fra 795 kr. Resten.");
   assert.equal(filled.items[0].a, "795 kr.");
   assert.equal(filled.bullets[0], "Basis 795 kr.");
+});
+
+test("v4: Komplet is bought by itself and its price token fills as before; Koncern still has none", () => {
+  assert.equal(resolvePriceToken(v4, "business", false), "3.995 kr.");
+  assert.equal(resolvePriceToken(v4, "business", true), "47.940 kr.");
+  assert.equal(resolvePriceToken(v4, "starter", false), resolvePriceToken(v3, "starter", false));
+  assert.equal(resolvePriceToken(v4, "enterprise", false), null);
 });

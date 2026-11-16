@@ -191,9 +191,10 @@ async function main() {
     fail("catalog v1 (every package behind a demo) must give #software no offers");
   }
   // Every self-serve answer the site must read: the lineup as first published
-  // (v2) and catalog version 3, which shows Komplet's price and not Koncern's.
+  // (v2), catalog version 3, which shows Komplet's price and not Koncern's, and
+  // catalog version 4, which sells Komplet by itself (same four public prices).
   let offers = [];
-  for (const name of ["public-packages.v2.json", "public-packages.v3.json"]) {
+  for (const name of ["public-packages.v2.json", "public-packages.v3.json", "public-packages.v4.json"]) {
     const selfServe = fixture(name);
     const expected = selfServe.packages.filter((p) => p.accountType === "company" && p.price?.visibility === "public");
     offers = offersFromPackages(selfServe);

@@ -12,6 +12,9 @@ import { DEMO_CTA } from "../content/cta.ts";
 
 export type CtaKind = "signup" | "buy" | "demo";
 
+/** How a package bought by itself may be paid: "card" (Stripe) and/or "invoice" (a self-serve invoice). */
+export type PaymentMethod = "card" | "invoice";
+
 export interface PublicPrice {
   visibility: "public" | "from";
   currency: "DKK";
@@ -45,10 +48,23 @@ export interface PublicPackage {
    */
   highlightItems?: PublicHighlight[];
   /**
-   * Days of free trial on a package bought by card (Basis and Udvidet, keys starter and premium), as
-   * the catalog in qlim8-app sets it. Absent from an API that predates it.
+   * Days of free trial on a package bought by card, as the catalog in
+   * qlim8-app sets it (0 for none: from catalog version 4 no package has one).
+   * Absent from an API that predates it.
    */
   trialDays?: number;
+  /**
+   * How a package bought by itself may be paid for, as the catalog in
+   * qlim8-app sets it (empty for a package that is not bought by itself).
+   * Absent from an API that predates it: card only, and nothing is said.
+   */
+  paymentMethods?: PaymentMethod[];
+  /**
+   * "Book demo" stands beside the buy button (Komplet, once it is bought by
+   * itself). Absent from an API that predates it, and false where the package
+   * has no buy button.
+   */
+  demoAlongside?: boolean;
   /**
    * Days of the next package's features a new customer gets on this one
    * (Gratis: Basis, Basis: Udvidet). Absent from an API that predates it,
@@ -266,7 +282,9 @@ export function groupPackages(data: PublicPackages): Record<PackageGroup, Public
 
 /**
  * Days of free trial a package bought by card starts with, or 0. Only a "buy"
- * package has one: the catalog gives none to Gratis, Komplet or Koncern.
+ * package has one: the catalog gives none to Gratis or Koncern, and none to
+ * a package sold by invoice. The catalog may give none to any package (from
+ * catalog version 4 it gives none to Udvidet either), and then no line shows.
  */
 export function trialDaysOf(pkg: PublicPackage): number {
   if (pkg.cta.kind !== "buy") return 0;
@@ -284,6 +302,29 @@ export function trialDaysOf(pkg: PublicPackage): number {
 export function trialLine(pkg: PublicPackage): string | null {
   const days = trialDaysOf(pkg);
   return days > 0 ? `${days} dages gratis prøve. Kortet registreres ved start.` : null;
+}
+
+/**
+ * The line about paying by invoice, built from `paymentMethods`: only on a
+ * package with a buy button that the catalog says can be paid for by invoice
+ * as well as by card. Null for a card-only package and for an API that
+ * predates the field, so nothing changes until the app's catalog says so.
+ */
+export function paymentLine(pkg: PublicPackage): string | null {
+  if (pkg.cta.kind !== "buy") return null;
+  const methods = pkg.paymentMethods ?? [];
+  if (!methods.includes("invoice")) return null;
+  return methods.includes("card") ? "Betal med kort eller mod faktura" : "Betal mod faktura";
+}
+
+/**
+ * The second button beside a package's buy button: "Book demo", when the
+ * catalog sets `demoAlongside` on a package that is bought by itself. A plain
+ * link to DEMO_HREF, so DemoDialog opens the demo dialog on a click. Null
+ * everywhere else (a package with no buy button already books a demo).
+ */
+export function secondaryCta(pkg: PublicPackage): { label: string; href: string } | null {
+  return pkg.cta.kind === "buy" && pkg.cta.url && pkg.demoAlongside === true ? { ...DEMO_CTA } : null;
 }
 
 function wholeDays(n: unknown): number {
