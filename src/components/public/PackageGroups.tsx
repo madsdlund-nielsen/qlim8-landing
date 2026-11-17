@@ -15,8 +15,10 @@ import {
   groupPackages,
   introLines,
   packageFeatures,
+  paymentLine,
   priceLines,
   salesLine,
+  secondaryCta,
   trialLine,
   type ComparisonCell,
   type ComparisonRow,
@@ -70,6 +72,8 @@ function PackageCard({
   const href = pkg.cta.kind === "demo" || !pkg.cta.url ? DEMO_HREF : pkg.cta.url;
   const label = pkg.cta.kind === "demo" ? DEMO_LABEL : ctaLabel(pkg);
   const primary = pkg.cta.kind !== "demo";
+  const payment = paymentLine(pkg);
+  const secondary = secondaryCta(pkg);
   return (
     <div id={anchorId} className="bg-card rounded-lg border border-border shadow-soft p-6 flex flex-col" data-testid={`plan-${pkg.key}`}>
       <div className="mb-4">
@@ -92,6 +96,11 @@ function PackageCard({
               {trialLine(pkg)}
             </p>
           )}
+          {payment && (
+            <p className="text-trust text-muted-foreground mt-2" data-testid={`payment-${pkg.key}`}>
+              {payment}
+            </p>
+          )}
         </div>
       )}
       {introLines(pkg).length > 0 && (
@@ -107,11 +116,16 @@ function PackageCard({
         href={href}
         variant={primary ? "primary" : "outline"}
         full
-        className="mb-6"
+        className={secondary ? "mb-3" : "mb-6"}
         data-testid={`button-${pkg.cta.kind}-${pkg.key}`}
       >
         {label}
       </Button>
+      {secondary && (
+        <Button href={secondary.href} variant="outline" full className="mb-6" data-testid={`button-demo-alongside-${pkg.key}`}>
+          {secondary.label}
+        </Button>
+      )}
       {features.length > 0 && (
         <>
           {includedLabel && <p className="font-semibold text-foreground text-body-sm mb-3">{includedLabel}:</p>}

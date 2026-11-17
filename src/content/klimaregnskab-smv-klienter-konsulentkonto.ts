@@ -185,7 +185,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Basis og Udvidet køber klienten selv. Komplet og Koncern bookes som demo på qlim8.com.',
+      text: 'De pakker, der har en Køb-knap på /priser, køber klienten selv. De øvrige aftales efter en samtale, og en demo kan bookes på qlim8.com.',
     },
 
     { type: 'h2', text: 'Ofte stillede spørgsmål' },

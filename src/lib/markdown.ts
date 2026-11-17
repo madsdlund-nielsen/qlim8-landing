@@ -36,8 +36,10 @@ import {
   groupPackages,
   isSelfServe,
   packageFeatures,
+  paymentLine,
   priceLines,
   resolveCta,
+  secondaryCta,
   type PublicPackage,
   type PublicPackages,
 } from "@/lib/packageView";
@@ -97,13 +99,15 @@ function renderApiPackage(
   const features = entries.map((f) => (f.planned ? `${f.text} (planlagt)` : f.text));
   const button =
     pkg.cta.kind === "demo" || !pkg.cta.url ? `[${DEMO_LABEL}](${BASE_URL}${DEMO_HREF})` : `[${ctaLabel(pkg)}](${pkg.cta.url})`;
+  const secondary = secondaryCta(pkg);
   return [
     `${level} ${pkg.name}`,
     price ? `**${price.main}**${price.note ? `, ${price.note}` : ""}` : "Pris efter en samtale.",
+    paymentLine(pkg),
     curated?.tagline ?? pkg.tagline ?? pkg.audience ?? undefined,
     label && `${label}:`,
     bullets(features),
-    button,
+    secondary ? `${button} eller [${secondary.label}](${BASE_URL}${secondary.href})` : button,
   ]
     .filter(Boolean)
     .join("\n\n");
@@ -500,7 +504,7 @@ function renderSelfServePricing(copy: PricingCopy, packages: PublicPackages): st
       .flatMap((g) => [`## ${GROUP_HEADINGS[g]}`, ...groups[g].map((p) => renderApiPackage(packages, p, curated[p.key], "###"))]),
     apiComparisonTable(packages, copy.comparison?.title ?? "Sammenlign pakkerne"),
     "## Pris",
-    "Priserne er pr. måned, faktureret årligt, ekskl. moms. Basis og Udvidet betales med kort i appen; Komplet og Koncern faktureres årligt.",
+    "Priserne er pr. måned, faktureret årligt, ekskl. moms. De pakker, der har en Køb-knap, køber du selv i appen. Pakker, der aftales efter en samtale, faktureres årligt.",
     faqSection(copy.faq),
     copy.closing && `## ${copy.closing.title}`,
     copy.closing?.body,

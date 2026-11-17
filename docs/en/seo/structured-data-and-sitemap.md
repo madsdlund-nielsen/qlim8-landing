@@ -81,9 +81,12 @@ an `@id` nothing defines, two differing definitions of one `@id`, a breadcrumb
 naming a non-route, an empty FAQ answer, or any entity carrying `offers`,
 `price` or `lowPrice` in the pages as bundled. It then holds the offers the
 API would give `#software` to the app's own answers, committed in
-`scripts/fixtures/public-packages.v1.json` (no offers), `.v2.json` and `.v3.json`
-(one per public yearly company price, ex. VAT, and none for a hidden or "fra"
-price).
+`scripts/fixtures/public-packages.v1.json` (no offers), `.v2.json`, `.v3.json` and
+`.v4.json` (one per public yearly company price, ex. VAT, and none for a hidden or
+"fra" price). v4 is the current answer: it adds `paymentMethods` and
+`demoAlongside` and sells Komplet by itself. v1 to v3 are older answers kept as they
+were, to prove the site still reads an API without those fields; they are not
+regenerated (see `CLAUDE.md`, Self-serve).
 
 ## 3. Content is in the HTML
 

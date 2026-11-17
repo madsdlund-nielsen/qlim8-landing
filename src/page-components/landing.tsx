@@ -28,7 +28,7 @@ import { Photo } from "@/components/ds/Photo";
 import { HOMEPAGE_FAQS, type HomepageFaq } from "@/content/homepage-faqs";
 import { HOME_COPY, type HomeCopy, type HomePlan } from "@/content/copy/home";
 import { DEMO_HREF, DEMO_LABEL } from "@/content/cta";
-import { ctaLabel, curatedPlanFor, isSelfServe, packageFeatures, priceLines, trialLine, type PublicPackage, type PublicPackages } from "@/lib/packageView";
+import { ctaLabel, curatedPlanFor, isSelfServe, packageFeatures, paymentLine, priceLines, secondaryCta, trialLine, type PublicPackage, type PublicPackages } from "@/lib/packageView";
 import { cn } from "@/lib/utils";
 
 // All copy lives in src/content/copy/home.ts (pageKey "page.home");
@@ -87,6 +87,8 @@ function PricingTeaser({ copy, packages }: { copy: HomeCopy["pricingTeaser"]; pa
             const { label: includedLabel, items: features } = packageFeatures(packages!, pkg, plan?.features);
             const demo = pkg.cta.kind === "demo" || !pkg.cta.url;
             const highlighted = plan?.highlighted ?? false;
+            const payment = paymentLine(pkg);
+            const secondary = secondaryCta(pkg);
             return (
               <div key={pkg.key} className={cn(cardBase, highlighted ? "border-border-strong" : "border-border")} data-testid={`teaser-${pkg.key}`}>
                 {plan?.badge && <p className="mb-3 text-trust font-semibold text-sage">{plan.badge}</p>}
@@ -96,6 +98,7 @@ function PricingTeaser({ copy, packages }: { copy: HomeCopy["pricingTeaser"]; pa
                     <p className="text-lead font-semibold text-foreground">{price.main}</p>
                     {price.note && <p className="mt-1 text-trust text-muted-foreground">{price.note}</p>}
                     {trialLine(pkg) && <p className="mt-2 text-trust font-semibold text-sage">{trialLine(pkg)}</p>}
+                    {payment && <p className="mt-2 text-trust text-muted-foreground">{payment}</p>}
                   </div>
                 ) : (
                   <p className="mb-4 text-body-sm font-semibold text-muted-foreground">Pris efter en samtale</p>
@@ -114,6 +117,15 @@ function PricingTeaser({ copy, packages }: { copy: HomeCopy["pricingTeaser"]; pa
                 >
                   {demo ? DEMO_LABEL : ctaLabel(pkg)}
                 </a>
+                {secondary && (
+                  <a
+                    href={secondary.href}
+                    className={cn(buttonStyles({ variant: "secondary", full: true }), "mt-3")}
+                    data-testid={`button-demo-alongside-teaser-${pkg.key}`}
+                  >
+                    {secondary.label}
+                  </a>
+                )}
               </div>
             );
           })}

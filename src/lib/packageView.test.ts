@@ -19,9 +19,11 @@ import {
   isSelfServe,
   offersFromPackages,
   packageGroup,
+  paymentLine,
   priceLines,
   resolveCta,
   salesLine,
+  secondaryCta,
   trialLine,
   upgradeOfferLine,
   type PublicPackages,
@@ -32,6 +34,7 @@ const fixture = (name: string): PublicPackages =>
 const v1 = fixture("public-packages.v1.json");
 const v2 = fixture("public-packages.v2.json");
 const v3 = fixture("public-packages.v3.json");
+const v4 = fixture("public-packages.v4.json");
 const pkg = (data: PublicPackages, key: string) => data.packages.find((p) => p.key === key)!;
 
 test("curatedPlanFor: a plan is matched on its package key, a keyless (CMS) plan on its name", () => {
@@ -327,4 +330,75 @@ test("resolveCta: under catalog v1 or with no API, a /priser button books a demo
   assert.deepEqual(resolveCta(raadgiver, isSelfServe(v3)), raadgiver);
   // /priser-lookalikes are not the package page
   assert.deepEqual(resolveCta({ label: "x", href: "/priserne" }, false), { label: "x", href: "/priserne" });
+});
+
+// Catalog version 4 (November 2026): Komplet is bought by itself, by card or by
+// invoice, with "Book demo" beside the buy button, and Udvidet has no trial.
+// v4 is the app's own answer, committed in scripts/fixtures/. v3 stays as the
+// older answer it is: it predates paymentMethods and demoAlongside.
+
+test("v4: Komplet is bought by itself, at the price it showed before, and says it can be paid by invoice", () => {
+  const komplet = pkg(v4, "business");
+  assert.equal(komplet.cta.kind, "buy");
+  assert.equal(komplet.cta.url, "https://app.qlim8.com/signup?package=business");
+  assert.equal(ctaLabel(komplet), "Køb Komplet");
+  assert.deepEqual(priceLines(komplet), { main: "3.995 kr/md", note: "faktureres årligt (47.940 kr), ekskl. moms" });
+  assert.equal(salesLine(komplet), null);
+  assert.equal(paymentLine(komplet), "Betal med kort eller mod faktura");
+  assert.equal(packageGroup(komplet), "selfServe");
+  assert.deepEqual(groupPackages(v4).selfServe.map((p) => p.key), ["starter", "premium", "business"]);
+  assert.deepEqual(groupPackages(v4).contact.map((p) => p.key), ["enterprise"]);
+});
+
+test("v4: Komplet has Book demo beside its buy button, the demo link DemoDialog catches", () => {
+  assert.deepEqual(secondaryCta(pkg(v4, "business")), DEMO_CTA);
+  // Only there: Basis and Udvidet stand alone, Gratis and the advisors have no buy button, Koncern books a demo as its main button.
+  for (const key of ["free", "starter", "premium", "enterprise", "revisor", "konsulent"]) assert.equal(secondaryCta(pkg(v4, key)), null, key);
+});
+
+test("v4: Basis and Udvidet are paid by card and say nothing about invoice; Gratis and Koncern say nothing", () => {
+  for (const key of ["free", "starter", "premium", "enterprise", "revisor", "konsulent"]) assert.equal(paymentLine(pkg(v4, key)), null, key);
+});
+
+test("v4: no package has a trial, so no trial line shows (Udvidet had one in v3)", () => {
+  assert.equal(trialLine(pkg(v3, "premium")), "14 dages gratis prøve. Kortet registreres ved start.");
+  for (const p of v4.packages) assert.equal(trialLine(p), null, p.key);
+});
+
+test("v4: the offers are unchanged, four public prices; Koncern has none", () => {
+  assert.deepEqual(offersFromPackages(v4).map((o) => [o.name, o.price]), offersFromPackages(v3).map((o) => [o.name, o.price]));
+  assert.deepEqual(offersFromPackages(v4).map((o) => [o.name, o.price]), [
+    ["Gratis", "0.00"],
+    ["Basis", "9540.00"],
+    ["Udvidet", "23940.00"],
+    ["Komplet", "47940.00"],
+  ]);
+});
+
+test("v4: the intro boosts, the upgrade offer and the cards are what v3 had", () => {
+  for (const key of ["free", "starter", "premium", "business", "enterprise"]) {
+    assert.deepEqual(introLines(pkg(v4, key)), introLines(pkg(v3, key)), key);
+    assert.deepEqual(packageFeatures(v4, pkg(v4, key)).items.length > 0, true, key);
+  }
+});
+
+test("an API that predates paymentMethods and demoAlongside changes nothing: no payment line, no second button", () => {
+  for (const data of [v1, v2, v3]) {
+    for (const p of data.packages) {
+      assert.equal(paymentLine(p), null, `${data.catalogVersion} ${p.key}`);
+      assert.equal(secondaryCta(p), null, `${data.catalogVersion} ${p.key}`);
+    }
+  }
+});
+
+test("paymentLine and secondaryCta only apply to a package with a buy button", () => {
+  const komplet = pkg(v4, "business");
+  const asDemo = { ...komplet, cta: { kind: "demo" as const, url: null }, paymentMethods: [] as never[], demoAlongside: false };
+  assert.equal(paymentLine(asDemo), null);
+  assert.equal(secondaryCta(asDemo), null);
+  // A catalog that mistakenly sets them on a demo package is not believed.
+  assert.equal(paymentLine({ ...asDemo, paymentMethods: ["card", "invoice"] }), null);
+  assert.equal(secondaryCta({ ...asDemo, demoAlongside: true }), null);
+  assert.equal(paymentLine({ ...komplet, paymentMethods: ["invoice"] }), "Betal mod faktura");
+  assert.equal(paymentLine({ ...komplet, paymentMethods: ["card"] }), null);
 });

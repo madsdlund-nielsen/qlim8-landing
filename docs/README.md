@@ -55,6 +55,16 @@ This repository is the **marketing site** (qlim8.com). For the **whole-system ar
   `docs/en/marketing/website-analytics.md` (🇩🇰 `docs/da/marketing/website-analytics.md`),
   next to the `/admin` tab that shows them. The short version is in `CLAUDE.md`.
 
+## Legal
+
+- ⚖️ [English: terms 2.3 (draft)](./en/legal/terms-2.3-draft.md) ·
+  🇩🇰 [Dansk: handelsbetingelser 2.3 (udkast)](./da/legal/handelsbetingelser-2.3-udkast.md)
+
+  **A draft that needs the owner's and the lawyer's approval, not served.** The terms for
+  Komplet bought by card or invoice, no trial and the lock on the first self-serve invoice,
+  with the questions for the lawyer and the privacy-policy wording to change in `/admin`.
+  The live text is still `src/content/copy/legal.ts` (version 2.2).
+
 ## Operations
 
 - 📋 [English: post-mortem, 2026-07-28](./en/operations/postmortem-2026-07-28.md) ·

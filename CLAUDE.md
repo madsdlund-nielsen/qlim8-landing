@@ -242,9 +242,23 @@ every workflow during `npm run lint` so this fails on the branch instead.
 ## Self-serve: prices and signup come from the app
 
 A company can start on Gratis (free, with no end date), buy Basis or Udvidet by
-itself, and talk to us about Komplet and Koncern; auditors and consultants
-have free packages of their own (Revisor, Konsulent). All of that is data in
-qlim8-app (Admin → Pakker), and this site only shows it.
+itself, and talk to us about Koncern; from catalog version 4 (November 2026) it
+buys Komplet by itself too, by card or by a self-serve invoice, with a second
+"Book demo" button beside the buy button, and no package has a trial. Until the
+app publishes version 4 Komplet is still sold after a conversation. Auditors and
+consultants have free packages of their own (Revisor, Konsulent). All of that is
+data in qlim8-app (Admin → Pakker), and this site only shows it.
+
+**Copy must read true before and after the catalog switch.** The site deploys
+before the catalog is published (and the catalog can be rolled back), so copy
+never names which packages are bought by themselves: it says "de pakker, der har
+en Køb-knap" and "de pakker, vi aftaler efter en samtale", which is true whichever
+way the catalog stands. What changes by itself is the buttons and the lines from
+the API: `paymentLine` ("Betal med kort eller mod faktura", only on a buy package
+whose `paymentMethods` lists invoice) and `secondaryCta` (Book demo, only on a buy
+package with `demoAlongside`), both in `src/lib/packageView.ts` and shown on
+`/priser`, the homepage teaser and the `.md` twin. An API that predates the two
+fields (or a catalog that does not set them) shows neither.
 
 The package display names are Gratis, Basis, Udvidet, Komplet and Koncern
 (until October 2026: Free, Starter, Premium, Business, Enterprise). The package
@@ -282,7 +296,7 @@ Basis" is EFRAG's term and stays).
 **The switch is the app's catalog.** While it sells nothing by itself (catalog
 version 1, or the API cannot be reached) every one of those falls back to the
 sales-led site: no price, every main button books a demo. That is also the
-emergency stop: publishing a version with Gratis, Basis and Udvidet as
+emergency stop: publishing a version with Gratis, Basis, Udvidet and Komplet as
 sales-led in the app turns this site back within the ISR window. What switches
 is the buttons (`resolveCta`), the trust and micro lines (`SALES_LED_TRUST`,
 `SALES_LED_MICRO`), the price tokens (a sentence with a price is dropped, see
@@ -378,7 +392,12 @@ package (a consultant's fee, an example invoice) is fine, and so are "Opret
 en gratis konto", "Kom gratis i gang" and "kreditkort", which the sales-led
 rules used to forbid. The legal documents are exempt, since contract wording
 is changed with whoever drafted it; `src/content/copy/legal.ts` §3.3 still
-provides for a 14-day trial, which is the owner's to change.
+provides for a 14-day trial (and for Komplet agreed after a dialogue), which is
+the owner's to change: terms 2.3, which drop the trial and describe Komplet
+bought by card or invoice, are a draft in `docs/da/legal/` (English twin in
+`docs/en/legal/`, not served) until the owner and a lawyer approve it, and
+only then are copied into `legal.ts`. The pricing FAQ's cancellation answer
+(Komplet and Koncern: three months' notice) waits for that sign-off as well.
 
 **The price token (owner's decision, October 2026): prices may appear in copy,
 but the figure is never typed.** A sentence that names a package price is
@@ -398,7 +417,7 @@ Det er enkelt at starte. [[Basis koster {pris:starter} om måneden, betalt årli
 
 `scripts/lib/salesLed.mjs` allows a token inside `[[ ]]` and fails a token
 outside it, a malformed token, an unbalanced `[[ ]]` and an unknown package key
-(validated against `scripts/fixtures/public-packages.v3.json`, so a package added
+(validated against `scripts/fixtures/public-packages.v4.json`, the newest fixture, so a package added
 to the catalog is added to that fixture first). A hand-typed figure stays an
 error everywhere, inside `[[ ]]` too. A string in an array that is only a removed
 sentence is dropped, and so is an object whose field was.
@@ -418,18 +437,24 @@ Structured data is guarded separately: `check-schema.mjs` fails on any
 `offers` or price in the pages as bundled, and holds the offers the API would
 give `#software` (one per public yearly company price, ex. VAT, none under
 catalog v1) to `scripts/fixtures/public-packages.*.json`, which are the app's
-own API answers for catalog v1, v2 and v3. Regenerate **v3** from qlim8-app's
-`buildPublicPackages("da", indexCatalog(buildCatalogV3(buildLineupV2(ids), ids3), 3))`
-(`server/services/catalogV3.ts`; it imports `server/db`, so run it with a dummy
-`DATABASE_URL`) when its shape, the lineup, or a capability's status or label
-changes. Run against the app commit the committed file came from, it reproduces
-the file byte for byte, so the diff is only what changed (DMA step 4: two
-statuses, one label, two flat rows). Stripe ids never appear in it. v3 adds
+own API answers for catalog v1, v2, v3 and v4. Regenerate **v4**, the current one,
+from qlim8-app's
+`buildPublicPackages("da", indexCatalog(buildCatalogV4(buildCatalogV3(buildLineupV2(ids), ids3)), 4))`
+(`server/services/catalogV4.ts`, `catalogV3.ts` and `packageLineups.ts`; they import
+`server/db`, so run it with a dummy `DATABASE_URL`; `ids` and `ids3` are placeholder
+Stripe price and product ids, which never appear in the answer) when its shape, the
+lineup, or a capability's status or label changes. Run against the app commit the
+committed file came from, it reproduces the file byte for byte, so the diff is only
+what changed. v4 adds `paymentMethods` and `demoAlongside` to every package and sells
+Komplet by itself, takes the Udvidet trial away and is otherwise v3. v3 adds
 `highlightItems` and `comparison.sections`, which carry the capabilities the
-app has not built marked `planned`; the page shows them as "Planlagt". **v1 and
-v2 are not regenerated**: they are older answers, kept as they were to prove the
-site still reads an API without `highlightItems`, and today's builders no
-longer reproduce them.
+app has not built marked `planned`; the page shows them as "Planlagt". **v1, v2 and
+v3 are not regenerated**: they are older answers, kept as they were to prove the
+site still reads an API without `highlightItems`, `paymentMethods` and
+`demoAlongside`, and today's builders no longer reproduce them (v3 differs from
+what the app builds now in the VSME labels, which the app renamed to "VS ...", and
+in the two new fields). Nothing here compares a fixture with the app; each is only
+an input to a test or to `check-schema.mjs`.
 
 CMS-published copy is held to the same rules by `npm run test:contract`
 (`scripts/check-cms-copy.mjs`, legal page keys exempt), because the lint cannot
