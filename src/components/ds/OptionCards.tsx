@@ -1,5 +1,6 @@
 // Collaboration models as cards, each with its bullets as a check list.
 import { CheckList } from "./CheckList";
+import { InlineText } from "./InlineText";
 
 export function OptionCards({ items }: { items: { title: string; body: string; bullets: string[] }[] }) {
   return (
@@ -7,7 +8,7 @@ export function OptionCards({ items }: { items: { title: string; body: string; b
       {items.map((o) => (
         <div key={o.title} className="rounded-lg border border-border bg-card p-6 shadow-soft md:p-8">
           <h3 className="mb-2">{o.title}</h3>
-          <p className="mb-4 text-body-sm text-muted-foreground">{o.body}</p>
+          <p className="mb-4 text-body-sm text-muted-foreground"><InlineText text={o.body} /></p>
           <CheckList items={o.bullets.map((b) => ({ body: b }))} className="gap-2 text-body-sm" />
         </div>
       ))}

@@ -23,6 +23,11 @@
  *     that is a redirect source (next.config.ts, redirects.json) still works,
  *     one hop later, so it is a warning ("link via redirect"), not a dead link;
  *     and
+ *   - an inline link, `[anchor](/path)` in a copy string or `<a href>` in a
+ *     richtext block, is held to the same rule as the bundled copy
+ *     (scripts/lib/inlineLinks.mjs): not /integrationer/appelsin, not a signup
+ *     or checkout address, not a .md twin, and `[text](` that is not a valid
+ *     link is reported because the page would print it as text; and
  *   - no string may break the sales-led rules in scripts/lib/salesLed.mjs
  *     (a package price, a hard-coded signup or checkout link, a trial).
  *     The same rules hold the bundled copy in `npm run lint`. The legal
@@ -43,6 +48,8 @@ import "./lib/register-ts.mjs";
 import { salesLedViolations } from "./lib/salesLed.mjs";
 import { pageRoutes } from "./lib/routes.mjs";
 import { dashFindings } from "./lib/dashes.mjs";
+import { hrefsIn, syntaxProblems, targetProblems } from "./lib/inlineLinks.mjs";
+import { findInlineLinks } from "../src/lib/inlineLinks.ts";
 
 const BASE = process.env.CMS_API_BASE || process.env.NEXT_PUBLIC_API_URL || "https://app.qlim8.com";
 const TIMEOUT_MS = Number(process.env.CMS_CONTRACT_TIMEOUT_MS || 20000);
@@ -150,6 +157,14 @@ async function main() {
     warned.add(problem);
     console.warn(`  ! ${key} · ${where}: ${problem}`);
   };
+  // The inline-link rule minus the route check, which checkPath below owns (it
+  // knows the CMS-published articles and calls a redirect source a warning).
+  const linkRule = { isRoute: () => true };
+  const checkInlineLinks = (text, key, where) => {
+    for (const { match, why } of syntaxProblems(text)) report(`malformed link "${match}": ${why}`, key, where);
+    const hrefs = [...findInlineLinks(text).map((l) => l.href), ...hrefsIn(text).map((h) => h.href)];
+    for (const href of hrefs) for (const why of targetProblems(href, linkRule)) report(`${href} ${why}`, key, where);
+  };
   /** A path in published copy: a route is fine, a redirect source is a warning, anything else is dead. */
   const checkPath = (p, key, where) => {
     if (isRoute(p)) return;
@@ -179,6 +194,7 @@ async function main() {
     for (const [where, text] of strings(copy)) {
       checkedStrings++;
       for (const p of internalPaths(text)) checkPath(p, key, where);
+      checkInlineLinks(text, key, where);
       for (const { char } of dashFindings(text)) report(`${char} in published copy`, key, where);
       if (LEGAL_KEYS.has(key)) continue;
       for (const { kind, match } of salesLedViolations(text)) {
@@ -194,6 +210,7 @@ async function main() {
       for (const [where, text] of strings(art?.sections ?? [])) {
         checkedStrings++;
         for (const p of internalPaths(text)) checkPath(p, `article ${a.slug}`, where);
+        checkInlineLinks(text, `article ${a.slug}`, where);
         for (const { char } of dashFindings(text)) report(`${char} in published copy`, `article ${a.slug}`, where);
         for (const { kind, match } of salesLedViolations(text)) {
           report(`${kind}: "${match}" (qlim8 is sold after a demo and names no package price)`, `article ${a.slug}`, where);

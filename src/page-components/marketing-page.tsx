@@ -27,6 +27,7 @@ import { OptionCards } from "@/components/ds/OptionCards";
 import { DepthDetails } from "@/components/ds/DepthDetails";
 import { Faq } from "@/components/ds/Faq";
 import { Paragraphs } from "@/components/ds/Paragraphs";
+import { InlineText } from "@/components/ds/InlineText";
 import type { MarketingNode, MarketingPageCopy, SectionKey } from "@/content/marketing/types";
 import { getRelated, getChildren } from "@/content/marketing";
 import { buildBreadcrumbTrail } from "@/lib/marketingPage";
@@ -126,10 +127,10 @@ export default function MarketingPageTemplate({ node, copy }: { node: MarketingN
               {copy.painPoints!.map((p, i) => (
                 <Card key={i}>
                   <p className="mb-2 text-body-sm font-semibold text-muted-foreground">Udfordringen</p>
-                  <p className="mb-4">{p.pain}</p>
+                  <p className="mb-4"><InlineText text={p.pain} /></p>
                   <p className="mb-2 text-body-sm font-semibold text-sage">Sådan hjælper qlim8</p>
-                  <p>{p.solution}</p>
-                  {p.outcome && <p className="mt-4 border-t border-border pt-3 text-body-sm font-semibold text-foreground">{p.outcome}</p>}
+                  <p><InlineText text={p.solution} /></p>
+                  {p.outcome && <p className="mt-4 border-t border-border pt-3 text-body-sm font-semibold text-foreground"><InlineText text={p.outcome} /></p>}
                 </Card>
               ))}
             </CardGrid>
@@ -150,7 +151,7 @@ export default function MarketingPageTemplate({ node, copy }: { node: MarketingN
               {copy.features!.map((f, i) => (
                 <Card key={i}>
                   <h3 className="mb-2">{f.title}</h3>
-                  <p className="text-body-sm text-muted-foreground">{f.body}</p>
+                  <p className="text-body-sm text-muted-foreground"><InlineText text={f.body} /></p>
                 </Card>
               ))}
             </CardGrid>

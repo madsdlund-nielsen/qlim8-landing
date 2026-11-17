@@ -462,6 +462,29 @@ see it. Publishing catalog v2 in the app rewrites the copy that was published
 while qlim8 was sales-led (`server/services/selfServeCmsEdits.ts` in
 qlim8-app, also run by its `deploy.sh`); a new failure is fixed in `/admin`.
 
+## Internal links in copy
+
+Full rules and how-to: `docs/da/marketing/intern-linking.md` (English:
+`docs/en/marketing/internal-linking.md`). In brief, the owner's rules:
+
+- 3 to 5 new internal links per post or page, spread through the body, never in a
+  heading, the lead sentence or an existing link, never a page to itself, each
+  target once per post (a button or a "Relateret" chip counts as present).
+- The anchor is words already in the sentence; never rewrite a sentence to fit a keyword.
+- Prefer targets ranking 4 to 15 in Search Console (the Performance export; it does not pair
+  queries with pages, so a query in a table is inferred and labelled so).
+- **Show the owner a table (source post, anchor, target URL, target's query and position) and
+  wait for the OK before changing anything.**
+
+Mechanics: in marketing copy strings write `[anchor](/path)` (site-relative only; the field
+must render links, `src/lib/inlineLinks.ts`, `src/components/ds/InlineText.tsx`); in a bundled
+article use `<a href="/path">` inside a `richtext` block (a `paragraph` prints it as text); in
+`/admin` use the editor's Link button. The `.md` twin makes the link absolute, JSON-LD keeps
+the anchor text only. `npm run lint` (`scripts/check-inline-links.mjs`) fails on a dead,
+retired (`redirects.json`), `/integrationer/appelsin`, signup/checkout, `.md`, self or
+duplicate target and on malformed `[text](`; `npm run test:contract` holds `/admin` copy to
+the same rule. CMS copy wins over the file: check it before editing (see "Where the copy lives").
+
 ## SEO rules and their guards
 
 Three rules, from the September 2026 audit, each with a script that fails the

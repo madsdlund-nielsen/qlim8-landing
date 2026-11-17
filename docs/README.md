@@ -37,6 +37,13 @@ This repository is the **marketing site** (qlim8.com). For the **whole-system ar
   per page and CMS field). The Danish file is the one handed to the
   photographer. Photos are uploaded in the app's `/admin`, never committed here.
 
+- 🔗 [English: internal linking](./en/marketing/internal-linking.md) ·
+  🇩🇰 [Dansk: intern linking](./da/marketing/intern-linking.md)
+
+  The owner's rules for internal links in articles and pages (3 to 5, once per target, natural
+  anchors, Search Console 4 to 15, table first and wait for the OK), the `[anchor](/path)` and
+  `<a href>` syntax, and what `npm run lint` and `npm run test:contract` check.
+
 - 📨 [English: whitepaper slide-in](./en/marketing/slide-in.md) ·
   🇩🇰 [Dansk: whitepaper-slide-in](./da/marketing/slide-in.md)
 

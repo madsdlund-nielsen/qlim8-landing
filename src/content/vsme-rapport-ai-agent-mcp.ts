@@ -38,8 +38,8 @@ export const artikel: Article = {
 
     { type: 'h2', text: 'Hvorfor det giver særlig mening for VSME' },
     {
-      type: 'paragraph',
-      text: 'En VSME-rapport er ikke ét tal. Den er et opslagsværk. Basis-modulet dækker afsnittene B1 til B11: stamdata, energiforbrug, drivhusgasser, reduktionsmål og klimapolitikker. Comprehensive lægger C1 til C9 oveni med strategi, risici, governance og en langt bredere social del.',
+      type: 'richtext',
+      html: '<p><a href="/blog/hvad-er-vsme-vs">En VSME-rapport</a> er ikke ét tal. Den er et opslagsværk. Basis-modulet dækker afsnittene B1 til B11: stamdata, energiforbrug, drivhusgasser, reduktionsmål og klimapolitikker. Comprehensive lægger C1 til C9 oveni med strategi, risici, governance og en langt bredere social del.</p>',
     },
     {
       type: 'paragraph',
@@ -52,8 +52,8 @@ export const artikel: Article = {
 
     { type: 'h2', text: 'Hvad serveren faktisk kan' },
     {
-      type: 'paragraph',
-      text: 'Overfladen er 31 tools, 3 resources og 3 prompts. De vigtigste for VSME-arbejdet er:',
+      type: 'richtext',
+      html: '<p>Overfladen er <a href="/integrationer/mcp-server">31 tools, 3 resources og 3 prompts</a>. De vigtigste for VSME-arbejdet er:</p>',
     },
     {
       type: 'list',
@@ -78,8 +78,8 @@ export const artikel: Article = {
       text: 'Da vi begyndte, var det fristende at lade assistenten skrive hele rapporten. Det gør den ikke, og det er et valg, ikke en mangel.',
     },
     {
-      type: 'paragraph',
-      text: 'De narrative afsnit i VSME, altså politikker, risikovurderinger og governance, handler om, hvad jeres virksomhed faktisk gør. De kan ikke udledes af et regnskab. En sprogmodel, der bliver bedt om at udfylde dem, vil skrive noget plausibelt, og plausibelt er præcis det forkerte i et dokument, banken læser som en erklæring. Så assistenten henter tallene og starter rapporten. Teksten om jeres politikker skriver I selv, i rapport-guiden.',
+      type: 'richtext',
+      html: '<p>De narrative afsnit i VSME, altså politikker, risikovurderinger og governance, handler om, hvad jeres virksomhed faktisk gør. De kan ikke udledes af et regnskab. En sprogmodel, der bliver bedt om at udfylde dem, vil skrive noget plausibelt, og plausibelt er præcis det forkerte i et dokument, banken læser som en erklæring. Så <a href="/integrationer/vsme-rapport-med-ai-agent">assistenten henter tallene og starter rapporten</a>. Teksten om jeres politikker skriver I selv, i rapport-guiden.</p>',
     },
     {
       type: 'paragraph',
@@ -92,14 +92,15 @@ export const artikel: Article = {
 
     { type: 'h2', text: 'Sådan kommer du i gang' },
     {
-      type: 'ordered-list',
-      items: [
-        'Log ind på din qlim8-konto. Er du ikke kunde endnu, så opret en gratis konto og forbind dit regnskabssystem, eller book en demo, hvis du vil se platformen først. Hvilke pakker der giver MCP-adgang, står på /priser.',
-        'I Claude: Indstillinger, Connectors, Tilføj custom connector, og indsæt https://app.qlim8.com/api/mcp. Der er ingen nøgle at kopiere: OAuth klarer resten.',
-        'I ChatGPT: aktivér udviklertilstand under Apps og tilføj samme adresse.',
-        'Bruger du Claude Code eller Cursor, peger du klienten på samme adresse med en Bearer-nøgle fra Collectors, API Keys.',
-        'Spørg om noget: "hvad var vores samlede CO2e i 2025 fordelt på scope?"',
-      ],
+      type: 'richtext',
+      html:
+        '<ol>' +
+        '<li>Log ind på din qlim8-konto. Er du ikke kunde endnu, så opret en gratis konto og forbind dit regnskabssystem, eller book en demo, hvis du vil se platformen først. <a href="/priser">Hvilke pakker der giver MCP-adgang</a>, står på /priser.</li>' +
+        '<li>I Claude: Indstillinger, Connectors, Tilføj custom connector, og indsæt https://app.qlim8.com/api/mcp. Der er ingen nøgle at kopiere: OAuth klarer resten.</li>' +
+        '<li>I ChatGPT: aktivér udviklertilstand under Apps og tilføj samme adresse.</li>' +
+        '<li>Bruger du Claude Code eller Cursor, peger du klienten på samme adresse med en Bearer-nøgle fra Collectors, API Keys.</li>' +
+        '<li>Spørg om noget: "hvad var vores samlede CO2e i 2025 fordelt på scope?"</li>' +
+        '</ol>',
     },
     {
       type: 'paragraph',

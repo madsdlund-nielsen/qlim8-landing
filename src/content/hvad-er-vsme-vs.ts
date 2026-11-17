@@ -65,8 +65,8 @@ export const artikel: Article = {
 
     { type: 'h2', text: '2. Problemet: spørgeskemaerne ruller ned gennem værdikæden' },
     {
-      type: 'paragraph',
-      text: 'CSRD kræver, at store virksomheder rapporterer om hele deres værdikæde. Når en stor virksomhed skal opgøre sin klimapåvirkning, skal den bruge data fra sine leverandører. Og leverandørerne er ofte små.',
+      type: 'richtext',
+      html: '<p>CSRD kræver, at store virksomheder rapporterer om hele deres værdikæde. Når en stor virksomhed skal opgøre sin klimapåvirkning, skal den bruge <a href="/produkt/leverandoerkaede">data fra sine leverandører</a>. Og leverandørerne er ofte små.</p>',
     },
     {
       type: 'image',
@@ -173,8 +173,8 @@ export const artikel: Article = {
     },
     { type: 'h3', text: 'Det samme' },
     {
-      type: 'paragraph',
-      text: 'Strukturen med et basismodul og et udvidet modul er bevaret. Der er stadig ingen krav om dobbelt væsentlighedsanalyse og ingen krav om revision.',
+      type: 'richtext',
+      html: '<p>Strukturen med et basismodul og et udvidet modul er bevaret. Der er stadig ingen krav om <a href="/events/dma">dobbelt væsentlighedsanalyse</a> og ingen krav om revision.</p>',
     },
     {
       type: 'paragraph',
@@ -230,8 +230,8 @@ export const artikel: Article = {
       text: 'Et modul skal følges i sin helhed. Princippet er dog, at I kun rapporterer de oplysninger, der er relevante for jeres virksomhed. B4 om forurening skal for eksempel kun udfyldes, hvis I allerede skal indberette udledninger efter anden lovgivning.',
     },
     {
-      type: 'paragraph',
-      text: 'Scope 3 er ikke et generelt krav. Standarden nævner, at scope 3 kan være relevant i produktion, landbrug og fødevarer, byggeri og ejendomsudvikling samt emballage. Ligger I i en af de brancher, er det værd at overveje.',
+      type: 'richtext',
+      html: '<p>Scope 3 er ikke et generelt krav. Standarden nævner, at <a href="/blog/scope-3-smv-guide">scope 3 kan være relevant</a> i produktion, landbrug og fødevarer, byggeri og ejendomsudvikling samt emballage. Ligger I i en af de brancher, er det værd at overveje.</p>',
     },
 
     { type: 'h2', text: '6. Hvad kan VS bruges til?' },
@@ -366,17 +366,18 @@ export const artikel: Article = {
       caption: 'Foto: Windows / Unsplash',
     },
     {
-      type: 'ordered-list',
-      items: [
-        'Afklar jeres position. Har I over 1.000 ansatte og over 3.530 millioner kroner i omsætning, er I omfattet af CSRD. Er I uden CSRD-pligt og har op til 1.000 ansatte, er I en beskyttet virksomhed.',
-        'Tæl jeres ansatte. Grænsen ved 10 ansatte afgør, hvor meget en CSRD-kunde kan kræve af jer.',
-        'Byg basismodulet først. Energi og scope 1 og 2 kommer fra el-, varme- og brændstofregninger. Medarbejderdata, arbejdsmiljø og uddannelse ligger i lønsystemet og HR. Det meste findes allerede i bogholderiet.',
-        'Spørg kunderne og banken. Find ud af, hvad jeres største kunder og jeres bank har brug for, før spørgeskemaet lander.',
-        'Tag stilling til det udvidede modul. Spørger banken efter reduktionsmål og klimarisici, er C3 og C4 arbejdet værd. Har I flere end 10 ansatte, kan CSRD-kunder også kræve dele af C1, C5, C6 og C7.',
-        'Overvej scope 3, hvis jeres branche kalder på det. Det gælder især produktion, fødevarer, byggeri og emballage.',
-        'Dokumentér kilderne. Gem fakturaer, aflæsninger og de emissionsfaktorer, I bruger. Så kan tallene genbruges og forklares år efter år.',
-        'Gør rapporten til jeres standardsvar. Når næste spørgeskema kommer, henviser I til VS-rapporten og svarer kun på det, der ligger ud over.',
-      ],
+      type: 'richtext',
+      html:
+        '<ol>' +
+        '<li>Afklar jeres position. Har I over 1.000 ansatte og over 3.530 millioner kroner i omsætning, er I omfattet af CSRD. Er I uden CSRD-pligt og har op til 1.000 ansatte, er I en beskyttet virksomhed.</li>' +
+        '<li>Tæl jeres ansatte. Grænsen ved 10 ansatte afgør, hvor meget en CSRD-kunde kan kræve af jer.</li>' +
+        '<li>Byg basismodulet først. Energi og scope 1 og 2 kommer fra el-, varme- og brændstofregninger. Medarbejderdata, arbejdsmiljø og uddannelse ligger i lønsystemet og HR. Det meste findes allerede i bogholderiet.</li>' +
+        '<li>Spørg kunderne og banken. Find ud af, hvad jeres største kunder og jeres bank har brug for, før spørgeskemaet lander.</li>' +
+        '<li>Tag stilling til det udvidede modul. Spørger banken efter reduktionsmål og klimarisici, er C3 og C4 arbejdet værd. Har I flere end 10 ansatte, kan CSRD-kunder også kræve dele af C1, C5, C6 og C7.</li>' +
+        '<li>Overvej scope 3, hvis jeres branche kalder på det. Det gælder især produktion, fødevarer, byggeri og emballage.</li>' +
+        '<li>Dokumentér kilderne. Gem <a href="/produkt/audit-trail-og-revisor">fakturaer, aflæsninger og de emissionsfaktorer</a>, I bruger. Så kan tallene genbruges og forklares år efter år.</li>' +
+        '<li>Gør rapporten til jeres standardsvar. Når næste spørgeskema kommer, henviser I til VS-rapporten og svarer kun på det, der ligger ud over.</li>' +
+        '</ol>',
     },
 
     { type: 'h2', text: 'Én standard, ét datasæt' },
@@ -394,8 +395,8 @@ export const artikel: Article = {
       text: 'Jeg hedder Mads Lund Nielsen. Civilingeniør i energisystemer, klimakoordinator i Nordfyns Kommune og stifter af qlim8. Lige nu skriver jeg bogen "ESG er nemt".',
     },
     {
-      type: 'paragraph',
-      text: 'qlim8 henter data direkte fra e-conomic, Dinero, Billy og Uniconta og laver en ESG-rapport efter EU\'s frivillige standard.',
+      type: 'richtext',
+      html: '<p>qlim8 <a href="/integrationer">henter data direkte</a> fra e-conomic, Dinero, Billy og Uniconta og laver en ESG-rapport efter EU\'s frivillige standard.</p>',
     },
     {
       type: 'list',

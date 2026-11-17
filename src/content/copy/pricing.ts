@@ -149,11 +149,11 @@ export const PRICING_COPY: PricingCopy = {
     items: [
       {
         q: "Hvad koster det at komme i gang med qlim8?",
-        a: "Ingenting. Gratis-pakken har ingen udløbsdato og ingen binding, og du behøver ikke et kreditkort for at oprette en konto. Det tager et par minutter. Med Gratis-pakken forbinder du Eloverblik og ét regnskabsprogram (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab, før du beslutter dig.",
+        a: "Ingenting. Gratis-pakken har ingen udløbsdato og ingen binding, og du behøver ikke et kreditkort for at oprette en konto. Det tager et par minutter. Med Gratis-pakken forbinder du [Eloverblik og ét regnskabsprogram](/integrationer) (e-conomic, Dinero eller Billy) og ser dit eget klimaregnskab, før du beslutter dig.",
       },
       {
         q: "Hvordan og hvornår betaler jeg for en pakke hos qlim8?",
-        a: "De betalte pakker er årsaftaler: du betaler forud for et år ad gangen, og prisen vises pr. måned ekskl. moms. De pakker, der har en Køb-knap, køber du selv i appen, og du betaler med betalingskort. De pakker, vi aftaler efter en samtale, betales mod faktura. Hvis en pakke også kan betales mod faktura, står det ved pakken. [[Basis koster {pris:starter} og Udvidet {pris:premium} om måneden ekskl. moms, betalt for et år ad gangen.]]",
+        a: "De betalte pakker er årsaftaler: du betaler forud for et år ad gangen, og prisen vises pr. måned ekskl. moms. De pakker, der har en Køb-knap, køber du selv i appen, og du betaler med betalingskort. De pakker, vi aftaler efter en samtale, betales mod faktura. Hvis en pakke også kan betales mod faktura, står det ved pakken. [[Basis koster {pris:starter} og Udvidet {pris:premium} om måneden ekskl. moms, betalt for et år ad gangen.]] [[Komplet koster {pris:business} om måneden ekskl. moms, betalt for et år ad gangen, og Koncern prissætter vi efter samtalen.]]",
       },
       {
         q: "Hvorfor er de betalte pakker en årsaftale, og kan prisen stige?",
@@ -169,7 +169,7 @@ export const PRICING_COPY: PricingCopy = {
       },
       {
         q: "Skal min revisor betale for at få adgang?",
-        a: "Nej. Revisorens egen konto i qlim8 er gratis. Du inviterer selv din revisor, som får læseadgang til udledningslinjer, revisionsspor, bilag og rapporter. Revisoren kan ikke ændre tal, men kan attestere rapporten. Hvilke pakker der giver revisoradgang, står i pakkeoversigten.",
+        a: "Nej. Revisorens egen konto i qlim8 er gratis. Du inviterer selv din revisor, som får læseadgang til udledningslinjer, revisionsspor, bilag og rapporter. Revisoren kan ikke ændre tal, men [kan attestere rapporten](/produkt/audit-trail-og-revisor). Hvilke pakker der giver revisoradgang, står i pakkeoversigten.",
       },
       {
         q: "Hvor ligger mine data hos qlim8?",

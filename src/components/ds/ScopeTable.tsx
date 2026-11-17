@@ -1,6 +1,7 @@
 // The scope or method table: a real <table> from md up, one stacked <dl> per
 // row below, both server-rendered (so both are in the HTML).
 import { cn } from "@/lib/utils";
+import { InlineText } from "./InlineText";
 
 export function ScopeTable({
   headers,
@@ -56,7 +57,7 @@ export function ScopeTable({
           </dl>
         ))}
       </div>
-      {note && <p className="mt-4 max-w-(--measure-body) text-body-sm text-muted-foreground">{note}</p>}
+      {note && <p className="mt-4 max-w-(--measure-body) text-body-sm text-muted-foreground"><InlineText text={note} /></p>}
     </div>
   );
 }
