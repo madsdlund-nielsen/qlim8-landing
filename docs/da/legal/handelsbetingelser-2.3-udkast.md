@@ -90,7 +90,7 @@ Tilføj desuden, hvis advokaten ønsker det, at en selvbetjent faktura kontrolle
 |---|---|---|
 | Cookiepolitikken, under tabellen (omkring linje 76) | "Selve kortbetalingen sker på Stripes egen side (checkout.stripe.com), hvor Stripes egne vilkår og cookies gælder." | "Selve kortbetalingen sker hos Stripe: i et betalingsfelt fra Stripe, der vises i platformen, eller på Stripes egen side (checkout.stripe.com). Stripes egne vilkår og cookies gælder for betalingen." |
 
-Rækken om `__stripe_mid` og `__stripe_sid` ("Svindelforebyggelse, når du betaler med kort i platformen") passer fortsat. Ændringen er ikke lavet: juridisk tekst ændres først, når ejeren har sagt god for den.
+Rækken om `__stripe_mid` og `__stripe_sid` ("Svindelforebyggelse, når du betaler med kort i platformen") passer fortsat. **Rettet i `legal.ts` den 19. november 2026** efter ejerens godkendelse.
 
 ## Kontrolleret mod koden (2026-11-16)
 

@@ -92,7 +92,7 @@ If the lawyer wants it, also add that a self-serve invoice is checked against th
 |---|---|---|
 | The cookie policy, under the table (about line 76) | "Selve kortbetalingen sker på Stripes egen side (checkout.stripe.com), hvor Stripes egne vilkår og cookies gælder." | "Selve kortbetalingen sker hos Stripe: i et betalingsfelt fra Stripe, der vises i platformen, eller på Stripes egen side (checkout.stripe.com). Stripes egne vilkår og cookies gælder for betalingen." |
 
-The row for `__stripe_mid` and `__stripe_sid` still fits. The change has not been made: legal text is changed only once the owner has approved it.
+The row for `__stripe_mid` and `__stripe_sid` still fits. **Made in `legal.ts` on 19 November 2026**, after the owner approved it.
 
 ## Checked against the code (2026-11-16)
 

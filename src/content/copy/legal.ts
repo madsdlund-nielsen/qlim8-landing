@@ -73,7 +73,7 @@ export const LEGAL_COOKIES_COPY: LegalCopy = {
 <tr><td><code>_gcl_au</code></td><td>Marketing</td><td>Google Ads: måler, om en annonce førte til en oprettelse eller et køb</td><td>90 dage</td><td>Google</td></tr>
 </tbody>
 </table>
-<p>Selve kortbetalingen sker på Stripes egen side (checkout.stripe.com), hvor Stripes egne vilkår og cookies gælder.</p>
+<p>Selve kortbetalingen sker hos Stripe: i et betalingsfelt fra Stripe, der vises i platformen, eller på Stripes egen side (checkout.stripe.com). Stripes egne vilkår og cookies gælder for betalingen.</p>
 <h2>4. Samtykke</h2>
 <p>Første gang du besøger en af siderne, viser vi et cookiebanner. Du kan acceptere alle cookies, nøjes med de nødvendige eller vælge statistik og marketing hver for sig. Intet ud over de nødvendige sættes, før du har valgt.</p>
 <p>Dit valg gælder i 12 måneder. Derefter spørger vi igen.</p>
