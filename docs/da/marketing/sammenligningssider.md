@@ -17,6 +17,10 @@ Hver celle har et `svar` (`Ja`, `Nej`, `Delvist` eller `Ikke oplyst`), en kort `
 
 qlim8's egen kolonne kommer fra appens katalog og kode (`scripts/fixtures/public-packages.v4.json` og integrationskataloget), ikke fra en hjemmeside. En qlim8-pris står kun som pristoken i `[[ ... ]]`, så sætningen kan fjernes uden at resten går i stykker.
 
+## Priserne på siden om de store platforme
+
+Priserne er af tre slags, og tabellen og afsnittet "Sådan har vi fundet priserne" viser, hvilken der gælder for hver platform. Listepriser står offentligt (Persefoni og Terrascope på AWS Marketplace). Leverandørens eget prisniveau er et tal, leverandøren selv oplyser (Coolset og Greenly). Estimater er vores egne: Watershed ud fra købspriser, som Vendr har registreret, Position Green ud fra selskabets årsrapport for 2025 (abonnementsomsætning på 220 mio. norske kroner fordelt på over 1.000 kunder) og Plan A ved sammenligning med, hvad sammenlignelige europæiske platforme selv oplyser, hvilket er det svageste grundlag af de tre. Et estimat står altid som "estimeret" på siden. `VAELG` giver hver leverandør en linje om, hvornår den er det bedste valg, og står lige efter `KORT_OM`-afsnittet (hubben har sine egne).
+
 ## Reglen om Nej
 
 En konkurrent er aldrig `Nej` uden leverandørens eget udsagn (en sprogliste, en planoversigt der kun har "Kontakt os"). Har leverandøren ikke sagt noget, er cellen `Ikke oplyst`. Tallet hentes ikke fra tredjepart. En `Nej` om en konkurrent skal have en `note`, og testen fejler uden.

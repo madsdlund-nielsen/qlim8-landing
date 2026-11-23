@@ -17,6 +17,10 @@ Each cell has a `svar` (`Ja`, `Nej`, `Delvist` or `Ikke oplyst`), a short `note`
 
 qlim8's own column comes from the app's catalog and code (`scripts/fixtures/public-packages.v4.json` and the integration catalog), not from a website. A qlim8 price appears only as a price token in `[[ ... ]]`, so the sentence can be removed without breaking the rest.
 
+## The prices on the large-platforms page
+
+The prices are of three kinds, and the table and the section "Sådan har vi fundet priserne" show which one applies to each platform. List prices are public (Persefoni and Terrascope on AWS Marketplace). The vendor's own stated level is a figure the vendor gives itself (Coolset and Greenly). Estimates are ours: Watershed from the purchase prices Vendr has recorded, Position Green from its 2025 annual report (ARR NOK 220 million over more than 1,000 customers) and Plan A by comparison with what comparable European platforms state, which is the weakest basis of the three. An estimate is always labelled "estimeret" on the page. `VAELG` gives each vendor one line on when it is the best choice, placed right after the `KORT_OM` paragraph (the hub has its own).
+
 ## The rule about Nej
 
 A competitor is never `Nej` without the vendor's own statement (a language list, a plan overview that only says "Get in touch"). Where the vendor says nothing, the cell is `Ikke oplyst`. Nothing is taken from a third party. A `Nej` about a competitor must carry a `note`, and the test fails without it.

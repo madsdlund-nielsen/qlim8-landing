@@ -106,7 +106,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: `Ud fra de oplyste priser koster de ca. 45.000 kr. til over en million kroner om året, hvor Persefoni Pro er gratis for én bruger. Position Green og Plan A offentliggør ikke priser. qlim8 har ikke ISO 27001 eller SOC 2, så kræver jeres køber det, skal I også kigge her.`,
+      text: `Ud fra de oplyste priser koster de ca. 45.000 kr. til over en million kroner om året, hvor Persefoni Pro er gratis for én bruger. Position Green og Plan A offentliggør ikke priser, og deres priser er estimeret til ca. 50.000 til 150.000 kr. og ca. 50.000 til 250.000 kr. om året. qlim8 har ikke ISO 27001 eller SOC 2, så kræver jeres køber det, skal I også kigge her.`,
     },
 
     {

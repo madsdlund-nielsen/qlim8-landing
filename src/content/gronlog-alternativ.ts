@@ -1,7 +1,7 @@
 import type { Article } from './article'
 import { FREE_START_CTA } from './cta'
 import { sammenligningstabel, opdateretLinje } from './sammenligning/byg'
-import { DANSKE, FUNKTIONER, KORT_OM, OPDATERET } from './sammenligning/data'
+import { DANSKE, FUNKTIONER, KORT_OM, OPDATERET, VAELG } from './sammenligning/data'
 
 export const artikel: Article = {
   slug: 'gronlog-alternativ',
@@ -95,14 +95,19 @@ export const artikel: Article = {
     { type: 'h2', text: 'Kort om de andre programmer i tabellen' },
     { type: 'h3', text: 'qlim8' },
     { type: 'paragraph', text: KORT_OM.qlim8 },
+    { type: 'paragraph', text: VAELG.qlim8 },
     { type: 'h3', text: 'Verarca' },
     { type: 'paragraph', text: KORT_OM.verarca },
+    { type: 'paragraph', text: VAELG.verarca },
     { type: 'h3', text: 'EcoMetrics' },
     { type: 'paragraph', text: KORT_OM.ecometrics },
+    { type: 'paragraph', text: VAELG.ecometrics },
     { type: 'h3', text: 'Wardn' },
     { type: 'paragraph', text: KORT_OM.wardn },
+    { type: 'paragraph', text: VAELG.wardn },
     { type: 'h3', text: 'Valified' },
     { type: 'paragraph', text: KORT_OM.valified },
+    { type: 'paragraph', text: VAELG.valified },
 
     { type: 'h2', text: 'Sådan skifter I fra Grønlog til qlim8' },
     {

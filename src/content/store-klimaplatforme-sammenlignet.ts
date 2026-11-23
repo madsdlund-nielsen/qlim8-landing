@@ -1,7 +1,7 @@
 import type { Article } from './article'
 import { DEMO_HREF, DEMO_LABEL } from './cta'
 import { sammenligningstabel, opdateretLinje } from './sammenligning/byg'
-import { STORE, STORE_FUNKTIONER, KORT_OM, OPDATERET } from './sammenligning/data'
+import { STORE, STORE_FUNKTIONER, KORT_OM, OPDATERET, VAELG } from './sammenligning/data'
 
 export const artikel: Article = {
   slug: 'store-klimaplatforme-sammenlignet',
@@ -63,23 +63,31 @@ export const artikel: Article = {
     { type: 'h2', text: 'De syv store platforme kort' },
     { type: 'h3', text: 'Watershed' },
     { type: 'paragraph', text: KORT_OM.watershed },
+    { type: 'paragraph', text: VAELG.watershed },
     { type: 'h3', text: 'Position Green' },
     { type: 'paragraph', text: KORT_OM.positiongreen },
+    { type: 'paragraph', text: VAELG.positiongreen },
     { type: 'h3', text: 'Greenly' },
     { type: 'paragraph', text: KORT_OM.greenly },
+    { type: 'paragraph', text: VAELG.greenly },
     { type: 'h3', text: 'Persefoni' },
     { type: 'paragraph', text: KORT_OM.persefoni },
+    { type: 'paragraph', text: VAELG.persefoni },
     { type: 'h3', text: 'Coolset' },
     { type: 'paragraph', text: KORT_OM.coolset },
+    { type: 'paragraph', text: VAELG.coolset },
     { type: 'h3', text: 'Terrascope' },
     { type: 'paragraph', text: KORT_OM.terrascope },
+    { type: 'paragraph', text: VAELG.terrascope },
     { type: 'h3', text: 'Plan A' },
     { type: 'paragraph', text: KORT_OM.plana },
+    { type: 'paragraph', text: VAELG.plana },
     { type: 'h3', text: 'qlim8' },
     {
       type: 'richtext',
       html: `<p>qlim8 er en dansk platform til klimaregnskab og VS-rapportering for SMV'er, med integration til e-conomic, Dinero og Billy, elforbrug fra Eloverblik og en gratis pakke uden udløbsdato. qlim8 har ikke ISO 27001 eller SOC 2, og SBTi-mål er planlagt.</p>`,
     },
+    { type: 'paragraph', text: VAELG.qlim8 },
 
     { type: 'h2', text: 'Hvad adskiller qlim8 fra de store platforme?' },
     {
@@ -93,7 +101,7 @@ export const artikel: Article = {
         `Dansk: qlim8 har dansk brugerflade og dansk support. Persefoni oplyser ikke dansk blandt sine sprog, og Position Green har kontor i København.`,
         `Certificering: de syv store platforme oplyser SOC 2, ISO 27001 eller begge. qlim8 har ingen af dem.`,
         `Leverandørdata: Watershed, Position Green, Greenly og Terrascope oplyser en leverandørportal. qlim8 henter hele værdikæden via CVR-numre, men en egentlig leverandørportal er planlagt.`,
-        `Pris: Persefoni Pro er gratis for én bruger, og de øvrige platforme ligger på ca. 45.000 kr. om året og derover eller offentliggør ikke en pris. Gratis-pakken i qlim8 har ingen udløbsdato.`,
+        `Pris: Persefoni Pro er gratis for én bruger, og de øvrige platforme ligger på ca. 45.000 kr. om året og derover, hvor tallet for Watershed, Position Green og Plan A er estimeret. Gratis-pakken i qlim8 har ingen udløbsdato.`,
       ],
     },
     {
@@ -111,20 +119,19 @@ export const artikel: Article = {
     { type: 'h2', text: 'Sådan har vi fundet priserne' },
     {
       type: 'paragraph',
-      text: `Priserne i tabellen er fundet på fire måder, og tabellen viser, hvilken der gælder for hver platform.`,
+      text: `Priserne i tabellen er fundet på tre måder, og tabellen viser, hvilken der gælder for hver platform.`,
     },
     {
       type: 'list',
       items: [
         `Listepriser: Persefoni og Terrascope har offentlige listepriser på AWS Marketplace. Persefoni Advanced koster 55.000 dollar for 12 måneder, ca. 374.000 kr., for virksomheder med under 250 mio. dollar i omsætning. Terrascopes CO2-regnskab koster 20.000 til 70.000 dollar for 12 måneder, ca. 136.000 til 476.000 kr. Persefoni Pro er gratis for én bruger.`,
         `Leverandørens eget prisniveau: Coolset oplyser selv 6.000 til 30.000 euro om året, ca. 45.000 til 224.000 kr. Greenly har ingen prisliste, men oplyser selv 15.000 til 80.000 euro om året, ca. 112.000 til 598.000 kr.`,
-        `Estimat: Watershed offentliggør ikke priser. Tallet på ca. 140.000 til 1.075.000 kr. om året er estimeret ud fra købspriser, som Vendr har registreret, og står som estimeret i tabellen.`,
-        `Ingen pris: Position Green og Plan A offentliggør ikke priser, så der står intet tal.`,
+        `Estimat: Watershed, Position Green og Plan A offentliggør ikke priser, og tallene i tabellen er estimerede. Watershed: ca. 140.000 til 1.075.000 kr. om året ud fra købspriser, som Vendr har registreret. Position Green: ca. 50.000 til 150.000 kr. om året. Position Greens årsrapport for 2025 oplyser en årlig abonnementsomsætning på 220 mio. norske kroner og over 1.000 kunder, altså i gennemsnit højst ca. 150.000 kr. pr. kunde, og en SMV ligger typisk under gennemsnittet. Plan A: ca. 50.000 til 250.000 kr. om året, som er vores skøn ud fra, hvad sammenlignelige europæiske platforme selv oplyser.`,
       ],
     },
     {
       type: 'paragraph',
-      text: `Dollar er omregnet med 1 dollar = 6,80 kr. og euro med 1 euro = 7,47 kr. (ECB, 20. november 2026). Alle priser er uden moms og uden eventuelle gebyrer for implementering og rådgivning.`,
+      text: `Dollar er omregnet med 1 dollar = 6,80 kr., euro med 1 euro = 7,47 kr. og norsk krone med 1 norsk krone = 0,70 kr. (ECB, 20. november 2026). Alle priser er uden moms og uden eventuelle gebyrer for implementering og rådgivning.`,
     },
     {
       type: 'richtext',
@@ -146,6 +153,11 @@ export const artikel: Article = {
     {
       type: 'paragraph',
       text: `Watershed offentliggør ikke priser, og et estimat ud fra registrerede købspriser er ca. 140.000 til 1.075.000 kr. om året (estimeret, uden moms).`,
+    },
+    { type: 'h3', text: 'Hvad koster Position Green?' },
+    {
+      type: 'paragraph',
+      text: `Position Green offentliggør ikke priser, og prisen for en SMV er estimeret til ca. 50.000 til 150.000 kr. om året ud fra selskabets egen årsrapport.`,
     },
     { type: 'h3', text: 'Hvad koster Persefoni?' },
     {

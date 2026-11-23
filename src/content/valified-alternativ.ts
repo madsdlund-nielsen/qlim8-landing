@@ -1,6 +1,6 @@
 import type { Article } from './article'
 import { sammenligningstabel, opdateretLinje } from './sammenligning/byg'
-import { DANSKE, FUNKTIONER, KORT_OM, OPDATERET } from './sammenligning/data'
+import { DANSKE, FUNKTIONER, KORT_OM, OPDATERET, VAELG } from './sammenligning/data'
 import { FREE_START_CTA } from './cta'
 
 export const artikel: Article = {
@@ -120,14 +120,19 @@ export const artikel: Article = {
     { type: 'h2', text: 'De andre leverandører kort' },
     { type: 'h3', text: 'qlim8' },
     { type: 'paragraph', text: KORT_OM.qlim8 },
+    { type: 'paragraph', text: VAELG.qlim8 },
     { type: 'h3', text: 'Verarca' },
     { type: 'paragraph', text: KORT_OM.verarca },
+    { type: 'paragraph', text: VAELG.verarca },
     { type: 'h3', text: 'Grønlog' },
     { type: 'paragraph', text: KORT_OM.gronlog },
+    { type: 'paragraph', text: VAELG.gronlog },
     { type: 'h3', text: 'EcoMetrics' },
     { type: 'paragraph', text: KORT_OM.ecometrics },
+    { type: 'paragraph', text: VAELG.ecometrics },
     { type: 'h3', text: 'Wardn' },
     { type: 'paragraph', text: KORT_OM.wardn },
+    { type: 'paragraph', text: VAELG.wardn },
 
     { type: 'h2', text: 'Sådan skifter I fra Valified til qlim8' },
     {

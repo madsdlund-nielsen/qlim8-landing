@@ -147,7 +147,7 @@ test("opdateretLinje: the Danish paragraph with the contact address from cta.ts"
 // ---------------------------------------------------------------------------
 // The data itself (src/content/sammenligning/data.ts), held to its shape.
 // ---------------------------------------------------------------------------
-import { DANSKE, FUNKTIONER, KORT_OM, OPDATERET, STORE, STORE_FUNKTIONER } from "../content/sammenligning/data.ts";
+import { DANSKE, FUNKTIONER, KORT_OM, OPDATERET, STORE, STORE_FUNKTIONER, VAELG } from "../content/sammenligning/data.ts";
 
 const SVAR = new Set(["Ja", "Nej", "Delvist", "Ikke oplyst"]);
 const TABELLER = [
@@ -222,6 +222,17 @@ test("data: KORT_OM has all 13 vendors, each text names its vendor and stands al
   }
 });
 
+test("data: VAELG has the same 13 keys as KORT_OM, and each line starts 'Vælg <navn>' without link or em dash", () => {
+  const alle = new Map([...DANSKE, ...STORE].map((l) => [l.key, l.navn]));
+  assert.equal(Object.keys(VAELG).length, 13);
+  assert.deepEqual(Object.keys(VAELG).sort(), Object.keys(KORT_OM).sort());
+  for (const [key, text] of Object.entries(VAELG)) {
+    assert.ok(text.startsWith(`Vælg ${alle.get(key)}`), `${key} does not start with Vælg and its name`);
+    assert.ok(!text.includes("http"), `${key} has a link`);
+    assert.ok(!text.includes("\u2014"), `${key} has an em dash`);
+  }
+});
+
 test("data: the rendered tables contain no source URL", () => {
   for (const t of TABELLER) {
     const out = sammenligningstabel(t.leverandoerer, t.funktioner);
@@ -248,7 +259,7 @@ test("data: the qlim8 price cells resolve with v4 and still read as a sentence w
 
 test("data: no figure a qlim8 package is sold at stands before kr in a competitor text", () => {
   const forbidden = [250, 300, 395, 625, 695, 750, 795, 1195, 1595, 1995, 3000, 3495, 3600, 3995, 6500, 7500, 8340, 9000, 9540, 14340, 23940, 41940, 47940, 78000];
-  const texts = [...Object.values(KORT_OM), ...[...DANSKE, ...STORE].filter((l) => l.key !== "qlim8").flatMap((l) => [l.pris.tekst, ...Object.values(l.celler).map((c) => c.note ?? "")])];
+  const texts = [...Object.values(KORT_OM), ...Object.values(VAELG), ...[...DANSKE, ...STORE].filter((l) => l.key !== "qlim8").flatMap((l) => [l.pris.tekst, ...Object.values(l.celler).map((c) => c.note ?? "")])];
   for (const t of texts) {
     for (const n of forbidden) {
       const formatted = n >= 1000 ? new Intl.NumberFormat("da-DK").format(n) : String(n);

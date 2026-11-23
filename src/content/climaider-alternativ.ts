@@ -2,7 +2,7 @@
 import type { Article } from './article'
 import { DEMO_HREF, DEMO_LABEL } from './cta'
 import { sammenligningstabel, opdateretLinje } from './sammenligning/byg'
-import { DANSKE, FUNKTIONER, KORT_OM, OPDATERET } from './sammenligning/data'
+import { DANSKE, FUNKTIONER, KORT_OM, OPDATERET, VAELG } from './sammenligning/data'
 
 export const artikel: Article = {
   slug: 'climaider-alternativ',
@@ -79,16 +79,22 @@ export const artikel: Article = {
     { type: 'richtext', html: opdateretLinje(OPDATERET) },
     { type: 'h3', text: 'qlim8' },
     { type: 'paragraph', text: KORT_OM.qlim8 },
+    { type: 'paragraph', text: VAELG.qlim8 },
     { type: 'h3', text: 'Verarca' },
     { type: 'paragraph', text: KORT_OM.verarca },
+    { type: 'paragraph', text: VAELG.verarca },
     { type: 'h3', text: 'Grønlog' },
     { type: 'paragraph', text: KORT_OM.gronlog },
+    { type: 'paragraph', text: VAELG.gronlog },
     { type: 'h3', text: 'EcoMetrics' },
     { type: 'paragraph', text: KORT_OM.ecometrics },
+    { type: 'paragraph', text: VAELG.ecometrics },
     { type: 'h3', text: 'Wardn' },
     { type: 'paragraph', text: KORT_OM.wardn },
+    { type: 'paragraph', text: VAELG.wardn },
     { type: 'h3', text: 'Valified' },
     { type: 'paragraph', text: KORT_OM.valified },
+    { type: 'paragraph', text: VAELG.valified },
     {
       type: 'paragraph',
       text: `qlim8 har hverken ISO 27001 eller SOC 2. Kræver jeres køber en af dem, eller har I CSRD-pligt, så sammenlign også med de store internationale platforme.`,

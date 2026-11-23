@@ -350,7 +350,10 @@ const POSITIONGREEN: Leverandoer = {
   key: "positiongreen",
   navn: "Position Green",
   website: "https://www.positiongreen.com",
-  pris: { tekst: "Offentliggør ikke priser" },
+  pris: {
+    tekst: "Ikke offentlig. Estimeret 50.000-150.000 kr./år",
+    kilde: "https://www.positiongreen.com/wp-content/uploads/2026/06/PG_Sustainability_25_web_v3.pdf",
+  },
   celler: {
     danskUi: IO,
     danskKontor: { svar: "Ja", note: "København", kilde: "https://www.positiongreen.com/about" },
@@ -519,7 +522,7 @@ const PLANA: Leverandoer = {
   key: "plana",
   navn: "Plan A",
   website: "https://plana.earth",
-  pris: { tekst: "Offentliggør ikke priser", kilde: "https://plana.earth/offerings" },
+  pris: { tekst: "Ikke offentlig. Estimeret 50.000-250.000 kr./år", kilde: "https://plana.earth/offerings" },
   celler: {
     danskUi: IO,
     danskKontor: IO,
@@ -574,7 +577,7 @@ export const KORT_OM: Record<string, string> = {
   watershed:
     "Watershed er en amerikansk platform til klimaregnskab, CSRD og leverandørdata, rettet mod store virksomheder. Watershed offentliggør ikke priser, og ud fra købsdata på Vendr er prisen estimeret til 140.000 til 1.075.000 kr. om året.",
   positiongreen:
-    "Position Green er en svensk platform til ESG-rapportering med egne rådgivere og kontor i København, rettet mod mellemstore og store virksomheder. Position Green dækker VS, CSRD og dobbelt væsentlighedsanalyse, har data i EU og offentliggør ikke priser.",
+    "Position Green er en svensk platform til ESG-rapportering med egne rådgivere og kontor i København, rettet mod mellemstore og store virksomheder. Position Green dækker VS, CSRD og dobbelt væsentlighedsanalyse, har data i EU. Position Green offentliggør ikke priser, og prisen for en SMV er estimeret til 50.000 til 150.000 kr. om året.",
   greenly:
     "Greenly er en fransk platform til klimaregnskab, CSRD, SBTi og leverandørdata, der henvender sig til alt fra SMV'er til koncerner. Greenly har ingen prisliste, men oplyser selv 15.000 til 80.000 euro om året.",
   persefoni:
@@ -584,5 +587,36 @@ export const KORT_OM: Record<string, string> = {
   terrascope:
     "Terrascope er en platform fra Singapore til CO2-regnskab i komplekse forsyningskæder, med indsamling af leverandørdata og SBTi FLAG-mål. Terrascopes listepriser på AWS Marketplace svarer til ca. 136.000 til 476.000 kr. om året for virksomhedens CO2-regnskab.",
   plana:
-    "Plan A er en tysk platform til CO2-regnskab og dekarbonisering, hvor CSRD er et tilkøb. Plan A offentliggør ikke priser og har siden januar 2026 været en del af Diginex.",
+    "Plan A er en tysk platform til CO2-regnskab og dekarbonisering, hvor CSRD er et tilkøb. Plan A offentliggør ikke priser, og prisen er estimeret til 50.000 til 250.000 kr. om året. Plan A har siden januar 2026 været en del af Diginex.",
+};
+
+// ---------------------------------------------------------------------------
+// One line per vendor on when it is the best choice, shown right after KORT_OM
+// on every page that has a short paragraph per vendor (the hub has its own).
+// Plain text, one sentence, starts "Vælg <navn>, hvis I ...", no links.
+// ---------------------------------------------------------------------------
+
+export const VAELG: Record<string, string> = {
+  qlim8:
+    "Vælg qlim8, hvis I bruger e-conomic, Dinero eller Billy, vil starte gratis uden udløbsdato og vil have VS-rapport, dobbelt væsentlighedsanalyse og klimaplan i samme program.",
+  verarca:
+    "Vælg Verarca, hvis I bruger Business Central, Uniconta eller E-Komplet, eller vil have en person til at gennemgå jeres data i Managed Carbon Service.",
+  gronlog:
+    "Vælg Grønlog, hvis I vil have scope 3 og en fuld VS-rapport til en fast månedspris på 590 kr., eller skal bruge en leverandørportal nu.",
+  ecometrics:
+    "Vælg EcoMetrics, hvis I bruger Business Central, e-komplet, Visma Business NXT eller EG Xena, eller vil have en VS-rapport med i en gratis plan.",
+  wardn:
+    "Vælg Wardn, hvis I vil have en leverandør til at facilitere hele ESG-projektet, eller skal samle ESG-data fra datterselskaber og leverandører.",
+  valified:
+    "Vælg Valified, hvis I hurtigt og billigt skal aflevere en VS Basis-rapport til banken og vil se, hvordan I ligger i forhold til branchen.",
+  watershed: "Vælg Watershed, hvis I er en stor, global virksomhed med CSRD-pligt og et bæredygtighedsteam.",
+  positiongreen:
+    "Vælg Position Green, hvis I er en mellemstor eller stor virksomhed, der vil have ESG-rapportering og rådgivning fra samme leverandør med kontor i København.",
+  greenly: "Vælg Greenly, hvis I skal bruge SBTi-mål, CSRD og en leverandørportal i samme platform.",
+  persefoni:
+    "Vælg Persefoni, hvis I vil starte gratis som enkeltbruger, eller er en større virksomhed med krav om ISO 27001 og SOC 2.",
+  coolset: "Vælg Coolset, hvis I er en mellemstor virksomhed, der også skal dække EU-krav som EUDR og PPWR.",
+  terrascope:
+    "Vælg Terrascope, hvis I har en kompleks forsyningskæde inden for fødevarer eller råvarer og skal bruge SBTi FLAG-mål.",
+  plana: "Vælg Plan A, hvis I vil have CO2-regnskab og dekarbonisering fra en europæisk platform og kan tilkøbe CSRD.",
 };
