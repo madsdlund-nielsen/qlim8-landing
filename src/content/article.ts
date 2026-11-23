@@ -1,4 +1,4 @@
-export type ArticleCategory = 'Compliance' | 'Scope 3' | 'Integration' | 'Økonomi'
+export type ArticleCategory = 'Compliance' | 'Scope 3' | 'Integration' | 'Økonomi' | 'Sammenligning'
 
 export type ArticleSection =
   | { type: 'lead';          text: string }

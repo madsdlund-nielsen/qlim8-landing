@@ -6,6 +6,8 @@ import ArticleTemplate from '@/page-components/article'
 import { fetchArticleBySlug, fetchPublishedArticles, type CmsArticle } from '@/lib/cms'
 import { JsonLd } from '@/components/JsonLd'
 import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/schema'
+import { fetchPublicPackages } from '@/lib/packages'
+import { applyPriceTokensToArticle } from '@/lib/priceTokens'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -30,9 +32,13 @@ function fromCms(a: CmsArticle): Article {
 
 async function resolveArticle(slug: string): Promise<Article | null> {
   // CMS (DB) wins over the bundled fallback so edits go live without a redeploy.
-  const cms = await fetchArticleBySlug(slug, 'da')
-  if (cms) return fromCms(cms)
-  return articles.find((a) => a.slug === slug) ?? null
+  const [cms, packages] = await Promise.all([fetchArticleBySlug(slug, 'da'), fetchPublicPackages()])
+  const article = cms ? fromCms(cms) : (articles.find((a) => a.slug === slug) ?? null)
+  // A price in an article is a [[ ... {pris:starter} ... ]] token, filled from
+  // the packages API here (src/lib/priceTokens.ts), so the page, its metadata
+  // and its JSON-LD all see the resolved text, bundled or CMS alike. The .md
+  // twin does the same in src/lib/markdown.ts.
+  return article ? applyPriceTokensToArticle(article, packages) : null
 }
 
 export async function generateStaticParams() {

@@ -134,3 +134,94 @@ export function applyPriceTokens<T>(copy: T, data: PublicPackages | null | undef
   };
   return walk(copy) as T;
 }
+
+// ---------------------------------------------------------------------------
+// Blog articles
+// ---------------------------------------------------------------------------
+//
+// An article is a list of typed sections, not page copy, so the generic walk
+// above is not enough on its own: a `richtext` block holds HTML, and a
+// removed sentence leaves `<p></p>` (a string, so the walk keeps the block),
+// and a `list` whose every item was removed is an object whose own text is an
+// empty array (the walk only compares strings). Here a section that was
+// emptied by a removed segment is dropped; a section that was empty on
+// purpose is left alone.
+//
+// A [[ ... ]] segment must stay inside one element of the HTML: a segment that
+// runs across `</p><p>` would take the tags with it.
+
+type SectionLike = { type: string; [key: string]: unknown };
+type ArticleLike = { title: string; seoTitle?: string; description: string; sections: SectionLike[] };
+
+/** A richtext string after a removed segment: no empty paragraphs, items or lists left behind. */
+export function tidyRichtext(html: string): string {
+  let out = html;
+  let prev: string;
+  do {
+    prev = out;
+    out = out
+      .replace(/<(p|li|h[1-6]|blockquote)(?:\s[^>]*)?>(?:\s|&nbsp;|<br\s*\/?>)*<\/\1>/gi, "")
+      .replace(/<(ul|ol)(?:\s[^>]*)?>\s*<\/\1>/gi, "");
+  } while (out !== prev);
+  return out.trim();
+}
+
+function hasText(html: string): boolean {
+  return /<(table|img)[\s>]/i.test(html) || html.replace(/<[^>]*>/g, "").replace(/&nbsp;/gi, " ").trim().length > 0;
+}
+
+/** True when the section, after resolving, has nothing left to show. */
+function isEmptySection(s: SectionLike): boolean {
+  switch (s.type) {
+    case "richtext":
+      return typeof s.html !== "string" || !hasText(s.html);
+    case "list":
+    case "ordered-list":
+      return !Array.isArray(s.items) || s.items.length === 0;
+    case "lead":
+    case "h2":
+    case "h3":
+    case "h4":
+    case "paragraph":
+    case "callout":
+      return typeof s.text !== "string" || s.text.trim().length === 0;
+    default:
+      return false;
+  }
+}
+
+/**
+ * Article sections with every price token resolved from the packages API.
+ * A section that had a token and has nothing left once its segment was removed
+ * is dropped, so a removed sentence never leaves an empty paragraph, list or
+ * richtext block behind. Sections without a token are returned untouched.
+ */
+export function applyPriceTokensToSections<S extends SectionLike>(sections: S[], data: PublicPackages | null | undefined): S[] {
+  const out: S[] = [];
+  for (const section of sections) {
+    const before = JSON.stringify(section);
+    if (!before.includes("[[") && !before.includes("{pris:")) {
+      out.push(section);
+      continue;
+    }
+    // One section at a time, as the single element of an array, so the walk's
+    // own rule for objects in arrays (drop one that lost a string) applies.
+    const [resolved] = applyPriceTokens([section], data);
+    if (!resolved) continue;
+    const next = resolved.type === "richtext" && typeof resolved.html === "string" ? ({ ...resolved, html: tidyRichtext(resolved.html) } as S) : resolved;
+    if (isEmptySection(next)) continue;
+    out.push(next);
+  }
+  return out;
+}
+
+/** An article with its title, description and sections resolved (bundled or CMS alike). */
+export function applyPriceTokensToArticle<A extends ArticleLike>(article: A, data: PublicPackages | null | undefined): A {
+  return {
+    ...article,
+    title: applyPriceTokensToString(article.title, data),
+    ...(article.seoTitle !== undefined ? { seoTitle: applyPriceTokensToString(article.seoTitle, data) } : {}),
+    description: applyPriceTokensToString(article.description, data),
+    sections: applyPriceTokensToSections(article.sections, data),
+  };
+}

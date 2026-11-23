@@ -34,6 +34,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { ROOT } from "./lib/register-ts.mjs";
+import { articleContentFiles } from "./lib/contentFiles.mjs";
 
 const OUT = fileURLToPath(new URL("src/generated/content-dates.json", ROOT));
 const rootDir = fileURLToPath(ROOT);
@@ -113,7 +114,8 @@ async function main() {
 
   for (const [route, files] of Object.entries(STATIC_ROUTES)) put(route, files);
 
-  for (const a of articles) put(`/blog/${a.slug}`, [`src/content/${a.slug}.ts`]);
+  // A comparison article is also dated by src/content/sammenligning/ (see lib/contentFiles.mjs).
+  for (const a of articles) put(`/blog/${a.slug}`, articleContentFiles(a));
 
   for (const hub of MARKETING_HUBS) {
     const hubCopy = copyFileFor({ defaults: hub.defaults }, copyFiles);

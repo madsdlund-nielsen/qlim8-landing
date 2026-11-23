@@ -31,6 +31,7 @@ export const SITE_EVENT_NAMES = [
   "slidein_reopened",
   "whitepaper_requested",
   "vsme_requested",
+  "article_cta_clicked",
 ] as const;
 
 export type SiteEventName = (typeof SITE_EVENT_NAMES)[number];

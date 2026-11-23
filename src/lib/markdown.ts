@@ -28,6 +28,7 @@ import { BASE_URL } from "@/lib/schema";
 import { inlineLinksToMarkdown } from "@/lib/inlineLinks";
 import { richtextToMarkdown } from "@/lib/richtextMarkdown";
 import { fetchPublicPackages } from "@/lib/packages";
+import { applyPriceTokensToArticle } from "@/lib/priceTokens";
 import {
   comparisonSections,
   ctaLabel,
@@ -530,20 +531,21 @@ export function markdownPaths(): string[] {
 }
 
 async function resolveArticleBySlug(slug: string): Promise<Article | null> {
-  // CMS wins by slug, exactly as app/blog/[slug] resolves it.
-  const cms = await fetchArticleBySlug(slug, "da");
-  if (cms) {
-    return {
-      slug: cms.slug,
-      title: cms.title,
-      description: cms.description,
-      category: cms.category as Article["category"],
-      publishedAt: cms.publishedAt,
-      readingTime: cms.readingTime,
-      sections: cms.sections as ArticleSection[],
-    };
-  }
-  return bundledArticles.find((a) => a.slug === slug) ?? null;
+  // CMS wins by slug, exactly as app/blog/[slug] resolves it, and price tokens
+  // are filled from the packages API the same way (src/lib/priceTokens.ts).
+  const [cms, packages] = await Promise.all([fetchArticleBySlug(slug, "da"), fetchPublicPackages()]);
+  const article: Article | null = cms
+    ? {
+        slug: cms.slug,
+        title: cms.title,
+        description: cms.description,
+        category: cms.category as Article["category"],
+        publishedAt: cms.publishedAt,
+        readingTime: cms.readingTime,
+        sections: cms.sections as ArticleSection[],
+      }
+    : (bundledArticles.find((a) => a.slug === slug) ?? null);
+  return article ? applyPriceTokensToArticle(article, packages) : null;
 }
 
 async function renderBlogIndex(): Promise<string> {
