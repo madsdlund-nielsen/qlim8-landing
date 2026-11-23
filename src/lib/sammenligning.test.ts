@@ -143,3 +143,117 @@ test("opdateretLinje: the Danish paragraph with the contact address from cta.ts"
   );
   assert.equal(CONTACT_EMAIL, "kontakt@qlim8.com");
 });
+
+// ---------------------------------------------------------------------------
+// The data itself (src/content/sammenligning/data.ts), held to its shape.
+// ---------------------------------------------------------------------------
+import { DANSKE, FUNKTIONER, KORT_OM, OPDATERET, STORE, STORE_FUNKTIONER } from "../content/sammenligning/data.ts";
+
+const SVAR = new Set(["Ja", "Nej", "Delvist", "Ikke oplyst"]);
+const TABELLER = [
+  { navn: "DANSKE", funktioner: FUNKTIONER, leverandoerer: DANSKE },
+  { navn: "STORE", funktioner: STORE_FUNKTIONER, leverandoerer: STORE },
+];
+
+test("data: OPDATERET is an ISO date", () => {
+  assert.match(OPDATERET, /^\d{4}-\d{2}-\d{2}$/);
+  assert.notEqual(danskDato(OPDATERET), OPDATERET);
+});
+
+test("data: qlim8 is first in both lists, and each vendor key is unique", () => {
+  for (const t of TABELLER) {
+    assert.equal(t.leverandoerer[0].key, "qlim8", t.navn);
+    const keys = t.leverandoerer.map((l) => l.key);
+    assert.equal(new Set(keys).size, keys.length, t.navn);
+    const fkeys = t.funktioner.map((f) => f.key);
+    assert.equal(new Set(fkeys).size, fkeys.length, t.navn);
+  }
+  assert.deepEqual(DANSKE.map((l) => l.key), ["qlim8", "verarca", "gronlog", "ecometrics", "wardn", "valified"]);
+  assert.deepEqual(STORE.map((l) => l.key), ["qlim8", "watershed", "positiongreen", "greenly", "persefoni", "coolset", "terrascope", "plana"]);
+  assert.equal(FUNKTIONER.length, 19);
+});
+
+test("data: every vendor has a cell for every function, and no cell for an unknown key", () => {
+  for (const t of TABELLER) {
+    const keys = new Set(t.funktioner.map((f) => f.key));
+    for (const l of t.leverandoerer) {
+      for (const k of keys) assert.ok(l.celler[k], `${t.navn}/${l.key} has no cell for ${k}`);
+      for (const k of Object.keys(l.celler)) assert.ok(keys.has(k), `${t.navn}/${l.key} has a cell for unknown key ${k}`);
+    }
+  }
+});
+
+test("data: every svar is one of the four values; a note is at most 60 characters", () => {
+  for (const t of TABELLER) {
+    for (const l of t.leverandoerer) {
+      for (const [k, c] of Object.entries(l.celler)) {
+        assert.ok(SVAR.has(c.svar), `${l.key}/${k}: ${c.svar}`);
+        if (c.note !== undefined) {
+          assert.ok(c.note.trim().length > 0, `${l.key}/${k}: empty note`);
+          assert.ok(c.note.length <= 60, `${l.key}/${k}: note is ${c.note.length} characters`);
+        }
+      }
+    }
+  }
+});
+
+test("data: a competitor is never a bare Nej, and a cell with an answer has an https source", () => {
+  for (const t of TABELLER) {
+    for (const l of t.leverandoerer.filter((v) => v.key !== "qlim8")) {
+      for (const [k, c] of Object.entries(l.celler)) {
+        if (c.svar === "Nej") assert.ok(c.note && c.note.trim(), `${l.key}/${k}: a bare Nej about a competitor`);
+        if (c.svar !== "Ikke oplyst") assert.ok(c.kilde?.startsWith("https://"), `${l.key}/${k} has no https kilde`);
+        if (c.kilde !== undefined) assert.ok(c.kilde.startsWith("https://"), `${l.key}/${k}: kilde ${c.kilde}`);
+      }
+      assert.ok(l.website.startsWith("https://"), l.key);
+      if (l.pris.kilde !== undefined) assert.ok(l.pris.kilde.startsWith("https://"), `${l.key} pris.kilde`);
+    }
+  }
+});
+
+test("data: KORT_OM has all 13 vendors, each text names its vendor and stands alone", () => {
+  const alle = new Map([...DANSKE, ...STORE].map((l) => [l.key, l.navn]));
+  assert.equal(alle.size, 13);
+  assert.deepEqual(Object.keys(KORT_OM).sort(), [...alle.keys()].sort());
+  for (const [key, text] of Object.entries(KORT_OM)) {
+    assert.ok(text.includes(alle.get(key) as string), `${key} does not name itself`);
+    assert.ok(!/https?:|<a |\]\(/.test(text), `${key} has a link`);
+    assert.ok(text.length < 420, `${key} is too long`);
+  }
+});
+
+test("data: the rendered tables contain no source URL", () => {
+  for (const t of TABELLER) {
+    const out = sammenligningstabel(t.leverandoerer, t.funktioner);
+    assert.ok(!out.includes("http"), t.navn);
+    assert.ok(!out.includes("kilde"), t.navn);
+  }
+  for (const text of Object.values(KORT_OM)) assert.ok(!text.includes("http"));
+});
+
+test("data: the qlim8 price cells resolve with v4 and still read as a sentence without a price", () => {
+  for (const l of [DANSKE[0], STORE[0]]) {
+    const filled = applyPriceTokensToSections([{ type: "richtext", html: `<p>${l.pris.tekst}</p>` }], v4)[0].html as string;
+    assert.ok(!filled.includes("[[") && !filled.includes("{pris"), filled);
+    assert.match(filled, /Basis \d[\d.]* kr\. og Udvidet \d[\d.]* kr\./, filled);
+    assert.match(filled, /Komplet \d[\d.]* kr\./, filled);
+    for (const data of [null, v1]) {
+      const stripped = applyPriceTokensToSections([{ type: "richtext", html: `<p>${l.pris.tekst}</p>` }], data)[0].html as string;
+      assert.equal(stripped, "<p>Gratis-pakke uden udløbsdato. Koncern efter samtale.</p>");
+    }
+  }
+  // The text is also correct as plain data: the token markup is only ever in the qlim8 price.
+  for (const t of TABELLER) for (const l of t.leverandoerer.filter((v) => v.key !== "qlim8")) assert.ok(!/\[\[|\{pris/.test(l.pris.tekst), l.key);
+});
+
+test("data: no figure a qlim8 package is sold at stands before kr in a competitor text", () => {
+  const forbidden = [250, 300, 395, 625, 695, 750, 795, 1195, 1595, 1995, 3000, 3495, 3600, 3995, 6500, 7500, 8340, 9000, 9540, 14340, 23940, 41940, 47940, 78000];
+  const texts = [...Object.values(KORT_OM), ...[...DANSKE, ...STORE].filter((l) => l.key !== "qlim8").flatMap((l) => [l.pris.tekst, ...Object.values(l.celler).map((c) => c.note ?? "")])];
+  for (const t of texts) {
+    for (const n of forbidden) {
+      const formatted = n >= 1000 ? new Intl.NumberFormat("da-DK").format(n) : String(n);
+      assert.ok(!new RegExp(`(?<![\\d.])(${n}|${formatted})\\s*(kr|kroner)`, "i").test(t), `${n} before kr in: ${t}`);
+    }
+    assert.ok(!t.includes("\u2014"), t);
+  }
+});

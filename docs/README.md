@@ -50,6 +50,13 @@ This repository is the **marketing site** (qlim8.com). For the **whole-system ar
   The lead-capture panel: where it shows, when it opens, what it stores (marketing consent
   only), and the proxy routes to qlim8-app.
 
+- ⚖️ [English: comparison pages](./en/marketing/comparison-pages.md) ·
+  🇩🇰 [Dansk: sammenligningssider](./da/marketing/sammenligningssider.md)
+
+  The "[name] alternativ" articles, the page on the large platforms and the hub: where every
+  claim about a competitor lives (`src/content/sammenligning/data.ts`), the rule about Nej,
+  how to re-verify a cell, and the known follow-ups.
+
 - 📈 Cookieless website analytics (`src/lib/siteEvents.ts`, `app/api/site-events/route.ts`):
   the events, the daily visitor hash and the sources are documented in qlim8-app,
   `docs/en/marketing/website-analytics.md` (🇩🇰 `docs/da/marketing/website-analytics.md`),
