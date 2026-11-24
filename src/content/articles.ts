@@ -15,6 +15,10 @@ import { artikel as ecometricsAlternativ } from './ecometrics-alternativ'
 import { artikel as wardnAlternativ } from './wardn-alternativ'
 import { artikel as valifiedAlternativ } from './valified-alternativ'
 import { artikel as climaiderAlternativ } from './climaider-alternativ'
+import { artikel as esgbricksAlternativ } from './esgbricks-alternativ'
+import { artikel as esgCloudAlternativ } from './esg-cloud-alternativ'
+import { artikel as klimakompassetAlternativ } from './klimakompasset-alternativ'
+import { artikel as klimaregnskabExcel } from './klimaregnskab-excel'
 
 // Tilføj en ny artikel ved at:
 // 1. Oprette en ny fil i src/content/ (f.eks. min-artikel.ts) med Article-typen
@@ -31,6 +35,10 @@ export const articles: Article[] = [
   wardnAlternativ,
   valifiedAlternativ,
   climaiderAlternativ,
+  esgbricksAlternativ,
+  esgCloudAlternativ,
+  klimakompassetAlternativ,
+  klimaregnskabExcel,
   klimaregnskabSmvKlienterKonsulentkonto,
   hvadErVsmeVs,
   vsmeAiAgentMcp,
