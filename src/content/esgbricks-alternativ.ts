@@ -65,7 +65,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>qlim8 henter fakturaerne fra e-conomic, Dinero og Billy og elforbruget time for time fra Eloverblik, og data uden for bogføringen kommer ind som Excel eller CSV. ' +
+        '<p>qlim8 henter fakturaerne fra <a href="/integrationer">e-conomic, Dinero og Billy</a> og elforbruget time for time fra Eloverblik, og data uden for bogføringen kommer ind som Excel eller CSV. ' +
         'esgBRICKS oplyser ikke på sin hjemmeside, hvilke regnskabssystemer platformen henter fra, og nævner ikke Eloverblik. Hos esgBRICKS indsamles data i servicens dataindsamlingstrin.</p>',
     },
 
@@ -73,7 +73,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>qlim8 har audit trail på hver beregning med input, emissionsfaktor og kilde, og jeres revisor kan få direkte adgang. ' +
+        '<p>qlim8 har <a href="/produkt/audit-trail-og-revisor">audit trail på hver beregning</a> med input, emissionsfaktor og kilde, og jeres revisor kan få direkte adgang. ' +
         "esgBRICKS oplyser ikke et audit trail eller en adgang for revisor på sin hjemmeside, men skriver, at platformen gemmer strukturen og datagrundlaget fra tidligere rapporteringsperioder.</p>",
     },
 
@@ -81,7 +81,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>I qlim8 laver I selv VS Basis og VS Udvidet, ESRS-rapportering og en dobbelt væsentlighedsanalyse ovenpå de samme tal. ' +
+        '<p>I qlim8 laver I selv <a href="/produkt/vsme-rapport">VS Basis og VS Udvidet</a>, ESRS-rapportering og en dobbelt væsentlighedsanalyse ovenpå de samme tal. ' +
         "esgBRICKS udarbejder én samlet ESG-rapport efter VS-standarden om året, og esgBRICKS' eksempelrapport viser også oplysninger fra standardens udvidede modul. esgBRICKS oplyser ikke ESRS-rapportering eller dobbelt væsentlighedsanalyse som en del af servicen.</p>",
     },
 
@@ -97,7 +97,7 @@ export const artikel: Article = {
       html:
         '<p>esgBRICKS koster 14.999 kr. om året ekskl. moms for én virksomhed med ét CVR-nummer, og esgBRICKS skriver, at I kun betaler, hvis I er tilfredse med rapporten. qlim8 har en gratis pakke uden udløbsdato, som dækker scope 1, 2 og 3 med Eloverblik og ét regnskabsprogram. ' +
         '[[Basis koster {pris:starter} om måneden, betalt årligt og ekskl. moms.]] ' +
-        'Hvad en konsulent, et regneark og software koster hver for sig, står i artiklen om hvad et klimaregnskab koster.</p>',
+        'Hvad en konsulent, et regneark og software koster hver for sig, står i artiklen om <a href="/blog/hvad-koster-klimaregnskab-2026">hvad et klimaregnskab koster</a>.</p>',
     },
 
     { type: 'h2', text: 'Hvornår er esgBRICKS det rigtige valg, og hvornår er qlim8?' },
@@ -122,7 +122,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Tabellen sammenligner esgBRICKS med qlim8 og seks andre danske programmer. esgBRICKS er en service, så flere felter handler om, hvad servicen leverer, ikke om funktioner, I selv bruger. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
+        '<p>Tabellen sammenligner esgBRICKS med qlim8 og <a href="/blog/bedste-klimaregnskabsprogram">seks andre danske programmer</a>. esgBRICKS er en service, så flere felter handler om, hvad servicen leverer, ikke om funktioner, I selv bruger. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },

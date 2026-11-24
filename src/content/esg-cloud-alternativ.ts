@@ -55,7 +55,7 @@ export const artikel: Article = {
       type: 'richtext',
       html:
         '<p>E-SG.cloud er bygget til, at revisorer og konsulenter arbejder med deres kunders ESG-data i et multiklient-dashboard, og rådgivere kan bruge platformen under eget brand. Virksomheder kan også købe direkte. ' +
-        'I qlim8 har virksomheden sin egen konto med sine egne data, og revisor og konsulent får gratis Revisor- og Konsulent-konti, hvor de ser alle deres klienter i én portefølje. ' +
+        'I qlim8 har virksomheden sin egen konto med sine egne data, og revisor og konsulent får <a href="/kundetyper/revisorer-og-raadgivere">gratis Revisor- og Konsulent-konti</a>, hvor de ser alle deres klienter i én portefølje. ' +
         'Vil I som rådgiver tilbyde en platform under eget navn, er E-SG.cloud bygget til det. Vil I som rådgiver arbejde i jeres klienters egne tal uden at betale for adgangen, passer qlim8s rådgiverkonti.</p>',
     },
 
@@ -63,7 +63,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>qlim8 beregner udledningen fra fakturaerne i e-conomic, Dinero og Billy og henter elforbruget fra Eloverblik hver uge, og data uden for bogføringen kommer ind som Excel eller CSV. ' +
+        '<p>qlim8 beregner udledningen fra fakturaerne i e-conomic, Dinero og Billy og <a href="/integrationer/eloverblik">henter elforbruget fra Eloverblik</a> hver uge, og data uden for bogføringen kommer ind som Excel eller CSV. ' +
         'E-SG.cloud har en manuel CO2-beregner til scope 1 og 2, kobler til e-conomic og Business Central og beregner scope 3 gennem partnere. E-SG.cloud oplyser ikke Eloverblik på sin hjemmeside.</p>',
     },
 
@@ -71,7 +71,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Begge platforme har VS Basis og VS Udvidet. E-SG.cloud har en CSRD-pakke med ESRS-datapunkter, og qlim8 har ESRS-rapportering i appen. qlim8 har dobbelt væsentlighedsanalysen i appen, og E-SG.cloud har en skabelon og vejledning til den i alle pakker. ' +
+        '<p>Begge platforme har <a href="/blog/vsme-basis-vs-comprehensive">VS Basis og VS Udvidet</a>. E-SG.cloud har en CSRD-pakke med ESRS-datapunkter, og qlim8 har ESRS-rapportering i appen. qlim8 har dobbelt væsentlighedsanalysen i appen, og E-SG.cloud har en skabelon og vejledning til den i alle pakker. ' +
         'E-SG.cloud har XBRL-eksport i Pro og CSRD, og qlim8 har ikke XBRL-eksport. Skal rapporten afleveres i XBRL, er det E-SG.cloud, der kan det.</p>',
     },
 
@@ -85,7 +85,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Begge har et API. qlim8 har et REST API og en MCP-server med 31 værktøjer, så en AI-assistent kan læse og skrive i klimaregnskabet. ' +
+        '<p>Begge har et API. qlim8 har et REST API og <a href="/integrationer/mcp-server">en MCP-server med 31 værktøjer</a>, så en AI-assistent kan læse og skrive i klimaregnskabet. ' +
         'E-SG.cloud beskriver et åbent API til ERP-, økonomi- og dataplatforme, men oplyser ikke en MCP-server og har ingen offentlig API-dokumentation på sin hjemmeside.</p>',
     },
 
@@ -125,7 +125,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Tabellen sammenligner E-SG.cloud med qlim8 og seks andre danske programmer. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
+        '<p>Tabellen sammenligner E-SG.cloud med qlim8 og <a href="/blog/bedste-klimaregnskabsprogram">seks andre danske programmer</a>. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },

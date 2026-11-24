@@ -23,7 +23,7 @@ export const artikel: Article = {
     },
     {
       type: 'richtext',
-      html: `<p>I artiklen om hvad et klimaregnskab koster skønner vi, at det første komplette klimaregnskab i Excel tager 3 til 6 ugers internt arbejde for en mellemstor SMV. Samme artikel skønner, at Excel passer bedst til en mikrovirksomhed med 1 til 5 ansatte, til en ejer, der vil forstå beregningen fra bunden, eller som læringsprojekt, og at Excel ellers typisk er dyrere, end det ser ud.</p>`,
+      html: `<p>I artiklen om <a href="/blog/hvad-koster-klimaregnskab-2026">hvad et klimaregnskab koster</a> skønner vi, at det første komplette klimaregnskab i Excel tager 3 til 6 ugers internt arbejde for en mellemstor SMV. Samme artikel skønner, at Excel passer bedst til en mikrovirksomhed med 1 til 5 ansatte, til en ejer, der vil forstå beregningen fra bunden, eller som læringsprojekt, og at Excel ellers typisk er dyrere, end det ser ud.</p>`,
     },
     {
       type: 'list',
@@ -81,21 +81,25 @@ export const artikel: Article = {
     { type: 'h3', text: 'Emissionsfaktorer: Energistyrelsens faktorark' },
     {
       type: 'richtext',
-      html: `<p>Energistyrelsen udgiver et Excel-ark med emissionsfaktorerne bag Klimakompasset, med en fane pr. år og kolonner for kategori, enhed, udledning fordelt på scope 1, 2 og 3, kilde og land. Arket på Energistyrelsens side er fra november 2024, mens Klimakompasset skriver, at faktorerne senest blev opdateret i november 2025. Tjek derfor datoen, før I bruger arket.</p>`,
+      html: `<p><a href="https://ens.dk/analyser-og-statistik/beregning-af-klimaaftryk" rel="noopener noreferrer">Energistyrelsen</a> udgiver et Excel-ark med emissionsfaktorerne bag <a href="/blog/klimakompasset-alternativ">Klimakompasset</a>, med en fane pr. år og kolonner for kategori, enhed, udledning fordelt på scope 1, 2 og 3, kilde og land. Arket på Energistyrelsens side er fra november 2024, mens Klimakompasset skriver, at faktorerne senest blev opdateret i november 2025. Tjek derfor datoen, før I bruger arket.</p>`,
     },
     { type: 'h3', text: 'El: Energinets deklarationer' },
     {
       type: 'richtext',
-      html: `<p>Energinet udgiver miljødeklarationen, den lokationsbaserede, som et regneark med årsgennemsnit, med en foreløbig udgave i januar og den endelige i juni året efter. Eldeklarationen, den markedsbaserede, udgives hvert år i juni for året før, og jeres elleverandør har sin egen deklaration.</p>`,
+      html: `<p><a href="https://energinet.dk/energidata/deklarationer-og-csr/" rel="noopener noreferrer">Energinet</a> udgiver miljødeklarationen, den lokationsbaserede, som et regneark med årsgennemsnit, med en foreløbig udgave i januar og den endelige i juni året efter. Eldeklarationen, den markedsbaserede, udgives hvert år i juni for året før, og jeres elleverandør har sin egen deklaration.</p>`,
     },
     { type: 'h3', text: 'VS-rapporten: EFRAG\'s Excel-skabelon' },
     {
       type: 'richtext',
-      html: `<p>EFRAG udgiver en Excel-skabelon til den frivillige standard VS (tidligere VSME), kaldet VS Digital Template. Version 2.0.0 udkom 4. november 2026, og skabelonen kan hentes uden at oprette en konto.</p>`,
+      html: `<p>EFRAG udgiver en Excel-skabelon til <a href="/blog/hvad-er-vsme-vs">den frivillige standard VS</a> (tidligere VSME), kaldet <a href="https://www.efrag.org/en/vs-digital-template-and-xbrl-taxonomy" rel="noopener noreferrer">VS Digital Template</a>. Skabelonen kan hentes uden at oprette en konto, og EFRAG opdaterer den, så hent altid den nyeste udgave.</p>`,
     },
     {
       type: 'paragraph',
       text: `Skabelonen viser, hvilke oplysninger der kræves, regner totaler ud, har en omregner fra brændstof til MWh og har dansk som sprogvalg. EFRAG har lavet og testet den i Excel 365 og skriver, at funktionerne kan være begrænsede eller forkerte i andre regnearksprogrammer og ældre Excel-versioner. EFRAG skriver også, at ældre versioner af skabelonen ikke skal bruges, og tilbyder et gratis værktøj, der omsætter skabelonen til XBRL.`,
+    },
+    {
+      type: 'richtext',
+      html: `<p>Virksomhedsguiden har også en ESG-skabelon, der bygger på den fælles europæiske frivillige standard. Den findes både i en printvenlig PowerPoint-udgave og som ESG-skabelon i Excel.</p>`,
     },
 
     { type: 'h2', text: 'Hvor knækker Excel?' },
@@ -109,7 +113,7 @@ export const artikel: Article = {
         '<ul>' +
         `<li>Mængden af bilag: hver faktura skal hentes, kategoriseres og kobles til en faktor i hånden.</li>` +
         `<li>Opdateringer: Energistyrelsens faktorer opdateres hvert år, Energinets deklarationer kommer i januar og juni, og EFRAG har udgivet en ny version af sin skabelon, så arket skal rettes igen.</li>` +
-        `<li>Scope 3: udledningen i værdikæden kræver flere kategorier og ofte beløbsbaserede faktorer, og det er her, regnearket vokser mest.</li>` +
+        `<li><a href="/blog/scope-3-smv-guide">Scope 3</a>: udledningen i værdikæden kræver flere kategorier og ofte beløbsbaserede faktorer, og det er her, regnearket vokser mest.</li>` +
         `<li>Sporet: når banken eller revisor spørger, hvor et tal kommer fra, skal svaret kunne findes linje for linje, og et regneark viser ikke uden videre, hvem der har ændret hvad.</li>` +
         `<li>Personen: andet år går hurtigere, hvis den, der lavede det første år, stadig er der.</li>` +
         `<li>Skabelonen: EFRAG's skabelon er lavet til Excel 365, og en ny version kan betyde, at tallene skal flyttes over.</li>` +
@@ -129,7 +133,7 @@ export const artikel: Article = {
         `<li>Opret en gratis konto i qlim8, og forbind e-conomic, Dinero eller Billy, så fakturaerne beregnes fra bogføringen.</li>` +
         `<li>Upload de linjer, der ikke står i bogføringen, for eksempel brændstof i liter eller kørte kilometer, som Excel eller CSV. qlim8 læser begge formater.</li>` +
         `<li>Giv qlim8 fuldmagt til Eloverblik med MitID, så elforbruget hentes time for time.</li>` +
-        `<li>Hent Excel-rapporten med hver linje: dato, kategori, mængde, emissionsfaktor og kilde, og læg den ved siden af jeres eget ark.</li>` +
+        `<li>Hent <a href="/produkt/rapportering">Excel-rapporten med hver linje</a>: dato, kategori, mængde, emissionsfaktor og kilde, og læg den ved siden af jeres eget ark.</li>` +
         `<li>Lav VS-rapporten i qlim8.</li>` +
         '</ol>',
     },
@@ -154,7 +158,7 @@ export const artikel: Article = {
     { type: 'h3', text: 'Findes der en gratis skabelon til klimaregnskab i Excel?' },
     {
       type: 'paragraph',
-      text: `Ja, EFRAG udgiver en Excel-skabelon til VS-rapporten, som kan hentes uden at oprette en konto, og Energistyrelsen udgiver emissionsfaktorerne bag Klimakompasset som et Excel-ark.`,
+      text: `Ja, EFRAG udgiver en Excel-skabelon til VS-rapporten, som kan hentes uden at oprette en konto, og Energistyrelsen udgiver emissionsfaktorerne bag Klimakompasset som et Excel-ark. Virksomhedsguiden har desuden en ESG-skabelon i Excel, der bygger på samme standard.`,
     },
     { type: 'h3', text: 'Hvor finder jeg emissionsfaktorer til et CO2-regnskab i Excel?' },
     {

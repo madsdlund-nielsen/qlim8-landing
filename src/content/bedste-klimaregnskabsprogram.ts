@@ -105,14 +105,14 @@ export const artikel: Article = {
     { type: 'paragraph', text: KORT_OM.esgbricks },
     {
       type: 'richtext',
-      html: `<p>esgBRICKS er det rigtige valg, hvis I hellere vil købe arbejdet end et program: en fast kontaktperson laver den årlige VS-rapport for jer, og esgBRICKS skriver, at I kun betaler, hvis I er tilfredse med rapporten. esgBRICKS oplyser ikke regnskabsintegrationer, Eloverblik eller en gratis plan.</p>`,
+      html: `<p><a href="/blog/esgbricks-alternativ">esgBRICKS</a> er det rigtige valg, hvis I hellere vil købe arbejdet end et program: en fast kontaktperson laver den årlige VS-rapport for jer, og esgBRICKS skriver, at I kun betaler, hvis I er tilfredse med rapporten. esgBRICKS oplyser ikke regnskabsintegrationer, Eloverblik eller en gratis plan.</p>`,
     },
 
     { type: 'h3', text: 'E-SG.cloud' },
     { type: 'paragraph', text: KORT_OM.esgcloud },
     {
       type: 'richtext',
-      html: `<p>E-SG.cloud passer bedst, hvis I er revisor, konsulent eller forhandler og vil give jeres kunder en ESG-platform under eget brand med et overblik over alle klienter. Platformen har VS Basis og VS Udvidet i alle pakker, revisionsspor i Pro og CSRD og testadgang i 14 dage.</p>`,
+      html: `<p><a href="/blog/esg-cloud-alternativ">E-SG.cloud</a> passer bedst, hvis I er revisor, konsulent eller forhandler og vil give jeres kunder en ESG-platform under eget brand med et overblik over alle klienter. Platformen har VS Basis og VS Udvidet i alle pakker, revisionsspor i Pro og CSRD og testadgang i 14 dage.</p>`,
     },
 
     { type: 'h3', text: 'Climaider' },
@@ -129,7 +129,7 @@ export const artikel: Article = {
     },
     {
       type: 'richtext',
-      html: `<p>Har I brugt Klimakompasset, kan I læse, hvad det næste skridt er, og hvorfor tallene bygger på samme grundlag.</p>`,
+      html: `<p>Har I brugt <a href="/blog/klimakompasset-alternativ">Klimakompasset</a>, kan I læse, hvad det næste skridt er, og hvorfor tallene bygger på samme grundlag.</p>`,
     },
     { type: 'h3', text: 'Excel' },
     {
@@ -138,7 +138,7 @@ export const artikel: Article = {
     },
     {
       type: 'richtext',
-      html: `<p>Guiden til klimaregnskab i Excel viser, hvad regnearket skal indeholde, hvor det knækker, og hvordan I går videre uden at miste arbejdet.</p>`,
+      html: `<p>Guiden til <a href="/blog/klimaregnskab-excel">klimaregnskab i Excel</a> viser, hvad regnearket skal indeholde, hvor det knækker, og hvordan I går videre uden at miste arbejdet.</p>`,
     },
 
     { type: 'h2', text: 'Hvad med de store internationale klimaplatforme?' },

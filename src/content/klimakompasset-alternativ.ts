@@ -44,7 +44,7 @@ export const artikel: Article = {
     },
     {
       type: 'richtext',
-      html: `<p>Klimakompasset laver ikke en VS-rapport, men giver datapunkter, der flugter med den frivillige standard VS. Datapunkterne findes for scope 1 og 2 i miniberegneren og for alle scopes under E-nøgletal i den fulde version.</p>`,
+      html: `<p>Klimakompasset laver ikke en VS-rapport, men giver datapunkter, der flugter med <a href="/blog/hvad-er-vsme-vs">den frivillige standard VS</a>. Datapunkterne findes for scope 1 og 2 i miniberegneren og for alle scopes under E-nøgletal i den fulde version.</p>`,
     },
     {
       type: 'list',
@@ -105,7 +105,7 @@ export const artikel: Article = {
     },
     {
       type: 'richtext',
-      html: `<p>Tallene kan sammenlignes, fordi qlim8 primært bruger danske kilder, herunder Klimakompassets emissionsfaktorer og Energinet, og supplerer med EXIOBASE til indkøb uden fysiske mængder.</p>`,
+      html: `<p>Tallene kan sammenlignes, fordi qlim8 primært bruger danske kilder, herunder <a href="/metodologi">Klimakompassets emissionsfaktorer og Energinet</a>, og supplerer med EXIOBASE til indkøb uden fysiske mængder.</p>`,
     },
     {
       type: 'paragraph',
@@ -155,7 +155,7 @@ export const artikel: Article = {
     },
     {
       type: 'richtext',
-      html: `<p>Vil I sammenligne qlim8 med andre betalte programmer, står de danske klimaregnskabsprogrammer side om side i vores sammenligning.</p>`,
+      html: `<p>Vil I sammenligne qlim8 med andre betalte programmer, står <a href="/blog/bedste-klimaregnskabsprogram">de danske klimaregnskabsprogrammer</a> side om side i vores sammenligning.</p>`,
     },
     {
       type: 'cta',
@@ -176,9 +176,9 @@ export const artikel: Article = {
         '<ol>' +
         `<li>Gem jeres resultater fra Klimakompasset. Ifølge Klimakompassets vejledning kan de downloades til Excel i den fulde version, og har I brugt miniberegneren, så notér tallene, før I forlader siden. Notér også de egne emissionsfaktorer, I har tastet ind, og jeres reduktionsmål.</li>` +
         `<li>Opret en gratis konto i qlim8, og forbind e-conomic, Dinero eller Billy.</li>` +
-        `<li>Giv qlim8 fuldmagt til Eloverblik med MitID. qlim8 henter forbrug fra op til tre måneder før, kontoen blev oprettet, så for et basisår, der ligger længere tilbage, er resultaterne fra Klimakompasset jeres sammenligning.</li>` +
+        `<li>Giv qlim8 <a href="/integrationer/eloverblik">fuldmagt til Eloverblik med MitID</a>. qlim8 henter forbrug fra op til tre måneder før, kontoen blev oprettet, så for et basisår, der ligger længere tilbage, er resultaterne fra Klimakompasset jeres sammenligning.</li>` +
         `<li>Registrér det, der ikke står i bogføringen, for eksempel brændstof i liter, kørte kilometer eller affald, manuelt eller som Excel eller CSV.</li>` +
-        `<li>Sammenlign totalerne for samme kalenderår med resultaterne fra Klimakompasset, og brug audit trail til at se, hvor en forskel kommer fra.</li>` +
+        `<li>Sammenlign totalerne for samme kalenderår med resultaterne fra Klimakompasset, og brug <a href="/produkt/audit-trail-og-revisor">audit trail</a> til at se, hvor en forskel kommer fra.</li>` +
         `<li>Sæt reduktionsmål ud fra basisåret, og lav VS-rapporten.</li>` +
         '</ol>',
     },

@@ -72,8 +72,8 @@ export const artikel: Article = {
     { type: 'h2', text: 'Vej 2: Gør-det-selv i Excel' },
     { type: 'paragraph', text: 'Det her er den løsning, der ser gratis ud, og som de færreste regner ærligt på.' },
     {
-      type: 'paragraph',
-      text: 'For en mellemstor SMV tager det første komplette klimaregnskab i Excel typisk 3-6 ugers internt arbejde. Det er typisk direktøren, bogholderen eller en koordineret indsats mellem flere. Dataindsamling alene kan tage to uger: fakturaerne skal hentes, kategoriseres, og linkes til de rigtige emissionsfaktorer fra Klimakompasset, EXIOBASE eller andre kilder. Beregningerne tager en uge mere. Rapport-skrivning og formatering til VSME-skabelonen tager den sidste uge.',
+      type: 'richtext',
+      html: '<p>For en mellemstor SMV tager det første komplette <a href="/blog/klimaregnskab-excel">klimaregnskab i Excel</a> typisk 3-6 ugers internt arbejde. Det er typisk direktøren, bogholderen eller en koordineret indsats mellem flere. Dataindsamling alene kan tage to uger: fakturaerne skal hentes, kategoriseres, og linkes til de rigtige emissionsfaktorer fra Klimakompasset, EXIOBASE eller andre kilder. Beregningerne tager en uge mere. Rapport-skrivning og formatering til VSME-skabelonen tager den sidste uge.</p>',
     },
     {
       type: 'paragraph',
@@ -162,8 +162,8 @@ export const artikel: Article = {
       text: 'Prisen på audit-support. Hvis revisoren stiller spørgsmål til jeres regnskab og I ikke har et ordentligt audit trail, ender det med flere konsulenttimer eller flere interne timer for at finde svarene. Et komplet, sporbart audit trail er en engangs-investering der betaler sig hver gang I bliver spurgt, og I vil blive spurgt.',
     },
     {
-      type: 'paragraph',
-      text: 'Prisen på opdateringer. Klimakompasset opdateres årligt af Erhvervsstyrelsen og Energistyrelsen. Eldeklarationer fra Energinet skifter løbende. Nye EPD\'er publiceres konstant. En platform, der opdaterer disse automatisk, fjerner en reel og tilbagevendende intern omkostning, som ofte glemmes i den oprindelige investeringsberegning.',
+      type: 'richtext',
+      html: '<p>Prisen på opdateringer. <a href="/blog/klimakompasset-alternativ">Klimakompasset</a> opdateres årligt af Erhvervsstyrelsen og Energistyrelsen. Eldeklarationer fra Energinet skifter løbende. Nye EPD\'er publiceres konstant. En platform, der opdaterer disse automatisk, fjerner en reel og tilbagevendende intern omkostning, som ofte glemmes i den oprindelige investeringsberegning.</p>',
     },
 
     { type: 'h2', text: 'Hvad du skal kigge efter, og hvad du ikke skal betale for' },
