@@ -14,6 +14,7 @@ import { artikel as gronlogAlternativ } from './gronlog-alternativ'
 import { artikel as ecometricsAlternativ } from './ecometrics-alternativ'
 import { artikel as wardnAlternativ } from './wardn-alternativ'
 import { artikel as valifiedAlternativ } from './valified-alternativ'
+import { artikel as climaiderAlternativ } from './climaider-alternativ'
 
 // Tilføj en ny artikel ved at:
 // 1. Oprette en ny fil i src/content/ (f.eks. min-artikel.ts) med Article-typen
@@ -21,8 +22,7 @@ import { artikel as valifiedAlternativ } from './valified-alternativ'
 
 export const articles: Article[] = [
   // Sammenligningssiderne (docs/da/marketing/sammenligningssider.md). Hubben
-  // først, så den ligger øverst på /blog. climaider-alternativ.ts er skrevet,
-  // men registreres først, når ejeren har bekræftet konkursen på virk.dk.
+  // først, så den ligger øverst på /blog.
   bedsteKlimaregnskabsprogram,
   storeKlimaplatformeSammenlignet,
   verarcaAlternativ,
@@ -30,6 +30,7 @@ export const articles: Article[] = [
   ecometricsAlternativ,
   wardnAlternativ,
   valifiedAlternativ,
+  climaiderAlternativ,
   klimaregnskabSmvKlienterKonsulentkonto,
   hvadErVsmeVs,
   vsmeAiAgentMcp,

@@ -95,33 +95,36 @@ export const artikel: Article = {
     { type: 'h2', text: 'Vej 3: Specialiseret software' },
     { type: 'paragraph', text: 'Her bliver markedet større og mere mangfoldigt, end mange tror. Lad mig dele det op i to lag.' },
     {
-      type: 'paragraph',
-      text: 'Enterprise-platforme rettet mod store virksomheder: internationalt anerkendte navne som Normative, Position Green, Watershed og en del lignende. De er designet til virksomheder med dedikerede bæredygtighedsteams og store budgetter. Deres priser er sjældent offentlige; de fleste forhandler individuelt og kræver demoer og salgsmøder, før de tilbyder et tal. Min erfaring, fra at tale med SMV-ejere der har fået tilbud fra denne kategori, er at en SMV-pakke typisk lander i 5-cifret kroneklasse pr. måned. Det kan være 10.000 til 30.000 kroner pr. måned, afhængig af bredden af features og antal brugere. Det er fantastisk software for de virksomheder, der har brug for det. For en typisk dansk SMV med 10-50 ansatte er det skyderi efter gråspurve med rumvåben.',
+      type: 'richtext',
+      html: `<p>Enterprise-platforme rettet mod store virksomheder: internationalt anerkendte navne som Normative, <a href="/blog/store-klimaplatforme-sammenlignet">Position Green, Watershed</a> og en del lignende. De er designet til virksomheder med dedikerede bæredygtighedsteams og store budgetter. De fleste offentliggør ikke en prisliste og sælger efter en demo. Hvor der findes et prisgrundlag, ligger en aftale på mellem ca. 45.000 kr. og over en million kroner om året: Coolset oplyser selv 6.000 til 30.000 euro om året, Greenly 15.000 til 80.000 euro, og listepriserne hos Terrascope og Persefoni er fra 20.000 og 55.000 dollar for 12 måneder. Det er fantastisk software for de virksomheder, der har brug for det. For en typisk dansk SMV med 10-50 ansatte er det skyderi efter gråspurve med rumvåben.</p>`,
+    },
+    {
+      type: 'richtext',
+      html: `<p>SMV-specifikke platforme: det segment hvor qlim8 lever, sammen med <a href="/blog/bedste-klimaregnskabsprogram">en håndfuld andre danske og europæiske aktører</a>. Her spænder priserne fra gratis planer til nogle få tusinde kroner om måneden. De danske programmer har typisk en gratis plan eller en pris på nogle hundrede kroner om måneden for det mindste, og de største offentlige pakker ligger på mellem ca. 12.000 og 55.000 kroner om året. Det er bevidst designet til den SMV-virkelighed, hvor budgettet for bæredygtighedsarbejde er reelt begrænset, og hvor man ikke har en dedikeret bæredygtighedschef til at lære et komplekst system at kende.</p>`,
     },
     {
       type: 'paragraph',
-      text: 'SMV-specifikke platforme: det segment hvor qlim8 lever, sammen med en håndfuld andre danske og europæiske aktører. Her ligger priserne typisk i 3-cifret kroneklasse pr. måned. Det er bevidst designet til den SMV-virkelighed, hvor budgettet for bæredygtighedsarbejde er reelt begrænset, og hvor man ikke har en dedikeret bæredygtighedschef til at lære et komplekst system at kende.',
-    },
-    { type: 'paragraph', text: 'Lad mig være konkret om qlim8\'s egne pakker, for det er den eneste platform, jeg kan udtale mig fagligt præcist om. Priserne står på /priser, så du kan se dem uden at tale med os: Gratis-pakken koster ingenting og har ingen udløbsdato, Basis, Udvidet og Komplet har faste priser pr. måned, faktureret årligt og ekskl. moms, og Koncern tilpasser vi jeres behov.' },
-    {
-      type: 'paragraph',
-      text: 'Gratis-pakken i qlim8 dækker et fuldt Scope 1, 2 og 3 klimaregnskab med AI-kategorisering, fuld audit trail på hver beregning, Excel- og PDF-eksport og én regnskabs- og én forsyningsforbindelse, fx Dinero, e-conomic eller Billy og Eloverblik. qlim8 Basis lægger VSME Basis-rapport med wizard, ubegrænsede brugere, revisoradgang og op til 5 forbindelser oveni.',
+      text: `Lad mig være konkret om qlim8's egne pakker, for det er den eneste platform, jeg kan udtale mig fagligt præcist om. Priserne står på /priser, så du kan se dem uden at tale med os: Gratis-pakken koster ingenting og har ingen udløbsdato, Basis, Udvidet og Komplet har faste priser pr. måned, faktureret årligt og ekskl. moms, og Koncern tilpasser vi jeres behov.`,
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Udvidet inkluderer alt i Basis plus VSME Comprehensive, analyse, offentlig profil og badge, ubegrænsede forbindelser og MCP-integration. Komplet lægger chat- og telefonsupport oveni. Hvilke reduktionsfunktioner der følger med hver pakke, står på /priser.',
+      text: `Gratis-pakken giver et klimaregnskab for scope 1, 2 og 3 ud fra jeres regnskabsprogram og Eloverblik, med AI-kategorisering af fakturaerne og audit trail på hver beregning. De betalte pakker lægger rapporter, reduktionsmål og flere forbindelser oveni, trin for trin: VS Basis-rapport, VS Udvidet, dobbelt væsentlighedsanalyse og ESRS-rapportering. Hvad der ligger i hvilken pakke, står på /priser.`,
     },
     {
       type: 'paragraph',
-      text: 'qlim8 Komplet og Koncern er til større organisationer, og her varierer behovet markant. Koncern indeholder funktioner som dedikeret supply chain-portal og fuld API-adgang. Hvis I skal indsamle VSME-data fra mange underleverandører, er det den vej, vi typisk taler med jer om.',
+      text: `De pakker, der har en Køb-knap, køber I selv direkte på /priser, og de pakker, vi aftaler efter en samtale, begynder med en demo.`,
     },
     {
       type: 'paragraph',
-      text: 'Derudover findes en enkelt vigtig add-on: I kan tilkøbe yderligere historisk data, hvis I vil have en baseline længere tilbage i tiden end de tre måneder, der hentes automatisk ved tilkobling. Det er et engangsbeløb, som I køber direkte i appen.',
+      text: `qlim8 Koncern er til større organisationer og værdikæder, og her varierer behovet markant. Skal I samle klimadata på tværs af flere selskaber eller fra mange underleverandører, er det den vej, vi typisk taler med jer om.`,
     },
     {
       type: 'paragraph',
-      text: 'Det er det. Ingen opsætningsgebyrer, ingen forpligtelser ud over abonnementet, ingen skjulte konsulenttimer indregnet i prisen. Vejen ind er en gratis konto: I forbinder regnskabssystemet, og qlim8 henter tre måneders historik med det samme. Vil I hellere have en gennemgang først, viser jeg jer gerne platformen på en demo.',
+      text: `Derudover findes en enkelt vigtig add-on: I kan tilkøbe yderligere historisk data, hvis I vil have en baseline længere tilbage i tiden end det, der hentes automatisk ved tilkobling. Det er et engangsbeløb, som I køber direkte i appen.`,
+    },
+    {
+      type: 'paragraph',
+      text: `Det er det. Ingen skjulte konsulenttimer indregnet i prisen. Vejen ind er en gratis konto: I forbinder regnskabssystemet, og qlim8 henter jeres seneste bilag med det samme. Vil I hellere have en gennemgang først, viser jeg jer gerne platformen på en demo.`,
     },
     {
       type: 'paragraph',
@@ -135,8 +138,8 @@ export const artikel: Article = {
       items: [
         'DIY i Excel: opstart 0 kr, år 1 typisk 40-80.000 kr (intern tid), år 2 og 3 typisk 20-40.000 kr, 3-års TCO 80-160.000 kr. Intet automatisk audit trail eller opdatering.',
         'Konsulent: opstart 0 kr, år 1 typisk 36-90.000 kr, år 2 og 3 typisk 24-72.000 kr, 3-års TCO 84-234.000 kr. Delvist audit trail, ingen automatisk opdatering.',
-        'SMV-software: opstart typisk 0 kr, årligt typisk under 10.000 kr, 3-års TCO typisk under 30.000 kr. Fuld audit trail og automatisk opdatering fra den dag, regnskabssystemet er tilkoblet.',
-        'Enterprise-platform: opstart 0 kr (men salgsmøde-tid), årligt typisk 120-360.000 kr, 3-års TCO 360.000-1.080.000 kr. Fuld audit trail og automatisk opdatering, men implementation tager 1-3 måneder.',
+        'SMV-software: opstart typisk 0 kr, årligt mellem 0 kr. i en gratis plan og ca. 55.000 kr. for de største pakker, 3-års TCO typisk 0-165.000 kr. Fuld audit trail og automatisk opdatering fra den dag, regnskabssystemet er tilkoblet.',
+        'Enterprise-platform: opstart afhænger af aftalen (og salgsmøde-tid), årligt typisk 45.000 kr. til over 1 mio. kr., 3-års TCO fra ca. 135.000 kr. til over 3 mio. kr. Fuld audit trail og automatisk opdatering, men implementation tager 1-3 måneder.',
       ],
     },
     {
@@ -186,7 +189,7 @@ export const artikel: Article = {
     },
     {
       type: 'paragraph',
-      text: 'Betal ikke for: Setup-gebyrer på SMV-software. Hvis platformen er bygget til SMV\'er, skal den kunne tilkobles uden professional services. Setup-gebyrer er et tegn på, at I er ved at købe et enterprise-produkt under en SMV-fane.',
+      text: `Betal ikke for: Setup-gebyrer på selvbetjent software. Køber I et program selv på nettet, skal det kunne tilkobles uden betalt hjælp. Et opsætningsgebyr giver kun mening, når leverandøren laver et aftalt stykke arbejde for jer, og så skal I vide præcis, hvad I får for det.`,
     },
     {
       type: 'paragraph',
@@ -197,7 +200,7 @@ export const artikel: Article = {
     { type: 'paragraph', text: 'Hvis jeg skulle vælge én tilgang til en typisk dansk SMV med 10-100 ansatte i 2026, ville den se sådan ud.' },
     {
       type: 'paragraph',
-      text: 'Start med specialiseret SMV-software. Det dækker 80-90 % af compliance-behovet for typisk under 10.000 kroner om året, og det giver jer et reelt klimaregnskab fra den dag, I tilkobler jeres regnskabssystem. Det er det, et automatisk system er bedst til.',
+      text: `Start med specialiseret SMV-software. Det dækker 80-90 % af compliance-behovet, i mange tilfælde for under 20.000 kroner om året og nogle gange gratis, og det giver jer et reelt klimaregnskab fra den dag, I tilkobler jeres regnskabssystem. Det er det, et automatisk system er bedst til.`,
     },
     {
       type: 'paragraph',

@@ -54,17 +54,17 @@ export const artikel: Article = {
     { type: 'h3', text: 'Har Grønlog og qlim8 et åbent API?' },
     {
       type: 'richtext',
-      html: '<p>Grønlogs API er under udvikling, og qlim8 har et REST API og en MCP-server med 31 værktøjer. MCP-serveren gør det muligt at koble en AI-assistent på jeres tal.</p>',
+      html: '<p>Grønlogs API er under udvikling, og qlim8 har et REST API og <a href="/integrationer/mcp-server">en MCP-server med 31 værktøjer</a>. MCP-serveren gør det muligt at koble en AI-assistent på jeres tal.</p>',
     },
     { type: 'h3', text: 'Hvor kommer elforbruget fra hos Grønlog og hos qlim8?' },
     {
       type: 'richtext',
-      html: '<p>qlim8 henter elforbruget fra Eloverblik efter fuldmagt med MitID, og Grønlog oplyser ikke en Eloverblik-forbindelse på sin hjemmeside. Forbrugsdata fra Eloverblik hentes hver uge, time for time. Skal elforbruget i jeres klimaregnskab bygge på målerdata frem for regninger, er det en forskel, der tæller.</p>',
+      html: '<p>qlim8 henter elforbruget fra Eloverblik efter <a href="/integrationer/eloverblik">fuldmagt med MitID</a>, og Grønlog oplyser ikke en Eloverblik-forbindelse på sin hjemmeside. Forbrugsdata fra Eloverblik hentes hver uge, time for time. Skal elforbruget i jeres klimaregnskab bygge på målerdata frem for regninger, er det en forskel, der tæller.</p>',
     },
     { type: 'h3', text: 'Hvor langt rækker rapporteringen hos Grønlog og hos qlim8?' },
     {
       type: 'richtext',
-      html: '<p>qlim8 laver både VS Basis og VS Udvidet, og Grønlog oplyser ikke VS Udvidet på sin hjemmeside. qlim8 har desuden dobbelt væsentlighedsanalyse og ESRS-rapportering i appen og en gratis konto til jeres revisor. Grønlog oplyser hverken dobbelt væsentlighedsanalyse eller revisoradgang, og beskriver fuld CSRD/ESRS-overholdelse i sin Enterprise-plan.</p>',
+      html: '<p>qlim8 laver både VS Basis og <a href="/blog/vsme-basis-vs-comprehensive">VS Udvidet</a>, og Grønlog oplyser ikke VS Udvidet på sin hjemmeside. qlim8 har desuden dobbelt væsentlighedsanalyse og ESRS-rapportering i appen og en gratis konto til jeres revisor. Grønlog oplyser hverken dobbelt væsentlighedsanalyse eller revisoradgang, og beskriver fuld CSRD/ESRS-overholdelse i sin Enterprise-plan.</p>',
     },
     { type: 'h3', text: 'Hvad har Grønlog og qlim8 til fælles?' },
     {
@@ -87,7 +87,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'Grønlog og qlim8 i en samlet sammenligning' },
     {
       type: 'richtext',
-      html: '<p>Tabellen sætter Grønlog og qlim8 op mod fire andre danske programmer, og den viser, hvad hver leverandør selv oplyser på sin hjemmeside. Et felt, der står som ikke oplyst, betyder, at leverandøren ikke nævner funktionen, ikke at den mangler.</p>',
+      html: '<p>Tabellen sætter Grønlog og qlim8 op mod <a href="/blog/bedste-klimaregnskabsprogram">fire andre danske programmer</a>, og den viser, hvad hver leverandør selv oplyser på sin hjemmeside. Et felt, der står som ikke oplyst, betyder, at leverandøren ikke nævner funktionen, ikke at den mangler.</p>',
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },
@@ -119,7 +119,7 @@ export const artikel: Article = {
       html:
         '<ol>' +
         '<li>Gem den seneste rapport og jeres tal fra Grønlog, så I har jeres basisår.</li>' +
-        '<li>Opret en gratis konto i qlim8, og forbind det samme regnskabsprogram: Dinero, e-conomic eller Billy.</li>' +
+        '<li>Opret en gratis konto i qlim8, og forbind det samme regnskabsprogram: <a href="/integrationer/dinero">Dinero</a>, e-conomic eller Billy.</li>' +
         '<li>Upload de aktivitetsdata, I selv har tastet ind i Grønlog, til qlim8 som Excel eller CSV.</li>' +
         '<li>Giv qlim8 fuldmagt til Eloverblik med MitID, så elforbruget kommer med.</li>' +
         '<li>Fjern Grønlogs adgang til regnskabsprogrammet, når tallene i qlim8 stemmer med jeres basisår.</li>' +

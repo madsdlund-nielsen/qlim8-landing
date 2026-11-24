@@ -68,41 +68,47 @@ export const artikel: Article = {
     { type: 'paragraph', text: KORT_OM.verarca },
     {
       type: 'richtext',
-      html: `<p>Verarca er det bedste valg, hvis I bruger Business Central, Uniconta eller E-Komplet, eller vil have en person til at gennemgå jeres data i Managed Carbon Service. Der er ingen gratis plan på prissiden.</p>`,
+      html: `<p><a href="/blog/verarca-alternativ">Verarca</a> er det bedste valg, hvis I bruger Business Central, Uniconta eller E-Komplet, eller vil have en person til at gennemgå jeres data i Managed Carbon Service. Der er ingen gratis plan på prissiden.</p>`,
     },
 
     { type: 'h3', text: 'Grønlog' },
     { type: 'paragraph', text: KORT_OM.gronlog },
     {
       type: 'richtext',
-      html: `<p>Grønlog passer, hvis I vil starte gratis med scope 1 og 2 uden integrationer, eller har brug for en leverandørportal, som ligger i Professional-planen. Programmet har også et scenarie- og målsætningsmodul, mens scope 3 og den fulde VS-rapport ligger i de betalte planer.</p>`,
+      html: `<p><a href="/blog/gronlog-alternativ">Grønlog</a> passer, hvis I vil starte gratis med scope 1 og 2 uden integrationer, eller har brug for en leverandørportal, som ligger i Professional-planen. Programmet har også et scenarie- og målsætningsmodul, mens scope 3 og den fulde VS-rapport ligger i de betalte planer.</p>`,
     },
 
     { type: 'h3', text: 'EcoMetrics' },
     { type: 'paragraph', text: KORT_OM.ecometrics },
     {
       type: 'richtext',
-      html: `<p>EcoMetrics er den danske leverandør, der ligner qlim8 mest, og det bedste valg, hvis I bruger Business Central, e-komplet, Visma Business NXT eller EG Xena, eller vil have en VS-rapport allerede i en gratis plan. Platformen har også VS Udvidet, reduktionsmål, dobbelt væsentlighedsanalyse og læseadgang for revisor.</p>`,
+      html: `<p><a href="/blog/ecometrics-alternativ">EcoMetrics</a> er den danske leverandør, der ligner qlim8 mest, og det bedste valg, hvis I bruger Business Central, e-komplet, Visma Business NXT eller EG Xena, eller vil have en VS-rapport allerede i en gratis plan. Platformen har også VS Udvidet, reduktionsmål, dobbelt væsentlighedsanalyse og læseadgang for revisor.</p>`,
     },
 
     { type: 'h3', text: 'Wardn' },
     { type: 'paragraph', text: KORT_OM.wardn },
     {
       type: 'richtext',
-      html: `<p>Wardn er en guidet ESG-rapport med hjælp, ikke et klimaregnskab, der beregnes fra bogføringen, og det er en anden slags produkt end de øvrige. Det passer, hvis I vil have en leverandør til at facilitere projektet i Core, eller skal indsamle ESG-data fra leverandører og datterselskaber i Enterprise.</p>`,
+      html: `<p><a href="/blog/wardn-alternativ">Wardn</a> er en guidet ESG-rapport med hjælp, ikke et klimaregnskab, der beregnes fra bogføringen, og det er en anden slags produkt end de øvrige. Det passer, hvis I vil have en leverandør til at facilitere projektet i Core, eller skal indsamle ESG-data fra leverandører og datterselskaber i Enterprise.</p>`,
     },
 
     { type: 'h3', text: 'Valified' },
     { type: 'paragraph', text: KORT_OM.valified },
     {
       type: 'richtext',
-      html: `<p>Valified er det rigtige valg, hvis I hurtigt skal have en VS Basis-rapport og vil sammenligne jer med branchen. Scoren går fra 1 til 100 mod branchen på 13 forhold, der vises et potentiale i kroner, og rapporten kan deles med banken. Scope 3, regnskabsintegrationer og VS Udvidet oplyses ikke.</p>`,
+      html: `<p><a href="/blog/valified-alternativ">Valified</a> er det rigtige valg, hvis I hurtigt skal have en VS Basis-rapport og vil sammenligne jer med branchen. Scoren går fra 1 til 100 mod branchen på 13 forhold, der vises et potentiale i kroner, og rapporten kan deles med banken. Scope 3, regnskabsintegrationer og VS Udvidet oplyses ikke.</p>`,
+    },
+
+    { type: 'h3', text: 'Climaider' },
+    {
+      type: 'richtext',
+      html: `<p>Climaider ApS er ifølge CVR-registret erklæret konkurs den 20. oktober 2026 og er derfor ikke med i tabellen. Har I brugt <a href="/blog/climaider-alternativ">Climaider</a>, kan I læse, hvad I skal sikre nu, og hvilket tilbud qlim8 har til Climaider-kunder.</p>`,
     },
 
     { type: 'h2', text: 'Hvad med de store internationale klimaplatforme?' },
     {
       type: 'richtext',
-      html: `<p>Har I CSRD-pligt, en køber der kræver SOC 2 eller ISO 27001, eller selskaber i flere lande, så er de internationale platforme Watershed, Position Green, Greenly, Persefoni, Coolset, Terrascope og Plan A det rigtige sted at sammenligne.</p>`,
+      html: `<p>Har I CSRD-pligt, en køber der kræver SOC 2 eller ISO 27001, eller selskaber i flere lande, så er <a href="/blog/store-klimaplatforme-sammenlignet">de internationale platforme</a> Watershed, Position Green, Greenly, Persefoni, Coolset, Terrascope og Plan A det rigtige sted at sammenligne.</p>`,
     },
     {
       type: 'paragraph',

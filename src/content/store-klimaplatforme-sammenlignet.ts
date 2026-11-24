@@ -25,7 +25,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'Hvornår er en stor international klimaplatform det rigtige valg?' },
     {
       type: 'richtext',
-      html: `<p>En international platform er det rigtige valg, når kravene er større end VS-rapporten.</p>`,
+      html: `<p>En international platform er det rigtige valg, når kravene er større end <a href="/blog/hvad-er-vsme-vs">VS-rapporten</a>.</p>`,
     },
     {
       type: 'paragraph',
@@ -45,7 +45,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'Hvornår er en dansk SMV-platform nok?' },
     {
       type: 'richtext',
-      html: `<p>En dansk platform er nok, når jeres bogføring ligger i e-conomic, Dinero eller Billy, og kravet er en VS-rapport til banken og kunderne.</p>`,
+      html: `<p>En dansk platform er nok, når jeres bogføring ligger i <a href="/integrationer">e-conomic, Dinero eller Billy</a>, og kravet er en VS-rapport til banken og kunderne.</p>`,
     },
     {
       type: 'paragraph',
@@ -85,7 +85,7 @@ export const artikel: Article = {
     { type: 'h3', text: 'qlim8' },
     {
       type: 'richtext',
-      html: `<p>qlim8 er en dansk platform til klimaregnskab og VS-rapportering for SMV'er, med integration til e-conomic, Dinero og Billy, elforbrug fra Eloverblik og en gratis pakke uden udløbsdato. qlim8 har ikke ISO 27001 eller SOC 2, og SBTi-mål er planlagt.</p>`,
+      html: `<p>qlim8 er en dansk platform til klimaregnskab og VS-rapportering for SMV'er, med integration til e-conomic, Dinero og Billy, elforbrug fra Eloverblik og <a href="/priser">en gratis pakke uden udløbsdato</a>. qlim8 har ikke ISO 27001 eller SOC 2, og SBTi-mål er planlagt.</p>`,
     },
     { type: 'paragraph', text: VAELG.qlim8 },
 
@@ -135,13 +135,13 @@ export const artikel: Article = {
     },
     {
       type: 'richtext',
-      html: `<p>Hvad et klimaregnskab koster i alt, afhænger også af intern tid og rådgivning.</p>`,
+      html: `<p><a href="/blog/hvad-koster-klimaregnskab-2026">Hvad et klimaregnskab koster i alt</a>, afhænger også af intern tid og rådgivning.</p>`,
     },
 
     { type: 'h2', text: 'Kan man skifte mellem en stor platform og qlim8?' },
     {
       type: 'richtext',
-      html: `<p>Et skifte mellem danske SMV-platforme og en stor international platform kan gå begge veje, fordi grundlaget er jeres egen bogføring.</p>`,
+      html: `<p>Et skifte mellem <a href="/blog/bedste-klimaregnskabsprogram">danske SMV-platforme</a> og en stor international platform kan gå begge veje, fordi grundlaget er jeres egen bogføring.</p>`,
     },
     {
       type: 'paragraph',

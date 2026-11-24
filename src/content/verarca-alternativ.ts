@@ -54,17 +54,17 @@ export const artikel: Article = {
     { type: 'h3', text: 'Hvilke regnskabssystemer forbinder Verarca og qlim8 til?' },
     {
       type: 'richtext',
-      html: '<p>Verarca forbinder til e-conomic, Uniconta, Business Central og E-Komplet, og qlim8 forbinder til e-conomic, Dinero og Billy, med Uniconta i beta. Verarca oplyser ikke en integration til Dinero eller Billy på sin hjemmeside. qlim8 har ikke en testet integration til Business Central eller E-Komplet. Begge forbinder til e-conomic.</p>',
+      html: '<p>Verarca forbinder til e-conomic, Uniconta, Business Central og E-Komplet, og qlim8 forbinder til <a href="/integrationer">e-conomic, Dinero og Billy</a>, med Uniconta i beta. Verarca oplyser ikke en integration til Dinero eller Billy på sin hjemmeside. qlim8 har ikke en testet integration til Business Central eller E-Komplet. Begge forbinder til e-conomic.</p>',
     },
     { type: 'h3', text: 'Hvordan får I en VS-rapport hos Verarca og hos qlim8?' },
     {
       type: 'richtext',
-      html: '<p>Verarca sælger VS-rapporten som tilkøb til klimaregnskabet, og qlim8 laver rapporterne i platformen. qlim8 laver rapporter efter VS Basis og VS Udvidet, den udvidede del af standarden, og Verarca sælger begge niveauer som hvert sit modul. Hvad qlim8\'s pakker indeholder, står på /priser.</p>',
+      html: '<p>Verarca sælger VS-rapporten som tilkøb til klimaregnskabet, og qlim8 laver rapporterne i platformen. qlim8 laver rapporter efter <a href="/produkt/vsme-rapport">VS Basis og VS Udvidet</a>, den udvidede del af standarden, og Verarca sælger begge niveauer som hvert sit modul. Hvad qlim8\'s pakker indeholder, står på /priser.</p>',
     },
     { type: 'h3', text: 'Hvem kigger på tallene hos Verarca og hos qlim8?' },
     {
       type: 'richtext',
-      html: '<p>Verarca har Managed Carbon Service med en person, og qlim8 giver gratis adgang til jeres egne rådgivere. qlim8 har ingen indbygget konsulentydelse, men giver jeres egen revisor eller konsulent en gratis konto med direkte adgang til beregningerne. Verarca oplyser ikke en særskilt revisoradgang på sin hjemmeside.</p>',
+      html: '<p>Verarca har Managed Carbon Service med en person, og qlim8 giver gratis adgang til jeres egne rådgivere. qlim8 har ingen indbygget konsulentydelse, men giver <a href="/produkt/audit-trail-og-revisor">jeres egen revisor</a> eller konsulent en gratis konto med direkte adgang til beregningerne. Verarca oplyser ikke en særskilt revisoradgang på sin hjemmeside.</p>',
     },
     {
       type: 'paragraph',
@@ -78,7 +78,7 @@ export const artikel: Article = {
     { type: 'h3', text: 'Hvad med elforbrug og klimamål?' },
     {
       type: 'richtext',
-      html: '<p>Verarca og qlim8 henter begge elforbrug fra Eloverblik, så det er ikke en forskel. qlim8 henter elforbruget time for time fra Eloverblik efter fuldmagt med MitID. Verarca har reduktionsmål i sit dashboard, og qlim8 har mål på kategorier og hele scopes, intensitetsmål, business-as-usual og planlinje samt tiltag og overgangsplan.</p>',
+      html: '<p>Verarca og qlim8 henter begge elforbrug fra Eloverblik, så det er ikke en forskel. qlim8 henter <a href="/integrationer/eloverblik">elforbruget time for time fra Eloverblik</a> efter fuldmagt med MitID. Verarca har reduktionsmål i sit dashboard, og qlim8 har mål på kategorier og hele scopes, intensitetsmål, business-as-usual og planlinje samt tiltag og overgangsplan.</p>',
     },
     { type: 'h3', text: 'Hvad koster Verarca sammenlignet med qlim8?' },
     {
@@ -96,7 +96,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'Verarca og qlim8 i en samlet sammenligning' },
     {
       type: 'richtext',
-      html: '<p>Tabellen sætter Verarca og qlim8 op mod fire andre danske programmer, og den viser, hvad hver leverandør selv oplyser på sin hjemmeside. Et felt, der står som ikke oplyst, betyder, at leverandøren ikke nævner funktionen, ikke at den mangler.</p>',
+      html: '<p>Tabellen sætter Verarca og qlim8 op mod <a href="/blog/bedste-klimaregnskabsprogram">fire andre danske programmer</a>, og den viser, hvad hver leverandør selv oplyser på sin hjemmeside. Et felt, der står som ikke oplyst, betyder, at leverandøren ikke nævner funktionen, ikke at den mangler.</p>',
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },

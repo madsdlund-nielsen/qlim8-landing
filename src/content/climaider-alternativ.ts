@@ -1,4 +1,3 @@
-// AFVENTER EJERENS BESLUTNING: registreres ikke i articles.ts, før konkursen er bekræftet på virk.dk.
 import type { Article } from './article'
 import { DEMO_HREF, DEMO_LABEL } from './cta'
 import { sammenligningstabel, opdateretLinje } from './sammenligning/byg'
@@ -9,14 +8,14 @@ export const artikel: Article = {
   title: 'Climaider alternativ: sådan sikrer og flytter I jeres klimaregnskab',
   seoTitle: 'Climaider alternativ: sådan flytter I jeres klimaregnskab',
   description:
-    'Ifølge CVR-registret er Climaider ApS erklæret konkurs. Se, hvad I skal sikre nu, hvad en afløser skal kunne, og hvilke danske alternativer der findes.',
+    'Climaider ApS er erklæret konkurs ifølge CVR. Se, hvad I skal sikre nu, hvilke alternativer der findes, og qlim8\'s tilbud til Climaider-kunder.',
   category: 'Sammenligning',
   publishedAt: '2026-11-23',
   readingTime: 6,
   sections: [
     {
       type: 'lead',
-      text: `Ifølge CVR-registret skiftede Climaider ApS navn den 30. september 2026 og blev erklæret konkurs den 20. oktober 2026. Har I brugt Climaider eller overvejet det, så sikr jeres rapporter og beregningsgrundlag nu. Jeres bilag ligger i jeres eget regnskabsprogram, så klimaregnskabet kan beregnes igen i et andet system.`,
+      text: `Ifølge CVR-registret skiftede Climaider ApS navn den 30. september 2026 og blev erklæret konkurs den 20. oktober 2026. Har I brugt Climaider eller overvejet det, så sikr jeres rapporter og beregningsgrundlag nu. Jeres bilag ligger i jeres eget regnskabsprogram, så klimaregnskabet kan beregnes igen i et andet system. qlim8 giver Climaider-kunder Basis-abonnementet uden beregning i den periode, de var bundet, og importerer de tidligere års data uden beregning.`,
     },
 
     { type: 'h2', text: 'Hvad er der sket med Climaider?' },
@@ -47,13 +46,23 @@ export const artikel: Article = {
     { type: 'h3', text: 'Metode og faktorer' },
     {
       type: 'richtext',
-      html: `<p>Noter de emissionsfaktorer og den metode, der er brugt, så I kan sammenligne en ny beregning med den gamle. Forskelle mellem to programmer skyldes ofte forskellige faktorer og kategoriseringer, ikke forskellige bilag.</p>`,
+      html: `<p>Noter de <a href="/metodologi">emissionsfaktorer</a> og den metode, der er brugt, så I kan sammenligne en ny beregning med den gamle. Forskelle mellem to programmer skyldes ofte forskellige faktorer og kategoriseringer, ikke forskellige bilag.</p>`,
+    },
+
+    { type: 'h2', text: 'Tilbud til Climaider-kunder: Basis uden beregning i jeres bindingsperiode' },
+    {
+      type: 'paragraph',
+      text: `Har I en aftale med Climaider, får I Basis-abonnementet i qlim8 uden beregning i den periode, I var bundet hos Climaider. Vil I have en større pakke, betaler I kun forskellen op til den. Vi importerer også jeres data fra de år, I var kunde hos Climaider, uden beregning.`,
+    },
+    {
+      type: 'paragraph',
+      text: `Sådan gør I: Book en demo, eller skriv til kontakt@qlim8.com, og send jeres aftale eller seneste faktura fra Climaider, så vi kan se perioden. Så sætter vi kontoen op sammen med jer og aftaler, hvilke år der skal importeres.`,
     },
 
     { type: 'h2', text: 'Hvad skal en afløser kunne?' },
     {
       type: 'richtext',
-      html: `<p>En afløser skal kunne hente data fra jeres regnskabssystem og vise, hvor hvert tal kommer fra.</p>`,
+      html: `<p>En afløser skal kunne hente data fra jeres regnskabssystem og <a href="/produkt/audit-trail-og-revisor">vise, hvor hvert tal kommer fra</a>.</p>`,
     },
     {
       type: 'paragraph',
@@ -73,7 +82,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'Hvilke alternativer findes der i Danmark?' },
     {
       type: 'richtext',
-      html: `<p>Der findes flere danske alternativer, og tabellen viser, hvad hver leverandør selv oplyser på sin hjemmeside.</p>`,
+      html: `<p>Der findes flere <a href="/blog/bedste-klimaregnskabsprogram">danske alternativer</a>, og tabellen viser, hvad hver leverandør selv oplyser på sin hjemmeside.</p>`,
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },
@@ -110,7 +119,7 @@ export const artikel: Article = {
       html:
         '<ol>' +
         `<li>Saml det, I har sikret: seneste rapport, basisårets tal og de reduktionsmål, I har sat.</li>` +
-        `<li>Opret en gratis konto i qlim8, og forbind e-conomic, Dinero eller Billy. qlim8 beregner udledningen fra bilagene og kategoriserer fakturaerne med AI.</li>` +
+        `<li>Opret en gratis konto i qlim8, og forbind <a href="/integrationer/e-conomic">e-conomic</a>, Dinero eller Billy. qlim8 beregner udledningen fra bilagene og kategoriserer fakturaerne med AI.</li>` +
         `<li>Giv fuldmagt til Eloverblik med MitID, så elforbruget hentes time for time.</li>` +
         `<li>Upload data uden for regnskabet, for eksempel brændstofmængder, som Excel eller CSV, eller registrér dem manuelt.</li>` +
         `<li>Sammenlign totalerne for basisåret med jeres gamle rapport, og brug audit trail til at se, hvor et tal kommer fra. Forskelle skyldes ofte andre beregningsfaktorer.</li>` +
@@ -119,13 +128,18 @@ export const artikel: Article = {
     },
     {
       type: 'cta',
-      heading: 'Vil I se, hvordan jeres tal ser ud i qlim8?',
-      text: `Book en demo, så gennemgår vi jeres regnskabssystem og det, I har sikret, eller ring til os på +45 93 90 13 84.`,
+      heading: 'Find et nyt hjem til jeres klimaregnskab',
+      text: `Book en demo, så ser vi sammen på, hvad I har hos Climaider, og sætter tilbuddet til Climaider-kunder op: Basis uden beregning i jeres bindingsperiode og gratis import af tidligere år.`,
       buttonText: DEMO_LABEL,
       buttonHref: DEMO_HREF,
     },
 
     { type: 'h2', text: 'Spørgsmål om Climaider' },
+    { type: 'h3', text: 'Har qlim8 et tilbud til Climaider-kunder?' },
+    {
+      type: 'paragraph',
+      text: `Ja. Climaider-kunder får Basis-abonnementet i qlim8 uden beregning i den periode, de var bundet hos Climaider, kan få en større pakke for forskellen, og får data fra tidligere år importeret uden beregning.`,
+    },
     { type: 'h3', text: 'Er Climaider gået konkurs?' },
     {
       type: 'paragraph',

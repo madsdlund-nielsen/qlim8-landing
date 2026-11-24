@@ -51,7 +51,7 @@ export const artikel: Article = {
       type: 'richtext',
       html:
         '<p>Begge platforme har en gratis plan, scope 1 til 3, elforbrug fra Eloverblik, dobbelt væsentlighedsanalyse, et revisionsspor og en MCP-forbindelse til AI-assistenter. ' +
-        'Begge har også VS-standardens to niveauer. qlim8 laver en VS Udvidet-rapport, og EcoMetrics skriver, at I kan lave en rapport med basismodulet i dag og med det udvidede modul, når kunden beder om det. ' +
+        'Begge har også VS-standardens to niveauer. qlim8 laver <a href="/produkt/vsme-rapport">en VS Udvidet-rapport</a>, og EcoMetrics skriver, at I kan lave en rapport med basismodulet i dag og med det udvidede modul, når kunden beder om det. ' +
         'Begge forbinder til e-conomic, Dinero, Billy og Uniconta, og begge forbinder til Zenegy. Uniconta er stadig i beta hos qlim8.</p>',
     },
 
@@ -77,7 +77,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>qlim8 har en klimaplan med flere led. qlim8 har reduktionsmål på kategorier og hele scopes, intensitetsmål, en business-as-usual-linje og en planlinje, reduktionstiltag med overgangsplan og scope 3-mål på fysiske data. ' +
+        '<p>qlim8 har en klimaplan med flere led. qlim8 har <a href="/produkt/reduktionsmaal-og-scenarier">reduktionsmål på kategorier og hele scopes</a>, intensitetsmål, en business-as-usual-linje og en planlinje, reduktionstiltag med overgangsplan og scope 3-mål på fysiske data. ' +
         'EcoMetrics oplyser, at I kan sætte reduktionsmål og følge fremdriften. Skal målene ud i tiltag og en plan, som en revisor eller en bank kan følge, er qlim8 dybere.</p>',
     },
 
@@ -91,7 +91,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>qlim8 har gratis Revisor-konti og gratis Konsulent-konti, hvor en rådgiver ser alle sine klienter i én portefølje. ' +
+        '<p>qlim8 har gratis Revisor-konti og <a href="/kundetyper/revisorer-og-raadgivere">gratis Konsulent-konti</a>, hvor en rådgiver ser alle sine klienter i én portefølje. ' +
         'EcoMetrics giver revisor læseadgang på Plus og Pro og har et partnerprogram. Arbejder jeres rådgiver for flere klienter, kan rådgiveren få overblikket samlet i qlim8. Skal revisoren kun kigge med, dækker EcoMetrics behovet.</p>',
     },
 
@@ -117,7 +117,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Tabellen sammenligner EcoMetrics med qlim8 og fire andre danske programmer. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
+        '<p>Tabellen sammenligner EcoMetrics med qlim8 og <a href="/blog/bedste-klimaregnskabsprogram">fire andre danske programmer</a>. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },
@@ -150,7 +150,7 @@ export const artikel: Article = {
         '<ol>' +
         '<li>Eksportér jeres VS-rapport fra EcoMetrics som PDF eller Excel, så I har sidste års tal at sammenligne med.</li>' +
         '<li>Gem jeres dobbelte væsentlighedsanalyse som dokument, og indtast emnerne i qlim8s væsentlighedsanalyse.</li>' +
-        '<li>Hent de EPD&#39;er, I har samlet fra leverandørerne, og upload dem i qlim8 som PCF/EPD-dokumenter. Findes de ikke i EcoMetrics, hentes de hos leverandøren.</li>' +
+        '<li>Hent de EPD&#39;er, I har samlet fra leverandørerne, og upload dem i qlim8 som <a href="/produkt/leverandoerkaede">PCF/EPD-dokumenter</a>. Findes de ikke i EcoMetrics, hentes de hos leverandøren.</li>' +
         '<li>Forbind jeres regnskabsprogram i qlim8, og giv qlim8 fuldmagt til Eloverblik via MitID. Bruger I Business Central, e-komplet, Visma Business NXT eller EG Xena, kommer data ind som Excel eller CSV.</li>' +
         '<li>Skift, når den periode, I har betalt for hos EcoMetrics, slutter, og tjek vilkårene i jeres egen aftale først.</li>' +
         '</ol>',

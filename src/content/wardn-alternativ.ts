@@ -57,7 +57,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>qlim8 henter fakturaerne fra e-conomic, Dinero og Billy og elforbruget fra Eloverblik. Eloverblik kobles med en fuldmagt via MitID og hentes hver uge. Data fra andre systemer kommer ind som Excel eller CSV. ' +
+        '<p>qlim8 henter <a href="/integrationer/e-conomic">fakturaerne fra e-conomic</a>, Dinero og Billy og elforbruget fra Eloverblik. Eloverblik kobles med en fuldmagt via MitID og hentes hver uge. Data fra andre systemer kommer ind som Excel eller CSV. ' +
         'Wardn nævner ingen regnskabsintegrationer og oplyser ikke Eloverblik på sin hjemmeside. Hos Wardn kommer data derfor ind gennem platformens spørgsmål og dataindsamlingen, ikke ved at læse bogføringen.</p>',
     },
 
@@ -65,7 +65,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>qlim8 har audit trail på hver beregning med input, emissionsfaktor og kilde, og jeres revisor kan få direkte adgang med en gratis Revisor-konto. ' +
+        '<p>qlim8 har <a href="/produkt/audit-trail-og-revisor">audit trail på hver beregning</a> med input, emissionsfaktor og kilde, og jeres revisor kan få direkte adgang med en gratis Revisor-konto. ' +
         'Wardn nævner sporbarhed af de indsamlede ESG-data i Enterprise-planen og oplyser ikke en særskilt adgang for revisor på sin hjemmeside.</p>',
     },
 
@@ -80,7 +80,7 @@ export const artikel: Article = {
       type: 'richtext',
       html:
         '<p>Wardn Core giver facilitering af projektet mod et engangsgebyr på €3.600 plus €200 om måneden. qlim8 er software, I selv bruger, og har ingen indbygget konsulentydelse. Hjælpen kommer fra jeres egen revisor eller rådgiver, som får en gratis konto. ' +
-        'qlim8 har en gratis pakke uden udløbsdato. Gratis-pakken dækker scope 1, 2 og 3 med Eloverblik og ét regnskabsprogram. ' +
+        'qlim8 har en gratis pakke uden udløbsdato. <a href="/priser">Gratis-pakken</a> dækker scope 1, 2 og 3 med Eloverblik og ét regnskabsprogram. ' +
         '[[Basis koster {pris:starter} om måneden, betalt årligt og ekskl. moms.]] Priserne for de øvrige pakker står på prissiden.</p>',
     },
 
@@ -112,7 +112,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Tabellen sammenligner Wardn med qlim8 og fire andre danske programmer. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
+        '<p>Tabellen sammenligner Wardn med qlim8 og <a href="/blog/bedste-klimaregnskabsprogram">fire andre danske programmer</a>. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },
@@ -146,7 +146,7 @@ export const artikel: Article = {
         '<li>Hent jeres ESG-rapport ud af Wardn i det format, Wardn tilbyder.</li>' +
         '<li>Saml de tal, I indberettede, for eksempel energi, brændstof og medarbejdere.</li>' +
         '<li>Forbind regnskabsprogram og Eloverblik i qlim8, så klimadelen beregnes fra bilagene.</li>' +
-        '<li>Kopiér jeres beskrivelser af politikker og tiltag ind i rapport-guiden i qlim8.</li>' +
+        '<li>Kopiér jeres beskrivelser af politikker og tiltag ind i <a href="/produkt/vsme-rapport">rapport-guiden</a> i qlim8.</li>' +
         '<li>Tjek jeres aftale med Wardn for, hvornår den kan opsiges, før I skifter.</li>' +
         '</ol>',
     },

@@ -35,7 +35,7 @@ export const artikel: Article = {
       type: 'richtext',
       html:
         '<ul>' +
-        '<li>Vælg Valified, hvis I primært skal aflevere en VS Basis-rapport til banken eller en kunde hurtigt og billigt.</li>' +
+        '<li>Vælg Valified, hvis I primært skal aflevere <a href="/blog/l193-bankens-esg-krav-smv">en VS Basis-rapport til banken</a> eller en kunde hurtigt og billigt.</li>' +
         '<li>Vælg Valified, hvis I vil se, hvordan jeres virksomhed ligger i forhold til branchen på Valified Index, og hvad potentialet er i kroner.</li>' +
         '<li>Vælg Valified, hvis I vil have hjælp fra et team til en fast pris frem for selv at udfylde rapporten.</li>' +
         '</ul>',
@@ -51,7 +51,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Valifieds Komplet-pakker nævner CO2-beregning for scope 1 og 2, og Valified oplyser ikke scope 3. qlim8 beregner scope 1, 2 og 3. ' +
+        '<p>Valifieds Komplet-pakker nævner CO2-beregning for scope 1 og 2, og Valified oplyser ikke scope 3. qlim8 beregner <a href="/blog/scope-3-smv-guide">scope 1, 2 og 3</a>. ' +
         'Skal en kunde eller bank have værdikæden med, er det forskellen, der tæller mest.</p>',
     },
 
@@ -65,7 +65,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>qlim8 laver rapporter efter VS Basis og VS Udvidet og har også ESRS-rapportering og dobbelt væsentlighedsanalyse. ' +
+        '<p>qlim8 laver rapporter efter <a href="/blog/vsme-basis-vs-comprehensive">VS Basis og VS Udvidet</a> og har også ESRS-rapportering og dobbelt væsentlighedsanalyse. ' +
         'Valifieds rapport bygger på Basis-niveauet, og Valified oplyser hverken VS Udvidet, ESRS eller dobbelt væsentlighedsanalyse på sin hjemmeside. Spørger jeres kunde kun efter Basis, er Valified nok.</p>',
     },
 
@@ -73,7 +73,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Valified sammenligner jer med branchen og viser et potentiale i kroner. qlim8 lader jer sætte reduktionsmål med basisår, målår og en planlinje og følge udviklingen år for år. ' +
+        '<p>Valified sammenligner jer med branchen og viser et potentiale i kroner. qlim8 lader jer sætte <a href="/produkt/reduktionsmaal-og-scenarier">reduktionsmål med basisår, målår og en planlinje</a> og følge udviklingen år for år. ' +
         'Er det en score at vise banken, I leder efter, er Valified Index det naturlige valg. Er det en plan med mål og tiltag, er det qlim8.</p>',
     },
 
@@ -112,7 +112,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Tabellen sammenligner Valified med qlim8 og fire andre danske programmer. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
+        '<p>Tabellen sammenligner Valified med qlim8 og <a href="/blog/bedste-klimaregnskabsprogram">fire andre danske programmer</a>. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },
