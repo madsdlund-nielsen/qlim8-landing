@@ -59,8 +59,8 @@ export const artikel: Article = {
       text: 'EFRAG har udgivet en officiel Excel-skabelon, og det er den, bankerne foretrækker. Den er maskinaflæselig, så bankrådgiveren kan trække jeres tal direkte ind i deres egne kreditmodeller uden manuel indtastning. Hvis I afleverer en pæn hjemmelavet PDF, der ikke følger skabelonens struktur, er der en god chance for, at jeres dokumentation aldrig kommer ind i bankens system. Det er sådan en lille teknisk detalje, som koster reel værdi for jer, hvis I rammer forkert.',
     },
     {
-      type: 'paragraph',
-      text: 'For en almindelig dansk SMV med 15-50 ansatte og en tilkoblet datakilde tager VSME Basis typisk få timer at færdiggøre med den rigtige software, og 3-6 uger med manuelt arbejde i Excel.',
+      type: 'richtext',
+      html: '<p>For en almindelig dansk SMV med 15-50 ansatte og en tilkoblet datakilde tager VSME Basis typisk få timer at færdiggøre med den rigtige software, og 3-6 uger med <a href="/blog/klimaregnskab-excel">manuelt arbejde i Excel</a>.</p>',
     },
     {
       type: 'paragraph',

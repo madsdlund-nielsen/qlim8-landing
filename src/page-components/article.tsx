@@ -48,7 +48,8 @@ export default function ArticleTemplate({ article }: { article: Article }) {
           <ArticleSections sections={article.sections} />
         </article>
 
-        <div className="mt-14 rounded-lg bg-primary p-7 text-primary-foreground">
+        {/* A click on either link counts as article_cta_clicked in /admin (src/components/SiteAnalytics.tsx). */}
+        <div className="mt-14 rounded-lg bg-primary p-7 text-primary-foreground" data-site-event="article_cta_clicked">
           <p className="mb-2 font-display text-h3 text-primary-foreground">Klar til at komme i gang?</p>
           <p className="mb-5 max-w-xl text-body-sm text-primary-foreground">
             qlim8 gør klimaregnskabet automatisk. Book en demo, så viser vi platformen med udgangspunkt i din virksomhed.

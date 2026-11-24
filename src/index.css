@@ -274,6 +274,40 @@
   --tw-prose-td-borders: hsl(var(--border));
 }
 
+/* Article tables (ArticleSections: a richtext block's <table> sits in its own
+   .article-table-scroll container, which is the scroller). The app's sanitizer
+   allows no classes inside the HTML, so what counts as a wide table is read from
+   its structure: a cell in the sixth column. A narrow table (a few columns) is
+   untouched: it fills the column exactly as before. */
+.article-table-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+.article-table-scroll:has(:is(th, td):nth-child(6)) table {
+  min-width: 48rem;
+  /* Separate, not collapsed: a collapsed border belongs to the table and stays
+     behind when the sticky first column is covering it. */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.article-table-scroll:has(:is(th, td):nth-child(6)) :is(th, td) {
+  min-width: 7.5rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+.article-table-scroll:has(:is(th, td):nth-child(6)) tbody tr:last-child td {
+  border-bottom-width: 0;
+}
+/* The feature name stays in view while the vendors scroll past. Opaque, so the
+   cells scrolling under it are hidden; the hairline is the column's edge. */
+.article-table-scroll:has(:is(th, td):nth-child(6)) :is(th, td):first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 8.5rem;
+  background-color: hsl(var(--background));
+  box-shadow: inset -1px 0 0 hsl(var(--border));
+}
+
 @layer utilities {
   input[type="search"]::-webkit-search-cancel-button {
     @apply hidden;

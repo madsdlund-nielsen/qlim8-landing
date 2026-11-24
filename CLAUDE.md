@@ -356,8 +356,10 @@ there) and forwards to qlim8-app's `POST /api/public/site-events` with
 sends the pageviews and turns a click inside any `data-site-event="<event>"`
 element into that event, which is how the server-rendered closing CTA on
 `/demo` is measured. Instrumented: the film on `/demo` (`DemoVideo`), the demo
-dialog, `/events/dma` (first, fifth and tenth topic, profile sent) and the
-slide-in (shown with trigger, steps, minimised, reopened, sent, VSME). The
+dialog, `/events/dma` (first, fifth and tenth topic, profile sent), the
+slide-in (shown with trigger, steps, minimised, reopened, sent, VSME) and the
+call-to-action boxes of blog articles (`article_cta_clicked`: the `cta` block in
+`ArticleSections` and the closing box in `src/page-components/article.tsx`). The
 event list is `SITE_EVENT_NAMES`, kept in step with qlim8-app's
 `shared/siteEvents.ts`, which drops a name it does not know: add it there
 first. The source is `?ref=`, then `utm_*`, then the referrer; LinkedIn's apps
@@ -406,7 +408,13 @@ wrapped in `[[ ... ]]` and holds `{pris:<packageKey>}` (the monthly amount,
 with Danish formatting (thousands with ".", then "kr."). `src/lib/priceTokens.ts`
 (`applyPriceTokens`, run by `resolvePageCopy` in `src/lib/pageCopy.ts`, so on
 every rendered page, every `.md` twin and every CMS override) fills each token
-from the packages API and strips the markers. **If any token inside a `[[ ]]`
+from the packages API and strips the markers. Blog articles, bundled and CMS
+alike, are resolved the same way (`applyPriceTokensToArticle`, in `resolveArticle`
+in `app/blog/[slug]/page.tsx` and in the `.md` twin): a section emptied by a
+removed segment is dropped, and a segment in a `richtext` block must stay inside
+one element (`<p>`, `<td>`, `<li>`). Keep tokens out of an article's `description`
+and `title` in practice: the blog index, `/llms.txt` and the sitemap read those
+unresolved. **If any token inside a `[[ ]]`
 segment cannot be resolved** (catalog v1, API down, a package with no public
 price, the free and advisor packages, an unknown key) **the whole segment is
 removed**, so write the sentence to read with and without it:

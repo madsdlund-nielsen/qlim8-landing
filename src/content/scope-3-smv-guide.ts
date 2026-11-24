@@ -142,8 +142,8 @@ export const artikel: Article = {
     { type: 'h2', text: 'Hybrid: Den realistiske vej' },
     { type: 'paragraph', text: 'Lad mig samle det op til en konkret metodologi, der reelt virker for en dansk SMV i 2026.' },
     {
-      type: 'paragraph',
-      text: 'For Scope 2 og specifikke aktivitetsdata i Scope 3: Brug aktivitetsbaseret beregning med fysiske enheder og konkrete emissionsfaktorer. El, varme, brændstof, flyrejser med kendte ruter, transport med kendte vægter og distancer: alt det, hvor I har præcise tal og kan matche dem mod validerede faktorer fra Klimakompasset, Energinet eller relevante internationale kilder. Det er den højeste datakvalitet I kan opnå uden direkte leverandørdata.',
+      type: 'richtext',
+      html: '<p>For Scope 2 og specifikke aktivitetsdata i Scope 3: Brug aktivitetsbaseret beregning med fysiske enheder og konkrete emissionsfaktorer. El, varme, brændstof, flyrejser med kendte ruter, transport med kendte vægter og distancer: alt det, hvor I har præcise tal og kan matche dem mod validerede faktorer fra <a href="/blog/klimakompasset-alternativ">Klimakompasset</a>, Energinet eller relevante internationale kilder. Det er den højeste datakvalitet I kan opnå uden direkte leverandørdata.</p>',
     },
     {
       type: 'paragraph',

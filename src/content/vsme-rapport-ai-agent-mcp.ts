@@ -109,8 +109,8 @@ export const artikel: Article = {
 
     { type: 'h2', text: 'Hvorfor vi skriver det her ned' },
     {
-      type: 'paragraph',
-      text: 'Der er en praktisk grund til, at denne artikel findes. Vi opdagede, at en AI-søgning efter dansk VSME-software med MCP-server skulle bruge tre forsøg på at finde os. Ikke fordi funktionen ikke fandtes, men fordi vi aldrig havde skrevet de to ting i samme sætning noget sted, en model kunne læse.',
+      type: 'richtext',
+      html: '<p>Der er en praktisk grund til, at denne artikel findes. Vi opdagede, at en AI-søgning efter <a href="/blog/bedste-klimaregnskabsprogram">dansk VSME-software</a> med MCP-server skulle bruge tre forsøg på at finde os. Ikke fordi funktionen ikke fandtes, men fordi vi aldrig havde skrevet de to ting i samme sætning noget sted, en model kunne læse.</p>',
     },
     {
       type: 'paragraph',

@@ -3,6 +3,10 @@
 // bodies can be reused by marketing pages too.
 import { Button } from "@/components/ds/Button";
 import type { ArticleSection } from "@/content/article";
+import { splitRichtextTables } from "@/lib/richtextTables";
+
+// Also rendered by marketing pages (src/page-components/marketing-page.tsx, the
+// `body` blocks), so everything below applies to those blocks too.
 
 function Section({ section }: { section: ArticleSection }) {
   switch (section.type) {
@@ -46,8 +50,10 @@ function Section({ section }: { section: ArticleSection }) {
         </div>
       );
     case "cta":
+      // A click on its button is counted as article_cta_clicked in /admin
+      // (src/components/SiteAnalytics.tsx).
       return (
-        <div className="my-10 rounded-lg bg-primary p-7 text-primary-foreground">
+        <div className="my-10 rounded-lg bg-primary p-7 text-primary-foreground" data-site-event="article_cta_clicked">
           <p className="mb-2 font-display text-h3 text-primary-foreground">{section.heading}</p>
           <p className="mb-5 max-w-xl text-body-sm text-primary-foreground">{section.text}</p>
           <Button href={section.buttonHref} variant="inverted">
@@ -68,11 +74,33 @@ function Section({ section }: { section: ArticleSection }) {
     case "richtext":
       // Sanitized on write by the app (server/cms/sanitizeRichText.ts); only
       // super-admins author, so the stored HTML is trusted here.
+      //
+      // A table gets a scroll container of its own (src/index.css,
+      // .article-table-scroll): the sanitizer allows no classes, so the CSS
+      // keys on the table's structure, and a table wider than the column
+      // scrolls sideways instead of squeezing its cells or widening the page.
+      // The container is a focusable region so a keyboard can scroll it.
       return (
-        <div
-          className="prose prose-gray max-w-none my-5 text-body"
-          dangerouslySetInnerHTML={{ __html: section.html }}
-        />
+        <>
+          {splitRichtextTables(section.html).map((run, i) =>
+            run.table ? (
+              <div
+                key={i}
+                role="region"
+                tabIndex={0}
+                aria-label="Tabel, kan rulles sideværts"
+                className="article-table-scroll prose prose-gray max-w-none my-5 text-body"
+                dangerouslySetInnerHTML={{ __html: run.html }}
+              />
+            ) : (
+              <div
+                key={i}
+                className="prose prose-gray max-w-none my-5 text-body"
+                dangerouslySetInnerHTML={{ __html: run.html }}
+              />
+            ),
+          )}
+        </>
       );
     default:
       return null;
