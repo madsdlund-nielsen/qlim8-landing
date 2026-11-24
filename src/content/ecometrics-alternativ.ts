@@ -117,7 +117,7 @@ export const artikel: Article = {
     {
       type: 'richtext',
       html:
-        '<p>Tabellen sammenligner EcoMetrics med qlim8 og <a href="/blog/bedste-klimaregnskabsprogram">fire andre danske programmer</a>. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
+        '<p>Tabellen sammenligner EcoMetrics med qlim8 og <a href="/blog/bedste-klimaregnskabsprogram">seks andre danske programmer</a>. Hvor en leverandør ikke oplyser noget på sin hjemmeside, står der Ikke oplyst, og det er ikke det samme som nej.</p>',
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },
@@ -138,6 +138,12 @@ export const artikel: Article = {
     { type: 'h3', text: 'Valified' },
     { type: 'paragraph', text: KORT_OM.valified },
     { type: 'paragraph', text: VAELG.valified },
+    { type: 'h3', text: 'esgBRICKS' },
+    { type: 'paragraph', text: KORT_OM.esgbricks },
+    { type: 'paragraph', text: VAELG.esgbricks },
+    { type: 'h3', text: 'E-SG.cloud' },
+    { type: 'paragraph', text: KORT_OM.esgcloud },
+    { type: 'paragraph', text: VAELG.esgcloud },
 
     { type: 'h2', text: 'Sådan skifter I fra EcoMetrics til qlim8' },
     {

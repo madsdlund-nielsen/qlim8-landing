@@ -2,13 +2,15 @@
 // platforms and the hub, all in the `Sammenligning` category.
 //
 // Every claim about a vendor other than qlim8 was read from that vendor's own
-// website on the OPDATERET date. `kilde` is documentation: it is the URL the
-// answer was read from, it is never rendered (not in the table, not in the .md
-// twin, not in the JSON-LD), and it is kept so a claim can be documented if a
-// vendor asks. A cell is changed only after opening its source again, and
-// OPDATERET is moved when that has been done. A competitor is never "Nej"
-// without the vendor's own statement; where the vendor says nothing the cell is
-// "Ikke oplyst".
+// website on the OPDATERET date. Five Danish vendors (Verarca, Grønlog,
+// EcoMetrics, Wardn, Valified) were read on 2026-11-23, and esgBRICKS and
+// E-SG.cloud on 2026-11-24, the date OPDATERET carries for the whole table.
+// `kilde` is documentation: it is the URL the answer was read from, it is never
+// rendered (not in the table, not in the .md twin, not in the JSON-LD), and it
+// is kept so a claim can be documented if a vendor asks. A cell is changed only
+// after opening its source again, and OPDATERET is moved when that has been
+// done. A competitor is never "Nej" without the vendor's own statement; where
+// the vendor says nothing the cell is "Ikke oplyst".
 //
 // qlim8's own column comes from the app's catalog and code
 // (scripts/fixtures/public-packages.v4.json and the integration catalog), not
@@ -21,12 +23,12 @@
 import type { Celle, Funktion, Leverandoer } from "./typer.ts";
 
 /** The date every competitor cell was last checked against the vendor's own site (ISO). */
-export const OPDATERET = "2026-11-23";
+export const OPDATERET = "2026-11-24";
 
 const IO: Celle = { svar: "Ikke oplyst" };
 
 // ---------------------------------------------------------------------------
-// The five Danish vendors: the shared table of the alternativ pages and the hub
+// The seven Danish vendors: the shared table of the alternativ pages and the hub
 // ---------------------------------------------------------------------------
 
 export const FUNKTIONER: Funktion[] = [
@@ -264,8 +266,78 @@ const VALIFIED: Leverandoer = {
   },
 };
 
-/** qlim8 first, then the five Danish vendors. */
-export const DANSKE: Leverandoer[] = [QLIM8_DANSK, VERARCA, GRONLOG, ECOMETRICS, WARDN, VALIFIED];
+const ESGBRICKS: Leverandoer = {
+  key: "esgbricks",
+  navn: "esgBRICKS",
+  website: "https://www.esgbricks.com",
+  pris: {
+    tekst: "Komplet ESG-service 14.999 kr./år ekskl. moms.",
+    kilde: "https://www.esgbricks.com/priser/esg-service",
+  },
+  celler: {
+    scope12: { svar: "Ja", note: "i servicen", kilde: "https://www.esgbricks.com/priser/esg-service" },
+    scope3: { svar: "Ja", note: "i servicen, mere efter aftale", kilde: "https://www.esgbricks.com/priser/esg-service" },
+    regnskab: IO,
+    eloverblik: IO,
+    vsBasis: { svar: "Ja", note: "VS-rapporten er kernen i servicen", kilde: "https://www.esgbricks.com/priser/esg-service" },
+    vsUdvidet: { svar: "Delvist", note: "udvidede oplysninger i eksempelrapport", kilde: "https://www.esgbricks.com/esg-platform" },
+    esrs: IO,
+    dma: IO,
+    audit: IO,
+    revisor: IO,
+    leverandoer: { svar: "Ja", note: "leverandørmodul", kilde: "https://www.esgbricks.com/post/esg-data-fra-leverandører" },
+    reduktion: { svar: "Delvist", note: "mål i rapporten", kilde: "https://www.esgbricks.com/esg-platform" },
+    sbti: IO,
+    api: IO,
+    hosting: { svar: "Ja", note: "inden for EU", kilde: "https://www.esgbricks.com/esg-platform" },
+    sikkerhed: IO,
+    gratis: IO,
+    selvbetjening: IO,
+    raadgivning: { svar: "Ja", note: "det er en service", kilde: "https://www.esgbricks.com/priser/esg-service" },
+  },
+};
+
+const ESGCLOUD: Leverandoer = {
+  key: "esgcloud",
+  navn: "E-SG.cloud",
+  website: "https://esgcloud.dk",
+  pris: {
+    tekst: "VSME Starter 999 kr./md. og VSME Advanced 1.999 kr./md., ekskl. moms. Pro og CSRD efter tilbud.",
+    kilde: "https://esgcloud.dk/priser/",
+  },
+  celler: {
+    scope12: { svar: "Ja", note: "manuel CO2-beregner", kilde: "https://esgcloud.dk/priser/" },
+    scope3: { svar: "Ja", note: "via partnerberegnere", kilde: "https://esgcloud.dk/priser/" },
+    regnskab: {
+      svar: "Ja",
+      note: "e-conomic og Business Central",
+      kilde: "https://esgcloud.dk/wp-content/uploads/2025/11/DK-VSME-produktkatalog-Nov-2025.pdf",
+    },
+    eloverblik: IO,
+    vsBasis: { svar: "Ja", kilde: "https://esgcloud.dk/priser/" },
+    vsUdvidet: { svar: "Ja", kilde: "https://esgcloud.dk/priser/" },
+    esrs: { svar: "Ja", note: "CSRD-pakken", kilde: "https://esgcloud.dk/priser/" },
+    dma: { svar: "Ja", note: "skabelon og vejledning", kilde: "https://esgcloud.dk/priser/" },
+    audit: { svar: "Ja", note: "i Pro og CSRD", kilde: "https://esgcloud.dk/priser/" },
+    revisor: { svar: "Ja", note: "bygget til revisorer og rådgivere", kilde: "https://esgcloud.dk/" },
+    leverandoer: IO,
+    reduktion: IO,
+    sbti: IO,
+    api: { svar: "Ja", note: "åbent API", kilde: "https://esgcloud.dk/professionel-csrd-software-til-konsulenter/" },
+    hosting: {
+      svar: "Ja",
+      note: "Microsoft Azure i Sverige",
+      kilde: "https://esgcloud.dk/wp-content/uploads/2025/02/ESG_Cloud_Databehandleraftale-V5.pdf",
+    },
+    sikkerhed: { svar: "Nej", note: "ISO-certificering på vej", kilde: "https://esgcloud.dk/vores-esg-rapportering-og-vidensdeling/" },
+    gratis: { svar: "Delvist", note: "testadgang i 14 dage", kilde: "https://esgcloud.dk/" },
+    selvbetjening: IO,
+    raadgivning: { svar: "Ja", note: "rådgivnings- og onboardingpakker som tilkøb", kilde: "https://esgcloud.dk/esg-radgivning/" },
+  },
+};
+
+/** qlim8 first, then the seven Danish vendors. */
+export const DANSKE: Leverandoer[] = [QLIM8_DANSK, VERARCA, GRONLOG, ECOMETRICS, WARDN, VALIFIED, ESGBRICKS, ESGCLOUD];
 
 // ---------------------------------------------------------------------------
 // The large platforms: the table of the page "De store klimaplatforme"
@@ -574,6 +646,10 @@ export const KORT_OM: Record<string, string> = {
     "Wardn er en dansk ESG-platform bygget specifikt til VS-rammeværket, hvor Core-planen giver fuld facilitering af projektet og hjælp til dataindsamling. Wardn koster €200 om måneden for Lite og Core, plus et engangsgebyr på €1.200 for Lite og €3.600 for Core.",
   valified:
     "Valified er et dansk værktøj, der laver en ESG-rapport efter VS Basis og sammenligner virksomheden med andre i branchen. Valified Fundament koster 1.290 kr. om året, og Komplet-pakkerne, hvor Valified gør arbejdet, koster 5.990 kr. for Komplet Fundament inklusive 1 år.",
+  esgbricks:
+    "esgBRICKS er en dansk ESG-service, hvor leverandøren indsamler data, beregner klimaregnskabet for scope 1, 2 og 3 og udarbejder den årlige VS-rapport i sin egen platform. Den komplette ESG-service koster 14.999 kr. om året ekskl. moms for én virksomhed med ét CVR-nummer, og esgBRICKS oplyser ingen pris for adgang til platformen alene.",
+  esgcloud:
+    "E-SG.cloud er en dansk ESG-platform bygget til revisorer, konsulenter og forhandlere, som også sælger pakker til VS og CSRD direkte til virksomheder og forbinder til e-conomic og Business Central. VSME Starter koster 999 kr. om måneden og VSME Advanced 1.999 kr. om måneden ekskl. moms, mens Pro og CSRD prissættes efter tilbud.",
   watershed:
     "Watershed er en amerikansk platform til klimaregnskab, CSRD og leverandørdata, rettet mod store virksomheder. Watershed offentliggør ikke priser, og ud fra købsdata på Vendr er prisen estimeret til 140.000 til 1.075.000 kr. om året.",
   positiongreen:
@@ -609,6 +685,10 @@ export const VAELG: Record<string, string> = {
     "Vælg Wardn, hvis I vil have en leverandør til at facilitere hele ESG-projektet, eller skal samle ESG-data fra datterselskaber og leverandører.",
   valified:
     "Vælg Valified, hvis I hurtigt og billigt skal aflevere en VS Basis-rapport til banken og vil se, hvordan I ligger i forhold til branchen.",
+  esgbricks:
+    "Vælg esgBRICKS, hvis I hellere vil betale en fast årspris for, at en fast kontaktperson laver hele VS-rapporten for jer, eller skal have beregnet klimaaftrykket af jeres produkter.",
+  esgcloud:
+    "Vælg E-SG.cloud, hvis I er et revisions- eller rådgivningshus, der vil tilbyde jeres kunder en ESG-platform under eget brand, eller er en kæde, hvor hver enhed skal have sit eget login.",
   watershed: "Vælg Watershed, hvis I er en stor, global virksomhed med CSRD-pligt og et bæredygtighedsteam.",
   positiongreen:
     "Vælg Position Green, hvis I er en mellemstor eller stor virksomhed, der vil have ESG-rapportering og rådgivning fra samme leverandør med kontor i København.",

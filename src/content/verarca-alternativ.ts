@@ -96,7 +96,7 @@ export const artikel: Article = {
     { type: 'h2', text: 'Verarca og qlim8 i en samlet sammenligning' },
     {
       type: 'richtext',
-      html: '<p>Tabellen sætter Verarca og qlim8 op mod <a href="/blog/bedste-klimaregnskabsprogram">fire andre danske programmer</a>, og den viser, hvad hver leverandør selv oplyser på sin hjemmeside. Et felt, der står som ikke oplyst, betyder, at leverandøren ikke nævner funktionen, ikke at den mangler.</p>',
+      html: '<p>Tabellen sætter Verarca og qlim8 op mod <a href="/blog/bedste-klimaregnskabsprogram">seks andre danske programmer</a>, og den viser, hvad hver leverandør selv oplyser på sin hjemmeside. Et felt, der står som ikke oplyst, betyder, at leverandøren ikke nævner funktionen, ikke at den mangler.</p>',
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },
@@ -117,6 +117,12 @@ export const artikel: Article = {
     { type: 'h3', text: 'Valified' },
     { type: 'paragraph', text: KORT_OM.valified },
     { type: 'paragraph', text: VAELG.valified },
+    { type: 'h3', text: 'esgBRICKS' },
+    { type: 'paragraph', text: KORT_OM.esgbricks },
+    { type: 'paragraph', text: VAELG.esgbricks },
+    { type: 'h3', text: 'E-SG.cloud' },
+    { type: 'paragraph', text: KORT_OM.esgcloud },
+    { type: 'paragraph', text: VAELG.esgcloud },
 
     { type: 'h2', text: 'Sådan skifter I fra Verarca til qlim8' },
     {

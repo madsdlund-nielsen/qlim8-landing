@@ -187,7 +187,7 @@ export const artikel: Article = {
     { type: 'h3', text: 'Er der et dansk alternativ til Watershed for en SMV?' },
     {
       type: 'paragraph',
-      text: `Ja, danske platforme som qlim8, Verarca, Grønlog, EcoMetrics, Wardn og Valified er sammenlignet på pris og funktioner i artiklen om de bedste klimaregnskabsprogrammer til en dansk SMV.`,
+      text: `Ja, danske platforme som qlim8, Verarca, Grønlog, EcoMetrics, Wardn, Valified, esgBRICKS og E-SG.cloud er sammenlignet på pris og funktioner i artiklen om de bedste klimaregnskabsprogrammer til en dansk SMV.`,
     },
   ],
 }

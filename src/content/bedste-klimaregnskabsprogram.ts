@@ -8,14 +8,14 @@ export const artikel: Article = {
   title: 'Bedste klimaregnskabsprogram 2026: sådan vælger en dansk SMV',
   seoTitle: 'Bedste klimaregnskabsprogram 2026: sådan vælger du',
   description:
-    'Sådan vælger en dansk SMV klimaregnskabsprogram i 2026: qlim8, Verarca, Grønlog, EcoMetrics, Wardn og Valified sammenlignet på pris, integrationer og funktioner.',
+    'Sådan vælger en dansk SMV klimaregnskabsprogram i 2026: otte danske programmer sammenlignet, plus de store platforme, Klimakompasset og Excel.',
   category: 'Sammenligning',
   publishedAt: '2026-11-23',
-  readingTime: 9,
+  readingTime: 10,
   sections: [
     {
       type: 'lead',
-      text: `Der findes ikke ét bedste klimaregnskabsprogram: det rigtige afhænger af jeres regnskabssystem, jeres rapportkrav og om I vil have hjælp. For en dansk SMV med bogføring i e-conomic, Dinero eller Billy er qlim8 værd at undersøge først, og Grønlog og EcoMetrics er de nærmeste sammenligninger. Bruger I Business Central, Uniconta eller E-Komplet, er Verarca og EcoMetrics relevante, og vil I have en leverandør til at drive projektet, er Wardn og Verarcas servicepakke det.`,
+      text: `Der findes ikke ét bedste klimaregnskabsprogram: det rigtige afhænger af jeres regnskabssystem, jeres rapportkrav og om I vil have hjælp. For en dansk SMV med bogføring i e-conomic, Dinero eller Billy er qlim8 værd at undersøge først, og Grønlog og EcoMetrics er de nærmeste sammenligninger. Bruger I Business Central, Uniconta eller E-Komplet, er Verarca og EcoMetrics relevante, og vil I have en leverandør til at drive projektet eller lave rapporten, er Wardn, esgBRICKS og Verarcas servicepakke det.`,
     },
     {
       type: 'paragraph',
@@ -25,10 +25,12 @@ export const artikel: Article = {
       type: 'list',
       items: [
         `Gratis start med e-conomic, Dinero eller Billy: qlim8, Grønlog og EcoMetrics har alle en gratis plan eller pakke.`,
-        `Business Central, Uniconta eller E-Komplet: Verarca og EcoMetrics nævner dem på deres integrationssider.`,
-        `En leverandør, der driver ESG-projektet: Wardn Core og Verarcas Managed Carbon Service.`,
+        `Business Central, Uniconta eller E-Komplet: Verarca og EcoMetrics nævner dem på deres integrationssider, og E-SG.cloud nævner Business Central.`,
+        `En leverandør, der driver ESG-projektet eller laver rapporten: Wardn Core, esgBRICKS og Verarcas Managed Carbon Service.`,
+        `En platform, som revisor eller konsulent bruger til flere klienter: qlim8's gratis Revisor- og Konsulent-konti og E-SG.cloud.`,
         `Hurtigt en VS Basis-rapport med branchebenchmark til banken: Valified.`,
         `CSRD-pligt, krav om SOC 2 eller ISO 27001, eller selskaber i flere lande: en stor international platform.`,
+        `Klimaregnskab uden et betalt program: Klimakompasset eller et regneark i Excel.`,
       ],
     },
 
@@ -40,10 +42,10 @@ export const artikel: Article = {
     {
       type: 'ordered-list',
       items: [
-        `Regnskabssystem: Programmet skal kunne hente data fra det system, I bruger. qlim8 og Grønlog nævner e-conomic, Dinero og Billy. Verarca nævner e-conomic, Uniconta, Business Central og E-Komplet. EcoMetrics nævner e-conomic, Dinero, Uniconta, Billy, Business Central og flere. Wardn og Valified nævner ingen regnskabssystemer.`,
-        `Rapportniveau: Spørg banken og kunderne, om de beder om VS Basis (tidligere VSME), VS Udvidet eller ESRS. qlim8, Verarca og EcoMetrics oplyser VS Udvidet, hos Verarca som tilkøb. Grønlog, Wardn og Valified oplyser ikke VS Udvidet.`,
-        `Scope 3: Scope 3 er udledningen i værdikæden. qlim8, Verarca, Grønlog og EcoMetrics dækker scope 3. Valified oplyser ikke scope 3.`,
-        `Hjælp og revisor: Vil I selv køre programmet eller have en person til at gennemgå data? Verarca, Wardn og Valified har rådgivning eller hjælp. qlim8 har ingen indbygget konsulentydelse, men gratis konti til jeres egen revisor og konsulent. EcoMetrics giver revisor læseadgang på Plus og Pro.`,
+        `Regnskabssystem: Programmet skal kunne hente data fra det system, I bruger. qlim8 og Grønlog nævner e-conomic, Dinero og Billy. Verarca nævner e-conomic, Uniconta, Business Central og E-Komplet. EcoMetrics nævner e-conomic, Dinero, Uniconta, Billy, Business Central og flere. E-SG.cloud nævner e-conomic og Business Central. Wardn, Valified og esgBRICKS nævner ingen regnskabssystemer.`,
+        `Rapportniveau: Spørg banken og kunderne, om de beder om VS Basis (tidligere VSME), VS Udvidet eller ESRS. qlim8, Verarca, EcoMetrics og E-SG.cloud oplyser VS Udvidet, hos Verarca som tilkøb, og esgBRICKS' eksempelrapport viser oplysninger fra det udvidede modul. Grønlog, Wardn og Valified oplyser ikke VS Udvidet.`,
+        `Scope 3: Scope 3 er udledningen i værdikæden. qlim8, Verarca, Grønlog, EcoMetrics og esgBRICKS dækker scope 3, og E-SG.cloud gør det gennem partnerberegnere. Valified oplyser ikke scope 3.`,
+        `Hjælp og revisor: Vil I selv køre programmet eller have en person til at gennemgå data? Verarca, Wardn, Valified og E-SG.cloud har rådgivning eller hjælp, og hos esgBRICKS er hele rapporten en service. qlim8 har ingen indbygget konsulentydelse, men gratis konti til jeres egen revisor og konsulent. EcoMetrics giver revisor læseadgang på Plus og Pro.`,
         `Pris og gratis start: Sammenlign den samlede årspris, og se, hvad en gratis plan dækker. Tabellen herunder viser priserne, som leverandørerne oplyser dem.`,
       ],
     },
@@ -51,12 +53,12 @@ export const artikel: Article = {
     { type: 'h2', text: 'De danske klimaregnskabsprogrammer side om side' },
     {
       type: 'paragraph',
-      text: `Tabellen viser, hvad de seks danske programmer selv oplyser på deres hjemmesider, og datoen står under tabellen. Ikke oplyst betyder, at leverandøren ikke nævner det, ikke at den mangler det.`,
+      text: `Tabellen viser, hvad de otte danske programmer selv oplyser på deres hjemmesider, og datoen står under tabellen. Ikke oplyst betyder, at leverandøren ikke nævner det, ikke at den mangler det.`,
     },
     { type: 'richtext', html: sammenligningstabel(DANSKE, FUNKTIONER) },
     { type: 'richtext', html: opdateretLinje(OPDATERET) },
 
-    { type: 'h2', text: 'De seks danske programmer kort' },
+    { type: 'h2', text: 'De otte danske programmer kort' },
     { type: 'h3', text: 'qlim8' },
     { type: 'paragraph', text: KORT_OM.qlim8 },
     {
@@ -99,10 +101,44 @@ export const artikel: Article = {
       html: `<p><a href="/blog/valified-alternativ">Valified</a> er det rigtige valg, hvis I hurtigt skal have en VS Basis-rapport og vil sammenligne jer med branchen. Scoren går fra 1 til 100 mod branchen på 13 forhold, der vises et potentiale i kroner, og rapporten kan deles med banken. Scope 3, regnskabsintegrationer og VS Udvidet oplyses ikke.</p>`,
     },
 
+    { type: 'h3', text: 'esgBRICKS' },
+    { type: 'paragraph', text: KORT_OM.esgbricks },
+    {
+      type: 'richtext',
+      html: `<p>esgBRICKS er det rigtige valg, hvis I hellere vil købe arbejdet end et program: en fast kontaktperson laver den årlige VS-rapport for jer, og esgBRICKS skriver, at I kun betaler, hvis I er tilfredse med rapporten. esgBRICKS oplyser ikke regnskabsintegrationer, Eloverblik eller en gratis plan.</p>`,
+    },
+
+    { type: 'h3', text: 'E-SG.cloud' },
+    { type: 'paragraph', text: KORT_OM.esgcloud },
+    {
+      type: 'richtext',
+      html: `<p>E-SG.cloud passer bedst, hvis I er revisor, konsulent eller forhandler og vil give jeres kunder en ESG-platform under eget brand med et overblik over alle klienter. Platformen har VS Basis og VS Udvidet i alle pakker, revisionsspor i Pro og CSRD og testadgang i 14 dage.</p>`,
+    },
+
     { type: 'h3', text: 'Climaider' },
     {
       type: 'richtext',
       html: `<p>Climaider ApS er ifølge CVR-registret erklæret konkurs den 20. oktober 2026 og er derfor ikke med i tabellen. Har I brugt <a href="/blog/climaider-alternativ">Climaider</a>, kan I læse, hvad I skal sikre nu, og hvilket tilbud qlim8 har til Climaider-kunder.</p>`,
+    },
+
+    { type: 'h2', text: 'Klimaregnskab uden et betalt program' },
+    { type: 'h3', text: 'Klimakompasset' },
+    {
+      type: 'paragraph',
+      text: `Klimakompasset er Erhvervsstyrelsens gratis, offentlige værktøj til klimaregnskab, udviklet sammen med Energistyrelsen. I taster selv aktivitetsdata ind og får scope 1, 2 og 3 opgjort med Energistyrelsens emissionsfaktorer, men ingen VS-rapport.`,
+    },
+    {
+      type: 'richtext',
+      html: `<p>Har I brugt Klimakompasset, kan I læse, hvad det næste skridt er, og hvorfor tallene bygger på samme grundlag.</p>`,
+    },
+    { type: 'h3', text: 'Excel' },
+    {
+      type: 'paragraph',
+      text: `Et klimaregnskab kan laves i Excel med Energistyrelsens emissionsfaktorer, Energinets deklarationer og EFRAG's Excel-skabelon til VS-rapporten.`,
+    },
+    {
+      type: 'richtext',
+      html: `<p>Guiden til klimaregnskab i Excel viser, hvad regnearket skal indeholde, hvor det knækker, og hvordan I går videre uden at miste arbejdet.</p>`,
     },
 
     { type: 'h2', text: 'Hvad med de store internationale klimaplatforme?' },
@@ -132,7 +168,7 @@ export const artikel: Article = {
     { type: 'h3', text: 'Hvad koster et klimaregnskabsprogram?' },
     {
       type: 'paragraph',
-      text: `De danske programmer har gratis planer eller betalte planer til priser på måneds- og årsbasis, mens de store internationale platforme koster ca. 45.000 kr. om året og derover. Verarca oplyser 299 kr. om måneden betalt årligt for scope 1 og 2 hos mikrovirksomheder, Grønlog 590 og 1.490 kr. om måneden, EcoMetrics 4.950 og 11.950 kr. om året ekskl. moms og Valified 1.290 kr. om året.`,
+      text: `De danske programmer har gratis planer eller betalte planer til priser på måneds- og årsbasis, mens de store internationale platforme koster ca. 45.000 kr. om året og derover. Verarca oplyser 299 kr. om måneden betalt årligt for scope 1 og 2 hos mikrovirksomheder, Grønlog 590 og 1.490 kr. om måneden, EcoMetrics 4.950 og 11.950 kr. om året ekskl. moms, Valified 1.290 kr. om året, E-SG.cloud 999 og 1.999 kr. om måneden ekskl. moms og esgBRICKS' service 14.999 kr. om året ekskl. moms.`,
     },
     { type: 'h3', text: 'Findes der et gratis klimaregnskabsprogram?' },
     {

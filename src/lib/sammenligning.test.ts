@@ -168,7 +168,7 @@ test("data: qlim8 is first in both lists, and each vendor key is unique", () => 
     const fkeys = t.funktioner.map((f) => f.key);
     assert.equal(new Set(fkeys).size, fkeys.length, t.navn);
   }
-  assert.deepEqual(DANSKE.map((l) => l.key), ["qlim8", "verarca", "gronlog", "ecometrics", "wardn", "valified"]);
+  assert.deepEqual(DANSKE.map((l) => l.key), ["qlim8", "verarca", "gronlog", "ecometrics", "wardn", "valified", "esgbricks", "esgcloud"]);
   assert.deepEqual(STORE.map((l) => l.key), ["qlim8", "watershed", "positiongreen", "greenly", "persefoni", "coolset", "terrascope", "plana"]);
   assert.equal(FUNKTIONER.length, 19);
 });
@@ -211,9 +211,9 @@ test("data: a competitor is never a bare Nej, and a cell with an answer has an h
   }
 });
 
-test("data: KORT_OM has all 13 vendors, each text names its vendor and stands alone", () => {
+test("data: KORT_OM has all 15 vendors, each text names its vendor and stands alone", () => {
   const alle = new Map([...DANSKE, ...STORE].map((l) => [l.key, l.navn]));
-  assert.equal(alle.size, 13);
+  assert.equal(alle.size, 15);
   assert.deepEqual(Object.keys(KORT_OM).sort(), [...alle.keys()].sort());
   for (const [key, text] of Object.entries(KORT_OM)) {
     assert.ok(text.includes(alle.get(key) as string), `${key} does not name itself`);
@@ -222,9 +222,9 @@ test("data: KORT_OM has all 13 vendors, each text names its vendor and stands al
   }
 });
 
-test("data: VAELG has the same 13 keys as KORT_OM, and each line starts 'Vælg <navn>' without link or em dash", () => {
+test("data: VAELG has the same 15 keys as KORT_OM, and each line starts 'Vælg <navn>' without link or em dash", () => {
   const alle = new Map([...DANSKE, ...STORE].map((l) => [l.key, l.navn]));
-  assert.equal(Object.keys(VAELG).length, 13);
+  assert.equal(Object.keys(VAELG).length, 15);
   assert.deepEqual(Object.keys(VAELG).sort(), Object.keys(KORT_OM).sort());
   for (const [key, text] of Object.entries(VAELG)) {
     assert.ok(text.startsWith(`Vælg ${alle.get(key)}`), `${key} does not start with Vælg and its name`);

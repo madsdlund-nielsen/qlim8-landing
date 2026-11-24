@@ -104,6 +104,12 @@ export const artikel: Article = {
     { type: 'h3', text: 'Valified' },
     { type: 'paragraph', text: KORT_OM.valified },
     { type: 'paragraph', text: VAELG.valified },
+    { type: 'h3', text: 'esgBRICKS' },
+    { type: 'paragraph', text: KORT_OM.esgbricks },
+    { type: 'paragraph', text: VAELG.esgbricks },
+    { type: 'h3', text: 'E-SG.cloud' },
+    { type: 'paragraph', text: KORT_OM.esgcloud },
+    { type: 'paragraph', text: VAELG.esgcloud },
     {
       type: 'paragraph',
       text: `qlim8 har hverken ISO 27001 eller SOC 2. Kræver jeres køber en af dem, eller har I CSRD-pligt, så sammenlign også med de store internationale platforme.`,
@@ -163,7 +169,7 @@ export const artikel: Article = {
     { type: 'h3', text: 'Hvad er et godt alternativ til Climaider?' },
     {
       type: 'paragraph',
-      text: `Vælg et program, der forbinder til jeres regnskabsprogram og kan eksportere alt, og sammenlign qlim8, Verarca, Grønlog, EcoMetrics, Wardn og Valified i tabellen.`,
+      text: `Vælg et program, der forbinder til jeres regnskabsprogram og kan eksportere alt, og sammenlign qlim8, Verarca, Grønlog, EcoMetrics, Wardn, Valified, esgBRICKS og E-SG.cloud i tabellen.`,
     },
   ],
 }
